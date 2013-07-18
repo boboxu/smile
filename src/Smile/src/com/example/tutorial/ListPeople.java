@@ -1,0 +1,56 @@
+// See README.txt for information and build instructions.
+package com.example.tutorial;
+
+import java.io.FileInputStream;
+
+import android.util.Log;
+
+import com.example.tutorial.AddressBookProtos.AddressBook;
+import com.example.tutorial.AddressBookProtos.Person;
+
+public class ListPeople {
+	// Iterates though all people in the AddressBook and prints info about them.
+	static void Print(AddressBook addressBook) {
+		for (Person person : addressBook.getPersonList()) {
+			// System.out.println("Person ID: " + person.getId());
+			Log.i("Protobuf", "" + person.getId());
+			// System.out.println("  Name: " + person.getName());
+			Log.i("Protobuf", "" + person.getName());
+			if (person.hasEmail()) {
+				// System.out.println("  E-mail address: " + person.getEmail());
+				Log.i("Protobuf", "" + person.getEmail());
+			}
+
+			for (Person.PhoneNumber phoneNumber : person.getPhoneList()) {
+				switch (phoneNumber.getType()) {
+				case MOBILE:
+					// System.out.print("  Mobile phone #: ");
+					break;
+				case HOME:
+					// System.out.print("  Home phone #: ");
+					break;
+				case WORK:
+					// System.out.print("  Work phone #: ");
+					break;
+				}
+				// System.out.println(phoneNumber.getNumber());
+				Log.i("Protobuf", "电话：" + phoneNumber.getNumber());
+			}
+		}
+	}
+
+	// Main function: Reads the entire address book from a file and prints all
+	// the information inside.
+	public static void listPerson(String[] args) throws Exception {
+		if (args.length != 1) {
+			System.err.println("Usage:  ListPeople ADDRESS_BOOK_FILE");
+			System.exit(-1);
+		}
+
+		// Read the existing address book.
+		AddressBook addressBook = AddressBook.parseFrom(new FileInputStream(
+				args[0]));
+
+		Print(addressBook);
+	}
+}
