@@ -1,7 +1,7 @@
 package com.heme.logic.managers.statusreportmanager;
 
-import com.heme.logic.managers.base.BaseLogicManager;
+import com.heme.logic.managers.base.BusinessLogicManager;
 
-public class StatusReportManager extends BaseLogicManager {
+public class StatusReportManager extends BusinessLogicManager {
 
 }

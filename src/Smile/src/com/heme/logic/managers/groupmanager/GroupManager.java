@@ -1,7 +1,7 @@
 package com.heme.logic.managers.groupmanager;
 
-import com.heme.logic.managers.base.BaseLogicManager;
+import com.heme.logic.managers.base.BusinessLogicManager;
 
-public class GroupManager extends BaseLogicManager {
+public class GroupManager extends BusinessLogicManager {
 
 }

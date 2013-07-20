@@ -1,7 +1,7 @@
 package com.heme.logic.managers.pushmanager;
 
-import com.heme.logic.managers.base.BaseLogicManager;
+import com.heme.logic.managers.base.BusinessLogicManager;
 
-public class PushManager extends BaseLogicManager {
+public class PushManager extends BusinessLogicManager {
 
 }

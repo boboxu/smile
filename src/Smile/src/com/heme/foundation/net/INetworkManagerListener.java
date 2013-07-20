@@ -2,7 +2,7 @@ package com.heme.foundation.net;
 
 import java.nio.ByteBuffer;
 
-public interface INetworkManagerDelegate 
+public interface INetworkManagerListener 
 {
 	/**
 	 * 网络请求完成

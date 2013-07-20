@@ -6,28 +6,28 @@ import java.util.Map;
 import android.util.Log;
 
 import com.heme.logic.managers.accountmanager.AccountManager;
-import com.heme.logic.managers.base.BaseLogicManager;
+import com.heme.logic.managers.base.BusinessLogicManager;
 import com.heme.logic.managers.loginmanager.LoginManager;
 
 public class LogicManager {
 	private final static String TAG = "LogicManager";
-	private final static Map<String, BaseLogicManager> mManagerMap = new HashMap<String, BaseLogicManager>();
+	private final static Map<String, BusinessLogicManager> mManagerMap = new HashMap<String, BusinessLogicManager>();
 	
 	@SuppressWarnings("unused")
-	private static BaseLogicManager findManager(Class<?> logicManagerClass)
+	private static BusinessLogicManager findManager(Class<?> logicManagerClass)
 	{
-		BaseLogicManager logicManager = null;
+		BusinessLogicManager logicManager = null;
 		String className = logicManagerClass.getName();
 		if (mManagerMap.containsKey(className))
 		{
-			logicManager = (BaseLogicManager) mManagerMap.get(className);
+			logicManager = (BusinessLogicManager) mManagerMap.get(className);
 		}
 		if (logicManager == null)
 		{
 			Log.d(TAG, String.format("findByLogicManagerClass"+logicManagerClass.getName()));
 			try
 			{
-				logicManager = (BaseLogicManager) logicManagerClass.newInstance();
+				logicManager = (BusinessLogicManager) logicManagerClass.newInstance();
 			}
 			catch (IllegalAccessException e)
 			{

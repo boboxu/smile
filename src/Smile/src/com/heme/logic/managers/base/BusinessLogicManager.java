@@ -1,6 +1,6 @@
 package com.heme.logic.managers.base;
 
-public class BaseLogicManager {
+public class BusinessLogicManager {
 	protected void SendRequest() 
 	{
 		

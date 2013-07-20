@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.login;
 
-import com.heme.logic.httpprotocols.base.BaseRequest;
+import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 
-public class LoginRequest extends BaseRequest {
+public class LoginRequest extends BaseBusinessRequest {
 	
 }

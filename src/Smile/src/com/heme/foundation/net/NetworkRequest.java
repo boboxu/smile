@@ -40,7 +40,7 @@ public class NetworkRequest
 	public Request mRequest = null;
 	public NetworkHandler mHandler = null;
 	public Looper mCallerLooper = null;
-	public INetworkManagerDelegate mDelegate = null;
+	public INetworkManagerListener mDelegate = null;
 	public AsyncHttpClient mConnectionClient = null;
 	
 	public int mReceivedLength = 0;
@@ -134,7 +134,7 @@ public class NetworkRequest
 			{
 				// String string = new
 				// String(response.getResponseBodyAsBytes());
-				INetworkManagerDelegate delegate = hd.mRequest.mDelegate;
+				INetworkManagerListener delegate = hd.mRequest.mDelegate;
 				try
 				{
 					if (hd.mResponse.mResponse == null)
@@ -166,7 +166,7 @@ public class NetworkRequest
 		{
 			if (request != null && request.mDelegate != null)
 			{
-				INetworkManagerDelegate delegate = request.mDelegate;
+				INetworkManagerListener delegate = request.mDelegate;
 				// "408" : Request Time-out
 				delegate.onRequestFail(request, 408);
 			}
@@ -177,7 +177,7 @@ public class NetworkRequest
 		{
 			if (hd.mRequest != null && hd.mRequest.mDelegate != null)
 			{
-				INetworkManagerDelegate delegate = hd.mRequest.mDelegate;
+				INetworkManagerListener delegate = hd.mRequest.mDelegate;
 				if(delegate != null)
 				{
 					delegate.onRequestFail(hd.mRequest, errorCode);
@@ -198,7 +198,7 @@ public class NetworkRequest
 			public HttpResponseHeaders headers = null;
 			public HttpResponseBodyPart content = null;
 			public NetworkResponse mResponse = null;
-			public INetworkManagerDelegate mDelegate = null;
+			public INetworkManagerListener mDelegate = null;
 			public int mErrorCode = -1;
 
 			@Override
@@ -426,7 +426,7 @@ public class NetworkRequest
 	}
 
 	public NetworkRequest(String url, String method,
-	        INetworkManagerDelegate delegate)
+	        INetworkManagerListener delegate)
 	{
 		super();
 		mUrl = new String(url);
@@ -438,7 +438,7 @@ public class NetworkRequest
 	}
 
 	public NetworkRequest(String url, String method, Map<String, String> data,
-			INetworkManagerDelegate delegate)
+			INetworkManagerListener delegate)
 	{
 		super();
 		mUrl = new String(url);

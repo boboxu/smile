@@ -1,7 +1,7 @@
 package com.heme.logic.managers.messagemanager;
 
-import com.heme.logic.managers.base.BaseLogicManager;
+import com.heme.logic.managers.base.BusinessLogicManager;
 
-public class MessageManager extends BaseLogicManager {
+public class MessageManager extends BusinessLogicManager {
 
 }

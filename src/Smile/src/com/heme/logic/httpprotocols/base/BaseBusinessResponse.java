@@ -1,5 +1,5 @@
 package com.heme.logic.httpprotocols.base;
 
-public class BaseResponse {
+public class BaseBusinessResponse {
 
 }
