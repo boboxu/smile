@@ -1,0 +1,481 @@
+//2.1.1注册手机验证
+//场景1：注册的时候首先要提交手机号，后台判断手机号是否注册，没有注册才发送验证码。
+//场景2：忘记密码提交手机号码，考虑是否与注册手机号码一致。
+message VerifyPhoneReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string phoneNo = 3;			//注册手机号码
+}
+message VerifyPhoneRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    required string verifyCode = 3;			//errCode为0返回验证码
+}
+
+
+
+//2.1.2家长注册
+message RegParentReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string phoneNo = 3;			//注册手机号码
+    required string realName = 4;			//真实姓名
+    required string idCardNo = 5;			//身份证号码
+    required string password = 6;			//登录密码
+    repeated uint64 childSystemId = 7;			//小孩微校ID，可以添加多个
+    required string verifyCode = 8;			//验证码
+}
+message RegParentRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    required uint64 systemId = 3;			//成功返回微校号
+    required string sessionId = 4;          //成功返回会话ID
+}
+
+
+
+//2.1.3学生注册学校查询
+message RegGetSchoolReq
+{
+	required uint32 versionNo = 1;			//版本号
+	required string area = 2;			//地区名称
+}
+message SchoolCombine
+{
+	required uint32 schoolId = 1;			//学校唯一ID
+	required string schoolName = 2;			//学校名称
+}
+message RegGetSchoolRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    repeated SchoolCombine schoolInfo = 3;	   
+}
+
+
+
+//2.1.4学生注册班级查询
+message RegGetClassReq
+{
+	required uint32 versionNo = 1;			//版本号
+	required uint32 schoolId = 2;			//学校唯一ID
+}
+message ClassCombine
+{
+	required uint32 classId = 1;			//班级唯一ID
+	required string className = 2;			//班级名称
+}
+message RegGetClassRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    repeated ClassCombine classInfo = 3;	   
+}
+
+
+//2.1.5学生注册
+message RegStudentReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string phoneNo = 3;			//注册手机号码
+    required string realName = 4;			//真实姓名
+    required string studentId = 5;			//学号
+    required string password = 6;			//登录密码
+    required string area = 7;			    //所在地区
+    required uint32 schoolId = 8;			//所在学校ID
+    required uint32 classId = 9;			//所在班级ID
+}
+message RegStudentRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    required uint64 systemId = 3;			//成功返回微校号
+    required string sessionId = 4;          //成功返回会话ID
+}
+
+
+//2.2.1登录
+message LoginReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string id = 3;			       //包括微校ID和电话号码，系统内部交互只用微校号
+    required string password = 4;		   //登录密码
+}
+message FriendCombine
+{
+	required uint64 FriendSystemId = 1;			//好友微校号
+    required uint32 roleType = 2;			   //角色1：家长；2：学生；3：老师
+	required string FriendName = 3;			    //好友姓名
+    optional string DescName = 4;			    //好友备注
+}
+message GroupCombine
+{
+	required uint32 groupId = 1;			   //群组号
+    required uint32 groupType = 2;			   //群组类型，1：永久群，2：临时群；3：社区群
+	optional string groupName = 3;			    //群组名称
+}
+message LoginRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
+	required string errString = 2;			//错误信息
+    required uint64 systemId = 3;			//成功返回微校号
+    required string sessionId = 4;          //成功返回会话ID
+    repeated FriendCombine friendInof = 5;
+    repeated GroupCombine groupInfo = 6;
+}
+
+
+//2.2.2获取特定用户信息,登录成功或者添加好友的时候用。
+message GetUserInfoReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+}
+message GetUserInfoRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+    required uint32 roleType = 3;			//角色，1：家长；2：学生；3：老师
+    required string realName = 4;          //真实姓名
+    required string phoneNo = 5;            // 手机号码
+    required uint32 verifyType = 6;          //群验证类型，0：不需要身份验证；1：需要身份验证； 
+    optional string iconName = 7;			//头像名称
+    required uint32 status = 8;			//用户状态，1：在线；2：离线；3：隐身
+    optional string signature = 9;			//个性签名
+    optional string studentId = 10;			//学号，根据角色判断
+    optional string area = 11;			//所在地区
+    optional string schoolName = 12;			//所在学校名称
+    optional string className = 13;			//所在班级名称
+}
+
+
+//2.2.3更换头像,主界面上更改。
+message SetUserIconReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required string iconName = 5;			//头像名称
+}
+message SetUserIconRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.2.4状态改变,主界面上更改。
+message SetUserIconReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 status = 5;			   //用户状态，1：在线；2：离线；3：隐身
+}
+message SetUserIconRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.2.5个性签名,主界面上更改。
+message SetUserIconReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required string signature = 5;			//个性签名
+}
+message SetUserIconRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.3.2忘记密码验证码输入
+message FindPasswdVerifyReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string verifyCode = 3;			//验证码
+}
+message FindPasswdVerifyRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.4.1心跳
+message HbReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;			//会话ID
+}
+message HbRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.5.1绿色上网,发送控制命令。
+message PcCtrlReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 pcCtrlCmd = 5;			//用pc控制命令。1：重启电脑；2：关闭电脑；3：关闭进程；4：信息拦截
+}
+message PcCtrlRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.1创建永久群。
+message CreateFixedGroupReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required string area = 5;			//所在地区
+    required string school = 6;			//所在学校
+    required string groupName = 7;			//群组名称
+    required uint32 verifyType = 8;			//群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
+}
+message CreateFixedGroupRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+    required uint32 groupId = 3;            //成功返回群ID
+}
+
+
+//2.6.2创建临时群。
+message CreateTempGroupReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    optional string groupName = 5;			//临时群组名称，如果没有，客户端根据成员自动生成
+}
+message CreateTempGroupRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+    required uint32 groupId = 3;            //成功返回群ID
+}
+
+
+//2.6.3修改群名称,包括永久和临时群
+message SetGroupNameReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 groupId = 5;			//群组ID
+    required string groupName = 6;			//群组名称 
+}
+message SetGroupNameRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.4删除群,包括永久和临时群
+message DelGroupReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 groupId = 5;			//群组ID
+}
+message DelGroupRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.5获取群信息,包括永久和临时群
+message GetGroupInfoReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 groupId = 5;			//群组ID
+}
+message GetGroupInfoRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+    required uint32 groupId = 3;			//群组号
+    required uint32 groupType = 4;			//群组类型
+    optional string groupName = 5;			//群组名称
+    required uint64 hostSystemId = 6;			//群主微校号
+    repeated uint64 memberSystemId = 7;			//成员微校号
+}
+
+
+//2.6.6 社区群组申请,这里暂时只定义客户端的交互，用户申请加入后，验证过程走消息接口
+message ApplySocialGroupReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 groupId = 5;			//群组ID
+}
+message ApplySocialGroupRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.8 添加好友验证消息
+message FriendVerifyMsgReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint64 targetSystemId = 5;			//对方微校号
+    required string verifyMsg = 6;			//如果需要验证的消息
+}
+message FriendVerifyMsgRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.9 修改好友备注
+message SetFriendDescReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint64 targetSystemId = 5;			//对方微校号
+    required string description = 6;			//好友备注
+}
+message SetFriendDescRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.6.10删除好友
+message DelFriendReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint64 targetSystemId = 5;			//对方微校号
+}
+message DelFriendRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.7.1设置个人信息
+message SetSelfInfoReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    optional uint32 gender = 5;			   //性别；1女；2男；3未知 
+    optional string birthday = 6;			//生日
+    optional string occupation = 7;			//职业
+    optional string location = 8;			//地区，不同于注册的地区，这里可以理解为现所在地区 
+    optional string email = 9;			    //邮箱
+    optional string interest = 10;			//兴趣爱好
+}
+message SetSelfInfoRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.7.2修改密码
+message SetPasswdReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required string oldPasswd = 5;			//原密码
+    required string newPasswd = 6;			//新密码
+
+}
+message SetPasswdRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.7.3好友权限
+message SetFriendRightReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required uint32 verifyType = 5;			//加我为好友时是否需要验证：1需要；0：不需要 
+    required uint32 autoAddFriend = 6;	    //回复陌生人自动添加为好友：1是；0：不是
+    required uint32 searchType = 7;			//通过微校号搜索到我：1是；0：不是
+    required uint32 recommendType = 8;		//向我推荐微校好友，是否能发送名片：1是；0：不是
+
+}
+message SetFriendRightRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
+
+
+//2.7.4关于微校的帮助与反馈
+message SendFeedbackReq
+{
+	required uint32 versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    required string feedback = 5;			//意见反馈
+}
+message SendFeedbackRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
+	required string errString = 2;			//错误信息
+}
