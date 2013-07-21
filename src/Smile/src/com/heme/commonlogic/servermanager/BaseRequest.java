@@ -15,7 +15,8 @@ public class BaseRequest {
 	private int mRequestID;
 	private IServerManagerListener mRequestListener;
 	private NetworkRequest mRequest;
-
+	private String mRequestKey;
+	
 	public BaseRequest()
 	{
 		super();
@@ -97,4 +98,13 @@ public class BaseRequest {
 	public void setmRequest(NetworkRequest mRequest) {
 		this.mRequest = mRequest;
 	}
+	
+	public String getmRequestKey() {
+		return mRequestKey;
+	}
+
+	public void setmRequestKey(String mRequestKey) {
+		this.mRequestKey = mRequestKey;
+	}
+
 }

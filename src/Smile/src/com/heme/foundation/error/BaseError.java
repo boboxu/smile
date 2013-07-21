@@ -12,5 +12,9 @@ public class BaseError {
 		mErrMsg = msg;
 	}
 	
+	public BaseError()
+	{
+		super();
+	}
 	
 }
