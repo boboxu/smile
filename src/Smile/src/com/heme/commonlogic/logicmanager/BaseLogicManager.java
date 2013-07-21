@@ -8,8 +8,10 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.commonlogic.servermanager.IServerManagerListener;
+import com.heme.commonlogic.servermanager.ServerManager;
 import com.heme.foundation.error.BaseError;
 
 public abstract class BaseLogicManager implements IServerManagerListener{
@@ -99,6 +101,36 @@ public abstract class BaseLogicManager implements IServerManagerListener{
 		return error;
 	}
 
+	protected String createListenerKeyByFunName(String funname) {
+		return this.getClass().getName()+funname;
+	}
+	
+	protected String createListenerKey() {
+		return this.createListenerKeyByFunName("");
+	}
+	
+	protected void sendRequest(final BaseRequest request,
+	        IBaseLogicManagerListener listener, String key, String methodName)
+	{
+		if (key == null || key.length() == 0)
+		{
+			Log.i(TAG, "key 都是空的，干鸟啊");
+			return;
+		}
+		saveListener(listener, key);
+		request.setmRequestKey(key);
+		request.setmRequestListener(this);
+		new Thread(TAG)
+		{
+			@Override
+			public void run()
+			{
+				ServerManager.shareInstance()
+				        .sendRequest(request);
+			}
+		}.start();
+	}
+	
 	
 	@SuppressLint("HandlerLeak")
 	private class NetResponseHandler extends Handler
