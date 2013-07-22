@@ -1,0 +1,50 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".StartActivity" 
+    android:background="@drawable/splash"
+    >
+	<include layout="@layout/public_titlebar"/>
+   <LinearLayout 
+       android:layout_below="@+id/public_title_bar"
+       android:layout_width="fill_parent"
+       android:layout_height="fill_parent"
+       android:layout_marginLeft="10dip"
+       android:layout_marginRight="10dip"
+       android:orientation="vertical"
+       >
+       <EditText 
+           android:id="@+id/feedback_content"
+           android:layout_width="fill_parent"
+           android:layout_height="200dip"
+           android:gravity="top"
+           android:textSize="20dip"
+           />
+       <LinearLayout 
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:paddingTop="20dip"
+           android:orientation="horizontal"
+           android:layout_gravity="center_horizontal"
+           >
+           <Button 
+               android:id="@+id/cancel"
+               android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="取  消"
+           android:textSize="26dip"
+               />
+           <Button 
+               android:id="@+id/submit"
+               android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_gravity="center"
+           android:text="确  定"
+           android:textSize="26dip"
+               />
+       </LinearLayout>
+   </LinearLayout>
+
+</RelativeLayout>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.hemi.smile"
+    package="com.heme.smile"
     android:versionCode="1"
     android:versionName="1.0" >
 
@@ -12,16 +12,104 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@android:style/Theme.NoTitleBar"
+        >
         <activity
-            android:name="com.heme.smile.WelcomeActivity"
-            android:label="@string/app_name" >
+            android:name="com.heme.smile.StartActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.heme.smile.LoginActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+        <activity
+            android:name="com.heme.smile.NewUserGuideActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.AboutActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.AdultRegCheckCodeActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.SettingActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.IntroduceActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.UpdatePwdActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.AddressBookActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.MessageActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          
+          <activity
+            android:name="com.heme.smile.MyMicroSchoolActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.MainActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.HelpActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.UserRuleActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.GetbackPassword"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.AdultRegPhoneCheckActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.AdultRegActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
+          <activity
+            android:name="com.heme.smile.GetbackPassWordCheckCodeActivity"
+            android:label="@string/app_name" 
+            android:screenOrientation="portrait"
+          />
     </application>
-
 </manifest>

@@ -1,0 +1,27 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context=".StartActivity" 
+    android:background="#fff"
+    >
+    <include layout="@layout/public_titlebar"
+        />
+     "
+	<ScrollView 
+	    android:layout_below="@+id/public_title_bar"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    >
+	    <TextView 
+	    android:layout_below="@+id/public_title_bar"
+	    android:layout_width="fill_parent"
+	    android:layout_height="fill_parent"
+	    android:textColor="#000"
+	    android:textSize="14dip"
+	    android:id="@+id/rule_text"
+	    />
+	</ScrollView>
+   
+
+</RelativeLayout>
