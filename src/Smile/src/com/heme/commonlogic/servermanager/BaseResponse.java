@@ -7,10 +7,10 @@ import android.R.integer;
 import com.heme.foundation.error.BaseError;
 
 public class BaseResponse {
-	private BaseRequest mRequest;
-	private BaseError mError;
-	private ByteBuffer mDataBuffer;
-	private int mRet;
+	protected BaseRequest mRequest;
+	protected BaseError mError;
+	protected ByteBuffer mDataBuffer;
+	protected int mRet;
 	
 	public final static int RET_SUCCESS = 0;
 	public final static int RET_ERROR = -1;

@@ -5,6 +5,7 @@ import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 public class SendTelRequest extends BaseBusinessRequest {
 	
 	private static String PARAMNAME_PHONENO = "phoneNo";
+	private static String PARAMNAME_VERIFYTYPE = "verifyType";
 	public enum OperType //验证电话的操作类型
 	{
 		TypeReg,//注册
@@ -17,18 +18,18 @@ public class SendTelRequest extends BaseBusinessRequest {
 	
 	public void setOperationType(OperType type)
 	{
-		String operString = "reg";
+		int opertype = 1;
 		switch (type) {
 		case TypeReg:
-			operString = "reg";
+			opertype = 1;
 			break;
 		case TypeResetPwd:
-			operString = "resetpwd";
+			opertype = 2;
 			break;
 		default:
-			operString = "reg";
+			opertype = 1;
 			break;
 		}
-		addStringParam("optype", operString);
+		addIntParam(PARAMNAME_VERIFYTYPE, opertype);
 	}
 }
