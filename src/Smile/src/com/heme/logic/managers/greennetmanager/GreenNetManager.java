@@ -2,18 +2,11 @@ package com.heme.logic.managers.greennetmanager;
 
 import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
+import com.heme.logic.httpprotocols.greennet.SendCommandRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 
 public class GreenNetManager extends BaseBusinessLogicManager {
 
-	enum CommandType
-	{
-		CmdReboot,	//重启
-		CmdShutDonw,//关机
-		CmdCloseProcess,//关闭进程
-		CmdIntercept,//中断
-		
-	};
 	@Override
 	protected void onSuccessResponse(BaseResponse response,
 			IBaseLogicManagerListener listener) {
@@ -41,7 +34,7 @@ public class GreenNetManager extends BaseBusinessLogicManager {
 		
 	}
 	
-	private void sendCommand(CommandType commandType)
+	private void sendCommand(SendCommandRequest.CommandType commandType)
 	{
 		
 	}
