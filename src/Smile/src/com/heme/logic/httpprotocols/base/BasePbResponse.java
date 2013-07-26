@@ -7,14 +7,9 @@ import com.heme.logic.module.Access.AccessResp;
 public class BasePbResponse extends BaseResponse {
 	protected AccessResp mAccessRespData;
 	@Override
-	public void parseData() 
+	public void parseData() throws InvalidProtocolBufferException
 	{
 		super.parseData();
-		try {
-			mAccessRespData = AccessResp.parseFrom(mDataBuffer.array());
-		} catch (InvalidProtocolBufferException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		mAccessRespData = AccessResp.parseFrom(mDataBuffer.array());
 	}
 }

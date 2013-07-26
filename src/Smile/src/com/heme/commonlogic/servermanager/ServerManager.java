@@ -8,7 +8,9 @@ import java.util.Set;
 
 import android.util.Log;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
+import com.heme.foundation.error.BaseError;
 import com.heme.foundation.net.INetworkManagerListener;
 import com.heme.foundation.net.NetworkRequest;
 
@@ -114,7 +116,14 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 
 		BaseResponse response = parseRequestToResponse(baseRequest, buffer);
 		response.setmRequest(baseRequest);
-		response.parseData();
+		try {
+			response.parseData();
+		} catch (InvalidProtocolBufferException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			response.setmRet(BaseResponse.RET_ERROR);
+			response.setmError(new ProtoError(ProtoError.ERRCODE_INVALID_PROTOBUFFER,e.getMessage()));
+		}
 
 		if (response.getmRet() == BaseResponse.RET_SUCCESS)
 		{

@@ -6,21 +6,17 @@ import com.heme.logic.module.Data.FriendVerifyMsgRsp;
 
 public class AddFriendResponse extends BaseBusinessResponse {
 	private FriendVerifyMsgRsp mAddfriendrsp;
-	
+
 	@Override
-	public void parseData() {
+	public void parseData() throws InvalidProtocolBufferException {
 		// TODO Auto-generated method stub
 		super.parseData();
-		try {
-			mAddfriendrsp = FriendVerifyMsgRsp.parseFrom(mAccessRespData.getBytesBody());
-		} catch (InvalidProtocolBufferException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		mAddfriendrsp = FriendVerifyMsgRsp.parseFrom(mAccessRespData
+				.getBytesBody());
+
 	}
-	
-	public FriendVerifyMsgRsp getFriendVerifyMsgRsp()
-	{
+
+	public FriendVerifyMsgRsp getFriendVerifyMsgRsp() {
 		return mAddfriendrsp;
 	}
 }

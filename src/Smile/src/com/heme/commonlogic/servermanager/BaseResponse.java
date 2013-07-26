@@ -4,6 +4,7 @@ import java.nio.ByteBuffer;
 
 import android.R.integer;
 
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.foundation.error.BaseError;
 
 public class BaseResponse {
@@ -46,7 +47,7 @@ public class BaseResponse {
 		this.mRequest = mRequest;
 	}
 	
-	public void parseData()
+	public void parseData() throws InvalidProtocolBufferException
 	{
 		//處理第一手数据
 	}
