@@ -46,7 +46,7 @@ public class BaseResponse {
 		this.mRequest = mRequest;
 	}
 	
-	public void parse()
+	public void parseData()
 	{
 		//處理第一手数据
 	}

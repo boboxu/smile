@@ -14,41 +14,39 @@ import com.heme.commonlogic.servermanager.IServerManagerListener;
 import com.heme.commonlogic.servermanager.ServerManager;
 import com.heme.foundation.error.BaseError;
 
-public abstract class BaseLogicManager implements IServerManagerListener{
+public abstract class BaseLogicManager implements IServerManagerListener {
 	private static final String TAG = "BaseLogicManager";
 	private Map<String, IBaseLogicManagerListener> mListenerMap = new HashMap<String, IBaseLogicManagerListener>();
 	private NetResponseHandler mResponseHandler = new NetResponseHandler();
-	protected void saveListener (IBaseLogicManagerListener listener,String key) 
-	{
+
+	protected void saveListener(IBaseLogicManagerListener listener, String key) {
 		mListenerMap.put(key, listener);
 	}
-	
-	protected void delListener(String key) 
-	{
+
+	protected void delListener(String key) {
 		mListenerMap.remove(key);
 	}
 
 	protected IBaseLogicManagerListener findListener(String key) {
 		return mListenerMap.get(key);
 	}
-	
+
 	@Override
 	public void onRequestSuccess(BaseResponse response) {
 		String key = response.getmRequest().getmRequestKey();
 		IBaseLogicManagerListener listener = findListener(key);
-		if (listener == null)
-		{
+		if (listener == null) {
 			Log.i(TAG, "没有回掉");
 			return;
 		}
-		
-		if (mResponseHandler != null)
-		{
+
+		if (mResponseHandler != null) {
 			// msg里面的数据有可能会有性能问题，如果有这个问题的话，再来看解决方法
 			Map<String, Object> objectMap = new HashMap<String, Object>();
 			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_RESPONSE, response);
 			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_LISTENERKEY, key);
-			Message msg = mResponseHandler.obtainMessage(NetResponseHandler.MSG_CODE_REQUEST_SUCCESS, objectMap);
+			Message msg = mResponseHandler.obtainMessage(
+					NetResponseHandler.MSG_CODE_REQUEST_SUCCESS, objectMap);
 			mResponseHandler.sendMessage(msg);
 		}
 	}
@@ -57,107 +55,95 @@ public abstract class BaseLogicManager implements IServerManagerListener{
 	public void onRequestFail(BaseResponse response) {
 		String key = response.getmRequest().getmRequestKey();
 		IBaseLogicManagerListener listener = findListener(key);
-		if (listener == null)
-		{
+		if (listener == null) {
 			Log.i(TAG, "没有回掉");
 			return;
 		}
 
-		if (mResponseHandler != null)
-		{
+		if (mResponseHandler != null) {
 			// msg里面的数据有可能会有性能问题，如果有这个问题的话，再来看解决方法
 			Map<String, Object> objectMap = new HashMap<String, Object>();
 			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_RESPONSE, response);
 			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_LISTENERKEY, key);
-			Message msg = mResponseHandler.obtainMessage(NetResponseHandler.MSG_CODE_REQUEST_FAILED, objectMap);
+			Message msg = mResponseHandler.obtainMessage(
+					NetResponseHandler.MSG_CODE_REQUEST_FAILED, objectMap);
 			mResponseHandler.sendMessage(msg);
 		}
 	}
-	
+
 	/**
 	 * 处理成功请求,子类必需实现
 	 * 
 	 * @param response
-	 * @param delegate
+	 * @param listener
 	 */
 	protected abstract void onSuccessResponse(BaseResponse response,
-	        IBaseLogicManagerListener listener);
+			IBaseLogicManagerListener listener);
 
 	/**
-	 * 出错信息处理 如果要自定义处理,可实现覆盖此方法 如果返回结果不为空，则会回调delegate的onLogicManagerError方法
+	 * 出错信息处理 如果要自定义处理,可实现覆盖此方法 如果返回结果不为空，则会回调listener的onLogicManagerError方法
 	 * 
 	 * @param response
-	 * @param delegate
+	 * @param listener
 	 * @return
 	 */
 	protected BaseError onFailedResponse(BaseResponse response,
-			IBaseLogicManagerListener listener)
-	{
+			IBaseLogicManagerListener listener) {
 		BaseError error = response.getmError();
-		if (error == null)
-        {
-	        error = new BaseError();
-        }
+		if (error == null) {
+			error = new BaseError();
+		}
 		return error;
 	}
 
 	protected String createListenerKeyByFunName(String funname) {
-		return this.getClass().getName()+funname;
+		return this.getClass().getName() + funname;
 	}
-	
+
 	protected String createListenerKey() {
 		return this.createListenerKeyByFunName("");
 	}
-	
+
 	protected void sendRequest(final BaseRequest request,
-	        IBaseLogicManagerListener listener, String key, String methodName)
-	{
-		if (key == null || key.length() == 0)
-		{
+			IBaseLogicManagerListener listener, String key, String methodName) {
+		if (key == null || key.length() == 0) {
 			Log.i(TAG, "key 都是空的，干鸟啊");
 			return;
 		}
 		saveListener(listener, key);
 		request.setmRequestKey(key);
 		request.setmRequestListener(this);
-		new Thread(TAG)
-		{
+		new Thread(TAG) {
 			@Override
-			public void run()
-			{
-				ServerManager.shareInstance()
-				        .sendRequest(request);
+			public void run() {
+				ServerManager.shareInstance().sendRequest(request);
 			}
 		}.start();
 	}
-	
-	
+
 	@SuppressLint("HandlerLeak")
-	private class NetResponseHandler extends Handler
-	{
+	private class NetResponseHandler extends Handler {
 		public static final String MSG_OBJECT_KEY_RESPONSE = "MSG_OBJECT_KEY_RESPONSE";
 		public static final String MSG_OBJECT_KEY_LISTENERKEY = "MSG_OBJECT_KEY_LISTENERKEY";
 		public static final int MSG_CODE_REQUEST_SUCCESS = 0;
 		public static final int MSG_CODE_REQUEST_FAILED = -1;
+
 		@SuppressWarnings("unchecked")
 		@Override
-		public void handleMessage(Message msg)
-		{
+		public void handleMessage(Message msg) {
 			Map<String, Object> objectMap = (Map<String, Object>) msg.obj;
 			BaseResponse response = (BaseResponse) objectMap
-			        .get(MSG_OBJECT_KEY_RESPONSE);
+					.get(MSG_OBJECT_KEY_RESPONSE);
 			String key = (String) objectMap.get(MSG_OBJECT_KEY_LISTENERKEY);
 
 			IBaseLogicManagerListener listener = (IBaseLogicManagerListener) findListener(key);
 
-			if (response == null)
-			{
+			if (response == null) {
 				Log.e(TAG, "response is null");
 				return;
 			}
 
-			switch (msg.what)
-			{
+			switch (msg.what) {
 			case MSG_CODE_REQUEST_SUCCESS:
 				onSuccessResponse(response, listener);
 				break;
@@ -169,5 +155,10 @@ public abstract class BaseLogicManager implements IServerManagerListener{
 			delListener(key);
 			response = null;
 		}
+	}
+
+	protected String _FUNC_() {
+		StackTraceElement traceElement = ((new Exception()).getStackTrace())[1];
+		return traceElement.getMethodName();
 	}
 }

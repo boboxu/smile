@@ -1,22 +1,18 @@
 package com.heme.logic.httpprotocols.base;
 
-import com.heme.commonlogic.servermanager.BaseRequest;
+import com.heme.smile.common.Configuration;
 
-public class BaseBusinessRequest extends BaseRequest{
+
+
+public abstract class BaseBusinessRequest extends BasePbRequest{
 	
-	private static final String PARAMNAME_VERSIONNUM = "versionNo";
-	private static final String PARAMNAME_CLIENTTYPE = "clientType";
-	private static final String PROTO_VERSION = "1.0";
-	private static final int ClientType = 1;//1：家长；2：学生；3：老师,从外部读取
+	protected static final int PROTO_VERSION = 1;
+	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	public BaseBusinessRequest()
 	{
 		super();
-		addDefaultParam();
+		setVersionAndClientType(PROTO_VERSION,CLIENT_TYPE);
 	}
-	
-	private void addDefaultParam()
-	{
-		addStringParam(PROTO_VERSION, PARAMNAME_VERSIONNUM);
-		addIntParam(PARAMNAME_CLIENTTYPE, ClientType);
-	}
+
+	public abstract void setVersionAndClientType(int version,int clientType);
 }

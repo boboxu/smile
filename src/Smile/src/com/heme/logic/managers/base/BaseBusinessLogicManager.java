@@ -8,7 +8,7 @@ import com.heme.foundation.error.BaseError;
 public abstract class BaseBusinessLogicManager extends BaseLogicManager{
 	@Override
 	protected BaseError onFailedResponse(BaseResponse response,
-	        IBaseLogicManagerListener delegate)
+	        IBaseLogicManagerListener listener)
 	{
 		BaseError error = response.getmError();
 		return error;

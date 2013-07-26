@@ -32,4 +32,10 @@ public class SendTelRequest extends BaseBusinessRequest {
 		}
 		addIntParam(PARAMNAME_VERIFYTYPE, opertype);
 	}
+
+	@Override
+	public void setVersionAndClientType(int version, int clientType) {
+		// TODO Auto-generated method stub
+		
+	}
 }

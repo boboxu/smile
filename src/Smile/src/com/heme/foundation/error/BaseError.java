@@ -17,4 +17,8 @@ public class BaseError {
 		super();
 	}
 	
+	public String getErrMsg()
+	{
+		return mErrMsg;
+	}
 }

@@ -3,21 +3,8 @@ import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
-import com.heme.logic.module.CurrentAccount;
-import com.heme.logic.module.SmileProtos;
 
-public class AccountManager extends BaseBusinessLogicManager{
-	public CurrentAccount getCurrentAccount()
-	{
-		//todo 从数据库读取
-		return new CurrentAccount();
-	}
-
-	public void setCurrentAccount(CurrentAccount account)
-	{
-		
-	}
-	
+public class AccountManager extends BaseBusinessLogicManager{	
 	public void removeCurrentAccount()
 	{
 		

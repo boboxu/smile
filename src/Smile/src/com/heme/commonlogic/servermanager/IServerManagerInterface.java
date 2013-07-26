@@ -11,7 +11,7 @@ public interface IServerManagerInterface {
 	/**
 	 * 取消请求
 	 * @param requestId requestid
-	 * @param delegate 回调
+	 * @param listener 回调
 	 */
 	void cancelRequest(int requestId, IServerManagerListener listener);
 }

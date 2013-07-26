@@ -1,0 +1,118 @@
+////////////////////////////////////////////////////////////////////////////////////////////////
+//消息定义
+////////////////////////////////////////////////////////////////////////////////////////////////
+message PicMsgInfo
+{
+	required bytes     bytes_pic_url = 1;		//图片URL
+	optional bytes     bytes_thumb_url = 2;		//图片缩略图URL
+	optional uint32    uint32_size = 3;		//图片文件大小
+	optional bytes     bytes_pic_type = 4;		//图片类型，可选
+	optional uint32    bytes_pic_width = 5;		//图片分辨率x
+	optional uint32    bytes_pic_height = 6;	//图片分辨率y
+};
+
+message VoiceMsgInfo
+{
+	required bytes     bytes_voice_url = 1;		//语音URL
+	optional uint32    uint32_size = 2;		//语音文件大小
+	optional uint32    uint32_duration = 3;		//语音时长
+};
+
+message VideoMsgInfo
+{
+	required bytes     bytes_video_url = 1;		//视频URL
+	optional bytes     bytes_thumb_url = 2;		//视频缩略图URL
+	optional uint32    uint32_size = 3;		//视频文件大小
+	optional uint32    uint32_duration = 4;		//视频时长
+	optional bytes     bytes_video_format = 5;	//视频格式
+	optional uint32    bytes_video_width = 6;	//视频分辨率x
+	optional uint32    bytes_video_height = 7;	//视频分辨率y
+};
+
+message CommonMsg
+{
+	required uint32    uint32_from_uid = 1;		//发送方ID
+	required uint32    uint32_to_uid = 2;		//接收方ID
+	required uint32    uint32_msg_type = 3;		//消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
+	required uint32    uint32_content_type = 4;	//媒体类型 0:文本 1:图片 2:语音 3:视频
+	optional bytes     bytes_text_msg = 5;		//文本消息内容	
+	optional PicMsgInfo msg_pic_msg = 6;		//图片消息，媒体类型为1时使用
+	optional VoiceMsgInfo msg_voice_msg = 7;	//语音消息，媒体类型为2时使用
+	optional VideoMsgInfo msg_video_msg = 8;	//视频消息，媒体类型为3时使用
+	optional uint32    uint32_time = 9;		//发送方终端当前时间
+};
+
+message UnReadInfo		//未读消息属性
+{
+	required uint32    uint32_msg_type = 1;		//消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
+	optional uint32    uint32_from_uid = 2;		//发送方ID
+	required uint32    uint32_unread_count = 3;	//未读条数
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//终端发送消息
+////////////////////////////////////////////////////////////////////////////////////////////////
+message SendMsgReq
+{
+	required CommonMsg msg_sendmsg = 1;
+};
+
+message SendMsgRsp
+{
+	required uint32    uint32_result = 1;		//0:成功
+	optional uint32    uint32_peer_status = 2;	//对方状态，仅当发送c2c消息时会返回。
+};
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//后台主动推送给终端的通知，不直接推送内容，只推送未读列表，终端收到通知后决定是否拉取。
+//场景：用户有新的消息
+////////////////////////////////////////////////////////////////////////////////////////////////
+message PushMsgReq
+{
+	required uint32    uint32_uid = 1;		//接收方ID
+	repeated UnReadInfo msg_unread_info = 2;	//未读消息列表
+};
+
+message PushMsgRsp
+{
+	required uint32    uint32_result = 1;		//0:成功
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//终端主动拉取未读消息列表
+//场景：上线
+////////////////////////////////////////////////////////////////////////////////////////////////
+message PollUnreadInfoReq
+{
+	required uint32    uint32_uid = 1;		//接收方ID
+};
+
+message PollUnreadInfoRsp
+{
+	repeated UnReadInfo msg_unread_info = 4;	//未读消息列表
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////
+//终端主动拉取消息
+//场景：
+// 1.用户点击进入聊天/公告/家庭作业助手/语音测评页面
+// 2.收到未读消息通知
+////////////////////////////////////////////////////////////////////////////////////////////////
+message PollMsgReq
+{
+	required uint32    uint32_uid = 1;		//接收方ID
+	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
+	optional uint32    uint32_from_uid = 3;		//可选参数，接收消息类型为0(c2c)/1(群消息)时可以提供，如果提供这个参数将只拉取指定用户/群发过来的消息，否则将拉取所有消息
+	optional uint32    uint32_time = 4;		//接收方终端当前时间
+};
+
+message PollMsgRsq
+{
+	required uint32    uint32_uid = 1;		//接收方ID
+	required uint32    uint32_msg_type = 2;		//拉取的消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
+	repeated CommonMsg rpt_msg_pollmsg = 3;		//消息列表
+	optional uint32    uint32_complete_flag = 4;    //拉取完成标志，1表示消息拉取完成，0表示未完成（如果返回内容太多，server有可能分多次返回）
+	repeated UnReadInfo msg_unread_info = 5;	//未读消息列表
+};
+

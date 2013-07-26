@@ -10,5 +10,11 @@ public class SendCommandRequest extends BaseBusinessRequest {
 		CmdCloseProcess,//关闭进程
 		CmdIntercept,//中断
 		
+	}
+
+	@Override
+	public void setVersionAndClientType(int version, int clientType) {
+		// TODO Auto-generated method stub
+		
 	};
 }

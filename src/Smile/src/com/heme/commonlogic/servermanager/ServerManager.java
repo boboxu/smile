@@ -114,7 +114,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 
 		BaseResponse response = parseRequestToResponse(baseRequest, buffer);
 		response.setmRequest(baseRequest);
-		response.parse();
+		response.parseData();
 
 		if (response.getmRet() == BaseResponse.RET_SUCCESS)
 		{

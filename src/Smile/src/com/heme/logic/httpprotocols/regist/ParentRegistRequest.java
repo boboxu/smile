@@ -18,4 +18,10 @@ public class ParentRegistRequest extends BaseBusinessRequest {
 		addStringParam(PARAMNAME_CHILDID, childId);
 	}
 
+	@Override
+	public void setVersionAndClientType(int version, int clientType) {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

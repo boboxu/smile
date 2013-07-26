@@ -14,5 +14,11 @@ public class CheckVerifyRequest extends BaseBusinessRequest {
 	{
 		addStringParam(PARAMNAME_PHONENO, telnum);
 	}
+
+	@Override
+	public void setVersionAndClientType(int version, int clientType) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

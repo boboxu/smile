@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.groupinfo.updategroup;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
 
-public class UpdateGroupResponse extends BaseLoginedBusinessRequest {
+public class UpdateGroupResponse extends BaseBusinessResponse {
 
 }

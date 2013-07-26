@@ -40,7 +40,7 @@ public class NetworkRequest
 	public Request mRequest = null;
 	public NetworkHandler mHandler = null;
 	public Looper mCallerLooper = null;
-	public INetworkManagerListener mDelegate = null;
+	public INetworkManagerListener mlistener = null;
 	public AsyncHttpClient mConnectionClient = null;
 	
 	public int mReceivedLength = 0;
@@ -109,14 +109,14 @@ public class NetworkRequest
 		        final HttpResponseBodyPart content)
 		{
 			//TODO
-//			if (hd.mRequest != null && hd.mRequest.mDelegate != null)
+//			if (hd.mRequest != null && hd.mRequest.mlistener != null)
 //			{
-//				INetworkManagerDelegate delegate = hd.mRequest.mDelegate;
-//				if (delegate instanceof INetworkManagerDelegateOptional)
+//				INetworkManagerlistener listener = hd.mRequest.mlistener;
+//				if (listener instanceof INetworkManagerlistenerOptional)
 //				{
-//					INetworkManagerDelegateOptional delegateOptional = (INetworkManagerDelegateOptional) delegate;
+//					INetworkManagerlistenerOptional listenerOptional = (INetworkManagerlistenerOptional) listener;
 //					hd.mRequest.mReceivedLength += content.length();
-//					delegateOptional
+//					listenerOptional
 //					        .onRequestProgress(
 //					                hd.mRequest,
 //					                hd.mRequest.mContentLength == UNKNOWN_LENGTH ? 1000000
@@ -130,26 +130,26 @@ public class NetworkRequest
 		protected static void onLooperCompleted(NetworkHandler hd,
 		        NetworkResponse response)
 		{
-			if (hd.mRequest != null && hd.mRequest.mDelegate != null)
+			if (hd.mRequest != null && hd.mRequest.mlistener != null)
 			{
 				// String string = new
 				// String(response.getResponseBodyAsBytes());
-				INetworkManagerListener delegate = hd.mRequest.mDelegate;
+				INetworkManagerListener listener = hd.mRequest.mlistener;
 				try
 				{
 					if (hd.mResponse.mResponse == null)
 					{
-						delegate.onRequestFail(hd.mRequest, 400);
+						listener.onRequestFail(hd.mRequest, 400);
 					}
 					else if (hd.mResponse.mResponse.getStatusCode() >= 400
 					        || hd.mResponse.mResponse.getStatusCode() < 0)
 					{
-						delegate.onRequestFail(hd.mRequest,
+						listener.onRequestFail(hd.mRequest,
 						        hd.mResponse.mResponse.getStatusCode());
 					}
 					else
 					{
-						delegate.onRequestSuccess(hd.mRequest, ByteBuffer
+						listener.onRequestSuccess(hd.mRequest, ByteBuffer
 						        .wrap(hd.mResponse.mResponse
 						                .getResponseBodyAsBytes()));
 					}
@@ -164,23 +164,23 @@ public class NetworkRequest
 		protected static void onLooperTimeOut(NetworkHandler hd,
 		        NetworkRequest request)
 		{
-			if (request != null && request.mDelegate != null)
+			if (request != null && request.mlistener != null)
 			{
-				INetworkManagerListener delegate = request.mDelegate;
+				INetworkManagerListener listener = request.mlistener;
 				// "408" : Request Time-out
-				delegate.onRequestFail(request, 408);
+				listener.onRequestFail(request, 408);
 			}
 		}
 		
 		protected static void onLooperThrowable(NetworkHandler hd,
 		        int errorCode)
 		{
-			if (hd.mRequest != null && hd.mRequest.mDelegate != null)
+			if (hd.mRequest != null && hd.mRequest.mlistener != null)
 			{
-				INetworkManagerListener delegate = hd.mRequest.mDelegate;
-				if(delegate != null)
+				INetworkManagerListener listener = hd.mRequest.mlistener;
+				if(listener != null)
 				{
-					delegate.onRequestFail(hd.mRequest, errorCode);
+					listener.onRequestFail(hd.mRequest, errorCode);
 				}
 			}
 		}
@@ -198,7 +198,7 @@ public class NetworkRequest
 			public HttpResponseHeaders headers = null;
 			public HttpResponseBodyPart content = null;
 			public NetworkResponse mResponse = null;
-			public INetworkManagerListener mDelegate = null;
+			public INetworkManagerListener mlistener = null;
 			public int mErrorCode = -1;
 
 			@Override
@@ -426,26 +426,26 @@ public class NetworkRequest
 	}
 
 	public NetworkRequest(String url, String method,
-	        INetworkManagerListener delegate)
+	        INetworkManagerListener listener)
 	{
 		super();
 		mUrl = new String(url);
 		mMethod = new String(method);
 		// Request r = new
 		// RequestBuilder().setUrl(url).setMethod(method).build();
-		mDelegate = delegate;
+		mlistener = listener;
 		// mRequest = r;
 	}
 
 	public NetworkRequest(String url, String method, Map<String, String> data,
-			INetworkManagerListener delegate)
+			INetworkManagerListener listener)
 	{
 		super();
 		mUrl = new String(url);
 		mMethod = new String(method);
 		// Request r = new
 		// RequestBuilder().setUrl(url).setMethod(method).build();
-		mDelegate = delegate;
+		mlistener = listener;
 		// mRequest = r;
 		mDataDict = data;
 	}
@@ -492,7 +492,7 @@ public class NetworkRequest
 	}
 
 	public AsyncHttpClient makeURLConnectionConnection(
-	        Object urlConnectionDelegate)
+	        Object urlConnectionlistener)
 	{
 		if (mConnectionClient != null)
 		{

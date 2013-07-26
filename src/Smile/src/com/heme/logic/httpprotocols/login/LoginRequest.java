@@ -1,13 +1,12 @@
 package com.heme.logic.httpprotocols.login;
 
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.module.Data.LoginReq;
+import com.heme.smile.common.Configuration;
 
 public class LoginRequest extends BaseBusinessRequest {
-	
-	private static final String PARAMNAME_ID = "id";
-	private static final String PARAMNAME_PWD = "password";
-	private static final String PARAMNAME_TYPE = "type";
-	enum LoginType
+	private LoginReq.Builder mLoginDataBuilder = LoginReq.newBuilder();
+	public enum LoginType
 	{
 		TypeTel,	//电话登陆
 		TypeWX,//XX号
@@ -16,17 +15,24 @@ public class LoginRequest extends BaseBusinessRequest {
 	
 	public void setLoginInfo(String account,String pwd,LoginType type)
 	{
-		addStringParam(PARAMNAME_ID, account);
-		addStringParam(PARAMNAME_PWD, pwd);
+		mLoginDataBuilder.setId(account).setPassword(pwd);
 		switch (type) {
 		case TypeTel:
-			addIntParam(PARAMNAME_TYPE, 0);
+			mLoginDataBuilder.setClientType(0);
 			break;
 		case TypeWX:
-			addIntParam(PARAMNAME_TYPE, 1);
+			mLoginDataBuilder.setClientType(1);
 			break;
 		default:
 			break;
 		}
+		super.setBody(mLoginDataBuilder.build().toByteString());
+	}
+
+	@Override
+	public void setVersionAndClientType(int version,int client_type) {
+		mLoginDataBuilder.setClientType(client_type);
+		mLoginDataBuilder.setVersionNo(version);
+		super.setBody(mLoginDataBuilder.build().toByteString());
 	}
 }

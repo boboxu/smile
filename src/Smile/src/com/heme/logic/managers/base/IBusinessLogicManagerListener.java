@@ -1,5 +1,7 @@
 package com.heme.logic.managers.base;
 
-public interface IBusinessLogicManagerListener {
+import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
+
+public interface IBusinessLogicManagerListener extends IBaseLogicManagerListener{
 
 }
