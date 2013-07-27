@@ -18,10 +18,14 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 	public void setVersionAndClientType(int version, int clientType) {
 		mPcCtrlReqBuilder.setClientType(version);
 		mPcCtrlReqBuilder.setVersionNo(version);
+		super.setBody(mPcCtrlReqBuilder.build().toByteString());
 	}
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		mPcCtrlReqBuilder.setSessionId(sessionId);
+		mPcCtrlReqBuilder.setSystemId(systemId);
+		super.setBody(mPcCtrlReqBuilder.build().toByteString());
 	};
+	
 }

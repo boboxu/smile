@@ -1,12 +1,13 @@
 package com.heme.logic.httpprotocols.groupinfo.creategroup;
 
 import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.module.Data.CreateFixedGroupReq;
 
 public class CreateGroupRequest extends BaseLoginedBusinessRequest {
 
+	public CreateFixedGroupReq.Builder mCreateFixedGroupReqBuilder = CreateFixedGroupReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		// TODO Auto-generated method stub
 		
 	}
 
