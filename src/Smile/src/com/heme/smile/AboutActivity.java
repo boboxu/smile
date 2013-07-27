@@ -21,7 +21,7 @@ public class AboutActivity extends BaseActivity implements OnClickListener{
 	private void initUI(){
 		setContentView(R.layout.about);
 		((ImageView)findViewById(R.id.backImg)).setOnClickListener(this);
-		((TextView)findViewById(R.id.titleTextView)).setText("关于微校");
+		((TextView)findViewById(R.id.titleTextView)).setText("关于傻逼");
 		findViewById(R.id.updateapp).setOnClickListener(this);
 		findViewById(R.id.introduce).setOnClickListener(this);
 		findViewById(R.id.userrule).setOnClickListener(this);

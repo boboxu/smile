@@ -31,4 +31,8 @@ public class Constans {
 	public static final int SUBMIT_FEEDBACK_SUCCESS = UPDATE_PWD_FAILED + 1;
 	//反馈意见提交失败
 	public static final int SUBMIT_FEEDBACK_FAILED = SUBMIT_FEEDBACK_SUCCESS + 1;
+	//向PC发送绿色上网的处理指令成功
+	public static final int SEND_PC_COMMOND_SUCCESS = SUBMIT_FEEDBACK_FAILED + 1;
+	//发送指令失败
+	public static final int SEND_PC_COMMOND_FAILED = SEND_PC_COMMOND_SUCCESS + 1;
 }

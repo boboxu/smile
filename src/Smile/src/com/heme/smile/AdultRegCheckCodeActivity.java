@@ -52,7 +52,7 @@ public class AdultRegCheckCodeActivity extends BaseActivity {
 				break;
 			case Constans.VERIFY_CHECKCODE_SUCCESS:
 				dismissDialog();
-				showWaitDialog("欢迎你加入微校.正为你自动登录中，请稍候");
+				showWaitDialog("欢迎你加入傻逼.正为你自动登录中，请稍候");
 				sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
 				break;
 			case Constans.LOGIN_SUCCESS:
