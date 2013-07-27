@@ -1,22 +1,18 @@
 package com.heme.smile;
 
-import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.heme.smile.common.Constans;
-import com.heme.smile.R;
-import com.ning.http.client.ListenableFuture;
+import com.heme.logic.common.Constans;
 
 public class GetbackPassWordCheckCodeActivity extends BaseActivity {
 	public static final String PHONENUM = "phonenum";

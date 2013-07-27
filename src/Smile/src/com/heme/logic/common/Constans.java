@@ -1,9 +1,10 @@
-package com.heme.smile.common;
+package com.heme.logic.common;
 
-import android.R.integer;
 
 public class Constans {
+	//登陆成功
 	public static final int LOGIN_SUCCESS = 0;
+	//登陆失败
 	public static final int LOGIN_FAILED = LOGIN_SUCCESS + 1;
 	//服务器验证用户输入的验证码正确
 	public static final int VERIFY_CHECKCODE_SUCCESS = LOGIN_FAILED + 1;

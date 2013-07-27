@@ -16,59 +16,51 @@ import com.heme.foundation.error.BaseError;
 
 public abstract class BaseLogicManager implements IServerManagerListener {
 	private static final String TAG = "BaseLogicManager";
-	private Map<String, IBaseLogicManagerListener> mListenerMap = new HashMap<String, IBaseLogicManagerListener>();
+	private Map<String, Handler> mListenerMap = new HashMap<String, Handler>();
 	private NetResponseHandler mResponseHandler = new NetResponseHandler();
 
-	protected void saveListener(IBaseLogicManagerListener listener, String key) {
-		mListenerMap.put(key, listener);
+	protected void saveListener(Handler handler, String key) {
+		mListenerMap.put(key, handler);
 	}
 
 	protected void delListener(String key) {
 		mListenerMap.remove(key);
 	}
 
-	protected IBaseLogicManagerListener findListener(String key) {
+	protected Handler findHandler(String key) {
 		return mListenerMap.get(key);
 	}
 
 	@Override
 	public void onRequestSuccess(BaseResponse response) {
 		String key = response.getmRequest().getmRequestKey();
-		IBaseLogicManagerListener listener = findListener(key);
-		if (listener == null) {
+		Handler handler = findHandler(key);
+		if (handler == null) 
+		{
 			Log.i(TAG, "没有回掉");
 			return;
 		}
 
-		if (mResponseHandler != null) {
-			// msg里面的数据有可能会有性能问题，如果有这个问题的话，再来看解决方法
-			Map<String, Object> objectMap = new HashMap<String, Object>();
-			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_RESPONSE, response);
-			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_LISTENERKEY, key);
-			Message msg = mResponseHandler.obtainMessage(
-					NetResponseHandler.MSG_CODE_REQUEST_SUCCESS, objectMap);
-			mResponseHandler.sendMessage(msg);
-		}
+		onSuccessResponse(response, handler);
+
+		delListener(key);
+		response = null;
 	}
 
 	@Override
 	public void onRequestFail(BaseResponse response) {
 		String key = response.getmRequest().getmRequestKey();
-		IBaseLogicManagerListener listener = findListener(key);
-		if (listener == null) {
+		Handler handler = findHandler(key);
+		if (handler == null) 
+		{
 			Log.i(TAG, "没有回掉");
 			return;
 		}
 
-		if (mResponseHandler != null) {
-			// msg里面的数据有可能会有性能问题，如果有这个问题的话，再来看解决方法
-			Map<String, Object> objectMap = new HashMap<String, Object>();
-			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_RESPONSE, response);
-			objectMap.put(NetResponseHandler.MSG_OBJECT_KEY_LISTENERKEY, key);
-			Message msg = mResponseHandler.obtainMessage(
-					NetResponseHandler.MSG_CODE_REQUEST_FAILED, objectMap);
-			mResponseHandler.sendMessage(msg);
-		}
+		onFailedResponse(response, handler);
+
+		delListener(key);
+		response = null;
 	}
 
 	/**
@@ -78,7 +70,7 @@ public abstract class BaseLogicManager implements IServerManagerListener {
 	 * @param listener
 	 */
 	protected abstract void onSuccessResponse(BaseResponse response,
-			IBaseLogicManagerListener listener);
+			Handler handler);
 
 	/**
 	 * 出错信息处理 如果要自定义处理,可实现覆盖此方法 如果返回结果不为空，则会回调listener的onLogicManagerError方法
@@ -87,8 +79,7 @@ public abstract class BaseLogicManager implements IServerManagerListener {
 	 * @param listener
 	 * @return
 	 */
-	protected BaseError onFailedResponse(BaseResponse response,
-			IBaseLogicManagerListener listener) {
+	protected BaseError onFailedResponse(BaseResponse response, Handler handler) {
 		BaseError error = response.getmError();
 		if (error == null) {
 			error = new BaseError();
@@ -104,13 +95,13 @@ public abstract class BaseLogicManager implements IServerManagerListener {
 		return this.createListenerKeyByFunName("");
 	}
 
-	protected void sendRequest(final BaseRequest request,
-			IBaseLogicManagerListener listener, String key, String methodName) {
+	protected void sendRequest(final BaseRequest request, Handler handler,
+			String key, String methodName) {
 		if (key == null || key.length() == 0) {
 			Log.i(TAG, "key 都是空的，干鸟啊");
 			return;
 		}
-		saveListener(listener, key);
+		saveListener(handler, key);
 		request.setmRequestKey(key);
 		request.setmRequestListener(this);
 		new Thread(TAG) {
@@ -136,7 +127,7 @@ public abstract class BaseLogicManager implements IServerManagerListener {
 					.get(MSG_OBJECT_KEY_RESPONSE);
 			String key = (String) objectMap.get(MSG_OBJECT_KEY_LISTENERKEY);
 
-			IBaseLogicManagerListener listener = (IBaseLogicManagerListener) findListener(key);
+			Handler listener = findHandler(key);
 
 			if (response == null) {
 				Log.e(TAG, "response is null");

@@ -1,4 +1,6 @@
 package com.heme.logic.managers.accountmanager;
+import android.os.Handler;
+
 import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
@@ -9,18 +11,11 @@ public class AccountManager extends BaseBusinessLogicManager{
 	{
 		
 	}
-	
+
 	@Override
-	protected void onSuccessResponse(BaseResponse response,
-			IBaseLogicManagerListener listener) {
+	protected void onSuccessResponse(BaseResponse response, Handler handler) {
 		// TODO Auto-generated method stub
 		
 	}
-	
-	@Override
-	protected BaseError onFailedResponse(BaseResponse response,
-			IBaseLogicManagerListener listener) {
-		// TODO Auto-generated method stub
-		return super.onFailedResponse(response, listener);
-	}
+
 }

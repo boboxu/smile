@@ -1,9 +1,5 @@
 package com.heme.smile;
 
-import com.heme.smile.common.Constans;
-import com.heme.smile.R;
-import com.heme.smile.R.layout;
-
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -16,6 +12,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.TextView.BufferType;
+
+import com.heme.logic.common.Constans;
 
 public class AdultRegCheckCodeActivity extends BaseActivity {
 	private static final String TAG = "AdultRegCheckCodeActivity";

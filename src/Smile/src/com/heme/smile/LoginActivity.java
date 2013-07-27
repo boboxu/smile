@@ -1,8 +1,7 @@
 package com.heme.smile;
 
-import com.heme.smile.common.Configuration;
-import com.heme.smile.common.Constans;
-import com.heme.smile.R;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -17,6 +16,12 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.heme.logic.LogicManager;
+import com.heme.logic.common.Configuration;
+import com.heme.logic.common.Constans;
+import com.heme.logic.httpprotocols.login.LoginRequest;
+import com.heme.logic.module.Data.LoginRsp;
+
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";
 	private long mExitTime = 0;
@@ -29,9 +34,14 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case Constans.LOGIN_SUCCESS:
-				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-				startActivity(intent);
-				finish();
+//				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+//				startActivity(intent);
+//				finish();
+				LoginRsp resp = (LoginRsp)msg.obj;
+				long systemId = resp.getSystemId();
+				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
+				List<java.lang.Integer> groupList = resp.getGroupIdList();
+				//然后就可以用了
 				break;
 
 			default:
@@ -80,8 +90,9 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			}
 			
 			showWaitDialog("登录中,请稍候...");
+			LogicManager.loginManager().Login(mUserName.getText().toString(), mPwd.getText().toString(), LoginRequest.LoginType.TypeTel, mHandler);
 			//模拟成功登录
-			mHandler.sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
+//			mHandler.sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
 			break;
 		case R.id.regBtn:
 			Intent intent = new Intent();

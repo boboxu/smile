@@ -1,5 +1,7 @@
 package com.heme.logic.managers.greennetmanager;
 
+import android.os.Handler;
+
 import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.httpprotocols.greennet.SendCommandRequest;
@@ -9,7 +11,7 @@ public class GreenNetManager extends BaseBusinessLogicManager {
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response,
-			IBaseLogicManagerListener listener) {
+			Handler handler) {
 		// TODO Auto-generated method stub
 		
 	}

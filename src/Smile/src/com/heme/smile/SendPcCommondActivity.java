@@ -1,7 +1,5 @@
 package com.heme.smile;
 
-import com.heme.smile.common.Constans;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -9,6 +7,8 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import com.heme.logic.common.Constans;
 
 //针对绿色上网，发送命令给PC端
 public class SendPcCommondActivity extends BaseActivity {

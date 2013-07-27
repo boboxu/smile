@@ -1,8 +1,5 @@
 package com.heme.smile;
 
-import com.heme.smile.common.Constans;
-import com.heme.smile.R;
-
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -11,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.heme.logic.common.Constans;
 
 public class HelpActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "HelpActivity";

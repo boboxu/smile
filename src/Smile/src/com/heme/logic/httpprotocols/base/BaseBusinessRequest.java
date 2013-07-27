@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.base;
 
-import com.heme.smile.common.Configuration;
+import com.heme.logic.common.Configuration;
 
 
 

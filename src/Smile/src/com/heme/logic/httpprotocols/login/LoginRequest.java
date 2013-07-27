@@ -2,7 +2,6 @@ package com.heme.logic.httpprotocols.login;
 
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 import com.heme.logic.module.Data.LoginReq;
-import com.heme.smile.common.Configuration;
 
 public class LoginRequest extends BaseBusinessRequest {
 	private LoginReq.Builder mLoginDataBuilder = LoginReq.newBuilder();

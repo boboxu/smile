@@ -1,8 +1,5 @@
 package com.heme.smile;
 
-import com.heme.smile.common.Constans;
-import com.heme.smile.R;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,6 +11,8 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import com.heme.logic.common.Constans;
 
 public class AdultRegActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "AdultRegActivity";
