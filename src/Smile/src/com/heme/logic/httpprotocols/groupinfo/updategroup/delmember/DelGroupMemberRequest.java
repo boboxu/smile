@@ -1,9 +1,9 @@
-package com.heme.logic.httpprotocols.groupinfo.updategroup;
+package com.heme.logic.httpprotocols.groupinfo.updategroup.delmember;
 
 import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 
-public class UpdateGroupMemberRequest extends BaseLoginedBusinessRequest {
-
+public class DelGroupMemberRequest extends BaseLoginedBusinessRequest {
+	//删除群好友
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		// TODO Auto-generated method stub

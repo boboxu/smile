@@ -50,5 +50,6 @@ public class BaseResponse {
 	public void parseData() throws InvalidProtocolBufferException
 	{
 		//處理第一手数据
+//		mDataBuffer == 
 	}
 }
