@@ -7,6 +7,10 @@ import com.heme.logic.module.Data.DelFriendRsp;
 public class DelFriendResponse extends BaseBusinessResponse {
 	private DelFriendRsp mDelFriendRsp;
 
+	public DelFriendRsp getmDelFriendRsp() {
+		return mDelFriendRsp;
+	}
+
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
 		mDelFriendRsp = DelFriendRsp.parseFrom(mAccessRespData.getBytesBody());

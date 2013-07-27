@@ -7,17 +7,9 @@ import com.heme.logic.module.Data.LoginRsp;
 public class LoginResponse extends BaseBusinessResponse {
 	private LoginRsp mLoginrsp;
 	@Override
-	public void parseData() {
-		// TODO Auto-generated method stub
+	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		//测试代码
-		try {
-			mLoginrsp = LoginRsp.parseFrom(mAccessRespData.getBytesBody());
-		} catch (InvalidProtocolBufferException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		mLoginrsp = LoginRsp.parseFrom(mAccessRespData.getBytesBody());
 	}
 	
 	public LoginRsp getLoginRsp()
