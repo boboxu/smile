@@ -165,7 +165,7 @@
 	            android:layout_centerVertical="true"
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
-	            android:text="关于微校"
+	            android:text="关于傻逼"
 	            android:textSize="28dip"
 	            android:textColor="#000"
 	            />
@@ -232,7 +232,7 @@
 	            android:layout_centerVertical="true"
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
-	            android:text="注销微校"
+	            android:text="注销傻逼"
 	            android:textSize="28dip"
 	            android:textColor="#000"
 	            />

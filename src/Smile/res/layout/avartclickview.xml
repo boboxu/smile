@@ -1,0 +1,39 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    tools:context=".StartActivity" 
+    android:background="#c0000000"
+    >
+	<Button 
+	        android:id="@+id/capture"
+	        android:layout_below="@+id/confirm_new_pwd"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dip"
+	        android:textSize="30dip"
+	        android:textColor="#000"
+	        android:text="拍 照"
+	        />
+	    <Button 
+	        android:id="@+id/selectlocal"
+	        android:layout_below="@+id/capture"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dip"
+	        android:textSize="20dip"
+	        android:textColor="#000"
+	        android:text="选择本地图片"
+	        />
+   <Button 
+	        android:id="@+id/cancel"
+	        android:layout_below="@+id/selectlocal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="5dip"
+	        android:textSize="20dip"
+	        android:textColor="#000"
+	        android:text="取消"
+	        />
+
+</RelativeLayout>

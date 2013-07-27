@@ -3,6 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="@drawable/loading_bg"
+    
     tools:context=".StartActivity" >
 
     <include layout="@layout/public_titlebar"
@@ -19,7 +20,7 @@
 	    <TextView 
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
-	        android:text="请输入你的微校帐号及密码"
+	        android:text="请输入你的傻逼帐号及密码"
 	        android:layout_alignParentLeft="true"
 	        android:textColor="#fff"
 	        android:textSize="16dip"
@@ -41,7 +42,7 @@
 		       android:singleLine="true"
 		       android:layout_centerHorizontal="true"
 		      android:layout_centerVertical="true"
-		      android:hint="微校号/手机号"
+		      android:hint="傻逼号/手机号"
 		      android:paddingLeft="60dip"
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
