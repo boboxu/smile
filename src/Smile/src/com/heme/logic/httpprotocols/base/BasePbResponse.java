@@ -10,6 +10,6 @@ public class BasePbResponse extends BaseResponse {
 	public void parseData() throws InvalidProtocolBufferException
 	{
 		super.parseData();
-		mAccessRespData = AccessResp.parseFrom(mDataBuffer.array());
+		mAccessRespData = AccessResp.parseFrom(mRespData);
 	}
 }

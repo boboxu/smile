@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.DelGroupRsp;
 
 public class DeleteGroupResponse extends BaseBusinessResponse {
 	private DelGroupRsp mDelGroupRsp;
-	public DelGroupRsp getmCreateTempGroupRsp() {
+	public DelGroupRsp getmDelGroupRsp() {
 		return mDelGroupRsp;
 	}
 	

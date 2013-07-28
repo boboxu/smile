@@ -11,11 +11,11 @@ public class ParentRegistRequest extends BaseBusinessRequest {
 	
 	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,String childId)
 	{
-		addStringParam(PARAMNAME_PHONENO, phoneNo);
-		addStringParam(PARAMNAME_REALNAME, realName);
-		addStringParam(PARAMNAME_IDCARDNO, idCardNo);
-		addStringParam(PARAMNAME_PASSWORD, password);
-		addStringParam(PARAMNAME_CHILDID, childId);
+//		addStringParam(PARAMNAME_PHONENO, phoneNo);
+//		addStringParam(PARAMNAME_REALNAME, realName);
+//		addStringParam(PARAMNAME_IDCARDNO, idCardNo);
+//		addStringParam(PARAMNAME_PASSWORD, password);
+//		addStringParam(PARAMNAME_CHILDID, childId);
 	}
 
 	@Override

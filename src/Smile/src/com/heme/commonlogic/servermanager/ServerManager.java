@@ -10,7 +10,6 @@ import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
-import com.heme.foundation.error.BaseError;
 import com.heme.foundation.net.INetworkManagerListener;
 import com.heme.foundation.net.NetworkRequest;
 
@@ -190,7 +189,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 			try
 			{
 				response = responseClass.newInstance();
-				response.setmDataBuffer(responseData);
+				response.setmDataBuffer(responseData.array());
 			}
 			catch (IllegalAccessException e)
 			{

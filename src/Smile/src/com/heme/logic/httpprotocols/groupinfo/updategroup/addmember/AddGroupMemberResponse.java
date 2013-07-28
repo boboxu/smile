@@ -12,7 +12,7 @@ public class AddGroupMemberResponse extends BaseBusinessResponse {
 		mAddGroupMemberRsp = AddGroupMemberRsp.parseFrom(mAccessRespData.getBytesBody());
 	}
 	
-	public AddGroupMemberRsp getmCreateTempGroupRsp() {
+	public AddGroupMemberRsp getmAddTempGroupRsp() {
 		return mAddGroupMemberRsp;
 	}
 	

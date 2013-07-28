@@ -13,7 +13,7 @@ public class SendTelRequest extends BaseBusinessRequest {
 	}
 	public void setTelNum(String tel)
 	{
-		addStringParam(PARAMNAME_PHONENO, tel);
+//		addStringParam(PARAMNAME_PHONENO, tel);
 	}
 	
 	public void setOperationType(OperType type)
@@ -30,7 +30,7 @@ public class SendTelRequest extends BaseBusinessRequest {
 			opertype = 1;
 			break;
 		}
-		addIntParam(PARAMNAME_VERIFYTYPE, opertype);
+//		addIntParam(PARAMNAME_VERIFYTYPE, opertype);
 	}
 
 	@Override

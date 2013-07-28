@@ -10,6 +10,7 @@ public class BasePbRequest extends BaseRequest {
 	
 	protected void setBody(ByteString body) {
 		mAccessReqDataBuilder.setBytesBody(body);
+		 mAccessReqDataBuilder.build().toByteArray();
 	}
 	
 	protected void setUid(long uid) {

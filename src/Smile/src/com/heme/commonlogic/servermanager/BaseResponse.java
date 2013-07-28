@@ -1,16 +1,17 @@
 package com.heme.commonlogic.servermanager;
 
-import java.nio.ByteBuffer;
-
-import android.R.integer;
+import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.foundation.error.BaseError;
+import com.heme.utils.ByteUtil;
 
 public class BaseResponse {
+	private final static String TAG = "BaseResponse";
 	protected BaseRequest mRequest;
 	protected BaseError mError;
-	protected ByteBuffer mDataBuffer;
+	private byte[] mDataBuffer;
+	protected byte[] mRespData;
 	protected int mRet;
 	
 	public final static int RET_SUCCESS = 0;
@@ -23,11 +24,11 @@ public class BaseResponse {
 		this.mRet = mRet;
 	}
 
-	public ByteBuffer getmDataBuffer() {
+	public byte[] getmDataBuffer() {
 		return mDataBuffer;
 	}
 
-	public void setmDataBuffer(ByteBuffer mDataBuffer) {
+	public void setmDataBuffer(byte[] mDataBuffer) {
 		this.mDataBuffer = mDataBuffer;
 	}
 
@@ -50,6 +51,17 @@ public class BaseResponse {
 	public void parseData() throws InvalidProtocolBufferException
 	{
 		//處理第一手数据
-//		mDataBuffer == 
+		int length = ByteUtil.byteArrayToInt(mDataBuffer, 0);
+		if (length+4 != mDataBuffer.length) 
+		{
+			Log.e(TAG, "网络回包的长度，数据不正确");
+			return;
+		}
+		//Length占四个字节，后面的都是数据
+		this.mRespData = null;
+		mRespData = new byte[length];
+		for (int i = 0; i < mRespData.length; i++) {
+			mRespData[i] = mDataBuffer[4+i];
+		}
 	}
 }

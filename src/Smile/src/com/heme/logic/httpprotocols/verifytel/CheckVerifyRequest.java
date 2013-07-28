@@ -1,24 +1,37 @@
 package com.heme.logic.httpprotocols.verifytel;
 
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.module.Data.VerifyPhoneReq;
 
 public class CheckVerifyRequest extends BaseBusinessRequest {
-	private static final String PARAMNAME_VERIFYCODE = "verifyCode";
-	private static final String PARAMNAME_PHONENO = "phoneNo";
-	public void setCheckVerifyCode(String code)
+	public enum VERIFYTYPE
 	{
-		addStringParam(PARAMNAME_VERIFYCODE, code);
+		TYPEFORREG,
+		TYPEFORRESETPWD;
+		public static int value(VERIFYTYPE type)
+		{
+			switch (type) {
+			case TYPEFORREG:
+				return 1;
+			case TYPEFORRESETPWD:
+				return 2;
+			default:
+				return 1;
+			}
+		}
 	}
-	
-	public void setTelNum(String telnum)
-	{
-		addStringParam(PARAMNAME_PHONENO, telnum);
-	}
-
+	private VerifyPhoneReq.Builder mVerifyPhoneReqBuilder = VerifyPhoneReq.newBuilder();
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		// TODO Auto-generated method stub
-		
+		mVerifyPhoneReqBuilder.setClientType(clientType);
+		mVerifyPhoneReqBuilder.setVersionNo(version);
+		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
 	}
 	
+	public void setVerifyTelWithType(String phoneno,VERIFYTYPE type)
+	{
+		mVerifyPhoneReqBuilder.setPhoneNo(phoneno);
+		mVerifyPhoneReqBuilder.setVerifyType(VERIFYTYPE.value(type));
+		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
+	}
 }

@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.SetGroupNameRsp;
 
 public class UpdateGroupResponse extends BaseBusinessResponse {
 	private SetGroupNameRsp mSetGroupNameRsp;
-	public SetGroupNameRsp getmCreateTempGroupRsp() {
+	public SetGroupNameRsp getmSetGroupNameRsp() {
 		return mSetGroupNameRsp;
 	}
 	
