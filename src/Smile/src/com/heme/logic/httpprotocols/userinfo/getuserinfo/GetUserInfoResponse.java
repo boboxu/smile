@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.GetUserInfoRsp;
 public class GetUserInfoResponse extends BaseBusinessResponse {
 	GetUserInfoRsp mGetUserInfoRsp;
 
-	public GetUserInfoRsp getmGetGroupInfoRsp() {
+	public GetUserInfoRsp getmGetUserInfoRsp() {
 		return mGetUserInfoRsp;
 	}
 

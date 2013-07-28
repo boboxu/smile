@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.GetVerboseUserInfoRsp;
 public class GetVerboseUserInfoResponse extends BaseBusinessResponse {
 	GetVerboseUserInfoRsp mGetVerboseUserInfoRsp;
 
-	public GetVerboseUserInfoRsp getmGetGroupInfoRsp() {
+	public GetVerboseUserInfoRsp getmGetVerboseInfoRsp() {
 		return mGetVerboseUserInfoRsp;
 	}
 

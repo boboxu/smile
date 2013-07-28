@@ -12,7 +12,7 @@ public class StudentRegistResponse extends BaseBusinessResponse {
 		mRegStudentRsp = RegStudentRsp.parseFrom(mAccessRespData.getBytesBody());
 	}
 	
-	public RegStudentRsp getmRegParentRsp() {
+	public RegStudentRsp getmRegStudentRsp() {
 		return mRegStudentRsp;
 	}
 }

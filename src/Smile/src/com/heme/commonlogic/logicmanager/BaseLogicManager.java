@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
+import com.google.protobuf.GeneratedMessage;
 import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.commonlogic.servermanager.IServerManagerListener;
@@ -151,5 +152,16 @@ public abstract class BaseLogicManager implements IServerManagerListener {
 	protected String _FUNC_() {
 		StackTraceElement traceElement = ((new Exception()).getStackTrace())[1];
 		return traceElement.getMethodName();
+	}
+	
+	protected void handleresponse(int msgWhat, Object msgObj,
+			Handler handler) {
+		if (null != handler) 
+		{
+			Message msgMessage = handler.obtainMessage();
+			msgMessage.what = msgWhat;
+			msgMessage.obj = msgObj;
+			handler.sendMessage(msgMessage);
+		}
 	}
 }

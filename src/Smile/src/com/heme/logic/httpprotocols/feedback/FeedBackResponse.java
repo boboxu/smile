@@ -12,7 +12,7 @@ public class FeedBackResponse extends BaseBusinessResponse {
 		mSendFeedbackRsp = SendFeedbackRsp.parseFrom(mAccessRespData.getBytesBody());
 	}
 	
-	public SendFeedbackRsp getLoginRsp()
+	public SendFeedbackRsp getFeedBackRsp()
 	{
 		return mSendFeedbackRsp;
 	}
