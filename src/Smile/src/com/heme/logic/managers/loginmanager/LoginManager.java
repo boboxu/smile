@@ -8,7 +8,7 @@ import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
-import com.heme.logic.httpprotocols.login.LoginRequest.LoginType;
+import com.heme.logic.httpprotocols.login.LoginRequest.LOGINTYPE;
 import com.heme.logic.httpprotocols.login.LoginResponse;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Data.LoginRsp;
@@ -43,7 +43,7 @@ public class LoginManager extends BaseBusinessLogicManager implements
 	}
 
 	@Override
-	public int Login(String id, String pwd, LoginType type,
+	public int Login(String id, String pwd, LOGINTYPE type,
 			Handler handler) {
 		LoginRequest request = new LoginRequest();
 		request.setLoginInfo(id, pwd, type);

@@ -1,7 +1,5 @@
 package com.heme.logic.httpprotocols.groupinfo.updategroup;
 
-import java.util.List;
-
 import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetGroupNameReq;
 /***

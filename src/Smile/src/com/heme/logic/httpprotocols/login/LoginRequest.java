@@ -5,26 +5,26 @@ import com.heme.logic.module.Data.LoginReq;
 
 public class LoginRequest extends BaseBusinessRequest {
 	private LoginReq.Builder mLoginDataBuilder = LoginReq.newBuilder();
-	public enum LoginType
+	public enum LOGINTYPE
 	{
 		TypeTel,	//电话登陆
-		TypeWX,//XX号
-		
+		TypeWX;//XX号
+		public static int value(LOGINTYPE type)
+		{
+			switch (type) {
+			case TypeTel:
+				return 1;
+			case TypeWX:
+				return 2;
+			default:
+				return 1;
+			}
+		}
 	};
 	
-	public void setLoginInfo(String account,String pwd,LoginType type)
+	public void setLoginInfo(String account,String pwd,LOGINTYPE type)
 	{
 		mLoginDataBuilder.setId(account).setPassword(pwd);
-		switch (type) {
-		case TypeTel:
-			mLoginDataBuilder.setClientType(0);
-			break;
-		case TypeWX:
-			mLoginDataBuilder.setClientType(1);
-			break;
-		default:
-			break;
-		}
 		super.setBody(mLoginDataBuilder.build().toByteString());
 	}
 

@@ -1,27 +1,31 @@
 package com.heme.logic.httpprotocols.regist;
 
+import java.util.List;
+
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.module.Data.RegParentReq;
 
 public class ParentRegistRequest extends BaseBusinessRequest {
-	private static final String PARAMNAME_PHONENO = "phoneNo";
-	private static final String PARAMNAME_REALNAME	= "realName";
-	private static final String PARAMNAME_IDCARDNO = "idCardNo";
-	private static final String PARAMNAME_PASSWORD = "password";
-	private static final String PARAMNAME_CHILDID = "childId";
+	RegParentReq.Builder mRegParentReqBuilder = RegParentReq.newBuilder();
 	
-	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,String childId)
+	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,List<Long> childIdList,String verifyCode)
 	{
-//		addStringParam(PARAMNAME_PHONENO, phoneNo);
-//		addStringParam(PARAMNAME_REALNAME, realName);
-//		addStringParam(PARAMNAME_IDCARDNO, idCardNo);
-//		addStringParam(PARAMNAME_PASSWORD, password);
-//		addStringParam(PARAMNAME_CHILDID, childId);
+		mRegParentReqBuilder.setPhoneNo(phoneNo);
+		mRegParentReqBuilder.setRealName(realName);
+		mRegParentReqBuilder.setIdCardNo(idCardNo);
+		mRegParentReqBuilder.setPassword(password);
+		for (int i = 0; i < childIdList.size(); i++) {
+			mRegParentReqBuilder.addChildSystemId(childIdList.get(i));	
+		}
+		mRegParentReqBuilder.setVerifyCode(verifyCode);
+		super.setBody(mRegParentReqBuilder.build().toByteString());
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		// TODO Auto-generated method stub
-		
+		mRegParentReqBuilder.setVersionNo(version);
+		mRegParentReqBuilder.setClientType(clientType);
+		super.setBody(mRegParentReqBuilder.build().toByteString());
 	}
 
 }

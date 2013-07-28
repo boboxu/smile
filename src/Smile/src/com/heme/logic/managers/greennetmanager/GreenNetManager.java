@@ -36,7 +36,7 @@ public class GreenNetManager extends BaseBusinessLogicManager {
 		
 	}
 	
-	private void sendCommand(SendCommandRequest.CommandType commandType)
+	private void sendCommand(SendCommandRequest.COMMANDTYPE commandType)
 	{
 		
 	}

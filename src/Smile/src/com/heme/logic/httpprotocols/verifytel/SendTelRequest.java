@@ -1,41 +1,38 @@
 package com.heme.logic.httpprotocols.verifytel;
 
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.module.Data.VerifyPhoneReq;
 
 public class SendTelRequest extends BaseBusinessRequest {
-	
-	private static String PARAMNAME_PHONENO = "phoneNo";
-	private static String PARAMNAME_VERIFYTYPE = "verifyType";
-	public enum OperType //验证电话的操作类型
+	public enum VERIFYTYPE
 	{
-		TypeReg,//注册
-		TypeResetPwd,//找回密码
-	}
-	public void setTelNum(String tel)
-	{
-//		addStringParam(PARAMNAME_PHONENO, tel);
-	}
-	
-	public void setOperationType(OperType type)
-	{
-		int opertype = 1;
-		switch (type) {
-		case TypeReg:
-			opertype = 1;
-			break;
-		case TypeResetPwd:
-			opertype = 2;
-			break;
-		default:
-			opertype = 1;
-			break;
+		VERIFYFORREG,
+		VERIFYFORRESETPWD;
+		public static int value(VERIFYTYPE type)
+		{
+			switch (type) {
+			case VERIFYFORREG:
+				return 1;
+			case VERIFYFORRESETPWD:
+				return 2;
+			default:
+				return 1;
+			}
 		}
-//		addIntParam(PARAMNAME_VERIFYTYPE, opertype);
 	}
-
+	private VerifyPhoneReq.Builder mVerifyPhoneReqBuilder = VerifyPhoneReq.newBuilder();
+	
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		// TODO Auto-generated method stub
-		
+		mVerifyPhoneReqBuilder.setClientType(clientType);
+		mVerifyPhoneReqBuilder.setVersionNo(version);
+		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
+	}
+	
+	public void setVerifyTelWithType(String phoneno,VERIFYTYPE type)
+	{
+		mVerifyPhoneReqBuilder.setPhoneNo(phoneno);
+		mVerifyPhoneReqBuilder.setVerifyType(VERIFYTYPE.value(type));
+		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
 	}
 }

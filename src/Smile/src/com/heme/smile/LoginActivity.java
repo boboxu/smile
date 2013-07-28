@@ -90,7 +90,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			}
 			
 			showWaitDialog("登录中,请稍候...");
-			LogicManager.loginManager().Login(mUserName.getText().toString(), mPwd.getText().toString(), LoginRequest.LoginType.TypeTel, mHandler);
+			LogicManager.loginManager().Login(mUserName.getText().toString(), mPwd.getText().toString(), LoginRequest.LOGINTYPE.TypeTel, mHandler);
 			//模拟成功登录
 //			mHandler.sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
 			break;
