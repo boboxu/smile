@@ -26,11 +26,7 @@ public class LoginRequest extends BaseBusinessRequest {
 	public void setLoginInfo(String account,String pwd,LOGINTYPE type)
 	{
 		((LoginReq.Builder)mDataBuilder).setId(account).setPassword(pwd);
-		super.setBody(((LoginReq.Builder)mDataBuilder).build().toByteString());
-		super.setUid(0);
-		super.setCmd("");
-		super.setSeqId(0);
-		super.buildAccessReq();
+		super.buildAccessReq(((LoginReq.Builder)mDataBuilder).build().toByteString());
 		
 	}
 
@@ -41,7 +37,7 @@ public class LoginRequest extends BaseBusinessRequest {
 	}
 
 	@Override
-	public void initmDataBuilder() {
+	public void initmDataBuilder() { 
 		mDataBuilder = LoginReq.newBuilder();
 	}
 }

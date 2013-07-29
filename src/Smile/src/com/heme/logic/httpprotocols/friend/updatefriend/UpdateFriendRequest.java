@@ -5,32 +5,28 @@ import com.heme.logic.module.Data.SetFriendDescReq;
 
 public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 
-	private SetFriendDescReq.Builder mSetFriendDescReqBuilder = SetFriendDescReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSetFriendDescReqBuilder.setSessionId(sessionId);
-		mSetFriendDescReqBuilder.setSystemId(systemId);
-		super.setBody(mSetFriendDescReqBuilder.build().toByteString());
+		((SetFriendDescReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetFriendDescReq.Builder)mDataBuilder).setSystemId(systemId);
 		
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int client_type) {
-		mSetFriendDescReqBuilder.setClientType(client_type);
-		mSetFriendDescReqBuilder.setVersionNo(version);
-		super.setBody(mSetFriendDescReqBuilder.build().toByteString());
-	}
-
-	public void setFriendDescription(long targetId,String dsp)
-	{
-		mSetFriendDescReqBuilder.setTargetSystemId(targetId);
-		mSetFriendDescReqBuilder.setDescription(dsp);
-		super.setBody(mSetFriendDescReqBuilder.build().toByteString());
+		((SetFriendDescReq.Builder)mDataBuilder).setClientType(client_type);
+		((SetFriendDescReq.Builder)mDataBuilder).setVersionNo(version);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetFriendDescReq.newBuilder();
+	}
+	
+	public void setFriendDescription(long targetId,String dsp)
+	{
+		((SetFriendDescReq.Builder)mDataBuilder).setTargetSystemId(targetId);
+		((SetFriendDescReq.Builder)mDataBuilder).setDescription(dsp);
+		super.buildAccessReq(((SetFriendDescReq.Builder)mDataBuilder).build().toByteString());
 	}
 }

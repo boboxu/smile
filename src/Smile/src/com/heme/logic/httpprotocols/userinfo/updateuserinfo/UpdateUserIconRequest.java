@@ -5,33 +5,26 @@ import com.heme.logic.module.Data.SetUserIconReq;
 
 public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 
-	SetUserIconReq.Builder mSetUserIconReqBuilder = SetUserIconReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSetUserIconReqBuilder.setSessionId(sessionId);
-		mSetUserIconReqBuilder.setSystemId(systemId);
-		super.setBody(mSetUserIconReqBuilder.build().toByteString());
-
+		((SetUserIconReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetUserIconReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-
-		mSetUserIconReqBuilder.setVersionNo(version);
-		mSetUserIconReqBuilder.setClientType(clientType);
-		super.setBody(mSetUserIconReqBuilder.build().toByteString());
-
+		((SetUserIconReq.Builder)mDataBuilder).setVersionNo(version);
+		((SetUserIconReq.Builder)mDataBuilder).setClientType(clientType);
 	}
 
 	public void setIconName(String name)
 	{
-		mSetUserIconReqBuilder.setIconName(name);
-		super.setBody(mSetUserIconReqBuilder.build().toByteString());
+		((SetUserIconReq.Builder)mDataBuilder).setIconName(name);
+		super.buildAccessReq(((SetUserIconReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetUserIconReq.newBuilder();
 	}
 }

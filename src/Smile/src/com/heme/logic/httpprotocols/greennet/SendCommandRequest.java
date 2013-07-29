@@ -27,31 +27,27 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 		}
 	}
 	
-	PcCtrlReq.Builder mPcCtrlReqBuilder = PcCtrlReq.newBuilder();
-	
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mPcCtrlReqBuilder.setClientType(version);
-		mPcCtrlReqBuilder.setVersionNo(version);
-		super.setBody(mPcCtrlReqBuilder.build().toByteString());
+		((PcCtrlReq.Builder)mDataBuilder).setClientType(version);
+		((PcCtrlReq.Builder)mDataBuilder).setVersionNo(version);
 	}
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mPcCtrlReqBuilder.setSessionId(sessionId);
-		mPcCtrlReqBuilder.setSystemId(systemId);
-		super.setBody(mPcCtrlReqBuilder.build().toByteString());
+		((PcCtrlReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((PcCtrlReq.Builder)mDataBuilder).setSystemId(systemId);
 	};
 	
 	public void setCommandInfo(COMMANDTYPE type)
 	{
-		mPcCtrlReqBuilder.setPcCtrlCmd(COMMANDTYPE.value(type));
-		super.setBody(mPcCtrlReqBuilder.build().toByteString());
+		((PcCtrlReq.Builder)mDataBuilder).setPcCtrlCmd(COMMANDTYPE.value(type));
+		super.buildAccessReq(((PcCtrlReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
+		mDataBuilder = PcCtrlReq.newBuilder();
 		
 	}
 }

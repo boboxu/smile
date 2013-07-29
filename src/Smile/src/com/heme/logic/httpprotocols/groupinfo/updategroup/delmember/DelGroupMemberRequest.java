@@ -7,37 +7,32 @@ import com.heme.logic.module.Data.DelGroupMemberReq;
 
 public class DelGroupMemberRequest extends BaseLoginedBusinessRequest {
 	//删除群好友
-	//增加群好友
-	DelGroupMemberReq.Builder mDelGroupMemberReqBuilder = DelGroupMemberReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mDelGroupMemberReqBuilder.setSessionId(sessionId);
-		mDelGroupMemberReqBuilder.setSystemId(systemId);
-		super.setBody(mDelGroupMemberReqBuilder.build().toByteString());
+		((DelGroupMemberReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((DelGroupMemberReq.Builder)mDataBuilder).setSystemId(systemId);
 		
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mDelGroupMemberReqBuilder.setVersionNo(version);
-		mDelGroupMemberReqBuilder.setClientType(clientType);
-		super.setBody(mDelGroupMemberReqBuilder.build().toByteString());
+		((DelGroupMemberReq.Builder)mDataBuilder).setVersionNo(version);
+		((DelGroupMemberReq.Builder)mDataBuilder).setClientType(clientType);
 
 	}
 	
 	public void setDelInfo(int groupId,List<Long> memberSystemId)
 	{
-		mDelGroupMemberReqBuilder.setGroupId(groupId);		
+		((DelGroupMemberReq.Builder)mDataBuilder).setGroupId(groupId);		
 		for (int i = 0; i < memberSystemId.size(); i++) 
 		{
-			mDelGroupMemberReqBuilder.addMemberSystemId(memberSystemId.get(i));
+			((DelGroupMemberReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.setBody(mDelGroupMemberReqBuilder.build().toByteString());
+		super.buildAccessReq(((DelGroupMemberReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = DelGroupMemberReq.newBuilder();
 	}
 }

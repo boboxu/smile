@@ -7,36 +7,32 @@ import com.heme.logic.module.Data.AddGroupMemberReq;
 
 public class AddGroupMemberRequest extends BaseLoginedBusinessRequest {
 	//增加群好友
-	AddGroupMemberReq.Builder mAddGroupMemberReqBuilder = AddGroupMemberReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mAddGroupMemberReqBuilder.setSessionId(sessionId);
-		mAddGroupMemberReqBuilder.setSystemId(systemId);
-		super.setBody(mAddGroupMemberReqBuilder.build().toByteString());
+		((AddGroupMemberReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((AddGroupMemberReq.Builder)mDataBuilder).setSystemId(systemId);
 		
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mAddGroupMemberReqBuilder.setVersionNo(version);
-		mAddGroupMemberReqBuilder.setClientType(clientType);
-		super.setBody(mAddGroupMemberReqBuilder.build().toByteString());
+		((AddGroupMemberReq.Builder)mDataBuilder).setVersionNo(version);
+		((AddGroupMemberReq.Builder)mDataBuilder).setClientType(clientType);
 
 	}
 	
 	public void setAddInfo(int groupId,List<Long> memberSystemId)
 	{
-		mAddGroupMemberReqBuilder.setGroupId(groupId);		
+		((AddGroupMemberReq.Builder)mDataBuilder).setGroupId(groupId);		
 		for (int i = 0; i < memberSystemId.size(); i++) 
 		{
-			mAddGroupMemberReqBuilder.addMemberSystemId(memberSystemId.get(i));
+			((AddGroupMemberReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.setBody(mAddGroupMemberReqBuilder.build().toByteString());
+		super.buildAccessReq(((AddGroupMemberReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = AddGroupMemberReq.newBuilder();
 	}
 }

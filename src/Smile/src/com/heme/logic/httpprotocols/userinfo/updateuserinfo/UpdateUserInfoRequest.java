@@ -22,39 +22,34 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 		}
 	};
 
-	SetSelfInfoReq.Builder mSetSelfInfoReqBuilder = SetSelfInfoReq.newBuilder();
-
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSetSelfInfoReqBuilder.setSessionId(sessionId);
-		mSetSelfInfoReqBuilder.setSystemId(systemId);
-		super.setBody(mSetSelfInfoReqBuilder.build().toByteString());
+		((SetSelfInfoReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetSelfInfoReq.Builder)mDataBuilder).setSystemId(systemId);
 
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
 
-		mSetSelfInfoReqBuilder.setVersionNo(version);
-		mSetSelfInfoReqBuilder.setClientType(clientType);
-		super.setBody(mSetSelfInfoReqBuilder.build().toByteString());
+		((SetSelfInfoReq.Builder)mDataBuilder).setVersionNo(version);
+		((SetSelfInfoReq.Builder)mDataBuilder).setClientType(clientType);
 
 	}
 
 	public void setIconName(SEXTYPE type,String birthday,String occupation,String location,String email,String interest) {
-		mSetSelfInfoReqBuilder.setGender(SEXTYPE.value(type));
-		mSetSelfInfoReqBuilder.setBirthday(birthday);
-		mSetSelfInfoReqBuilder.setOccupation(occupation);
-		mSetSelfInfoReqBuilder.setLocation(location);
-		mSetSelfInfoReqBuilder.setEmail(email);
-		mSetSelfInfoReqBuilder.setInterest(interest);
-		super.setBody(mSetSelfInfoReqBuilder.build().toByteString());
+		((SetSelfInfoReq.Builder)mDataBuilder).setGender(SEXTYPE.value(type));
+		((SetSelfInfoReq.Builder)mDataBuilder).setBirthday(birthday);
+		((SetSelfInfoReq.Builder)mDataBuilder).setOccupation(occupation);
+		((SetSelfInfoReq.Builder)mDataBuilder).setLocation(location);
+		((SetSelfInfoReq.Builder)mDataBuilder).setEmail(email);
+		((SetSelfInfoReq.Builder)mDataBuilder).setInterest(interest);
+		super.buildAccessReq(((SetSelfInfoReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetSelfInfoReq.newBuilder();
 	}
 
 }

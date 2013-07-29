@@ -8,7 +8,6 @@ import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
 
-import com.google.protobuf.GeneratedMessage;
 import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.commonlogic.servermanager.IServerManagerListener;

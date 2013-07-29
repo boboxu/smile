@@ -15,6 +15,10 @@ public class BaseRequest {
 	private String mRequestKey;
 	protected byte[] mDataBuffer = null;
 	
+	public byte[] getmDataBuffer() {
+		return mDataBuffer;
+	}
+
 	public BaseRequest() {
 		super();
 //		mParamMap = new HashMap<String, String>();
@@ -37,31 +41,6 @@ public class BaseRequest {
 	public void setmUrl(String mUrl) {
 		this.mUrl = mUrl;
 	}
-
-//	public Map<String, String> getParams() {
-//		return mParamMap;
-//	}
-
-//	public void addStringParam(String key, String value) {
-//		if (key == null || value == null) {
-//			return;
-//		}
-//		mParamMap.put(key, value);
-//	}
-
-//	public void addIntParam(String key, int value) {
-//		if (key == null) {
-//			return;
-//		}
-//		mParamMap.put(key, ((Integer) value).toString());
-//	}
-
-//	public void addLongParam(String key, long value) {
-//		if (key == null) {
-//			return;
-//		}
-//		mParamMap.put(key, ((Long) value).toString());
-//	}
 
 	public void setHttpType(String httptype) {
 		mHttpType = httptype;

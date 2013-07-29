@@ -20,25 +20,22 @@ public class SendTelRequest extends BaseBusinessRequest {
 			}
 		}
 	}
-	private VerifyPhoneReq.Builder mVerifyPhoneReqBuilder = VerifyPhoneReq.newBuilder();
 	
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mVerifyPhoneReqBuilder.setClientType(clientType);
-		mVerifyPhoneReqBuilder.setVersionNo(version);
-		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
+		((VerifyPhoneReq.Builder)mDataBuilder).setClientType(clientType);
+		((VerifyPhoneReq.Builder)mDataBuilder).setVersionNo(version);
 	}
 	
 	public void setVerifyTelWithType(String phoneno,VERIFYTYPE type)
 	{
-		mVerifyPhoneReqBuilder.setPhoneNo(phoneno);
-		mVerifyPhoneReqBuilder.setVerifyType(VERIFYTYPE.value(type));
-		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
+		((VerifyPhoneReq.Builder)mDataBuilder).setPhoneNo(phoneno);
+		((VerifyPhoneReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(type));
+		super.buildAccessReq(((VerifyPhoneReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = VerifyPhoneReq.newBuilder();
 	}
 }

@@ -27,37 +27,33 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 		}
 	}
 	//永久群
-	public CreateFixedGroupReq.Builder mCreateFixedGroupReqBuilder = CreateFixedGroupReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mCreateFixedGroupReqBuilder.setSessionId(sessionId);
-		mCreateFixedGroupReqBuilder.setSystemId(systemId);
-		super.setBody(mCreateFixedGroupReqBuilder.build().toByteString());
+		((CreateFixedGroupReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((CreateFixedGroupReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mCreateFixedGroupReqBuilder.setVersionNo(version);
-		mCreateFixedGroupReqBuilder.setClientType(clientType);
-		super.setBody(mCreateFixedGroupReqBuilder.build().toByteString());
+		((CreateFixedGroupReq.Builder)mDataBuilder).setVersionNo(version);
+		((CreateFixedGroupReq.Builder)mDataBuilder).setClientType(clientType);
 	}
 	
 	public void setGroupInfo(String area,String school,String groupName,VERIFYTYPE verifytype,List<Long> memberSystemId)
 	{
-		mCreateFixedGroupReqBuilder.setArea(area);
-		mCreateFixedGroupReqBuilder.setGroupName(groupName);
-		mCreateFixedGroupReqBuilder.setVerifyType(VERIFYTYPE.value(verifytype));
+		((CreateFixedGroupReq.Builder)mDataBuilder).setArea(area);
+		((CreateFixedGroupReq.Builder)mDataBuilder).setGroupName(groupName);
+		((CreateFixedGroupReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(verifytype));
 		for (int i = 0; i < memberSystemId.size(); i++) 
 		{
-			mCreateFixedGroupReqBuilder.addMemberSystemId(memberSystemId.get(i));
+			((CreateFixedGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.setBody(mCreateFixedGroupReqBuilder.build().toByteString());
+		super.buildAccessReq(((CreateFixedGroupReq.Builder)mDataBuilder).build().toByteString());
 		
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = CreateFixedGroupReq.newBuilder();
 	}
 }

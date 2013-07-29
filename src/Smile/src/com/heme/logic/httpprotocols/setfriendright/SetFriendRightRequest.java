@@ -23,24 +23,19 @@ public class SetFriendRightRequest extends BaseLoginedBusinessRequest {
 		}
 	}
 	
-	SetFriendRightReq.Builder mSetFriendRightReqBuilder = SetFriendRightReq
-			.newBuilder();
-
+	
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSetFriendRightReqBuilder.setSessionId(sessionId);
-		mSetFriendRightReqBuilder.setSystemId(systemId);
-		super.setBody(mSetFriendRightReqBuilder.build().toByteString());
-
+		((SetFriendRightReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetFriendRightReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
 
-		mSetFriendRightReqBuilder.setVersionNo(version);
-		mSetFriendRightReqBuilder.setClientType(clientType);
-		super.setBody(mSetFriendRightReqBuilder.build().toByteString());
-
+		((SetFriendRightReq.Builder)mDataBuilder).setVersionNo(version);
+		((SetFriendRightReq.Builder)mDataBuilder).setClientType(clientType);
+		
 	}
 
 	/***
@@ -52,16 +47,15 @@ public class SetFriendRightRequest extends BaseLoginedBusinessRequest {
 	 */
 	public void setFriendRight(VERIFYTYPE type,boolean isAutoAddFriend,boolean isCanBeSearched,boolean isRecommend) 
 	{
-		mSetFriendRightReqBuilder.setVerifyType(VERIFYTYPE.value(type));
-		mSetFriendRightReqBuilder.setAutoAddFriend(isAutoAddFriend?1:0);
-		mSetFriendRightReqBuilder.setSearchType(isCanBeSearched?1:0);
-		mSetFriendRightReqBuilder.setRecommendType(isRecommend?1:0);
-		super.setBody(mSetFriendRightReqBuilder.build().toByteString());
+		((SetFriendRightReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(type));
+		((SetFriendRightReq.Builder)mDataBuilder).setAutoAddFriend(isAutoAddFriend?1:0);
+		((SetFriendRightReq.Builder)mDataBuilder).setSearchType(isCanBeSearched?1:0);
+		((SetFriendRightReq.Builder)mDataBuilder).setRecommendType(isRecommend?1:0);
+		super.buildAccessReq(((SetFriendRightReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetFriendRightReq.newBuilder();
 	}
 }

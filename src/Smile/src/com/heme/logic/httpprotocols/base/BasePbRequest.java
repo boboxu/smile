@@ -5,26 +5,30 @@ import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.logic.module.Access.AccessReq;
 
 public class BasePbRequest extends BaseRequest {
-	//实现AccessReq数据的组合
+	// 实现AccessReq数据的组合
 	protected AccessReq.Builder mAccessReqDataBuilder = AccessReq.newBuilder();
-	
-	protected void setBody(ByteString body) {
+
+	private void setBody(ByteString body) {
 		mAccessReqDataBuilder.setBytesBody(body);
 	}
-	
-	protected void setUid(long uid) {
+
+	private void setUid(long uid) {
 		mAccessReqDataBuilder.setUint64Uid(uid);
 	}
-	
-	protected void setSeqId(int seq) {
+
+	private void setSeqId(int seq) {
 		mAccessReqDataBuilder.setUint32Seq(seq);
 	}
-	
-	protected void setCmd(String cmd) {
+
+	private void setCmd(String cmd) {
 		mAccessReqDataBuilder.setStrCmd(cmd);
 	}
-	
-	protected void buildAccessReq() {
-		 mAccessReqDataBuilder.build().toByteArray();
+
+	protected void buildAccessReq(ByteString body) {
+		setBody(body);
+		setUid(0);
+		setCmd("");
+		setSeqId(0);
+		setRequestData(mAccessReqDataBuilder.build().toByteArray());
 	}
 }

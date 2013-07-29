@@ -5,30 +5,26 @@ import com.heme.logic.module.Data.SetSignatureReq;
 
 public class UpdateSignatureRequest extends BaseLoginedBusinessRequest {
 
-	SetSignatureReq.Builder mSetSignatureReqBuilder = SetSignatureReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSetSignatureReqBuilder.setSessionId(sessionId);
-		mSetSignatureReqBuilder.setSystemId(systemId);
-		super.setBody(mSetSignatureReqBuilder.build().toByteString());
+		((SetSignatureReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetSignatureReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mSetSignatureReqBuilder.setVersionNo(version);
-		mSetSignatureReqBuilder.setClientType(clientType);
-		super.setBody(mSetSignatureReqBuilder.build().toByteString());
+		((SetSignatureReq.Builder)mDataBuilder).setVersionNo(version);
+		((SetSignatureReq.Builder)mDataBuilder).setClientType(clientType);
 	}
 
 	public void setSignature(String signature)
 	{
-		mSetSignatureReqBuilder.setSignature(signature);
-		super.setBody(mSetSignatureReqBuilder.build().toByteString());
+		((SetSignatureReq.Builder)mDataBuilder).setSignature(signature);
+		super.buildAccessReq(((SetSignatureReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetSignatureReq.newBuilder();
 	}
 }

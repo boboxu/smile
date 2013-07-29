@@ -5,18 +5,19 @@ import com.heme.logic.module.Data.HbReq;
 
 public class HeartBeatRequest extends BaseBusinessRequest {
 
-	HbReq.Builder mSetStatusReqBuilder = HbReq.newBuilder();
-
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mSetStatusReqBuilder.setVersionNo(version);
-		mSetStatusReqBuilder.setClientType(clientType);
-		super.setBody(mSetStatusReqBuilder.build().toByteString());
+		((HbReq.Builder) mDataBuilder).setVersionNo(version);
+		((HbReq.Builder) mDataBuilder).setClientType(clientType);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = HbReq.newBuilder();
+	}
+
+	public HeartBeatRequest() {
+		super.buildAccessReq(((HbReq.Builder) mDataBuilder).build()
+				.toByteString());
 	}
 }

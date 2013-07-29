@@ -5,30 +5,27 @@ import com.heme.logic.module.Data.RegStudentReq;
 
 public class StudentRegistRequest extends BaseBusinessRequest {
 
-	RegStudentReq.Builder mRegStudentReqBuilder = RegStudentReq.newBuilder();
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mRegStudentReqBuilder.setClientType(clientType);
-		mRegStudentReqBuilder.setVersionNo(version);
-		super.setBody(mRegStudentReqBuilder.build().toByteString());
+		((RegStudentReq.Builder)mDataBuilder).setClientType(clientType);
+		((RegStudentReq.Builder)mDataBuilder).setVersionNo(version);
 	}
 	
 	public void setRegProfile(String phoneNo,String realName,String studentId,String password,String area,int schoolId,int classId)
 	{
-		mRegStudentReqBuilder.setPhoneNo(phoneNo);
-		mRegStudentReqBuilder.setRealName(realName);
-		mRegStudentReqBuilder.setStudentId(studentId);
-		mRegStudentReqBuilder.setPassword(password);
-		mRegStudentReqBuilder.setArea(area);
-		mRegStudentReqBuilder.setSchoolId(schoolId);
-		mRegStudentReqBuilder.setClassId(classId);
-		super.setBody(mRegStudentReqBuilder.build().toByteString());
+		((RegStudentReq.Builder)mDataBuilder).setPhoneNo(phoneNo);
+		((RegStudentReq.Builder)mDataBuilder).setRealName(realName);
+		((RegStudentReq.Builder)mDataBuilder).setStudentId(studentId);
+		((RegStudentReq.Builder)mDataBuilder).setPassword(password);
+		((RegStudentReq.Builder)mDataBuilder).setArea(area);
+		((RegStudentReq.Builder)mDataBuilder).setSchoolId(schoolId);
+		((RegStudentReq.Builder)mDataBuilder).setClassId(classId);
+		super.buildAccessReq(((RegStudentReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = RegStudentReq.newBuilder();
 	}
 
 }

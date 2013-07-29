@@ -5,26 +5,22 @@ import com.heme.logic.module.Data.SetPasswdReq;
 
 public class ModifyPwdRequest extends BaseBusinessRequest {
 
-	SetPasswdReq.Builder mSetPasswdReqBuilder = SetPasswdReq.newBuilder();
-
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mSetPasswdReqBuilder.setVersionNo(version);
-		mSetPasswdReqBuilder.setClientType(clientType);
-		super.setBody(mSetPasswdReqBuilder.build().toByteString());
+		((SetPasswdReq.Builder)mDataBuilder).setVersionNo(version);
+		((SetPasswdReq.Builder)mDataBuilder).setClientType(clientType);
 	}
 
 	public void setPassword(String newPassword,String oldPassword)
 	{
-		mSetPasswdReqBuilder.setNewPasswd(newPassword);
-		mSetPasswdReqBuilder.setOldPasswd(oldPassword);
-		super.setBody(mSetPasswdReqBuilder.build().toByteString());
+		((SetPasswdReq.Builder)mDataBuilder).setNewPasswd(newPassword);
+		((SetPasswdReq.Builder)mDataBuilder).setOldPasswd(oldPassword);
+		super.buildAccessReq(((SetPasswdReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SetPasswdReq.newBuilder();
 	}
 
 }

@@ -4,24 +4,21 @@ import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 import com.heme.logic.module.Data.RegGetSchoolReq;
 
 public class GetSchoolInfoRequest extends BaseBusinessRequest {
-	RegGetSchoolReq.Builder mRegGetSchoolRegBuilder;
 	
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mRegGetSchoolRegBuilder.setVersionNo(version);
-		super.setBody(mRegGetSchoolRegBuilder.build().toByteString());
-	}
-	
-	public void setArea(String area)
-	{
-		mRegGetSchoolRegBuilder.setArea(area);
-		super.setBody(mRegGetSchoolRegBuilder.build().toByteString());
+		((RegGetSchoolReq.Builder)mDataBuilder).setVersionNo(version);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
+		mDataBuilder = RegGetSchoolReq.newBuilder();
 		
 	}
-
+	
+	public void setArea(String area)
+	{
+		((RegGetSchoolReq.Builder)mDataBuilder).setArea(area);
+		super.buildAccessReq(((RegGetSchoolReq.Builder)mDataBuilder).build().toByteString());
+	}
 }

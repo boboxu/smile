@@ -1,39 +1,29 @@
 package com.heme.logic.httpprotocols.feedback;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
-import com.heme.logic.httpprotocols.verifytel.SendTelRequest.VERIFYTYPE;
 import com.heme.logic.module.Data.SendFeedbackReq;
 
 public class FeedBackRequest extends BaseLoginedBusinessRequest {
 
-	private SendFeedbackReq.Builder mSendFeedbackReqBuilder = SendFeedbackReq
-			.newBuilder();
-
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mSendFeedbackReqBuilder.setClientType(clientType);
-		mSendFeedbackReqBuilder.setVersionNo(version);
-		super.setBody(mSendFeedbackReqBuilder.build().toByteString());
-	}
-
-	public void setContent(String feedback) {
-		mSendFeedbackReqBuilder.setFeedback(feedback);
-		super.setBody(mSendFeedbackReqBuilder.build().toByteString());
+		((SendFeedbackReq.Builder) mDataBuilder).setClientType(clientType);
+		((SendFeedbackReq.Builder) mDataBuilder).setVersionNo(version);
 	}
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mSendFeedbackReqBuilder.setSessionId(sessionId);
-		mSendFeedbackReqBuilder.setSystemId(systemId);
-		super.setBody(mSendFeedbackReqBuilder.build().toByteString());
-		
+		((SendFeedbackReq.Builder) mDataBuilder).setSessionId(sessionId);
+		((SendFeedbackReq.Builder) mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = SendFeedbackReq.newBuilder();
 	}
 
+	public void setContent(String feedback) {
+		((SendFeedbackReq.Builder) mDataBuilder).setFeedback(feedback);
+		super.buildAccessReq(((SendFeedbackReq.Builder) mDataBuilder).build().toByteString());
+	}
 }

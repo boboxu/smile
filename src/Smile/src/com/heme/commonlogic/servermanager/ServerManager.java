@@ -32,8 +32,12 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 
 	@Override
 	public int sendRequest(BaseRequest request) {
+		if (request.getmDataBuffer() == null || request.getmRequestListener() == null) 
+		{
+			Log.e(TAG, "request构造失败");
+			return -1;
+		}
 		//构造连接，到net模块了
-		
 		//测试代码begin，直接调用回掉看看
 		String requestClassName = request.getClass().getName();
 		StringBuilder sbBuilder = new StringBuilder();

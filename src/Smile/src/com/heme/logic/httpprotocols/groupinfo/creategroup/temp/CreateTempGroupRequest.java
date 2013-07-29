@@ -8,36 +8,31 @@ import com.heme.logic.module.Data.CreateTempGroupReq;
 
 public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 
-	CreateTempGroupReq.Builder mCreateTempGroupReqBuilder = CreateTempGroupReq.newBuilder();
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		mCreateTempGroupReqBuilder.setSessionId(sessionId);
-		mCreateTempGroupReqBuilder.setSystemId(systemId);
-		super.setBody(mCreateTempGroupReqBuilder.build().toByteString());
-		
+		((CreateTempGroupReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((CreateTempGroupReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
-		mCreateTempGroupReqBuilder.setVersionNo(version);
-		mCreateTempGroupReqBuilder.setClientType(clientType);
-		super.setBody(mCreateTempGroupReqBuilder.build().toByteString());
+		((CreateTempGroupReq.Builder)mDataBuilder).setVersionNo(version);
+		((CreateTempGroupReq.Builder)mDataBuilder).setClientType(clientType);
 
 	}
 	
 	public void setGroupInfo(String groupName,List<Long> memberSystemId)
 	{
-		mCreateTempGroupReqBuilder.setGroupName(groupName);
+		((CreateTempGroupReq.Builder)mDataBuilder).setGroupName(groupName);
 		for (int i = 0; i < memberSystemId.size(); i++) 
 		{
-			mCreateTempGroupReqBuilder.addMemberSystemId(memberSystemId.get(i));
+			((CreateTempGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.setBody(mCreateTempGroupReqBuilder.build().toByteString());
+		super.buildAccessReq(((CreateTempGroupReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		// TODO Auto-generated method stub
-		
+		mDataBuilder = CreateTempGroupReq.newBuilder();
 	}
 }
