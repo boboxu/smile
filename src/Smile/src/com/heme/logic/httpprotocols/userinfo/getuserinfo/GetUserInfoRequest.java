@@ -28,4 +28,10 @@ public class GetUserInfoRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mGetUserInfoReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -25,4 +25,10 @@ public class UpdateSignatureRequest extends BaseLoginedBusinessRequest {
 		mSetSignatureReqBuilder.setSignature(signature);
 		super.setBody(mSetSignatureReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

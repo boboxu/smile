@@ -32,11 +32,46 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 
 	@Override
 	public int sendRequest(BaseRequest request) {
-		if (request.getmUrl() == null || request.getmUrl().length() == 0) 
-		{
-			return BaseRequest.INVALID_REQUEST_ID;
-		}
 		//构造连接，到net模块了
+		
+		//测试代码begin，直接调用回掉看看
+		String requestClassName = request.getClass().getName();
+		StringBuilder sbBuilder = new StringBuilder();
+		String responseClassName = sbBuilder.append(requestClassName.substring(0,requestClassName.indexOf("Request"))).append("Response").toString();
+		BaseResponse response = null;
+		try
+		{
+			@SuppressWarnings("unchecked")
+			Class<BaseResponse> responseClass = (Class<BaseResponse>) Class
+			        .forName(responseClassName);
+			try
+			{
+				response = responseClass.newInstance();
+				response.setmDataBuffer(null);
+			}
+			catch (IllegalAccessException e)
+			{
+				e.printStackTrace();
+			}
+			catch (InstantiationException e)
+			{
+				e.printStackTrace();
+			}
+		}
+		catch (ClassNotFoundException e)
+		{
+			e.printStackTrace();
+
+			//找不到响应类
+			response = new BaseResponse();		
+			response.setmRequest(request);
+			
+			ProtoError error = new ProtoError(ProtoError.ERRCODE_ERRRESPONSENAME, "");
+			response.setmError(error);	
+		}
+		response.setmRequest(request); 
+		request.getmRequestListener().onRequestSuccess(response);
+		//测试代码end
 		
 		//赋予ID
 		request.setmRequestID(mRequestIdGenerator.generateRequestId());
@@ -177,9 +212,10 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 			
 			return response;
 		}
-		
+
+		StringBuilder sbBuilder = new StringBuilder();
 		String requestClassName = request.getClass().getName();
-		String responseClassName = requestClassName.substring(0,requestClassName.indexOf("Request"));
+		String responseClassName = sbBuilder.append(requestClassName.substring(0,requestClassName.indexOf("Request"))).append("Response").toString();
 		
 		try
 		{

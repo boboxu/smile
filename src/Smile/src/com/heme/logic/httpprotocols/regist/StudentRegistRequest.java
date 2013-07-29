@@ -25,4 +25,10 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		super.setBody(mRegStudentReqBuilder.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

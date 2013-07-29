@@ -13,4 +13,10 @@ public class HeartBeatRequest extends BaseBusinessRequest {
 		mSetStatusReqBuilder.setClientType(clientType);
 		super.setBody(mSetStatusReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

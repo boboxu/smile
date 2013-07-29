@@ -21,4 +21,10 @@ public class ModifyPwdRequest extends BaseBusinessRequest {
 		super.setBody(mSetPasswdReqBuilder.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

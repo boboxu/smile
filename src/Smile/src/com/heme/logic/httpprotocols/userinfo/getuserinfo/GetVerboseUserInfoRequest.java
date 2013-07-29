@@ -28,4 +28,10 @@ public class GetVerboseUserInfoRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mGetVerboseUserInfoReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -54,4 +54,10 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 		super.setBody(mCreateFixedGroupReqBuilder.build().toByteString());
 		
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

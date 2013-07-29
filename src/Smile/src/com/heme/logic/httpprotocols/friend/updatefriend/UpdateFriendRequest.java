@@ -27,4 +27,10 @@ public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 		mSetFriendDescReqBuilder.setDescription(dsp);
 		super.setBody(mSetFriendDescReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

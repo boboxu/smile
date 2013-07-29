@@ -43,4 +43,10 @@ public class UpdateStatusRequest extends BaseLoginedBusinessRequest {
 		mSetStatusReqBuilder.setStatus(USERSTATUS.value(status));
 		super.setBody(mSetStatusReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

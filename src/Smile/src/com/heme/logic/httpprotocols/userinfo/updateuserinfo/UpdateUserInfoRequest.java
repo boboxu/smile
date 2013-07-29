@@ -51,4 +51,10 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 		super.setBody(mSetSelfInfoReqBuilder.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

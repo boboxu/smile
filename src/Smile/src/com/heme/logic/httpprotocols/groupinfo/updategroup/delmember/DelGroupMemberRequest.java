@@ -34,4 +34,10 @@ public class DelGroupMemberRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mDelGroupMemberReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

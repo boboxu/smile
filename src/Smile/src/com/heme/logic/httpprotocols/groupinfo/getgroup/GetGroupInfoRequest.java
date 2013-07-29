@@ -31,4 +31,10 @@ public class GetGroupInfoRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mGetGroupInfoReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

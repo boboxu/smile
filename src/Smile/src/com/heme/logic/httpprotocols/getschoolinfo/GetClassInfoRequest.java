@@ -19,4 +19,10 @@ public class GetClassInfoRequest extends BaseBusinessRequest {
 		mRegGetClassReqBuilder.setSchoolId(schoolId);
 		super.setBody(mRegGetClassReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -6,11 +6,10 @@ import com.heme.logic.module.Access.AccessReq;
 
 public class BasePbRequest extends BaseRequest {
 	//实现AccessReq数据的组合
-	protected AccessReq.Builder mAccessReqDataBuilder;
+	protected AccessReq.Builder mAccessReqDataBuilder = AccessReq.newBuilder();
 	
 	protected void setBody(ByteString body) {
 		mAccessReqDataBuilder.setBytesBody(body);
-		 mAccessReqDataBuilder.build().toByteArray();
 	}
 	
 	protected void setUid(long uid) {
@@ -25,5 +24,7 @@ public class BasePbRequest extends BaseRequest {
 		mAccessReqDataBuilder.setStrCmd(cmd);
 	}
 	
-	
+	protected void buildAccessReq() {
+		 mAccessReqDataBuilder.build().toByteArray();
+	}
 }

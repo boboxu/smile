@@ -35,4 +35,10 @@ public class SendTelRequest extends BaseBusinessRequest {
 		mVerifyPhoneReqBuilder.setVerifyType(VERIFYTYPE.value(type));
 		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

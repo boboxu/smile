@@ -30,4 +30,10 @@ public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 		mDelGroupReqBuilder.setGroupId(groupId);
 		super.setBody(mDelGroupReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -28,4 +28,10 @@ public class HandleGroupAskRequest extends BaseLoginedBusinessRequest {
 		super.setBody(mApplySocialGroupReq.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

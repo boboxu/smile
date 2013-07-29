@@ -34,14 +34,15 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		public void handleMessage(android.os.Message msg) {
 			switch (msg.what) {
 			case Constans.LOGIN_SUCCESS:
-//				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-//				startActivity(intent);
-//				finish();
-				LoginRsp resp = (LoginRsp)msg.obj;
-				long systemId = resp.getSystemId();
-				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
-				List<java.lang.Integer> groupList = resp.getGroupIdList();
+
+//				LoginRsp resp = (LoginRsp)msg.obj;
+//				long systemId = resp.getSystemId();
+//				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
+//				List<java.lang.Integer> groupList = resp.getGroupIdList();
 				//然后就可以用了
+				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+				startActivity(intent);
+				finish();
 				break;
 
 			default:

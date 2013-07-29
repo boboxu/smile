@@ -34,4 +34,10 @@ public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mCreateTempGroupReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

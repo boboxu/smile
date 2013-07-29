@@ -10,5 +10,11 @@ public class CheckVerifyRequest extends BaseBusinessRequest {
 		// TODO Auto-generated method stub
 		
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

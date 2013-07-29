@@ -33,4 +33,10 @@ public class AddGroupMemberRequest extends BaseLoginedBusinessRequest {
 		}
 		super.setBody(mAddGroupMemberReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

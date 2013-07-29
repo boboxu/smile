@@ -33,4 +33,10 @@ public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 		super.setBody(mSetGroupNameReqBuilder.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

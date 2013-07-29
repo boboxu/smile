@@ -29,4 +29,10 @@ public class AddFriendRequest extends BaseLoginedBusinessRequest {
 		super.setBody(mFriendVerifyDataBuilder.build().toByteString());
 		
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

@@ -48,4 +48,10 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 		mPcCtrlReqBuilder.setPcCtrlCmd(COMMANDTYPE.value(type));
 		super.setBody(mPcCtrlReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

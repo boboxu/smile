@@ -28,4 +28,10 @@ public class ParentRegistRequest extends BaseBusinessRequest {
 		super.setBody(mRegParentReqBuilder.build().toByteString());
 	}
 
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
+
 }

@@ -25,5 +25,11 @@ public class DelFriendRequest extends BaseLoginedBusinessRequest {
 		mDelFriendReqBuilder.setTargetSystemId(targetId);
 		super.setBody(mDelFriendReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

@@ -28,4 +28,10 @@ public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 		mSetUserIconReqBuilder.setIconName(name);
 		super.setBody(mSetUserIconReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }

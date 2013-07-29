@@ -58,4 +58,10 @@ public class SetFriendRightRequest extends BaseLoginedBusinessRequest {
 		mSetFriendRightReqBuilder.setRecommendType(isRecommend?1:0);
 		super.setBody(mSetFriendRightReqBuilder.build().toByteString());
 	}
+
+	@Override
+	public void initmDataBuilder() {
+		// TODO Auto-generated method stub
+		
+	}
 }
