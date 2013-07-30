@@ -13,7 +13,6 @@
  */
 package com.heme.foundation.net;
 
-import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -217,10 +216,9 @@ public class NetworkEngine implements INetworkEngineInterface
 	            if (isSuccess)
                 {
 //		            String responseString = bundle.getString(BUNDLE_KEY_DATA);
-	            	byte dataArray[] = bundle.getByteArray(BUNDLE_KEY_DATA);
-		            ByteBuffer responseDataBuffer = ByteBuffer.wrap(dataArray);
+	            	byte[] dataArray = bundle.getByteArray(BUNDLE_KEY_DATA);
 		            
-		            request.mDelegate.onRequestSuccess(response, responseDataBuffer);
+		            request.mDelegate.onRequestSuccess(response, dataArray);
                 }
 	            else 
 	            {

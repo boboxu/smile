@@ -1,7 +1,6 @@
 
 package com.heme.foundation.net;
 
-import java.nio.ByteBuffer;
 
 /**
  * @author ottozheng
@@ -18,13 +17,13 @@ public class NetworkRequest
 
 	//发送的数据
 	
-	protected ByteBuffer mSendBuffer = null;
+	protected byte[] mSendBytes = null;
 	
-    public NetworkRequest(String host, int port, ByteBuffer sendBuffer, INetworkEngineListener delegate)
+    public NetworkRequest(String host, int port, byte[] sendBytes, INetworkEngineListener delegate)
     {
     	mHost = host;
     	mPort = port;
-    	mSendBuffer = sendBuffer;
+    	mSendBytes = sendBytes;
 	    mDelegate = delegate;
 	    
 	    mId = NetworkRequestIdGenerator.generateRequestId();
@@ -60,14 +59,14 @@ public class NetworkRequest
 		this.mDelegate = mDelegate;
 	}
 
-	public ByteBuffer getmSendBuffer()
+	public byte[] getmSendBytes()
 	{
-		return mSendBuffer;
+		return mSendBytes;
 	}
 
-	public void setmSendBuffer(ByteBuffer sendBuffer)
+	public void setmSendBytes(byte[] mSendBytes)
 	{
-		this.mSendBuffer = sendBuffer;
+		this.mSendBytes = mSendBytes;
 	}
 
 	public void setmId(int mId)

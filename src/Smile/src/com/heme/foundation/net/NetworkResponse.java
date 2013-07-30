@@ -1,7 +1,6 @@
 
 package com.heme.foundation.net;
 
-import java.nio.ByteBuffer;
 
 /**
  * @author ottozheng
@@ -11,7 +10,7 @@ public class NetworkResponse
 {
 	protected NetworkRequest mRequest;	
 	protected int mStatusCode;
-	protected ByteBuffer mDataBuffer;
+	protected byte[] mDataBytes;
 	
 	/**
 	 * 
@@ -54,14 +53,14 @@ public class NetworkResponse
 		this.mStatusCode = mStatusCode;
 	}
 
-	public ByteBuffer getmDataBuffer()
+	public byte[] getmDataBytes()
 	{
-		return mDataBuffer;
+		return mDataBytes;
 	}
 
-	public void setmDataBuffer(ByteBuffer mDataBuffer)
+	public void setmDataBytes(byte[] mDataBytes)
 	{
-		this.mDataBuffer = mDataBuffer;
+		this.mDataBytes = mDataBytes;
 	}
 	
 	

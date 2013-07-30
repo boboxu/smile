@@ -55,7 +55,9 @@ public class NetworkTask extends Thread
         String resultData = null;
         
 
+        
 		//发送请求
+        
 		//循环读取内容
 
   

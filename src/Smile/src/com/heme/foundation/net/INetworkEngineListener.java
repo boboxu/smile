@@ -1,7 +1,6 @@
 
 package com.heme.foundation.net;
 
-import java.nio.ByteBuffer;
 
 /**
  * @author ottozheng
@@ -15,7 +14,7 @@ public interface INetworkEngineListener
 	 * @param response
 	 * @param data
 	 */
-	public void onRequestSuccess(NetworkResponse response, ByteBuffer data);
+	public void onRequestSuccess(NetworkResponse response, byte[] dataArray);
 	
 	/**
 	 * 请求失败回调
