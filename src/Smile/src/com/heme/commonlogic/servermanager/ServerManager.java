@@ -10,10 +10,11 @@ import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
-import com.heme.foundation.net.INetworkManagerListener;
+import com.heme.foundation.net.INetworkEngineListener;
 import com.heme.foundation.net.NetworkRequest;
+import com.heme.foundation.net.NetworkResponse;
 
-public class ServerManager implements IServerManagerInterface ,INetworkManagerListener{
+public class ServerManager implements IServerManagerInterface ,INetworkEngineListener{
 	private static final String TAG = "ServerManager";
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
@@ -142,17 +143,17 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 	}
 
 	@Override
-	public void onRequestSuccess(NetworkRequest request, ByteBuffer buffer) {
-		Log.d(TAG,"finish data"+(new String(buffer.array())));
+	public void onRequestSuccess(NetworkResponse netresponse, ByteBuffer data) {
+		Log.d(TAG,"finish data"+(new String(data.array())));
 
-		BaseRequest baseRequest = getRequestFromMap(request);
+		BaseRequest baseRequest = getRequestFromMap(netresponse.getmRequest());
 		if (baseRequest == null)
 		{
 			// 有可能操作被取消
 			return;
 		}
 
-		BaseResponse response = parseRequestToResponse(baseRequest, buffer);
+		BaseResponse response = parseRequestToResponse(baseRequest, data);
 		response.setmRequest(baseRequest);
 		try {
 			response.parseData();
@@ -177,8 +178,8 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 	}
 
 	@Override
-	public void onRequestFail(NetworkRequest request, int errorCode) {
-		BaseRequest baseRequest = getRequestFromMap(request);
+	public void onRequestFail(NetworkResponse netresponse, int errorCode) {
+		BaseRequest baseRequest = getRequestFromMap(netresponse.getmRequest());
 		if (baseRequest == null)
 		{
 			// 有可能操作被取消
@@ -255,4 +256,5 @@ public class ServerManager implements IServerManagerInterface ,INetworkManagerLi
 			
 		return response;
 	}
+
 }
