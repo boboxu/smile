@@ -2,14 +2,13 @@
 package com.heme.foundation.net;
 
 import java.io.BufferedReader;
+import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
-
-import org.apache.http.HttpStatus;
 
 import android.os.Bundle;
 import android.os.Message;
@@ -77,13 +76,24 @@ public class NetworkTask extends Thread
 			//接收数据
 			
 			InputStream ips = socket.getInputStream();
-
-			byte[] recvBytes = new byte[CONTENT_READ_SIZE];
 			
-			ips.read(recvBytes);
+			byte[] recvBytes;
+
+			recvBytes = readStream(ips);
 			
 			Log.d(TAG, recvBytes.toString());
 			
+	        Bundle bundle = new Bundle();
+	        bundle.putInt(NetworkHandler.BUNDLE_KEY_REQUEST_ID, requestId);
+	        bundle.putInt(NetworkHandler.BUNDLE_KEY_STATUS_CODE, 0);
+	        bundle.putBoolean(NetworkHandler.BUNDLE_KEY_SUCCESS, true);
+	        bundle.putByteArray(NetworkHandler.BUNDLE_KEY_DATA, recvBytes);
+			
+	        notifyRusultData(bundle);
+
+	        socket.close();
+	        return;
+	        
 		} catch (UnknownHostException e)
 		{
 			// TODO Auto-generated catch block
@@ -93,6 +103,10 @@ public class NetworkTask extends Thread
 	        statusCode = -1;
 	        isSuccess = false;
 	        e.printStackTrace();
+		}catch (Exception e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
         
 		//回调通知
@@ -163,6 +177,28 @@ public class NetworkTask extends Thread
         }
         
         return null;
+	}
+	
+	/**
+	 * 循环读取数据流
+	 * @param inStream
+	 * @return
+	 * @throws Exception
+	 */
+	public static byte[] readStream(InputStream inStream) throws Exception
+	{
+		ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+		
+		byte[] buffer = new byte[CONTENT_READ_SIZE];
+			
+		int len = -1;
+		if ((len = inStream.read(buffer)) != -1)
+		{
+			outStream.write(buffer, 0, len);
+		} 
+		outStream.close();
+		inStream.close();
+		return outStream.toByteArray();
 	}
 	
 

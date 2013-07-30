@@ -1,6 +1,5 @@
 package com.heme.commonlogic.servermanager;
 
-import java.nio.ByteBuffer;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
@@ -21,7 +20,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
 	private final static String HOSTSTR = "202.96.170.123";
-	private final static int PORT = 8080;
+	private final static int PORT = 18080;
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {
 			g_Instance = new ServerManager();
