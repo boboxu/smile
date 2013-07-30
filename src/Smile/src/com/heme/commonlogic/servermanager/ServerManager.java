@@ -11,6 +11,7 @@ import android.util.Log;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
 import com.heme.foundation.net.INetworkEngineListener;
+import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
 import com.heme.foundation.net.NetworkResponse;
 
@@ -42,6 +43,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 		}
 		//构造连接，到net模块了
 		NetworkRequest networkRequest = new NetworkRequest(HOSTSTR, PORT, request.getmDataBuffer(), this);
+		NetworkEngine.getEngine().sendNetworkRequest(networkRequest);
 //		//测试代码begin，直接调用回掉看看
 //		String requestClassName = request.getClass().getName();
 //		StringBuilder sbBuilder = new StringBuilder();
@@ -86,6 +88,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 		request.setmRequest(networkRequest);
 		//保存起来
 		addRequest(request);
+		
 		return 0;
 	}
 
