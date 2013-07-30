@@ -19,6 +19,8 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
+	private final static String HOSTSTR = "202。96.170.123";
+	private final static int PORT = 8080;
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {
 			g_Instance = new ServerManager();
@@ -39,47 +41,49 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			return -1;
 		}
 		//构造连接，到net模块了
-		//测试代码begin，直接调用回掉看看
-		String requestClassName = request.getClass().getName();
-		StringBuilder sbBuilder = new StringBuilder();
-		String responseClassName = sbBuilder.append(requestClassName.substring(0,requestClassName.indexOf("Request"))).append("Response").toString();
-		BaseResponse response = null;
-		try
-		{
-			@SuppressWarnings("unchecked")
-			Class<BaseResponse> responseClass = (Class<BaseResponse>) Class
-			        .forName(responseClassName);
-			try
-			{
-				response = responseClass.newInstance();
-				response.setmDataBuffer(null);
-			}
-			catch (IllegalAccessException e)
-			{
-				e.printStackTrace();
-			}
-			catch (InstantiationException e)
-			{
-				e.printStackTrace();
-			}
-		}
-		catch (ClassNotFoundException e)
-		{
-			e.printStackTrace();
-
-			//找不到响应类
-			response = new BaseResponse();		
-			response.setmRequest(request);
-			
-			ProtoError error = new ProtoError(ProtoError.ERRCODE_ERRRESPONSENAME, "");
-			response.setmError(error);	
-		}
-		response.setmRequest(request); 
-		request.getmRequestListener().onRequestSuccess(response);
-		//测试代码end
+		NetworkRequest networkRequest = new NetworkRequest(HOSTSTR, PORT, request.getmDataBuffer(), this);
+//		//测试代码begin，直接调用回掉看看
+//		String requestClassName = request.getClass().getName();
+//		StringBuilder sbBuilder = new StringBuilder();
+//		String responseClassName = sbBuilder.append(requestClassName.substring(0,requestClassName.indexOf("Request"))).append("Response").toString();
+//		BaseResponse response = null;
+//		try
+//		{
+//			@SuppressWarnings("unchecked")
+//			Class<BaseResponse> responseClass = (Class<BaseResponse>) Class
+//			        .forName(responseClassName);
+//			try
+//			{
+//				response = responseClass.newInstance();
+//				response.setmDataBuffer(null);
+//			}
+//			catch (IllegalAccessException e)
+//			{
+//				e.printStackTrace();
+//			}
+//			catch (InstantiationException e)
+//			{
+//				e.printStackTrace();
+//			}
+//		}
+//		catch (ClassNotFoundException e)
+//		{
+//			e.printStackTrace();
+//
+//			//找不到响应类
+//			response = new BaseResponse();		
+//			response.setmRequest(request);
+//			
+//			ProtoError error = new ProtoError(ProtoError.ERRCODE_ERRRESPONSENAME, "");
+//			response.setmError(error);	
+//		}
+//		response.setmRequest(request); 
+//		request.getmRequestListener().onRequestSuccess(response);
+//		//测试代码end
 		
 		//赋予ID
 		request.setmRequestID(mRequestIdGenerator.generateRequestId());
+		request.setmRequest(networkRequest);
 		//保存起来
 		addRequest(request);
 		return 0;
