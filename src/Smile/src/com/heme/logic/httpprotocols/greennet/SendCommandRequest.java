@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.PcCtrlReq;
 
 public class SendCommandRequest extends BaseLoginedBusinessRequest {
+	public SendCommandRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	public enum COMMANDTYPE
 	{
 		CmdReboot,	//重启

@@ -6,6 +6,11 @@ import com.heme.logic.module.Data.DelGroupReq;
 public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 	//删除群
 
+	public DeleteGroupRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((DelGroupReq.Builder)mDataBuilder).setSessionId(sessionId);

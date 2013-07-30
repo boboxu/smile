@@ -4,6 +4,7 @@ import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
+import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
 import com.heme.logic.httpprotocols.login.LoginRequest.LOGINTYPE;
@@ -15,11 +16,12 @@ public class LoginManager extends BaseBusinessLogicManager implements
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
-		// 取出数据来写数据库
+		LoginResponse logresponse = (LoginResponse) response;
+		LogicManager.accountManager().setCurrentAccount(logresponse.getLoginRsp());
 
 		if (null != handler) {
 			handleresponse(Constans.LOGIN_SUCCESS,
-					((LoginResponse) response).getLoginRsp(), handler);
+					logresponse.getLoginRsp(), handler);
 		}
 	}
 

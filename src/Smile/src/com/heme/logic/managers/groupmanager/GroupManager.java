@@ -4,9 +4,9 @@ import java.util.List;
 
 import android.os.Handler;
 
-import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
+import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.groupinfo.creategroup.permanent.CreatePermanentGroupRequest.VERIFYTYPE;
 import com.heme.logic.httpprotocols.groupinfo.getgroup.GetGroupInfoRequest;
@@ -40,7 +40,7 @@ public class GroupManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void getGroupInfo(List<Integer> groupIdList, Handler handler) {
-		GetGroupInfoRequest request = new GetGroupInfoRequest();
+		GetGroupInfoRequest request = new GetGroupInfoRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
 		request.setGroupId(groupIdList);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -49,6 +49,39 @@ public class GroupManager extends BaseBusinessLogicManager implements
 	public void createPermanentGroup(AreaInfo areaInfo,
 			SchoolCombine schoolInfo, String groupName, VERIFYTYPE type,
 			List<Long> targetIdList, Handler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void createTempGroup(String groupName, List<Long> systemIdList,
+			Handler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void updateGroupName(String groupName, int groupId, Handler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delGroup(int groupId, Handler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addMemberToGroup(int groupId, List<Long> memberIdList,
+			Handler handler) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void delMemberInGroup(int groupId, List<Long> memberIdList,
+			Handler handler) {
 		// TODO Auto-generated method stub
 		
 	}

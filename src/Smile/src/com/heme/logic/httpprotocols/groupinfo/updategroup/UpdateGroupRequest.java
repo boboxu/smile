@@ -9,6 +9,11 @@ import com.heme.logic.module.Data.SetGroupNameReq;
  */
 public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 
+	public UpdateGroupRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((SetGroupNameReq.Builder)mDataBuilder).setSessionId(sessionId);

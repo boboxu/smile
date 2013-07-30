@@ -6,6 +6,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.GetUserInfoReq;
 
 public class GetUserInfoRequest extends BaseLoginedBusinessRequest {
+	public GetUserInfoRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((GetUserInfoReq.Builder)mDataBuilder).setSessionId(sessionId);

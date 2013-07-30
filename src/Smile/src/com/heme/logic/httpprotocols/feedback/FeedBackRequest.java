@@ -5,6 +5,11 @@ import com.heme.logic.module.Data.SendFeedbackReq;
 
 public class FeedBackRequest extends BaseLoginedBusinessRequest {
 
+	public FeedBackRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		
+	}
+
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
 		((SendFeedbackReq.Builder) mDataBuilder).setClientType(clientType);

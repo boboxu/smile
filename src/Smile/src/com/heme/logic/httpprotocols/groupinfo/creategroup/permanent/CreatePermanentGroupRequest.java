@@ -6,6 +6,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.CreateFixedGroupReq;
 
 public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
+	public CreatePermanentGroupRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	//创建群的验证类型
 	public enum VERIFYTYPE
 	{

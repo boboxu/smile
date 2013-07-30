@@ -1,8 +1,5 @@
 package com.heme.smile;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -20,7 +17,6 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
-import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";

@@ -6,6 +6,7 @@ import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginResponse extends BaseBusinessResponse {
 	private LoginRsp mLoginrsp;
+	
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
@@ -15,5 +16,10 @@ public class LoginResponse extends BaseBusinessResponse {
 	public LoginRsp getLoginRsp()
 	{
 		return mLoginrsp;
+	}	
+	
+	public void setmLoginrsp(LoginRsp mLoginrsp) {
+		this.mLoginrsp = mLoginrsp;
 	}
+
 }

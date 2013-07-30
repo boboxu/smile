@@ -5,6 +5,11 @@ import com.heme.logic.module.Data.SetSignatureReq;
 
 public class UpdateSignatureRequest extends BaseLoginedBusinessRequest {
 
+	public UpdateSignatureRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((SetSignatureReq.Builder)mDataBuilder).setSessionId(sessionId);

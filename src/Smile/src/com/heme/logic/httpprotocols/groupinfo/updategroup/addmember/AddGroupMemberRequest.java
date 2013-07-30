@@ -6,6 +6,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.AddGroupMemberReq;
 
 public class AddGroupMemberRequest extends BaseLoginedBusinessRequest {
+	public AddGroupMemberRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	//增加群好友
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {

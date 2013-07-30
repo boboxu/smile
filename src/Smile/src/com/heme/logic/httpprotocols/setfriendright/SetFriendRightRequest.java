@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetFriendRightReq;
 
 public class SetFriendRightRequest extends BaseLoginedBusinessRequest {
+	public SetFriendRightRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	// 自己验证类型
 	public enum VERIFYTYPE {
 		ANYONEPERMITTED, // 允许任何人

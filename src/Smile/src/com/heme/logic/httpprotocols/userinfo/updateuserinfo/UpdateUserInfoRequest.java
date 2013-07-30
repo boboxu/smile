@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetSelfInfoReq;
 
 public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
+	public UpdateUserInfoRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	public enum SEXTYPE {
 		FEMALE, // 女
 		MALE, // 男

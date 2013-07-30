@@ -6,6 +6,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.GetGroupInfoReq;
 
 public class GetGroupInfoRequest extends BaseLoginedBusinessRequest {
+	public GetGroupInfoRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	//获取群信息
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {

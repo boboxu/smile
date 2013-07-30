@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.FriendVerifyMsgReq;
 
 public class AddFriendRequest extends BaseLoginedBusinessRequest {
+	public AddFriendRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	// 带验证信息或者不带验证信息，都走这个request
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {

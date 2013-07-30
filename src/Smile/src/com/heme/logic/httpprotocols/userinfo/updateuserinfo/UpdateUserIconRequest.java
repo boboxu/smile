@@ -5,6 +5,11 @@ import com.heme.logic.module.Data.SetUserIconReq;
 
 public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 
+	public UpdateUserIconRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((SetUserIconReq.Builder)mDataBuilder).setSessionId(sessionId);

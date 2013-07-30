@@ -6,6 +6,11 @@ import com.heme.logic.module.Data.ApplySocialGroupReq;
 public class HandleGroupAskRequest extends BaseLoginedBusinessRequest {
 	// 只有社区群才有这个同意加入群的功能
 
+	public HandleGroupAskRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((ApplySocialGroupReq.Builder)mDataBuilder).setSessionId(sessionId);

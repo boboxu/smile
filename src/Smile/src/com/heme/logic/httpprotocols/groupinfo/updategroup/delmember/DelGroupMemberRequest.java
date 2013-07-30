@@ -6,6 +6,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.DelGroupMemberReq;
 
 public class DelGroupMemberRequest extends BaseLoginedBusinessRequest {
+	public DelGroupMemberRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	//删除群好友
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {

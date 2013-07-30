@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetStatusReq;
 
 public class UpdateStatusRequest extends BaseLoginedBusinessRequest {
+	public UpdateStatusRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	public enum USERSTATUS {
 		StatusOnLine, StatusOffLine, StatusHide;
 		public static int value(USERSTATUS type) {

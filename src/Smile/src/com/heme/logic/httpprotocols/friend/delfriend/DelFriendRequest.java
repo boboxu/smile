@@ -4,6 +4,11 @@ import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.DelFriendReq;
 
 public class DelFriendRequest extends BaseLoginedBusinessRequest {
+	public DelFriendRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		// TODO Auto-generated constructor stub
+	}
+
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
 		((DelFriendReq.Builder) mDataBuilder).setSessionId(sessionId);
