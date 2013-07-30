@@ -20,7 +20,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
-	private final static String HOSTSTR = "202。96.170.123";
+	private final static String HOSTSTR = "202.96.170.123";
 	private final static int PORT = 8080;
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {

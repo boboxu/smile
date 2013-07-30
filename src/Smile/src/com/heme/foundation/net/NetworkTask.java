@@ -53,9 +53,12 @@ public class NetworkTask extends Thread
 		initSocketParam();
 	
         int requestId = mRequest.getmId();
-        int statusCode = HttpStatus.SC_BAD_REQUEST;
+        int statusCode = -1;
         boolean isSuccess = false;
         String resultData = null;
+        		
+		Log.d(TAG, "start tcp request:" + mRequest.getmHost() + ":" + mRequest.getmPort()
+				+ ",data:{" + mRequest.getmSendBytes().toString() + "}");
         
         try
 		{
@@ -66,7 +69,7 @@ public class NetworkTask extends Thread
 			OutputStream ops = socket.getOutputStream();
 			
 			byte[] sendBytes = mRequest.getmSendBytes();
-			
+
 			ops.write(sendBytes);
 			
 			ops.flush();
@@ -74,7 +77,7 @@ public class NetworkTask extends Thread
 			//接收数据
 			
 			InputStream ips = socket.getInputStream();
-			
+
 			byte[] recvBytes = new byte[CONTENT_READ_SIZE];
 			
 			ips.read(recvBytes);
@@ -87,19 +90,11 @@ public class NetworkTask extends Thread
 			e.printStackTrace();
 		} catch (IOException e)
 		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+	        statusCode = -1;
+	        isSuccess = false;
+	        e.printStackTrace();
 		}
         
-		//发送请求
-        
-		//循环读取内容
-
-  
-        statusCode = HttpStatus.SC_BAD_REQUEST;
-        isSuccess = false;
-        	
-		
 		//回调通知
         Bundle bundle = new Bundle();
         bundle.putInt(NetworkHandler.BUNDLE_KEY_REQUEST_ID, requestId);

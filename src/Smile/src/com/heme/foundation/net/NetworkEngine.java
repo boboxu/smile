@@ -217,7 +217,7 @@ public class NetworkEngine implements INetworkEngineInterface
                 {
 //		            String responseString = bundle.getString(BUNDLE_KEY_DATA);
 	            	byte[] dataArray = bundle.getByteArray(BUNDLE_KEY_DATA);
-		            
+		            response.setmDataBytes(dataArray);
 		            request.mDelegate.onRequestSuccess(response, dataArray);
                 }
 	            else 
