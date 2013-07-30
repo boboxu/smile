@@ -1,41 +1,69 @@
+
 package com.heme.foundation.net;
 
-import java.util.Dictionary;
+import java.nio.ByteBuffer;
 
-import com.ning.http.client.Response;
-
+/**
+ * @author ottozheng
+ *
+ */
 public class NetworkResponse
 {
-	public Response mResponse = null;
-	public NetworkRequest mRequest = null;
-	public int mStatusCode = 0;
-	public Dictionary<String,String> mHeaderFieldDictionary = null;
+	protected NetworkRequest mRequest;	
+	protected int mStatusCode;
+	protected ByteBuffer mDataBuffer;
 	
-	public NetworkResponse(int code, Dictionary<String, String> headers)
+	/**
+	 * 
+	 */
+    public NetworkResponse(NetworkRequest request, int status)
+    {
+    	mRequest = request;
+    	mStatusCode = status;
+    }
+
+	/**
+	 * @return the mRequest
+	 */
+	public NetworkRequest getmRequest()
 	{
-		super();
-		mHeaderFieldDictionary = headers;
-		mStatusCode = code;
+		return mRequest;
 	}
-	
-	public NetworkResponse()
+
+	/**
+	 * @param mRequest the mRequest to set
+	 */
+	public void setmRequest(NetworkRequest mRequest)
 	{
-		super();
+		this.mRequest = mRequest;
 	}
-	
-	public Dictionary<String,String> allHeaderFields()
-	{
-		return mHeaderFieldDictionary;
-	}
-	
-	public int statusCode()
+
+	/**
+	 * @return the mStatusCode
+	 */
+	public int getmStatusCode()
 	{
 		return mStatusCode;
 	}
-	
-	static public String localizedStringForStatusCode(int statusCode)
+
+	/**
+	 * @param mStatusCode the mStatusCode to set
+	 */
+	public void setmStatusCode(int mStatusCode)
 	{
-		return null;
+		this.mStatusCode = mStatusCode;
 	}
 
+	public ByteBuffer getmDataBuffer()
+	{
+		return mDataBuffer;
+	}
+
+	public void setmDataBuffer(ByteBuffer mDataBuffer)
+	{
+		this.mDataBuffer = mDataBuffer;
+	}
+	
+	
+	
 }
