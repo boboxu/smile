@@ -1,5 +1,6 @@
 package com.heme.logic.managers.friendmanager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Handler;
@@ -63,7 +64,6 @@ public class FriendManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void addFriend(long systemId, String verifyMsg, Handler handler) {
-		// TODO Auto-generated method stub
 		
 	}
 
@@ -77,6 +77,15 @@ public class FriendManager extends BaseBusinessLogicManager implements
 	public void delFriend(long systemId, Handler handler) {
 		// TODO Auto-generated method stub
 		
+	}
+
+	@Override
+	public void getFriendInfo(Long systemId, Handler handler) {
+		GetUserInfoRequest request = new GetUserInfoRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
+		List<Long> systemIdList = new ArrayList<Long>();
+		systemIdList.add(systemId);
+		request.setTargetId(systemIdList);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 }

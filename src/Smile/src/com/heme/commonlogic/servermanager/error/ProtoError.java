@@ -13,6 +13,7 @@ public class ProtoError extends BaseError {
 	{
 		super(errcode, "");
 	}
+	
 	public static int ERRCODE_NORESPONSE_CONTENT = 1;
 	public static int ERRCODE_ERRRESPONSENAME = 2;
 	public static int ERRCODE_INVALID_PROTOBUFFER = 3;

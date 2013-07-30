@@ -193,8 +193,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			return;
 		}
 
-		BaseResponse response = new BaseResponse();
-		response.setmRequest(baseRequest);
+		BaseResponse response = parseRequestToResponse(baseRequest, netresponse.getmDataBytes());
 		response.setmRet(BaseResponse.RET_ERROR);
 		
 		ProtoError error = new ProtoError(errorCode);
@@ -211,20 +210,6 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	        byte[] responseData)
 	{
 		BaseResponse response = null;
-		
-		if (responseData == null)
-		{
-			//返回数据为空
-			response = new BaseResponse();
-			response.setmRequest(request);
-
-			ProtoError error = new ProtoError(
-					ProtoError.ERRCODE_NORESPONSE_CONTENT, "");
-			response.setmError(error);
-			
-			return response;
-		}
-
 		StringBuilder sbBuilder = new StringBuilder();
 		String requestClassName = request.getClass().getName();
 		String responseClassName = sbBuilder.append(requestClassName.substring(0,requestClassName.indexOf("Request"))).append("Response").toString();
@@ -237,7 +222,16 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			try
 			{
 				response = responseClass.newInstance();
-				response.setmDataBuffer(responseData);
+				response.setmRequest(request);
+				if (responseData == null)
+				{
+					//返回数据为空
+					ProtoError error = new ProtoError(
+							ProtoError.ERRCODE_NORESPONSE_CONTENT, "");
+					response.setmError(error);
+				}
+				else
+					response.setmDataBuffer(responseData);
 			}
 			catch (IllegalAccessException e)
 			{

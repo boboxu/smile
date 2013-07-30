@@ -1,5 +1,7 @@
 package com.heme.smile;
 
+import java.util.List;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -17,6 +19,7 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
+import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";
@@ -28,6 +31,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
+			dismissDialog();
 			switch (msg.what) {
 			case Constans.LOGIN_SUCCESS:
 
@@ -35,12 +39,24 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 //				long systemId = resp.getSystemId();
 //				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
 //				List<java.lang.Integer> groupList = resp.getGroupIdList();
+//				friendIdList.add(systemId);
+//				LogicManager.friendManager().getFriendInfo(friendIdList, mHandler);
+//				LogicManager.groupManager().getGroupInfo(groupList, mHandler);
 				//然后就可以用了
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 				break;
-
+			case Constans.LOGIN_FAILED:
+				Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+				break;
+			case Constans.GET_USERINFO_SUCCESS:
+				
+				break;
+				
+			case Constans.GET_GROUPINFO_SUCCESS:
+				
+				break;
 			default:
 				break;
 			}

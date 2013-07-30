@@ -8,6 +8,7 @@ import android.util.Log;
 import com.heme.logic.managers.accountmanager.AccountManager;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.managers.friendmanager.FriendManager;
+import com.heme.logic.managers.groupmanager.GroupManager;
 import com.heme.logic.managers.loginmanager.LoginManager;
 
 public class LogicManager {
@@ -65,5 +66,10 @@ public class LogicManager {
 	public static FriendManager friendManager()
 	{
 		return (FriendManager) findManager(FriendManager.class);
+	}
+	
+	public static GroupManager groupManager()
+	{
+		return (GroupManager) findManager(GroupManager.class);
 	}
 }

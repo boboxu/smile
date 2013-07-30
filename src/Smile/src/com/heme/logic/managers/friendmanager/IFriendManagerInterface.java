@@ -11,6 +11,7 @@ public interface IFriendManagerInterface extends
 	public void getFriendInfo(List<Long> systemIdList,Handler handler);
 	public void getVerboseFriendInfo(List<Long> systemIdList,Handler handler);
 	public void addFriend(long systemId,String verifyMsg,Handler handler);
+	public void getFriendInfo(Long systemId,Handler handler);
 	/***
 	 * 
 	 * @param systemId 目标ID

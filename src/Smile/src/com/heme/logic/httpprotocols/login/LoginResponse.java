@@ -21,5 +21,4 @@ public class LoginResponse extends BaseBusinessResponse {
 	public void setmLoginrsp(LoginRsp mLoginrsp) {
 		this.mLoginrsp = mLoginrsp;
 	}
-
 }
