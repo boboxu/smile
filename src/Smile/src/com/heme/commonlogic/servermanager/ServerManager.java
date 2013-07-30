@@ -143,8 +143,8 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	}
 
 	@Override
-	public void onRequestSuccess(NetworkResponse netresponse, ByteBuffer data) {
-		Log.d(TAG,"finish data"+(new String(data.array())));
+	public void onRequestSuccess(NetworkResponse netresponse, byte[] data) {
+		Log.d(TAG,"finish data"+(new String(data)));
 
 		BaseRequest baseRequest = getRequestFromMap(netresponse.getmRequest());
 		if (baseRequest == null)
@@ -201,7 +201,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	
 	//根据
 	private BaseResponse parseRequestToResponse(BaseRequest request,
-	        ByteBuffer responseData)
+	        byte[] responseData)
 	{
 		BaseResponse response = null;
 		
@@ -230,7 +230,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			try
 			{
 				response = responseClass.newInstance();
-				response.setmDataBuffer(responseData.array());
+				response.setmDataBuffer(responseData);
 			}
 			catch (IllegalAccessException e)
 			{
