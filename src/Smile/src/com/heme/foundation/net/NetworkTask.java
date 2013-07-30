@@ -5,6 +5,9 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.net.Socket;
+import java.net.UnknownHostException;
 
 import org.apache.http.HttpStatus;
 
@@ -54,7 +57,39 @@ public class NetworkTask extends Thread
         boolean isSuccess = false;
         String resultData = null;
         
-
+        try
+		{
+			Socket socket = new Socket(mRequest.getmHost(), mRequest.getmPort());
+			
+			//发送数据
+			
+			OutputStream ops = socket.getOutputStream();
+			
+			byte[] sendBytes = mRequest.getmSendBytes();
+			
+			ops.write(sendBytes);
+			
+			ops.flush();
+			
+			//接收数据
+			
+			InputStream ips = socket.getInputStream();
+			
+			byte[] recvBytes = new byte[CONTENT_READ_SIZE];
+			
+			ips.read(recvBytes);
+			
+			Log.d(TAG, recvBytes.toString());
+			
+		} catch (UnknownHostException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
         
 		//发送请求
         
