@@ -2,12 +2,13 @@ package com.heme.logic.managers.greennetmanager;
 
 import android.os.Handler;
 
-import com.heme.commonlogic.logicmanager.IBaseLogicManagerListener;
 import com.heme.commonlogic.servermanager.BaseResponse;
+import com.heme.logic.LogicManager;
 import com.heme.logic.httpprotocols.greennet.SendCommandRequest;
+import com.heme.logic.httpprotocols.greennet.SendCommandRequest.COMMANDTYPE;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 
-public class GreenNetManager extends BaseBusinessLogicManager {
+public class GreenNetManager extends BaseBusinessLogicManager implements IGreenNetManagerInterface{
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response,
@@ -15,29 +16,32 @@ public class GreenNetManager extends BaseBusinessLogicManager {
 		// TODO Auto-generated method stub
 		
 	}
+	
+	private void sendCommand(SendCommandRequest.COMMANDTYPE commandType,Handler handler)
+	{
+		SendCommandRequest request = new SendCommandRequest(LogicManager.accountManager().getCurrentSessionId(), LogicManager.accountManager().getCurrentAccoutSystemId());
+		request.setCommandInfo(commandType);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	}
 
-	public void sendRebootCommand()
-	{
+	@Override
+	public void sendRebootCommand(Handler handler) {
+		this.sendCommand(COMMANDTYPE.CmdReboot, handler);
+	}
+
+	@Override
+	public void sendShutdownCommand(Handler handler) {
+		this.sendCommand(COMMANDTYPE.CmdShutDown, handler);
 		
 	}
-	
-	public void sendShutdownCommand()
-	{
-		
+
+	@Override
+	public void sendCloseProcessCommand(Handler handler) {
+		this.sendCommand(COMMANDTYPE.CmdCloseProcess, handler);
 	}
-	
-	public void sendCloseProcessCommand()
-	{
-		
-	}
-	
-	public void sendInterceptCommand()
-	{
-		
-	}
-	
-	private void sendCommand(SendCommandRequest.COMMANDTYPE commandType)
-	{
-		
+
+	@Override
+	public void sendInterceptCommand(Handler handler) {
+		this.sendCommand(COMMANDTYPE.CmdIntercept, handler);
 	}
 }

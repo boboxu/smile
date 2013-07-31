@@ -1,9 +1,14 @@
 package com.heme.logic.httpprotocols.password.modifypwd;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetPasswdReq;
 
-public class ModifyPwdRequest extends BaseBusinessRequest {
+public class ModifyPwdRequest extends BaseLoginedBusinessRequest {
+
+	public ModifyPwdRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
+		
+	}
 
 	@Override
 	public void setVersionAndClientType(int version, int clientType) {
@@ -21,6 +26,12 @@ public class ModifyPwdRequest extends BaseBusinessRequest {
 	@Override
 	public void initmDataBuilder() {
 		mDataBuilder = SetPasswdReq.newBuilder();
+	}
+
+	@Override
+	protected void setLoginedInfo(String sessionId, long systemId) {
+		((SetPasswdReq.Builder)mDataBuilder).setSessionId(sessionId);
+		((SetPasswdReq.Builder)mDataBuilder).setSystemId(systemId);
 	}
 
 }

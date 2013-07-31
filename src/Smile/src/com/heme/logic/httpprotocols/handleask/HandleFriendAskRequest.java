@@ -27,4 +27,8 @@ public class HandleFriendAskRequest extends BaseLoginedBusinessRequest {
 		
 	}
 
+	public void setTargetId(long systemId)
+	{
+		
+	}
 }

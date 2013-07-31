@@ -7,7 +7,6 @@ public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 
 	public UpdateFriendRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override

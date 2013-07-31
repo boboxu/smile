@@ -9,11 +9,18 @@ import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
+import com.heme.logic.httpprotocols.friend.addfriend.AddFriendRequest;
+import com.heme.logic.httpprotocols.friend.addfriend.AddFriendResponse;
+import com.heme.logic.httpprotocols.friend.delfriend.DelFriendRequest;
+import com.heme.logic.httpprotocols.friend.delfriend.DelFriendResponse;
+import com.heme.logic.httpprotocols.friend.updatefriend.UpdateFriendRequest;
+import com.heme.logic.httpprotocols.friend.updatefriend.UpdateFriendResponse;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetUserInfoRequest;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetUserInfoResponse;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetVerboseUserInfoRequest;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetVerboseUserInfoResponse;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
+import com.heme.logic.module.Data.DelFriendReq;
 
 public class FriendManager extends BaseBusinessLogicManager implements
 		IFriendManagerInterface {
@@ -30,6 +37,15 @@ public class FriendManager extends BaseBusinessLogicManager implements
 					((GetVerboseUserInfoResponse) response).getmGetVerboseInfoRsp(),
 					handler);
 		}
+		else if (response instanceof AddFriendResponse) {
+			
+		}
+		else if (response instanceof DelFriendResponse) {
+			
+		}
+		else if (response instanceof UpdateFriendResponse) {
+			
+		}
 	}
 
 	@Override
@@ -44,6 +60,15 @@ public class FriendManager extends BaseBusinessLogicManager implements
 			handleresponse(Constans.GET_VERBOSEUSERINFO_FAILED,
 					((GetVerboseUserInfoResponse) response).getmGetVerboseInfoRsp(),
 					handler);
+		}
+		else if (response instanceof AddFriendResponse) {
+			
+		}
+		else if (response instanceof DelFriendResponse) {
+			
+		}
+		else if (response instanceof UpdateFriendResponse) {
+			
 		}
 		return super.onFailedResponse(response, handler);
 	}
@@ -64,19 +89,23 @@ public class FriendManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void addFriend(long systemId, String verifyMsg, Handler handler) {
-		
+		AddFriendRequest request = new AddFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
+		request.setVerifyInfo(systemId, verifyMsg);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void updateFriendRemark(long systemId, String remark, Handler handler) {
-		// TODO Auto-generated method stub
-		
+		UpdateFriendRequest request = new UpdateFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
+		request.setFriendDescription(systemId, remark);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void delFriend(long systemId, Handler handler) {
-		// TODO Auto-generated method stub
-		
+		DelFriendRequest request = new DelFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
+		request.setTargetSystemId(systemId);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override

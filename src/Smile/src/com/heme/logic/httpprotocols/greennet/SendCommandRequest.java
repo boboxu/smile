@@ -12,7 +12,7 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 	public enum COMMANDTYPE
 	{
 		CmdReboot,	//重启
-		CmdShutDonw,//关机
+		CmdShutDown,//关机
 		CmdCloseProcess,//关闭进程
 		CmdIntercept;//信息拦截
 		public static int value(COMMANDTYPE type)
@@ -20,7 +20,7 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 			switch (type) {
 			case CmdReboot:
 				return 1;
-			case CmdShutDonw:
+			case CmdShutDown:
 				return 2;
 			case CmdCloseProcess:
 				return 3;
