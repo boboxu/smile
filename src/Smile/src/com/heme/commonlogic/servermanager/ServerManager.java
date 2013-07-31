@@ -170,14 +170,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			response.setmError(new ProtoError(ProtoError.ERRCODE_INVALID_PROTOBUFFER,e.getMessage()));
 		}
 
-		if (response.getmRet() == BaseResponse.RET_SUCCESS)
-		{
-			baseRequest.getmRequestListener().onRequestSuccess(response);
-		}
-		else
-		{
-			baseRequest.getmRequestListener().onRequestFail(response);
-		}
+		baseRequest.getmRequestListener().onRequestSuccess(response);
 
 		delRequest(baseRequest.getmRequestID());
 		

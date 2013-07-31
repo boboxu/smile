@@ -17,20 +17,22 @@ public class LoginManager extends BaseBusinessLogicManager implements
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
 		LoginResponse logresponse = (LoginResponse) response;
-		LogicManager.accountManager().setCurrentAccount(logresponse.getLoginRsp());
-
-		if (null != handler) {
-			handleresponse(Constans.LOGIN_SUCCESS,
-					logresponse.getLoginRsp(), handler);
+		if (logresponse.getLoginRsp().getErrCode() == 0) {
+			LogicManager.accountManager().setCurrentAccount(
+					logresponse.getLoginRsp());
+			handleresponse(Constans.LOGIN_SUCCESS, logresponse.getLoginRsp(),
+					handler);
+		} else {
+			handleresponse(Constans.LOGIN_FAILED,
+					((LoginResponse) response).getLoginRsp(), handler);
 		}
+
 	}
 
 	@Override
 	protected BaseError onFailedResponse(BaseResponse response, Handler handler) {
-		if (null != handler) {
-			handleresponse(Constans.LOGIN_FAILED,
-					((LoginResponse) response).getLoginRsp(), handler);
-		}
+		handleresponse(Constans.LOGIN_FAILED,
+				((LoginResponse) response).getLoginRsp(), handler);
 		return super.onFailedResponse(response, handler);
 	}
 
