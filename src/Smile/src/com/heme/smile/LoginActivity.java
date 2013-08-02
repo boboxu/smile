@@ -1,7 +1,5 @@
 package com.heme.smile;
 
-import java.util.List;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,7 +17,6 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
-import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";
@@ -109,10 +106,10 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			break;
 		case R.id.regBtn:
 			Intent intent = new Intent();
-			if (Configuration.APP_VERSION==0) {
+			if (Configuration.APP_VERSION==1) {
 				//家长版
 				intent.setClass(LoginActivity.this, AdultRegActivity.class);
-			}else if (Configuration.APP_VERSION==1) {
+			}else if (Configuration.APP_VERSION==2) {
 				//学生版
 //				intent.setClass(LoginActivity.this, AdultRegActivity.class);
 			}

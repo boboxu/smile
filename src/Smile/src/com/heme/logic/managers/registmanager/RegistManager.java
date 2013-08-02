@@ -7,6 +7,7 @@ import android.os.Handler;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.common.Constans;
+import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 import com.heme.logic.httpprotocols.regist.ParentRegistRequest;
 import com.heme.logic.httpprotocols.regist.ParentRegistResponse;
 import com.heme.logic.httpprotocols.regist.StudentRegistRequest;
@@ -18,7 +19,18 @@ import com.heme.logic.module.notpbmessage.AreaInfo;
 
 public class RegistManager extends BaseBusinessLogicManager implements
 		IRegistManagerInterface {
-
+	
+	private String mPhoneNo = null;
+	private String mRealName = null;
+	private String mStudentId = null;
+	private String mPassword = null;
+	private String mIdCardNo = null;
+	private AreaInfo mAreaInfo = null;
+	private com.heme.logic.module.Data.SchoolCombine mSchoolInfo;
+	private ClassCombine mClassInfo;
+	private List<Long> mChildIdList;
+	
+	private BaseBusinessRequest request = null;
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
 		if (response instanceof StudentRegistResponse) 
@@ -49,24 +61,35 @@ public class RegistManager extends BaseBusinessLogicManager implements
 	}
 
 	@Override
-	public void stuRegist(String phoneNo, String realName, String studentId,
+	public void setStuRegInfo(String phoneNo, String realName, String studentId,
 			String password, AreaInfo areainfo, SchoolCombine schoolInfo,
-			ClassCombine classinfo, Handler handler) {
-		StudentRegistRequest request = new StudentRegistRequest();
-		request.setRegProfile(phoneNo, realName, studentId, password,
-				areainfo.getmAreaName(), schoolInfo.getSchoolId(),
-				classinfo.getClassId());
+			ClassCombine classinfo) {
+		request = new StudentRegistRequest();
 
-		sendRequest(request, handler, getClass().getName(), _FUNC_());
+
 	}
 
 	@Override
-	public void parRegist(String phoneNo, String realName, String idCardNo,
-			String password, List<Long> childIdList, String verifyCode,
-			Handler handler) {
-		ParentRegistRequest request = new ParentRegistRequest();
-		request.setRegProfile(phoneNo, realName, idCardNo, password, childIdList, verifyCode);
-		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	public void setParRegInfo(String phoneNo, String realName, String idCardNo,
+			String password, List<Long> childIdList) {
+		request = new ParentRegistRequest();
+		
 	}
 
+	@Override
+	public void startReg(String verifyCode, Handler handler) {
+		if (request instanceof ParentRegistRequest) 
+		{
+			//家长
+			((ParentRegistRequest)request).setRegProfile(mPhoneNo, mRealName, mIdCardNo, mPassword, mChildIdList, verifyCode);
+		}
+		else
+		{
+			//学生
+			((StudentRegistRequest)request).setRegProfile(mPhoneNo, mRealName, mStudentId, mPassword,
+					mAreaInfo.getmAreaName(), mSchoolInfo.getSchoolId(),
+					mClassInfo.getClassId());
+		}
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	}
 }

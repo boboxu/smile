@@ -12,6 +12,7 @@ import com.heme.logic.module.notpbmessage.AreaInfo;
 public interface IRegistManagerInterface extends
 		IBaseBusinessLogicManagerInterface {
 	
-	public void stuRegist(String phoneNo,String realName,String studentId,String password,AreaInfo areainfo,SchoolCombine schoolInfo,ClassCombine classinfo,Handler handler);
-	public void parRegist(String phoneNo,String realName,String idCardNo,String password,List<Long> childIdList,String verifyCode,Handler handler);
+	public void startReg(String verifyCode,Handler handler);
+	public void setParRegInfo(String phoneNo,String realName,String idCardNo,String password,List<Long> childIdList);
+	public void setStuRegInfo(String phoneNo,String realName,String studentId,String password,AreaInfo areainfo,SchoolCombine schoolInfo,ClassCombine classinfo);
 }

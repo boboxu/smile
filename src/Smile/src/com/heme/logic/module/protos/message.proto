@@ -3,50 +3,83 @@
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PicMsgInfo
 {
-	required bytes     bytes_pic_url = 1;		//图片URL
-	optional bytes     bytes_thumb_url = 2;		//图片缩略图URL
+	required string    str_pic_url = 1;		//图片URL
+	optional string    str_thumb_url = 2;		//图片缩略图URL
 	optional uint32    uint32_size = 3;		//图片文件大小
-	optional bytes     bytes_pic_type = 4;		//图片类型，可选
-	optional uint32    bytes_pic_width = 5;		//图片分辨率x
-	optional uint32    bytes_pic_height = 6;	//图片分辨率y
+	optional string    str_pic_type = 4;		//图片类型，可选
+	optional uint32    uint32_pic_width = 5;	//图片分辨率x
+	optional uint32    uint32_pic_height = 6;	//图片分辨率y
 };
 
 message VoiceMsgInfo
 {
-	required bytes     bytes_voice_url = 1;		//语音URL
+	required string    str_voice_url = 1;		//语音URL
 	optional uint32    uint32_size = 2;		//语音文件大小
 	optional uint32    uint32_duration = 3;		//语音时长
 };
 
 message VideoMsgInfo
 {
-	required bytes     bytes_video_url = 1;		//视频URL
-	optional bytes     bytes_thumb_url = 2;		//视频缩略图URL
+	required string    str_video_url = 1;		//视频URL
+	optional string    str_thumb_url = 2;		//视频缩略图URL
 	optional uint32    uint32_size = 3;		//视频文件大小
 	optional uint32    uint32_duration = 4;		//视频时长
-	optional bytes     bytes_video_format = 5;	//视频格式
-	optional uint32    bytes_video_width = 6;	//视频分辨率x
-	optional uint32    bytes_video_height = 7;	//视频分辨率y
+	optional string    str_video_format = 5;	//视频格式
+	optional uint32    uint32_video_width = 6;	//视频分辨率x
+	optional uint32    uint32_video_height = 7;	//视频分辨率y
 };
+
+//绿色上网助手
+message NetGuardInfo
+{
+	required uint32    uint32_action = 1;		//操作 1:上报 2:重启 3:关机 4:关闭进程 5:信息拦截
+	required uint32    uint32_event_id = 2;         //事件ID
+	optional string    str_ReportInfo = 3;		//上报文本信息
+};
+
+//语音测评
+message VoiceTestInfo
+{
+	required uint32    uint32_action = 1;           //操作 1:提问 2:回答 3:评分
+	optional uint32    string_question = 2;         //问题描述
+	optional VoiceMsgInfo msg_voice_answer = 3;     //语音回答
+	optional string    str_text_answer = 4;         //文字回答
+	optional uint32    uint32_score = 5;            //评分 1:好 2:中 3:差
+	optional uint32    str_comment = 6;             //评语
+};
+
+//课堂信息助手
+message ClassInfo					
+{
+	optional string    str_course = 1;		//科目
+	optional string    str_content = 2;		//内容
+};
+
 
 message CommonMsg
 {
-	required uint32    uint32_from_uid = 1;		//发送方ID
-	required uint32    uint32_to_uid = 2;		//接收方ID
-	required uint32    uint32_msg_type = 3;		//消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
-	required uint32    uint32_content_type = 4;	//媒体类型 0:文本 1:图片 2:语音 3:视频
-	optional bytes     bytes_text_msg = 5;		//文本消息内容	
-	optional PicMsgInfo msg_pic_msg = 6;		//图片消息，媒体类型为1时使用
-	optional VoiceMsgInfo msg_voice_msg = 7;	//语音消息，媒体类型为2时使用
-	optional VideoMsgInfo msg_video_msg = 8;	//视频消息，媒体类型为3时使用
-	optional uint32    uint32_time = 9;		//发送方终端当前时间
+	required uint64    uint64_from_uid = 1;		//发送方ID
+	repeated uint64    uint64_to_uid = 2;		//接收方用户ID，0-N个，一般为1个，发送语音测评消息时可以指定多个接收用户
+	repeated uint64    uint64_to_gid = 3;		//接收方群ID 
+	required uint32    uint32_msg_type = 4;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
+	required uint32    uint32_content_type = 5;	//媒体类型 0:文本 1:图片 2:语音 3:视频
+	optional string    str_text_msg = 6;		//文本消息内容	
+	optional PicMsgInfo msg_pic_msg = 7;		//图片消息，媒体类型为1时使用
+	optional VoiceMsgInfo msg_voice_msg = 8;	//语音消息，媒体类型为2时使用
+	optional VideoMsgInfo msg_video_msg = 9;	//视频消息，媒体类型为3时使用
+	optional NetGuardInfo msg_moitor_msg = 10;	//绿色上网助手与终端交互消息
+	optional VoiceTestInfo msg_test_msg = 11;       //语音测评消息
+	optional ClassInfo msg_class_info = 12;         //课堂信息
+	optional uint32    uint32_time = 13;		//发送方终端当前时间
 };
 
 message UnReadInfo		//未读消息属性
 {
-	required uint32    uint32_msg_type = 1;		//消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
-	optional uint32    uint32_from_uid = 2;		//发送方ID
-	required uint32    uint32_unread_count = 3;	//未读条数
+	required uint32    uint32_msg_type = 1;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
+	optional uint64    uint64_from_uid = 2;		//发送方ID
+	optional uint64    uint64_to_uid = 3;		//接收方ID, uid
+	optional uint64    uint64_to_gid = 4;		//接收方ID, 群号 (uint64_to_uid/uint64_to_gid两个参数二选一)
+	required uint32    uint32_unread_count = 5;	//未读条数
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -57,12 +90,11 @@ message SendMsgReq
 	required CommonMsg msg_sendmsg = 1;
 };
 
-message SendMsgRsp
+message SendMsgRes
 {
 	required uint32    uint32_result = 1;		//0:成功
 	optional uint32    uint32_peer_status = 2;	//对方状态，仅当发送c2c消息时会返回。
 };
-
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //后台主动推送给终端的通知，不直接推送内容，只推送未读列表，终端收到通知后决定是否拉取。
@@ -70,11 +102,10 @@ message SendMsgRsp
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PushMsgReq
 {
-	required uint32    uint32_uid = 1;		//接收方ID
-	repeated UnReadInfo msg_unread_info = 2;	//未读消息列表
+	repeated UnReadInfo msg_unread_info = 1;	//未读消息列表
 };
 
-message PushMsgRsp
+message PushMsgRes
 {
 	required uint32    uint32_result = 1;		//0:成功
 };
@@ -85,10 +116,10 @@ message PushMsgRsp
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PollUnreadInfoReq
 {
-	required uint32    uint32_uid = 1;		//接收方ID
+	required uint64    uint64_uid = 1;		//接收方ID
 };
 
-message PollUnreadInfoRsp
+message PollUnreadInfoRes
 {
 	repeated UnReadInfo msg_unread_info = 4;	//未读消息列表
 };
@@ -96,23 +127,37 @@ message PollUnreadInfoRsp
 ////////////////////////////////////////////////////////////////////////////////////////////////
 //终端主动拉取消息
 //场景：
-// 1.用户点击进入聊天/公告/家庭作业助手/语音测评页面
+// 1.用户点击进入聊天/公告/课堂信息助手/语音测评页面
 // 2.收到未读消息通知
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PollMsgReq
 {
-	required uint32    uint32_uid = 1;		//接收方ID
-	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
-	optional uint32    uint32_from_uid = 3;		//可选参数，接收消息类型为0(c2c)/1(群消息)时可以提供，如果提供这个参数将只拉取指定用户/群发过来的消息，否则将拉取所有消息
+	required uint64    uint64_uid = 1;		//接收方ID
+	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
+	optional uint64    uint64_from_uid = 3;		//可选参数，接收消息类型为0(c2c)/1(群消息)时可以提供，如果提供这个参数将只拉取指定用户/群发过来的消息，否则将拉取所有消息
 	optional uint32    uint32_time = 4;		//接收方终端当前时间
 };
 
-message PollMsgRsq
+message PollMsgRes
 {
-	required uint32    uint32_uid = 1;		//接收方ID
-	required uint32    uint32_msg_type = 2;		//拉取的消息类型 1:c2c 2:群消息 3:公告 4:家庭作业助手 5:语音测评 6:系统消息
+	required uint64    uint64_uid = 1;		//接收方ID
+	required uint32    uint32_msg_type = 2;		//拉取的消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
 	repeated CommonMsg rpt_msg_pollmsg = 3;		//消息列表
 	optional uint32    uint32_complete_flag = 4;    //拉取完成标志，1表示消息拉取完成，0表示未完成（如果返回内容太多，server有可能分多次返回）
 	repeated UnReadInfo msg_unread_info = 5;	//未读消息列表
 };
 
+message MessageOpr
+{
+	required uint64    uint64_uid = 1;		//用户ID
+	required uint32    uint32_command = 2;		//命令号 1.发送请求 2.发送确认 3.推送请求 4.推送确认 5.拉取请求 6.拉取结果 7.拉取未读列表请求 8.拉取未读列表结果
+
+	optional SendMsgReq msg_send_req = 3;		//uint32_command=1.发送请求
+	optional SendMsgRes msg_send_res = 4;		//uint32_command=2.发送确认
+	optional PushMsgReq msg_push_req = 5;		//uint32_command=3.推送请求
+	optional PushMsgRes msg_push_res = 6;		//uint32_command=4.推送确认
+	optional PollMsgReq msg_poll_req = 7;		//uint32_command=5.拉取请求
+	optional PollMsgRes msg_poll_res = 8;		//uint32_command=6.拉取结果
+	optional PollUnreadInfoReq msg_poll_unread_req = 9;	//uint32_command=7.拉取未读列表请求
+	optional PollUnreadInfoRes msg_poll_unread_res = 10;	//uint32_command=8.拉取未读列表结果
+};
