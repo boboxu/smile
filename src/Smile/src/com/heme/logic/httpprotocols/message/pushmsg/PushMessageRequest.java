@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.message;
+package com.heme.logic.httpprotocols.message.pushmsg;
 
 import java.util.List;
 

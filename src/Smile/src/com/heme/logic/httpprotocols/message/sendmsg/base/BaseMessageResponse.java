@@ -1,4 +1,5 @@
-package com.heme.logic.httpprotocols.base.message;
+package com.heme.logic.httpprotocols.message.sendmsg.base;
+
 
 
 public class BaseMessageResponse extends BaseSendMsgResponse {

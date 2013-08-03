@@ -1,9 +1,9 @@
-package com.heme.logic.httpprotocols.message.greennet;
+package com.heme.logic.httpprotocols.message.sendmsg.greennet;
 
 import java.util.List;
 
 import com.google.protobuf.ByteString;
-import com.heme.logic.httpprotocols.base.message.BaseMessageRequest;
+import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
 import com.heme.logic.module.Message.NetGuardInfo;
 
 public class SendCommandRequest extends BaseMessageRequest {
@@ -34,8 +34,10 @@ public class SendCommandRequest extends BaseMessageRequest {
 		}
 	}
 	
-	protected SendCommandRequest(long systemId, int sessionId,List<Long> mTargetId,List<Long> mTargetGid) {
-		super(systemId,sessionId,mTargetId,mTargetGid,MSGTYPE.TYPENETGUARD,CONTENTTYPE.TYPETEXT);
+	//应该也不需要targetid和targetgid
+	//内容类型又是神马？
+	protected SendCommandRequest(long systemId, int sessionId) {
+		super(systemId,sessionId,null,null,MSGTYPE.TYPENETGUARD);
 	}
 	
 	public void setCommandInfo(COMMANDTYPE type,int eventId,String reportInfo,ByteString context)

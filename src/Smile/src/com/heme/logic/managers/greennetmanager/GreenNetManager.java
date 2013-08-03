@@ -3,9 +3,8 @@ package com.heme.logic.managers.greennetmanager;
 import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
-import com.heme.logic.LogicManager;
-import com.heme.logic.httpprotocols.greennet.SendCommandRequest;
-import com.heme.logic.httpprotocols.greennet.SendCommandRequest.COMMANDTYPE;
+import com.heme.logic.httpprotocols.message.sendmsg.greennet.SendCommandRequest;
+import com.heme.logic.httpprotocols.message.sendmsg.greennet.SendCommandRequest.COMMANDTYPE;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 
 public class GreenNetManager extends BaseBusinessLogicManager implements IGreenNetManagerInterface{

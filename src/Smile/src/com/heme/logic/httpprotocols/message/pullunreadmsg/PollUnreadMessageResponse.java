@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.message;
+package com.heme.logic.httpprotocols.message.pullunreadmsg;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprResponse;

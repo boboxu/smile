@@ -20,7 +20,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		TYPESYSTEM, // 系统消息
 		TYPESOCIALGROUP, // 社区群组
 		TYPENOTICE, // 公告
-		TYPECLASSROOM, // 课堂信息助手
+		TYPECLASSASSIS, // 课堂信息助手
 		TYPEVOICETEST, // 语音测评
 		TYPENETGUARD;// 绿色上网助手
 		public static int value(MSGTYPE type) {
@@ -35,7 +35,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 				return 4;
 			case TYPENOTICE:
 				return 5;
-			case TYPECLASSROOM:
+			case TYPECLASSASSIS:
 				return 6;
 			case TYPEVOICETEST:
 				return 7;
