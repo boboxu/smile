@@ -1,5 +1,6 @@
 package com.heme.logic.httpprotocols.message.sendmsg.greennet;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.google.protobuf.ByteString;
@@ -34,10 +35,8 @@ public class SendCommandRequest extends BaseMessageRequest {
 		}
 	}
 	
-	//应该也不需要targetid和targetgid
-	//内容类型又是神马？
-	protected SendCommandRequest(long systemId, int sessionId) {
-		super(systemId,sessionId,null,null,MSGTYPE.TYPENETGUARD);
+	protected SendCommandRequest(long systemId, int sessionId,List<Long> mTargetId) {
+		super(systemId,sessionId,mTargetId,new ArrayList<Long>(),MSGTYPE.TYPENETGUARD);
 	}
 	
 	public void setCommandInfo(COMMANDTYPE type,int eventId,String reportInfo,ByteString context)
