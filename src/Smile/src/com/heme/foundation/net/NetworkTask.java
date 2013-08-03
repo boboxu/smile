@@ -8,6 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 import java.net.UnknownHostException;
 
 import android.os.Bundle;
@@ -25,9 +26,10 @@ public class NetworkTask extends Thread
 {
 	protected static final String TAG = "NetworkTask";
 	protected static final int CONTENT_READ_SIZE = 8192;
-	protected static final int CONNECTTION_TIMEOUT = 20 * 1000;
-	protected static final int SOCKET_TIMEOUT = 20 * 1000;
-	protected static final int SOCKET_BUF_SIZE = 8192;
+	protected static final int CONNECTTION_TIMEOUT = 10 * 1000;
+
+	protected static final int SOCKET_RECV_TIMEOUT = 3 * 1000;
+	protected static final int SOCKET_RECV_LOOP_INTERVAL = 200;
 	
 	protected NetworkRequest mRequest;
 	protected NetworkHandler mHandler;
@@ -49,11 +51,9 @@ public class NetworkTask extends Thread
 	@Override
 	public void run()
 	{
-		initSocketParam();
-	
+		
         int requestId = mRequest.getmId();
         int statusCode = -1;
-        boolean isSuccess = false;
         String resultData = null;
         		
 		Log.d(TAG, "start tcp request:" + mRequest.getmHost() + ":" + mRequest.getmPort()
@@ -63,14 +63,13 @@ public class NetworkTask extends Thread
 		{
 			Socket socket = new Socket(mRequest.getmHost(), mRequest.getmPort());
 			
+			initSocketParam(socket);
 			//发送数据
 			
 			OutputStream ops = socket.getOutputStream();
 			
 			byte[] sendBytes = mRequest.getmSendBytes();
-
 			ops.write(sendBytes);
-			
 			ops.flush();
 			
 			//接收数据
@@ -78,66 +77,68 @@ public class NetworkTask extends Thread
 			InputStream ips = socket.getInputStream();
 			
 			byte[] recvBytes;
+			recvBytes = recvData(ips);
+					
+			socket.close();
 
-			recvBytes = readStream(ips);
-			
-			Log.d(TAG, recvBytes.toString());
-			
-	        Bundle bundle = new Bundle();
-	        bundle.putInt(NetworkHandler.BUNDLE_KEY_REQUEST_ID, requestId);
-	        bundle.putInt(NetworkHandler.BUNDLE_KEY_STATUS_CODE, 0);
-	        bundle.putBoolean(NetworkHandler.BUNDLE_KEY_SUCCESS, true);
-	        bundle.putByteArray(NetworkHandler.BUNDLE_KEY_DATA, recvBytes);
-			
-	        notifyRusultData(bundle);
-
-	        socket.close();
-	        return;
+			if (recvBytes != null)
+			{
+				Log.d(TAG, recvBytes.toString());
+				
+		        Bundle bundle = new Bundle();
+		        bundle.putInt(NetworkHandler.BUNDLE_KEY_REQUEST_ID, requestId);
+		        bundle.putInt(NetworkHandler.BUNDLE_KEY_STATUS_CODE, 0);
+		        bundle.putBoolean(NetworkHandler.BUNDLE_KEY_SUCCESS, true);
+		        bundle.putByteArray(NetworkHandler.BUNDLE_KEY_DATA, recvBytes);
+				
+		        notifyRusultData(bundle);
+		        
+		        return;
+			}
+			else 
+			{
+				statusCode = NetworkResponse.STATUS_CODE_RECV_TIMEOUT;
+			}
 	        
+			
 		} catch (UnknownHostException e)
 		{
-			// TODO Auto-generated catch block
+        	statusCode = NetworkResponse.STATUS_CODE_UNKNOW_HOST;
+			e.printStackTrace();
+		} catch (SocketTimeoutException e) 
+		{
+        	statusCode = NetworkResponse.STATUS_CODE_CONNECT_TIMEOUT;
 			e.printStackTrace();
 		} catch (IOException e)
 		{
-	        statusCode = -1;
-	        isSuccess = false;
-	        e.printStackTrace();
-		}catch (Exception e)
+			statusCode = NetworkResponse.STATUS_CODE_CONNECT_FAILED;
+			e.printStackTrace();
+		} catch (Exception e)
 		{
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
         
-		//回调通知
+		//回调通知错误
         Bundle bundle = new Bundle();
         bundle.putInt(NetworkHandler.BUNDLE_KEY_REQUEST_ID, requestId);
         bundle.putInt(NetworkHandler.BUNDLE_KEY_STATUS_CODE, statusCode);
-        bundle.putBoolean(NetworkHandler.BUNDLE_KEY_SUCCESS, isSuccess);
+        bundle.putBoolean(NetworkHandler.BUNDLE_KEY_SUCCESS, false);
         bundle.putString(NetworkHandler.BUNDLE_KEY_DATA, resultData);
 
         notifyRusultData(bundle);
 
-        //关闭连接:TODO
 	}
+	
+	
 	
 	/**
 	 * 初始化网络参数
 	 */
-	protected void initSocketParam()
+	protected void initSocketParam(Socket socket) throws Exception
     {
-
-		//TODO
-		
+		socket.setKeepAlive(true);
+		socket.setSoTimeout(CONNECTTION_TIMEOUT);
     }
-	
-	/**
-	 * 发送请求
-	 * @param request
-	 * @return
-	 * @throws IOException
-	 */
-	//TODO
 	
 	/**
 	 * 循环读取请求返回数据
@@ -201,6 +202,27 @@ public class NetworkTask extends Thread
 		return outStream.toByteArray();
 	}
 	
+	public static byte[] recvData(InputStream inputStream) throws Exception
+	{
+		
+		int count = 0;
+		int times = 0;
+		while (count == 0)
+		{
+			count = inputStream.available();
+			sleep(SOCKET_RECV_LOOP_INTERVAL);
+			if (times >= SOCKET_RECV_TIMEOUT / SOCKET_RECV_LOOP_INTERVAL)
+			{
+				return null;
+			}
+		}
+		
+		byte[] buffer = new byte[count];	
+		inputStream.read(buffer);
+		
+		return buffer;
+		
+	}
 
 	/**
 	 * 通知handler
@@ -208,6 +230,8 @@ public class NetworkTask extends Thread
 	 */
     protected void notifyRusultData(Bundle bundle)
     {
+    	
+    	
         if (mHandler != null)
         {
             Message msg = new Message();

@@ -12,6 +12,11 @@ public class NetworkResponse
 	protected int mStatusCode;
 	protected byte[] mDataBytes;
 	
+	public static final int STATUS_CODE_CONNECT_FAILED = 101;
+	public static final int STATUS_CODE_UNKNOW_HOST = 102;
+	public static final int STATUS_CODE_CONNECT_TIMEOUT = 103;
+	public static final int STATUS_CODE_RECV_TIMEOUT = 104;
+
 	/**
 	 * 
 	 */
