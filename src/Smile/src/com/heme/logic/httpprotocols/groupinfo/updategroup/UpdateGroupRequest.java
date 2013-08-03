@@ -22,7 +22,7 @@ public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((SetGroupNameReq.Builder)mDataBuilder).setVersionNo(version);
 		((SetGroupNameReq.Builder)mDataBuilder).setClientType(clientType);
 

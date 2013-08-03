@@ -19,7 +19,7 @@ public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((CreateTempGroupReq.Builder)mDataBuilder).setVersionNo(version);
 		((CreateTempGroupReq.Builder)mDataBuilder).setClientType(clientType);
 

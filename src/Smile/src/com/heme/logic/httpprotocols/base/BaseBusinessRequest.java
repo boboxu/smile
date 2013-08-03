@@ -4,7 +4,7 @@ import com.heme.logic.common.Configuration;
 
 public abstract class BaseBusinessRequest extends BasePbRequest {
 
-	protected static final int PROTO_VERSION = 1;
+	protected static final String PROTO_VERSION = "1";
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	protected com.google.protobuf.GeneratedMessage.Builder<?> mDataBuilder;
 
@@ -14,7 +14,7 @@ public abstract class BaseBusinessRequest extends BasePbRequest {
 		setVersionAndClientType(PROTO_VERSION, CLIENT_TYPE);
 	}
 
-	public abstract void setVersionAndClientType(int version, int clientType);
+	public abstract void setVersionAndClientType(String version, int clientType);
 
 	public abstract void initmDataBuilder();
 }

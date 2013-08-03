@@ -11,7 +11,7 @@ public class FeedBackRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((SendFeedbackReq.Builder) mDataBuilder).setClientType(clientType);
 		((SendFeedbackReq.Builder) mDataBuilder).setVersionNo(version);
 	}

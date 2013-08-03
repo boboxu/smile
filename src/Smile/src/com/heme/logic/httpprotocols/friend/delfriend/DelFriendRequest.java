@@ -17,7 +17,7 @@ public class DelFriendRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int client_type) {
+	public void setVersionAndClientType(String version, int client_type) {
 		((DelFriendReq.Builder) mDataBuilder).setClientType(client_type);
 		((DelFriendReq.Builder) mDataBuilder).setVersionNo(version);
 	}

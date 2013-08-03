@@ -28,7 +28,7 @@ public class RegistManager extends BaseBusinessLogicManager implements
 	private AreaInfo mAreaInfo = null;
 	private com.heme.logic.module.Data.SchoolCombine mSchoolInfo;
 	private ClassCombine mClassInfo;
-	private List<Long> mChildIdList;
+	private List<String> mChildIdList;
 	
 	private BaseBusinessRequest request = null;
 	@Override
@@ -71,7 +71,7 @@ public class RegistManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void setParRegInfo(String phoneNo, String realName, String idCardNo,
-			String password, List<Long> childIdList) {
+			String password, List<String> childIdList) {
 		request = new ParentRegistRequest();
 		
 	}

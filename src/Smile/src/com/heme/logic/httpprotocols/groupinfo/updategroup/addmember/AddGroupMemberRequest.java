@@ -20,7 +20,7 @@ public class AddGroupMemberRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((AddGroupMemberReq.Builder)mDataBuilder).setVersionNo(version);
 		((AddGroupMemberReq.Builder)mDataBuilder).setClientType(clientType);
 

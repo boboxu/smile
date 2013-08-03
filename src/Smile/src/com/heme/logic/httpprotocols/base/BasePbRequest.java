@@ -6,7 +6,7 @@ import com.heme.logic.module.Access.AccessReq;
 
 public class BasePbRequest extends BaseRequest {
 	// 实现AccessReq数据的组合
-	protected AccessReq.Builder mAccessReqDataBuilder = AccessReq.newBuilder();
+	private AccessReq.Builder mAccessReqDataBuilder = AccessReq.newBuilder();
 
 	private void setBody(ByteString body) {
 		mAccessReqDataBuilder.setBytesBody(body);

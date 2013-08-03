@@ -11,7 +11,7 @@ public class ModifyPwdRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((SetPasswdReq.Builder)mDataBuilder).setVersionNo(version);
 		((SetPasswdReq.Builder)mDataBuilder).setClientType(clientType);
 	}

@@ -19,7 +19,7 @@ public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((DelGroupReq.Builder)mDataBuilder).setVersionNo(version);
 		((DelGroupReq.Builder)mDataBuilder).setClientType(clientType);
 	}

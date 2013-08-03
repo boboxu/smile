@@ -19,7 +19,7 @@ public class GetGroupInfoRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((GetGroupInfoReq.Builder)mDataBuilder).setVersionNo(version);
 		((GetGroupInfoReq.Builder)mDataBuilder).setClientType(clientType);
 	}

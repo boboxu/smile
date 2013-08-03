@@ -18,7 +18,7 @@ public class GetUserInfoRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((GetUserInfoReq.Builder)mDataBuilder).setVersionNo(version);
 		((GetUserInfoReq.Builder)mDataBuilder).setClientType(clientType);
 	}

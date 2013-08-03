@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.RegGetClassReq;
 public class GetClassInfoRequest extends BaseBusinessRequest {
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((RegGetClassReq.Builder)mDataBuilder).setVersionNo(version);
 		
 	}

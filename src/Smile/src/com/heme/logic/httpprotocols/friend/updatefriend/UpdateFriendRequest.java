@@ -17,7 +17,7 @@ public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int client_type) {
+	public void setVersionAndClientType(String version, int client_type) {
 		((SetFriendDescReq.Builder)mDataBuilder).setClientType(client_type);
 		((SetFriendDescReq.Builder)mDataBuilder).setVersionNo(version);
 	}

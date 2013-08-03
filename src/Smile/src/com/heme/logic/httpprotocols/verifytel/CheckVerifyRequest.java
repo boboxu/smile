@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.VerifyPhoneReq;
 public class CheckVerifyRequest extends BaseBusinessRequest {
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		// TODO Auto-generated method stub
 		
 	}

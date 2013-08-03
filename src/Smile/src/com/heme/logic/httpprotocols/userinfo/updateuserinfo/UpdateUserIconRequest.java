@@ -17,7 +17,7 @@ public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((SetUserIconReq.Builder)mDataBuilder).setVersionNo(version);
 		((SetUserIconReq.Builder)mDataBuilder).setClientType(clientType);
 	}

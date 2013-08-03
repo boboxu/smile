@@ -19,9 +19,9 @@ public class GreenNetManager extends BaseBusinessLogicManager implements IGreenN
 	
 	private void sendCommand(SendCommandRequest.COMMANDTYPE commandType,Handler handler)
 	{
-		SendCommandRequest request = new SendCommandRequest(LogicManager.accountManager().getCurrentSessionId(), LogicManager.accountManager().getCurrentAccoutSystemId());
-		request.setCommandInfo(commandType);
-		sendRequest(request, handler, getClass().getName(), _FUNC_());
+//		SendCommandRequest request = new SendCommandRequest(LogicManager.accountManager().getCurrentSessionId(), LogicManager.accountManager().getCurrentAccoutSystemId());
+//		request.setCommandInfo(commandType);
+//		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override

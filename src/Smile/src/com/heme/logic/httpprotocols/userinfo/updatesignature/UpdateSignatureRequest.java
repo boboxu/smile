@@ -17,7 +17,7 @@ public class UpdateSignatureRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((SetSignatureReq.Builder)mDataBuilder).setVersionNo(version);
 		((SetSignatureReq.Builder)mDataBuilder).setClientType(clientType);
 	}

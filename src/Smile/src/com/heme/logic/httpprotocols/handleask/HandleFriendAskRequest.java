@@ -16,7 +16,7 @@ public class HandleFriendAskRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		// TODO Auto-generated method stub
 		
 	}

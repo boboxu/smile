@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.RegStudentReq;
 public class StudentRegistRequest extends BaseBusinessRequest {
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((RegStudentReq.Builder)mDataBuilder).setClientType(clientType);
 		((RegStudentReq.Builder)mDataBuilder).setVersionNo(version);
 	}

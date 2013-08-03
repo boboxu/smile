@@ -6,7 +6,7 @@ import com.heme.logic.module.Data.FindPasswdVerifyReq;
 public class ResetPwdRequest extends BaseBusinessRequest {
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((FindPasswdVerifyReq.Builder)mDataBuilder).setVersionNo(version);
 		((FindPasswdVerifyReq.Builder)mDataBuilder).setClientType(clientType);
 	}

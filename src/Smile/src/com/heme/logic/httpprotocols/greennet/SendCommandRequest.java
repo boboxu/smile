@@ -1,16 +1,18 @@
 package com.heme.logic.httpprotocols.greennet;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
-import com.heme.logic.module.Data.PcCtrlReq;
+import com.heme.logic.httpprotocols.base.message.BaseSendMsgRequest;
+import com.heme.logic.module.Message.NetGuardInfo;
 
-public class SendCommandRequest extends BaseLoginedBusinessRequest {
-	public SendCommandRequest(String sessionId, long systemId) {
-		super(sessionId, systemId);
-		// TODO Auto-generated constructor stub
+public class SendCommandRequest extends BaseSendMsgRequest {
+
+	protected SendCommandRequest(long systemId, int sessionId) {
+		super(systemId, sessionId);
+		
 	}
 
 	public enum COMMANDTYPE
 	{
+		CmdUpLoad,	//上报
 		CmdReboot,	//重启
 		CmdShutDown,//关机
 		CmdCloseProcess,//关闭进程
@@ -18,41 +20,32 @@ public class SendCommandRequest extends BaseLoginedBusinessRequest {
 		public static int value(COMMANDTYPE type)
 		{
 			switch (type) {
-			case CmdReboot:
+			case CmdUpLoad:
 				return 1;
-			case CmdShutDown:
+			case CmdReboot:
 				return 2;
-			case CmdCloseProcess:
+			case CmdShutDown:
 				return 3;
-			case CmdIntercept:
+			case CmdCloseProcess:
 				return 4;
+			case CmdIntercept:
+				return 5;
 			default:
 				return 1;
 			}
 		}
 	}
 	
-	@Override
-	public void setVersionAndClientType(int version, int clientType) {
-		((PcCtrlReq.Builder)mDataBuilder).setClientType(version);
-		((PcCtrlReq.Builder)mDataBuilder).setVersionNo(version);
-	}
-
-	@Override
-	public void setLoginedInfo(String sessionId, long systemId) {
-		((PcCtrlReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((PcCtrlReq.Builder)mDataBuilder).setSystemId(systemId);
-	};
-	
-	public void setCommandInfo(COMMANDTYPE type)
+	public void setCommandInfo(COMMANDTYPE type,int eventId,String reportInfo)
 	{
-		((PcCtrlReq.Builder)mDataBuilder).setPcCtrlCmd(COMMANDTYPE.value(type));
-		super.buildAccessReq(((PcCtrlReq.Builder)mDataBuilder).build().toByteString());
-	}
-
-	@Override
-	public void initmDataBuilder() {
-		mDataBuilder = PcCtrlReq.newBuilder();
+//		((PcCtrlReq.Builder)mDataBuilder).setPcCtrlCmd(COMMANDTYPE.value(type));
+//		super.buildAccessReq(((PcCtrlReq.Builder)mDataBuilder).build().toByteString());
+		NetGuardInfo.Builder msgBuilder = NetGuardInfo.newBuilder();
+		msgBuilder.setUint32Action(COMMANDTYPE.value(type));
+		msgBuilder.setUint32EventId(eventId);
+		msgBuilder.setStrReportInfo(reportInfo);
+		
 		
 	}
+	
 }

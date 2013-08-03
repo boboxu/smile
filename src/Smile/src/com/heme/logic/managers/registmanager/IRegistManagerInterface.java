@@ -13,6 +13,6 @@ public interface IRegistManagerInterface extends
 		IBaseBusinessLogicManagerInterface {
 	
 	public void startReg(String verifyCode,Handler handler);
-	public void setParRegInfo(String phoneNo,String realName,String idCardNo,String password,List<Long> childIdList);
+	public void setParRegInfo(String phoneNo,String realName,String idCardNo,String password,List<String> childIdList);
 	public void setStuRegInfo(String phoneNo,String realName,String studentId,String password,AreaInfo areainfo,SchoolCombine schoolInfo,ClassCombine classinfo);
 }

@@ -31,7 +31,7 @@ public class LoginRequest extends BaseBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version,int client_type) {
+	public void setVersionAndClientType(String version,int client_type) {
 		((LoginReq.Builder)mDataBuilder).setClientType(client_type);
 		((LoginReq.Builder)mDataBuilder).setVersionNo(version);
 	}

@@ -39,7 +39,7 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 	}
 
 	@Override
-	public void setVersionAndClientType(int version, int clientType) {
+	public void setVersionAndClientType(String version, int clientType) {
 		((CreateFixedGroupReq.Builder)mDataBuilder).setVersionNo(version);
 		((CreateFixedGroupReq.Builder)mDataBuilder).setClientType(clientType);
 	}
