@@ -6476,23 +6476,23 @@ public final class Message {
      */
     Message.ClassInfoOrBuilder getMsgClassInfoOrBuilder();
 
-    // optional uint32 uint32_time = 13;
+    // optional uint64 uint64_time = 13;
     /**
-     * <code>optional uint32 uint32_time = 13;</code>
+     * <code>optional uint64 uint64_time = 13;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
      * </pre>
      */
-    boolean hasUint32Time();
+    boolean hasUint64Time();
     /**
-     * <code>optional uint32 uint32_time = 13;</code>
+     * <code>optional uint64 uint64_time = 13;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
      * </pre>
      */
-    int getUint32Time();
+    long getUint64Time();
   }
   /**
    * Protobuf type {@code CommonMsg}
@@ -6687,7 +6687,7 @@ public final class Message {
             }
             case 104: {
               bitField0_ |= 0x00000400;
-              uint32Time_ = input.readUInt32();
+              uint64Time_ = input.readUInt64();
               break;
             }
           }
@@ -7137,28 +7137,28 @@ public final class Message {
       return msgClassInfo_;
     }
 
-    // optional uint32 uint32_time = 13;
-    public static final int UINT32_TIME_FIELD_NUMBER = 13;
-    private int uint32Time_;
+    // optional uint64 uint64_time = 13;
+    public static final int UINT64_TIME_FIELD_NUMBER = 13;
+    private long uint64Time_;
     /**
-     * <code>optional uint32 uint32_time = 13;</code>
+     * <code>optional uint64 uint64_time = 13;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
      * </pre>
      */
-    public boolean hasUint32Time() {
+    public boolean hasUint64Time() {
       return ((bitField0_ & 0x00000400) == 0x00000400);
     }
     /**
-     * <code>optional uint32 uint32_time = 13;</code>
+     * <code>optional uint64 uint64_time = 13;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
      * </pre>
      */
-    public int getUint32Time() {
-      return uint32Time_;
+    public long getUint64Time() {
+      return uint64Time_;
     }
 
     private void initFields() {
@@ -7174,7 +7174,7 @@ public final class Message {
       msgMoitorMsg_ = Message.NetGuardInfo.getDefaultInstance();
       msgTestMsg_ = Message.VoiceTestInfo.getDefaultInstance();
       msgClassInfo_ = Message.ClassInfo.getDefaultInstance();
-      uint32Time_ = 0;
+      uint64Time_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7267,7 +7267,7 @@ public final class Message {
         output.writeMessage(12, msgClassInfo_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeUInt32(13, uint32Time_);
+        output.writeUInt64(13, uint64Time_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7338,7 +7338,7 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(13, uint32Time_);
+          .computeUInt64Size(13, uint64Time_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7510,7 +7510,7 @@ public final class Message {
           msgClassInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000800);
-        uint32Time_ = 0;
+        uint64Time_ = 0L;
         bitField0_ = (bitField0_ & ~0x00001000);
         return this;
       }
@@ -7617,7 +7617,7 @@ public final class Message {
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.uint32Time_ = uint32Time_;
+        result.uint64Time_ = uint64Time_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7686,8 +7686,8 @@ public final class Message {
         if (other.hasMsgClassInfo()) {
           mergeMsgClassInfo(other.getMsgClassInfo());
         }
-        if (other.hasUint32Time()) {
-          setUint32Time(other.getUint32Time());
+        if (other.hasUint64Time()) {
+          setUint64Time(other.getUint64Time());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -9109,51 +9109,51 @@ public final class Message {
         return msgClassInfoBuilder_;
       }
 
-      // optional uint32 uint32_time = 13;
-      private int uint32Time_ ;
+      // optional uint64 uint64_time = 13;
+      private long uint64Time_ ;
       /**
-       * <code>optional uint32 uint32_time = 13;</code>
+       * <code>optional uint64 uint64_time = 13;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
-      public boolean hasUint32Time() {
+      public boolean hasUint64Time() {
         return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>optional uint32 uint32_time = 13;</code>
+       * <code>optional uint64 uint64_time = 13;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
-      public int getUint32Time() {
-        return uint32Time_;
+      public long getUint64Time() {
+        return uint64Time_;
       }
       /**
-       * <code>optional uint32 uint32_time = 13;</code>
+       * <code>optional uint64 uint64_time = 13;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
-      public Builder setUint32Time(int value) {
+      public Builder setUint64Time(long value) {
         bitField0_ |= 0x00001000;
-        uint32Time_ = value;
+        uint64Time_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 uint32_time = 13;</code>
+       * <code>optional uint64 uint64_time = 13;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
-      public Builder clearUint32Time() {
+      public Builder clearUint64Time() {
         bitField0_ = (bitField0_ & ~0x00001000);
-        uint32Time_ = 0;
+        uint64Time_ = 0L;
         onChanged();
         return this;
       }
@@ -13702,23 +13702,23 @@ public final class Message {
      */
     long getUint64FromUid();
 
-    // optional uint32 uint32_time = 4;
+    // optional uint64 uint64_time = 4;
     /**
-     * <code>optional uint32 uint32_time = 4;</code>
+     * <code>optional uint64 uint64_time = 4;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
      * </pre>
      */
-    boolean hasUint32Time();
+    boolean hasUint64Time();
     /**
-     * <code>optional uint32 uint32_time = 4;</code>
+     * <code>optional uint64 uint64_time = 4;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
      * </pre>
      */
-    int getUint32Time();
+    long getUint64Time();
   }
   /**
    * Protobuf type {@code PollMsgReq}
@@ -13797,7 +13797,7 @@ public final class Message {
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              uint32Time_ = input.readUInt32();
+              uint64Time_ = input.readUInt64();
               break;
             }
           }
@@ -13912,35 +13912,35 @@ public final class Message {
       return uint64FromUid_;
     }
 
-    // optional uint32 uint32_time = 4;
-    public static final int UINT32_TIME_FIELD_NUMBER = 4;
-    private int uint32Time_;
+    // optional uint64 uint64_time = 4;
+    public static final int UINT64_TIME_FIELD_NUMBER = 4;
+    private long uint64Time_;
     /**
-     * <code>optional uint32 uint32_time = 4;</code>
+     * <code>optional uint64 uint64_time = 4;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
      * </pre>
      */
-    public boolean hasUint32Time() {
+    public boolean hasUint64Time() {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>optional uint32 uint32_time = 4;</code>
+     * <code>optional uint64 uint64_time = 4;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
      * </pre>
      */
-    public int getUint32Time() {
-      return uint32Time_;
+    public long getUint64Time() {
+      return uint64Time_;
     }
 
     private void initFields() {
       uint64Uid_ = 0L;
       uint32MsgType_ = 0;
       uint64FromUid_ = 0L;
-      uint32Time_ = 0;
+      uint64Time_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -13972,7 +13972,7 @@ public final class Message {
         output.writeUInt64(3, uint64FromUid_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt32(4, uint32Time_);
+        output.writeUInt64(4, uint64Time_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -13997,7 +13997,7 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, uint32Time_);
+          .computeUInt64Size(4, uint64Time_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -14130,7 +14130,7 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000002);
         uint64FromUid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint32Time_ = 0;
+        uint64Time_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
@@ -14175,7 +14175,7 @@ public final class Message {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
-        result.uint32Time_ = uint32Time_;
+        result.uint64Time_ = uint64Time_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -14201,8 +14201,8 @@ public final class Message {
         if (other.hasUint64FromUid()) {
           setUint64FromUid(other.getUint64FromUid());
         }
-        if (other.hasUint32Time()) {
-          setUint32Time(other.getUint32Time());
+        if (other.hasUint64Time()) {
+          setUint64Time(other.getUint64Time());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -14386,51 +14386,51 @@ public final class Message {
         return this;
       }
 
-      // optional uint32 uint32_time = 4;
-      private int uint32Time_ ;
+      // optional uint64 uint64_time = 4;
+      private long uint64Time_ ;
       /**
-       * <code>optional uint32 uint32_time = 4;</code>
+       * <code>optional uint64 uint64_time = 4;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
-      public boolean hasUint32Time() {
+      public boolean hasUint64Time() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>optional uint32 uint32_time = 4;</code>
+       * <code>optional uint64 uint64_time = 4;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
-      public int getUint32Time() {
-        return uint32Time_;
+      public long getUint64Time() {
+        return uint64Time_;
       }
       /**
-       * <code>optional uint32 uint32_time = 4;</code>
+       * <code>optional uint64 uint64_time = 4;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
-      public Builder setUint32Time(int value) {
+      public Builder setUint64Time(long value) {
         bitField0_ |= 0x00000008;
-        uint32Time_ = value;
+        uint64Time_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 uint32_time = 4;</code>
+       * <code>optional uint64 uint64_time = 4;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
-      public Builder clearUint32Time() {
+      public Builder clearUint64Time() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        uint32Time_ = 0;
+        uint64Time_ = 0L;
         onChanged();
         return this;
       }
@@ -16154,9 +16154,9 @@ public final class Message {
     com.google.protobuf.ByteString
         getStrVersionBytes();
 
-    // required uint32 uint32_client_type = 4;
+    // optional uint32 uint32_client_type = 4;
     /**
-     * <code>required uint32 uint32_client_type = 4;</code>
+     * <code>optional uint32 uint32_client_type = 4;</code>
      *
      * <pre>
      *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -16164,7 +16164,7 @@ public final class Message {
      */
     boolean hasUint32ClientType();
     /**
-     * <code>required uint32 uint32_client_type = 4;</code>
+     * <code>optional uint32 uint32_client_type = 4;</code>
      *
      * <pre>
      *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -16172,13 +16172,13 @@ public final class Message {
      */
     int getUint32ClientType();
 
-    // required uint32 uint32_session_id = 5;
+    // optional uint32 uint32_session_id = 5;
     /**
-     * <code>required uint32 uint32_session_id = 5;</code>
+     * <code>optional uint32 uint32_session_id = 5;</code>
      */
     boolean hasUint32SessionId();
     /**
-     * <code>required uint32 uint32_session_id = 5;</code>
+     * <code>optional uint32 uint32_session_id = 5;</code>
      */
     int getUint32SessionId();
 
@@ -16736,11 +16736,11 @@ public final class Message {
       }
     }
 
-    // required uint32 uint32_client_type = 4;
+    // optional uint32 uint32_client_type = 4;
     public static final int UINT32_CLIENT_TYPE_FIELD_NUMBER = 4;
     private int uint32ClientType_;
     /**
-     * <code>required uint32 uint32_client_type = 4;</code>
+     * <code>optional uint32 uint32_client_type = 4;</code>
      *
      * <pre>
      *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -16750,7 +16750,7 @@ public final class Message {
       return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required uint32 uint32_client_type = 4;</code>
+     * <code>optional uint32 uint32_client_type = 4;</code>
      *
      * <pre>
      *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -16760,17 +16760,17 @@ public final class Message {
       return uint32ClientType_;
     }
 
-    // required uint32 uint32_session_id = 5;
+    // optional uint32 uint32_session_id = 5;
     public static final int UINT32_SESSION_ID_FIELD_NUMBER = 5;
     private int uint32SessionId_;
     /**
-     * <code>required uint32 uint32_session_id = 5;</code>
+     * <code>optional uint32 uint32_session_id = 5;</code>
      */
     public boolean hasUint32SessionId() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required uint32 uint32_session_id = 5;</code>
+     * <code>optional uint32 uint32_session_id = 5;</code>
      */
     public int getUint32SessionId() {
       return uint32SessionId_;
@@ -17102,14 +17102,6 @@ public final class Message {
         return false;
       }
       if (!hasStrVersion()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUint32ClientType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUint32SessionId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -17652,14 +17644,6 @@ public final class Message {
           
           return false;
         }
-        if (!hasUint32ClientType()) {
-          
-          return false;
-        }
-        if (!hasUint32SessionId()) {
-          
-          return false;
-        }
         if (hasMsgSendReq()) {
           if (!getMsgSendReq().isInitialized()) {
             
@@ -17926,10 +17910,10 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_client_type = 4;
+      // optional uint32 uint32_client_type = 4;
       private int uint32ClientType_ ;
       /**
-       * <code>required uint32 uint32_client_type = 4;</code>
+       * <code>optional uint32 uint32_client_type = 4;</code>
        *
        * <pre>
        *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -17939,7 +17923,7 @@ public final class Message {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required uint32 uint32_client_type = 4;</code>
+       * <code>optional uint32 uint32_client_type = 4;</code>
        *
        * <pre>
        *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -17949,7 +17933,7 @@ public final class Message {
         return uint32ClientType_;
       }
       /**
-       * <code>required uint32 uint32_client_type = 4;</code>
+       * <code>optional uint32 uint32_client_type = 4;</code>
        *
        * <pre>
        *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -17962,7 +17946,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>required uint32 uint32_client_type = 4;</code>
+       * <code>optional uint32 uint32_client_type = 4;</code>
        *
        * <pre>
        *�ͻ������ͣ�1���ҳ���2��ѧ��3����ʦ 10000:��ɫ��������/����ҳ��/SDK
@@ -17975,22 +17959,22 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_session_id = 5;
+      // optional uint32 uint32_session_id = 5;
       private int uint32SessionId_ ;
       /**
-       * <code>required uint32 uint32_session_id = 5;</code>
+       * <code>optional uint32 uint32_session_id = 5;</code>
        */
       public boolean hasUint32SessionId() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required uint32 uint32_session_id = 5;</code>
+       * <code>optional uint32 uint32_session_id = 5;</code>
        */
       public int getUint32SessionId() {
         return uint32SessionId_;
       }
       /**
-       * <code>required uint32 uint32_session_id = 5;</code>
+       * <code>optional uint32 uint32_session_id = 5;</code>
        */
       public Builder setUint32SessionId(int value) {
         bitField0_ |= 0x00000010;
@@ -17999,7 +17983,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>required uint32 uint32_session_id = 5;</code>
+       * <code>optional uint32 uint32_session_id = 5;</code>
        */
       public Builder clearUint32SessionId() {
         bitField0_ = (bitField0_ & ~0x00000010);
@@ -19417,8 +19401,8 @@ public final class Message {
       "\rmsg_video_msg\030\t \001(\0132\r.VideoMsgInfo\022%\n\016m" +
       "sg_moitor_msg\030\n \001(\0132\r.NetGuardInfo\022$\n\014ms" +
       "g_test_msg\030\013 \001(\0132\016.VoiceTestInfo\022\"\n\016msg_" +
-      "class_info\030\014 \001(\0132\n.ClassInfo\022\023\n\013uint32_t" +
-      "ime\030\r \001(\r\"\211\001\n\nUnReadInfo\022\027\n\017uint32_msg_t",
+      "class_info\030\014 \001(\0132\n.ClassInfo\022\023\n\013uint64_t" +
+      "ime\030\r \001(\004\"\211\001\n\nUnReadInfo\022\027\n\017uint32_msg_t",
       "ype\030\001 \002(\r\022\027\n\017uint64_from_uid\030\002 \001(\004\022\025\n\rui" +
       "nt64_to_uid\030\003 \001(\004\022\025\n\ruint64_to_gid\030\004 \001(\004" +
       "\022\033\n\023uint32_unread_count\030\005 \002(\r\"-\n\nSendMsg" +
@@ -19431,15 +19415,15 @@ public final class Message {
       "nreadInfoRes\022$\n\017msg_unread_info\030\004 \003(\0132\013.",
       "UnReadInfo\"g\n\nPollMsgReq\022\022\n\nuint64_uid\030\001" +
       " \002(\004\022\027\n\017uint32_msg_type\030\002 \002(\r\022\027\n\017uint64_" +
-      "from_uid\030\003 \001(\004\022\023\n\013uint32_time\030\004 \001(\r\"\242\001\n\n" +
+      "from_uid\030\003 \001(\004\022\023\n\013uint64_time\030\004 \001(\004\"\242\001\n\n" +
       "PollMsgRes\022\022\n\nuint64_uid\030\001 \002(\004\022\027\n\017uint32" +
       "_msg_type\030\002 \002(\r\022#\n\017rpt_msg_pollmsg\030\003 \003(\013" +
       "2\n.CommonMsg\022\034\n\024uint32_complete_flag\030\004 \001" +
       "(\r\022$\n\017msg_unread_info\030\005 \003(\0132\013.UnReadInfo" +
       "\"\317\003\n\nMessageOpr\022\022\n\nuint64_uid\030\001 \002(\004\022\026\n\016u" +
       "int32_command\030\002 \002(\r\022\023\n\013str_version\030\003 \002(\t" +
-      "\022\032\n\022uint32_client_type\030\004 \002(\r\022\031\n\021uint32_s",
-      "ession_id\030\005 \002(\r\022\025\n\rbytes_context\030\006 \001(\014\022!" +
+      "\022\032\n\022uint32_client_type\030\004 \001(\r\022\031\n\021uint32_s",
+      "ession_id\030\005 \001(\r\022\025\n\rbytes_context\030\006 \001(\014\022!" +
       "\n\014msg_send_req\030\007 \001(\0132\013.SendMsgReq\022!\n\014msg" +
       "_send_res\030\010 \001(\0132\013.SendMsgRes\022!\n\014msg_push" +
       "_req\030\t \001(\0132\013.PushMsgReq\022!\n\014msg_push_res\030" +
@@ -19495,7 +19479,7 @@ public final class Message {
           internal_static_CommonMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CommonMsg_descriptor,
-              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "Uint32Time", });
+              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "Uint64Time", });
           internal_static_UnReadInfo_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_UnReadInfo_fieldAccessorTable = new
@@ -19543,7 +19527,7 @@ public final class Message {
           internal_static_PollMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollMsgReq_descriptor,
-              new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "Uint64FromUid", "Uint32Time", });
+              new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "Uint64FromUid", "Uint64Time", });
           internal_static_PollMsgRes_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_PollMsgRes_fieldAccessorTable = new

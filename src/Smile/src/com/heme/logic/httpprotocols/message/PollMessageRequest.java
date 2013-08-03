@@ -17,7 +17,7 @@ public class PollMessageRequest extends BaseMessageOprRequest {
 	{
 		mPollMsgbBuilder.setUint32MsgType(MSGTYPE.value(msgtype));
 		mPollMsgbBuilder.setUint64FromUid(fromId);
-		mPollMsgbBuilder.setUint32Time(time);
+		mPollMsgbBuilder.setUint64Time(System.currentTimeMillis());
 		super.setPollMsgReq(mPollMsgbBuilder.build(), context);
 	}
 }

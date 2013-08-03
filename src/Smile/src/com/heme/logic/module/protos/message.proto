@@ -70,7 +70,7 @@ message CommonMsg
 	optional NetGuardInfo msg_moitor_msg = 10;	//绿色上网助手与终端交互消息
 	optional VoiceTestInfo msg_test_msg = 11;       //语音测评消息
 	optional ClassInfo msg_class_info = 12;         //课堂信息
-	optional uint32    uint32_time = 13;		//发送方终端当前时间
+	optional uint64    uint64_time = 13;		//发送方终端当前时间
 };
 
 message UnReadInfo		//未读消息属性
@@ -135,7 +135,7 @@ message PollMsgReq
 	required uint64    uint64_uid = 1;		//接收方ID
 	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
 	optional uint64    uint64_from_uid = 3;		//可选参数，接收消息类型为0(c2c)/1(群消息)时可以提供，如果提供这个参数将只拉取指定用户/群发过来的消息，否则将拉取所有消息
-	optional uint32    uint32_time = 4;		//接收方终端当前时间
+	optional uint64    uint64_time = 4;		//接收方终端当前时间
 };
 
 message PollMsgRes
@@ -152,8 +152,8 @@ message MessageOpr
 	required uint64    uint64_uid = 1;		//用户ID
 	required uint32    uint32_command = 2;		//命令号 1.发送请求 2.发送确认 3.推送请求 4.推送确认 5.拉取请求 6.拉取结果 7.拉取未读列表请求 8.拉取未读列表结果
 	required string	   str_version = 3;		//版本号
-	required uint32    uint32_client_type = 4;	//客户端类型，1：家长；2：学生；3：老师 10000:绿色上网助手/管理页面/SDK
-	required uint32    uint32_session_id = 5;	
+	optional uint32    uint32_client_type = 4;	//客户端类型，1：家长；2：学生；3：老师 10000:绿色上网助手/管理页面/SDK
+	optional uint32    uint32_session_id = 5;	
 	optional bytes     bytes_context = 6;           //如果请求包带有这个参数，返回包应该原封不动返回
 
 	optional SendMsgReq msg_send_req = 7;		//uint32_command=1.发送请求

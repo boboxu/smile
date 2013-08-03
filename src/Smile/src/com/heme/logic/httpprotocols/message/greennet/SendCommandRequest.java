@@ -1,14 +1,12 @@
-package com.heme.logic.httpprotocols.greennet;
+package com.heme.logic.httpprotocols.message.greennet;
 
-import com.heme.logic.httpprotocols.base.message.BaseSendMsgRequest;
+import java.util.List;
+
+import com.google.protobuf.ByteString;
+import com.heme.logic.httpprotocols.base.message.BaseMessageRequest;
 import com.heme.logic.module.Message.NetGuardInfo;
 
-public class SendCommandRequest extends BaseSendMsgRequest {
-
-	protected SendCommandRequest(long systemId, int sessionId) {
-		super(systemId, sessionId);
-		
-	}
+public class SendCommandRequest extends BaseMessageRequest {
 
 	public enum COMMANDTYPE
 	{
@@ -36,16 +34,17 @@ public class SendCommandRequest extends BaseSendMsgRequest {
 		}
 	}
 	
-	public void setCommandInfo(COMMANDTYPE type,int eventId,String reportInfo)
+	protected SendCommandRequest(long systemId, int sessionId,List<Long> mTargetId,List<Long> mTargetGid) {
+		super(systemId,sessionId,mTargetId,mTargetGid,MSGTYPE.TYPENETGUARD,CONTENTTYPE.TYPETEXT);
+	}
+	
+	public void setCommandInfo(COMMANDTYPE type,int eventId,String reportInfo,ByteString context)
 	{
-//		((PcCtrlReq.Builder)mDataBuilder).setPcCtrlCmd(COMMANDTYPE.value(type));
-//		super.buildAccessReq(((PcCtrlReq.Builder)mDataBuilder).build().toByteString());
 		NetGuardInfo.Builder msgBuilder = NetGuardInfo.newBuilder();
 		msgBuilder.setUint32Action(COMMANDTYPE.value(type));
 		msgBuilder.setUint32EventId(eventId);
 		msgBuilder.setStrReportInfo(reportInfo);
-		
-		
+		super.setNetGuardMsgInfo(msgBuilder.build(), context);		
 	}
 	
 }
