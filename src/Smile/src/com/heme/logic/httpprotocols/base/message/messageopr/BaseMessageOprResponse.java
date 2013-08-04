@@ -6,7 +6,6 @@ import com.heme.logic.module.Message.MessageOpr;
 import com.heme.logic.module.Message.PollMsgRes;
 import com.heme.logic.module.Message.PollUnreadInfoRes;
 import com.heme.logic.module.Message.PushMsgRes;
-import com.heme.logic.module.Message.SendMsgRes;
 
 public class BaseMessageOprResponse extends BasePbResponse{
 	

@@ -1,6 +1,7 @@
 package com.heme.logic.httpprotocols.base.message.messageopr;
 
 import com.google.protobuf.ByteString;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.httpprotocols.base.BasePbRequest;
 import com.heme.logic.module.Message.MessageOpr;
@@ -11,6 +12,7 @@ import com.heme.logic.module.Message.SendMsgReq;
 
 public class BaseMessageOprRequest extends BasePbRequest{
 	private MessageOpr.Builder mMessageOprBuilder;
+	protected MessageOpr mMessageOpr;
 	private static final String PROTO_VERSION = "1";
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	
@@ -123,5 +125,9 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		super.buildAccessReq(mMessageOprBuilder.build().toByteString());
 	}
 	
-	
+	@Override
+	public void parseData() throws InvalidProtocolBufferException {
+		super.parseData();
+		mMessageOpr = MessageOpr.parseFrom(mAccessReqData.getBytesBody());
+	}
 }

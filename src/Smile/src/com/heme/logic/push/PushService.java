@@ -47,7 +47,6 @@ public class PushService extends Service
 	
 	public static final String NOTIF_TITLE = "Smile"; 	
 
-	
 	private ConnectivityManager mConnManager;
 	
 	private NotificationManager mNotifManager;

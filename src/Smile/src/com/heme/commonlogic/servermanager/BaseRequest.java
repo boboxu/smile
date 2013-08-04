@@ -1,9 +1,13 @@
 package com.heme.commonlogic.servermanager;
 
+import android.util.Log;
+
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.foundation.net.NetworkRequest;
 import com.heme.utils.ByteUtil;
 
 public class BaseRequest {
+	private static final String TAG = "BaseRequest";
 	protected static final String HTTP_GET = "GET";
 	protected static final String HTTP_POST = "POST";
 	public final static int INVALID_REQUEST_ID = -1;
@@ -14,7 +18,12 @@ public class BaseRequest {
 	private NetworkRequest mRequest;
 	private String mRequestKey;
 	protected byte[] mDataBuffer = null;
+	protected byte[] mReqData;
 	
+	public void setmDataBuffer(byte[] mDataBuffer) {
+		this.mDataBuffer = mDataBuffer;
+	}
+
 	public byte[] getmDataBuffer() {
 		return mDataBuffer;
 	}
@@ -90,6 +99,23 @@ public class BaseRequest {
 		//数据内容进入请求包
 		for (int j = 0; j < requestdata.length; j++) {
 			mDataBuffer[j+lengthdata.length] = requestdata[j];  
+		}
+	}
+	
+	public void parseData() throws InvalidProtocolBufferException
+	{
+		//處理第一手数据
+		int length = ByteUtil.byteArrayToInt(mDataBuffer, 0);
+		if (length+4 != mDataBuffer.length) 
+		{
+			Log.e(TAG, "网络回包的长度，数据不正确");
+			return;
+		}
+		//Length占四个字节，后面的都是数据
+		this.mReqData = null;
+		mReqData = new byte[length];
+		for (int i = 0; i < mReqData.length; i++) {
+			mReqData[i] = mDataBuffer[4+i];
 		}
 	}
 }
