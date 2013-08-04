@@ -7,6 +7,9 @@ import android.os.Handler;
 import com.google.protobuf.ByteString;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.LogicManager;
+import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest.MSGTYPE;
+import com.heme.logic.httpprotocols.message.pollmsg.PollMessageRequest;
+import com.heme.logic.httpprotocols.message.pullunreadmsg.PollUnreadMessageRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest.CONTENTTYPE;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.c2g.SendGroupMsgRequest;
@@ -19,7 +22,8 @@ import com.heme.logic.module.Message.VideoMsgInfo;
 import com.heme.logic.module.Message.VoiceMsgInfo;
 import com.heme.logic.module.Message.VoiceTestInfo;
 
-public class MessageManager extends BaseBusinessLogicManager implements IMessageManager {
+public class MessageManager extends BaseBusinessLogicManager implements
+		IMessageManager {
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
@@ -32,10 +36,9 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
 		targetIdArrayList.add(Long.valueOf(targetId));
-		SendUserMsgRequest request = new SendUserMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetIdArrayList);
+		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
 		request.setMsgContent(picinfo, CONTENTTYPE.TYPEPIC, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -45,11 +48,11 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
 		targetIdArrayList.add(Long.valueOf(targetId));
-		SendUserMsgRequest request = new SendUserMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetIdArrayList);
-		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE, ByteString.EMPTY);
+		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
+		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE,
+				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -58,11 +61,11 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
 		targetIdArrayList.add(Long.valueOf(targetId));
-		SendUserMsgRequest request = new SendUserMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetIdArrayList);
-		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO, ByteString.EMPTY);
+		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
+		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO,
+				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -71,10 +74,9 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
 		targetIdArrayList.add(Long.valueOf(targetId));
-		SendUserMsgRequest request = new SendUserMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetIdArrayList);
+		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
 		request.setMsgContent(textinfo, CONTENTTYPE.TYPETEXT, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -84,10 +86,9 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetGidArrayList = new ArrayList<Long>();
 		targetGidArrayList.add(Long.valueOf(groupId));
-		SendGroupMsgRequest request = new SendGroupMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetGidArrayList);
+		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetGidArrayList);
 		request.setMsgContent(picinfo, CONTENTTYPE.TYPEPIC, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -97,11 +98,11 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetGidArrayList = new ArrayList<Long>();
 		targetGidArrayList.add(Long.valueOf(groupId));
-		SendGroupMsgRequest request = new SendGroupMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetGidArrayList);
-		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE, ByteString.EMPTY);
+		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetGidArrayList);
+		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE,
+				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -110,13 +111,13 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetGidArrayList = new ArrayList<Long>();
 		targetGidArrayList.add(Long.valueOf(groupId));
-		SendGroupMsgRequest request = new SendGroupMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetGidArrayList);
-		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO, ByteString.EMPTY);
+		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetGidArrayList);
+		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO,
+				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
-		
+
 	}
 
 	@Override
@@ -124,10 +125,9 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetGidArrayList = new ArrayList<Long>();
 		targetGidArrayList.add(Long.valueOf(groupId));
-		SendGroupMsgRequest request = new SendGroupMsgRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetGidArrayList);
+		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetGidArrayList);
 		request.setMsgContent(textinfo, CONTENTTYPE.TYPETEXT, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -137,10 +137,9 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 			Handler handler) {
 		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
 		targetIdArrayList.add(Long.valueOf(targetId));
-		SendCommandRequest request = new SendCommandRequest(
-				LogicManager.accountManager().getCurrentAccoutSystemId(),
-				LogicManager.accountManager().getCurrentSessionId(),
-				targetIdArrayList);
+		SendCommandRequest request = new SendCommandRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
 		request.setNetGuardMsgInfo(msgInfo, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -166,75 +165,103 @@ public class MessageManager extends BaseBusinessLogicManager implements IMessage
 		SendVoiceTestMsgRequest request = new SendVoiceTestMsgRequest(
 				LogicManager.accountManager().getCurrentAccoutSystemId(),
 				LogicManager.accountManager().getCurrentSessionId(),
-				new ArrayList<Long>(),targetGidArrayList);
+				new ArrayList<Long>(), targetGidArrayList);
 		request.setVoiceTestInfo(testinfo, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollUserMsg(long fromId, Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEC2C);
+		request.setPollMsgFromUid(fromId, ByteString.EMPTY);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollAllUserMsg(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEC2C);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+
 	}
 
 	@Override
 	public void pollGroupMsg(long fromGid, Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEGROUP);
+		request.setPollMsgFromGid(fromGid, ByteString.EMPTY);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+
 	}
 
 	@Override
 	public void pollAllGroupMsg(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEGROUP);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+
 	}
 
 	@Override
 	public void pollSystemInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPESYSTEM);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollSocialGroupInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(),
+				MSGTYPE.TYPESOCIALGROUP);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollNoticeInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPENOTICE);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollClassAssisInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPECLASSASSIS);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollVoiceTestInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEVOICETEST);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void pollNetGuardInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollMessageRequest request = new PollMessageRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), MSGTYPE.TYPENETGUARD);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void PollUnReadInfo(Handler handler) {
-		// TODO Auto-generated method stub
-		
+		PollUnreadMessageRequest request = new PollUnreadMessageRequest(
+				LogicManager.accountManager().getCurrentAccoutSystemId(),
+				LogicManager.accountManager().getCurrentSessionId());
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 }

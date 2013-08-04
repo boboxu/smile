@@ -7,17 +7,24 @@ import com.heme.logic.module.Message.PollMsgReq;
 public class PollMessageRequest extends BaseMessageOprRequest {
 	
 	PollMsgReq.Builder mPollMsgbBuilder;
-	protected PollMessageRequest(long systemId, String sessionId) {
+
+	//一定要设置type和默认的toid
+	public PollMessageRequest(long systemId, String sessionId,MSGTYPE type) {
 		super(systemId, sessionId);
 		mPollMsgbBuilder = PollMsgReq.newBuilder();
 		mPollMsgbBuilder.setUint64Uid(systemId);
+		mPollMsgbBuilder.setUint32MsgType(MSGTYPE.value(type));
 	}
-
-	public void setPollMsgInfo(MSGTYPE msgtype,long fromId,int time,ByteString context)
+	
+	public void setPollMsgFromUid(long uid,ByteString context)
 	{
-		mPollMsgbBuilder.setUint32MsgType(MSGTYPE.value(msgtype));
-		mPollMsgbBuilder.setUint64FromUid(fromId);
-		mPollMsgbBuilder.setUint64Time(System.currentTimeMillis());
+		mPollMsgbBuilder.setUint64FromUid(uid);
+		super.setPollMsgReq(mPollMsgbBuilder.build(), context);
+	}
+	
+	public void setPollMsgFromGid(long gid,ByteString context)
+	{
+		mPollMsgbBuilder.setUint64Gid(gid);
 		super.setPollMsgReq(mPollMsgbBuilder.build(), context);
 	}
 }

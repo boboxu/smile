@@ -16,7 +16,8 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	private static final String PROTO_VERSION = "1";
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	
-	protected enum MSGTYPE {
+	public enum MSGTYPE {
+		TYPEALL,	//全部，拉取未读信息的时候有用到
 		TYPEC2C, // 点对点消息
 		TYPEGROUP, // 群消息
 		TYPESYSTEM, // 系统消息
@@ -27,6 +28,8 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		TYPENETGUARD;// 绿色上网助手
 		public static int value(MSGTYPE type) {
 			switch (type) {
+			case TYPEALL:
+				return 0;
 			case TYPEC2C:
 				return 1;
 			case TYPEGROUP:
