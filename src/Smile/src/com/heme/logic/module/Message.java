@@ -6275,9 +6275,9 @@ public final class Message {
      */
     int getUint32MsgType();
 
-    // required uint32 uint32_content_type = 5;
+    // optional uint32 uint32_content_type = 5;
     /**
-     * <code>required uint32 uint32_content_type = 5;</code>
+     * <code>optional uint32 uint32_content_type = 5;</code>
      *
      * <pre>
      *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -6285,7 +6285,7 @@ public final class Message {
      */
     boolean hasUint32ContentType();
     /**
-     * <code>required uint32 uint32_content_type = 5;</code>
+     * <code>optional uint32 uint32_content_type = 5;</code>
      *
      * <pre>
      *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -6493,6 +6493,24 @@ public final class Message {
      * </pre>
      */
     long getUint64Time();
+
+    // optional uint32 uint32_trunct_flag = 14;
+    /**
+     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     *
+     * <pre>
+     *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+     * </pre>
+     */
+    boolean hasUint32TrunctFlag();
+    /**
+     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     *
+     * <pre>
+     *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+     * </pre>
+     */
+    int getUint32TrunctFlag();
   }
   /**
    * Protobuf type {@code CommonMsg}
@@ -6690,6 +6708,11 @@ public final class Message {
               uint64Time_ = input.readUInt64();
               break;
             }
+            case 112: {
+              bitField0_ |= 0x00000800;
+              uint32TrunctFlag_ = input.readUInt32();
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -6854,11 +6877,11 @@ public final class Message {
       return uint32MsgType_;
     }
 
-    // required uint32 uint32_content_type = 5;
+    // optional uint32 uint32_content_type = 5;
     public static final int UINT32_CONTENT_TYPE_FIELD_NUMBER = 5;
     private int uint32ContentType_;
     /**
-     * <code>required uint32 uint32_content_type = 5;</code>
+     * <code>optional uint32 uint32_content_type = 5;</code>
      *
      * <pre>
      *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -6868,7 +6891,7 @@ public final class Message {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>required uint32 uint32_content_type = 5;</code>
+     * <code>optional uint32 uint32_content_type = 5;</code>
      *
      * <pre>
      *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -7161,6 +7184,30 @@ public final class Message {
       return uint64Time_;
     }
 
+    // optional uint32 uint32_trunct_flag = 14;
+    public static final int UINT32_TRUNCT_FLAG_FIELD_NUMBER = 14;
+    private int uint32TrunctFlag_;
+    /**
+     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     *
+     * <pre>
+     *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+     * </pre>
+     */
+    public boolean hasUint32TrunctFlag() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     *
+     * <pre>
+     *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+     * </pre>
+     */
+    public int getUint32TrunctFlag() {
+      return uint32TrunctFlag_;
+    }
+
     private void initFields() {
       uint64FromUid_ = 0L;
       uint64ToUid_ = java.util.Collections.emptyList();
@@ -7175,6 +7222,7 @@ public final class Message {
       msgTestMsg_ = Message.VoiceTestInfo.getDefaultInstance();
       msgClassInfo_ = Message.ClassInfo.getDefaultInstance();
       uint64Time_ = 0L;
+      uint32TrunctFlag_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -7186,10 +7234,6 @@ public final class Message {
         return false;
       }
       if (!hasUint32MsgType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUint32ContentType()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -7269,6 +7313,9 @@ public final class Message {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         output.writeUInt64(13, uint64Time_);
       }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeUInt32(14, uint32TrunctFlag_);
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -7339,6 +7386,10 @@ public final class Message {
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(13, uint64Time_);
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(14, uint32TrunctFlag_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -7512,6 +7563,8 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000800);
         uint64Time_ = 0L;
         bitField0_ = (bitField0_ & ~0x00001000);
+        uint32TrunctFlag_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
         return this;
       }
 
@@ -7618,6 +7671,10 @@ public final class Message {
           to_bitField0_ |= 0x00000400;
         }
         result.uint64Time_ = uint64Time_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.uint32TrunctFlag_ = uint32TrunctFlag_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -7689,6 +7746,9 @@ public final class Message {
         if (other.hasUint64Time()) {
           setUint64Time(other.getUint64Time());
         }
+        if (other.hasUint32TrunctFlag()) {
+          setUint32TrunctFlag(other.getUint32TrunctFlag());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -7699,10 +7759,6 @@ public final class Message {
           return false;
         }
         if (!hasUint32MsgType()) {
-          
-          return false;
-        }
-        if (!hasUint32ContentType()) {
           
           return false;
         }
@@ -8044,10 +8100,10 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_content_type = 5;
+      // optional uint32 uint32_content_type = 5;
       private int uint32ContentType_ ;
       /**
-       * <code>required uint32 uint32_content_type = 5;</code>
+       * <code>optional uint32 uint32_content_type = 5;</code>
        *
        * <pre>
        *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -8057,7 +8113,7 @@ public final class Message {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required uint32 uint32_content_type = 5;</code>
+       * <code>optional uint32 uint32_content_type = 5;</code>
        *
        * <pre>
        *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -8067,7 +8123,7 @@ public final class Message {
         return uint32ContentType_;
       }
       /**
-       * <code>required uint32 uint32_content_type = 5;</code>
+       * <code>optional uint32 uint32_content_type = 5;</code>
        *
        * <pre>
        *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -8080,7 +8136,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>required uint32 uint32_content_type = 5;</code>
+       * <code>optional uint32 uint32_content_type = 5;</code>
        *
        * <pre>
        *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
@@ -9158,6 +9214,55 @@ public final class Message {
         return this;
       }
 
+      // optional uint32 uint32_trunct_flag = 14;
+      private int uint32TrunctFlag_ ;
+      /**
+       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       *
+       * <pre>
+       *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+       * </pre>
+       */
+      public boolean hasUint32TrunctFlag() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       *
+       * <pre>
+       *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+       * </pre>
+       */
+      public int getUint32TrunctFlag() {
+        return uint32TrunctFlag_;
+      }
+      /**
+       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       *
+       * <pre>
+       *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+       * </pre>
+       */
+      public Builder setUint32TrunctFlag(int value) {
+        bitField0_ |= 0x00002000;
+        uint32TrunctFlag_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       *
+       * <pre>
+       *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
+       * </pre>
+       */
+      public Builder clearUint32TrunctFlag() {
+        bitField0_ = (bitField0_ & ~0x00002000);
+        uint32TrunctFlag_ = 0;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:CommonMsg)
     }
 
@@ -9195,7 +9300,7 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 2;</code>
      *
      * <pre>
-     *���ͷ�ID
+     *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
      * </pre>
      */
     boolean hasUint64FromUid();
@@ -9203,50 +9308,32 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 2;</code>
      *
      * <pre>
-     *���ͷ�ID
+     *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
      * </pre>
      */
     long getUint64FromUid();
 
-    // optional uint64 uint64_to_uid = 3;
+    // optional uint64 uint64_gid = 3;
     /**
-     * <code>optional uint64 uint64_to_uid = 3;</code>
+     * <code>optional uint64 uint64_gid = 3;</code>
      *
      * <pre>
-     *���շ�ID, uid
+     *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
      * </pre>
      */
-    boolean hasUint64ToUid();
+    boolean hasUint64Gid();
     /**
-     * <code>optional uint64 uint64_to_uid = 3;</code>
+     * <code>optional uint64 uint64_gid = 3;</code>
      *
      * <pre>
-     *���շ�ID, uid
+     *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
      * </pre>
      */
-    long getUint64ToUid();
+    long getUint64Gid();
 
-    // optional uint64 uint64_to_gid = 4;
+    // required uint32 uint32_unread_count = 4;
     /**
-     * <code>optional uint64 uint64_to_gid = 4;</code>
-     *
-     * <pre>
-     *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-     * </pre>
-     */
-    boolean hasUint64ToGid();
-    /**
-     * <code>optional uint64 uint64_to_gid = 4;</code>
-     *
-     * <pre>
-     *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-     * </pre>
-     */
-    long getUint64ToGid();
-
-    // required uint32 uint32_unread_count = 5;
-    /**
-     * <code>required uint32 uint32_unread_count = 5;</code>
+     * <code>required uint32 uint32_unread_count = 4;</code>
      *
      * <pre>
      *δ������
@@ -9254,7 +9341,7 @@ public final class Message {
      */
     boolean hasUint32UnreadCount();
     /**
-     * <code>required uint32 uint32_unread_count = 5;</code>
+     * <code>required uint32 uint32_unread_count = 4;</code>
      *
      * <pre>
      *δ������
@@ -9325,16 +9412,11 @@ public final class Message {
             }
             case 24: {
               bitField0_ |= 0x00000004;
-              uint64ToUid_ = input.readUInt64();
+              uint64Gid_ = input.readUInt64();
               break;
             }
             case 32: {
               bitField0_ |= 0x00000008;
-              uint64ToGid_ = input.readUInt64();
-              break;
-            }
-            case 40: {
-              bitField0_ |= 0x00000010;
               uint32UnreadCount_ = input.readUInt32();
               break;
             }
@@ -9409,7 +9491,7 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 2;</code>
      *
      * <pre>
-     *���ͷ�ID
+     *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
      * </pre>
      */
     public boolean hasUint64FromUid() {
@@ -9419,76 +9501,52 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 2;</code>
      *
      * <pre>
-     *���ͷ�ID
+     *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
      * </pre>
      */
     public long getUint64FromUid() {
       return uint64FromUid_;
     }
 
-    // optional uint64 uint64_to_uid = 3;
-    public static final int UINT64_TO_UID_FIELD_NUMBER = 3;
-    private long uint64ToUid_;
+    // optional uint64 uint64_gid = 3;
+    public static final int UINT64_GID_FIELD_NUMBER = 3;
+    private long uint64Gid_;
     /**
-     * <code>optional uint64 uint64_to_uid = 3;</code>
+     * <code>optional uint64 uint64_gid = 3;</code>
      *
      * <pre>
-     *���շ�ID, uid
+     *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
      * </pre>
      */
-    public boolean hasUint64ToUid() {
+    public boolean hasUint64Gid() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional uint64 uint64_to_uid = 3;</code>
+     * <code>optional uint64 uint64_gid = 3;</code>
      *
      * <pre>
-     *���շ�ID, uid
+     *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
      * </pre>
      */
-    public long getUint64ToUid() {
-      return uint64ToUid_;
+    public long getUint64Gid() {
+      return uint64Gid_;
     }
 
-    // optional uint64 uint64_to_gid = 4;
-    public static final int UINT64_TO_GID_FIELD_NUMBER = 4;
-    private long uint64ToGid_;
-    /**
-     * <code>optional uint64 uint64_to_gid = 4;</code>
-     *
-     * <pre>
-     *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-     * </pre>
-     */
-    public boolean hasUint64ToGid() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
-    }
-    /**
-     * <code>optional uint64 uint64_to_gid = 4;</code>
-     *
-     * <pre>
-     *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-     * </pre>
-     */
-    public long getUint64ToGid() {
-      return uint64ToGid_;
-    }
-
-    // required uint32 uint32_unread_count = 5;
-    public static final int UINT32_UNREAD_COUNT_FIELD_NUMBER = 5;
+    // required uint32 uint32_unread_count = 4;
+    public static final int UINT32_UNREAD_COUNT_FIELD_NUMBER = 4;
     private int uint32UnreadCount_;
     /**
-     * <code>required uint32 uint32_unread_count = 5;</code>
+     * <code>required uint32 uint32_unread_count = 4;</code>
      *
      * <pre>
      *δ������
      * </pre>
      */
     public boolean hasUint32UnreadCount() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+      return ((bitField0_ & 0x00000008) == 0x00000008);
     }
     /**
-     * <code>required uint32 uint32_unread_count = 5;</code>
+     * <code>required uint32 uint32_unread_count = 4;</code>
      *
      * <pre>
      *δ������
@@ -9501,8 +9559,7 @@ public final class Message {
     private void initFields() {
       uint32MsgType_ = 0;
       uint64FromUid_ = 0L;
-      uint64ToUid_ = 0L;
-      uint64ToGid_ = 0L;
+      uint64Gid_ = 0L;
       uint32UnreadCount_ = 0;
     }
     private byte memoizedIsInitialized = -1;
@@ -9532,13 +9589,10 @@ public final class Message {
         output.writeUInt64(2, uint64FromUid_);
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt64(3, uint64ToUid_);
+        output.writeUInt64(3, uint64Gid_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, uint64ToGid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt32(5, uint32UnreadCount_);
+        output.writeUInt32(4, uint32UnreadCount_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -9559,15 +9613,11 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(3, uint64ToUid_);
+          .computeUInt64Size(3, uint64Gid_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, uint64ToGid_);
-      }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, uint32UnreadCount_);
+          .computeUInt32Size(4, uint32UnreadCount_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -9689,12 +9739,10 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000001);
         uint64FromUid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
-        uint64ToUid_ = 0L;
+        uint64Gid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint64ToGid_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000008);
         uint32UnreadCount_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         return this;
       }
 
@@ -9734,13 +9782,9 @@ public final class Message {
         if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
           to_bitField0_ |= 0x00000004;
         }
-        result.uint64ToUid_ = uint64ToUid_;
+        result.uint64Gid_ = uint64Gid_;
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
-        }
-        result.uint64ToGid_ = uint64ToGid_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
         }
         result.uint32UnreadCount_ = uint32UnreadCount_;
         result.bitField0_ = to_bitField0_;
@@ -9765,11 +9809,8 @@ public final class Message {
         if (other.hasUint64FromUid()) {
           setUint64FromUid(other.getUint64FromUid());
         }
-        if (other.hasUint64ToUid()) {
-          setUint64ToUid(other.getUint64ToUid());
-        }
-        if (other.hasUint64ToGid()) {
-          setUint64ToGid(other.getUint64ToGid());
+        if (other.hasUint64Gid()) {
+          setUint64Gid(other.getUint64Gid());
         }
         if (other.hasUint32UnreadCount()) {
           setUint32UnreadCount(other.getUint32UnreadCount());
@@ -9864,7 +9905,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 2;</code>
        *
        * <pre>
-       *���ͷ�ID
+       *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
        * </pre>
        */
       public boolean hasUint64FromUid() {
@@ -9874,7 +9915,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 2;</code>
        *
        * <pre>
-       *���ͷ�ID
+       *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
        * </pre>
        */
       public long getUint64FromUid() {
@@ -9884,7 +9925,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 2;</code>
        *
        * <pre>
-       *���ͷ�ID
+       *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
        * </pre>
        */
       public Builder setUint64FromUid(long value) {
@@ -9897,7 +9938,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 2;</code>
        *
        * <pre>
-       *���ͷ�ID
+       *���ͷ�ID ��Ϣ����Ϊ1ʱʹ��
        * </pre>
        */
       public Builder clearUint64FromUid() {
@@ -9907,118 +9948,69 @@ public final class Message {
         return this;
       }
 
-      // optional uint64 uint64_to_uid = 3;
-      private long uint64ToUid_ ;
+      // optional uint64 uint64_gid = 3;
+      private long uint64Gid_ ;
       /**
-       * <code>optional uint64 uint64_to_uid = 3;</code>
+       * <code>optional uint64 uint64_gid = 3;</code>
        *
        * <pre>
-       *���շ�ID, uid
+       *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
        * </pre>
        */
-      public boolean hasUint64ToUid() {
+      public boolean hasUint64Gid() {
         return ((bitField0_ & 0x00000004) == 0x00000004);
       }
       /**
-       * <code>optional uint64 uint64_to_uid = 3;</code>
+       * <code>optional uint64 uint64_gid = 3;</code>
        *
        * <pre>
-       *���շ�ID, uid
+       *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
        * </pre>
        */
-      public long getUint64ToUid() {
-        return uint64ToUid_;
+      public long getUint64Gid() {
+        return uint64Gid_;
       }
       /**
-       * <code>optional uint64 uint64_to_uid = 3;</code>
+       * <code>optional uint64 uint64_gid = 3;</code>
        *
        * <pre>
-       *���շ�ID, uid
+       *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
        * </pre>
        */
-      public Builder setUint64ToUid(long value) {
+      public Builder setUint64Gid(long value) {
         bitField0_ |= 0x00000004;
-        uint64ToUid_ = value;
+        uint64Gid_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_to_uid = 3;</code>
+       * <code>optional uint64 uint64_gid = 3;</code>
        *
        * <pre>
-       *���շ�ID, uid
+       *Ⱥ��, ��Ϣ����Ϊ2ʱʹ��
        * </pre>
        */
-      public Builder clearUint64ToUid() {
+      public Builder clearUint64Gid() {
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint64ToUid_ = 0L;
+        uint64Gid_ = 0L;
         onChanged();
         return this;
       }
 
-      // optional uint64 uint64_to_gid = 4;
-      private long uint64ToGid_ ;
-      /**
-       * <code>optional uint64 uint64_to_gid = 4;</code>
-       *
-       * <pre>
-       *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-       * </pre>
-       */
-      public boolean hasUint64ToGid() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
-      }
-      /**
-       * <code>optional uint64 uint64_to_gid = 4;</code>
-       *
-       * <pre>
-       *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-       * </pre>
-       */
-      public long getUint64ToGid() {
-        return uint64ToGid_;
-      }
-      /**
-       * <code>optional uint64 uint64_to_gid = 4;</code>
-       *
-       * <pre>
-       *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-       * </pre>
-       */
-      public Builder setUint64ToGid(long value) {
-        bitField0_ |= 0x00000008;
-        uint64ToGid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>optional uint64 uint64_to_gid = 4;</code>
-       *
-       * <pre>
-       *���շ�ID, Ⱥ�� (uint64_to_uid/uint64_to_gid���������ѡһ)
-       * </pre>
-       */
-      public Builder clearUint64ToGid() {
-        bitField0_ = (bitField0_ & ~0x00000008);
-        uint64ToGid_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // required uint32 uint32_unread_count = 5;
+      // required uint32 uint32_unread_count = 4;
       private int uint32UnreadCount_ ;
       /**
-       * <code>required uint32 uint32_unread_count = 5;</code>
+       * <code>required uint32 uint32_unread_count = 4;</code>
        *
        * <pre>
        *δ������
        * </pre>
        */
       public boolean hasUint32UnreadCount() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+        return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required uint32 uint32_unread_count = 5;</code>
+       * <code>required uint32 uint32_unread_count = 4;</code>
        *
        * <pre>
        *δ������
@@ -10028,27 +10020,27 @@ public final class Message {
         return uint32UnreadCount_;
       }
       /**
-       * <code>required uint32 uint32_unread_count = 5;</code>
+       * <code>required uint32 uint32_unread_count = 4;</code>
        *
        * <pre>
        *δ������
        * </pre>
        */
       public Builder setUint32UnreadCount(int value) {
-        bitField0_ |= 0x00000010;
+        bitField0_ |= 0x00000008;
         uint32UnreadCount_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 uint32_unread_count = 5;</code>
+       * <code>required uint32 uint32_unread_count = 4;</code>
        *
        * <pre>
        *δ������
        * </pre>
        */
       public Builder clearUint32UnreadCount() {
-        bitField0_ = (bitField0_ & ~0x00000010);
+        bitField0_ = (bitField0_ & ~0x00000008);
         uint32UnreadCount_ = 0;
         onChanged();
         return this;
@@ -11152,49 +11144,49 @@ public final class Message {
   public interface PushMsgReqOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // repeated .UnReadInfo msg_unread_info = 1;
+    // repeated .CommonMsg rpt_msg_pushmsg = 1;
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    java.util.List<Message.UnReadInfo> 
-        getMsgUnreadInfoList();
+    java.util.List<Message.CommonMsg> 
+        getRptMsgPushmsgList();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    Message.UnReadInfo getMsgUnreadInfo(int index);
+    Message.CommonMsg getRptMsgPushmsg(int index);
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    int getMsgUnreadInfoCount();
+    int getRptMsgPushmsgCount();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    java.util.List<? extends Message.UnReadInfoOrBuilder> 
-        getMsgUnreadInfoOrBuilderList();
+    java.util.List<? extends Message.CommonMsgOrBuilder> 
+        getRptMsgPushmsgOrBuilderList();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    Message.UnReadInfoOrBuilder getMsgUnreadInfoOrBuilder(
+    Message.CommonMsgOrBuilder getRptMsgPushmsgOrBuilder(
         int index);
   }
   /**
@@ -11257,10 +11249,10 @@ public final class Message {
             }
             case 10: {
               if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-                msgUnreadInfo_ = new java.util.ArrayList<Message.UnReadInfo>();
+                rptMsgPushmsg_ = new java.util.ArrayList<Message.CommonMsg>();
                 mutable_bitField0_ |= 0x00000001;
               }
-              msgUnreadInfo_.add(input.readMessage(Message.UnReadInfo.PARSER, extensionRegistry));
+              rptMsgPushmsg_.add(input.readMessage(Message.CommonMsg.PARSER, extensionRegistry));
               break;
             }
           }
@@ -11272,7 +11264,7 @@ public final class Message {
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
         if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
-          msgUnreadInfo_ = java.util.Collections.unmodifiableList(msgUnreadInfo_);
+          rptMsgPushmsg_ = java.util.Collections.unmodifiableList(rptMsgPushmsg_);
         }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
@@ -11305,72 +11297,72 @@ public final class Message {
       return PARSER;
     }
 
-    // repeated .UnReadInfo msg_unread_info = 1;
-    public static final int MSG_UNREAD_INFO_FIELD_NUMBER = 1;
-    private java.util.List<Message.UnReadInfo> msgUnreadInfo_;
+    // repeated .CommonMsg rpt_msg_pushmsg = 1;
+    public static final int RPT_MSG_PUSHMSG_FIELD_NUMBER = 1;
+    private java.util.List<Message.CommonMsg> rptMsgPushmsg_;
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    public java.util.List<Message.UnReadInfo> getMsgUnreadInfoList() {
-      return msgUnreadInfo_;
+    public java.util.List<Message.CommonMsg> getRptMsgPushmsgList() {
+      return rptMsgPushmsg_;
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    public java.util.List<? extends Message.UnReadInfoOrBuilder> 
-        getMsgUnreadInfoOrBuilderList() {
-      return msgUnreadInfo_;
+    public java.util.List<? extends Message.CommonMsgOrBuilder> 
+        getRptMsgPushmsgOrBuilderList() {
+      return rptMsgPushmsg_;
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    public int getMsgUnreadInfoCount() {
-      return msgUnreadInfo_.size();
+    public int getRptMsgPushmsgCount() {
+      return rptMsgPushmsg_.size();
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    public Message.UnReadInfo getMsgUnreadInfo(int index) {
-      return msgUnreadInfo_.get(index);
+    public Message.CommonMsg getRptMsgPushmsg(int index) {
+      return rptMsgPushmsg_.get(index);
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+     * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
      *
      * <pre>
-     *δ����Ϣ�б�
+     *��Ϣ�б�
      * </pre>
      */
-    public Message.UnReadInfoOrBuilder getMsgUnreadInfoOrBuilder(
+    public Message.CommonMsgOrBuilder getRptMsgPushmsgOrBuilder(
         int index) {
-      return msgUnreadInfo_.get(index);
+      return rptMsgPushmsg_.get(index);
     }
 
     private void initFields() {
-      msgUnreadInfo_ = java.util.Collections.emptyList();
+      rptMsgPushmsg_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      for (int i = 0; i < getMsgUnreadInfoCount(); i++) {
-        if (!getMsgUnreadInfo(i).isInitialized()) {
+      for (int i = 0; i < getRptMsgPushmsgCount(); i++) {
+        if (!getRptMsgPushmsg(i).isInitialized()) {
           memoizedIsInitialized = 0;
           return false;
         }
@@ -11382,8 +11374,8 @@ public final class Message {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      for (int i = 0; i < msgUnreadInfo_.size(); i++) {
-        output.writeMessage(1, msgUnreadInfo_.get(i));
+      for (int i = 0; i < rptMsgPushmsg_.size(); i++) {
+        output.writeMessage(1, rptMsgPushmsg_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -11394,9 +11386,9 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      for (int i = 0; i < msgUnreadInfo_.size(); i++) {
+      for (int i = 0; i < rptMsgPushmsg_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(1, msgUnreadInfo_.get(i));
+          .computeMessageSize(1, rptMsgPushmsg_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -11513,7 +11505,7 @@ public final class Message {
       }
       private void maybeForceBuilderInitialization() {
         if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
-          getMsgUnreadInfoFieldBuilder();
+          getRptMsgPushmsgFieldBuilder();
         }
       }
       private static Builder create() {
@@ -11522,11 +11514,11 @@ public final class Message {
 
       public Builder clear() {
         super.clear();
-        if (msgUnreadInfoBuilder_ == null) {
-          msgUnreadInfo_ = java.util.Collections.emptyList();
+        if (rptMsgPushmsgBuilder_ == null) {
+          rptMsgPushmsg_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
         } else {
-          msgUnreadInfoBuilder_.clear();
+          rptMsgPushmsgBuilder_.clear();
         }
         return this;
       }
@@ -11555,14 +11547,14 @@ public final class Message {
       public Message.PushMsgReq buildPartial() {
         Message.PushMsgReq result = new Message.PushMsgReq(this);
         int from_bitField0_ = bitField0_;
-        if (msgUnreadInfoBuilder_ == null) {
+        if (rptMsgPushmsgBuilder_ == null) {
           if (((bitField0_ & 0x00000001) == 0x00000001)) {
-            msgUnreadInfo_ = java.util.Collections.unmodifiableList(msgUnreadInfo_);
+            rptMsgPushmsg_ = java.util.Collections.unmodifiableList(rptMsgPushmsg_);
             bitField0_ = (bitField0_ & ~0x00000001);
           }
-          result.msgUnreadInfo_ = msgUnreadInfo_;
+          result.rptMsgPushmsg_ = rptMsgPushmsg_;
         } else {
-          result.msgUnreadInfo_ = msgUnreadInfoBuilder_.build();
+          result.rptMsgPushmsg_ = rptMsgPushmsgBuilder_.build();
         }
         onBuilt();
         return result;
@@ -11579,29 +11571,29 @@ public final class Message {
 
       public Builder mergeFrom(Message.PushMsgReq other) {
         if (other == Message.PushMsgReq.getDefaultInstance()) return this;
-        if (msgUnreadInfoBuilder_ == null) {
-          if (!other.msgUnreadInfo_.isEmpty()) {
-            if (msgUnreadInfo_.isEmpty()) {
-              msgUnreadInfo_ = other.msgUnreadInfo_;
+        if (rptMsgPushmsgBuilder_ == null) {
+          if (!other.rptMsgPushmsg_.isEmpty()) {
+            if (rptMsgPushmsg_.isEmpty()) {
+              rptMsgPushmsg_ = other.rptMsgPushmsg_;
               bitField0_ = (bitField0_ & ~0x00000001);
             } else {
-              ensureMsgUnreadInfoIsMutable();
-              msgUnreadInfo_.addAll(other.msgUnreadInfo_);
+              ensureRptMsgPushmsgIsMutable();
+              rptMsgPushmsg_.addAll(other.rptMsgPushmsg_);
             }
             onChanged();
           }
         } else {
-          if (!other.msgUnreadInfo_.isEmpty()) {
-            if (msgUnreadInfoBuilder_.isEmpty()) {
-              msgUnreadInfoBuilder_.dispose();
-              msgUnreadInfoBuilder_ = null;
-              msgUnreadInfo_ = other.msgUnreadInfo_;
+          if (!other.rptMsgPushmsg_.isEmpty()) {
+            if (rptMsgPushmsgBuilder_.isEmpty()) {
+              rptMsgPushmsgBuilder_.dispose();
+              rptMsgPushmsgBuilder_ = null;
+              rptMsgPushmsg_ = other.rptMsgPushmsg_;
               bitField0_ = (bitField0_ & ~0x00000001);
-              msgUnreadInfoBuilder_ = 
+              rptMsgPushmsgBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
-                   getMsgUnreadInfoFieldBuilder() : null;
+                   getRptMsgPushmsgFieldBuilder() : null;
             } else {
-              msgUnreadInfoBuilder_.addAllMessages(other.msgUnreadInfo_);
+              rptMsgPushmsgBuilder_.addAllMessages(other.rptMsgPushmsg_);
             }
           }
         }
@@ -11610,8 +11602,8 @@ public final class Message {
       }
 
       public final boolean isInitialized() {
-        for (int i = 0; i < getMsgUnreadInfoCount(); i++) {
-          if (!getMsgUnreadInfo(i).isInitialized()) {
+        for (int i = 0; i < getRptMsgPushmsgCount(); i++) {
+          if (!getRptMsgPushmsg(i).isInitialized()) {
             
             return false;
           }
@@ -11638,316 +11630,316 @@ public final class Message {
       }
       private int bitField0_;
 
-      // repeated .UnReadInfo msg_unread_info = 1;
-      private java.util.List<Message.UnReadInfo> msgUnreadInfo_ =
+      // repeated .CommonMsg rpt_msg_pushmsg = 1;
+      private java.util.List<Message.CommonMsg> rptMsgPushmsg_ =
         java.util.Collections.emptyList();
-      private void ensureMsgUnreadInfoIsMutable() {
+      private void ensureRptMsgPushmsgIsMutable() {
         if (!((bitField0_ & 0x00000001) == 0x00000001)) {
-          msgUnreadInfo_ = new java.util.ArrayList<Message.UnReadInfo>(msgUnreadInfo_);
+          rptMsgPushmsg_ = new java.util.ArrayList<Message.CommonMsg>(rptMsgPushmsg_);
           bitField0_ |= 0x00000001;
          }
       }
 
       private com.google.protobuf.RepeatedFieldBuilder<
-          Message.UnReadInfo, Message.UnReadInfo.Builder, Message.UnReadInfoOrBuilder> msgUnreadInfoBuilder_;
+          Message.CommonMsg, Message.CommonMsg.Builder, Message.CommonMsgOrBuilder> rptMsgPushmsgBuilder_;
 
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public java.util.List<Message.UnReadInfo> getMsgUnreadInfoList() {
-        if (msgUnreadInfoBuilder_ == null) {
-          return java.util.Collections.unmodifiableList(msgUnreadInfo_);
+      public java.util.List<Message.CommonMsg> getRptMsgPushmsgList() {
+        if (rptMsgPushmsgBuilder_ == null) {
+          return java.util.Collections.unmodifiableList(rptMsgPushmsg_);
         } else {
-          return msgUnreadInfoBuilder_.getMessageList();
+          return rptMsgPushmsgBuilder_.getMessageList();
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public int getMsgUnreadInfoCount() {
-        if (msgUnreadInfoBuilder_ == null) {
-          return msgUnreadInfo_.size();
+      public int getRptMsgPushmsgCount() {
+        if (rptMsgPushmsgBuilder_ == null) {
+          return rptMsgPushmsg_.size();
         } else {
-          return msgUnreadInfoBuilder_.getCount();
+          return rptMsgPushmsgBuilder_.getCount();
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Message.UnReadInfo getMsgUnreadInfo(int index) {
-        if (msgUnreadInfoBuilder_ == null) {
-          return msgUnreadInfo_.get(index);
+      public Message.CommonMsg getRptMsgPushmsg(int index) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          return rptMsgPushmsg_.get(index);
         } else {
-          return msgUnreadInfoBuilder_.getMessage(index);
+          return rptMsgPushmsgBuilder_.getMessage(index);
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder setMsgUnreadInfo(
-          int index, Message.UnReadInfo value) {
-        if (msgUnreadInfoBuilder_ == null) {
+      public Builder setRptMsgPushmsg(
+          int index, Message.CommonMsg value) {
+        if (rptMsgPushmsgBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.set(index, value);
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.set(index, value);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.setMessage(index, value);
+          rptMsgPushmsgBuilder_.setMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder setMsgUnreadInfo(
-          int index, Message.UnReadInfo.Builder builderForValue) {
-        if (msgUnreadInfoBuilder_ == null) {
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.set(index, builderForValue.build());
+      public Builder setRptMsgPushmsg(
+          int index, Message.CommonMsg.Builder builderForValue) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.set(index, builderForValue.build());
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.setMessage(index, builderForValue.build());
+          rptMsgPushmsgBuilder_.setMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder addMsgUnreadInfo(Message.UnReadInfo value) {
-        if (msgUnreadInfoBuilder_ == null) {
+      public Builder addRptMsgPushmsg(Message.CommonMsg value) {
+        if (rptMsgPushmsgBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.add(value);
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.add(value);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.addMessage(value);
+          rptMsgPushmsgBuilder_.addMessage(value);
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder addMsgUnreadInfo(
-          int index, Message.UnReadInfo value) {
-        if (msgUnreadInfoBuilder_ == null) {
+      public Builder addRptMsgPushmsg(
+          int index, Message.CommonMsg value) {
+        if (rptMsgPushmsgBuilder_ == null) {
           if (value == null) {
             throw new NullPointerException();
           }
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.add(index, value);
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.add(index, value);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.addMessage(index, value);
+          rptMsgPushmsgBuilder_.addMessage(index, value);
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder addMsgUnreadInfo(
-          Message.UnReadInfo.Builder builderForValue) {
-        if (msgUnreadInfoBuilder_ == null) {
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.add(builderForValue.build());
+      public Builder addRptMsgPushmsg(
+          Message.CommonMsg.Builder builderForValue) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.add(builderForValue.build());
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.addMessage(builderForValue.build());
+          rptMsgPushmsgBuilder_.addMessage(builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder addMsgUnreadInfo(
-          int index, Message.UnReadInfo.Builder builderForValue) {
-        if (msgUnreadInfoBuilder_ == null) {
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.add(index, builderForValue.build());
+      public Builder addRptMsgPushmsg(
+          int index, Message.CommonMsg.Builder builderForValue) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.add(index, builderForValue.build());
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.addMessage(index, builderForValue.build());
+          rptMsgPushmsgBuilder_.addMessage(index, builderForValue.build());
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder addAllMsgUnreadInfo(
-          java.lang.Iterable<? extends Message.UnReadInfo> values) {
-        if (msgUnreadInfoBuilder_ == null) {
-          ensureMsgUnreadInfoIsMutable();
-          super.addAll(values, msgUnreadInfo_);
+      public Builder addAllRptMsgPushmsg(
+          java.lang.Iterable<? extends Message.CommonMsg> values) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          ensureRptMsgPushmsgIsMutable();
+          super.addAll(values, rptMsgPushmsg_);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.addAllMessages(values);
+          rptMsgPushmsgBuilder_.addAllMessages(values);
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder clearMsgUnreadInfo() {
-        if (msgUnreadInfoBuilder_ == null) {
-          msgUnreadInfo_ = java.util.Collections.emptyList();
+      public Builder clearRptMsgPushmsg() {
+        if (rptMsgPushmsgBuilder_ == null) {
+          rptMsgPushmsg_ = java.util.Collections.emptyList();
           bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.clear();
+          rptMsgPushmsgBuilder_.clear();
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Builder removeMsgUnreadInfo(int index) {
-        if (msgUnreadInfoBuilder_ == null) {
-          ensureMsgUnreadInfoIsMutable();
-          msgUnreadInfo_.remove(index);
+      public Builder removeRptMsgPushmsg(int index) {
+        if (rptMsgPushmsgBuilder_ == null) {
+          ensureRptMsgPushmsgIsMutable();
+          rptMsgPushmsg_.remove(index);
           onChanged();
         } else {
-          msgUnreadInfoBuilder_.remove(index);
+          rptMsgPushmsgBuilder_.remove(index);
         }
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Message.UnReadInfo.Builder getMsgUnreadInfoBuilder(
+      public Message.CommonMsg.Builder getRptMsgPushmsgBuilder(
           int index) {
-        return getMsgUnreadInfoFieldBuilder().getBuilder(index);
+        return getRptMsgPushmsgFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Message.UnReadInfoOrBuilder getMsgUnreadInfoOrBuilder(
+      public Message.CommonMsgOrBuilder getRptMsgPushmsgOrBuilder(
           int index) {
-        if (msgUnreadInfoBuilder_ == null) {
-          return msgUnreadInfo_.get(index);  } else {
-          return msgUnreadInfoBuilder_.getMessageOrBuilder(index);
+        if (rptMsgPushmsgBuilder_ == null) {
+          return rptMsgPushmsg_.get(index);  } else {
+          return rptMsgPushmsgBuilder_.getMessageOrBuilder(index);
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public java.util.List<? extends Message.UnReadInfoOrBuilder> 
-           getMsgUnreadInfoOrBuilderList() {
-        if (msgUnreadInfoBuilder_ != null) {
-          return msgUnreadInfoBuilder_.getMessageOrBuilderList();
+      public java.util.List<? extends Message.CommonMsgOrBuilder> 
+           getRptMsgPushmsgOrBuilderList() {
+        if (rptMsgPushmsgBuilder_ != null) {
+          return rptMsgPushmsgBuilder_.getMessageOrBuilderList();
         } else {
-          return java.util.Collections.unmodifiableList(msgUnreadInfo_);
+          return java.util.Collections.unmodifiableList(rptMsgPushmsg_);
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Message.UnReadInfo.Builder addMsgUnreadInfoBuilder() {
-        return getMsgUnreadInfoFieldBuilder().addBuilder(
-            Message.UnReadInfo.getDefaultInstance());
+      public Message.CommonMsg.Builder addRptMsgPushmsgBuilder() {
+        return getRptMsgPushmsgFieldBuilder().addBuilder(
+            Message.CommonMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public Message.UnReadInfo.Builder addMsgUnreadInfoBuilder(
+      public Message.CommonMsg.Builder addRptMsgPushmsgBuilder(
           int index) {
-        return getMsgUnreadInfoFieldBuilder().addBuilder(
-            index, Message.UnReadInfo.getDefaultInstance());
+        return getRptMsgPushmsgFieldBuilder().addBuilder(
+            index, Message.CommonMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 1;</code>
+       * <code>repeated .CommonMsg rpt_msg_pushmsg = 1;</code>
        *
        * <pre>
-       *δ����Ϣ�б�
+       *��Ϣ�б�
        * </pre>
        */
-      public java.util.List<Message.UnReadInfo.Builder> 
-           getMsgUnreadInfoBuilderList() {
-        return getMsgUnreadInfoFieldBuilder().getBuilderList();
+      public java.util.List<Message.CommonMsg.Builder> 
+           getRptMsgPushmsgBuilderList() {
+        return getRptMsgPushmsgFieldBuilder().getBuilderList();
       }
       private com.google.protobuf.RepeatedFieldBuilder<
-          Message.UnReadInfo, Message.UnReadInfo.Builder, Message.UnReadInfoOrBuilder> 
-          getMsgUnreadInfoFieldBuilder() {
-        if (msgUnreadInfoBuilder_ == null) {
-          msgUnreadInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
-              Message.UnReadInfo, Message.UnReadInfo.Builder, Message.UnReadInfoOrBuilder>(
-                  msgUnreadInfo_,
+          Message.CommonMsg, Message.CommonMsg.Builder, Message.CommonMsgOrBuilder> 
+          getRptMsgPushmsgFieldBuilder() {
+        if (rptMsgPushmsgBuilder_ == null) {
+          rptMsgPushmsgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
+              Message.CommonMsg, Message.CommonMsg.Builder, Message.CommonMsgOrBuilder>(
+                  rptMsgPushmsg_,
                   ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
-          msgUnreadInfo_ = null;
+          rptMsgPushmsg_ = null;
         }
-        return msgUnreadInfoBuilder_;
+        return rptMsgPushmsgBuilder_;
       }
 
       // @@protoc_insertion_point(builder_scope:PushMsgReq)
@@ -13689,7 +13681,7 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 3;</code>
      *
      * <pre>
-     *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+     *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
      * </pre>
      */
     boolean hasUint64FromUid();
@@ -13697,14 +13689,32 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 3;</code>
      *
      * <pre>
-     *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+     *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
      * </pre>
      */
     long getUint64FromUid();
 
-    // optional uint64 uint64_time = 4;
+    // optional uint64 uint64_gid = 4;
     /**
-     * <code>optional uint64 uint64_time = 4;</code>
+     * <code>optional uint64 uint64_gid = 4;</code>
+     *
+     * <pre>
+     *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+     * </pre>
+     */
+    boolean hasUint64Gid();
+    /**
+     * <code>optional uint64 uint64_gid = 4;</code>
+     *
+     * <pre>
+     *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+     * </pre>
+     */
+    long getUint64Gid();
+
+    // optional uint64 uint64_time = 5;
+    /**
+     * <code>optional uint64 uint64_time = 5;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
@@ -13712,7 +13722,7 @@ public final class Message {
      */
     boolean hasUint64Time();
     /**
-     * <code>optional uint64 uint64_time = 4;</code>
+     * <code>optional uint64 uint64_time = 5;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
@@ -13797,6 +13807,11 @@ public final class Message {
             }
             case 32: {
               bitField0_ |= 0x00000008;
+              uint64Gid_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
               uint64Time_ = input.readUInt64();
               break;
             }
@@ -13895,7 +13910,7 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 3;</code>
      *
      * <pre>
-     *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+     *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
      * </pre>
      */
     public boolean hasUint64FromUid() {
@@ -13905,28 +13920,52 @@ public final class Message {
      * <code>optional uint64 uint64_from_uid = 3;</code>
      *
      * <pre>
-     *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+     *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
      * </pre>
      */
     public long getUint64FromUid() {
       return uint64FromUid_;
     }
 
-    // optional uint64 uint64_time = 4;
-    public static final int UINT64_TIME_FIELD_NUMBER = 4;
+    // optional uint64 uint64_gid = 4;
+    public static final int UINT64_GID_FIELD_NUMBER = 4;
+    private long uint64Gid_;
+    /**
+     * <code>optional uint64 uint64_gid = 4;</code>
+     *
+     * <pre>
+     *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+     * </pre>
+     */
+    public boolean hasUint64Gid() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional uint64 uint64_gid = 4;</code>
+     *
+     * <pre>
+     *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+     * </pre>
+     */
+    public long getUint64Gid() {
+      return uint64Gid_;
+    }
+
+    // optional uint64 uint64_time = 5;
+    public static final int UINT64_TIME_FIELD_NUMBER = 5;
     private long uint64Time_;
     /**
-     * <code>optional uint64 uint64_time = 4;</code>
+     * <code>optional uint64 uint64_time = 5;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
      * </pre>
      */
     public boolean hasUint64Time() {
-      return ((bitField0_ & 0x00000008) == 0x00000008);
+      return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>optional uint64 uint64_time = 4;</code>
+     * <code>optional uint64 uint64_time = 5;</code>
      *
      * <pre>
      *���շ��ն˵�ǰʱ��
@@ -13940,6 +13979,7 @@ public final class Message {
       uint64Uid_ = 0L;
       uint32MsgType_ = 0;
       uint64FromUid_ = 0L;
+      uint64Gid_ = 0L;
       uint64Time_ = 0L;
     }
     private byte memoizedIsInitialized = -1;
@@ -13972,7 +14012,10 @@ public final class Message {
         output.writeUInt64(3, uint64FromUid_);
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
-        output.writeUInt64(4, uint64Time_);
+        output.writeUInt64(4, uint64Gid_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt64(5, uint64Time_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -13997,7 +14040,11 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(4, uint64Time_);
+          .computeUInt64Size(4, uint64Gid_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, uint64Time_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -14130,8 +14177,10 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000002);
         uint64FromUid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint64Time_ = 0L;
+        uint64Gid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
+        uint64Time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -14175,6 +14224,10 @@ public final class Message {
         if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
           to_bitField0_ |= 0x00000008;
         }
+        result.uint64Gid_ = uint64Gid_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
         result.uint64Time_ = uint64Time_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
@@ -14200,6 +14253,9 @@ public final class Message {
         }
         if (other.hasUint64FromUid()) {
           setUint64FromUid(other.getUint64FromUid());
+        }
+        if (other.hasUint64Gid()) {
+          setUint64Gid(other.getUint64Gid());
         }
         if (other.hasUint64Time()) {
           setUint64Time(other.getUint64Time());
@@ -14343,7 +14399,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 3;</code>
        *
        * <pre>
-       *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+       *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
        * </pre>
        */
       public boolean hasUint64FromUid() {
@@ -14353,7 +14409,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 3;</code>
        *
        * <pre>
-       *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+       *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
        * </pre>
        */
       public long getUint64FromUid() {
@@ -14363,7 +14419,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 3;</code>
        *
        * <pre>
-       *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+       *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
        * </pre>
        */
       public Builder setUint64FromUid(long value) {
@@ -14376,7 +14432,7 @@ public final class Message {
        * <code>optional uint64 uint64_from_uid = 3;</code>
        *
        * <pre>
-       *��ѡ���������Ϣ����Ϊ0(c2c)/1(Ⱥ��Ϣ)ʱ�����ṩ������ṩ�������ֻ��ȡָ���û�/Ⱥ����������Ϣ��������ȡ������Ϣ
+       *��ѡ��������ṩ�������ֻ��ȡָ���û�����Ϣ��������ȡ������Ϣ
        * </pre>
        */
       public Builder clearUint64FromUid() {
@@ -14386,20 +14442,69 @@ public final class Message {
         return this;
       }
 
-      // optional uint64 uint64_time = 4;
+      // optional uint64 uint64_gid = 4;
+      private long uint64Gid_ ;
+      /**
+       * <code>optional uint64 uint64_gid = 4;</code>
+       *
+       * <pre>
+       *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+       * </pre>
+       */
+      public boolean hasUint64Gid() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional uint64 uint64_gid = 4;</code>
+       *
+       * <pre>
+       *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+       * </pre>
+       */
+      public long getUint64Gid() {
+        return uint64Gid_;
+      }
+      /**
+       * <code>optional uint64 uint64_gid = 4;</code>
+       *
+       * <pre>
+       *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+       * </pre>
+       */
+      public Builder setUint64Gid(long value) {
+        bitField0_ |= 0x00000008;
+        uint64Gid_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 uint64_gid = 4;</code>
+       *
+       * <pre>
+       *��ѡ��������ṩ�������ֻ��ȡָ��Ⱥ����Ϣ��������ȡ������Ϣ
+       * </pre>
+       */
+      public Builder clearUint64Gid() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        uint64Gid_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 uint64_time = 5;
       private long uint64Time_ ;
       /**
-       * <code>optional uint64 uint64_time = 4;</code>
+       * <code>optional uint64 uint64_time = 5;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
       public boolean hasUint64Time() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional uint64 uint64_time = 4;</code>
+       * <code>optional uint64 uint64_time = 5;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
@@ -14409,27 +14514,27 @@ public final class Message {
         return uint64Time_;
       }
       /**
-       * <code>optional uint64 uint64_time = 4;</code>
+       * <code>optional uint64 uint64_time = 5;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
       public Builder setUint64Time(long value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000010;
         uint64Time_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_time = 4;</code>
+       * <code>optional uint64 uint64_time = 5;</code>
        *
        * <pre>
        *���շ��ն˵�ǰʱ��
        * </pre>
        */
       public Builder clearUint64Time() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000010);
         uint64Time_ = 0L;
         onChanged();
         return this;
@@ -14449,45 +14554,9 @@ public final class Message {
   public interface PollMsgResOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint64 uint64_uid = 1;
+    // repeated .CommonMsg rpt_msg_pollmsg = 1;
     /**
-     * <code>required uint64 uint64_uid = 1;</code>
-     *
-     * <pre>
-     *���շ�ID
-     * </pre>
-     */
-    boolean hasUint64Uid();
-    /**
-     * <code>required uint64 uint64_uid = 1;</code>
-     *
-     * <pre>
-     *���շ�ID
-     * </pre>
-     */
-    long getUint64Uid();
-
-    // required uint32 uint32_msg_type = 2;
-    /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
-     *
-     * <pre>
-     *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-     * </pre>
-     */
-    boolean hasUint32MsgType();
-    /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
-     *
-     * <pre>
-     *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-     * </pre>
-     */
-    int getUint32MsgType();
-
-    // repeated .CommonMsg rpt_msg_pollmsg = 3;
-    /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14496,7 +14565,7 @@ public final class Message {
     java.util.List<Message.CommonMsg> 
         getRptMsgPollmsgList();
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14504,7 +14573,7 @@ public final class Message {
      */
     Message.CommonMsg getRptMsgPollmsg(int index);
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14512,7 +14581,7 @@ public final class Message {
      */
     int getRptMsgPollmsgCount();
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14521,7 +14590,7 @@ public final class Message {
     java.util.List<? extends Message.CommonMsgOrBuilder> 
         getRptMsgPollmsgOrBuilderList();
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14530,9 +14599,9 @@ public final class Message {
     Message.CommonMsgOrBuilder getRptMsgPollmsgOrBuilder(
         int index);
 
-    // optional uint32 uint32_complete_flag = 4;
+    // optional uint32 uint32_complete_flag = 2;
     /**
-     * <code>optional uint32 uint32_complete_flag = 4;</code>
+     * <code>optional uint32 uint32_complete_flag = 2;</code>
      *
      * <pre>
      *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
@@ -14540,7 +14609,7 @@ public final class Message {
      */
     boolean hasUint32CompleteFlag();
     /**
-     * <code>optional uint32 uint32_complete_flag = 4;</code>
+     * <code>optional uint32 uint32_complete_flag = 2;</code>
      *
      * <pre>
      *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
@@ -14548,9 +14617,9 @@ public final class Message {
      */
     int getUint32CompleteFlag();
 
-    // repeated .UnReadInfo msg_unread_info = 5;
+    // repeated .UnReadInfo msg_unread_info = 3;
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14559,7 +14628,7 @@ public final class Message {
     java.util.List<Message.UnReadInfo> 
         getMsgUnreadInfoList();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14567,7 +14636,7 @@ public final class Message {
      */
     Message.UnReadInfo getMsgUnreadInfo(int index);
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14575,7 +14644,7 @@ public final class Message {
      */
     int getMsgUnreadInfoCount();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14584,7 +14653,7 @@ public final class Message {
     java.util.List<? extends Message.UnReadInfoOrBuilder> 
         getMsgUnreadInfoOrBuilderList();
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14644,33 +14713,23 @@ public final class Message {
               }
               break;
             }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              uint64Uid_ = input.readUInt64();
-              break;
-            }
-            case 16: {
-              bitField0_ |= 0x00000002;
-              uint32MsgType_ = input.readUInt32();
-              break;
-            }
-            case 26: {
-              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+            case 10: {
+              if (!((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
                 rptMsgPollmsg_ = new java.util.ArrayList<Message.CommonMsg>();
-                mutable_bitField0_ |= 0x00000004;
+                mutable_bitField0_ |= 0x00000001;
               }
               rptMsgPollmsg_.add(input.readMessage(Message.CommonMsg.PARSER, extensionRegistry));
               break;
             }
-            case 32: {
-              bitField0_ |= 0x00000004;
+            case 16: {
+              bitField0_ |= 0x00000001;
               uint32CompleteFlag_ = input.readUInt32();
               break;
             }
-            case 42: {
-              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 msgUnreadInfo_ = new java.util.ArrayList<Message.UnReadInfo>();
-                mutable_bitField0_ |= 0x00000010;
+                mutable_bitField0_ |= 0x00000004;
               }
               msgUnreadInfo_.add(input.readMessage(Message.UnReadInfo.PARSER, extensionRegistry));
               break;
@@ -14683,10 +14742,10 @@ public final class Message {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
+        if (((mutable_bitField0_ & 0x00000001) == 0x00000001)) {
           rptMsgPollmsg_ = java.util.Collections.unmodifiableList(rptMsgPollmsg_);
         }
-        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           msgUnreadInfo_ = java.util.Collections.unmodifiableList(msgUnreadInfo_);
         }
         this.unknownFields = unknownFields.build();
@@ -14721,59 +14780,11 @@ public final class Message {
     }
 
     private int bitField0_;
-    // required uint64 uint64_uid = 1;
-    public static final int UINT64_UID_FIELD_NUMBER = 1;
-    private long uint64Uid_;
-    /**
-     * <code>required uint64 uint64_uid = 1;</code>
-     *
-     * <pre>
-     *���շ�ID
-     * </pre>
-     */
-    public boolean hasUint64Uid() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required uint64 uint64_uid = 1;</code>
-     *
-     * <pre>
-     *���շ�ID
-     * </pre>
-     */
-    public long getUint64Uid() {
-      return uint64Uid_;
-    }
-
-    // required uint32 uint32_msg_type = 2;
-    public static final int UINT32_MSG_TYPE_FIELD_NUMBER = 2;
-    private int uint32MsgType_;
-    /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
-     *
-     * <pre>
-     *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-     * </pre>
-     */
-    public boolean hasUint32MsgType() {
-      return ((bitField0_ & 0x00000002) == 0x00000002);
-    }
-    /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
-     *
-     * <pre>
-     *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-     * </pre>
-     */
-    public int getUint32MsgType() {
-      return uint32MsgType_;
-    }
-
-    // repeated .CommonMsg rpt_msg_pollmsg = 3;
-    public static final int RPT_MSG_POLLMSG_FIELD_NUMBER = 3;
+    // repeated .CommonMsg rpt_msg_pollmsg = 1;
+    public static final int RPT_MSG_POLLMSG_FIELD_NUMBER = 1;
     private java.util.List<Message.CommonMsg> rptMsgPollmsg_;
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14783,7 +14794,7 @@ public final class Message {
       return rptMsgPollmsg_;
     }
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14794,7 +14805,7 @@ public final class Message {
       return rptMsgPollmsg_;
     }
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14804,7 +14815,7 @@ public final class Message {
       return rptMsgPollmsg_.size();
     }
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14814,7 +14825,7 @@ public final class Message {
       return rptMsgPollmsg_.get(index);
     }
     /**
-     * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+     * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
      *
      * <pre>
      *��Ϣ�б�
@@ -14825,21 +14836,21 @@ public final class Message {
       return rptMsgPollmsg_.get(index);
     }
 
-    // optional uint32 uint32_complete_flag = 4;
-    public static final int UINT32_COMPLETE_FLAG_FIELD_NUMBER = 4;
+    // optional uint32 uint32_complete_flag = 2;
+    public static final int UINT32_COMPLETE_FLAG_FIELD_NUMBER = 2;
     private int uint32CompleteFlag_;
     /**
-     * <code>optional uint32 uint32_complete_flag = 4;</code>
+     * <code>optional uint32 uint32_complete_flag = 2;</code>
      *
      * <pre>
      *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
      * </pre>
      */
     public boolean hasUint32CompleteFlag() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
+      return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>optional uint32 uint32_complete_flag = 4;</code>
+     * <code>optional uint32 uint32_complete_flag = 2;</code>
      *
      * <pre>
      *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
@@ -14849,11 +14860,11 @@ public final class Message {
       return uint32CompleteFlag_;
     }
 
-    // repeated .UnReadInfo msg_unread_info = 5;
-    public static final int MSG_UNREAD_INFO_FIELD_NUMBER = 5;
+    // repeated .UnReadInfo msg_unread_info = 3;
+    public static final int MSG_UNREAD_INFO_FIELD_NUMBER = 3;
     private java.util.List<Message.UnReadInfo> msgUnreadInfo_;
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14863,7 +14874,7 @@ public final class Message {
       return msgUnreadInfo_;
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14874,7 +14885,7 @@ public final class Message {
       return msgUnreadInfo_;
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14884,7 +14895,7 @@ public final class Message {
       return msgUnreadInfo_.size();
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14894,7 +14905,7 @@ public final class Message {
       return msgUnreadInfo_.get(index);
     }
     /**
-     * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+     * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
      *
      * <pre>
      *δ����Ϣ�б�
@@ -14906,8 +14917,6 @@ public final class Message {
     }
 
     private void initFields() {
-      uint64Uid_ = 0L;
-      uint32MsgType_ = 0;
       rptMsgPollmsg_ = java.util.Collections.emptyList();
       uint32CompleteFlag_ = 0;
       msgUnreadInfo_ = java.util.Collections.emptyList();
@@ -14917,14 +14926,6 @@ public final class Message {
       byte isInitialized = memoizedIsInitialized;
       if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasUint64Uid()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasUint32MsgType()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       for (int i = 0; i < getRptMsgPollmsgCount(); i++) {
         if (!getRptMsgPollmsg(i).isInitialized()) {
           memoizedIsInitialized = 0;
@@ -14944,20 +14945,14 @@ public final class Message {
     public void writeTo(com.google.protobuf.CodedOutputStream output)
                         throws java.io.IOException {
       getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt64(1, uint64Uid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, uint32MsgType_);
-      }
       for (int i = 0; i < rptMsgPollmsg_.size(); i++) {
-        output.writeMessage(3, rptMsgPollmsg_.get(i));
+        output.writeMessage(1, rptMsgPollmsg_.get(i));
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(4, uint32CompleteFlag_);
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(2, uint32CompleteFlag_);
       }
       for (int i = 0; i < msgUnreadInfo_.size(); i++) {
-        output.writeMessage(5, msgUnreadInfo_.get(i));
+        output.writeMessage(3, msgUnreadInfo_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -14968,25 +14963,17 @@ public final class Message {
       if (size != -1) return size;
 
       size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(1, uint64Uid_);
-      }
-      if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, uint32MsgType_);
-      }
       for (int i = 0; i < rptMsgPollmsg_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(3, rptMsgPollmsg_.get(i));
+          .computeMessageSize(1, rptMsgPollmsg_.get(i));
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, uint32CompleteFlag_);
+          .computeUInt32Size(2, uint32CompleteFlag_);
       }
       for (int i = 0; i < msgUnreadInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(5, msgUnreadInfo_.get(i));
+          .computeMessageSize(3, msgUnreadInfo_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -15106,21 +15093,17 @@ public final class Message {
 
       public Builder clear() {
         super.clear();
-        uint64Uid_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        uint32MsgType_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000002);
         if (rptMsgPollmsgBuilder_ == null) {
           rptMsgPollmsg_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
         } else {
           rptMsgPollmsgBuilder_.clear();
         }
         uint32CompleteFlag_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000002);
         if (msgUnreadInfoBuilder_ == null) {
           msgUnreadInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           msgUnreadInfoBuilder_.clear();
         }
@@ -15152,31 +15135,23 @@ public final class Message {
         Message.PollMsgRes result = new Message.PollMsgRes(this);
         int from_bitField0_ = bitField0_;
         int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
-        }
-        result.uint64Uid_ = uint64Uid_;
-        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
-          to_bitField0_ |= 0x00000002;
-        }
-        result.uint32MsgType_ = uint32MsgType_;
         if (rptMsgPollmsgBuilder_ == null) {
-          if (((bitField0_ & 0x00000004) == 0x00000004)) {
+          if (((bitField0_ & 0x00000001) == 0x00000001)) {
             rptMsgPollmsg_ = java.util.Collections.unmodifiableList(rptMsgPollmsg_);
-            bitField0_ = (bitField0_ & ~0x00000004);
+            bitField0_ = (bitField0_ & ~0x00000001);
           }
           result.rptMsgPollmsg_ = rptMsgPollmsg_;
         } else {
           result.rptMsgPollmsg_ = rptMsgPollmsgBuilder_.build();
         }
-        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
-          to_bitField0_ |= 0x00000004;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000001;
         }
         result.uint32CompleteFlag_ = uint32CompleteFlag_;
         if (msgUnreadInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             msgUnreadInfo_ = java.util.Collections.unmodifiableList(msgUnreadInfo_);
-            bitField0_ = (bitField0_ & ~0x00000010);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.msgUnreadInfo_ = msgUnreadInfo_;
         } else {
@@ -15198,17 +15173,11 @@ public final class Message {
 
       public Builder mergeFrom(Message.PollMsgRes other) {
         if (other == Message.PollMsgRes.getDefaultInstance()) return this;
-        if (other.hasUint64Uid()) {
-          setUint64Uid(other.getUint64Uid());
-        }
-        if (other.hasUint32MsgType()) {
-          setUint32MsgType(other.getUint32MsgType());
-        }
         if (rptMsgPollmsgBuilder_ == null) {
           if (!other.rptMsgPollmsg_.isEmpty()) {
             if (rptMsgPollmsg_.isEmpty()) {
               rptMsgPollmsg_ = other.rptMsgPollmsg_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
             } else {
               ensureRptMsgPollmsgIsMutable();
               rptMsgPollmsg_.addAll(other.rptMsgPollmsg_);
@@ -15221,7 +15190,7 @@ public final class Message {
               rptMsgPollmsgBuilder_.dispose();
               rptMsgPollmsgBuilder_ = null;
               rptMsgPollmsg_ = other.rptMsgPollmsg_;
-              bitField0_ = (bitField0_ & ~0x00000004);
+              bitField0_ = (bitField0_ & ~0x00000001);
               rptMsgPollmsgBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getRptMsgPollmsgFieldBuilder() : null;
@@ -15237,7 +15206,7 @@ public final class Message {
           if (!other.msgUnreadInfo_.isEmpty()) {
             if (msgUnreadInfo_.isEmpty()) {
               msgUnreadInfo_ = other.msgUnreadInfo_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureMsgUnreadInfoIsMutable();
               msgUnreadInfo_.addAll(other.msgUnreadInfo_);
@@ -15250,7 +15219,7 @@ public final class Message {
               msgUnreadInfoBuilder_.dispose();
               msgUnreadInfoBuilder_ = null;
               msgUnreadInfo_ = other.msgUnreadInfo_;
-              bitField0_ = (bitField0_ & ~0x00000010);
+              bitField0_ = (bitField0_ & ~0x00000004);
               msgUnreadInfoBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getMsgUnreadInfoFieldBuilder() : null;
@@ -15264,14 +15233,6 @@ public final class Message {
       }
 
       public final boolean isInitialized() {
-        if (!hasUint64Uid()) {
-          
-          return false;
-        }
-        if (!hasUint32MsgType()) {
-          
-          return false;
-        }
         for (int i = 0; i < getRptMsgPollmsgCount(); i++) {
           if (!getRptMsgPollmsg(i).isInitialized()) {
             
@@ -15306,111 +15267,13 @@ public final class Message {
       }
       private int bitField0_;
 
-      // required uint64 uint64_uid = 1;
-      private long uint64Uid_ ;
-      /**
-       * <code>required uint64 uint64_uid = 1;</code>
-       *
-       * <pre>
-       *���շ�ID
-       * </pre>
-       */
-      public boolean hasUint64Uid() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required uint64 uint64_uid = 1;</code>
-       *
-       * <pre>
-       *���շ�ID
-       * </pre>
-       */
-      public long getUint64Uid() {
-        return uint64Uid_;
-      }
-      /**
-       * <code>required uint64 uint64_uid = 1;</code>
-       *
-       * <pre>
-       *���շ�ID
-       * </pre>
-       */
-      public Builder setUint64Uid(long value) {
-        bitField0_ |= 0x00000001;
-        uint64Uid_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint64 uint64_uid = 1;</code>
-       *
-       * <pre>
-       *���շ�ID
-       * </pre>
-       */
-      public Builder clearUint64Uid() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        uint64Uid_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // required uint32 uint32_msg_type = 2;
-      private int uint32MsgType_ ;
-      /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
-       *
-       * <pre>
-       *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-       * </pre>
-       */
-      public boolean hasUint32MsgType() {
-        return ((bitField0_ & 0x00000002) == 0x00000002);
-      }
-      /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
-       *
-       * <pre>
-       *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-       * </pre>
-       */
-      public int getUint32MsgType() {
-        return uint32MsgType_;
-      }
-      /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
-       *
-       * <pre>
-       *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-       * </pre>
-       */
-      public Builder setUint32MsgType(int value) {
-        bitField0_ |= 0x00000002;
-        uint32MsgType_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
-       *
-       * <pre>
-       *��ȡ����Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
-       * </pre>
-       */
-      public Builder clearUint32MsgType() {
-        bitField0_ = (bitField0_ & ~0x00000002);
-        uint32MsgType_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .CommonMsg rpt_msg_pollmsg = 3;
+      // repeated .CommonMsg rpt_msg_pollmsg = 1;
       private java.util.List<Message.CommonMsg> rptMsgPollmsg_ =
         java.util.Collections.emptyList();
       private void ensureRptMsgPollmsgIsMutable() {
-        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
+        if (!((bitField0_ & 0x00000001) == 0x00000001)) {
           rptMsgPollmsg_ = new java.util.ArrayList<Message.CommonMsg>(rptMsgPollmsg_);
-          bitField0_ |= 0x00000004;
+          bitField0_ |= 0x00000001;
          }
       }
 
@@ -15418,7 +15281,7 @@ public final class Message {
           Message.CommonMsg, Message.CommonMsg.Builder, Message.CommonMsgOrBuilder> rptMsgPollmsgBuilder_;
 
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15432,7 +15295,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15446,7 +15309,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15460,7 +15323,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15481,7 +15344,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15499,7 +15362,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15519,7 +15382,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15540,7 +15403,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15558,7 +15421,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15576,7 +15439,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15594,7 +15457,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15603,7 +15466,7 @@ public final class Message {
       public Builder clearRptMsgPollmsg() {
         if (rptMsgPollmsgBuilder_ == null) {
           rptMsgPollmsg_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000004);
+          bitField0_ = (bitField0_ & ~0x00000001);
           onChanged();
         } else {
           rptMsgPollmsgBuilder_.clear();
@@ -15611,7 +15474,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15628,7 +15491,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15639,7 +15502,7 @@ public final class Message {
         return getRptMsgPollmsgFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15653,7 +15516,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15668,7 +15531,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15679,7 +15542,7 @@ public final class Message {
             Message.CommonMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15691,7 +15554,7 @@ public final class Message {
             index, Message.CommonMsg.getDefaultInstance());
       }
       /**
-       * <code>repeated .CommonMsg rpt_msg_pollmsg = 3;</code>
+       * <code>repeated .CommonMsg rpt_msg_pollmsg = 1;</code>
        *
        * <pre>
        *��Ϣ�б�
@@ -15708,7 +15571,7 @@ public final class Message {
           rptMsgPollmsgBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               Message.CommonMsg, Message.CommonMsg.Builder, Message.CommonMsgOrBuilder>(
                   rptMsgPollmsg_,
-                  ((bitField0_ & 0x00000004) == 0x00000004),
+                  ((bitField0_ & 0x00000001) == 0x00000001),
                   getParentForChildren(),
                   isClean());
           rptMsgPollmsg_ = null;
@@ -15716,20 +15579,20 @@ public final class Message {
         return rptMsgPollmsgBuilder_;
       }
 
-      // optional uint32 uint32_complete_flag = 4;
+      // optional uint32 uint32_complete_flag = 2;
       private int uint32CompleteFlag_ ;
       /**
-       * <code>optional uint32 uint32_complete_flag = 4;</code>
+       * <code>optional uint32 uint32_complete_flag = 2;</code>
        *
        * <pre>
        *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
        * </pre>
        */
       public boolean hasUint32CompleteFlag() {
-        return ((bitField0_ & 0x00000008) == 0x00000008);
+        return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>optional uint32 uint32_complete_flag = 4;</code>
+       * <code>optional uint32 uint32_complete_flag = 2;</code>
        *
        * <pre>
        *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
@@ -15739,39 +15602,39 @@ public final class Message {
         return uint32CompleteFlag_;
       }
       /**
-       * <code>optional uint32 uint32_complete_flag = 4;</code>
+       * <code>optional uint32 uint32_complete_flag = 2;</code>
        *
        * <pre>
        *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
        * </pre>
        */
       public Builder setUint32CompleteFlag(int value) {
-        bitField0_ |= 0x00000008;
+        bitField0_ |= 0x00000002;
         uint32CompleteFlag_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 uint32_complete_flag = 4;</code>
+       * <code>optional uint32 uint32_complete_flag = 2;</code>
        *
        * <pre>
        *��ȡ��ɱ�־��1��ʾ��Ϣ��ȡ��ɣ�0��ʾδ��ɣ���������̫�࣬server�п��ֶܷ�η��أ�
        * </pre>
        */
       public Builder clearUint32CompleteFlag() {
-        bitField0_ = (bitField0_ & ~0x00000008);
+        bitField0_ = (bitField0_ & ~0x00000002);
         uint32CompleteFlag_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated .UnReadInfo msg_unread_info = 5;
+      // repeated .UnReadInfo msg_unread_info = 3;
       private java.util.List<Message.UnReadInfo> msgUnreadInfo_ =
         java.util.Collections.emptyList();
       private void ensureMsgUnreadInfoIsMutable() {
-        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           msgUnreadInfo_ = new java.util.ArrayList<Message.UnReadInfo>(msgUnreadInfo_);
-          bitField0_ |= 0x00000010;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -15779,7 +15642,7 @@ public final class Message {
           Message.UnReadInfo, Message.UnReadInfo.Builder, Message.UnReadInfoOrBuilder> msgUnreadInfoBuilder_;
 
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15793,7 +15656,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15807,7 +15670,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15821,7 +15684,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15842,7 +15705,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15860,7 +15723,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15880,7 +15743,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15901,7 +15764,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15919,7 +15782,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15937,7 +15800,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15955,7 +15818,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15964,7 +15827,7 @@ public final class Message {
       public Builder clearMsgUnreadInfo() {
         if (msgUnreadInfoBuilder_ == null) {
           msgUnreadInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000010);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           msgUnreadInfoBuilder_.clear();
@@ -15972,7 +15835,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -15989,7 +15852,7 @@ public final class Message {
         return this;
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16000,7 +15863,7 @@ public final class Message {
         return getMsgUnreadInfoFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16014,7 +15877,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16029,7 +15892,7 @@ public final class Message {
         }
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16040,7 +15903,7 @@ public final class Message {
             Message.UnReadInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16052,7 +15915,7 @@ public final class Message {
             index, Message.UnReadInfo.getDefaultInstance());
       }
       /**
-       * <code>repeated .UnReadInfo msg_unread_info = 5;</code>
+       * <code>repeated .UnReadInfo msg_unread_info = 3;</code>
        *
        * <pre>
        *δ����Ϣ�б�
@@ -16069,7 +15932,7 @@ public final class Message {
           msgUnreadInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               Message.UnReadInfo, Message.UnReadInfo.Builder, Message.UnReadInfoOrBuilder>(
                   msgUnreadInfo_,
-                  ((bitField0_ & 0x00000010) == 0x00000010),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           msgUnreadInfo_ = null;
@@ -19392,46 +19255,45 @@ public final class Message {
       "fo\022\027\n\017str_text_answer\030\004 \001(\t\022\024\n\014uint32_sc" +
       "ore\030\005 \001(\r\022\023\n\013str_comment\030\006 \001(\r\"4\n\tClassI" +
       "nfo\022\022\n\nstr_course\030\001 \001(\t\022\023\n\013str_content\030\002" +
-      " \001(\t\"\222\003\n\tCommonMsg\022\027\n\017uint64_from_uid\030\001 ",
+      " \001(\t\"\256\003\n\tCommonMsg\022\027\n\017uint64_from_uid\030\001 ",
       "\002(\004\022\025\n\ruint64_to_uid\030\002 \003(\004\022\025\n\ruint64_to_" +
       "gid\030\003 \003(\004\022\027\n\017uint32_msg_type\030\004 \002(\r\022\033\n\023ui" +
-      "nt32_content_type\030\005 \002(\r\022\024\n\014str_text_msg\030" +
+      "nt32_content_type\030\005 \001(\r\022\024\n\014str_text_msg\030" +
       "\006 \001(\t\022 \n\013msg_pic_msg\030\007 \001(\0132\013.PicMsgInfo\022" +
       "$\n\rmsg_voice_msg\030\010 \001(\0132\r.VoiceMsgInfo\022$\n" +
       "\rmsg_video_msg\030\t \001(\0132\r.VideoMsgInfo\022%\n\016m" +
       "sg_moitor_msg\030\n \001(\0132\r.NetGuardInfo\022$\n\014ms" +
       "g_test_msg\030\013 \001(\0132\016.VoiceTestInfo\022\"\n\016msg_" +
       "class_info\030\014 \001(\0132\n.ClassInfo\022\023\n\013uint64_t" +
-      "ime\030\r \001(\004\"\211\001\n\nUnReadInfo\022\027\n\017uint32_msg_t",
-      "ype\030\001 \002(\r\022\027\n\017uint64_from_uid\030\002 \001(\004\022\025\n\rui" +
-      "nt64_to_uid\030\003 \001(\004\022\025\n\ruint64_to_gid\030\004 \001(\004" +
-      "\022\033\n\023uint32_unread_count\030\005 \002(\r\"-\n\nSendMsg" +
-      "Req\022\037\n\013msg_sendmsg\030\001 \002(\0132\n.CommonMsg\"?\n\n" +
-      "SendMsgRes\022\025\n\ruint32_result\030\001 \002(\r\022\032\n\022uin" +
-      "t32_peer_status\030\002 \001(\r\"2\n\nPushMsgReq\022$\n\017m" +
-      "sg_unread_info\030\001 \003(\0132\013.UnReadInfo\"#\n\nPus" +
+      "ime\030\r \001(\004\022\032\n\022uint32_trunct_flag\030\016 \001(\r\"o\n",
+      "\nUnReadInfo\022\027\n\017uint32_msg_type\030\001 \002(\r\022\027\n\017" +
+      "uint64_from_uid\030\002 \001(\004\022\022\n\nuint64_gid\030\003 \001(" +
+      "\004\022\033\n\023uint32_unread_count\030\004 \002(\r\"-\n\nSendMs" +
+      "gReq\022\037\n\013msg_sendmsg\030\001 \002(\0132\n.CommonMsg\"?\n" +
+      "\nSendMsgRes\022\025\n\ruint32_result\030\001 \002(\r\022\032\n\022ui" +
+      "nt32_peer_status\030\002 \001(\r\"1\n\nPushMsgReq\022#\n\017" +
+      "rpt_msg_pushmsg\030\001 \003(\0132\n.CommonMsg\"#\n\nPus" +
       "hMsgRes\022\025\n\ruint32_result\030\001 \002(\r\"\'\n\021PollUn" +
       "readInfoReq\022\022\n\nuint64_uid\030\001 \002(\004\"9\n\021PollU" +
       "nreadInfoRes\022$\n\017msg_unread_info\030\004 \003(\0132\013.",
-      "UnReadInfo\"g\n\nPollMsgReq\022\022\n\nuint64_uid\030\001" +
+      "UnReadInfo\"{\n\nPollMsgReq\022\022\n\nuint64_uid\030\001" +
       " \002(\004\022\027\n\017uint32_msg_type\030\002 \002(\r\022\027\n\017uint64_" +
-      "from_uid\030\003 \001(\004\022\023\n\013uint64_time\030\004 \001(\004\"\242\001\n\n" +
-      "PollMsgRes\022\022\n\nuint64_uid\030\001 \002(\004\022\027\n\017uint32" +
-      "_msg_type\030\002 \002(\r\022#\n\017rpt_msg_pollmsg\030\003 \003(\013" +
-      "2\n.CommonMsg\022\034\n\024uint32_complete_flag\030\004 \001" +
-      "(\r\022$\n\017msg_unread_info\030\005 \003(\0132\013.UnReadInfo" +
-      "\"\317\003\n\nMessageOpr\022\022\n\nuint64_uid\030\001 \002(\004\022\026\n\016u" +
-      "int32_command\030\002 \002(\r\022\023\n\013str_version\030\003 \002(\t" +
-      "\022\032\n\022uint32_client_type\030\004 \001(\r\022\031\n\021uint32_s",
-      "ession_id\030\005 \001(\r\022\025\n\rbytes_context\030\006 \001(\014\022!" +
-      "\n\014msg_send_req\030\007 \001(\0132\013.SendMsgReq\022!\n\014msg" +
-      "_send_res\030\010 \001(\0132\013.SendMsgRes\022!\n\014msg_push" +
-      "_req\030\t \001(\0132\013.PushMsgReq\022!\n\014msg_push_res\030" +
-      "\n \001(\0132\013.PushMsgRes\022!\n\014msg_poll_req\030\013 \001(\013" +
-      "2\013.PollMsgReq\022!\n\014msg_poll_res\030\014 \001(\0132\013.Po" +
-      "llMsgRes\022/\n\023msg_poll_unread_req\030\r \001(\0132\022." +
-      "PollUnreadInfoReq\022/\n\023msg_poll_unread_res" +
-      "\030\016 \001(\0132\022.PollUnreadInfoRes"
+      "from_uid\030\003 \001(\004\022\022\n\nuint64_gid\030\004 \001(\004\022\023\n\013ui" +
+      "nt64_time\030\005 \001(\004\"u\n\nPollMsgRes\022#\n\017rpt_msg" +
+      "_pollmsg\030\001 \003(\0132\n.CommonMsg\022\034\n\024uint32_com" +
+      "plete_flag\030\002 \001(\r\022$\n\017msg_unread_info\030\003 \003(" +
+      "\0132\013.UnReadInfo\"\317\003\n\nMessageOpr\022\022\n\nuint64_" +
+      "uid\030\001 \002(\004\022\026\n\016uint32_command\030\002 \002(\r\022\023\n\013str" +
+      "_version\030\003 \002(\t\022\032\n\022uint32_client_type\030\004 \001" +
+      "(\r\022\031\n\021uint32_session_id\030\005 \001(\r\022\025\n\rbytes_c",
+      "ontext\030\006 \001(\014\022!\n\014msg_send_req\030\007 \001(\0132\013.Sen" +
+      "dMsgReq\022!\n\014msg_send_res\030\010 \001(\0132\013.SendMsgR" +
+      "es\022!\n\014msg_push_req\030\t \001(\0132\013.PushMsgReq\022!\n" +
+      "\014msg_push_res\030\n \001(\0132\013.PushMsgRes\022!\n\014msg_" +
+      "poll_req\030\013 \001(\0132\013.PollMsgReq\022!\n\014msg_poll_" +
+      "res\030\014 \001(\0132\013.PollMsgRes\022/\n\023msg_poll_unrea" +
+      "d_req\030\r \001(\0132\022.PollUnreadInfoReq\022/\n\023msg_p" +
+      "oll_unread_res\030\016 \001(\0132\022.PollUnreadInfoRes"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -19479,13 +19341,13 @@ public final class Message {
           internal_static_CommonMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CommonMsg_descriptor,
-              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "Uint64Time", });
+              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "Uint64Time", "Uint32TrunctFlag", });
           internal_static_UnReadInfo_descriptor =
             getDescriptor().getMessageTypes().get(7);
           internal_static_UnReadInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_UnReadInfo_descriptor,
-              new java.lang.String[] { "Uint32MsgType", "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32UnreadCount", });
+              new java.lang.String[] { "Uint32MsgType", "Uint64FromUid", "Uint64Gid", "Uint32UnreadCount", });
           internal_static_SendMsgReq_descriptor =
             getDescriptor().getMessageTypes().get(8);
           internal_static_SendMsgReq_fieldAccessorTable = new
@@ -19503,7 +19365,7 @@ public final class Message {
           internal_static_PushMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PushMsgReq_descriptor,
-              new java.lang.String[] { "MsgUnreadInfo", });
+              new java.lang.String[] { "RptMsgPushmsg", });
           internal_static_PushMsgRes_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_PushMsgRes_fieldAccessorTable = new
@@ -19527,13 +19389,13 @@ public final class Message {
           internal_static_PollMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollMsgReq_descriptor,
-              new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "Uint64FromUid", "Uint64Time", });
+              new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "Uint64FromUid", "Uint64Gid", "Uint64Time", });
           internal_static_PollMsgRes_descriptor =
             getDescriptor().getMessageTypes().get(15);
           internal_static_PollMsgRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollMsgRes_descriptor,
-              new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "RptMsgPollmsg", "Uint32CompleteFlag", "MsgUnreadInfo", });
+              new java.lang.String[] { "RptMsgPollmsg", "Uint32CompleteFlag", "MsgUnreadInfo", });
           internal_static_MessageOpr_descriptor =
             getDescriptor().getMessageTypes().get(16);
           internal_static_MessageOpr_fieldAccessorTable = new

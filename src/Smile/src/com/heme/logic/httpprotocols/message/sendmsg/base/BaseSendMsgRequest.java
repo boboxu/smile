@@ -9,7 +9,7 @@ public class BaseSendMsgRequest extends BaseMessageOprRequest{
 
 	private SendMsgReq.Builder mSendMsgReqBuilder;
 	protected CommonMsg.Builder mCommonMsgBuilder;
-	protected BaseSendMsgRequest(long systemId, int sessionId) {
+	protected BaseSendMsgRequest(long systemId, String sessionId) {
 		super(systemId, sessionId);
 		mSendMsgReqBuilder = SendMsgReq.newBuilder();
 		mCommonMsgBuilder = CommonMsg.newBuilder();

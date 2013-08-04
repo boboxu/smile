@@ -4,7 +4,6 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.logic.module.Access.AccessReq;
-import com.heme.logic.module.Access.AccessResp;
 
 public class BasePbRequest extends BaseRequest {
 	// 实现AccessReq数据的组合

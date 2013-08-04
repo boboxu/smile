@@ -10,6 +10,11 @@ import com.heme.logic.module.Message.PushMsgRes;
 public class BaseMessageOprResponse extends BasePbResponse{
 	
 	protected MessageOpr mMessageOpr;
+	protected MessageOpr.Builder mMessageOprBuilder;
+	public BaseMessageOprResponse() {
+		super();
+		mMessageOprBuilder = MessageOpr.newBuilder();
+	}
 	
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {

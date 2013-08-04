@@ -62,7 +62,7 @@ message CommonMsg
 	repeated uint64    uint64_to_uid = 2;		//接收方用户ID，0-N个，一般为1个，发送语音测评消息时可以指定多个接收用户
 	repeated uint64    uint64_to_gid = 3;		//接收方群ID 
 	required uint32    uint32_msg_type = 4;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
-	required uint32    uint32_content_type = 5;	//媒体类型 0:文本 1:图片 2:语音 3:视频
+	optional uint32    uint32_content_type = 5;	//媒体类型 0:文本 1:图片 2:语音 3:视频
 	optional string    str_text_msg = 6;		//文本消息内容	
 	optional PicMsgInfo msg_pic_msg = 7;		//图片消息，媒体类型为1时使用
 	optional VoiceMsgInfo msg_voice_msg = 8;	//语音消息，媒体类型为2时使用
@@ -71,15 +71,15 @@ message CommonMsg
 	optional VoiceTestInfo msg_test_msg = 11;       //语音测评消息
 	optional ClassInfo msg_class_info = 12;         //课堂信息
 	optional uint64    uint64_time = 13;		//发送方终端当前时间
+	optional uint32    uint32_trunct_flag = 14;	//内容截短标志，PushMsgReq有可能截短内容，终端需要重要拉取完整内容，缺省表示不截短
 };
 
 message UnReadInfo		//未读消息属性
 {
 	required uint32    uint32_msg_type = 1;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
-	optional uint64    uint64_from_uid = 2;		//发送方ID
-	optional uint64    uint64_to_uid = 3;		//接收方ID, uid
-	optional uint64    uint64_to_gid = 4;		//接收方ID, 群号 (uint64_to_uid/uint64_to_gid两个参数二选一)
-	required uint32    uint32_unread_count = 5;	//未读条数
+	optional uint64    uint64_from_uid = 2;		//发送方ID 消息类型为1时使用
+	optional uint64    uint64_gid = 3;		//群号, 消息类型为2时使用
+	required uint32    uint32_unread_count = 4;	//未读条数
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
@@ -102,7 +102,7 @@ message SendMsgRes
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PushMsgReq
 {
-	repeated UnReadInfo msg_unread_info = 1;	//未读消息列表
+	repeated CommonMsg rpt_msg_pushmsg = 1;		//消息列表
 };
 
 message PushMsgRes
@@ -134,17 +134,16 @@ message PollMsgReq
 {
 	required uint64    uint64_uid = 1;		//接收方ID
 	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
-	optional uint64    uint64_from_uid = 3;		//可选参数，接收消息类型为0(c2c)/1(群消息)时可以提供，如果提供这个参数将只拉取指定用户/群发过来的消息，否则将拉取所有消息
-	optional uint64    uint64_time = 4;		//接收方终端当前时间
+	optional uint64    uint64_from_uid = 3;		//可选参数，如果提供这个参数将只拉取指定用户的消息，否则将拉取所有消息
+	optional uint64    uint64_gid = 4;		//可选参数，如果提供这个参数将只拉取指定群的消息，否则将拉取所有消息
+	optional uint64    uint64_time = 5;		//接收方终端当前时间
 };
 
 message PollMsgRes
 {
-	required uint64    uint64_uid = 1;		//接收方ID
-	required uint32    uint32_msg_type = 2;		//拉取的消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
-	repeated CommonMsg rpt_msg_pollmsg = 3;		//消息列表
-	optional uint32    uint32_complete_flag = 4;    //拉取完成标志，1表示消息拉取完成，0表示未完成（如果返回内容太多，server有可能分多次返回）
-	repeated UnReadInfo msg_unread_info = 5;	//未读消息列表
+	repeated CommonMsg rpt_msg_pollmsg = 1;		//消息列表
+	optional uint32    uint32_complete_flag = 2;    //拉取完成标志，1表示消息拉取完成，0表示未完成（如果返回内容太多，server有可能分多次返回）
+	repeated UnReadInfo msg_unread_info = 3;	//未读消息列表
 };
 
 message MessageOpr

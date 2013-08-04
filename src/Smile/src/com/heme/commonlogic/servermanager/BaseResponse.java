@@ -48,6 +48,25 @@ public class BaseResponse {
 		this.mRequest = mRequest;
 	}
 	
+	protected void setResponseData(byte[] responsedata)
+	{
+		//数据的长度，转化为byte数组
+		byte[] lengthdata = ByteUtil.intToByteArray(responsedata.length);
+		//新建一个网络请求包，包含数据的长度，和数据两个部分
+		int requestdatasize = lengthdata.length+responsedata.length;
+		mDataBuffer = null;
+		mDataBuffer = new byte[requestdatasize];
+		//数据长度进入请求包
+		for (int i = 0; i < lengthdata.length; i++) 
+		{
+			mDataBuffer[i] = lengthdata[i];
+		}
+		//数据内容进入请求包
+		for (int j = 0; j < responsedata.length; j++) {
+			mDataBuffer[j+lengthdata.length] = responsedata[j];  
+		}
+	}
+	
 	public void parseData() throws InvalidProtocolBufferException
 	{
 		//處理第一手数据

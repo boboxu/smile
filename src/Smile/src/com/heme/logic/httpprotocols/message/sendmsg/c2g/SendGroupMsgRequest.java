@@ -7,9 +7,8 @@ import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
 
 public class SendGroupMsgRequest extends BaseMessageRequest {
 
-	protected SendGroupMsgRequest(long srcId, int sessionId,
-			List<Long> mTargetGid,
-			CONTENTTYPE contentType) {
+	public SendGroupMsgRequest(long srcId, String sessionId,
+			List<Long> mTargetGid) {
 		super(srcId, sessionId, new ArrayList<Long>(), mTargetGid, MSGTYPE.TYPEGROUP);
 	}
 

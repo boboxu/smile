@@ -49,7 +49,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		}
 	}
 	
-	protected enum COMMANDTYPE
+	public enum COMMANDTYPE
 	{
 		TYPESENDREQ,
 		TYPESENDRES,
@@ -84,12 +84,12 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		}
 	}
 	
-	protected BaseMessageOprRequest(long systemId,int sessionId) {
+	protected BaseMessageOprRequest(long systemId,String sessionId) {
 		mMessageOprBuilder = MessageOpr.newBuilder();
 		mMessageOprBuilder.setUint32ClientType(CLIENT_TYPE);
 		mMessageOprBuilder.setStrVersion(PROTO_VERSION);
 		mMessageOprBuilder.setUint64Uid(systemId);
-		mMessageOprBuilder.setUint32SessionId(sessionId);
+		mMessageOprBuilder.setUint32SessionId(Integer.valueOf(sessionId));
 	
 	}
 	

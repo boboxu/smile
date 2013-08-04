@@ -33,7 +33,7 @@ public class SendCommandRequest extends BaseMessageRequest {
 		}
 	}
 	
-	protected SendCommandRequest(long systemId, int sessionId,List<Long> mTargetId) {
+	public SendCommandRequest(long systemId, String sessionId,List<Long> mTargetId) {
 		super(systemId,sessionId,mTargetId,new ArrayList<Long>(),MSGTYPE.TYPENETGUARD);
 	}
 	

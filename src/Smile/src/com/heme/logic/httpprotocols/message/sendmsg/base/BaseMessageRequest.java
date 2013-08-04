@@ -31,7 +31,7 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		
 	}
 	
-	protected BaseMessageRequest(long srcId,int sessionId,List<Long> mTargetId,List<Long> mTargetGid,MSGTYPE msgType) {
+	protected BaseMessageRequest(long srcId,String sessionId,List<Long> mTargetId,List<Long> mTargetGid,MSGTYPE msgType) {
 		super(srcId,sessionId);
 		mCommonMsgBuilder.setUint64FromUid(srcId);
 		mCommonMsgBuilder.addAllUint64ToUid(mTargetId);
@@ -40,13 +40,13 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		mCommonMsgBuilder.setUint64Time(System.currentTimeMillis());
 	}
 	
-	protected void setNetGuardMsgInfo(NetGuardInfo msgInfo,ByteString context) 
+	public void setNetGuardMsgInfo(NetGuardInfo msgInfo,ByteString context) 
 	{
 		mCommonMsgBuilder.setMsgMoitorMsg(msgInfo);
 		super.setCommonMsg(context);
 	}
 	
-	protected void setVoiceTestInfo(VoiceTestInfo msgInfo,ByteString context) {
+	public void setVoiceTestInfo(VoiceTestInfo msgInfo,ByteString context) {
 		mCommonMsgBuilder.setMsgTestMsg(msgInfo);
 		super.setCommonMsg(context);
 	}
@@ -56,7 +56,7 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		super.setCommonMsg(context);
 	}
 	
-	protected void setMsgContent(Object content,CONTENTTYPE type,ByteString context) {
+	public void setMsgContent(Object content,CONTENTTYPE type,ByteString context) {
 		mCommonMsgBuilder.setUint32ContentType(CONTENTTYPE.value(type));
 		switch (type) {
 		case TYPETEXT:
