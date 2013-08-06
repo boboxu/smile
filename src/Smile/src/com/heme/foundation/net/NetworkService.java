@@ -22,7 +22,6 @@ import android.net.NetworkInfo;
 import android.os.IBinder;
 import android.util.Log;
 
-import com.heme.logic.push.PushService;
 import com.heme.smile.StartActivity;
 
 /**
@@ -247,7 +246,7 @@ public class NetworkService extends Service
 	private void startKeepAlives()
 	{
 		Intent intent = new Intent();
-		intent.setClass(this, PushService.class);
+		intent.setClass(this, NetworkService.class);
 		intent.setAction(ACTION_KEEPALIVE);
 		
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
@@ -260,7 +259,7 @@ public class NetworkService extends Service
 	private void stopKeepAlives()
 	{
 		Intent intent = new Intent();
-		intent.setClass(this, PushService.class);
+		intent.setClass(this, NetworkService.class);
 		intent.setAction(ACTION_KEEPALIVE);
 		
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
@@ -290,7 +289,7 @@ public class NetworkService extends Service
 		mPrefs.edit().putLong(PREF_RETRY, interval).commit();
 		
 		Intent intent = new Intent();
-		intent.setClass(this, PushService.class);
+		intent.setClass(this, NetworkService.class);
 		intent.setAction(ACTION_RECONNECT);
 		
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
@@ -302,7 +301,7 @@ public class NetworkService extends Service
 	private void cancelReconncet()
 	{
 		Intent intent = new Intent();
-		intent.setClass(this, PushService.class);
+		intent.setClass(this, NetworkService.class);
 		intent.setAction(ACTION_RECONNECT);
 		
 		PendingIntent pendingIntent = PendingIntent.getService(this, 0, intent, 0);
