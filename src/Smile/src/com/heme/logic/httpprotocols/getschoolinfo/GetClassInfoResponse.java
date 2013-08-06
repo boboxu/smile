@@ -12,6 +12,6 @@ public class GetClassInfoResponse extends BaseBusinessResponse {
 	
 	public void parseData() throws com.google.protobuf.InvalidProtocolBufferException 
 	{
-		mRegGetClassRsp = RegGetClassRsp.parseFrom(mAccessRespData.getBytesBody());
+		mRegGetClassRsp = RegGetClassRsp.parseFrom(mTransData.getBytesBody());
 	}
 }

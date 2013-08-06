@@ -13,6 +13,6 @@ public class DeleteGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mDelGroupRsp = DelGroupRsp.parseFrom(mAccessRespData.getBytesBody());
+		mDelGroupRsp = DelGroupRsp.parseFrom(mTransData.getBytesBody());
 	}
 }

@@ -14,7 +14,7 @@ public class GetSchoolInfoResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mRegGetClassRsp = RegGetSchoolRsp.parseFrom(mAccessRespData.getBytesBody());
+		mRegGetClassRsp = RegGetSchoolRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	

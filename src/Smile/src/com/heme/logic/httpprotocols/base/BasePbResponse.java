@@ -2,22 +2,22 @@ package com.heme.logic.httpprotocols.base;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.BaseResponse;
-import com.heme.logic.module.Access.AccessResp;
+import com.heme.logic.module.Trans.TransProto;
 
 public class BasePbResponse extends BaseResponse {
-	protected AccessResp mAccessRespData;
-	protected AccessResp.Builder mAccessRespBuilder;
+	protected TransProto mTransData;
+	protected TransProto.Builder mTransDataBuilder;
 	
 	public BasePbResponse()
 	{
-		mAccessRespBuilder = AccessResp.newBuilder();
+		mTransDataBuilder = TransProto.newBuilder();
 	}
 	
 	@Override
 	public void parseData() throws InvalidProtocolBufferException
 	{
 		super.parseData();
-		mAccessRespData = AccessResp.parseFrom(mRespData);
+		mTransData = TransProto.parseFrom(mRespData);
 	}
 	
 	

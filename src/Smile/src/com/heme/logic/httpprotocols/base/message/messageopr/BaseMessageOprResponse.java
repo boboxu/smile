@@ -19,19 +19,19 @@ public class BaseMessageOprResponse extends BasePbResponse{
 	public void parseData() throws InvalidProtocolBufferException {
 		// TODO Auto-generated method stub
 		super.parseData();
-		mMessageOpr = MessageOpr.parseFrom(mAccessRespData
+		mMessageOpr = MessageOpr.parseFrom(mTransData
 				.getBytesBody());
 	}
 	
 	public PollMsgRes getPollMsgRes() throws InvalidProtocolBufferException
 	{
-		return PollMsgRes.parseFrom(mAccessRespData
+		return PollMsgRes.parseFrom(mTransData
 				.getBytesBody());
 	}
 	
 	public PollUnreadInfoRes getPollUnreadMsgRes() throws InvalidProtocolBufferException
 	{
-		return PollUnreadInfoRes.parseFrom(mAccessRespData
+		return PollUnreadInfoRes.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

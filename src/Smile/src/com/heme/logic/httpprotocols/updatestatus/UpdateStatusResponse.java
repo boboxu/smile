@@ -12,7 +12,7 @@ public class UpdateStatusResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mSetSignatureRsp = SetSignatureRsp.parseFrom(mAccessRespData
+		mSetSignatureRsp = SetSignatureRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

@@ -13,7 +13,7 @@ public class DelFriendResponse extends BaseBusinessResponse {
 
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mDelFriendRsp = DelFriendRsp.parseFrom(mAccessRespData.getBytesBody());
+		mDelFriendRsp = DelFriendRsp.parseFrom(mTransData.getBytesBody());
 	}
 
 }

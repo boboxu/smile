@@ -13,7 +13,7 @@ public class CreatePermanentGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mCreateFixedGroupRsp = CreateFixedGroupRsp.parseFrom(mAccessRespData.getBytesBody());
+		mCreateFixedGroupRsp = CreateFixedGroupRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	

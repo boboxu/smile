@@ -9,7 +9,7 @@ public class FeedBackResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mSendFeedbackRsp = SendFeedbackRsp.parseFrom(mAccessRespData.getBytesBody());
+		mSendFeedbackRsp = SendFeedbackRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	public SendFeedbackRsp getFeedBackRsp()

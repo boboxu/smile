@@ -1,4 +1,4 @@
-package com.heme.logic.push;
+package com.heme.commonlogic.push;
 
 import java.io.IOException;
 import java.io.InputStream;

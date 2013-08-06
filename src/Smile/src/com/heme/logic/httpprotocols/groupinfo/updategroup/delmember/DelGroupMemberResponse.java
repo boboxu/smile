@@ -9,7 +9,7 @@ public class DelGroupMemberResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mDelGroupMemberRsp = DelGroupMemberRsp.parseFrom(mAccessRespData.getBytesBody());
+		mDelGroupMemberRsp = DelGroupMemberRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	public DelGroupMemberRsp getmDelTempGroupRsp() {

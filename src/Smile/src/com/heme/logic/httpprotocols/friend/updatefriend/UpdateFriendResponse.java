@@ -11,7 +11,7 @@ public class UpdateFriendResponse extends BaseBusinessResponse {
 	public void parseData() throws InvalidProtocolBufferException {
 		// TODO Auto-generated method stub
 		super.parseData();
-		mSetFriendDescRsp = SetFriendDescRsp.parseFrom(mAccessRespData.getBytesBody());
+		mSetFriendDescRsp = SetFriendDescRsp.parseFrom(mTransData.getBytesBody());
 	}
 
 	public SetFriendDescRsp getmSetFriendDescRsp() {

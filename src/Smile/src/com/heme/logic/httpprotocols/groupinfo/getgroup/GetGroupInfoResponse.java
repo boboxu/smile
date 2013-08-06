@@ -12,7 +12,7 @@ public class GetGroupInfoResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mGetGroupInfoRsp = GetGroupInfoRsp.parseFrom(mAccessRespData
+		mGetGroupInfoRsp = GetGroupInfoRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 	

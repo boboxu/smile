@@ -12,7 +12,7 @@ public class HeartBeatResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mHbRsp = HbRsp.parseFrom(mAccessRespData
+		mHbRsp = HbRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

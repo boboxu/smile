@@ -12,7 +12,7 @@ public class SetFriendRightResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mSetFriendRightRsp = SetFriendRightRsp.parseFrom(mAccessRespData
+		mSetFriendRightRsp = SetFriendRightRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

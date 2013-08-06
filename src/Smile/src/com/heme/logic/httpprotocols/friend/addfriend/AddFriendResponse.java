@@ -11,7 +11,7 @@ public class AddFriendResponse extends BaseBusinessResponse {
 	public void parseData() throws InvalidProtocolBufferException {
 		// TODO Auto-generated method stub
 		super.parseData();
-		mAddfriendrsp = FriendVerifyMsgRsp.parseFrom(mAccessRespData
+		mAddfriendrsp = FriendVerifyMsgRsp.parseFrom(mTransData
 				.getBytesBody());
 
 	}

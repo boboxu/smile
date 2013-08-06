@@ -131,6 +131,6 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mMessageOpr = MessageOpr.parseFrom(mAccessReqData.getBytesBody());
+		mMessageOpr = MessageOpr.parseFrom(mTransData.getBytesBody());
 	}
 }

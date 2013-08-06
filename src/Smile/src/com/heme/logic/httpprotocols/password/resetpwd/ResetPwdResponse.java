@@ -12,7 +12,7 @@ public class ResetPwdResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mFindPasswdVerifyRsp = FindPasswdVerifyRsp.parseFrom(mAccessRespData
+		mFindPasswdVerifyRsp = FindPasswdVerifyRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

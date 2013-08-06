@@ -9,7 +9,7 @@ public class ParentRegistResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mRegParentRsp = RegParentRsp.parseFrom(mAccessRespData.getBytesBody());
+		mRegParentRsp = RegParentRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	public RegParentRsp getmRegParentRsp() {

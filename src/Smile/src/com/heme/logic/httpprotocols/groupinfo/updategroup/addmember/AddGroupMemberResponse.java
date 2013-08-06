@@ -9,7 +9,7 @@ public class AddGroupMemberResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mAddGroupMemberRsp = AddGroupMemberRsp.parseFrom(mAccessRespData.getBytesBody());
+		mAddGroupMemberRsp = AddGroupMemberRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	public AddGroupMemberRsp getmAddTempGroupRsp() {

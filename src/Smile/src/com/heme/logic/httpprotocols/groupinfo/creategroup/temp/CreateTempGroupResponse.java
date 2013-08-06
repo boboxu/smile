@@ -13,7 +13,7 @@ public class CreateTempGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mCreateTempGroupRsp = CreateTempGroupRsp.parseFrom(mAccessRespData.getBytesBody());
+		mCreateTempGroupRsp = CreateTempGroupRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	

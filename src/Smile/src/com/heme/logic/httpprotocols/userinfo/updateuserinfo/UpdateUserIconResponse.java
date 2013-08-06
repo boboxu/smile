@@ -12,7 +12,7 @@ public class UpdateUserIconResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mSetUserIconRsp = SetUserIconRsp.parseFrom(mAccessRespData
+		mSetUserIconRsp = SetUserIconRsp.parseFrom(mTransData
 				.getBytesBody());
 	}
 }

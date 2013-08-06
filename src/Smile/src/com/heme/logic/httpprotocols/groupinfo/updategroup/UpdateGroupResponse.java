@@ -13,6 +13,6 @@ public class UpdateGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mSetGroupNameRsp = SetGroupNameRsp.parseFrom(mAccessRespData.getBytesBody());
+		mSetGroupNameRsp = SetGroupNameRsp.parseFrom(mTransData.getBytesBody());
 	}
 }

@@ -13,7 +13,7 @@ public class SendTelResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mVerifyPhoneRsp = VerifyPhoneRsp.parseFrom(mAccessRespData.getBytesBody());
+		mVerifyPhoneRsp = VerifyPhoneRsp.parseFrom(mTransData.getBytesBody());
 	}
 	
 	public VerifyPhoneRsp getLoginRsp()
