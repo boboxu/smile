@@ -1,19 +1,14 @@
 package com.heme.logic.httpprotocols.push;
 
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprResponse;
-import com.heme.logic.module.Message.PushMsgRes;
+import com.google.protobuf.ByteString;
+import com.heme.logic.httpprotocols.base.BasePbRequest;
 
-public class PushMsgResponse extends BaseMessageOprResponse
+public class PushMsgResponse extends BasePbRequest
 {
-	private PushMsgRes.Builder mPushMsgResBuilder;
-	
-	public PushMsgResponse()
+	public PushMsgResponse(ByteString bytes_context)
 	{
 		super();
-		mPushMsgResBuilder = PushMsgRes.newBuilder();
-		mPushMsgResBuilder.setUint32Result(0);
-		mMessageOprBuilder.setMsgPushRes(mPushMsgResBuilder.build());
-		mAccessRespBuilder.setBytesBody(mMessageOprBuilder.build().toByteString());
-		setResponseData(mAccessRespBuilder.build().toByteArray());
+		buildAccessReq(ByteString.EMPTY);
+		setCmd(bytes_context.toString());
 	}
 }

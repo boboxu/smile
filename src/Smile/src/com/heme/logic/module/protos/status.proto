@@ -1,0 +1,66 @@
+message StatusProto
+{
+	enum Cmd
+	{
+		Heartbeat = 1;		//心跳
+		SetStatus = 2;		//设置状态
+		GetStatus = 3;		//批量拉在线状态
+	}
+	
+	required Cmd enum_cmd = 1;	//命令字，通过命令字，后续用来判断哪个包体会被赋值
+
+	optional HeartbeatReq heart_beat_req = 2;	//定时心跳，客户端需每5分钟发一次心跳
+	optional HeartbeatRsp heart_beat_rsp = 3;
+	
+	optional SetStatusReq set_status_req = 4;	//设置状态
+	optional SetStatusRsp set_status_rsp = 5;
+	
+	optional GetStatusReq get_status_req = 6;	//拉用户状态
+	optional GetStatusRsp get_status_rsp = 7;
+}
+
+message HeartbeatReq
+{
+	required uint64 uint64_uid = 1;
+}
+
+message HeartbeatRsp
+{
+	required uint32 uint32_result = 1;
+	required string str_errmsg = 2;
+}
+
+enum EStatus
+{
+	ONLINE = 1;		//在线
+	INVISIBLE = 2;	//隐身
+	OFFLINE = 3;	//离线
+}
+
+message SetStatusReq
+{
+	required uint64 uint64_uid = 1;
+	required EStatus enum_state = 2;
+}
+
+message SetStatusRsp
+{
+	required uint32 uint32_result = 1;
+	required string str_errmsg = 2;
+}
+
+message GetStatusReq
+{
+	repeated uint64 rpt_uid = 1;
+}
+
+message Status
+{
+	required uint64 uint64_uid = 1;
+	required EStatus enum_status = 2;
+}
+	
+message GetStatusRsp
+{
+	repeated Status rpt_status = 1;
+}

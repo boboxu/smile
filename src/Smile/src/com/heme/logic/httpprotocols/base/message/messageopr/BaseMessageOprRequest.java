@@ -92,7 +92,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setUint32ClientType(CLIENT_TYPE);
 		mMessageOprBuilder.setStrVersion(PROTO_VERSION);
 		mMessageOprBuilder.setUint64Uid(systemId);
-		mMessageOprBuilder.setUint32SessionId(Integer.valueOf(sessionId));
+		mMessageOprBuilder.setStringSessionId(sessionId);
 	
 	}
 	

@@ -5,7 +5,6 @@ import com.heme.logic.httpprotocols.base.BasePbResponse;
 import com.heme.logic.module.Message.MessageOpr;
 import com.heme.logic.module.Message.PollMsgRes;
 import com.heme.logic.module.Message.PollUnreadInfoRes;
-import com.heme.logic.module.Message.PushMsgRes;
 
 public class BaseMessageOprResponse extends BasePbResponse{
 	
@@ -21,12 +20,6 @@ public class BaseMessageOprResponse extends BasePbResponse{
 		// TODO Auto-generated method stub
 		super.parseData();
 		mMessageOpr = MessageOpr.parseFrom(mAccessRespData
-				.getBytesBody());
-	}
-	
-	public PushMsgRes getPushMsgRes() throws InvalidProtocolBufferException
-	{
-		return PushMsgRes.parseFrom(mAccessRespData
 				.getBytesBody());
 	}
 	

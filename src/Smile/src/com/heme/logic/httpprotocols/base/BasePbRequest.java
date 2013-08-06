@@ -21,7 +21,7 @@ public class BasePbRequest extends BaseRequest {
 		mAccessReqDataBuilder.setUint32Seq(seq);
 	}
 
-	private void setCmd(String cmd) {
+	protected void setCmd(String cmd) {
 		mAccessReqDataBuilder.setStrCmd(cmd);
 	}
 
