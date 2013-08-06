@@ -46,7 +46,7 @@ message UserStatus
 message SetStatusReq
 {
 	required uint64 uint64_uid = 1;
-	required EStatus enum_state = 2;
+	required EStatus enum_status = 2;
 }
 
 message SetStatusRsp

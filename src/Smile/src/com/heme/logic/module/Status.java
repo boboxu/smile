@@ -3562,15 +3562,15 @@ public final class Status {
      */
     long getUint64Uid();
 
-    // required .EStatus enum_state = 2;
+    // required .EStatus enum_status = 2;
     /**
-     * <code>required .EStatus enum_state = 2;</code>
+     * <code>required .EStatus enum_status = 2;</code>
      */
-    boolean hasEnumState();
+    boolean hasEnumStatus();
     /**
-     * <code>required .EStatus enum_state = 2;</code>
+     * <code>required .EStatus enum_status = 2;</code>
      */
-    Status.EStatus getEnumState();
+    Status.EStatus getEnumStatus();
   }
   /**
    * Protobuf type {@code SetStatusReq}
@@ -3635,7 +3635,7 @@ public final class Status {
                 unknownFields.mergeVarintField(2, rawValue);
               } else {
                 bitField0_ |= 0x00000002;
-                enumState_ = value;
+                enumStatus_ = value;
               }
               break;
             }
@@ -3695,25 +3695,25 @@ public final class Status {
       return uint64Uid_;
     }
 
-    // required .EStatus enum_state = 2;
-    public static final int ENUM_STATE_FIELD_NUMBER = 2;
-    private Status.EStatus enumState_;
+    // required .EStatus enum_status = 2;
+    public static final int ENUM_STATUS_FIELD_NUMBER = 2;
+    private Status.EStatus enumStatus_;
     /**
-     * <code>required .EStatus enum_state = 2;</code>
+     * <code>required .EStatus enum_status = 2;</code>
      */
-    public boolean hasEnumState() {
+    public boolean hasEnumStatus() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required .EStatus enum_state = 2;</code>
+     * <code>required .EStatus enum_status = 2;</code>
      */
-    public Status.EStatus getEnumState() {
-      return enumState_;
+    public Status.EStatus getEnumStatus() {
+      return enumStatus_;
     }
 
     private void initFields() {
       uint64Uid_ = 0L;
-      enumState_ = Status.EStatus.ONLINE;
+      enumStatus_ = Status.EStatus.ONLINE;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -3724,7 +3724,7 @@ public final class Status {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasEnumState()) {
+      if (!hasEnumStatus()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -3739,7 +3739,7 @@ public final class Status {
         output.writeUInt64(1, uint64Uid_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeEnum(2, enumState_.getNumber());
+        output.writeEnum(2, enumStatus_.getNumber());
       }
       getUnknownFields().writeTo(output);
     }
@@ -3756,7 +3756,7 @@ public final class Status {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeEnumSize(2, enumState_.getNumber());
+          .computeEnumSize(2, enumStatus_.getNumber());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -3876,7 +3876,7 @@ public final class Status {
         super.clear();
         uint64Uid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        enumState_ = Status.EStatus.ONLINE;
+        enumStatus_ = Status.EStatus.ONLINE;
         bitField0_ = (bitField0_ & ~0x00000002);
         return this;
       }
@@ -3913,7 +3913,7 @@ public final class Status {
         if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
           to_bitField0_ |= 0x00000002;
         }
-        result.enumState_ = enumState_;
+        result.enumStatus_ = enumStatus_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3933,8 +3933,8 @@ public final class Status {
         if (other.hasUint64Uid()) {
           setUint64Uid(other.getUint64Uid());
         }
-        if (other.hasEnumState()) {
-          setEnumState(other.getEnumState());
+        if (other.hasEnumStatus()) {
+          setEnumStatus(other.getEnumStatus());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3945,7 +3945,7 @@ public final class Status {
           
           return false;
         }
-        if (!hasEnumState()) {
+        if (!hasEnumStatus()) {
           
           return false;
         }
@@ -4004,38 +4004,38 @@ public final class Status {
         return this;
       }
 
-      // required .EStatus enum_state = 2;
-      private Status.EStatus enumState_ = Status.EStatus.ONLINE;
+      // required .EStatus enum_status = 2;
+      private Status.EStatus enumStatus_ = Status.EStatus.ONLINE;
       /**
-       * <code>required .EStatus enum_state = 2;</code>
+       * <code>required .EStatus enum_status = 2;</code>
        */
-      public boolean hasEnumState() {
+      public boolean hasEnumStatus() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required .EStatus enum_state = 2;</code>
+       * <code>required .EStatus enum_status = 2;</code>
        */
-      public Status.EStatus getEnumState() {
-        return enumState_;
+      public Status.EStatus getEnumStatus() {
+        return enumStatus_;
       }
       /**
-       * <code>required .EStatus enum_state = 2;</code>
+       * <code>required .EStatus enum_status = 2;</code>
        */
-      public Builder setEnumState(Status.EStatus value) {
+      public Builder setEnumStatus(Status.EStatus value) {
         if (value == null) {
           throw new NullPointerException();
         }
         bitField0_ |= 0x00000002;
-        enumState_ = value;
+        enumStatus_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required .EStatus enum_state = 2;</code>
+       * <code>required .EStatus enum_status = 2;</code>
        */
-      public Builder clearEnumState() {
+      public Builder clearEnumStatus() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        enumState_ = Status.EStatus.ONLINE;
+        enumStatus_ = Status.EStatus.ONLINE;
         onChanged();
         return this;
       }
@@ -5835,14 +5835,14 @@ public final class Status {
       "tbeatReq\022\022\n\nuint64_uid\030\001 \002(\004\"9\n\014Heartbea",
       "tRsp\022\025\n\ruint32_result\030\001 \002(\r\022\022\n\nstr_errms" +
       "g\030\002 \002(\t\"?\n\nUserStatus\022\022\n\nuint64_uid\030\001 \002(" +
-      "\004\022\035\n\013enum_status\030\002 \002(\0162\010.EStatus\"@\n\014SetS" +
-      "tatusReq\022\022\n\nuint64_uid\030\001 \002(\004\022\034\n\nenum_sta" +
-      "te\030\002 \002(\0162\010.EStatus\"9\n\014SetStatusRsp\022\025\n\rui" +
-      "nt32_result\030\001 \002(\r\022\022\n\nstr_errmsg\030\002 \002(\t\"\037\n" +
-      "\014GetStatusReq\022\017\n\007rpt_uid\030\001 \003(\004\"/\n\014GetSta" +
-      "tusRsp\022\037\n\nrpt_status\030\001 \003(\0132\013.UserStatus*" +
-      "1\n\007EStatus\022\n\n\006ONLINE\020\001\022\r\n\tINVISIBLE\020\002\022\013\n" +
-      "\007OFFLINE\020\003"
+      "\004\022\035\n\013enum_status\030\002 \002(\0162\010.EStatus\"A\n\014SetS" +
+      "tatusReq\022\022\n\nuint64_uid\030\001 \002(\004\022\035\n\013enum_sta" +
+      "tus\030\002 \002(\0162\010.EStatus\"9\n\014SetStatusRsp\022\025\n\ru" +
+      "int32_result\030\001 \002(\r\022\022\n\nstr_errmsg\030\002 \002(\t\"\037" +
+      "\n\014GetStatusReq\022\017\n\007rpt_uid\030\001 \003(\004\"/\n\014GetSt" +
+      "atusRsp\022\037\n\nrpt_status\030\001 \003(\0132\013.UserStatus" +
+      "*1\n\007EStatus\022\n\n\006ONLINE\020\001\022\r\n\tINVISIBLE\020\002\022\013" +
+      "\n\007OFFLINE\020\003"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -5878,7 +5878,7 @@ public final class Status {
           internal_static_SetStatusReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SetStatusReq_descriptor,
-              new java.lang.String[] { "Uint64Uid", "EnumState", });
+              new java.lang.String[] { "Uint64Uid", "EnumStatus", });
           internal_static_SetStatusRsp_descriptor =
             getDescriptor().getMessageTypes().get(5);
           internal_static_SetStatusRsp_fieldAccessorTable = new
