@@ -37,6 +37,12 @@ enum EStatus
 	OFFLINE = 3;	//离线
 }
 
+message UserStatus
+{
+	required uint64 uint64_uid = 1;
+	required EStatus enum_status = 2;
+}
+
 message SetStatusReq
 {
 	required uint64 uint64_uid = 1;
@@ -54,13 +60,7 @@ message GetStatusReq
 	repeated uint64 rpt_uid = 1;
 }
 
-message Status
-{
-	required uint64 uint64_uid = 1;
-	required EStatus enum_status = 2;
-}
-	
 message GetStatusRsp
-{
-	repeated Status rpt_status = 1;
+{	
+	repeated UserStatus rpt_status = 1;
 }

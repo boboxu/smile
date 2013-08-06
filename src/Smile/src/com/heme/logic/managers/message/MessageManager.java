@@ -27,8 +27,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
-		// TODO Auto-generated method stub
-
+//		handleresponse(msgWhat, msgObj, handler)
 	}
 
 	@Override

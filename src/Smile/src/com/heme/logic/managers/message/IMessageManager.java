@@ -1,7 +1,5 @@
 package com.heme.logic.managers.message;
 
-import java.util.List;
-
 import android.os.Handler;
 
 import com.heme.logic.managers.base.IBaseBusinessLogicManagerInterface;
