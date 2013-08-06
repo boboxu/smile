@@ -12,7 +12,6 @@ import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprReques
 import com.heme.logic.httpprotocols.push.PushMsgRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Message.CommonMsg;
-seBusinessLogicManager;
 
 public class PushManager extends BaseBusinessLogicManager {
 
