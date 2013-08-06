@@ -1,16 +1,12 @@
 package com.heme.smile;
 
-import java.util.Timer;
-import java.util.TimerTask;
-
-import com.heme.smile.R;
-
-import android.os.Bundle;
-import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.view.Menu;
+import android.os.Bundle;
+import android.os.Handler;
+
+import com.heme.foundation.net.NetworkService;
 
 public class StartActivity extends Activity {
 	
@@ -24,6 +20,8 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start);
         mHandler.sendEmptyMessageDelayed(0, 1500);
+        
+        NetworkService.actionStart(this);
     }
     
     private void gotoNextActivity(){

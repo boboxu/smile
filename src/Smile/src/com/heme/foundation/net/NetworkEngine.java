@@ -13,6 +13,7 @@
  */
 package com.heme.foundation.net;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,13 +24,16 @@ import android.os.Looper;
 import android.os.Message;
 import android.util.Log;
 
+import com.heme.foundation.net.NetworkService.ConnectionThread;
+import com.heme.foundation.net.NetworkService.INetworkServiceListener;
+
 /**
  * 简单异步网络请求管理
  * @author ottozheng
  *
  */
 
-public class NetworkEngine implements INetworkEngineInterface
+public class NetworkEngine implements INetworkEngineInterface, INetworkServiceListener
 {
 	private static final String TAG = "NetworkEngine";
 	protected static final int DEFAULT_MAX_RUNNING_NUM = 10;
@@ -40,6 +44,9 @@ public class NetworkEngine implements INetworkEngineInterface
 	protected static NetworkEngine gNetworkEngine = null;
 	
 	protected int mMaxRunningNum = DEFAULT_MAX_RUNNING_NUM;
+		
+	protected ConnectionThread mConnectionThread = null;
+	protected Boolean isConnected = false;
 	
     public static NetworkEngine getEngine()
     {
@@ -53,7 +60,7 @@ public class NetworkEngine implements INetworkEngineInterface
     /**
      * 
      */
-    NetworkEngine()
+    public NetworkEngine()
     {
     	
     }
@@ -122,8 +129,17 @@ public class NetworkEngine implements INetworkEngineInterface
         {
         	mRunningList.add(request);
     	    
-        	NetworkTask task = new NetworkTask(request, getNetworkHandler());
-        	task.start();
+        	if (isConnected && mConnectionThread != null)
+			{
+				try
+				{
+					mConnectionThread.sendBuffer(request.getmSendBytes());
+				} catch (IOException e)
+				{
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
         }
     }
     
@@ -227,5 +243,18 @@ public class NetworkEngine implements INetworkEngineInterface
             }
     	}
     }
+
+	@Override
+	public void onConnceted(ConnectionThread thread)
+	{
+		mConnectionThread = thread;
+		isConnected = true;
+	}
+
+	@Override
+	public void onRecvData(byte[] recvBuffer)
+	{
+		Log.d(TAG, recvBuffer.toString());
+	}
 
 }
