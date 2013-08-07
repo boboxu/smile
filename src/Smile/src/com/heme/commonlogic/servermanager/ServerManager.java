@@ -14,6 +14,11 @@ import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
 import com.heme.foundation.net.NetworkResponse;
+import com.heme.logic.LogicManager;
+import com.heme.logic.httpprotocols.login.LoginResponse;
+import com.heme.logic.managers.loginmanager.LoginManager;
+import com.heme.logic.module.Trans.TransProto;
+import com.heme.utils.ByteUtil;
 
 public class ServerManager implements IServerManagerInterface ,INetworkEngineListener, IProtocolEngineDelegate{
 	private static final String TAG = "ServerManager";
@@ -254,6 +259,31 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	@Override
 	public void onRecvProtocolBuffer(byte[] buffer)
 	{
+		int length = ByteUtil.byteArrayToInt(buffer, 0);
+		if (length+4 != buffer.length) 
+		{
+			Log.e(TAG, "网络回包的长度，数据不正确");
+			return;
+		}
+//		//Length占四个字节，后面的都是数据
+//		byte[] _respData = null;
+//		_respData = new byte[length];
+//		for (int i = 0; i < _respData.length; i++) {
+//			_respData[i] = buffer[4+i];
+//		}
+		try
+		{
+//			TransProto proto = TransProto.parseFrom(_respData);
+//			proto.getUint32Seq();
+			LoginResponse loginrsp = new LoginResponse();
+			loginrsp.setmDataBuffer(buffer);
+			loginrsp.parseData();
+			LogicManager.loginManager().onRequestSuccess(loginrsp);
+		} catch (InvalidProtocolBufferException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 	}
 
