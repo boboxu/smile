@@ -4,10 +4,10 @@ import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.logic.module.Trans.TransProto;
 
-public class BasePbRequest extends BaseRequest {
+public abstract class BasePbRequest extends BaseRequest {
 	// 实现AccessReq数据的组合
 	//构造数据的builder
-	private TransProto.Builder mTransDataBuilder = TransProto.newBuilder();
+	protected TransProto.Builder mTransDataBuilder = TransProto.newBuilder();
 	//服务器来的推送数据
 	protected TransProto mTransData;
 	private void setBody(ByteString body) {
@@ -22,14 +22,13 @@ public class BasePbRequest extends BaseRequest {
 		mTransDataBuilder.setUint32Seq(seq);
 	}
 
-	protected void setCmd(String cmd) {
-		mTransDataBuilder.setStrCmd(cmd);
-	}
+	protected abstract void setCmd();
 
 	protected void buildAccessReq(ByteString body) {
 		setBody(body);
 		setUid(0);
 		setSeqId(0);
+		setCmd();
 		setRequestData(mTransDataBuilder.build().toByteArray());
 	}
 	

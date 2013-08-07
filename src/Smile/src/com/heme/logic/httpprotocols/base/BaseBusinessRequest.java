@@ -18,4 +18,9 @@ public abstract class BaseBusinessRequest extends BasePbRequest {
 	public abstract void setVersionAndClientType(String version, int clientType);
 
 	public abstract void initmDataBuilder();
+	
+	@Override
+	protected void setCmd() {
+		mTransDataBuilder.setStrCmd("MsgSvr");
+	}
 }

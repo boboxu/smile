@@ -9,6 +9,10 @@ public class PushMsgResponse extends BasePbRequest
 	{
 		super();
 		buildAccessReq(ByteString.EMPTY);
-		setCmd(bytes_context.toString());
+	}
+
+	@Override
+	protected void setCmd() {
+		mTransDataBuilder.setStrCmd("MsgSvr");
 	}
 }

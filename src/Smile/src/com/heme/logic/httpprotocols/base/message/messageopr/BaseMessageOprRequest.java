@@ -93,8 +93,6 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setStrVersion(PROTO_VERSION);
 		mMessageOprBuilder.setUint64Uid(systemId);
 		mMessageOprBuilder.setStringSessionId(sessionId);
-		setCmd("MsgSvr");
-	
 	}
 	
 	protected void setSendMsgReq(SendMsgReq msg,ByteString context) 
@@ -133,5 +131,10 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
 		mMessageOpr = MessageOpr.parseFrom(mTransData.getBytesBody());
+	}
+
+	@Override
+	protected void setCmd() {
+		mTransDataBuilder.setStrCmd("MsgSvr");
 	}
 }
