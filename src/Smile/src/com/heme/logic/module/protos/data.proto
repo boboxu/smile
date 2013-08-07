@@ -609,3 +609,121 @@ message BusiGetSubjectOfTeacherRsp
 	required string errString = 2;			//错误信息
     repeated SubjectOfTeacherCombine subjectOfTeacherInfo = 3;	   
 }
+
+
+message DataSvrProto
+{
+	enum Cmd
+	{
+		VerifyPhone = 1;
+		RegParent = 2;
+        RegGetSchool = 3;
+        RegGetClass = 4;
+        RegStudent = 5;
+        Login = 6;
+        GetGroupInfo = 7;
+        GetUserInfo = 8;
+        GetVerboseUserInfo = 9;
+        SetUserIcon = 10;
+        SetSignature = 11;
+        FindPasswdVerify = 12;
+        CreateFixedGroup = 13;
+        CreateTempGroup = 14;
+        CreateSocialGroup = 15;
+        SetGroupName = 16;
+        DelGroup = 17;
+        AddGroupMember = 18;
+        DelGroupMember = 19;
+        SetFriendDesc = 20;
+        DelFriend = 21;
+        SetSelfInfo = 22;
+        SetPasswd = 23;
+        SetFriendRight = 24;
+        SendFeedback = 25;
+        BusiGetClassOfTeacher = 26;
+        BusiGetSubjectOfTeacher = 27;
+	}
+	
+	required Cmd enum_cmd = 1;	//命令字，通过命令字，后续用来判断哪个包体会被赋值
+
+	optional VerifyPhoneReq VerifyPhoneReqInfo = 2;
+	optional VerifyPhoneRsp VerifyPhoneRspInfo = 3;
+	
+	optional RegParentReq RegParentReqInfo = 4;
+	optional RegParentRsp RegParentRspInfo = 5;
+    
+    optional RegGetSchoolReq RegGetSchoolReqInfo = 6;
+	optional RegGetSchoolRsp RegGetSchoolRspInfo = 7;
+    
+    optional RegGetClassReq RegGetClassReqInfo = 8;
+	optional RegGetClassRsp RegGetClassRspInfo = 9;
+    
+    optional RegStudentReq RegStudentReqInfo = 10;
+	optional RegStudentRsp RegStudentRspInfo = 11;
+    
+	optional LoginReq LoginReqInfo = 12;
+	optional LoginRsp LoginRspInfo = 13;
+    
+	optional GetGroupInfoReq GetGroupInfoReqInfo = 14;
+	optional GetGroupInfoRsp GetGroupInfoRspInfo = 15;
+    
+	optional GetUserInfoReq GetUserInfoReqInfo = 16;
+	optional GetUserInfoRsp GetUserInfoRspInfo = 17;
+    
+	optional GetVerboseUserInfoReq GetVerboseUserInfoReqInfo = 18;
+	optional GetVerboseUserInfoRsp GetVerboseUserInfoRspInfo = 19;
+    
+	optional SetUserIconReq SetUserIconReqInfo = 20;
+	optional SetUserIconRsp SetUserIconRspInfo = 21;
+    
+	optional SetSignatureReq SetSignatureReqInfo = 22;
+	optional SetSignatureRsp SetSignatureRspInfo = 23;
+    
+	optional FindPasswdVerifyReq FindPasswdVerifyReqInfo = 24;
+	optional FindPasswdVerifyRsp FindPasswdVerifyRspInfo = 25;
+    
+	optional CreateFixedGroupReq CreateFixedGroupReqInfo = 26;
+	optional CreateFixedGroupRsp CreateFixedGroupRspInfo = 27;
+    
+	optional CreateTempGroupReq CreateTempGroupReqInfo = 28;
+	optional CreateTempGroupRsp CreateTempGroupRspInfo = 29;
+    
+	optional CreateSocialGroupReq CreateSocialGroupReqInfo = 30;
+	optional CreateSocialGroupRsp CreateSocialGroupRspInfo = 31;
+    
+	optional SetGroupNameReq SetGroupNameReqInfo = 32;
+	optional SetGroupNameRsp SetGroupNameRspInfo = 33;
+    
+	optional DelGroupReq DelGroupReqInfo = 34;
+	optional DelGroupRsp DelGroupRspInfo = 35;
+    
+	optional AddGroupMemberReq AddGroupMemberReqInfo = 36;
+	optional AddGroupMemberRsp AddGroupMemberRspInfo = 37;
+    
+	optional DelGroupMemberReq DelGroupMemberReqInfo = 38;
+	optional DelGroupMemberRsp DelGroupMemberRspInfo = 39;
+    
+	optional SetFriendDescReq SetFriendDescReqInfo = 40;
+	optional SetFriendDescRsp SetFriendDescRspInfo = 41;
+    
+	optional DelFriendReq DelFriendReqInfo = 42;
+	optional DelFriendRsp DelFriendRspInfo = 43;
+    
+	optional SetSelfInfoReq SetSelfInfoReqInfo = 44;
+	optional SetSelfInfoRsp SetSelfInfoRspInfo = 45;
+    
+    optional SetPasswdReq SetPasswdReqInfo = 46;
+	optional SetPasswdRsp SetPasswdRspInfo = 47;
+        
+    optional SetFriendRightReq SetFriendRightReqInfo = 48;
+	optional SetFriendRightRsp SetFriendRightRspInfo = 49;
+        
+    optional SendFeedbackReq SendFeedbackReqInfo = 50;
+	optional SendFeedbackRsp SendFeedbackRspInfo = 51;
+        
+    optional BusiGetClassOfTeacherReq BusiGetClassOfTeacherReqInfo = 52;
+	optional BusiGetClassOfTeacherRsp BusiGetClassOfTeacherRspInfo = 55;
+        
+    optional BusiGetSubjectOfTeacherReq BusiGetSubjectOfTeacherReqInfo = 56;
+	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 57;    
+}

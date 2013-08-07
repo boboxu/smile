@@ -21,6 +21,6 @@ public abstract class BaseBusinessRequest extends BasePbRequest {
 	
 	@Override
 	protected void setCmd() {
-		mTransDataBuilder.setStrCmd("MsgSvr");
+		mTransDataBuilder.setStrCmd("DataSvr");
 	}
 }
