@@ -112,7 +112,9 @@ public class ServerManager implements IServerManagerInterface,
 
 	@Override
 	public int sendProtocolRequest(BasePbRequest pbRequest) {
-		pbRequest.setSeqId(mRequestIdGenerator.generateRequestId());
+		int seqId = mRequestIdGenerator.generateRequestId();
+		pbRequest.setSeqId(seqId);
+		pbRequest.setmRequestID(seqId);
 		pbRequest.buildTransData();
 		
 		if (pbRequest.getmDataBuffer() == null
@@ -281,8 +283,8 @@ public class ServerManager implements IServerManagerInterface,
 
 		// Length占四个字节，后面的都是数据
 		byte[] _respData = new byte[length];
-		for (int i = 0; i < buffer.length; i++) {
-			buffer[i] = buffer[4 + i];
+		for (int i = 0; i < _respData.length; i++) {
+			_respData[i] = buffer[4 + i];
 		}
 
 		BaseRequest baseRequest = null;

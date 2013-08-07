@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.updatestatus;
 
 import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
-import com.heme.logic.module.Data.SetStatusReq;
+//import com.heme.logic.module.Data.SetStatusReq;
 
 public class UpdateStatusRequest extends BaseLoginedBusinessRequest {
 	public UpdateStatusRequest(String sessionId, long systemId) {
@@ -28,23 +28,23 @@ public class UpdateStatusRequest extends BaseLoginedBusinessRequest {
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((SetStatusReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((SetStatusReq.Builder)mDataBuilder).setSystemId(systemId);	
+//		((SetStatusReq.Builder)mDataBuilder).setSessionId(sessionId);
+//		((SetStatusReq.Builder)mDataBuilder).setSystemId(systemId);	
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((SetStatusReq.Builder)mDataBuilder).setVersionNo(version);
-		((SetStatusReq.Builder)mDataBuilder).setClientType(clientType);
+//		((SetStatusReq.Builder)mDataBuilder).setVersionNo(version);
+//		((SetStatusReq.Builder)mDataBuilder).setClientType(clientType);
 	}
 
 	public void setStatus(USERSTATUS status) {
-		((SetStatusReq.Builder)mDataBuilder).setStatus(USERSTATUS.value(status));
-		super.setBody(((SetStatusReq.Builder)mDataBuilder).build().toByteString());
+//		((SetStatusReq.Builder)mDataBuilder).setStatus(USERSTATUS.value(status));
+//		super.setBody(((SetStatusReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = SetStatusReq.newBuilder();
+//		mDataBuilder = SetStatusReq.newBuilder();
 	}
 }
