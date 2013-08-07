@@ -1,8 +1,7 @@
-package com.heme.logic.httpprotocols.base;
+package com.heme.commonlogic.servermanager;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.commonlogic.servermanager.BaseRequest;
 import com.heme.logic.module.Trans.TransProto;
 
 public class BasePbRequest extends BaseRequest {

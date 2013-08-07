@@ -53,13 +53,56 @@ public class Constans {
 	public static final int SUBMIT_FEEDBACK_FAILED = SUBMIT_FEEDBACK_SUCCESS + 1;
 	
 	/***
-	 * message
+	 * message c2c
 	 */
 	// 向PC发送绿色上网的处理指令成功
 	public static final int SEND_PC_COMMOND_SUCCESS = SUBMIT_FEEDBACK_FAILED + 1;
 	// 发送指令失败
 	public static final int SEND_PC_COMMOND_FAILED = SEND_PC_COMMOND_SUCCESS + 1;
+	// 发送图片消息成功c2c
+	// 发送图片消息失败c2c
+	// 发送语音消息成功c2c
+	// 发送语音消息失败c2c
+	// 发送视频消息成功c2c
+	// 发送视频消息失败c2c
+	// 发送文本消息成功c2c
+	// 发送文本消息失败c2c
+	/***
+	 * message c2g
+	 */
+	// 发送图片消息成功c2g
+	// 发送图片消息失败c2g
+	// 发送语音消息成功c2g
+	// 发送语音消息失败c2g
+	// 发送视频消息成功c2g
+	// 发送视频消息失败c2g
+	// 发送文本消息成功c2g
+	// 发送文本消息失败c2g
 	
+	/***
+	 * greennet
+	 */
+	// 发送语音测试消息成功c2c
+	// 发送语音测试消息失败c2c
+	// 发送语音测试消息成功c2g
+	// 发送语音测试消息失败c2g
+	
+	/***
+	 * pollmsg
+	 */
+	// 拉取未读成功c2c
+	// 拉取未读失败c2c
+	// 拉取指定用户未读成功c2c
+	// 拉取指定用户未读失败c2c
+	
+	// 拉取未读群消息成功c2g
+	// 拉取未读群消息失败c2g
+	
+	// 拉取未读系统消息成功
+	// 拉取未读系统消息失败
+	
+	
+	//
 	/***
 	 * schoolinfomanager
 	 */

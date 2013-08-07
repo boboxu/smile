@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.base.message.messageopr;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BasePbResponse;
+import com.heme.commonlogic.servermanager.BasePbResponse;
 import com.heme.logic.module.Message.MessageOpr;
 import com.heme.logic.module.Message.PollMsgRes;
 import com.heme.logic.module.Message.PollUnreadInfoRes;

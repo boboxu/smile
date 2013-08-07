@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.push;
 
 import com.google.protobuf.ByteString;
-import com.heme.logic.httpprotocols.base.BasePbRequest;
+import com.heme.commonlogic.servermanager.BasePbRequest;
 
 public class PushMsgResponse extends BasePbRequest
 {

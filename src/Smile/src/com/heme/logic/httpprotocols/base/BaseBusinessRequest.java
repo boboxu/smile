@@ -1,5 +1,6 @@
 package com.heme.logic.httpprotocols.base;
 
+import com.heme.commonlogic.servermanager.BasePbRequest;
 import com.heme.logic.common.Configuration;
 
 public abstract class BaseBusinessRequest extends BasePbRequest {
