@@ -69,9 +69,14 @@ public class NetworkService extends Service
     
     public interface INetworkServiceListener 
     {
+    	//连接上了
     	public void onConnceted(ConnectionThread thread);
+    	
+    	//收到数据
     	public void onRecvData(byte[] recvBuffer);
     	
+    	//需要发心跳包
+    	public void onNeedBeatHeart();
     }
 
 	//开启service的静态方法
@@ -231,15 +236,16 @@ public class NetworkService extends Service
 	{
 		Log.d(TAG, "keepAlive");
 		
-		try
-		{
-			if (mStarted == true && mConnectionThread != null)
-			{
-				mConnectionThread.sendHeartBeat();
-			}
-		} catch (Exception e)
-		{
-		}
+		NetworkEngine.getEngine().onNeedBeatHeart();
+//		try
+//		{
+//			if (mStarted == true && mConnectionThread != null)
+//			{
+//				mConnectionThread.sendHeartBeat();
+//			}
+//		} catch (Exception e)
+//		{
+//		}
 	}
 	
 	// 通过AlarmManager定时唤醒

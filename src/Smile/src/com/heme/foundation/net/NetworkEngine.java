@@ -41,7 +41,10 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	protected Boolean isConnected = false;
 	
 	protected static final int MSG_RECV_BUF = 1;
+	protected static final int MSG_NEED_HEART = 2;
+
 	protected static final String BUNDLE_RECV_BUF = "BUNDLE_RECV_BUF";
+	
 	
 	protected IProtocolEngineDelegate mProtocolEngineDelegate = null;
 	
@@ -139,7 +142,17 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 		{
 			Bundle bundle = new Bundle();
 			bundle.putByteArray(BUNDLE_RECV_BUF, recvBuffer);
+			
+			Message msg = new Message();
+			msg.setData(bundle);
+			mHandler.sendMessage(msg);
 		}
+	}
+	
+	@Override
+	public void onNeedBeatHeart()
+	{
+		mHandler.sendEmptyMessage(MSG_NEED_HEART);
 	}
 	
 	@SuppressLint("HandlerLeak")
@@ -147,17 +160,28 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	{
 		public void handleMessage(Message msg) 
 		{
-			if (msg.what == MSG_RECV_BUF)
+			if (mProtocolEngineDelegate == null)
 			{
+				return;
+			}
+			switch (msg.what)
+			{
+			case MSG_NEED_HEART:
+				mProtocolEngineDelegate.onNeedSendHeartBeat();	
+				break;
+			case MSG_RECV_BUF:
 				if (msg.getData() != null)
 				{
 					Bundle bundle = msg.getData();
-					if(bundle != null && mProtocolEngineDelegate != null)
+					if(bundle != null)
 					{
 						byte[] recBuf = bundle.getByteArray(BUNDLE_RECV_BUF);
 						mProtocolEngineDelegate.onRecvProtocolBuffer(recBuf);
 					}
 				}
+				break;
+			default:
+				break;
 			}
 		};
 	};

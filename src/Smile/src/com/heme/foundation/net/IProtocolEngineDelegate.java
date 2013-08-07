@@ -7,4 +7,9 @@ public interface IProtocolEngineDelegate
 	 * @param buffer
 	 */
 	public void onRecvProtocolBuffer(byte[] buffer);
+	
+	/**
+	 * 需要发送心跳包
+	 */
+	public void onNeedSendHeartBeat();
 }

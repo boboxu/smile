@@ -316,4 +316,11 @@ public class ServerManager implements IServerManagerInterface,
 
 	}
 
+	@Override
+	public void onNeedSendHeartBeat()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
 }
