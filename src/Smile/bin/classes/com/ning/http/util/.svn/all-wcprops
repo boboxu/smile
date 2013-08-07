@@ -1,0 +1,59 @@
+K 25
+svn:wc:ra_dav:version-url
+V 124
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util
+END
+AllowAllHostnameVerifier.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/AllowAllHostnameVerifier.java
+END
+ProxyUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/ProxyUtils.java
+END
+SslUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/SslUtils.java
+END
+Base64.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/Base64.java
+END
+UTF8Codec.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/UTF8Codec.java
+END
+AsyncHttpProviderUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/AsyncHttpProviderUtils.java
+END
+UTF8UrlEncoder.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/UTF8UrlEncoder.java
+END
+AuthenticatorUtils.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/AuthenticatorUtils.java
+END
+DateUtil.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/util/DateUtil.java
+END

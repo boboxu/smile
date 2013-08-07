@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 119
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi
+END
+MDCAdapter.java
+K 25
+svn:wc:ra_dav:version-url
+V 135
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi/MDCAdapter.java
+END
+LocationAwareLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi/LocationAwareLogger.java
+END
+LoggerFactoryBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi/LoggerFactoryBinder.java
+END
+MarkerFactoryBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi/MarkerFactoryBinder.java
+END
+package.html
+K 25
+svn:wc:ra_dav:version-url
+V 132
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/spi/package.html
+END

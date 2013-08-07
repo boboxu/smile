@@ -1,73 +1,41 @@
-
 package com.heme.foundation.net;
 
+import java.util.Dictionary;
 
-/**
- * @author ottozheng
- *
- */
+import com.ning.http.client.Response;
+
 public class NetworkResponse
 {
-	protected NetworkRequest mRequest;	
-	protected int mStatusCode;
-	protected byte[] mDataBytes;
-	
-	public static final int STATUS_CODE_CONNECT_FAILED = 101;
-	public static final int STATUS_CODE_UNKNOW_HOST = 102;
-	public static final int STATUS_CODE_CONNECT_TIMEOUT = 103;
-	public static final int STATUS_CODE_RECV_TIMEOUT = 104;
+	public Response mResponse = null;
+	public NetworkRequest mRequest = null;
+	public int mStatusCode = 0;
+	public Dictionary<String,String> mHeaderFieldDictionary = null;
 
-	/**
-	 * 
-	 */
-    public NetworkResponse(NetworkRequest request, int status)
-    {
-    	mRequest = request;
-    	mStatusCode = status;
-    }
-
-	/**
-	 * @return the mRequest
-	 */
-	public NetworkRequest getmRequest()
+	public NetworkResponse(int code, Dictionary<String, String> headers)
 	{
-		return mRequest;
+		super();
+		mHeaderFieldDictionary = headers;
+		mStatusCode = code;
 	}
 
-	/**
-	 * @param mRequest the mRequest to set
-	 */
-	public void setmRequest(NetworkRequest mRequest)
+	public NetworkResponse()
 	{
-		this.mRequest = mRequest;
+		super();
 	}
 
-	/**
-	 * @return the mStatusCode
-	 */
-	public int getmStatusCode()
+	public Dictionary<String,String> allHeaderFields()
+	{
+		return mHeaderFieldDictionary;
+	}
+
+	public int statusCode()
 	{
 		return mStatusCode;
 	}
 
-	/**
-	 * @param mStatusCode the mStatusCode to set
-	 */
-	public void setmStatusCode(int mStatusCode)
+	static public String localizedStringForStatusCode(int statusCode)
 	{
-		this.mStatusCode = mStatusCode;
+		return null;
 	}
 
-	public byte[] getmDataBytes()
-	{
-		return mDataBytes;
-	}
-
-	public void setmDataBytes(byte[] mDataBytes)
-	{
-		this.mDataBytes = mDataBytes;
-	}
-	
-	
-	
 }

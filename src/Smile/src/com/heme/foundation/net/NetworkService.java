@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
-import java.util.Date;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -22,6 +21,7 @@ import android.net.NetworkInfo;
 import android.os.IBinder;
 import android.util.Log;
 
+import com.heme.logic.httpprotocols.heartbeat.HeartBeatRequest;
 import com.heme.smile.StartActivity;
 
 /**
@@ -55,8 +55,8 @@ public class NetworkService extends Service
 	
 	private ConnectionThread mConnectionThread;
 	
-	//让AlarmManager定时唤醒，10分钟
-	private static final long KEEP_ALIVE_INTERVAL = 1000 * 60 * 10;
+	//让AlarmManager定时唤醒，5分钟
+	private static final long KEEP_ALIVE_INTERVAL = 1000 * 60 * 5;
 	
 	//重试间隔
 	private static final long INITIAL_RETRY_INTERVAL = 1000 * 10;
@@ -427,7 +427,7 @@ public class NetworkService extends Service
 				startKeepAlives();
 				showNotification("测试心跳");
 				
-				NetworkEngine.getEngine().onConnceted(this);
+//				NetworkEngine.getEngine().onConnceted(this);
 				
 			} catch (IOException e)
 			{
@@ -446,7 +446,7 @@ public class NetworkService extends Service
 					if (recvBuf != null)
 					{
 						Log.d(TAG, recvBuf.toString());
-						NetworkEngine.getEngine().onRecvData(recvBuf);
+//						NetworkEngine.getEngine().onRecvData(recvBuf);
 					}	
 					else 
 					{
@@ -491,11 +491,13 @@ public class NetworkService extends Service
 		
 		public synchronized void sendHeartBeat() throws IOException
 		{
-			Date date = new Date();
-			long currentTime = System.currentTimeMillis();
-			mOutputStream.write((date.toString() + " " + currentTime + " test heartbeat").getBytes());
+//			Date date = new Date();
+//			long currentTime = System.currentTimeMillis();
+			HeartBeatRequest heartbeatRequest = new HeartBeatRequest();
+			mOutputStream.write(heartbeatRequest.getmDataBuffer());
+			mOutputStream.flush();
 			
-            Log.d(TAG, "heartbeat sent");
+			Log.d(TAG, "send heartbeat:" + heartbeatRequest.getmDataBuffer().toString());
 
 		}
 		
@@ -503,6 +505,8 @@ public class NetworkService extends Service
 		{
 			mOutputStream.write(buffer);
 			mOutputStream.flush();
+			
+			Log.d(TAG, "send buffer:" + buffer.toString());
 		}
 		
 		protected byte[] recvBuffer() throws IOException

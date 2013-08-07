@@ -1,0 +1,251 @@
+K 25
+svn:wc:ra_dav:version-url
+V 126
+/ipc/ipc_i18nhant_rep/!svn/ver/16586/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client
+END
+RequestBuilder.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/RequestBuilder.java
+END
+Realm.java
+K 25
+svn:wc:ra_dav:version-url
+V 137
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Realm.java
+END
+HttpResponseBodyPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/HttpResponseBodyPart.java
+END
+FluentStringsMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/FluentStringsMap.java
+END
+Part.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Part.java
+END
+FilePart.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/FilePart.java
+END
+ProxyServer.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ProxyServer.java
+END
+ResumableBodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ResumableBodyConsumer.java
+END
+Cookie.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Cookie.java
+END
+BodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/BodyConsumer.java
+END
+HttpContent.java
+K 25
+svn:wc:ra_dav:version-url
+V 143
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/HttpContent.java
+END
+ConnectionsPool.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ConnectionsPool.java
+END
+AsyncHttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 147
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHttpClient.java
+END
+BodyDeferringAsyncHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/BodyDeferringAsyncHandler.java
+END
+UpgradeHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 146
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/UpgradeHandler.java
+END
+PerRequestConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/PerRequestConfig.java
+END
+AsyncHttpProvider.java
+K 25
+svn:wc:ra_dav:version-url
+V 149
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHttpProvider.java
+END
+ByteArrayPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ByteArrayPart.java
+END
+Body.java
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Body.java
+END
+Response.java
+K 25
+svn:wc:ra_dav:version-url
+V 140
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Response.java
+END
+AsyncCompletionHandlerBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncCompletionHandlerBase.java
+END
+ProgressAsyncHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ProgressAsyncHandler.java
+END
+AsyncHttpClientConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/ipc/ipc_i18nhant_rep/!svn/ver/16586/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHttpClientConfig.java
+END
+HttpResponseStatus.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/HttpResponseStatus.java
+END
+BodyGenerator.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/BodyGenerator.java
+END
+AsyncCompletionHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncCompletionHandler.java
+END
+AsyncHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHandler.java
+END
+SignatureCalculator.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/SignatureCalculator.java
+END
+ListenableFuture.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ListenableFuture.java
+END
+AsyncHttpProviderConfig.java
+K 25
+svn:wc:ra_dav:version-url
+V 155
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHttpProviderConfig.java
+END
+SSLEngineFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/SSLEngineFactory.java
+END
+RandomAccessBody.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/RandomAccessBody.java
+END
+FluentCaseInsensitiveStringsMap.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/FluentCaseInsensitiveStringsMap.java
+END
+ThrowableHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 148
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/ThrowableHandler.java
+END
+MaxRedirectException.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/MaxRedirectException.java
+END
+SimpleAsyncHttpClient.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/SimpleAsyncHttpClient.java
+END
+Request.java
+K 25
+svn:wc:ra_dav:version-url
+V 139
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/Request.java
+END
+AsyncHttpClientConfigBean.java
+K 25
+svn:wc:ra_dav:version-url
+V 157
+/ipc/ipc_i18nhant_rep/!svn/ver/15539/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/AsyncHttpClientConfigBean.java
+END
+HttpResponseHeaders.java
+K 25
+svn:wc:ra_dav:version-url
+V 151
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/HttpResponseHeaders.java
+END
+RequestBuilderBase.java
+K 25
+svn:wc:ra_dav:version-url
+V 150
+/ipc/ipc_i18nhant_rep/!svn/ver/13255/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/RequestBuilderBase.java
+END
+StringPart.java
+K 25
+svn:wc:ra_dav:version-url
+V 142
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/StringPart.java
+END

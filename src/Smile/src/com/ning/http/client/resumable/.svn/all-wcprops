@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/resumable
+END
+ResumableListener.java
+K 25
+svn:wc:ra_dav:version-url
+V 159
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/resumable/ResumableListener.java
+END
+PropertiesBasedResumableProcessor.java
+K 25
+svn:wc:ra_dav:version-url
+V 175
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/resumable/PropertiesBasedResumableProcessor.java
+END
+ResumableAsyncHandler.java
+K 25
+svn:wc:ra_dav:version-url
+V 163
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/resumable/ResumableAsyncHandler.java
+END
+ResumableIOExceptionFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 168
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/resumable/ResumableIOExceptionFilter.java
+END

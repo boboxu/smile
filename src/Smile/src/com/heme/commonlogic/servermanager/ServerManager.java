@@ -19,8 +19,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
-	private final static String HOSTSTR = "202.96.170.123";
-	private final static int PORT = 18080;
+
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {
 			g_Instance = new ServerManager();
@@ -41,8 +40,8 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 			return -1;
 		}
 		//构造连接，到net模块了
-		NetworkRequest networkRequest = new NetworkRequest(HOSTSTR, PORT, request.getmDataBuffer(), this);
-		NetworkEngine.getEngine().sendNetworkRequest(networkRequest);
+		
+		NetworkEngine.getEngine().sendProtocolBuffer(request.getmDataBuffer());
 //		//测试代码begin，直接调用回掉看看
 //		String requestClassName = request.getClass().getName();
 //		StringBuilder sbBuilder = new StringBuilder();
@@ -84,7 +83,6 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 		
 		//赋予ID
 		request.setmRequestID(mRequestIdGenerator.generateRequestId());
-		request.setmRequest(networkRequest);
 		//保存起来
 		addRequest(request);
 		
@@ -152,7 +150,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	public void onRequestSuccess(NetworkResponse netresponse, byte[] data) {
 		Log.d(TAG,"finish data"+(new String(data)));
 
-		BaseRequest baseRequest = getRequestFromMap(netresponse.getmRequest());
+		BaseRequest baseRequest = getRequestFromMap(null);
 		if (baseRequest == null)
 		{
 			// 有可能操作被取消
@@ -178,14 +176,14 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 
 	@Override
 	public void onRequestFail(NetworkResponse netresponse, int errorCode) {
-		BaseRequest baseRequest = getRequestFromMap(netresponse.getmRequest());
+		BaseRequest baseRequest = getRequestFromMap(null);
 		if (baseRequest == null)
 		{
 			// 有可能操作被取消
 			return;
 		}
 
-		BaseResponse response = parseRequestToResponse(baseRequest, netresponse.getmDataBytes());
+		BaseResponse response = parseRequestToResponse(baseRequest, null);
 		response.setmRet(BaseResponse.RET_ERROR);
 		
 		ProtoError error = new ProtoError(errorCode);

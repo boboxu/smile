@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 133
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter
+END
+FilterException.java
+K 25
+svn:wc:ra_dav:version-url
+V 154
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter/FilterException.java
+END
+ResponseFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 153
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter/ResponseFilter.java
+END
+FilterContext.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter/FilterContext.java
+END
+IOExceptionFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 156
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter/IOExceptionFilter.java
+END
+RequestFilter.java
+K 25
+svn:wc:ra_dav:version-url
+V 152
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/filter/RequestFilter.java
+END

@@ -1,0 +1,16 @@
+///////////////////////////////////////////////////////////////////////////////////////////
+///
+///	客户端后台请求回应包格式：dwPkgLen(4字节网络字节序) + AccessReq序列化内容
+///
+///////////////////////////////////////////////////////////////////////////////////////////
+
+message TransProto
+{
+	required uint64 uint64_uid = 1;			//帐号
+	required uint32 uint32_seq = 2;			//序号
+	required string str_cmd = 3;			//命令字
+												//	消息填写 MsgSvr
+												//	资料填写 DataSvr
+												//	状态填写 StatusSvr
+	required bytes bytes_body = 4;			//命令字对应的protocol结构序列化内容
+}

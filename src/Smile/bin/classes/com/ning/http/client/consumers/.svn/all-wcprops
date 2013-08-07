@@ -1,0 +1,29 @@
+K 25
+svn:wc:ra_dav:version-url
+V 136
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/consumers
+END
+AppendableBodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/consumers/AppendableBodyConsumer.java
+END
+OutputStreamBodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 166
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/consumers/OutputStreamBodyConsumer.java
+END
+ByteBufferBodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 164
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/consumers/ByteBufferBodyConsumer.java
+END
+FileBodyConsumer.java
+K 25
+svn:wc:ra_dav:version-url
+V 158
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/com/ning/http/client/consumers/FileBodyConsumer.java
+END

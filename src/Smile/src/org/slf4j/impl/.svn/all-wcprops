@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 120
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl
+END
+StaticMDCBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 141
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl/StaticMDCBinder.java
+END
+SimpleLoggerFactory.java
+K 25
+svn:wc:ra_dav:version-url
+V 145
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl/SimpleLoggerFactory.java
+END
+SimpleLogger.java
+K 25
+svn:wc:ra_dav:version-url
+V 138
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl/SimpleLogger.java
+END
+StaticLoggerBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl/StaticLoggerBinder.java
+END
+StaticMarkerBinder.java
+K 25
+svn:wc:ra_dav:version-url
+V 144
+/ipc/ipc_i18nhant_rep/!svn/ver/12891/Mobile_HK_Weibo_proj/trunk/client/Android/Library/src/httplibrary3rd/org/slf4j/impl/StaticMarkerBinder.java
+END
