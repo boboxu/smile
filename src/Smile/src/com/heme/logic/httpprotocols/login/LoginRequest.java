@@ -2,6 +2,7 @@ package com.heme.logic.httpprotocols.login;
 
 import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
 import com.heme.logic.module.Data.LoginReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class LoginRequest extends BaseBusinessRequest {
 
@@ -26,7 +27,9 @@ public class LoginRequest extends BaseBusinessRequest {
 	public void setLoginInfo(String account,String pwd,LOGINTYPE type)
 	{
 		((LoginReq.Builder)mDataBuilder).setId(account).setPassword(pwd);
-		super.buildAccessReq(((LoginReq.Builder)mDataBuilder).build().toByteString());
+		mDataSvrBuilder.setEnumCmd(Cmd.Login);
+		mDataSvrBuilder.setLoginReqInfo(((LoginReq.Builder)mDataBuilder).build());
+		super.buildAccessReq(mDataSvrBuilder.build().toByteString());
 		
 	}
 
