@@ -93,6 +93,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setStrVersion(PROTO_VERSION);
 		mMessageOprBuilder.setUint64Uid(systemId);
 		mMessageOprBuilder.setStringSessionId(sessionId);
+		setCmd("MsgSvr");
 	
 	}
 	

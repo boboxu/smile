@@ -29,7 +29,6 @@ public class BasePbRequest extends BaseRequest {
 	protected void buildAccessReq(ByteString body) {
 		setBody(body);
 		setUid(0);
-		setCmd("");
 		setSeqId(0);
 		setRequestData(mTransDataBuilder.build().toByteArray());
 	}

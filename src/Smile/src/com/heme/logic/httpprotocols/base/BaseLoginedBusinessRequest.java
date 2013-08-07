@@ -5,5 +5,6 @@ public abstract class BaseLoginedBusinessRequest extends BaseBusinessRequest {
 	public BaseLoginedBusinessRequest(String sessionId,long systemId) {
 		super();
 		setLoginedInfo(sessionId, systemId);
+		setCmd("DataSvr");
 	}
 }
