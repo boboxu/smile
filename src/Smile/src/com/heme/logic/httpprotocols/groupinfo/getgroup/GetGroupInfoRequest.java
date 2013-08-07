@@ -29,7 +29,7 @@ public class GetGroupInfoRequest extends BaseLoginedBusinessRequest {
 		for (int i = 0; i < groupIdList.size(); i++) {
 			((GetGroupInfoReq.Builder)mDataBuilder).addGroupId(groupIdList.get(i));
 		}
-		super.buildAccessReq(((GetGroupInfoReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((GetGroupInfoReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

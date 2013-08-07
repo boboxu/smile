@@ -19,6 +19,6 @@ public class GetSchoolInfoRequest extends BaseBusinessRequest {
 	public void setArea(String area)
 	{
 		((RegGetSchoolReq.Builder)mDataBuilder).setArea(area);
-		super.buildAccessReq(((RegGetSchoolReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((RegGetSchoolReq.Builder)mDataBuilder).build().toByteString());
 	}
 }

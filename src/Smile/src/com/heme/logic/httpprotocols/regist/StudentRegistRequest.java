@@ -20,7 +20,7 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		((RegStudentReq.Builder)mDataBuilder).setArea(area);
 		((RegStudentReq.Builder)mDataBuilder).setSchoolId(schoolId);
 		((RegStudentReq.Builder)mDataBuilder).setClassId(classId);
-		super.buildAccessReq(((RegStudentReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((RegStudentReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

@@ -49,7 +49,7 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 		((SetSelfInfoReq.Builder)mDataBuilder).setLocation(location);
 		((SetSelfInfoReq.Builder)mDataBuilder).setEmail(email);
 		((SetSelfInfoReq.Builder)mDataBuilder).setInterest(interest);
-		super.buildAccessReq(((SetSelfInfoReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetSelfInfoReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

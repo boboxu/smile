@@ -10,9 +10,6 @@ public abstract class BasePbRequest extends BaseRequest {
 	protected TransProto.Builder mTransDataBuilder = TransProto.newBuilder();
 	//服务器来的推送数据
 	protected TransProto mTransData;
-	private void setBody(ByteString body) {
-		mTransDataBuilder.setBytesBody(body);
-	}
 
 	private void setUid(long uid) {
 		mTransDataBuilder.setUint64Uid(uid);
@@ -20,15 +17,19 @@ public abstract class BasePbRequest extends BaseRequest {
 
 	public void setSeqId(int seq) {
 		mTransDataBuilder.setUint32Seq(seq);
-		setRequestData(mTransDataBuilder.build().toByteArray());
 	}
 
-	protected abstract void setCmd();
-
-	protected void buildAccessReq(ByteString body) {
-		setBody(body);
+	public void buildTransData()
+	{
 		setUid(0);
 		setCmd();
+		setRequestData(mTransDataBuilder.build().toByteArray());
+	}
+	
+	protected abstract void setCmd();
+
+	protected void setBody(ByteString body) {
+		mTransDataBuilder.setBytesBody(body);
 	}
 	
 	@Override

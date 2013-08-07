@@ -27,7 +27,7 @@ public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 	public void setGroupInfo(int groupId)
 	{
 		((DelGroupReq.Builder)mDataBuilder).setGroupId(groupId);
-		super.buildAccessReq(((DelGroupReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((DelGroupReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

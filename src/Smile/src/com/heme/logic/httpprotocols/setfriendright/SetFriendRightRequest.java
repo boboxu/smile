@@ -56,7 +56,7 @@ public class SetFriendRightRequest extends BaseLoginedBusinessRequest {
 		((SetFriendRightReq.Builder)mDataBuilder).setAutoAddFriend(isAutoAddFriend?1:0);
 		((SetFriendRightReq.Builder)mDataBuilder).setSearchType(isCanBeSearched?1:0);
 		((SetFriendRightReq.Builder)mDataBuilder).setRecommendType(isRecommend?1:0);
-		super.buildAccessReq(((SetFriendRightReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetFriendRightReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

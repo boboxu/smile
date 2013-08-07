@@ -32,7 +32,7 @@ public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 	{
 		((SetGroupNameReq.Builder)mDataBuilder).setGroupName(groupName);
 		((SetGroupNameReq.Builder)mDataBuilder).setGroupId(groupId);
-		super.buildAccessReq(((SetGroupNameReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetGroupNameReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

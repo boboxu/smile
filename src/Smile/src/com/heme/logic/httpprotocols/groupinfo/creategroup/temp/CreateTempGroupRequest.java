@@ -32,7 +32,7 @@ public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 		{
 			((CreateTempGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.buildAccessReq(((CreateTempGroupReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((CreateTempGroupReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

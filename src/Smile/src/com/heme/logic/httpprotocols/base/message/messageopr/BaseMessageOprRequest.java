@@ -100,7 +100,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setMsgSendReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
 		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPESENDREQ));
-		super.buildAccessReq(mMessageOprBuilder.build().toByteString());
+		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
 	protected void setPushMsgReq(PushMsgReq msg,ByteString context) 
@@ -108,7 +108,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setMsgPushReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
 		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPUSHREQ));
-		super.buildAccessReq(mMessageOprBuilder.build().toByteString());
+		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
 	protected void setPollMsgReq(PollMsgReq msg,ByteString context) 
@@ -116,7 +116,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setMsgPollReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
 		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPOLLREQ));
-		super.buildAccessReq(mMessageOprBuilder.build().toByteString());
+		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
 	protected void setPollUnreadMsgReq(PollUnreadInfoReq msg,ByteString context) 
@@ -124,7 +124,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		mMessageOprBuilder.setMsgPollUnreadReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
 		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPOLLUNREADREQ));
-		super.buildAccessReq(mMessageOprBuilder.build().toByteString());
+		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
 	@Override

@@ -29,6 +29,6 @@ public class FeedBackRequest extends BaseLoginedBusinessRequest {
 
 	public void setContent(String feedback) {
 		((SendFeedbackReq.Builder) mDataBuilder).setFeedback(feedback);
-		super.buildAccessReq(((SendFeedbackReq.Builder) mDataBuilder).build().toByteString());
+		super.setBody(((SendFeedbackReq.Builder) mDataBuilder).build().toByteString());
 	}
 }

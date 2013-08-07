@@ -17,7 +17,7 @@ public class HeartBeatRequest extends BaseBusinessRequest {
 	}
 
 	public HeartBeatRequest() {
-		super.buildAccessReq(((HbReq.Builder) mDataBuilder).build()
+		super.setBody(((HbReq.Builder) mDataBuilder).build()
 				.toByteString());
 	}
 }

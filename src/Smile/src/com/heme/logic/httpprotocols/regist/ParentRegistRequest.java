@@ -16,7 +16,7 @@ public class ParentRegistRequest extends BaseBusinessRequest {
 			((RegParentReq.Builder)mDataBuilder).addChildStudentId(childIdList.get(i));	
 		}
 		((RegParentReq.Builder)mDataBuilder).setVerifyCode(verifyCode);
-		super.buildAccessReq(((RegParentReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((RegParentReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

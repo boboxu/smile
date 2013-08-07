@@ -14,7 +14,7 @@ public class ResetPwdRequest extends BaseBusinessRequest {
 	public void setVerifyCode(String verifyCode)
 	{
 		((FindPasswdVerifyReq.Builder)mDataBuilder).setVerifyCode(verifyCode);
-		super.buildAccessReq(((FindPasswdVerifyReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((FindPasswdVerifyReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

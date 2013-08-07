@@ -33,7 +33,7 @@ public class AddGroupMemberRequest extends BaseLoginedBusinessRequest {
 		{
 			((AddGroupMemberReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.buildAccessReq(((AddGroupMemberReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((AddGroupMemberReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

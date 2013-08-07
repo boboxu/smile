@@ -20,7 +20,7 @@ public class ModifyPwdRequest extends BaseLoginedBusinessRequest {
 	{
 		((SetPasswdReq.Builder)mDataBuilder).setNewPasswd(newPassword);
 		((SetPasswdReq.Builder)mDataBuilder).setOldPasswd(oldPassword);
-		super.buildAccessReq(((SetPasswdReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetPasswdReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

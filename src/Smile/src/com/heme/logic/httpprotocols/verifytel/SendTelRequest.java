@@ -31,7 +31,7 @@ public class SendTelRequest extends BaseBusinessRequest {
 	{
 		((VerifyPhoneReq.Builder)mDataBuilder).setPhoneNo(phoneno);
 		((VerifyPhoneReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(type));
-		super.buildAccessReq(((VerifyPhoneReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((VerifyPhoneReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

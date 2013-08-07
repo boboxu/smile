@@ -31,6 +31,6 @@ public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 	{
 		((SetFriendDescReq.Builder)mDataBuilder).setTargetSystemId(targetId);
 		((SetFriendDescReq.Builder)mDataBuilder).setDescription(dsp);
-		super.buildAccessReq(((SetFriendDescReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetFriendDescReq.Builder)mDataBuilder).build().toByteString());
 	}
 }

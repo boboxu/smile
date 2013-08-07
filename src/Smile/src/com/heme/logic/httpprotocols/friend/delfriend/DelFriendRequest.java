@@ -24,7 +24,7 @@ public class DelFriendRequest extends BaseLoginedBusinessRequest {
 
 	public void setTargetSystemId(long targetId) {
 		((DelFriendReq.Builder) mDataBuilder).setTargetSystemId(targetId);
-		super.buildAccessReq(((DelFriendReq.Builder) mDataBuilder).build()
+		super.setBody(((DelFriendReq.Builder) mDataBuilder).build()
 				.toByteString());
 	}
 

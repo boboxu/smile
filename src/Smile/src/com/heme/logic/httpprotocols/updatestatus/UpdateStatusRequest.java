@@ -40,7 +40,7 @@ public class UpdateStatusRequest extends BaseLoginedBusinessRequest {
 
 	public void setStatus(USERSTATUS status) {
 		((SetStatusReq.Builder)mDataBuilder).setStatus(USERSTATUS.value(status));
-		super.buildAccessReq(((SetStatusReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetStatusReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

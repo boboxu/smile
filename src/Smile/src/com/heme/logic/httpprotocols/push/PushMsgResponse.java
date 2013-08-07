@@ -8,7 +8,7 @@ public class PushMsgResponse extends BasePbRequest
 	public PushMsgResponse(ByteString bytes_context)
 	{
 		super();
-		buildAccessReq(ByteString.EMPTY);
+		setBody(ByteString.EMPTY);
 	}
 
 	@Override

@@ -25,7 +25,7 @@ public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 	public void setIconName(String name)
 	{
 		((SetUserIconReq.Builder)mDataBuilder).setIconName(name);
-		super.buildAccessReq(((SetUserIconReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetUserIconReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

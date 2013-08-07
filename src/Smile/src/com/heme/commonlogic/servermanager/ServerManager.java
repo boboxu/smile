@@ -124,6 +124,7 @@ public class ServerManager implements IServerManagerInterface,
 
 		// pbRequest.setmRequestID(mRequestIdGenerator.generateRequestId());
 		pbRequest.setSeqId(mRequestIdGenerator.generateRequestId());
+		pbRequest.buildTransData();
 		// 保存起来
 		addRequest(pbRequest);
 

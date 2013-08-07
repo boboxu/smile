@@ -53,7 +53,7 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 		{
 			((CreateFixedGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.buildAccessReq(((CreateFixedGroupReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((CreateFixedGroupReq.Builder)mDataBuilder).build().toByteString());
 		
 	}
 

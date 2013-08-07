@@ -33,7 +33,7 @@ public class DelGroupMemberRequest extends BaseLoginedBusinessRequest {
 		{
 			((DelGroupMemberReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
 		}
-		super.buildAccessReq(((DelGroupMemberReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((DelGroupMemberReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

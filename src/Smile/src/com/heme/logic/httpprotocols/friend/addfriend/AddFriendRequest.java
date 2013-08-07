@@ -26,7 +26,7 @@ public class AddFriendRequest extends BaseLoginedBusinessRequest {
 	public void setVersionAndClientType(String version, int client_type) {
 		((FriendVerifyMsgReq.Builder) mDataBuilder).setClientType(client_type);
 		((FriendVerifyMsgReq.Builder) mDataBuilder).setVersionNo(version);
-		super.buildAccessReq(((FriendVerifyMsgReq.Builder) mDataBuilder)
+		super.setBody(((FriendVerifyMsgReq.Builder) mDataBuilder)
 				.build().toByteString());
 
 	}

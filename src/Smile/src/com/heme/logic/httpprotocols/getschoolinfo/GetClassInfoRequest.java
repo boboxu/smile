@@ -14,7 +14,7 @@ public class GetClassInfoRequest extends BaseBusinessRequest {
 	public void setSchoolId(int schoolId)
 	{
 		((RegGetClassReq.Builder)mDataBuilder).setSchoolId(schoolId);
-		super.buildAccessReq(((RegGetClassReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((RegGetClassReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

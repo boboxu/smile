@@ -28,7 +28,7 @@ public class GetUserInfoRequest extends BaseLoginedBusinessRequest {
 		for (int i = 0; i < targetSystemIdList.size(); i++) {
 			((GetUserInfoReq.Builder)mDataBuilder).addTargetSystemId(targetSystemIdList.get(i));
 		}
-		super.buildAccessReq(((GetUserInfoReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((GetUserInfoReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

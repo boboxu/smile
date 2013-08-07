@@ -29,7 +29,7 @@ public class LoginRequest extends BaseBusinessRequest {
 		((LoginReq.Builder)mDataBuilder).setId(account).setPassword(pwd);
 		mDataSvrBuilder.setEnumCmd(Cmd.Login);
 		mDataSvrBuilder.setLoginReqInfo(((LoginReq.Builder)mDataBuilder).build());
-		super.buildAccessReq(mDataSvrBuilder.build().toByteString());
+		super.setBody(mDataSvrBuilder.build().toByteString());
 		
 	}
 

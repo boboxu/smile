@@ -28,7 +28,7 @@ public class GetVerboseUserInfoRequest extends BaseLoginedBusinessRequest {
 		for (int i = 0; i < targetSystemIdList.size(); i++) {
 			((GetVerboseUserInfoReq.Builder)mDataBuilder).addTargetSystemId(targetSystemIdList.get(i));
 		}
-		super.buildAccessReq(((GetVerboseUserInfoReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((GetVerboseUserInfoReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override

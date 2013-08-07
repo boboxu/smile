@@ -25,7 +25,7 @@ public class UpdateSignatureRequest extends BaseLoginedBusinessRequest {
 	public void setSignature(String signature)
 	{
 		((SetSignatureReq.Builder)mDataBuilder).setSignature(signature);
-		super.buildAccessReq(((SetSignatureReq.Builder)mDataBuilder).build().toByteString());
+		super.setBody(((SetSignatureReq.Builder)mDataBuilder).build().toByteString());
 	}
 
 	@Override
