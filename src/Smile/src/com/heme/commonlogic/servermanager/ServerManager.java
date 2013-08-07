@@ -112,6 +112,9 @@ public class ServerManager implements IServerManagerInterface,
 
 	@Override
 	public int sendProtocolRequest(BasePbRequest pbRequest) {
+		pbRequest.setSeqId(mRequestIdGenerator.generateRequestId());
+		pbRequest.buildTransData();
+		
 		if (pbRequest.getmDataBuffer() == null
 				|| pbRequest.getmRequestListener() == null) {
 			Log.e(TAG, "request构造失败");
@@ -123,8 +126,7 @@ public class ServerManager implements IServerManagerInterface,
 				.sendProtocolBuffer(pbRequest.getmDataBuffer());
 
 		// pbRequest.setmRequestID(mRequestIdGenerator.generateRequestId());
-		pbRequest.setSeqId(mRequestIdGenerator.generateRequestId());
-		pbRequest.buildTransData();
+
 		// 保存起来
 		addRequest(pbRequest);
 
