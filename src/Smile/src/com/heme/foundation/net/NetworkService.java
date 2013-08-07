@@ -31,7 +31,7 @@ import com.heme.smile.StartActivity;
  */
 public class NetworkService extends Service
 {
-	private static final String TAG = "PushService";
+	private static final String TAG = "NetworkService";
 	
 	public static final String HOST = "202.96.170.123";
 	public static final int PORT = 18080;
@@ -427,7 +427,7 @@ public class NetworkService extends Service
 				startKeepAlives();
 				showNotification("测试心跳");
 				
-//				NetworkEngine.getEngine().onConnceted(this);
+				NetworkEngine.getEngine().onConnceted(this);
 				
 			} catch (IOException e)
 			{
@@ -446,7 +446,7 @@ public class NetworkService extends Service
 					if (recvBuf != null)
 					{
 						Log.d(TAG, recvBuf.toString());
-//						NetworkEngine.getEngine().onRecvData(recvBuf);
+						NetworkEngine.getEngine().onRecvData(recvBuf);
 					}	
 					else 
 					{
