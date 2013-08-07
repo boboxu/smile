@@ -15,7 +15,7 @@ package com.heme.foundation.net;
 
 import java.io.IOException;
 
-import android.annotation.SuppressLint;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -40,9 +40,20 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	protected ConnectionThread mConnectionThread = null;
 	protected Boolean isConnected = false;
 	
+	protected static final int MSG_RECV_BUF = 1;
+	protected static final String BUNDLE_RECV_BUF = "BUNDLE_RECV_BUF";
+	
+	protected IProtocolEngineDelegate mProtocolEngineDelegate = null;
+	
 //	protected NetworkHandler mHandler = new NetworkHandler();
 	
-    public static NetworkEngine getEngine()
+    public void setmProtocolEngineDelegate(
+			IProtocolEngineDelegate mProtocolEngineDelegate)
+	{
+		this.mProtocolEngineDelegate = mProtocolEngineDelegate;
+	}
+
+	public static NetworkEngine getEngine()
     {
 	    if (gNetworkEngine == null)
         {
@@ -91,6 +102,13 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
         }
     	return true;
     }
+    
+    @Override
+    public void cancelNetworkRequest(NetworkRequest request)
+    {
+    	// TODO Auto-generated method stub
+    	
+    }
 
 	@Override
 	public void sendProtocolBuffer(byte[] buffer)
@@ -117,38 +135,30 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	@Override
 	public void onRecvData(byte[] recvBuffer)
 	{
-		Log.d(TAG, recvBuffer.toString());
+		if (recvBuffer != null)
+		{
+			Bundle bundle = new Bundle();
+			bundle.putByteArray(BUNDLE_RECV_BUF, recvBuffer);
+		}
 	}
 	
-    
-    @SuppressLint("HandlerLeak")
-	public class NetworkHandler extends Handler
-    {
-    	public static final String BUNDLE_KEY_DATA = "DATA";
-    	
-    	/**
-         * 
-         */
-        public NetworkHandler()
-        {
-        	super();
-        }
-    	
-    	/**
-		 * @param looper
-		 */
-        public NetworkHandler(Looper looper)
-        {
-	        super(looper);
-        }
-
-		/* (non-Javadoc)
-    	 * @see android.os.Handler#handleMessage(android.os.Message)
-    	 */
-    	@Override
-    	public void handleMessage(Message msg)
-    	{  	    
-    	}
-    }
+	protected Handler mHandler = new Handler()
+	{
+		public void handleMessage(Message msg) 
+		{
+			if (msg.what == MSG_RECV_BUF)
+			{
+				if (msg.getData() != null)
+				{
+					Bundle bundle = msg.getData();
+					if(bundle != null && mProtocolEngineDelegate != null)
+					{
+						byte[] recBuf = bundle.getByteArray(BUNDLE_RECV_BUF);
+						mProtocolEngineDelegate.onRecvProtocolBuffer(recBuf);
+					}
+				}
+			}
+		};
+	};
 
 }

@@ -15,10 +15,10 @@ public interface IHttpEngineInterface
 	 */
 	public boolean sendHttpRequest(NetworkRequest request);
 	
-//	/**
-//	 * 取消一个请求
-//	 * @param request
-//	 */
-//	public void cancelNetworkRequest(NetworkRequest request);
+	/**
+	 * 取消一个请求
+	 * @param request
+	 */
+	public void cancelNetworkRequest(NetworkRequest request);
 	
 }

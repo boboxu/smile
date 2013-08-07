@@ -10,11 +10,12 @@ import android.util.Log;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
 import com.heme.foundation.net.INetworkEngineListener;
+import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
 import com.heme.foundation.net.NetworkResponse;
 
-public class ServerManager implements IServerManagerInterface ,INetworkEngineListener{
+public class ServerManager implements IServerManagerInterface ,INetworkEngineListener, IProtocolEngineDelegate{
 	private static final String TAG = "ServerManager";
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
@@ -30,6 +31,8 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	protected ServerManager() {
 		mRequestMap = new HashMap<String, BaseRequest>();
 		mRequestIdGenerator = new RequestIdGenerator();
+		
+		NetworkEngine.getEngine().setmProtocolEngineDelegate(this);
 	}
 
 	@Override
@@ -246,6 +249,12 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 		}
 			
 		return response;
+	}
+
+	@Override
+	public void onRecvProtocolBuffer(byte[] buffer)
+	{
+		
 	}
 
 }

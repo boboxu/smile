@@ -445,7 +445,7 @@ public class NetworkService extends Service
 					
 					if (recvBuf != null)
 					{
-						Log.d(TAG, recvBuf.toString());
+						Log.d(TAG, "recv buffer:" + recvBuf.toString());
 						NetworkEngine.getEngine().onRecvData(recvBuf);
 					}	
 					else 

@@ -16,4 +16,5 @@ public interface INetworkManagerDelegate
 	 * @param response
 	 */
 	public void onRequestFail(NetworkRequest request, int errorCode);
+	
 }
