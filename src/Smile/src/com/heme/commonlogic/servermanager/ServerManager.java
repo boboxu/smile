@@ -16,8 +16,6 @@ import com.heme.foundation.net.NetworkRequest;
 import com.heme.foundation.net.NetworkResponse;
 import com.heme.logic.LogicManager;
 import com.heme.logic.httpprotocols.login.LoginResponse;
-import com.heme.logic.managers.loginmanager.LoginManager;
-import com.heme.logic.module.Trans.TransProto;
 import com.heme.utils.ByteUtil;
 
 public class ServerManager implements IServerManagerInterface ,INetworkEngineListener, IProtocolEngineDelegate{
@@ -25,7 +23,7 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
-
+	
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {
 			g_Instance = new ServerManager();
@@ -108,6 +106,13 @@ public class ServerManager implements IServerManagerInterface ,INetworkEngineLis
 		{
 			delRequest(requestId);
 		}
+	}
+	
+	@Override
+	public int sendProtoclRequest(BasePbRequest pbRequest)
+	{
+		
+		return 0;
 	}
 
 	private void addRequest(BaseRequest request)

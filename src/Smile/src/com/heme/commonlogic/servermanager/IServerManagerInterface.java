@@ -14,4 +14,7 @@ public interface IServerManagerInterface {
 	 * @param listener 回调
 	 */
 	void cancelRequest(int requestId, IServerManagerListener listener);
+	
+	
+	public int sendProtoclRequest(BasePbRequest pbRequest);
 }

@@ -15,11 +15,11 @@ package com.heme.foundation.net;
 
 import java.io.IOException;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
-import android.util.Log;
 
 import com.heme.foundation.net.NetworkService.ConnectionThread;
 import com.heme.foundation.net.NetworkService.INetworkServiceListener;
@@ -142,6 +142,7 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 		}
 	}
 	
+	@SuppressLint("HandlerLeak")
 	protected Handler mHandler = new Handler()
 	{
 		public void handleMessage(Message msg) 
