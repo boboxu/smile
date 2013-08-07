@@ -164,6 +164,10 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 			{
 				return;
 			}
+			if (msg.getData() != null)
+			{
+				msg.what = MSG_RECV_BUF;
+			}
 			switch (msg.what)
 			{
 			case MSG_NEED_HEART:

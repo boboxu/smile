@@ -402,15 +402,6 @@ public class NetworkService extends Service
 			mPort = port;
 		}
 		
-		public boolean isConnected()
-		{
-			if (mSocket == null)
-			{
-				return false;
-			}
-			return mSocket.isConnected();
-		}
-		
 		public void run()
 		{
 			
@@ -495,6 +486,15 @@ public class NetworkService extends Service
 			}
 		}
 		
+		public boolean isConnected()
+		{
+			if (mSocket == null)
+			{
+				return false;
+			}
+			return mSocket.isConnected();
+		}
+		
 		public synchronized void sendHeartBeat() throws IOException
 		{
 //			Date date = new Date();
@@ -509,6 +509,10 @@ public class NetworkService extends Service
 		
 		public synchronized void sendBuffer(byte[] buffer) throws IOException
 		{
+			if (!isConnected())
+			{
+				//TODO
+			}
 			mOutputStream.write(buffer);
 			mOutputStream.flush();
 			
@@ -524,6 +528,23 @@ public class NetworkService extends Service
 				mInputStream.read(buffer, 0, count);
 				return buffer;
 			}
+//			if (count > 0)
+//			{
+//				byte[] lengthBuf = new byte[4];
+//				mInputStream.read(lengthBuf, 0, 4);
+//				int recvLen = ByteUtil.byteArrayToInt(lengthBuf, 0);
+//				
+//				if (recvLen > 0)
+//				{
+//					byte[] recvBuf = new byte[recvLen];
+//					int readLen = 0;
+//					while (readLen < recvLen)
+//					{
+//						readLen += mInputStream.read(recvBuf, readLen, recvLen - readLen);
+//					}
+//					return recvBuf;
+//				}
+//			}
 			return null;
 		}
 		
