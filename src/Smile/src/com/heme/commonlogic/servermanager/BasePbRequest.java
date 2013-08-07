@@ -18,8 +18,9 @@ public abstract class BasePbRequest extends BaseRequest {
 		mTransDataBuilder.setUint64Uid(uid);
 	}
 
-	private void setSeqId(int seq) {
+	public void setSeqId(int seq) {
 		mTransDataBuilder.setUint32Seq(seq);
+		setRequestData(mTransDataBuilder.build().toByteArray());
 	}
 
 	protected abstract void setCmd();
@@ -27,9 +28,7 @@ public abstract class BasePbRequest extends BaseRequest {
 	protected void buildAccessReq(ByteString body) {
 		setBody(body);
 		setUid(0);
-		setSeqId(0);
 		setCmd();
-		setRequestData(mTransDataBuilder.build().toByteArray());
 	}
 	
 	@Override

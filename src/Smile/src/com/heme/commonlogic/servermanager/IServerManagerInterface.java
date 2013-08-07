@@ -16,5 +16,5 @@ public interface IServerManagerInterface {
 	void cancelRequest(int requestId, IServerManagerListener listener);
 	
 	
-	public int sendProtoclRequest(BasePbRequest pbRequest);
+	public int sendProtocolRequest(BasePbRequest pbRequest);
 }

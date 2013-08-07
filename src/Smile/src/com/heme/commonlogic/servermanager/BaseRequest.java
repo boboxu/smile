@@ -104,18 +104,6 @@ public class BaseRequest {
 	
 	public void parseData() throws InvalidProtocolBufferException
 	{
-		//處理第一手数据
-		int length = ByteUtil.byteArrayToInt(mDataBuffer, 0);
-		if (length+4 != mDataBuffer.length) 
-		{
-			Log.e(TAG, "网络回包的长度，数据不正确");
-			return;
-		}
-		//Length占四个字节，后面的都是数据
-		this.mReqData = null;
-		mReqData = new byte[length];
-		for (int i = 0; i < mReqData.length; i++) {
-			mReqData[i] = mDataBuffer[4+i];
-		}
+
 	}
 }
