@@ -10,7 +10,7 @@ public class LoginResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mLoginrsp = LoginRsp.parseFrom(mTransData.getBytesBody());
+		mLoginrsp = mDataSvrProto.getLoginRspInfo();
 	}
 	
 	public LoginRsp getLoginRsp()
