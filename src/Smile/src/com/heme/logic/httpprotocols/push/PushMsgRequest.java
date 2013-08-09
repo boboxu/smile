@@ -5,7 +5,7 @@ import java.util.List;
 import android.R.integer;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
 import com.heme.logic.module.Message.CommonMsg;
 import com.heme.logic.module.Message.PushMsgReq;
 

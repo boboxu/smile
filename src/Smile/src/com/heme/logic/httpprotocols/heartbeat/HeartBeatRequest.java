@@ -1,22 +1,22 @@
 package com.heme.logic.httpprotocols.heartbeat;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.status.BaseStatusRequest;
+import com.heme.logic.module.Status.HeartbeatReq;
+import com.heme.logic.module.Status.StatusProto.Cmd;
 
-public class HeartBeatRequest extends BaseBusinessRequest {
+public class HeartBeatRequest extends BaseStatusRequest {
 
-	@Override
-	public void setVersionAndClientType(String version, int clientType) {
-//		((HbReq.Builder) mDataBuilder).setVersionNo(version);
-//		((HbReq.Builder) mDataBuilder).setClientType(clientType);
-	}
+	HeartbeatReq.Builder mHeartbeatReqBuilder;
 
 	@Override
 	public void initmDataBuilder() {
-//		mDataBuilder = HbReq.newBuilder();
+		mHeartbeatReqBuilder = HeartbeatReq.newBuilder();
 	}
 
-	public HeartBeatRequest() {
-//		super.setBody(((HbReq.Builder) mDataBuilder).build()
-//				.toByteString());
+	public HeartBeatRequest(long systemId) {
+		mHeartbeatReqBuilder.setUint64Uid(systemId);
+		mStatusProtoBuilder.setEnumCmd(Cmd.Heartbeat);
+		mStatusProtoBuilder.setHeartBeatReq(mHeartbeatReqBuilder.build());
+		super.setBody(mStatusProtoBuilder.build().toByteString());
 	}
 }

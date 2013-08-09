@@ -1,24 +1,28 @@
 package com.heme.logic.httpprotocols.getschoolinfo;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.RegGetClassReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class GetClassInfoRequest extends BaseBusinessRequest {
 
+	RegGetClassReq.Builder mRegGetClassReqBuilder;
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((RegGetClassReq.Builder)mDataBuilder).setVersionNo(version);
+		mRegGetClassReqBuilder.setVersionNo(version);
 		
 	}
 
 	public void setSchoolId(int schoolId)
 	{
-		((RegGetClassReq.Builder)mDataBuilder).setSchoolId(schoolId);
-		super.setBody(((RegGetClassReq.Builder)mDataBuilder).build().toByteString());
+		mRegGetClassReqBuilder.setSchoolId(schoolId);
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegGetClass);
+		mDataSvrProtoBuilder.setRegGetClassReqInfo(mRegGetClassReqBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = RegGetClassReq.newBuilder();
+		mRegGetClassReqBuilder = RegGetClassReq.newBuilder();
 	}
 }

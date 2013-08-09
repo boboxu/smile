@@ -1,9 +1,12 @@
 package com.heme.logic.httpprotocols.userinfo.updateuserinfo;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetSelfInfoReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
+	
+	
 	public UpdateUserInfoRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
 		// TODO Auto-generated constructor stub
@@ -27,34 +30,37 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 		}
 	};
 
+	SetSelfInfoReq.Builder mSetSelfInfoReqBuilder;
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((SetSelfInfoReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((SetSelfInfoReq.Builder)mDataBuilder).setSystemId(systemId);
+		mSetSelfInfoReqBuilder.setSessionId(sessionId);
+		mSetSelfInfoReqBuilder.setSystemId(systemId);
 
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
 
-		((SetSelfInfoReq.Builder)mDataBuilder).setVersionNo(version);
-		((SetSelfInfoReq.Builder)mDataBuilder).setClientType(clientType);
+		mSetSelfInfoReqBuilder.setVersionNo(version);
+		mSetSelfInfoReqBuilder.setClientType(clientType);
 
 	}
 
 	public void setIconName(SEXTYPE type,String birthday,String occupation,String location,String email,String interest) {
-		((SetSelfInfoReq.Builder)mDataBuilder).setGender(SEXTYPE.value(type));
-		((SetSelfInfoReq.Builder)mDataBuilder).setBirthday(birthday);
-		((SetSelfInfoReq.Builder)mDataBuilder).setOccupation(occupation);
-		((SetSelfInfoReq.Builder)mDataBuilder).setLocation(location);
-		((SetSelfInfoReq.Builder)mDataBuilder).setEmail(email);
-		((SetSelfInfoReq.Builder)mDataBuilder).setInterest(interest);
-		super.setBody(((SetSelfInfoReq.Builder)mDataBuilder).build().toByteString());
+		mSetSelfInfoReqBuilder.setGender(SEXTYPE.value(type));
+		mSetSelfInfoReqBuilder.setBirthday(birthday);
+		mSetSelfInfoReqBuilder.setOccupation(occupation);
+		mSetSelfInfoReqBuilder.setLocation(location);
+		mSetSelfInfoReqBuilder.setEmail(email);
+		mSetSelfInfoReqBuilder.setInterest(interest);
+		mDataSvrProtoBuilder.setSetSelfInfoReqInfo(mSetSelfInfoReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.SetSelfInfo);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = SetSelfInfoReq.newBuilder();
+		mSetSelfInfoReqBuilder = SetSelfInfoReq.newBuilder();
 	}
 
 }

@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.groupinfo.getgroup;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.GetGroupInfoRsp;
 
 public class GetGroupInfoResponse extends BaseBusinessResponse {
@@ -12,8 +12,8 @@ public class GetGroupInfoResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mGetGroupInfoRsp = GetGroupInfoRsp.parseFrom(mTransData
-				.getBytesBody());
+		super.parseData();
+		mGetGroupInfoRsp = mDataSvrProto.getGetGroupInfoRspInfo();
 	}
 	
 	

@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.base.message.messageopr;
+package com.heme.logic.httpprotocols.base.message;
 
 import com.google.protobuf.ByteString;
 import com.google.protobuf.InvalidProtocolBufferException;

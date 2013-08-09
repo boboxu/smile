@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.groupinfo.updategroup.addmember;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.AddGroupMemberRsp;
 
 public class AddGroupMemberResponse extends BaseBusinessResponse {
@@ -9,7 +9,7 @@ public class AddGroupMemberResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mAddGroupMemberRsp = AddGroupMemberRsp.parseFrom(mTransData.getBytesBody());
+		mAddGroupMemberRsp = mDataSvrProto.getAddGroupMemberRspInfo();
 	}
 	
 	public AddGroupMemberRsp getmAddTempGroupRsp() {

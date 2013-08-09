@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.handleask;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 
 public class HandleGroupAskRequest extends BaseLoginedBusinessRequest {
 	// 只有社区群才有这个同意加入群的功能

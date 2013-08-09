@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.base;
+package com.heme.logic.httpprotocols.base.business;
 
 import com.heme.commonlogic.servermanager.BasePbRequest;
 import com.heme.logic.common.Configuration;
@@ -8,11 +8,10 @@ public abstract class BaseBusinessRequest extends BasePbRequest {
 
 	protected static final String PROTO_VERSION = "1";
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
-	protected com.google.protobuf.GeneratedMessage.Builder<?> mDataBuilder;
-	protected DataSvrProto.Builder mDataSvrBuilder;
+	protected DataSvrProto.Builder mDataSvrProtoBuilder;
 	public BaseBusinessRequest() {
 		super();
-		mDataSvrBuilder = DataSvrProto.newBuilder();
+		mDataSvrProtoBuilder = DataSvrProto.newBuilder();
 		initmDataBuilder();
 		setVersionAndClientType(PROTO_VERSION, CLIENT_TYPE);
 	}

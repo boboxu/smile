@@ -1,36 +1,40 @@
 package com.heme.logic.httpprotocols.friend.updatefriend;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetFriendDescReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class UpdateFriendRequest extends BaseLoginedBusinessRequest {
 
+	private SetFriendDescReq.Builder mSetFriendDescReqBuilder;
 	public UpdateFriendRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
 	}
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((SetFriendDescReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((SetFriendDescReq.Builder)mDataBuilder).setSystemId(systemId);
-		
+		mSetFriendDescReqBuilder.setSessionId(sessionId);
+		mSetFriendDescReqBuilder.setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int client_type) {
-		((SetFriendDescReq.Builder)mDataBuilder).setClientType(client_type);
-		((SetFriendDescReq.Builder)mDataBuilder).setVersionNo(version);
+		mSetFriendDescReqBuilder.setClientType(client_type);
+		mSetFriendDescReqBuilder.setVersionNo(version);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = SetFriendDescReq.newBuilder();
+		mSetFriendDescReqBuilder = SetFriendDescReq.newBuilder();
 	}
 	
 	public void setFriendDescription(long targetId,String dsp)
 	{
-		((SetFriendDescReq.Builder)mDataBuilder).setTargetSystemId(targetId);
-		((SetFriendDescReq.Builder)mDataBuilder).setDescription(dsp);
-		super.setBody(((SetFriendDescReq.Builder)mDataBuilder).build().toByteString());
+		mSetFriendDescReqBuilder.setTargetSystemId(targetId);
+		mSetFriendDescReqBuilder.setDescription(dsp);
+		
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.SetFriendDesc);
+		mDataSvrProtoBuilder.setSetFriendDescReqInfo(mSetFriendDescReqBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 }

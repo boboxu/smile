@@ -2,11 +2,14 @@ package com.heme.logic.httpprotocols.groupinfo.creategroup.temp;
 
 import java.util.List;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.CreateTempGroupReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 
+	CreateTempGroupReq.Builder mCreateTempGroupBuilder;
+	
 	public CreateTempGroupRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
 		// TODO Auto-generated constructor stub
@@ -14,29 +17,28 @@ public class CreateTempGroupRequest extends BaseLoginedBusinessRequest {
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((CreateTempGroupReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((CreateTempGroupReq.Builder)mDataBuilder).setSystemId(systemId);
+		mCreateTempGroupBuilder.setSessionId(sessionId);
+		mCreateTempGroupBuilder.setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((CreateTempGroupReq.Builder)mDataBuilder).setVersionNo(version);
-		((CreateTempGroupReq.Builder)mDataBuilder).setClientType(clientType);
+		mCreateTempGroupBuilder.setVersionNo(version);
+		mCreateTempGroupBuilder.setClientType(clientType);
 
 	}
 	
 	public void setGroupInfo(String groupName,List<Long> memberSystemId)
 	{
-		((CreateTempGroupReq.Builder)mDataBuilder).setGroupName(groupName);
-		for (int i = 0; i < memberSystemId.size(); i++) 
-		{
-			((CreateTempGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
-		}
-		super.setBody(((CreateTempGroupReq.Builder)mDataBuilder).build().toByteString());
+		mCreateTempGroupBuilder.setGroupName(groupName);
+		mCreateTempGroupBuilder.addAllMemberSystemId(memberSystemId);
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.CreateTempGroup);
+		mDataSvrProtoBuilder.setCreateTempGroupReqInfo(mCreateTempGroupBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = CreateTempGroupReq.newBuilder();
+		mCreateTempGroupBuilder = CreateTempGroupReq.newBuilder();
 	}
 }

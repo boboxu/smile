@@ -2,32 +2,36 @@ package com.heme.logic.httpprotocols.regist;
 
 import java.util.List;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 import com.heme.logic.module.Data.RegParentReq;
 
 public class ParentRegistRequest extends BaseBusinessRequest {
+	
+	RegParentReq.Builder mRegParentReqBuilder;
 	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,List<String> childIdList,String verifyCode)
 	{
-		((RegParentReq.Builder)mDataBuilder).setPhoneNo(phoneNo);
-		((RegParentReq.Builder)mDataBuilder).setRealName(realName);
-		((RegParentReq.Builder)mDataBuilder).setIdCardNo(idCardNo);
-		((RegParentReq.Builder)mDataBuilder).setPassword(password);
-		for (int i = 0; i < childIdList.size(); i++) {
-			((RegParentReq.Builder)mDataBuilder).addChildStudentId(childIdList.get(i));	
-		}
-		((RegParentReq.Builder)mDataBuilder).setVerifyCode(verifyCode);
-		super.setBody(((RegParentReq.Builder)mDataBuilder).build().toByteString());
+		mRegParentReqBuilder.setPhoneNo(phoneNo);
+		mRegParentReqBuilder.setRealName(realName);
+		mRegParentReqBuilder.setIdCardNo(idCardNo);
+		mRegParentReqBuilder.setPassword(password);
+		mRegParentReqBuilder.addAllChildStudentId(childIdList);
+		mRegParentReqBuilder.setVerifyCode(verifyCode);
+		
+		mDataSvrProtoBuilder.setRegParentReqInfo(mRegParentReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegParent);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((RegParentReq.Builder)mDataBuilder).setVersionNo(version);
-		((RegParentReq.Builder)mDataBuilder).setClientType(clientType);
+		mRegParentReqBuilder.setVersionNo(version);
+		mRegParentReqBuilder.setClientType(clientType);
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = RegParentReq.newBuilder();
+		mRegParentReqBuilder = RegParentReq.newBuilder();
 	}
 
 }

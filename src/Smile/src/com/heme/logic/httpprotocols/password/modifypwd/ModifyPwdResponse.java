@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.password.modifypwd;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.SetPasswdRsp;
 
 public class ModifyPwdResponse extends BaseBusinessResponse {
@@ -12,7 +12,6 @@ public class ModifyPwdResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mSetPasswdRsp = SetPasswdRsp.parseFrom(mTransData
-				.getBytesBody());
+		mSetPasswdRsp = mDataSvrProto.getSetPasswdRspInfo();
 	}
 }

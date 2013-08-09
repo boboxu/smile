@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.base;
+package com.heme.logic.httpprotocols.base.business;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.BasePbResponse;

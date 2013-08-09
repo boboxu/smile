@@ -2,23 +2,24 @@ package com.heme.logic.httpprotocols.groupinfo.creategroup.permanent;
 
 import java.util.List;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.CreateFixedGroupReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
+
+	CreateFixedGroupReq.Builder mCreateFixedGroupReqBuilder;
+
 	public CreatePermanentGroupRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
-		// TODO Auto-generated constructor stub
 	}
 
-	//创建群的验证类型
-	public enum VERIFYTYPE
-	{
-		ANYONEPERMITTED,//允许任何人
-		NEEDVERIFY,//验证
-		NOONEPERMITTED;//不允许任何人
-		public static int value(VERIFYTYPE version)
-		{
+	// 创建群的验证类型
+	public enum VERIFYTYPE {
+		ANYONEPERMITTED, // 允许任何人
+		NEEDVERIFY, // 验证
+		NOONEPERMITTED;// 不允许任何人
+		public static int value(VERIFYTYPE version) {
 			switch (version) {
 			case ANYONEPERMITTED:
 				return 1;
@@ -31,34 +32,34 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 			}
 		}
 	}
-	//永久群
+
+	// 永久群
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((CreateFixedGroupReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((CreateFixedGroupReq.Builder)mDataBuilder).setSystemId(systemId);
+		mCreateFixedGroupReqBuilder.setSessionId(sessionId);
+		mCreateFixedGroupReqBuilder.setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((CreateFixedGroupReq.Builder)mDataBuilder).setVersionNo(version);
-		((CreateFixedGroupReq.Builder)mDataBuilder).setClientType(clientType);
+		mCreateFixedGroupReqBuilder.setVersionNo(version);
+		mCreateFixedGroupReqBuilder.setClientType(clientType);
 	}
-	
-	public void setGroupInfo(String area,String school,String groupName,VERIFYTYPE verifytype,List<Long> memberSystemId)
-	{
-		((CreateFixedGroupReq.Builder)mDataBuilder).setArea(area);
-		((CreateFixedGroupReq.Builder)mDataBuilder).setGroupName(groupName);
-		((CreateFixedGroupReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(verifytype));
-		for (int i = 0; i < memberSystemId.size(); i++) 
-		{
-			((CreateFixedGroupReq.Builder)mDataBuilder).addMemberSystemId(memberSystemId.get(i));
-		}
-		super.setBody(((CreateFixedGroupReq.Builder)mDataBuilder).build().toByteString());
-		
+
+	public void setGroupInfo(String area, String school, String groupName,
+			VERIFYTYPE verifytype, List<Long> memberSystemId) {
+		mCreateFixedGroupReqBuilder.setArea(area);
+		mCreateFixedGroupReqBuilder.setGroupName(groupName);
+		mCreateFixedGroupReqBuilder.setVerifyType(VERIFYTYPE.value(verifytype));
+		mCreateFixedGroupReqBuilder.addAllMemberSystemId(memberSystemId);
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.CreateFixedGroup);
+		mDataSvrProtoBuilder.setCreateFixedGroupReqInfo(mCreateFixedGroupReqBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
+
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = CreateFixedGroupReq.newBuilder();
+		mCreateFixedGroupReqBuilder = CreateFixedGroupReq.newBuilder();
 	}
 }

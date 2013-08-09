@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.message.pullunreadmsg;
 
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
 import com.heme.logic.module.Message.PollUnreadInfoReq;
 
 public class PollUnreadMessageRequest extends BaseMessageOprRequest {

@@ -1,9 +1,12 @@
 package com.heme.logic.httpprotocols.userinfo.updateuserinfo;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetUserIconReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
+
+	SetUserIconReq.Builder mSetUserIconReqBuilder;
 
 	public UpdateUserIconRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
@@ -12,24 +15,25 @@ public class UpdateUserIconRequest extends BaseLoginedBusinessRequest {
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((SetUserIconReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((SetUserIconReq.Builder)mDataBuilder).setSystemId(systemId);
+		mSetUserIconReqBuilder.setSessionId(sessionId);
+		mSetUserIconReqBuilder.setSystemId(systemId);
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((SetUserIconReq.Builder)mDataBuilder).setVersionNo(version);
-		((SetUserIconReq.Builder)mDataBuilder).setClientType(clientType);
+		mSetUserIconReqBuilder.setVersionNo(version);
+		mSetUserIconReqBuilder.setClientType(clientType);
 	}
 
-	public void setIconName(String name)
-	{
-		((SetUserIconReq.Builder)mDataBuilder).setIconName(name);
-		super.setBody(((SetUserIconReq.Builder)mDataBuilder).build().toByteString());
+	public void setIconName(String name) {
+		mSetUserIconReqBuilder.setIconName(name);
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.SetUserIcon);
+		mDataSvrProtoBuilder.setSetUserIconReqInfo(mSetUserIconReqBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = SetUserIconReq.newBuilder();
+		mSetUserIconReqBuilder = SetUserIconReq.newBuilder();
 	}
 }

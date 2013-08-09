@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.groupinfo.creategroup.temp;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.CreateTempGroupRsp;
 
 public class CreateTempGroupResponse extends BaseBusinessResponse {
@@ -13,7 +13,7 @@ public class CreateTempGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mCreateTempGroupRsp = CreateTempGroupRsp.parseFrom(mTransData.getBytesBody());
+		mCreateTempGroupRsp = mDataSvrProto.getCreateTempGroupRspInfo();
 	}
 	
 	

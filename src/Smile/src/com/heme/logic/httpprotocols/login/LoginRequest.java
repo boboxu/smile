@@ -1,18 +1,17 @@
 package com.heme.logic.httpprotocols.login;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.LoginReq;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class LoginRequest extends BaseBusinessRequest {
 
-//	private LoginReq.Builder mLoginDataBuilder = LoginReq.newBuilder();
-	public enum LOGINTYPE
-	{
-		TypeTel,	//电话登陆
-		TypeWX;//XX号
-		public static int value(LOGINTYPE type)
-		{
+	private LoginReq.Builder mLoginDataBuilder;
+
+	public enum LOGINTYPE {
+		TypeTel, // 电话登陆
+		TypeWX;// XX号
+		public static int value(LOGINTYPE type) {
 			switch (type) {
 			case TypeTel:
 				return 1;
@@ -23,24 +22,24 @@ public class LoginRequest extends BaseBusinessRequest {
 			}
 		}
 	};
-	
-	public void setLoginInfo(String account,String pwd,LOGINTYPE type)
-	{
-		((LoginReq.Builder)mDataBuilder).setId(account).setPassword(pwd);
-		mDataSvrBuilder.setEnumCmd(Cmd.Login);
-		mDataSvrBuilder.setLoginReqInfo(((LoginReq.Builder)mDataBuilder).build());
-		super.setBody(mDataSvrBuilder.build().toByteString());
+
+	public void setLoginInfo(String account, String pwd, LOGINTYPE type) {
+		mLoginDataBuilder.setId(account).setPassword(pwd);
 		
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.Login);
+		mDataSvrProtoBuilder.setLoginReqInfo(mLoginDataBuilder.build());
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
+
 	}
 
 	@Override
-	public void setVersionAndClientType(String version,int client_type) {
-		((LoginReq.Builder)mDataBuilder).setClientType(client_type);
-		((LoginReq.Builder)mDataBuilder).setVersionNo(version);
+	public void setVersionAndClientType(String version, int client_type) {
+		mLoginDataBuilder.setClientType(client_type);
+		mLoginDataBuilder.setVersionNo(version);
 	}
 
 	@Override
-	public void initmDataBuilder() { 
-		mDataBuilder = LoginReq.newBuilder();
+	public void initmDataBuilder() {
+		mLoginDataBuilder = LoginReq.newBuilder();
 	}
 }

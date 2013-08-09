@@ -1,6 +1,7 @@
 package com.heme.logic.managers.heartbeatmanager;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
+import com.heme.logic.LogicManager;
 import com.heme.logic.httpprotocols.heartbeat.HeartBeatRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 
@@ -10,7 +11,7 @@ public class HeartBeatManager extends BaseBusinessLogicManager implements IHeart
 
 	@Override
 	public void beat(Handler handler) {
-		HeartBeatRequest request = new HeartBeatRequest();
+		HeartBeatRequest request = new HeartBeatRequest(LogicManager.accountManager().getCurrentAccoutSystemId());
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.groupinfo.deletegroup;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.DelGroupRsp;
 
 public class DeleteGroupResponse extends BaseBusinessResponse {
@@ -13,6 +13,6 @@ public class DeleteGroupResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mDelGroupRsp = DelGroupRsp.parseFrom(mTransData.getBytesBody());
+		mDelGroupRsp = mDataSvrProto.getDelGroupRspInfo();
 	}
 }

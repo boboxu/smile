@@ -7,7 +7,7 @@ import android.os.Handler;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.common.Constans;
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.httpprotocols.regist.ParentRegistRequest;
 import com.heme.logic.httpprotocols.regist.ParentRegistResponse;
 import com.heme.logic.httpprotocols.regist.StudentRegistRequest;

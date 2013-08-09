@@ -1,31 +1,36 @@
 package com.heme.logic.httpprotocols.regist;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.RegStudentReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class StudentRegistRequest extends BaseBusinessRequest {
 
+	RegStudentReq.Builder mRegStudentReqBuilder;
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((RegStudentReq.Builder)mDataBuilder).setClientType(clientType);
-		((RegStudentReq.Builder)mDataBuilder).setVersionNo(version);
+		mRegStudentReqBuilder.setClientType(clientType);
+		mRegStudentReqBuilder.setVersionNo(version);
 	}
 	
 	public void setRegProfile(String phoneNo,String realName,String studentId,String password,String area,int schoolId,int classId)
 	{
-		((RegStudentReq.Builder)mDataBuilder).setPhoneNo(phoneNo);
-		((RegStudentReq.Builder)mDataBuilder).setRealName(realName);
-		((RegStudentReq.Builder)mDataBuilder).setStudentId(studentId);
-		((RegStudentReq.Builder)mDataBuilder).setPassword(password);
-		((RegStudentReq.Builder)mDataBuilder).setArea(area);
-		((RegStudentReq.Builder)mDataBuilder).setSchoolId(schoolId);
-		((RegStudentReq.Builder)mDataBuilder).setClassId(classId);
-		super.setBody(((RegStudentReq.Builder)mDataBuilder).build().toByteString());
+		mRegStudentReqBuilder.setPhoneNo(phoneNo);
+		mRegStudentReqBuilder.setRealName(realName);
+		mRegStudentReqBuilder.setStudentId(studentId);
+		mRegStudentReqBuilder.setPassword(password);
+		mRegStudentReqBuilder.setArea(area);
+		mRegStudentReqBuilder.setSchoolId(schoolId);
+		mRegStudentReqBuilder.setClassId(classId);
+		
+		mDataSvrProtoBuilder.setRegStudentReqInfo(mRegStudentReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegStudent);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = RegStudentReq.newBuilder();
+		mRegStudentReqBuilder = RegStudentReq.newBuilder();
 	}
 
 }

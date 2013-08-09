@@ -1,4 +1,4 @@
-package com.heme.logic.httpprotocols.base;
+package com.heme.logic.httpprotocols.base.business;
 
 public abstract class BaseLoginedBusinessRequest extends BaseBusinessRequest {
 	protected abstract void setLoginedInfo(String sessionId,long systemId);

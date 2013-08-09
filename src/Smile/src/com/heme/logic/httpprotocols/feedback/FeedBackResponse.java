@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.feedback;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.SendFeedbackRsp;
 
 public class FeedBackResponse extends BaseBusinessResponse {
@@ -9,7 +9,7 @@ public class FeedBackResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mSendFeedbackRsp = SendFeedbackRsp.parseFrom(mTransData.getBytesBody());
+		mSendFeedbackRsp = mDataSvrProto.getSendFeedbackRspInfo();
 	}
 	
 	public SendFeedbackRsp getFeedBackRsp()

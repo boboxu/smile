@@ -1,7 +1,8 @@
 package com.heme.logic.httpprotocols.groupinfo.updategroup;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.SetGroupNameReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 /***
  * 
  * @author rolandxu
@@ -9,6 +10,7 @@ import com.heme.logic.module.Data.SetGroupNameReq;
  */
 public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 
+	SetGroupNameReq.Builder mSetGroupNameReqBuilder;
 	public UpdateGroupRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
 		// TODO Auto-generated constructor stub
@@ -16,28 +18,30 @@ public class UpdateGroupRequest extends BaseLoginedBusinessRequest {
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((SetGroupNameReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((SetGroupNameReq.Builder)mDataBuilder).setSystemId(systemId);
+		mSetGroupNameReqBuilder.setSessionId(sessionId);
+		mSetGroupNameReqBuilder.setSystemId(systemId);
 		
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((SetGroupNameReq.Builder)mDataBuilder).setVersionNo(version);
-		((SetGroupNameReq.Builder)mDataBuilder).setClientType(clientType);
+		mSetGroupNameReqBuilder.setVersionNo(version);
+		mSetGroupNameReqBuilder.setClientType(clientType);
 
 	}
 	
 	public void setGroupInfo(String groupName,int groupId)
 	{
-		((SetGroupNameReq.Builder)mDataBuilder).setGroupName(groupName);
-		((SetGroupNameReq.Builder)mDataBuilder).setGroupId(groupId);
-		super.setBody(((SetGroupNameReq.Builder)mDataBuilder).build().toByteString());
+		mSetGroupNameReqBuilder.setGroupName(groupName);
+		mSetGroupNameReqBuilder.setGroupId(groupId);
+		mDataSvrProtoBuilder.setSetGroupNameReqInfo(mSetGroupNameReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.SetGroupName);
+		super.setBody(mSetGroupNameReqBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = SetGroupNameReq.newBuilder();
+		mSetGroupNameReqBuilder = SetGroupNameReq.newBuilder();
 	}
 
 }

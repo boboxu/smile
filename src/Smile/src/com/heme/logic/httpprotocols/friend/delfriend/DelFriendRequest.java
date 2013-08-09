@@ -1,36 +1,41 @@
 package com.heme.logic.httpprotocols.friend.delfriend;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 import com.heme.logic.module.Data.DelFriendReq;
 
 public class DelFriendRequest extends BaseLoginedBusinessRequest {
+
+	private DelFriendReq.Builder mDelFriendReqBuilder;
+
 	public DelFriendRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((DelFriendReq.Builder) mDataBuilder).setSessionId(sessionId);
-		((DelFriendReq.Builder) mDataBuilder).setSystemId(systemId);
+		mDelFriendReqBuilder.setSessionId(sessionId);
+		mDelFriendReqBuilder.setSystemId(systemId);
 
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int client_type) {
-		((DelFriendReq.Builder) mDataBuilder).setClientType(client_type);
-		((DelFriendReq.Builder) mDataBuilder).setVersionNo(version);
+		mDelFriendReqBuilder.setClientType(client_type);
+		mDelFriendReqBuilder.setVersionNo(version);
 	}
 
 	public void setTargetSystemId(long targetId) {
-		((DelFriendReq.Builder) mDataBuilder).setTargetSystemId(targetId);
-		super.setBody(((DelFriendReq.Builder) mDataBuilder).build()
-				.toByteString());
+		mDelFriendReqBuilder.setTargetSystemId(targetId);
+
+		mDataSvrProtoBuilder.setDelFriendReqInfo(mDelFriendReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.DelFriend);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = DelFriendReq.newBuilder();
+		mDelFriendReqBuilder = DelFriendReq.newBuilder();
 	}
 
 }

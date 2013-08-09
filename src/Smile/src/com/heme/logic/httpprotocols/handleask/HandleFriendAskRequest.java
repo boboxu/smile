@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.handleask;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 
 public class HandleFriendAskRequest extends BaseLoginedBusinessRequest {
 

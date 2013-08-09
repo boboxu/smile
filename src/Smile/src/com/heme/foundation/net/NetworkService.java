@@ -499,12 +499,12 @@ public class NetworkService extends Service
 		{
 //			Date date = new Date();
 //			long currentTime = System.currentTimeMillis();
-			HeartBeatRequest heartbeatRequest = new HeartBeatRequest();
-			mOutputStream.write(heartbeatRequest.getmDataBuffer());
-			mOutputStream.flush();
+//			HeartBeatRequest heartbeatRequest = new HeartBeatRequest();
+//			mOutputStream.write(heartbeatRequest.getmDataBuffer());
+//			mOutputStream.flush();
 			
-			Log.d(TAG, "send heartbeat:" + heartbeatRequest.getmDataBuffer().toString());
-
+//			Log.d(TAG, "send heartbeat:" + heartbeatRequest.getmDataBuffer().toString());
+			//调用HeartManager
 		}
 		
 		public synchronized void sendBuffer(byte[] buffer) throws IOException

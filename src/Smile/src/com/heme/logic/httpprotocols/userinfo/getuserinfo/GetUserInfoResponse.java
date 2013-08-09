@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.userinfo.getuserinfo;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.GetUserInfoRsp;
 
 public class GetUserInfoResponse extends BaseBusinessResponse {
@@ -12,7 +12,7 @@ public class GetUserInfoResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mGetUserInfoRsp = GetUserInfoRsp.parseFrom(mTransData
-				.getBytesBody());
+		super.parseData();
+		mGetUserInfoRsp = mDataSvrProto.getGetUserInfoRspInfo();
 	}
 }

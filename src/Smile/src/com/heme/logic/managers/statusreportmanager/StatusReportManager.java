@@ -3,8 +3,8 @@ package com.heme.logic.managers.statusreportmanager;
 import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
-import com.heme.logic.httpprotocols.updatestatus.UpdateStatusRequest.USERSTATUS;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
+import com.heme.logic.module.Status.EStatus;
 
 public class StatusReportManager extends BaseBusinessLogicManager implements IStatusReportManagerInterface{
 
@@ -14,7 +14,7 @@ public class StatusReportManager extends BaseBusinessLogicManager implements ISt
 	}
 
 	@Override
-	public void setStatus(USERSTATUS status, Handler handler) {
+	public void setStatus(EStatus status, Handler handler) {
 		
 	}
 

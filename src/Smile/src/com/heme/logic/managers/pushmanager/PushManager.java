@@ -6,9 +6,9 @@ import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.LogicManager;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest.COMMANDTYPE;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest.MSGTYPE;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest.COMMANDTYPE;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest.MSGTYPE;
 import com.heme.logic.httpprotocols.push.PushMsgRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Message.CommonMsg;

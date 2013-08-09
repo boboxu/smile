@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.setfriendright;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.SetFriendRightRsp;
 
 public class SetFriendRightResponse extends BaseBusinessResponse {
@@ -12,7 +12,6 @@ public class SetFriendRightResponse extends BaseBusinessResponse {
 
 	public void parseData()
 			throws com.google.protobuf.InvalidProtocolBufferException {
-		mSetFriendRightRsp = SetFriendRightRsp.parseFrom(mTransData
-				.getBytesBody());
+		mSetFriendRightRsp = mDataSvrProto.getSetFriendRightRspInfo();
 	}
 }

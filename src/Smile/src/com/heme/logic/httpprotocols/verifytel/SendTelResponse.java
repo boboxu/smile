@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.verifytel;
 
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.heme.logic.httpprotocols.base.BaseBusinessResponse;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.VerifyPhoneRsp;
 
 public class SendTelResponse extends BaseBusinessResponse {
@@ -13,7 +13,7 @@ public class SendTelResponse extends BaseBusinessResponse {
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();
-		mVerifyPhoneRsp = VerifyPhoneRsp.parseFrom(mTransData.getBytesBody());
+		mVerifyPhoneRsp = mDataSvrProto.getVerifyPhoneRspInfo();
 	}
 	
 	public VerifyPhoneRsp getLoginRsp()

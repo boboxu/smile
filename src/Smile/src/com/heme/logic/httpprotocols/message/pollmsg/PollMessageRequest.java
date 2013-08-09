@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.message.pollmsg;
 
 import com.google.protobuf.ByteString;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
 import com.heme.logic.module.Message.PollMsgReq;
 
 public class PollMessageRequest extends BaseMessageOprRequest {

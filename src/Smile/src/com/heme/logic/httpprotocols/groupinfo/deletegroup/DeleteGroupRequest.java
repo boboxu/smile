@@ -1,11 +1,14 @@
 package com.heme.logic.httpprotocols.groupinfo.deletegroup;
 
-import com.heme.logic.httpprotocols.base.BaseLoginedBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
+import com.heme.logic.module.Data.DelGroupMemberReq;
 import com.heme.logic.module.Data.DelGroupReq;
 
 public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 	//删除群
 
+	DelGroupReq.Builder mDelGroupReqBuilder;
 	public DeleteGroupRequest(String sessionId, long systemId) {
 		super(sessionId, systemId);
 		// TODO Auto-generated constructor stub
@@ -13,25 +16,27 @@ public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 
 	@Override
 	public void setLoginedInfo(String sessionId, long systemId) {
-		((DelGroupReq.Builder)mDataBuilder).setSessionId(sessionId);
-		((DelGroupReq.Builder)mDataBuilder).setSystemId(systemId);
+		mDelGroupReqBuilder.setSessionId(sessionId);
+		mDelGroupReqBuilder.setSystemId(systemId);
 		
 	}
 
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((DelGroupReq.Builder)mDataBuilder).setVersionNo(version);
-		((DelGroupReq.Builder)mDataBuilder).setClientType(clientType);
+		mDelGroupReqBuilder.setVersionNo(version);
+		mDelGroupReqBuilder.setClientType(clientType);
 	}
 	
 	public void setGroupInfo(int groupId)
 	{
-		((DelGroupReq.Builder)mDataBuilder).setGroupId(groupId);
-		super.setBody(((DelGroupReq.Builder)mDataBuilder).build().toByteString());
+		mDelGroupReqBuilder.setGroupId(groupId);
+		mDataSvrProtoBuilder.setDelGroupReqInfo(mDelGroupReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.DelGroup);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = DelGroupReq.newBuilder();
+		mDelGroupReqBuilder = DelGroupReq.newBuilder();
 	}
 }

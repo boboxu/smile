@@ -1,7 +1,7 @@
 package com.heme.logic.httpprotocols.message.sendmsg.base;
 
 import com.google.protobuf.ByteString;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
 import com.heme.logic.module.Message.CommonMsg;
 import com.heme.logic.module.Message.SendMsgReq;
 

@@ -1,6 +1,6 @@
 package com.heme.logic.httpprotocols.verifytel;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.VerifyPhoneReq;
 
 public class CheckVerifyRequest extends BaseBusinessRequest {

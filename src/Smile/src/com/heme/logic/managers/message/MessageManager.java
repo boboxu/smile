@@ -7,7 +7,7 @@ import android.os.Handler;
 import com.google.protobuf.ByteString;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.LogicManager;
-import com.heme.logic.httpprotocols.base.message.messageopr.BaseMessageOprRequest.MSGTYPE;
+import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest.MSGTYPE;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageRequest;
 import com.heme.logic.httpprotocols.message.pullunreadmsg.PollUnreadMessageRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest.CONTENTTYPE;

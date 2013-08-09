@@ -1,7 +1,8 @@
 package com.heme.logic.httpprotocols.verifytel;
 
-import com.heme.logic.httpprotocols.base.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.VerifyPhoneReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class SendTelRequest extends BaseBusinessRequest {
 	public enum VERIFYTYPE
@@ -21,21 +22,25 @@ public class SendTelRequest extends BaseBusinessRequest {
 		}
 	}
 	
+	VerifyPhoneReq.Builder mVerifyPhoneReqBuilder;
+	
 	@Override
 	public void setVersionAndClientType(String version, int clientType) {
-		((VerifyPhoneReq.Builder)mDataBuilder).setClientType(clientType);
-		((VerifyPhoneReq.Builder)mDataBuilder).setVersionNo(version);
+		mVerifyPhoneReqBuilder.setClientType(clientType);
+		mVerifyPhoneReqBuilder.setVersionNo(version);
 	}
 	
 	public void setVerifyTelWithType(String phoneno,VERIFYTYPE type)
 	{
-		((VerifyPhoneReq.Builder)mDataBuilder).setPhoneNo(phoneno);
-		((VerifyPhoneReq.Builder)mDataBuilder).setVerifyType(VERIFYTYPE.value(type));
-		super.setBody(((VerifyPhoneReq.Builder)mDataBuilder).build().toByteString());
+		mVerifyPhoneReqBuilder.setPhoneNo(phoneno);
+		mVerifyPhoneReqBuilder.setVerifyType(VERIFYTYPE.value(type));
+		mDataSvrProtoBuilder.setVerifyPhoneReqInfo(mVerifyPhoneReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.VerifyPhone);
+		super.setBody(mVerifyPhoneReqBuilder.build().toByteString());
 	}
 
 	@Override
 	public void initmDataBuilder() {
-		mDataBuilder = VerifyPhoneReq.newBuilder();
+		mVerifyPhoneReqBuilder = VerifyPhoneReq.newBuilder();
 	}
 }
