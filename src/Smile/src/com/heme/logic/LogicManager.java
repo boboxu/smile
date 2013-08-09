@@ -10,6 +10,7 @@ import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.managers.friendmanager.FriendManager;
 import com.heme.logic.managers.groupmanager.GroupManager;
 import com.heme.logic.managers.loginmanager.LoginManager;
+import com.heme.logic.managers.registmanager.RegistManager;
 
 public class LogicManager {
 	private final static String TAG = "LogicManager";
@@ -71,5 +72,10 @@ public class LogicManager {
 	public static GroupManager groupManager()
 	{
 		return (GroupManager) findManager(GroupManager.class);
+	}
+	
+	public static RegistManager registManager()
+	{
+		return (RegistManager) findManager(RegistManager.class);
 	}
 }

@@ -17,6 +17,7 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest;
+import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";
@@ -29,10 +30,11 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
 			dismissDialog();
+			LoginRsp resp;
 			switch (msg.what) {
 			case Constans.LOGIN_SUCCESS:
 
-//				LoginRsp resp = (LoginRsp)msg.obj;
+				resp = (LoginRsp)msg.obj;
 //				long systemId = resp.getSystemId();
 //				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
 //				List<java.lang.Integer> groupList = resp.getGroupIdList();
@@ -45,7 +47,8 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 				finish();
 				break;
 			case Constans.LOGIN_FAILED:
-				Toast.makeText(LoginActivity.this, "登录失败，请重试", Toast.LENGTH_SHORT).show();
+				resp = (LoginRsp)msg.obj;
+				Toast.makeText(LoginActivity.this, resp.getErrString(), Toast.LENGTH_SHORT).show();
 				break;
 			case Constans.GET_USERINFO_SUCCESS:
 				

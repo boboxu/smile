@@ -17,6 +17,4 @@ public class StatusReportManager extends BaseBusinessLogicManager implements ISt
 	public void setStatus(EStatus status, Handler handler) {
 		
 	}
-
-
 }

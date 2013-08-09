@@ -23,5 +23,6 @@ public class Configuration {
 	}
 	//app应用类型 1家长版 2学生版 3老师版
 	public static final int APP_VERSION = APPVERSION.value(APPVERSION.PARENT);
+	public static final String PROTO_VERSION = "1";
 
 }

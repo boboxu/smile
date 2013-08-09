@@ -114,7 +114,6 @@ public class ServerManager implements IServerManagerInterface,
 	public int sendProtocolRequest(BasePbRequest pbRequest) {
 		int seqId = mRequestIdGenerator.generateRequestId();
 		pbRequest.setSeqId(seqId);
-		pbRequest.setmRequestID(seqId);
 		pbRequest.buildTransData();
 		
 		if (pbRequest.getmDataBuffer() == null
@@ -127,14 +126,17 @@ public class ServerManager implements IServerManagerInterface,
 		NetworkEngine.getEngine()
 				.sendProtocolBuffer(pbRequest.getmDataBuffer());
 
-		// pbRequest.setmRequestID(mRequestIdGenerator.generateRequestId());
-
 		// 保存起来
-		addRequest(pbRequest);
+		addPbRequest(pbRequest);
 
 		return 0;
 	}
-
+	
+	private void addPbRequest(BasePbRequest request)
+	{
+		mRequestMap.put(String.valueOf(request.getSeqId()),request);
+	}
+	
 	private void addRequest(BaseRequest request) {
 		mRequestMap.put(String.valueOf(request.getmRequestID()), request);
 	}
@@ -200,9 +202,14 @@ public class ServerManager implements IServerManagerInterface,
 			response.setmError(new ProtoError(
 					ProtoError.ERRCODE_INVALID_PROTOBUFFER, e.getMessage()));
 		}
-
-		baseRequest.getmRequestListener().onRequestSuccess(response);
-
+		if (response.getmRet() == BaseResponse.RET_SUCCESS) 
+		{
+			baseRequest.getmRequestListener().onRequestSuccess(response);
+		}
+		else
+		{
+			baseRequest.getmRequestListener().onRequestFail(response);
+		}
 		delRequest(baseRequest.getmRequestID());
 
 	}
@@ -273,27 +280,65 @@ public class ServerManager implements IServerManagerInterface,
 		return response;
 	}
 
+	private BasePbResponse parsePbRequestToPbResponse(BasePbRequest request,TransProto transProto)
+	{
+		BasePbResponse response = null;
+		StringBuilder sbBuilder = new StringBuilder();
+		String requestClassName = request.getClass().getName();
+		String responseClassName = sbBuilder
+				.append(requestClassName.substring(0,
+						requestClassName.indexOf("Request")))
+				.append("Response").toString();
+
+		try {
+			@SuppressWarnings("unchecked")
+			Class<BasePbResponse> responseClass = (Class<BasePbResponse>) Class
+					.forName(responseClassName);
+			try {
+				response = responseClass.newInstance();
+				response.setmRequest(request);
+				if (transProto == null) {
+					// 返回数据为空
+					ProtoError error = new ProtoError(
+							ProtoError.ERRCODE_NORESPONSE_CONTENT, "");
+					response.setmError(error);
+				} else
+					response.setmTransData(transProto);
+			} catch (IllegalAccessException e) {
+				e.printStackTrace();
+			} catch (InstantiationException e) {
+				e.printStackTrace();
+			}
+		} catch (ClassNotFoundException e) {
+			e.printStackTrace();
+
+			// 找不到响应类
+			response = new BasePbResponse();
+			response.setmRequest(request);
+
+			ProtoError error = new ProtoError(
+					ProtoError.ERRCODE_ERRRESPONSENAME, "");
+			response.setmError(error);
+			return response;
+		}
+
+		return response;
+	}
 	@Override
 	public void onRecvProtocolBuffer(byte[] buffer) {
-		int length = ByteUtil.byteArrayToInt(buffer, 0);
-		if (length + 4 != buffer.length) {
-			Log.e(TAG, "网络回包的长度，数据不正确");
+		if (buffer == null) {
 			return;
 		}
-
-		// Length占四个字节，后面的都是数据
-		byte[] _respData = new byte[length];
-		for (int i = 0; i < _respData.length; i++) {
-			_respData[i] = buffer[4 + i];
-		}
-
-		BaseRequest baseRequest = null;
+		TransProto transProto = null;
+		BasePbRequest basePbRequest = null;
 		try {
-			TransProto _tranProto;
-			_tranProto = TransProto.parseFrom(_respData);
-			int seqid = _tranProto.getUint32Seq();
-			baseRequest = getRequestFromSeqId(seqid);
-			if (baseRequest == null) {
+			transProto = BasePbResponse.parseByteToTransProto(buffer);
+			if (transProto == null) 
+			{
+				return;
+			}
+			basePbRequest = (BasePbRequest)getRequestFromSeqId(transProto.getUint32Seq());
+			if (basePbRequest == null) {
 				// 有可能操作被取消
 				return;
 			}
@@ -303,8 +348,8 @@ public class ServerManager implements IServerManagerInterface,
 			return;
 		}
 
-		BaseResponse response = parseRequestToResponse(baseRequest, buffer);
-		response.setmRequest(baseRequest);
+		BasePbResponse response = parsePbRequestToPbResponse(basePbRequest, transProto);
+		response.setmRequest(basePbRequest);
 		try {
 			response.parseData();
 		} catch (InvalidProtocolBufferException e) {
@@ -315,9 +360,17 @@ public class ServerManager implements IServerManagerInterface,
 					ProtoError.ERRCODE_INVALID_PROTOBUFFER, e.getMessage()));
 		}
 
-		baseRequest.getmRequestListener().onRequestSuccess(response);
+		if (response.getmRet() == BaseResponse.RET_SUCCESS) 
+		{
+			basePbRequest.getmRequestListener().onRequestSuccess(response);
+		}
+		else
+		{
+			basePbRequest.getmRequestListener().onRequestFail(response);
+		}
+		
 
-		delRequest(baseRequest.getmRequestID());
+		delRequest(basePbRequest.getSeqId());
 
 	}
 

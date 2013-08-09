@@ -13,7 +13,7 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		mRegStudentReqBuilder.setVersionNo(version);
 	}
 	
-	public void setRegProfile(String phoneNo,String realName,String studentId,String password,String area,int schoolId,int classId)
+	public void setRegProfile(String phoneNo,String realName,String studentId,String password,String area,int schoolId,int classId,String verifyCode)
 	{
 		mRegStudentReqBuilder.setPhoneNo(phoneNo);
 		mRegStudentReqBuilder.setRealName(realName);
@@ -22,6 +22,7 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		mRegStudentReqBuilder.setArea(area);
 		mRegStudentReqBuilder.setSchoolId(schoolId);
 		mRegStudentReqBuilder.setClassId(classId);
+		mRegStudentReqBuilder.setVerifyCode(verifyCode);
 		
 		mDataSvrProtoBuilder.setRegStudentReqInfo(mRegStudentReqBuilder.build());
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegStudent);

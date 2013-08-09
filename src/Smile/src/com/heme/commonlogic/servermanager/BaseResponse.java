@@ -48,6 +48,11 @@ public class BaseResponse {
 		this.mRequest = mRequest;
 	}
 	
+	public BaseResponse()
+	{
+		mRet = RET_SUCCESS;
+	}
+	
 	protected void setResponseData(byte[] responsedata)
 	{
 		//数据的长度，转化为byte数组

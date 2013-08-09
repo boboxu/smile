@@ -10,9 +10,13 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
+import com.heme.logic.module.Data.RegParentRsp;
 
 public class AdultRegPhoneCheckActivity extends BaseActivity {
+	public static String ACTIONREG = "ACTIONREG";
+	public static String ACTIONFINDPWD = "ACTIONFINDPWD";
 	private static final String TAG = "AdultRegPhoneCheckActivity";
 	private Button mNextStepBtn;
 	private EditText mPhoneNum;
@@ -26,7 +30,20 @@ public class AdultRegPhoneCheckActivity extends BaseActivity {
 				intent.putExtra(AdultRegCheckCodeActivity.REG_PHONENUMBER, mPhoneNum.getText().toString().trim());
 				startActivity(intent);
 				break;
-
+			case Constans.ADULT_REG_FAILED:
+				dismissDialog();
+				RegParentRsp resp = (RegParentRsp)msg.obj;
+				if (resp != null) 
+				{
+					Util.showToast(AdultRegPhoneCheckActivity.this, resp.getErrString());
+				}
+				else
+				{
+					Util.showToast(AdultRegPhoneCheckActivity.this, "注册失败");
+				}
+				break;
+			case Constans.ADULT_REG_SUCCESS:
+				break;
 			default:
 				break;
 			}
@@ -60,8 +77,11 @@ public class AdultRegPhoneCheckActivity extends BaseActivity {
 					Util.showToast(AdultRegPhoneCheckActivity.this, "请输入你的手机号");
 					return;
 				}
-				showWaitDialog("验证码发送中，请注意查收");
-				mHandler.sendEmptyMessageDelayed(Constans.SEND_REG_CHECK_CODE_SUCCESS, 3000);
+//				showWaitDialog("验证码发送中，请注意查收");
+				showWaitDialog("注册中,请稍候...");
+//				mHandler.sendEmptyMessageDelayed(Constans.SEND_REG_CHECK_CODE_SUCCESS, 3000);
+				LogicManager.registManager().setPhoneNum(mPhoneNum.getText().toString());
+				LogicManager.registManager().startReg("", mHandler);
 			}
 		});
 	}

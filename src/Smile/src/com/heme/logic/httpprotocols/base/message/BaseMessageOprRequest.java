@@ -13,7 +13,6 @@ import com.heme.logic.module.Message.SendMsgReq;
 public class BaseMessageOprRequest extends BasePbRequest{
 	private MessageOpr.Builder mMessageOprBuilder;
 	protected MessageOpr mMessageOpr;
-	private static final String PROTO_VERSION = "1";
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	
 	public enum MSGTYPE {
@@ -90,7 +89,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	protected BaseMessageOprRequest(long systemId,String sessionId) {
 		mMessageOprBuilder = MessageOpr.newBuilder();
 		mMessageOprBuilder.setUint32ClientType(CLIENT_TYPE);
-		mMessageOprBuilder.setStrVersion(PROTO_VERSION);
+		mMessageOprBuilder.setStrVersion(Configuration.PROTO_VERSION);
 		mMessageOprBuilder.setUint64Uid(systemId);
 		mMessageOprBuilder.setStringSessionId(sessionId);
 	}

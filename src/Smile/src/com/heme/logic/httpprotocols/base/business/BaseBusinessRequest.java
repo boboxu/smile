@@ -6,14 +6,12 @@ import com.heme.logic.module.Data.DataSvrProto;
 
 public abstract class BaseBusinessRequest extends BasePbRequest {
 
-	protected static final String PROTO_VERSION = "1";
-	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
 	protected DataSvrProto.Builder mDataSvrProtoBuilder;
 	public BaseBusinessRequest() {
 		super();
 		mDataSvrProtoBuilder = DataSvrProto.newBuilder();
 		initmDataBuilder();
-		setVersionAndClientType(PROTO_VERSION, CLIENT_TYPE);
+		setVersionAndClientType(Configuration.PROTO_VERSION, Configuration.APP_VERSION);
 	}
 
 	public abstract void setVersionAndClientType(String version, int clientType);

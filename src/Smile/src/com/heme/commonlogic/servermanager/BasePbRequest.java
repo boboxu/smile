@@ -19,6 +19,11 @@ public abstract class BasePbRequest extends BaseRequest {
 		mTransDataBuilder.setUint32Seq(seq);
 	}
 
+	public int getSeqId()
+	{
+		return mTransDataBuilder.getUint32Seq(); 
+	}
+	
 	public void buildTransData()
 	{
 		setUid(0);
