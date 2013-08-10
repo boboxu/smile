@@ -166,17 +166,16 @@ public class AdultRegActivity extends BaseActivity implements OnClickListener {
 //					mUsername.getText().toString(),
 //					mIdnumber.getText().toString(), mPwd.getText().toString(),
 //					childIds);
-			List<String> listChild = new ArrayList<String>();
-			listChild.add("123456789");
-//			LogicManager.registManager().setParRegInfo("波徐","123456789098765432", "123456789", listChild);
+
 			SchoolCombine.Builder schoolCombineBuilder = SchoolCombine.newBuilder();
-			schoolCombineBuilder.setSchoolId(123);
+			schoolCombineBuilder.setSchoolId("123");
 			schoolCombineBuilder.setSchoolName("长沙第一中学");
 			
 			ClassCombine.Builder ccBuilder = ClassCombine.newBuilder();
 			ccBuilder.setClassName("高一三班");
-			ccBuilder.setClassId(123);
-			LogicManager.registManager().setStuRegInfo("波徐", "123456789", "123456789", new AreaInfo("长沙", "011"),schoolCombineBuilder.build() , ccBuilder.build());
+			ccBuilder.setClassId("123");
+			
+			LogicManager.registManager().setStuRegInfo("波徐", "123456789", "123456789", LogicManager.areaInfoManager().getAllAreaInfo().get(0),schoolCombineBuilder.build() , ccBuilder.build());
 			Intent intent = new Intent(AdultRegActivity.this,
 					AdultRegPhoneCheckActivity.class);
 			intent.setAction(AdultRegPhoneCheckActivity.ACTIONREG);

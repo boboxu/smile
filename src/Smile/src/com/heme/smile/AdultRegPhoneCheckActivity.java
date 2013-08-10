@@ -30,20 +30,7 @@ public class AdultRegPhoneCheckActivity extends BaseActivity {
 				intent.putExtra(AdultRegCheckCodeActivity.REG_PHONENUMBER, mPhoneNum.getText().toString().trim());
 				startActivity(intent);
 				break;
-			case Constans.ADULT_REG_FAILED:
-				dismissDialog();
-				RegParentRsp resp = (RegParentRsp)msg.obj;
-				if (resp != null) 
-				{
-					Util.showToast(AdultRegPhoneCheckActivity.this, resp.getErrString());
-				}
-				else
-				{
-					Util.showToast(AdultRegPhoneCheckActivity.this, "注册失败");
-				}
-				break;
-			case Constans.ADULT_REG_SUCCESS:
-				break;
+			
 			default:
 				break;
 			}

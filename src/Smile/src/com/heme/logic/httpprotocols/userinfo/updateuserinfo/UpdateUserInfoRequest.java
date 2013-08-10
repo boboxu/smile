@@ -46,7 +46,7 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 
 	}
 
-	public void setIconName(SEXTYPE type,String birthday,String occupation,String location,String email,String interest) {
+	public void setSelfInfo(SEXTYPE type,String birthday,String occupation,String location,String email,String interest) {
 		mSetSelfInfoReqBuilder.setGender(SEXTYPE.value(type));
 		mSetSelfInfoReqBuilder.setBirthday(birthday);
 		mSetSelfInfoReqBuilder.setOccupation(occupation);

@@ -6,9 +6,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
 
-import com.heme.foundation.net.NetworkEngine;
-import com.heme.foundation.net.NetworkService;
-
 public class StartActivity extends Activity {
 	
 	private Handler mHandler = new Handler(){
@@ -21,10 +18,6 @@ public class StartActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.start);
         mHandler.sendEmptyMessageDelayed(0, 1500);
-        
-        NetworkEngine.getEngine();
-        
-        NetworkService.actionStart(this);
     }
     
     private void gotoNextActivity(){

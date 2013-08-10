@@ -16,6 +16,7 @@ import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Data.ClassCombine;
 import com.heme.logic.module.Data.SchoolCombine;
 import com.heme.logic.module.notpbmessage.AreaInfo;
+import com.heme.utils.StringUtil;
 
 public class RegistManager extends BaseBusinessLogicManager implements
 		IRegistManagerInterface {
@@ -102,11 +103,11 @@ public class RegistManager extends BaseBusinessLogicManager implements
 		if (request instanceof ParentRegistRequest) {
 			// 家长
 			((ParentRegistRequest) request).setRegProfile(mPhoneNo, mRealName,
-					mIdCardNo, mPassword, mChildIdList, verifyCode);
+					mIdCardNo, StringUtil.MD5Encode(mPassword), mChildIdList, verifyCode);
 		} else {
 			// 学生
 			((StudentRegistRequest) request).setRegProfile(mPhoneNo, mRealName,
-					mStudentId, mPassword, mAreaInfo.getmAreaName(),
+					mStudentId, StringUtil.MD5Encode(mPassword), mAreaInfo,
 					mSchoolInfo.getSchoolId(), mClassInfo.getClassId(),verifyCode);
 		}
 		sendRequest(request, handler, getClass().getName(), _FUNC_());

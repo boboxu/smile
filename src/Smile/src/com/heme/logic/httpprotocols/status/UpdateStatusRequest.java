@@ -9,6 +9,12 @@ public class UpdateStatusRequest extends BaseStatusRequest {
 	
 	private SetStatusReq.Builder mSetStatusBuilder;
 
+	public UpdateStatusRequest(long systemId)
+	{
+		super();
+		mSetStatusBuilder.setUint64Uid(systemId);
+	}
+	
 	public void setStatus(EStatus status) {
 		mSetStatusBuilder.setEnumStatus(status);
 		mStatusProtoBuilder.setEnumCmd(Cmd.SetStatus);

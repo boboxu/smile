@@ -111,7 +111,7 @@ public class GroupManager extends BaseBusinessLogicManager implements
 			SchoolCombine schoolInfo, String groupName, VERIFYTYPE type,
 			List<Long> targetIdList, Handler handler) {
 		CreatePermanentGroupRequest request = new CreatePermanentGroupRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
-		request.setGroupInfo(areaInfo.getmAreaName(), schoolInfo.getSchoolName(), groupName, type, targetIdList);
+		request.setGroupInfo(areaInfo.getmCountryName(), schoolInfo.getSchoolName(), groupName, type, targetIdList);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

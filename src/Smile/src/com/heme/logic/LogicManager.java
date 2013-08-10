@@ -11,6 +11,10 @@ import com.heme.logic.managers.friendmanager.FriendManager;
 import com.heme.logic.managers.groupmanager.GroupManager;
 import com.heme.logic.managers.loginmanager.LoginManager;
 import com.heme.logic.managers.registmanager.RegistManager;
+import com.heme.logic.managers.schoolinfomanager.AreaInfoManager;
+import com.heme.logic.managers.schoolinfomanager.ClassInfoManager;
+import com.heme.logic.managers.schoolinfomanager.SchoolInfoManager;
+import com.heme.logic.module.Message.ClassInfo;
 
 public class LogicManager {
 	private final static String TAG = "LogicManager";
@@ -77,5 +81,20 @@ public class LogicManager {
 	public static RegistManager registManager()
 	{
 		return (RegistManager) findManager(RegistManager.class);
+	}
+	
+	public static AreaInfoManager areaInfoManager()
+	{
+		return (AreaInfoManager) findManager(AreaInfoManager.class);
+	}
+	
+	public static SchoolInfoManager schoolInfoManager()
+	{
+		return (SchoolInfoManager) findManager(SchoolInfoManager.class);
+	}
+	
+	public static ClassInfoManager classInfoManager()
+	{
+		return (ClassInfoManager) findManager(ClassInfoManager.class);
 	}
 }

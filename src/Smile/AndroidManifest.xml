@@ -18,7 +18,7 @@
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@android:style/Theme.NoTitleBar" >
+        android:theme="@android:style/Theme.NoTitleBar" android:name=".SmileApplication">
         <activity
             android:name="com.heme.smile.StartActivity"
             android:label="@string/app_name"
@@ -97,6 +97,15 @@
             android:name="com.heme.smile.GetbackPassWordCheckCodeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait" />
+        
+        <activity
+            android:name="com.heme.smile.test.TestManagerActivity"
+            android:label="@string/app_name"
+            android:screenOrientation="portrait" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+            </intent-filter>
+        </activity>
         
         <service 
             android:name="com.heme.foundation.net.NetworkService" />

@@ -1,11 +1,15 @@
 package com.heme.logic.httpprotocols.login;
 
+import android.os.Environment;
+
 import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
 import com.heme.logic.module.Data.LoginReq;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
 public class LoginRequest extends BaseBusinessRequest {
 
+	public static final String LOGINDATAPATH = "smile/logininfo";
+	
 	private LoginReq.Builder mLoginDataBuilder;
 
 	public enum LOGINTYPE {
@@ -41,5 +45,9 @@ public class LoginRequest extends BaseBusinessRequest {
 	@Override
 	public void initmDataBuilder() {
 		mLoginDataBuilder = LoginReq.newBuilder();
+	}
+	
+	public LoginReq.Builder getmLoginDataBuilder() {
+		return mLoginDataBuilder;
 	}
 }

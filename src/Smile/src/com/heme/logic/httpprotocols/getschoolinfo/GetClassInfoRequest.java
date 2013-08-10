@@ -13,7 +13,7 @@ public class GetClassInfoRequest extends BaseBusinessRequest {
 		
 	}
 
-	public void setSchoolId(int schoolId)
+	public void setSchoolId(String schoolId)
 	{
 		mRegGetClassReqBuilder.setSchoolId(schoolId);
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegGetClass);

@@ -1,3 +1,4 @@
+package  com.heme.logic.module;
 //2.1.1注册手机验证
 //场景1：注册的时候首先要提交手机号，后台判断手机号是否注册，没有注册才发送验证码。
 //场景2：忘记密码提交手机号码，考虑是否与注册手机号码一致。
@@ -34,8 +35,8 @@ message RegParentRsp
 {
 	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
 	required string errString = 2;			//错误信息
-    required uint64 systemId = 3;			//成功返回微校号
-    required string sessionId = 4;          //成功返回会话ID
+    optional uint64 systemId = 3;			//成功返回微校号
+    optional string sessionId = 4;          //成功返回会话ID
 }
 
 
@@ -44,11 +45,13 @@ message RegParentRsp
 message RegGetSchoolReq
 {
 	required string versionNo = 1;			//版本号
-	required string area = 2;			//地区名称
+	optional string provinceCode = 2;	    //省编号
+    optional string cityCode = 3;			//市编号
+    optional string countyCode = 4;			//县编号
 }
 message SchoolCombine
 {
-	required uint32 schoolId = 1;			//学校唯一ID
+	required string schoolId = 1;			//学校唯一ID
 	required string schoolName = 2;			//学校名称
 }
 message RegGetSchoolRsp
@@ -64,11 +67,11 @@ message RegGetSchoolRsp
 message RegGetClassReq
 {
 	required string versionNo = 1;			//版本号
-	required uint32 schoolId = 2;			//学校唯一ID
+	required string schoolId = 2;			//学校唯一ID
 }
 message ClassCombine
 {
-	required uint32 classId = 1;			//班级唯一ID
+	required string classId = 1;			//班级唯一ID
 	required string className = 2;			//班级名称
 }
 message RegGetClassRsp
@@ -87,19 +90,24 @@ message RegStudentReq
 	required string phoneNo = 3;			//注册手机号码
     optional string email = 4;              //注册时如果提供邮箱，可用于登录
     required string realName = 5;			//真实姓名
-    required string studentId = 6;			//学号
+    optional string studentId = 6;			//学号
     required string password = 7;			//登录密码
-    required string area = 8;			    //所在地区
-    required uint32 schoolId = 9;			//所在学校ID
-    required uint32 classId = 10;			//所在班级ID
-    required string verifyCode = 11;			//验证码
+    optional string provinceCode = 8;	    //省编号
+    optional string provinceName = 9;	    //省名称
+    optional string cityCode = 10;			//市编号
+    optional string cityName = 11;			//市名称
+    optional string countyCode = 12;			//县编号
+    optional string countyName = 13;			//县名称
+    required string schoolId = 14;			//所在学校ID
+    required string classId = 15;			//所在班级ID
+    required string verifyCode = 16;			//验证码
 }
 message RegStudentRsp
 {
 	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
 	required string errString = 2;			//错误信息
-    required uint64 systemId = 3;			//成功返回微校号
-    required string sessionId = 4;          //成功返回会话ID
+    optional uint64 systemId = 3;			//成功返回微校号
+    optional string sessionId = 4;          //成功返回会话ID
 }
 
 
@@ -115,8 +123,8 @@ message LoginRsp
 {
 	required uint32 errCode = 1;			//错误码 0：成功；1：手机号已注册；
 	required string errString = 2;			//错误信息
-    required uint64 systemId = 3;			//成功返回微校号
-    required string sessionId = 4;          //成功返回会话ID
+    optional uint64 systemId = 3;			//成功返回微校号
+    optional string sessionId = 4;          //成功返回会话ID
     repeated uint64 friendSystemId = 5;     //好友微校号
     repeated uint32 groupId = 6;            //拥有群组号
 }
@@ -181,28 +189,6 @@ message GetUserInfoRsp
 }
 
 
-//2.2.4批量获取用户状态信息，接入服务器保留用户在线、隐身、离线内存表，不通过资料数据库保存状态。用户上次登录的状态信息在终端保存参数。接入服务器提供一个状态查询接口给终端，提供状态bitmap给消息服务器。
-message GetUserStatusReq
-{
-	required string versionNo = 1;			//版本号
-    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
-	required string sessionId = 3;          //会话ID
-    required uint64 systemId = 4;			//所有者微校号
-    repeated uint64 targetSystemId = 5;			//目标微校号
-}
-message StatusCombine
-{
-	required uint64 SystemId = 1;			//微校号
-    required uint32 status = 9;			//用户状态，1：在线；2：离线；3：隐身
-}
-message GetUserStatusRsp
-{
-	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
-	required string errString = 2;			//错误信息
-    repeated StatusCombine friendInfo = 3;
-}
-
-
 //2.2.5批量获取用户资料信息,场景：设置个人信息。可以理解为获取用户资料数据表的内容。
 message GetVerboseUserInfoReq
 {
@@ -257,21 +243,6 @@ message SetUserIconRsp
 }
 
 
-//2.2.7状态改变,主界面上更改。
-message SetStatusReq
-{
-	required string versionNo = 1;			//版本号
-    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
-	required string sessionId = 3;          //会话ID
-    required uint64 systemId = 4;			//微校号
-    required uint32 status = 5;			   //用户状态，1：在线；2：离线；3：隐身
-}
-message SetStatusRsp
-{
-	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
-	required string errString = 2;			//错误信息
-}
-
 
 //2.2.8个性签名,主界面上更改。
 message SetSignatureReq
@@ -303,18 +274,6 @@ message FindPasswdVerifyRsp
     required string passwd = 3;			   //密码
 }
 
-
-//2.4.1心跳，客户端定期向接入服务器发起心跳包，公告消息和升级消息应该不需要登录。
-message HbReq
-{
-	required string versionNo = 1;			//版本号
-    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
-}
-message HbRsp
-{
-	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
-	required string errString = 2;			//错误信息
-}
 
 
 //2.6.1创建永久群。
@@ -435,23 +394,6 @@ message DelGroupMemberReq
     repeated uint64 memberSystemId = 6;			//群成员微校号
 }
 message DelGroupMemberRsp
-{
-	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
-	required string errString = 2;			//错误信息
-}
-
-
-//2.6.11 添加好友验证消息
-message FriendVerifyMsgReq
-{
-	required string versionNo = 1;			//版本号
-    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
-	required string sessionId = 3;          //会话ID
-    required uint64 systemId = 4;			//微校号
-    required uint64 targetSystemId = 5;			//对方微校号
-    required string verifyMsg = 6;			//如果需要验证的消息
-}
-message FriendVerifyMsgRsp
 {
 	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
 	required string errString = 2;			//错误信息
@@ -722,8 +664,8 @@ message DataSvrProto
 	optional SendFeedbackRsp SendFeedbackRspInfo = 51;
         
     optional BusiGetClassOfTeacherReq BusiGetClassOfTeacherReqInfo = 52;
-	optional BusiGetClassOfTeacherRsp BusiGetClassOfTeacherRspInfo = 55;
+	optional BusiGetClassOfTeacherRsp BusiGetClassOfTeacherRspInfo = 53;
         
-    optional BusiGetSubjectOfTeacherReq BusiGetSubjectOfTeacherReqInfo = 56;
-	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 57;    
+    optional BusiGetSubjectOfTeacherReq BusiGetSubjectOfTeacherReqInfo = 54;
+	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 55;    
 }

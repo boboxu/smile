@@ -1,25 +1,77 @@
 package com.heme.logic.module.notpbmessage;
 
 public class AreaInfo {
-	private String mAreaName;
-	private String mAreaCode;
+	private String mProvinceName;
+	private String mProvinceCode;
+	private String mCityName;
+	private String mCityCode;
+	private String mCountryName;
+	private String mCountryCode;
 	
-	public String getmAreaName() {
-		return mAreaName;
+	
+	public String getmProvinceCode() {
+		return mProvinceCode;
 	}
-	public void setmAreaName(String mAreaName) {
-		this.mAreaName = mAreaName;
+	
+	public void setmProvinceCode(String mProvinceCode) {
+		this.mProvinceCode = mProvinceCode;
 	}
+	
+	public String getmCityCode() {
+		return mCityCode;
+	}
+	
+	public void setmCityCode(String mCityCode) {
+		this.mCityCode = mCityCode;
+	}
+	
+	public String getmCountryCode() {
+		return mCountryCode;
+	}
+	
+	public void setmCountryCode(String mCountryCode) {
+		this.mCountryCode = mCountryCode;
+	}
+
 	public String getmAreaCode() {
-		return mAreaCode;
+		return mProvinceCode;
 	}
 	public void setmAreaCode(String mAreaCode) {
-		this.mAreaCode = mAreaCode;
+		this.mProvinceCode = mAreaCode;
 	}
 	
-	public AreaInfo(String name,String code)
+	public String getmProvinceName() {
+		return mProvinceName;
+	}
+
+	public void setmProvinceName(String mProvinceName) {
+		this.mProvinceName = mProvinceName;
+	}
+
+	public String getmCityName() {
+		return mCityName;
+	}
+
+	public void setmCityName(String mCityName) {
+		this.mCityName = mCityName;
+	}
+
+	public String getmCountryName() {
+		return mCountryName;
+	}
+
+	public void setmCountryName(String mCountryName) {
+		this.mCountryName = mCountryName;
+	}
+
+	
+	public AreaInfo(String provinceName,String provinceCode,String cityName,String cityCode,String countryName,String countryCode)
 	{
-		mAreaCode = code;
-		mAreaName = name;
+		mProvinceCode = provinceCode;
+		mProvinceName = provinceName;
+		mCityCode = cityCode;
+		mCityName = cityName;
+		mCountryCode = countryCode;
+		mCountryName = countryName;
 	}
 }

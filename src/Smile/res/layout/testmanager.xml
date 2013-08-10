@@ -1,0 +1,79 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@drawable/loading_bg"
+    tools:context=".StartActivity" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="3" android:id="@+id/line1">
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="登  录"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/parregBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="家长注册"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/sturegBtn"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="学生注册"
+            android:textColor="#000"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line1"
+        android:orientation="horizontal"
+        android:weightSum="2" >
+"
+
+        <Button
+            android:id="@+id/schoolinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="学校信息查询"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/classinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="班级信息查询"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+<!--         <Button
+            android:id="@+id/classinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="status状态设置"
+            android:textColor="#000"
+            android:textSize="20dip" /> -->
+    </LinearLayout>
+
+</RelativeLayout>

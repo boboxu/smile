@@ -1,9 +1,10 @@
 package com.heme.logic.managers.schoolinfomanager;
 
-import android.os.Handler;
+import java.util.ArrayList;
 
 import com.heme.logic.managers.base.IBaseBusinessLogicManagerInterface;
+import com.heme.logic.module.notpbmessage.AreaInfo;
 
 public interface IAreaInfoManagerInterface extends IBaseBusinessLogicManagerInterface{
-	public void getAllAreaInfo(Handler handler);
+	public ArrayList<AreaInfo> getAllAreaInfo();
 }

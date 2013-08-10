@@ -8,59 +8,72 @@ import java.io.IOException;
 import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
+import com.heme.logic.httpprotocols.login.LoginRequest;
+import com.heme.logic.httpprotocols.login.LoginResponse;
+import com.heme.logic.httpprotocols.setfriendright.SetFriendRightRequest;
 import com.heme.logic.httpprotocols.setfriendright.SetFriendRightRequest.VERIFYTYPE;
+import com.heme.logic.httpprotocols.status.UpdateStatusRequest;
+import com.heme.logic.httpprotocols.userinfo.updatesignature.UpdateSignatureRequest;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserIconRequest;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest;
 import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Data.LoginRsp;
+import com.heme.logic.module.Status.EStatus;
+import com.heme.utils.FileUtil;
 
 public class AccountManager extends BaseBusinessLogicManager implements
 		IAccountManagerInterface {
-	private static final String DATAPATH = "/mnt/sdcard/smile/accountinfo";
+	
 	LoginRsp mLoginRsp = null;
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
-		// TODO Auto-generated method stub
-
+			
 	}
 
 	@Override
 	public void updateUserIcon(String iconName, Handler handler) {
-
+		UpdateUserIconRequest request = new UpdateUserIconRequest(mLoginRsp.getSessionId(), mLoginRsp.getSystemId());
+		request.setIconName(iconName);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void updateSignature(String signature, Handler handler) {
-		// TODO Auto-generated method stub
-
+		UpdateSignatureRequest request = new UpdateSignatureRequest(mLoginRsp.getSessionId(), mLoginRsp.getSystemId());
+		request.setSignature(signature);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void updateFriendRight(VERIFYTYPE type, boolean isAutoAddFriend,
 			boolean isCanBeSearched, boolean isRecommend, Handler handler) {
-		// TODO Auto-generated method stub
-
+		SetFriendRightRequest request = new SetFriendRightRequest(mLoginRsp.getSessionId(),mLoginRsp.getSystemId());
+		request.setFriendRight(type, isAutoAddFriend, isCanBeSearched, isRecommend);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public void updateUserInfo(SEXTYPE type, String birthday, String job,
 			String local, String email, String interest, Handler handler) {
-		// TODO Auto-generated method stub
-
+		UpdateUserInfoRequest request = new UpdateUserInfoRequest(mLoginRsp.getSessionId(), mLoginRsp.getSystemId());
+		request.setSelfInfo(type, birthday, job, local, email, interest);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
 	@Override
 	public long getCurrentAccoutSystemId() {
 		if (mLoginRsp == null) 
 		{
-			mLoginRsp = readFromFile(DATAPATH);
+			mLoginRsp = FileUtil.readLoginRspFromFile(LoginResponse.LOGINRSPDATAFILEPATH);
 		}
 		return mLoginRsp.getSystemId();
 	}
 
 	@Override
 	public void removeCurrentAccount() {
-
+		//清空账户信息的数据库
 	}
 
 	@Override
@@ -75,58 +88,17 @@ public class AccountManager extends BaseBusinessLogicManager implements
 			logRspbuilder.addGroupId(12);
 			loginrsp = logRspbuilder.build();
 		}
-		
-		writeToFile(DATAPATH, loginrsp);
+		mLoginRsp = loginrsp;
+		FileUtil.writeToFile(LoginResponse.LOGINRSPDATAFILEPATH, loginrsp);
 	}
 
-	private void writeToFile(String datapath, LoginRsp logRsp) {
-		// 暂时用写文件来测试
-		FileOutputStream output = null;
-		try {
-			output = new FileOutputStream(datapath);
-			output.write(logRsp.toByteArray());
-			output.close();
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} finally {
-
-		}
-	}
 	
-	private LoginRsp readFromFile(String datapath)
-	{
-		FileInputStream fs = null;
-		try {
-			fs = new FileInputStream(
-					datapath);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		if (fs != null) 
-		{
-			try {
-				return LoginRsp.parseFrom(fs);
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-				return null;
-			}
-		}
-		else {
-			return null;
-		}
-	}
 
 	@Override
 	public String getCurrentSessionId() {
 		if (mLoginRsp == null) 
 		{
-			mLoginRsp = readFromFile(DATAPATH);
+			mLoginRsp = FileUtil.readLoginRspFromFile(LoginResponse.LOGINRSPDATAFILEPATH);
 		}
 		return mLoginRsp.getSessionId();
 	}

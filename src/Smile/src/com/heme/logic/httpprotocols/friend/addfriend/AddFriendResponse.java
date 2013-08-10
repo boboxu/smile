@@ -2,10 +2,9 @@ package com.heme.logic.httpprotocols.friend.addfriend;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
-import com.heme.logic.module.Data.FriendVerifyMsgRsp;
 
 public class AddFriendResponse extends BaseBusinessResponse {
-	private FriendVerifyMsgRsp mAddfriendrsp;
+//	private FriendVerifyMsgRsp mAddfriendrsp;
 
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
@@ -16,7 +15,7 @@ public class AddFriendResponse extends BaseBusinessResponse {
 
 	}
 
-	public FriendVerifyMsgRsp getFriendVerifyMsgRsp() {
-		return mAddfriendrsp;
-	}
+//	public FriendVerifyMsgRsp getFriendVerifyMsgRsp() {
+//		return mAddfriendrsp;
+//	}
 }

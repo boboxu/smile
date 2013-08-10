@@ -5,6 +5,7 @@ import com.heme.logic.httpprotocols.base.business.BaseBusinessResponse;
 import com.heme.logic.module.Data.LoginRsp;
 
 public class LoginResponse extends BaseBusinessResponse {
+	public static final String LOGINRSPDATAFILEPATH = "loginrspinfo";
 	private LoginRsp mLoginrsp;
 	
 	@Override

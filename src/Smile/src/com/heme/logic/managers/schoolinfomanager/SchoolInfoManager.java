@@ -15,10 +15,19 @@ public class SchoolInfoManager extends BaseBusinessLogicManager implements IScho
 	@Override
 	protected void onSuccessResponse(BaseResponse response,
 			Handler handler) {
-		//取出数据来写数据库
-		handleresponse(Constans.GET_SCHOOLINFO_SUCCESS, ((GetSchoolInfoResponse)response).getmRegGetSchoolRsp(), handler);
+		GetSchoolInfoResponse getSchoolInfoResponse = (GetSchoolInfoResponse)response;
+		if (getSchoolInfoResponse.getmRegGetSchoolRsp().getErrCode() != 0) 
+		{
+			handleresponse(Constans.GET_SCHOOLINFO_FAILED, ((GetSchoolInfoResponse)response).getmRegGetSchoolRsp(), handler);
+		}
+		else
+		{
+			//取出数据来写数据库
+			handleresponse(Constans.GET_SCHOOLINFO_SUCCESS, ((GetSchoolInfoResponse)response).getmRegGetSchoolRsp(), handler);
+		}
+		
 	}
-
+	
 	@Override
 	protected BaseError onFailedResponse(BaseResponse response,
 			Handler handler) {
@@ -29,7 +38,7 @@ public class SchoolInfoManager extends BaseBusinessLogicManager implements IScho
 	@Override
 	public void getSchoolInfo(AreaInfo areainfo,Handler handler) {
 		GetSchoolInfoRequest request = new GetSchoolInfoRequest();
-		request.setArea(areainfo.getmAreaName());
+		request.setArea(areainfo);
 		sendRequest(request, handler,  getClass().getName(), _FUNC_());
 	}
 
