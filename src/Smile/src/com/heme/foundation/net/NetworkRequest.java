@@ -149,9 +149,8 @@ public class NetworkRequest
 					}
 					else
 					{
-						delegate.onRequestSuccess(hd.mRequest, ByteBuffer
-						        .wrap(hd.mResponse.mResponse
-						                .getResponseBodyAsBytes()));
+						delegate.onRequestSuccess(hd.mRequest,
+								hd.mResponse.mResponse.getResponseBodyAsBytes());
 					}
 				}
 				catch (IOException e)
@@ -711,25 +710,19 @@ public class NetworkRequest
 					NetworkFileData value = mFileDataArray.get(key);
 					if (value.filepath != null && value.filepath.length() > 0)
 					{
-						ByteBuffer filedataBuffer = ByteBuffer.allocate(4096);
 						byte[] fileBytes = null;
 						{
+							FileInputStream fin = null;
+
 							try
 							{
-								FileChannel fcin = null;
-								fcin = new FileInputStream(value.filepath)
-								        .getChannel();
-								while (fcin.read(filedataBuffer) != -1)
+								fin = new FileInputStream(value.filepath);
+								int length = fin.available();
+								if (length > 0)
 								{
-									// 读文件
-									fileBytes = newBytesByAppending(fileBytes,
-									        filedataBuffer.array());
+									fileBytes = new byte[length];
+									fin.read(fileBytes);
 								}
-								if (fcin != null && fcin.isOpen())
-								{
-									fcin.close();
-								}
-								fcin = null;
 							}
 							catch (FileNotFoundException e)
 							{
@@ -739,7 +732,19 @@ public class NetworkRequest
 							{
 								e.printStackTrace();
 							}
-
+							if (fin != null)
+							{
+								try
+								{
+									fin.close();
+								} catch (IOException e)
+								{
+									// TODO Auto-generated catch block
+									e.printStackTrace();
+								}
+							}
+							
+							
 						}
 						tmpString = String
 						        .format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",

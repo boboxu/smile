@@ -1,6 +1,5 @@
 package com.heme.foundation.net;
 
-import java.nio.ByteBuffer;
 
 public interface INetworkManagerDelegate
 {
@@ -9,7 +8,7 @@ public interface INetworkManagerDelegate
 	 * @param response
 	 * @param data
 	 */
-	public void onRequestSuccess(NetworkRequest request, ByteBuffer buffer);
+	public void onRequestSuccess(NetworkRequest request, byte[] buffer);
 	
 	/**
 	 * 请求失败回调

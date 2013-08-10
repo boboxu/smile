@@ -9,18 +9,16 @@ import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
-import com.heme.foundation.net.INetworkEngineListener;
+import com.heme.foundation.net.INetworkManagerDelegate;
 import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
 import com.heme.foundation.net.NetworkResponse;
-import com.heme.logic.LogicManager;
-import com.heme.logic.httpprotocols.login.LoginResponse;
 import com.heme.logic.module.Trans.TransProto;
 import com.heme.utils.ByteUtil;
 
 public class ServerManager implements IServerManagerInterface,
-		INetworkEngineListener, IProtocolEngineDelegate {
+		INetworkManagerDelegate, IProtocolEngineDelegate {
 	private static final String TAG = "ServerManager";
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
@@ -49,7 +47,7 @@ public class ServerManager implements IServerManagerInterface,
 		}
 		// 构造连接，到net模块了
 
-		NetworkEngine.getEngine().sendProtocolBuffer(request.getmDataBuffer());
+//		NetworkEngine.getEngine().sendProtocolBuffer(request.getmDataBuffer());
 		// //测试代码begin，直接调用回掉看看
 		// String requestClassName = request.getClass().getName();
 		// StringBuilder sbBuilder = new StringBuilder();
@@ -112,6 +110,7 @@ public class ServerManager implements IServerManagerInterface,
 
 	@Override
 	public int sendProtocolRequest(BasePbRequest pbRequest) {
+				
 		int seqId = mRequestIdGenerator.generateRequestId();
 		pbRequest.setSeqId(seqId);
 		pbRequest.buildTransData();
@@ -182,7 +181,7 @@ public class ServerManager implements IServerManagerInterface,
 	}
 
 	@Override
-	public void onRequestSuccess(NetworkResponse netresponse, byte[] data) {
+	public void onRequestSuccess(NetworkRequest request, byte[] data) {
 		Log.d(TAG, "finish data" + (new String(data)));
 
 		BaseRequest baseRequest = getRequestFromMap(null);
@@ -215,7 +214,7 @@ public class ServerManager implements IServerManagerInterface,
 	}
 
 	@Override
-	public void onRequestFail(NetworkResponse netresponse, int errorCode) {
+	public void onRequestFail(NetworkRequest request, int errorCode) {
 		BaseRequest baseRequest = getRequestFromMap(null);
 		if (baseRequest == null) {
 			// 有可能操作被取消
