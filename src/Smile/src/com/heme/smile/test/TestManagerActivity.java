@@ -17,8 +17,11 @@ import com.heme.logic.module.Data.ClassCombine;
 import com.heme.logic.module.Data.LoginRsp;
 import com.heme.logic.module.Data.RegParentRsp;
 import com.heme.logic.module.Data.SchoolCombine;
+import com.heme.logic.module.Message.PicMsgInfo;
+import com.heme.logic.module.Message.PollMsgRes;
+import com.heme.logic.module.Message.VideoMsgInfo;
+import com.heme.logic.module.Message.VoiceMsgInfo;
 import com.heme.logic.module.notpbmessage.AreaInfo;
-import com.heme.smile.AdultRegPhoneCheckActivity;
 import com.heme.smile.BaseActivity;
 import com.heme.smile.R;
 import com.heme.smile.Util;
@@ -27,7 +30,10 @@ public class TestManagerActivity extends BaseActivity implements
 		OnClickListener {
 
 	private Button mLoginBtn, mParRegBtn, mStuRegBtn;
-	private Button mSchoolInfoBtn, mClassInfoBtn;
+	private Button mSchoolInfoBtn, mClassInfoBtn, mLocalLoginButtn;
+	private Button mC2Ctext, mC2Cvideo, mC2Cvoice, mC2Cpic;
+	private Button mC2Gtext, mC2Gvideo, mC2Gvoicet, mC2Gpic;
+	private Button mVoiceTest, mPollUnread, mPollMsg;
 
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -64,6 +70,25 @@ public class TestManagerActivity extends BaseActivity implements
 				break;
 			case Constans.GET_CLASSINFO_FAILED:
 				break;
+			case Constans.SEND_TEXT_C2C_SUCCESS:
+			case Constans.SEND_VIDEO_C2C_SUCCESS:
+			case Constans.SEND_VOICE_C2C_SUCCESS:
+			case Constans.SEND_PIC_C2C_SUCCESS:
+				Util.showToast(TestManagerActivity.this, "发送成功");
+				break;
+			case Constans.SEND_TEXT_C2C_FAILED:
+			case Constans.SEND_VIDEO_C2C_FAILED:
+			case Constans.SEND_VOICE_C2C_FAILED:
+			case Constans.SEND_PIC_C2C_FAILED:
+				Util.showToast(TestManagerActivity.this, "发送失败");
+				break;
+			case Constans.POLL_C2C_SUCCESS:
+				PollMsgRes pollresp = (PollMsgRes)msg.obj;
+				Util.showToast(TestManagerActivity.this, "拉到"+pollresp.getMsgUnreadInfoCount()+"条未读消息");
+				break;
+			case Constans.POLL_C2C_FAILED:
+				Util.showToast(TestManagerActivity.this, "拉取失败");
+				break;
 			default:
 				break;
 			}
@@ -81,10 +106,38 @@ public class TestManagerActivity extends BaseActivity implements
 		mParRegBtn.setOnClickListener(this);
 		mStuRegBtn = (Button) findViewById(R.id.sturegBtn);
 		mStuRegBtn.setOnClickListener(this);
+
 		mSchoolInfoBtn = (Button) findViewById(R.id.schoolinfo);
 		mSchoolInfoBtn.setOnClickListener(this);
 		mClassInfoBtn = (Button) findViewById(R.id.classinfo);
 		mClassInfoBtn.setOnClickListener(this);
+		mLocalLoginButtn = (Button) findViewById(R.id.loginwithlocaldata);
+		mLocalLoginButtn.setOnClickListener(this);
+
+		mC2Ctext = (Button) findViewById(R.id.btnc2ctext);
+		mC2Ctext.setOnClickListener(this);
+		mC2Cvideo = (Button) findViewById(R.id.btnc2cvideo);
+		mC2Cvideo.setOnClickListener(this);
+		mC2Cvoice = (Button) findViewById(R.id.btnc2cvoice);
+		mC2Cvoice.setOnClickListener(this);
+		mC2Cpic = (Button) findViewById(R.id.btnc2cpic);
+		mC2Cpic.setOnClickListener(this);
+
+		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
+		mC2Gtext.setOnClickListener(this);
+		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
+		mC2Gtext.setOnClickListener(this);
+		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
+		mC2Gtext.setOnClickListener(this);
+		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
+		mC2Gtext.setOnClickListener(this);
+
+		mVoiceTest = (Button) findViewById(R.id.btnvoicetest);
+		mVoiceTest.setOnClickListener(this);
+		mPollMsg = (Button) findViewById(R.id.btnpollmsg);
+		mPollMsg.setOnClickListener(this);
+		mPollUnread = (Button) findViewById(R.id.btnpollunread);
+		mPollUnread.setOnClickListener(this);
 	}
 
 	@Override
@@ -105,8 +158,53 @@ public class TestManagerActivity extends BaseActivity implements
 		case R.id.classinfo:
 			testclassmanager();
 			break;
+		case R.id.loginwithlocaldata:
+			testlocallogin();
+			break;
+		case R.id.btnc2ctext:
+			testc2ctext();
+			break;
+		case R.id.btnc2cvideo:
+			testc2cvideo();
+			break;
+		case R.id.btnc2cvoice:
+			testc2cvoice();
+			break;
+		case R.id.btnc2cpic:
+			testc2cpic();
+			break;
+		case R.id.btnc2gtext:
+			testc2gtext();
+		case R.id.btnc2gvideo:
+			testc2gvideo();
+			break;
+		case R.id.btnc2gvoice:
+			testc2gvoice();
+			break;
+		case R.id.btnc2gpic:
+			testc2gpic();
+			break;
+		case R.id.btnvoicetest:
+			testvoicetest();
+			break;
+		case R.id.btnpollmsg:
+			testpollmsg();
+			break;
+		case R.id.btnpollunread:
+			testpollunread();
+			break;
 		default:
 			break;
+		}
+	}
+
+	// 优先使用本地数据登陆
+	private void testlocallogin() {
+		boolean rst = LogicManager.loginManager().LoginWithSavedData(mHandler);
+		if (!rst) {
+			testloginmanager();
+		} else {
+			showWaitDialog("本地数据登陆中");
 		}
 	}
 
@@ -122,7 +220,7 @@ public class TestManagerActivity extends BaseActivity implements
 	private void testloginmanager() {
 		LogicManager.loginManager().Login("2222", "123456789",
 				LOGINTYPE.TypeWX, mHandler);
-		showWaitDialog("登陆中");
+		showWaitDialog("外部数据登录中");
 	}
 
 	// 学生注册
@@ -143,23 +241,82 @@ public class TestManagerActivity extends BaseActivity implements
 				ccBuilder.build());
 		LogicManager.registManager().setPhoneNum("123456789");
 		LogicManager.registManager().startReg("1234", mHandler);
+		showWaitDialog("注册中");
 	}
 
 	// 家长注册
-	private void testparreg() 
-	{
+	private void testparreg() {
 		List<String> childlist = new ArrayList<String>();
 		childlist.add("123456");
-		LogicManager.registManager().setParRegInfo("波徐", "421099198734567898", "123", childlist);
+		LogicManager.registManager().setParRegInfo("波徐", "421099198734567898",
+				"123", childlist);
 		LogicManager.registManager().setPhoneNum("13456789098");
 		LogicManager.registManager().startReg("1234", mHandler);
+		showWaitDialog("注册中");
 	}
-	
-	private void testclassmanager()
-	{
+
+	private void testclassmanager() {
 		SchoolCombine.Builder schoolCombineBuilder = SchoolCombine.newBuilder();
 		schoolCombineBuilder.setSchoolId("123");
 		schoolCombineBuilder.setSchoolName("长沙第一中学");
-		LogicManager.classInfoManager().getClassInfo(schoolCombineBuilder.build(), mHandler);
+		LogicManager.classInfoManager().getClassInfo(
+				schoolCombineBuilder.build(), mHandler);
+		showWaitDialog("获取班级信息中");
+	}
+
+	private void testc2ctext() {
+		LogicManager.messageManager().sendTextMsgToUser(1234567, "1234567",
+				mHandler);
+		showWaitDialog("发消息中");
+	}
+
+	private void testc2cvoice() {
+		VoiceMsgInfo.Builder msgInfobuilder = VoiceMsgInfo.newBuilder();
+		msgInfobuilder.setStrVoiceUrl("http://www.qq.com");
+		LogicManager.messageManager().sendVoiceMsgToUser(1234567,
+				msgInfobuilder.build(), mHandler);
+		showWaitDialog("发消息中");
+	}
+
+	private void testc2cvideo() {
+		VideoMsgInfo.Builder msgInfoBuilder = VideoMsgInfo.newBuilder();
+		msgInfoBuilder.setStrVideoUrl("http://www.qq.com");
+		LogicManager.messageManager().sendVideoMsgToUser(1234567,
+				msgInfoBuilder.build(), mHandler);
+	}
+
+	private void testc2cpic() {
+		PicMsgInfo.Builder msgInfoBuilder = PicMsgInfo.newBuilder();
+		msgInfoBuilder.setStrPicUrl("http://www.qq.com");
+		LogicManager.messageManager().sendPicMsgToUser(1234567,
+				msgInfoBuilder.build(), mHandler);
+	}
+
+	private void testc2gtext() {
+
+	}
+
+	private void testc2gvoice() {
+
+	}
+
+	private void testc2gvideo() {
+
+	}
+
+	private void testc2gpic() {
+
+	}
+
+	private void testvoicetest() {
+
+	}
+
+	private void testpollunread() {
+		
+	}
+
+	private void testpollmsg() {
+		LogicManager.messageManager().pollAllUserMsg(mHandler);
 	}
 }

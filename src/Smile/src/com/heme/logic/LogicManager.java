@@ -10,6 +10,7 @@ import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.managers.friendmanager.FriendManager;
 import com.heme.logic.managers.groupmanager.GroupManager;
 import com.heme.logic.managers.loginmanager.LoginManager;
+import com.heme.logic.managers.message.MessageManager;
 import com.heme.logic.managers.registmanager.RegistManager;
 import com.heme.logic.managers.schoolinfomanager.AreaInfoManager;
 import com.heme.logic.managers.schoolinfomanager.ClassInfoManager;
@@ -96,5 +97,10 @@ public class LogicManager {
 	public static ClassInfoManager classInfoManager()
 	{
 		return (ClassInfoManager) findManager(ClassInfoManager.class);
+	}
+	
+	public static MessageManager messageManager()
+	{
+		return (MessageManager) findManager(MessageManager.class);
 	}
 }

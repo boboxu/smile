@@ -5,18 +5,16 @@ import com.heme.logic.httpprotocols.base.message.BaseMessageOprResponse;
 import com.heme.logic.module.Message.PollUnreadInfoRes;
 
 public class PollUnreadMessageResponse extends BaseMessageOprResponse {
-	private PollUnreadInfoRes mPollUnreadInfoRes;
-	
+
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		// TODO Auto-generated method stub
 		super.parseData();
-		mPollUnreadInfoRes = mMessageOpr.getMsgPollUnreadRes();
 	}
-	
+
 	public PollUnreadInfoRes getUnreadInfoRes()
 	{
-		return mPollUnreadInfoRes;
+		return mMessageOpr.getMsgPollUnreadRes();
 	}
 	
 }

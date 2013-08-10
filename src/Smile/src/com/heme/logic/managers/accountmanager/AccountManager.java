@@ -1,25 +1,17 @@
 package com.heme.logic.managers.accountmanager;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.IOException;
-
 import android.os.Handler;
 
 import com.heme.commonlogic.servermanager.BaseResponse;
-import com.heme.logic.httpprotocols.login.LoginRequest;
 import com.heme.logic.httpprotocols.login.LoginResponse;
 import com.heme.logic.httpprotocols.setfriendright.SetFriendRightRequest;
 import com.heme.logic.httpprotocols.setfriendright.SetFriendRightRequest.VERIFYTYPE;
-import com.heme.logic.httpprotocols.status.UpdateStatusRequest;
 import com.heme.logic.httpprotocols.userinfo.updatesignature.UpdateSignatureRequest;
 import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserIconRequest;
 import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest;
 import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Data.LoginRsp;
-import com.heme.logic.module.Status.EStatus;
 import com.heme.utils.FileUtil;
 
 public class AccountManager extends BaseBusinessLogicManager implements
@@ -66,7 +58,7 @@ public class AccountManager extends BaseBusinessLogicManager implements
 	public long getCurrentAccoutSystemId() {
 		if (mLoginRsp == null) 
 		{
-			mLoginRsp = FileUtil.readLoginRspFromFile(LoginResponse.LOGINRSPDATAFILEPATH);
+			return 1234567;
 		}
 		return mLoginRsp.getSystemId();
 	}
@@ -89,7 +81,6 @@ public class AccountManager extends BaseBusinessLogicManager implements
 			loginrsp = logRspbuilder.build();
 		}
 		mLoginRsp = loginrsp;
-		FileUtil.writeToFile(LoginResponse.LOGINRSPDATAFILEPATH, loginrsp);
 	}
 
 	
@@ -98,7 +89,7 @@ public class AccountManager extends BaseBusinessLogicManager implements
 	public String getCurrentSessionId() {
 		if (mLoginRsp == null) 
 		{
-			mLoginRsp = FileUtil.readLoginRspFromFile(LoginResponse.LOGINRSPDATAFILEPATH);
+			return "1234567";
 		}
 		return mLoginRsp.getSessionId();
 	}

@@ -95,4 +95,9 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		mCommonMsgBuilder.setMsgVideoMsg(msgInfo);
 		super.setCommonMsg(context);
 	}
+	
+	public CONTENTTYPE getContentType()
+	{
+		return CONTENTTYPE.values()[mCommonMsgBuilder.getUint32ContentType()];
+	}
 }

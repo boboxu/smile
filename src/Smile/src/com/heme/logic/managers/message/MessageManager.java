@@ -7,11 +7,14 @@ import android.os.Handler;
 import com.google.protobuf.ByteString;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.LogicManager;
+import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest.MSGTYPE;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageRequest;
+import com.heme.logic.httpprotocols.message.pollmsg.PollMessageResponse;
 import com.heme.logic.httpprotocols.message.pullunreadmsg.PollUnreadMessageRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest.CONTENTTYPE;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgRequest;
+import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgResponse;
 import com.heme.logic.httpprotocols.message.sendmsg.c2g.SendGroupMsgRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.greennet.SendCommandRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.voicetest.SendVoiceTestMsgRequest;
@@ -27,7 +30,31 @@ public class MessageManager extends BaseBusinessLogicManager implements
 
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
-//		handleresponse(msgWhat, msgObj, handler)
+		if (response instanceof SendUserMsgResponse) 
+		{
+			SendUserMsgResponse sumResponse = (SendUserMsgResponse)response;
+			SendUserMsgRequest sumRequest = (SendUserMsgRequest)sumResponse.getmRequest();
+			switch (sumRequest.getContentType()) {
+			case TYPETEXT:
+				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_TEXT_C2C_SUCCESS:Constans.SEND_TEXT_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
+				break;
+			case TYPEPIC:
+				
+				break;
+			case TYPEVIDEO:
+				
+				break;
+			case TYPEVOICE:
+				
+				break;
+			default:
+				break;
+			}
+		}
+		else if (response instanceof PollMessageResponse) {
+			PollMessageResponse pmResponse = (PollMessageResponse)response;
+			handleresponse(Constans.POLL_C2C_SUCCESS, pmResponse.getPollMsgRes(), handler);
+		}
 	}
 
 	@Override

@@ -1,14 +1,10 @@
 package com.heme.logic.httpprotocols.login;
 
-import android.os.Environment;
-
 import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
-import com.heme.logic.module.Data.LoginReq;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
+import com.heme.logic.module.Data.LoginReq;
 
 public class LoginRequest extends BaseBusinessRequest {
-
-	public static final String LOGINDATAPATH = "smile/logininfo";
 	
 	private LoginReq.Builder mLoginDataBuilder;
 
@@ -36,6 +32,13 @@ public class LoginRequest extends BaseBusinessRequest {
 
 	}
 
+	public void setLoginInfo(LoginReq req)
+	{
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.Login);
+		mDataSvrProtoBuilder.setLoginReqInfo(req);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
+	}
+	
 	@Override
 	public void setVersionAndClientType(String version, int client_type) {
 		mLoginDataBuilder.setClientType(client_type);

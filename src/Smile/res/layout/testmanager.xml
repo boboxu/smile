@@ -6,10 +6,11 @@
     tools:context=".StartActivity" >
 
     <LinearLayout
+        android:id="@+id/line1"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:weightSum="3" android:id="@+id/line1">
+        android:weightSum="3" >
 
         <Button
             android:id="@+id/login"
@@ -45,8 +46,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/line1"
         android:orientation="horizontal"
-        android:weightSum="2" >
-"
+        android:weightSum="3" >
 
         <Button
             android:id="@+id/schoolinfo"
@@ -66,14 +66,140 @@
             android:textColor="#000"
             android:textSize="20dip" />
 
-<!--         <Button
-            android:id="@+id/classinfo"
+        <Button
+            android:id="@+id/loginwithlocaldata"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="status状态设置"
+            android:text="优先使用本地已保存数据登陆"
             android:textColor="#000"
-            android:textSize="20dip" /> -->
+            android:textSize="20dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line3"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line2"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <Button
+            android:id="@+id/btnc2ctext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2C文本消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2cvideo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2C视频消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2cvoice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2C语音消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2cpic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2C图片消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line4"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line3"
+        android:orientation="horizontal"
+        android:weightSum="4" >
+
+        <Button
+            android:id="@+id/btnc2gtext"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2G文本消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2gvideo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2G视频消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2gvoice"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2G语音消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2gpic"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2G图片消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/line5"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/line4"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <Button
+            android:id="@+id/btnvoicetest"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="发VoiceTest消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnpollmsg"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="终端主动拉取消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnpollunread"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="主动拉取未读消息列表"
+            android:textColor="#000"
+            android:textSize="20dip" />
     </LinearLayout>
 
 </RelativeLayout>

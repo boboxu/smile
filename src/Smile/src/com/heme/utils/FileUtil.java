@@ -8,29 +8,20 @@ import java.io.IOException;
 
 import android.os.Environment;
 
-import com.heme.logic.module.Data.LoginRsp;
+import com.heme.logic.module.Data.LoginReq;
+import com.heme.smile.SmileApplication;
 
 public class FileUtil {
-	
+
 	private static String FILEPATH = "smile/data/";
-	
+
 	public static void writeToFile(String filename,
-			com.google.protobuf.GeneratedMessage message) {
-		StringBuffer sb = new StringBuffer();
-		// 暂时用写文件来测试
+			com.google.protobuf.GeneratedMessage message, boolean append) {
+		String fullPath = getFullPathWithFileName(filename);
+		ensureFile(fullPath);
 		FileOutputStream output = null;
-		if (isSDCardExist()) 
-		{
-			sb.append(Environment.getExternalStorageDirectory().getPath());
-		}
-		else
-		{
-//			sb.append(get().getFilesDir().getAbsolutePath());
-		}
-		sb.append(FILEPATH);
-		sb.append(filename);
 		try {
-			output = new FileOutputStream(filename);
+			output = new FileOutputStream(fullPath, append);
 			output.write(message.toByteArray());
 			output.close();
 		} catch (FileNotFoundException e) {
@@ -44,11 +35,11 @@ public class FileUtil {
 		}
 	}
 
-	public static LoginRsp readLoginRspFromFile(String filename) {
+	public static LoginReq readLoginRspFromFile(String filename) {
 		FileInputStream fs = readFsFromFilePath(filename);
-		if ( fs != null) {
+		if (fs != null) {
 			try {
-				return LoginRsp.parseFrom(fs);
+				return LoginReq.parseFrom(fs);
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -69,28 +60,54 @@ public class FileUtil {
 		}
 		return fs;
 	}
-	
+
 	public static boolean isSDCardExist() {
-		return Environment.MEDIA_MOUNTED.equalsIgnoreCase(Environment.getExternalStorageState());
+		return Environment.MEDIA_MOUNTED.equalsIgnoreCase(Environment
+				.getExternalStorageState());
 	}
-	
-	public static boolean ensureFile(String path) {
-		if(null == path) {
+
+	private static boolean ensureFile(String path) {
+		if (null == path) {
 			return false;
 		}
-		
+
 		boolean ret = false;
-		
+
 		File file = new File(path);
-		if(!file.exists() || !file.isFile()) {
-			try{
-			    file.createNewFile();
-			    ret = true;
+		if (!file.exists() || !file.isFile()) {
+			try {
+				file.createNewFile();
+				ret = true;
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
 		}
-		
+
 		return ret;
+	}
+
+	private static String getFullPathWithFileName(String filename) {
+		StringBuffer sb = new StringBuffer();
+		if (isSDCardExist()) {
+			sb.append(Environment.getExternalStorageDirectory().getPath());
+		} else {
+			sb.append(SmileApplication.APPPATH);
+		}
+		sb.append(FILEPATH);
+		sb.append(filename);
+		return sb.toString();
+	}
+
+	public static boolean deleteFile(String filename) {
+		String fullpath = getFullPathWithFileName(filename);
+		File file = new File(fullpath);
+		if (!file.exists() || !file.isFile()) {
+			//本就没有
+			return true;
+		}
+		else
+		{
+			return file.delete();
+		}
 	}
 }

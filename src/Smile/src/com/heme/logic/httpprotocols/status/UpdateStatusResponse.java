@@ -7,7 +7,7 @@ import com.heme.logic.module.Status.SetStatusRsp;
 public class UpdateStatusResponse extends BaseStatusResponse {
 	SetStatusRsp mSetStatusRsp;
 
-	public SetStatusRsp getmGetGroupInfoRsp() {
+	public SetStatusRsp getmSetStatusRsp() {
 		return mSetStatusRsp;
 	}
 

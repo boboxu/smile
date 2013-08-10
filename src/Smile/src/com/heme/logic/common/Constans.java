@@ -60,54 +60,99 @@ public class Constans {
 	// 发送指令失败
 	public static final int SEND_PC_COMMOND_FAILED = SEND_PC_COMMOND_SUCCESS + 1;
 	// 发送图片消息成功c2c
+	public static final int SEND_PIC_C2C_SUCCESS = SEND_PC_COMMOND_FAILED + 1;
 	// 发送图片消息失败c2c
+	public static final int SEND_PIC_C2C_FAILED = SEND_PIC_C2C_SUCCESS + 1;
 	// 发送语音消息成功c2c
+	public static final int SEND_VOICE_C2C_SUCCESS = SEND_PIC_C2C_FAILED + 1;
 	// 发送语音消息失败c2c
+	public static final int SEND_VOICE_C2C_FAILED = SEND_VOICE_C2C_SUCCESS + 1;
 	// 发送视频消息成功c2c
+	public static final int SEND_VIDEO_C2C_SUCCESS = SEND_VOICE_C2C_FAILED + 1;
 	// 发送视频消息失败c2c
+	public static final int SEND_VIDEO_C2C_FAILED = SEND_VIDEO_C2C_SUCCESS + 1;
 	// 发送文本消息成功c2c
+	public static final int SEND_TEXT_C2C_SUCCESS = SEND_VIDEO_C2C_FAILED + 1;
 	// 发送文本消息失败c2c
+	public static final int SEND_TEXT_C2C_FAILED = SEND_TEXT_C2C_SUCCESS + 1;
 	/***
 	 * message c2g
 	 */
 	// 发送图片消息成功c2g
+	public static final int SEND_PIC_C2G_SUCCESS = SEND_TEXT_C2C_FAILED + 1;
 	// 发送图片消息失败c2g
+	public static final int SEND_PIC_C2G_FAILED = SEND_PIC_C2G_SUCCESS + 1;
 	// 发送语音消息成功c2g
+	public static final int SEND_VOICE_C2G_SUCCESS = SEND_PIC_C2G_FAILED + 1;
 	// 发送语音消息失败c2g
+	public static final int SEND_VOICE_C2G_FAILED = SEND_VOICE_C2G_SUCCESS + 1;
 	// 发送视频消息成功c2g
+	public static final int SEND_VIDEO_C2G_SUCCESS = SEND_VOICE_C2G_FAILED + 1;
 	// 发送视频消息失败c2g
+	public static final int SEND_VIDEO_C2G_FAILED = SEND_VIDEO_C2G_SUCCESS + 1;
 	// 发送文本消息成功c2g
+	public static final int SEND_TEXT_C2G_SUCCESS = SEND_VIDEO_C2G_FAILED + 1;
 	// 发送文本消息失败c2g
-	
+	public static final int SEND_TEXT_C2G_FAILED = SEND_TEXT_C2G_SUCCESS + 1;
 	/***
 	 * greennet
 	 */
 	// 发送语音测试消息成功c2c
+	public static final int SEND_VOICETEST_C2C_SUCCESS = SEND_TEXT_C2G_FAILED + 1;
 	// 发送语音测试消息失败c2c
+	public static final int SEND_VOICETEST_C2C_FAILED = SEND_VOICETEST_C2C_SUCCESS + 1;
 	// 发送语音测试消息成功c2g
+	public static final int SEND_VOICETEST_C2G_SUCCESS = SEND_VOICETEST_C2C_FAILED + 1;
 	// 发送语音测试消息失败c2g
+	public static final int SEND_VOICETEST_C2G_FAILED = SEND_VOICETEST_C2G_SUCCESS + 1;
 	
 	/***
 	 * pollmsg
 	 */
-	// 拉取未读成功c2c
-	// 拉取未读失败c2c
-	// 拉取指定用户未读成功c2c
-	// 拉取指定用户未读失败c2c
-	
-	// 拉取未读群消息成功c2g
-	// 拉取未读群消息失败c2g
-	
-	// 拉取未读系统消息成功
-	// 拉取未读系统消息失败
-	
-	
-	//
+	// 拉取未读成功 c2c
+	public static final int POLL_C2C_SUCCESS = SEND_VOICETEST_C2G_FAILED + 1;
+	// 拉取未读失败 c2c
+	public static final int POLL_C2C_FAILED = POLL_C2C_SUCCESS + 1;
+	// 拉取未读成功 c2g
+	public static final int POLL_C2G_SUCCESS = POLL_C2C_FAILED + 1;
+	// 拉取未读失败 c2g
+	public static final int POLL_C2G_FAILED = POLL_C2G_SUCCESS + 1;
+	// 拉取未读成功 系统消息
+	public static final int POLL_SYSTEM_SUCCESS = POLL_C2G_FAILED + 1;
+	// 拉取未读失败 系统消息
+	public static final int POLL_SYSTEM_FAILED = POLL_SYSTEM_SUCCESS + 1;
+	// 拉取未读成功 社区群消息
+	public static final int POLL_SOCIAL_SUCCESS = POLL_SYSTEM_FAILED + 1;
+	// 拉取未读失败 社区群消息
+	public static final int POLL_SOCIAL_FAILED = POLL_SOCIAL_SUCCESS + 1;
+	// 拉取未读成功 公告
+	public static final int POLL_NOTICE_SUCCESS = POLL_SOCIAL_FAILED + 1;
+	// 拉取未读失败 公告
+	public static final int POLL_NOTICE_FAILED = POLL_NOTICE_SUCCESS + 1;
+	// 拉取未读成功 课堂信息助手
+	public static final int POLL_CLASSASSIS_SUCCESS = POLL_NOTICE_FAILED + 1;
+	// 拉取未读失败 课堂信息助手
+	public static final int POLL_CLASSASSIS_FAILED = POLL_CLASSASSIS_SUCCESS + 1;
+	// 拉取未读成功 语音测评
+	public static final int POLL_VOICETEST_SUCCESS = POLL_CLASSASSIS_FAILED + 1;
+	// 拉取未读失败 语音测评
+	public static final int POLL_VOICETEST_FAILED = POLL_VOICETEST_SUCCESS + 1;
+	// 拉取未读成功 绿色上网助手
+	public static final int POLL_GREENNET_SUCCESS = POLL_VOICETEST_FAILED + 1;
+	// 拉取未读失败 绿色上网助手
+	public static final int POLL_GREENNET_FAILED = POLL_GREENNET_SUCCESS + 1;
+	/***
+	 * poll unreadinfo
+	 */
+	// 上线拉取未读信息 成功
+	public static final int POLL_UNREADINFO_SUCCESS = POLL_GREENNET_FAILED;
+	// 上线拉取未读信息 失败
+	public static final int POLL_UNREADINFO_FAILED = POLL_UNREADINFO_SUCCESS;
 	/***
 	 * schoolinfomanager
 	 */
 	// 拉取地区信息成功
-	public static final int GET_AREAINFO_SUCCESS = SEND_PC_COMMOND_FAILED + 1;
+	public static final int GET_AREAINFO_SUCCESS = POLL_UNREADINFO_FAILED + 1;
 	// 拉取地区信息失败
 	public static final int GET_AREAINFO_FAILED = GET_AREAINFO_SUCCESS + 1;
 	// 拉取学校信息成功

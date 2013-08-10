@@ -14,6 +14,7 @@ public class PollMessageRequest extends BaseMessageOprRequest {
 		mPollMsgbBuilder = PollMsgReq.newBuilder();
 		mPollMsgbBuilder.setUint64Uid(systemId);
 		mPollMsgbBuilder.setUint32MsgType(MSGTYPE.value(type));
+		super.setPollMsgReq(mPollMsgbBuilder.build(), ByteString.EMPTY);
 	}
 	
 	public void setPollMsgFromUid(long uid,ByteString context)

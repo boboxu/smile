@@ -22,16 +22,4 @@ public class BaseMessageOprResponse extends BasePbResponse{
 		mMessageOpr = MessageOpr.parseFrom(mTransData
 				.getBytesBody());
 	}
-	
-	public PollMsgRes getPollMsgRes() throws InvalidProtocolBufferException
-	{
-		return PollMsgRes.parseFrom(mTransData
-				.getBytesBody());
-	}
-	
-	public PollUnreadInfoRes getPollUnreadMsgRes() throws InvalidProtocolBufferException
-	{
-		return PollUnreadInfoRes.parseFrom(mTransData
-				.getBytesBody());
-	}
 }
