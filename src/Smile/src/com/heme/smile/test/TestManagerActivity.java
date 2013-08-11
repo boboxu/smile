@@ -85,7 +85,6 @@ public class TestManagerActivity extends BaseActivity implements
 				break;
 			case Constans.POLL_C2C_SUCCESS:
 				PollMsgRes pollresp = (PollMsgRes)msg.obj;
-				Util.showToast(TestManagerActivity.this, "拉到"+pollresp.getMsgUnreadInfoCount()+"条未读消息");
 				Intent intent = new Intent();
 				intent.setClass(TestManagerActivity.this, ResultActivity.class);
 				intent.putExtra("result", pollresp);

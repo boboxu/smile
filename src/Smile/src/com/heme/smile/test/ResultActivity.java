@@ -3,7 +3,6 @@ package com.heme.smile.test;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.ListActivity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -18,9 +17,10 @@ import android.widget.TextView;
 
 import com.heme.logic.module.Message.CommonMsg;
 import com.heme.logic.module.Message.PollMsgRes;
+import com.heme.smile.BaseActivity;
 import com.heme.smile.R;
 
-public class ResultActivity extends ListActivity {
+public class ResultActivity extends BaseActivity {
 	ListView mListView;
 	TextView mTextView;
 	private static List<String> mMsgList = new ArrayList<String>();
@@ -30,46 +30,61 @@ public class ResultActivity extends ListActivity {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activitytestresult);
-		
+		mTextView = (TextView) findViewById(R.id.textrst);
+
 		Intent intent = getIntent();
 		Object dataObject = intent.getExtras().get("result");
-		if (dataObject instanceof PollMsgRes) 
-		{
-			List<CommonMsg> msglist = ((PollMsgRes)dataObject).getRptMsgPollmsgList();
-			String strFormat = "%d到%d的%s信息%s";
+		if (dataObject instanceof PollMsgRes) {
+			List<CommonMsg> msglist = ((PollMsgRes) dataObject)
+					.getRptMsgPollmsgList();
+			String strFormat = "%d%d到%d的%s信息%s";
 			for (int i = 0; i < msglist.size(); i++) {
 				CommonMsg msgItem = msglist.get(i);
-				switch (msgItem.getUint32ContentType()) 
-				{
+				switch (msgItem.getUint32ContentType()) {
 				case CT_Text:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"文本",msgItem.getStrTextMsg()));
+					mMsgList.add(String.format(strFormat,i,
+							msgItem.getUint64FromUid(),
+							msgItem.getUint64ToUid(0), "文本",
+							msgItem.getStrTextMsg()));
 					break;
 				case CT_Picture:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"图片",msgItem.getMsgPicMsg().getStrPicUrl()));
+					mMsgList.add(String.format(strFormat, i,msgItem
+							.getUint64FromUid(), msgItem.getUint64ToUid(0),
+							"图片", msgItem.getMsgPicMsg().getStrPicUrl()));
 					break;
 				case CT_File:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"文件",msgItem.getMsgFileInfo().getStrFileUrl()));
+					mMsgList.add(String.format(strFormat, i,msgItem
+							.getUint64FromUid(), msgItem.getUint64ToUid(0),
+							"文件", msgItem.getMsgFileInfo().getStrFileUrl()));
 					break;
 				case CT_Voice:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"声音",msgItem.getMsgVoiceMsg().getStrVoiceUrl()));
+					mMsgList.add(String.format(strFormat, i,msgItem
+							.getUint64FromUid(), msgItem.getUint64ToUid(0),
+							"声音", msgItem.getMsgVoiceMsg().getStrVoiceUrl()));
 					break;
 				case CT_Video:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"视频",msgItem.getMsgVideoMsg().getStrVideoUrl()));
+					mMsgList.add(String.format(strFormat, i,msgItem
+							.getUint64FromUid(), msgItem.getUint64ToUid(0),
+							"视频", msgItem.getMsgVideoMsg().getStrVideoUrl()));
 					break;
 				case CT_IDCard:
-					mMsgList.add(String.format(strFormat,msgItem.getUint64FromUid(),msgItem.getUint64ToUid(0),"名片",msgItem.getStrTextMsg()));
+					mMsgList.add(String.format(strFormat,i,
+							msgItem.getUint64FromUid(),
+							msgItem.getUint64ToUid(0), "名片",
+							msgItem.getStrTextMsg()));
 					break;
 				default:
 					break;
 				}
 			}
+			strFormat = ((PollMsgRes) dataObject).getUint32CompleteFlag() == 0?"未读完有%d条消息":"已拉完有%d条消息";
+			mTextView.setText(String.format(strFormat, msglist.size()));
 		}
-		
+
 		mListView = (ListView) findViewById(R.id.lvrst);
-		mTextView = (TextView) findViewById(R.id.textrst);
-		
+
 		mListView.setAdapter(new LvAdapter(ResultActivity.this));
-		
+
 	}
 
 	static class LvAdapter extends BaseAdapter implements SectionIndexer {
@@ -101,14 +116,10 @@ public class ResultActivity extends ListActivity {
 			ViewHolder viewHolder = null;
 			if (convertView == null) {
 				convertView = LayoutInflater.from(mContext).inflate(
-						R.layout.contact_item, null);
+						R.layout.activitytestresultitem, null);
 				viewHolder = new ViewHolder();
-				viewHolder.tvCatalog = (TextView) convertView
-						.findViewById(R.id.contactitem_catalog);
-				viewHolder.ivAvatar = (ImageView) convertView
-						.findViewById(R.id.contactitem_avatar_iv);
 				viewHolder.tvNick = (TextView) convertView
-						.findViewById(R.id.contactitem_nick);
+						.findViewById(R.id.textView1);
 				convertView.setTag(viewHolder);
 			} else {
 				viewHolder = (ViewHolder) convertView.getTag();
