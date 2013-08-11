@@ -4,6 +4,9 @@ import java.util.List;
 
 import com.google.protobuf.ByteString;
 import com.heme.logic.module.Message.ClassInfo;
+import com.heme.logic.module.Message.ContentType;
+import com.heme.logic.module.Message.FileInfo;
+import com.heme.logic.module.Message.MessageType;
 import com.heme.logic.module.Message.NetGuardInfo;
 import com.heme.logic.module.Message.PicMsgInfo;
 import com.heme.logic.module.Message.VideoMsgInfo;
@@ -12,31 +15,12 @@ import com.heme.logic.module.Message.VoiceTestInfo;
 
 public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 
-	public enum CONTENTTYPE {
-		TYPETEXT, TYPEPIC, TYPEVOICE, TYPEVIDEO;
-		public static int value(CONTENTTYPE type) {
-			switch (type) {
-			case TYPETEXT:
-				return 0;
-			case TYPEPIC:
-				return 1;
-			case TYPEVOICE:
-				return 2;
-			case TYPEVIDEO:
-				return 3;
-			default:
-				return 1;
-			}
-		}
-		
-	}
-	
-	protected BaseMessageRequest(long srcId,String sessionId,List<Long> mTargetId,List<Long> mTargetGid,MSGTYPE msgType) {
+	protected BaseMessageRequest(long srcId,String sessionId,List<Long> mTargetId,List<Long> mTargetGid,MessageType msgType) {
 		super(srcId,sessionId);
 		mCommonMsgBuilder.setUint64FromUid(srcId);
 		mCommonMsgBuilder.addAllUint64ToUid(mTargetId);
 		mCommonMsgBuilder.addAllUint64ToGid(mTargetGid);
-		mCommonMsgBuilder.setUint32MsgType(MSGTYPE.value(msgType));
+		mCommonMsgBuilder.setUint32MsgType(msgType);
 		mCommonMsgBuilder.setUint64Time(System.currentTimeMillis());
 	}
 	
@@ -56,21 +40,26 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		super.setCommonMsg(context);
 	}
 	
-	public void setMsgContent(Object content,CONTENTTYPE type,ByteString context) {
-		mCommonMsgBuilder.setUint32ContentType(CONTENTTYPE.value(type));
+	public void setMsgContent(Object content,ContentType type,ByteString context) {
+		mCommonMsgBuilder.setUint32ContentType(type);
 		switch (type) {
-		case TYPETEXT:
+		case CT_Text:
 			setTextMsgInfo((String)content, context);
 			break;
-		case TYPEPIC:
+		case CT_Picture:
 			setPicMsgInfo((PicMsgInfo)content, context);
 			break;
-		case TYPEVIDEO:
+		case CT_Video:
 			setVideoMsgInfo((VideoMsgInfo)content, context);
 			break;
-		case TYPEVOICE:
+		case CT_Voice:
 			setVoiceMsgInfo((VoiceMsgInfo)content, context);
 			break;
+		case CT_File:
+			setFileMsgInfo((FileInfo)content,context);
+			break;
+		case CT_IDCard:
+			setIdCardInfo((String)content, context);
 		default:
 			break;
 		}
@@ -96,8 +85,20 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		super.setCommonMsg(context);
 	}
 	
-	public CONTENTTYPE getContentType()
+	private void setFileMsgInfo(FileInfo msgInfo,ByteString context)
 	{
-		return CONTENTTYPE.values()[mCommonMsgBuilder.getUint32ContentType()];
+		mCommonMsgBuilder.setMsgFileInfo(msgInfo);
+		super.setCommonMsg(context);
+	}
+	
+	private void setIdCardInfo(String msgInfo,ByteString context)
+	{
+		mCommonMsgBuilder.setStrTextMsg(msgInfo);
+		super.setCommonMsg(context);
+	}
+	
+	public ContentType getContentType()
+	{
+		return mCommonMsgBuilder.getUint32ContentType();
 	}
 }

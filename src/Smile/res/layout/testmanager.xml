@@ -82,7 +82,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/line2"
         android:orientation="horizontal"
-        android:weightSum="4" >
+        android:weightSum="5" >
 
         <Button
             android:id="@+id/btnc2ctext"
@@ -119,6 +119,15 @@
             android:text="C2C图片消息"
             android:textColor="#000"
             android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2cidcard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2C名片"
+            android:textColor="#000"
+            android:textSize="20dip" />
     </LinearLayout>
 
     <LinearLayout
@@ -127,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/line3"
         android:orientation="horizontal"
-        android:weightSum="4" >
+        android:weightSum="5" >
 
         <Button
             android:id="@+id/btnc2gtext"
@@ -162,6 +171,15 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="C2G图片消息"
+            android:textColor="#000"
+            android:textSize="20dip" />
+
+        <Button
+            android:id="@+id/btnc2gidcard"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="C2G名片"
             android:textColor="#000"
             android:textSize="20dip" />
     </LinearLayout>

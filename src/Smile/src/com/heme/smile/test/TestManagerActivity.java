@@ -3,6 +3,7 @@ package com.heme.smile.test;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -31,8 +32,8 @@ public class TestManagerActivity extends BaseActivity implements
 
 	private Button mLoginBtn, mParRegBtn, mStuRegBtn;
 	private Button mSchoolInfoBtn, mClassInfoBtn, mLocalLoginButtn;
-	private Button mC2Ctext, mC2Cvideo, mC2Cvoice, mC2Cpic;
-	private Button mC2Gtext, mC2Gvideo, mC2Gvoicet, mC2Gpic;
+	private Button mC2Ctext, mC2Cvideo, mC2Cvoice, mC2Cpic,mC2CIdCard;
+	private Button mC2Gtext, mC2Gvideo, mC2Gvoice, mC2Gpic,mC2GIdCard;
 	private Button mVoiceTest, mPollUnread, mPollMsg;
 
 	private Handler mHandler = new Handler() {
@@ -85,6 +86,10 @@ public class TestManagerActivity extends BaseActivity implements
 			case Constans.POLL_C2C_SUCCESS:
 				PollMsgRes pollresp = (PollMsgRes)msg.obj;
 				Util.showToast(TestManagerActivity.this, "拉到"+pollresp.getMsgUnreadInfoCount()+"条未读消息");
+				Intent intent = new Intent();
+				intent.setClass(TestManagerActivity.this, ResultActivity.class);
+				intent.putExtra("result", pollresp);
+				startActivity(intent);
 				break;
 			case Constans.POLL_C2C_FAILED:
 				Util.showToast(TestManagerActivity.this, "拉取失败");
@@ -100,20 +105,36 @@ public class TestManagerActivity extends BaseActivity implements
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.testmanager);
+
+		initLine1();
+		initLine2();
+		initLine3();
+		initLine4();
+		initLine5();
+	}
+
+	private void initLine1()
+	{
 		mLoginBtn = (Button) findViewById(R.id.login);
 		mLoginBtn.setOnClickListener(this);
 		mParRegBtn = (Button) findViewById(R.id.parregBtn);
 		mParRegBtn.setOnClickListener(this);
 		mStuRegBtn = (Button) findViewById(R.id.sturegBtn);
 		mStuRegBtn.setOnClickListener(this);
-
+	}
+	
+	private void initLine2()
+	{
 		mSchoolInfoBtn = (Button) findViewById(R.id.schoolinfo);
 		mSchoolInfoBtn.setOnClickListener(this);
 		mClassInfoBtn = (Button) findViewById(R.id.classinfo);
 		mClassInfoBtn.setOnClickListener(this);
 		mLocalLoginButtn = (Button) findViewById(R.id.loginwithlocaldata);
 		mLocalLoginButtn.setOnClickListener(this);
-
+	}
+	
+	private void initLine3()
+	{
 		mC2Ctext = (Button) findViewById(R.id.btnc2ctext);
 		mC2Ctext.setOnClickListener(this);
 		mC2Cvideo = (Button) findViewById(R.id.btnc2cvideo);
@@ -122,16 +143,26 @@ public class TestManagerActivity extends BaseActivity implements
 		mC2Cvoice.setOnClickListener(this);
 		mC2Cpic = (Button) findViewById(R.id.btnc2cpic);
 		mC2Cpic.setOnClickListener(this);
-
+		mC2CIdCard = (Button) findViewById(R.id.btnc2cidcard);
+		mC2CIdCard.setOnClickListener(this);
+	}
+	
+	private void initLine4()
+	{
 		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
 		mC2Gtext.setOnClickListener(this);
-		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
-		mC2Gtext.setOnClickListener(this);
-		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
-		mC2Gtext.setOnClickListener(this);
-		mC2Gtext = (Button) findViewById(R.id.btnc2gtext);
-		mC2Gtext.setOnClickListener(this);
-
+		mC2GIdCard = (Button) findViewById(R.id.btnc2gidcard);
+		mC2GIdCard.setOnClickListener(this);
+		mC2Gpic = (Button) findViewById(R.id.btnc2gpic);
+		mC2Gpic.setOnClickListener(this);
+		mC2Gvideo = (Button) findViewById(R.id.btnc2gvideo);
+		mC2Gvideo.setOnClickListener(this);
+		mC2Gvoice = (Button) findViewById(R.id.btnc2gvoice);
+		mC2Gvoice.setOnClickListener(this);
+	}
+	
+	private void initLine5()
+	{
 		mVoiceTest = (Button) findViewById(R.id.btnvoicetest);
 		mVoiceTest.setOnClickListener(this);
 		mPollMsg = (Button) findViewById(R.id.btnpollmsg);
@@ -139,7 +170,7 @@ public class TestManagerActivity extends BaseActivity implements
 		mPollUnread = (Button) findViewById(R.id.btnpollunread);
 		mPollUnread.setOnClickListener(this);
 	}
-
+	
 	@Override
 	public void onClick(View arg0) {
 		switch (arg0.getId()) {
@@ -173,6 +204,9 @@ public class TestManagerActivity extends BaseActivity implements
 		case R.id.btnc2cpic:
 			testc2cpic();
 			break;
+		case R.id.btnc2cidcard:
+			testc2cidcard();
+			break;
 		case R.id.btnc2gtext:
 			testc2gtext();
 		case R.id.btnc2gvideo:
@@ -183,6 +217,9 @@ public class TestManagerActivity extends BaseActivity implements
 			break;
 		case R.id.btnc2gpic:
 			testc2gpic();
+			break;
+		case R.id.btnc2gidcard:
+			testc2gidcard();
 			break;
 		case R.id.btnvoicetest:
 			testvoicetest();
@@ -292,6 +329,11 @@ public class TestManagerActivity extends BaseActivity implements
 				msgInfoBuilder.build(), mHandler);
 	}
 
+	private void testc2cidcard()
+	{
+		LogicManager.messageManager().sendIdCardToUser(1234567, "波徐;男;码农", mHandler);
+	}
+	
 	private void testc2gtext() {
 
 	}
@@ -308,6 +350,11 @@ public class TestManagerActivity extends BaseActivity implements
 
 	}
 
+	private void testc2gidcard()
+	{
+		
+	}
+	
 	private void testvoicetest() {
 
 	}

@@ -2,11 +2,10 @@ package com.heme.logic.httpprotocols.push;
 
 import java.util.List;
 
-import android.R.integer;
-
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest;
 import com.heme.logic.module.Message.CommonMsg;
+import com.heme.logic.module.Message.MsgCommand;
 import com.heme.logic.module.Message.PushMsgReq;
 
 public class PushMsgRequest extends BaseMessageOprRequest {
@@ -40,8 +39,8 @@ public class PushMsgRequest extends BaseMessageOprRequest {
 		return mMessageOpr.getUint64Uid();
 	}
 	
-	public COMMANDTYPE getCmdType()
+	public MsgCommand getCmdType()
 	{
-		return COMMANDTYPE.values()[mMessageOpr.getUint32Command()];
+		return mMessageOpr.getUint32Command();
 	}
 }

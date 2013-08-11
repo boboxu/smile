@@ -8,17 +8,17 @@ import com.google.protobuf.ByteString;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
-import com.heme.logic.httpprotocols.base.message.BaseMessageOprRequest.MSGTYPE;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageRequest;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageResponse;
 import com.heme.logic.httpprotocols.message.pullunreadmsg.PollUnreadMessageRequest;
-import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest.CONTENTTYPE;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgResponse;
 import com.heme.logic.httpprotocols.message.sendmsg.c2g.SendGroupMsgRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.greennet.SendCommandRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.voicetest.SendVoiceTestMsgRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
+import com.heme.logic.module.Message.ContentType;
+import com.heme.logic.module.Message.MessageType;
 import com.heme.logic.module.Message.NetGuardInfo;
 import com.heme.logic.module.Message.PicMsgInfo;
 import com.heme.logic.module.Message.VideoMsgInfo;
@@ -35,18 +35,20 @@ public class MessageManager extends BaseBusinessLogicManager implements
 			SendUserMsgResponse sumResponse = (SendUserMsgResponse)response;
 			SendUserMsgRequest sumRequest = (SendUserMsgRequest)sumResponse.getmRequest();
 			switch (sumRequest.getContentType()) {
-			case TYPETEXT:
+			case CT_Text:
 				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_TEXT_C2C_SUCCESS:Constans.SEND_TEXT_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
 				break;
-			case TYPEPIC:
-				
+			case CT_Picture:
+				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_PIC_C2C_SUCCESS:Constans.SEND_PIC_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
 				break;
-			case TYPEVIDEO:
-				
+			case CT_Video:
+				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_VIDEO_C2C_SUCCESS:Constans.SEND_VIDEO_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
 				break;
-			case TYPEVOICE:
-				
+			case CT_Voice:
+				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_VOICE_C2C_SUCCESS:Constans.SEND_VOICE_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
 				break;
+			case CT_IDCard:
+				handleresponse(sumResponse.getSendMsgRes().getUint32Result() == 0?Constans.SEND_IDCARD_C2C_SUCCESS:Constans.SEND_IDCARD_C2C_FAILED, sumResponse.getSendMsgRes(), handler);
 			default:
 				break;
 			}
@@ -65,7 +67,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetIdArrayList);
-		request.setMsgContent(picinfo, CONTENTTYPE.TYPEPIC, ByteString.EMPTY);
+		request.setMsgContent(picinfo, ContentType.CT_Picture, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -77,7 +79,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetIdArrayList);
-		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE,
+		request.setMsgContent(voiceinfo, ContentType.CT_Voice,
 				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -90,7 +92,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetIdArrayList);
-		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO,
+		request.setMsgContent(videoinfo, ContentType.CT_Video,
 				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -103,7 +105,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetIdArrayList);
-		request.setMsgContent(textinfo, CONTENTTYPE.TYPETEXT, ByteString.EMPTY);
+		request.setMsgContent(textinfo, ContentType.CT_Text, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -115,7 +117,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetGidArrayList);
-		request.setMsgContent(picinfo, CONTENTTYPE.TYPEPIC, ByteString.EMPTY);
+		request.setMsgContent(picinfo, ContentType.CT_Picture, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -127,7 +129,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetGidArrayList);
-		request.setMsgContent(voiceinfo, CONTENTTYPE.TYPEVOICE,
+		request.setMsgContent(voiceinfo,ContentType.CT_Voice,
 				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -140,7 +142,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetGidArrayList);
-		request.setMsgContent(videoinfo, CONTENTTYPE.TYPEVIDEO,
+		request.setMsgContent(videoinfo,ContentType.CT_Video,
 				ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 
@@ -154,10 +156,11 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(), targetGidArrayList);
-		request.setMsgContent(textinfo, CONTENTTYPE.TYPETEXT, ByteString.EMPTY);
+		request.setMsgContent(textinfo,ContentType.CT_Text, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
+	
 	@Override
 	public void sendGreenNetCommand(long targetId, NetGuardInfo msgInfo,
 			Handler handler) {
@@ -200,7 +203,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollUserMsg(long fromId, Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEC2C);
+				.accountManager().getCurrentSessionId(),  MessageType.MT_C2C);
 		request.setPollMsgFromUid(fromId, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
@@ -209,7 +212,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollAllUserMsg(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEC2C);
+				.accountManager().getCurrentSessionId(), MessageType.MT_C2C);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 
 	}
@@ -218,7 +221,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollGroupMsg(long fromGid, Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEGROUP);
+				.accountManager().getCurrentSessionId(),MessageType.MT_Group);
 		request.setPollMsgFromGid(fromGid, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 
@@ -228,7 +231,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollAllGroupMsg(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEGROUP);
+				.accountManager().getCurrentSessionId(), MessageType.MT_Group);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 
 	}
@@ -237,7 +240,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollSystemInfo(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPESYSTEM);
+				.accountManager().getCurrentSessionId(),MessageType.MT_System);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -246,7 +249,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
 				.accountManager().getCurrentSessionId(),
-				MSGTYPE.TYPESOCIALGROUP);
+				MessageType.MT_Group);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -254,7 +257,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollNoticeInfo(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPENOTICE);
+				.accountManager().getCurrentSessionId(), MessageType.MT_Broadcast);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -262,7 +265,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollClassAssisInfo(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPECLASSASSIS);
+				.accountManager().getCurrentSessionId(), MessageType.MT_ClassInfo);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -270,7 +273,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollVoiceTestInfo(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPEVOICETEST);
+				.accountManager().getCurrentSessionId(), MessageType.MT_VoiceTest);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -278,7 +281,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 	public void pollNetGuardInfo(Handler handler) {
 		PollMessageRequest request = new PollMessageRequest(LogicManager
 				.accountManager().getCurrentAccoutSystemId(), LogicManager
-				.accountManager().getCurrentSessionId(), MSGTYPE.TYPENETGUARD);
+				.accountManager().getCurrentSessionId(), MessageType.MT_NetGuard);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -287,6 +290,30 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		PollUnreadMessageRequest request = new PollUnreadMessageRequest(
 				LogicManager.accountManager().getCurrentAccoutSystemId(),
 				LogicManager.accountManager().getCurrentSessionId());
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	}
+
+	@Override
+	public void sendIdCardToUser(long targetId, String stridinfo,
+			Handler handler) {
+		ArrayList<Long> targetIdArrayList = new ArrayList<Long>();
+		targetIdArrayList.add(Long.valueOf(targetId));
+		SendUserMsgRequest request = new SendUserMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetIdArrayList);
+		request.setMsgContent(stridinfo, ContentType.CT_IDCard, ByteString.EMPTY);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	}
+
+	@Override
+	public void sendIdCardToGroup(long groupId, String stridinfo,
+			Handler handler) {
+		ArrayList<Long> targetGidArrayList = new ArrayList<Long>();
+		targetGidArrayList.add(Long.valueOf(groupId));
+		SendGroupMsgRequest request = new SendGroupMsgRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), targetGidArrayList);
+		request.setMsgContent(stridinfo, ContentType.CT_IDCard, ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

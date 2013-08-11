@@ -2106,6 +2106,24 @@ public final class Data {
      */
     com.google.protobuf.ByteString
         getVerifyCodeBytes();
+
+    // required uint32 gender = 10;
+    /**
+     * <code>required uint32 gender = 10;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    boolean hasGender();
+    /**
+     * <code>required uint32 gender = 10;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    int getGender();
   }
   /**
    * Protobuf type {@code com.heme.logic.module.RegParentReq}
@@ -2208,6 +2226,11 @@ public final class Data {
             case 74: {
               bitField0_ |= 0x00000080;
               verifyCode_ = input.readBytes();
+              break;
+            }
+            case 80: {
+              bitField0_ |= 0x00000100;
+              gender_ = input.readUInt32();
               break;
             }
           }
@@ -2708,6 +2731,30 @@ public final class Data {
       }
     }
 
+    // required uint32 gender = 10;
+    public static final int GENDER_FIELD_NUMBER = 10;
+    private int gender_;
+    /**
+     * <code>required uint32 gender = 10;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    public boolean hasGender() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>required uint32 gender = 10;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    public int getGender() {
+      return gender_;
+    }
+
     private void initFields() {
       versionNo_ = "";
       clientType_ = 0;
@@ -2718,6 +2765,7 @@ public final class Data {
       password_ = "";
       childStudentId_ = com.google.protobuf.LazyStringArrayList.EMPTY;
       verifyCode_ = "";
+      gender_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2749,6 +2797,10 @@ public final class Data {
         return false;
       }
       if (!hasVerifyCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGender()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -2785,6 +2837,9 @@ public final class Data {
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         output.writeBytes(9, getVerifyCodeBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeUInt32(10, gender_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -2835,6 +2890,10 @@ public final class Data {
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(9, getVerifyCodeBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(10, gender_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2974,6 +3033,8 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000080);
         verifyCode_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
+        gender_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000200);
         return this;
       }
 
@@ -3040,6 +3101,10 @@ public final class Data {
           to_bitField0_ |= 0x00000080;
         }
         result.verifyCode_ = verifyCode_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.gender_ = gender_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -3104,6 +3169,9 @@ public final class Data {
           verifyCode_ = other.verifyCode_;
           onChanged();
         }
+        if (other.hasGender()) {
+          setGender(other.getGender());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -3134,6 +3202,10 @@ public final class Data {
           return false;
         }
         if (!hasVerifyCode()) {
+          
+          return false;
+        }
+        if (!hasGender()) {
           
           return false;
         }
@@ -4019,6 +4091,55 @@ public final class Data {
   }
   bitField0_ |= 0x00000100;
         verifyCode_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 gender = 10;
+      private int gender_ ;
+      /**
+       * <code>required uint32 gender = 10;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public boolean hasGender() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>required uint32 gender = 10;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public int getGender() {
+        return gender_;
+      }
+      /**
+       * <code>required uint32 gender = 10;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public Builder setGender(int value) {
+        bitField0_ |= 0x00000200;
+        gender_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 gender = 10;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public Builder clearGender() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        gender_ = 0;
         onChanged();
         return this;
       }
@@ -10840,6 +10961,24 @@ public final class Data {
      */
     com.google.protobuf.ByteString
         getVerifyCodeBytes();
+
+    // required uint32 gender = 17;
+    /**
+     * <code>required uint32 gender = 17;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    boolean hasGender();
+    /**
+     * <code>required uint32 gender = 17;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    int getGender();
   }
   /**
    * Protobuf type {@code com.heme.logic.module.RegStudentReq}
@@ -10974,6 +11113,11 @@ public final class Data {
             case 130: {
               bitField0_ |= 0x00008000;
               verifyCode_ = input.readBytes();
+              break;
+            }
+            case 136: {
+              bitField0_ |= 0x00010000;
+              gender_ = input.readUInt32();
               break;
             }
           }
@@ -11865,6 +12009,30 @@ public final class Data {
       }
     }
 
+    // required uint32 gender = 17;
+    public static final int GENDER_FIELD_NUMBER = 17;
+    private int gender_;
+    /**
+     * <code>required uint32 gender = 17;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    public boolean hasGender() {
+      return ((bitField0_ & 0x00010000) == 0x00010000);
+    }
+    /**
+     * <code>required uint32 gender = 17;</code>
+     *
+     * <pre>
+     *性别1：男 2：女 3：未知
+     * </pre>
+     */
+    public int getGender() {
+      return gender_;
+    }
+
     private void initFields() {
       versionNo_ = "";
       clientType_ = 0;
@@ -11882,6 +12050,7 @@ public final class Data {
       schoolId_ = "";
       classId_ = "";
       verifyCode_ = "";
+      gender_ = 0;
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -11917,6 +12086,10 @@ public final class Data {
         return false;
       }
       if (!hasVerifyCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasGender()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -11974,6 +12147,9 @@ public final class Data {
       }
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         output.writeBytes(16, getVerifyCodeBytes());
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        output.writeUInt32(17, gender_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -12047,6 +12223,10 @@ public final class Data {
       if (((bitField0_ & 0x00008000) == 0x00008000)) {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(16, getVerifyCodeBytes());
+      }
+      if (((bitField0_ & 0x00010000) == 0x00010000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(17, gender_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -12200,6 +12380,8 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00004000);
         verifyCode_ = "";
         bitField0_ = (bitField0_ & ~0x00008000);
+        gender_ = 0;
+        bitField0_ = (bitField0_ & ~0x00010000);
         return this;
       }
 
@@ -12292,6 +12474,10 @@ public final class Data {
           to_bitField0_ |= 0x00008000;
         }
         result.verifyCode_ = verifyCode_;
+        if (((from_bitField0_ & 0x00010000) == 0x00010000)) {
+          to_bitField0_ |= 0x00010000;
+        }
+        result.gender_ = gender_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -12386,6 +12572,9 @@ public final class Data {
           verifyCode_ = other.verifyCode_;
           onChanged();
         }
+        if (other.hasGender()) {
+          setGender(other.getGender());
+        }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
       }
@@ -12420,6 +12609,10 @@ public final class Data {
           return false;
         }
         if (!hasVerifyCode()) {
+          
+          return false;
+        }
+        if (!hasGender()) {
           
           return false;
         }
@@ -13960,6 +14153,55 @@ public final class Data {
   }
   bitField0_ |= 0x00008000;
         verifyCode_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 gender = 17;
+      private int gender_ ;
+      /**
+       * <code>required uint32 gender = 17;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public boolean hasGender() {
+        return ((bitField0_ & 0x00010000) == 0x00010000);
+      }
+      /**
+       * <code>required uint32 gender = 17;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public int getGender() {
+        return gender_;
+      }
+      /**
+       * <code>required uint32 gender = 17;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public Builder setGender(int value) {
+        bitField0_ |= 0x00010000;
+        gender_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 gender = 17;</code>
+       *
+       * <pre>
+       *性别1：男 2：女 3：未知
+       * </pre>
+       */
+      public Builder clearGender() {
+        bitField0_ = (bitField0_ & ~0x00010000);
+        gender_ = 0;
         onChanged();
         return this;
       }
@@ -37100,63 +37342,225 @@ public final class Data {
      */
     long getSystemId();
 
-    // required string area = 5;
+    // optional string provinceCode = 5;
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
+     *省编号
      * </pre>
      */
-    boolean hasArea();
+    boolean hasProvinceCode();
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
+     *省编号
      * </pre>
      */
-    java.lang.String getArea();
+    java.lang.String getProvinceCode();
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
-     * </pre>
-     */
-    com.google.protobuf.ByteString
-        getAreaBytes();
-
-    // required string school = 6;
-    /**
-     * <code>required string school = 6;</code>
-     *
-     * <pre>
-     *所在学校
-     * </pre>
-     */
-    boolean hasSchool();
-    /**
-     * <code>required string school = 6;</code>
-     *
-     * <pre>
-     *所在学校
-     * </pre>
-     */
-    java.lang.String getSchool();
-    /**
-     * <code>required string school = 6;</code>
-     *
-     * <pre>
-     *所在学校
+     *省编号
      * </pre>
      */
     com.google.protobuf.ByteString
-        getSchoolBytes();
+        getProvinceCodeBytes();
 
-    // required string groupName = 7;
+    // optional string provinceName = 6;
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>optional string provinceName = 6;</code>
+     *
+     * <pre>
+     *省名称
+     * </pre>
+     */
+    boolean hasProvinceName();
+    /**
+     * <code>optional string provinceName = 6;</code>
+     *
+     * <pre>
+     *省名称
+     * </pre>
+     */
+    java.lang.String getProvinceName();
+    /**
+     * <code>optional string provinceName = 6;</code>
+     *
+     * <pre>
+     *省名称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getProvinceNameBytes();
+
+    // optional string cityCode = 7;
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    boolean hasCityCode();
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    java.lang.String getCityCode();
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCityCodeBytes();
+
+    // optional string cityName = 8;
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    boolean hasCityName();
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    java.lang.String getCityName();
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCityNameBytes();
+
+    // optional string countyCode = 9;
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    boolean hasCountyCode();
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    java.lang.String getCountyCode();
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCountyCodeBytes();
+
+    // optional string countyName = 10;
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    boolean hasCountyName();
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    java.lang.String getCountyName();
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getCountyNameBytes();
+
+    // optional string schoolId = 11;
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    boolean hasSchoolId();
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    java.lang.String getSchoolId();
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSchoolIdBytes();
+
+    // optional string schoolName = 12;
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    boolean hasSchoolName();
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    java.lang.String getSchoolName();
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSchoolNameBytes();
+
+    // required string groupName = 13;
+    /**
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
@@ -37164,7 +37568,7 @@ public final class Data {
      */
     boolean hasGroupName();
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
@@ -37172,7 +37576,7 @@ public final class Data {
      */
     java.lang.String getGroupName();
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
@@ -37181,9 +37585,9 @@ public final class Data {
     com.google.protobuf.ByteString
         getGroupNameBytes();
 
-    // required uint32 verifyType = 8;
+    // required uint32 verifyType = 14;
     /**
-     * <code>required uint32 verifyType = 8;</code>
+     * <code>required uint32 verifyType = 14;</code>
      *
      * <pre>
      *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
@@ -37191,7 +37595,7 @@ public final class Data {
      */
     boolean hasVerifyType();
     /**
-     * <code>required uint32 verifyType = 8;</code>
+     * <code>required uint32 verifyType = 14;</code>
      *
      * <pre>
      *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
@@ -37199,9 +37603,9 @@ public final class Data {
      */
     int getVerifyType();
 
-    // repeated uint64 memberSystemId = 9;
+    // repeated uint64 memberSystemId = 15;
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37209,7 +37613,7 @@ public final class Data {
      */
     java.util.List<java.lang.Long> getMemberSystemIdList();
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37217,7 +37621,7 @@ public final class Data {
      */
     int getMemberSystemIdCount();
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37302,38 +37706,68 @@ public final class Data {
             }
             case 42: {
               bitField0_ |= 0x00000010;
-              area_ = input.readBytes();
+              provinceCode_ = input.readBytes();
               break;
             }
             case 50: {
               bitField0_ |= 0x00000020;
-              school_ = input.readBytes();
+              provinceName_ = input.readBytes();
               break;
             }
             case 58: {
               bitField0_ |= 0x00000040;
+              cityCode_ = input.readBytes();
+              break;
+            }
+            case 66: {
+              bitField0_ |= 0x00000080;
+              cityName_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              bitField0_ |= 0x00000100;
+              countyCode_ = input.readBytes();
+              break;
+            }
+            case 82: {
+              bitField0_ |= 0x00000200;
+              countyName_ = input.readBytes();
+              break;
+            }
+            case 90: {
+              bitField0_ |= 0x00000400;
+              schoolId_ = input.readBytes();
+              break;
+            }
+            case 98: {
+              bitField0_ |= 0x00000800;
+              schoolName_ = input.readBytes();
+              break;
+            }
+            case 106: {
+              bitField0_ |= 0x00001000;
               groupName_ = input.readBytes();
               break;
             }
-            case 64: {
-              bitField0_ |= 0x00000080;
+            case 112: {
+              bitField0_ |= 0x00002000;
               verifyType_ = input.readUInt32();
               break;
             }
-            case 72: {
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+            case 120: {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
                 memberSystemId_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00004000;
               }
               memberSystemId_.add(input.readUInt64());
               break;
             }
-            case 74: {
+            case 122: {
               int length = input.readRawVarint32();
               int limit = input.pushLimit(length);
-              if (!((mutable_bitField0_ & 0x00000100) == 0x00000100) && input.getBytesUntilLimit() > 0) {
+              if (!((mutable_bitField0_ & 0x00004000) == 0x00004000) && input.getBytesUntilLimit() > 0) {
                 memberSystemId_ = new java.util.ArrayList<java.lang.Long>();
-                mutable_bitField0_ |= 0x00000100;
+                mutable_bitField0_ |= 0x00004000;
               }
               while (input.getBytesUntilLimit() > 0) {
                 memberSystemId_.add(input.readUInt64());
@@ -37349,7 +37783,7 @@ public final class Data {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((mutable_bitField0_ & 0x00004000) == 0x00004000)) {
           memberSystemId_ = java.util.Collections.unmodifiableList(memberSystemId_);
         }
         this.unknownFields = unknownFields.build();
@@ -37542,28 +37976,28 @@ public final class Data {
       return systemId_;
     }
 
-    // required string area = 5;
-    public static final int AREA_FIELD_NUMBER = 5;
-    private java.lang.Object area_;
+    // optional string provinceCode = 5;
+    public static final int PROVINCECODE_FIELD_NUMBER = 5;
+    private java.lang.Object provinceCode_;
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
+     *省编号
      * </pre>
      */
-    public boolean hasArea() {
+    public boolean hasProvinceCode() {
       return ((bitField0_ & 0x00000010) == 0x00000010);
     }
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
+     *省编号
      * </pre>
      */
-    public java.lang.String getArea() {
-      java.lang.Object ref = area_;
+    public java.lang.String getProvinceCode() {
+      java.lang.Object ref = provinceCode_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -37571,54 +38005,54 @@ public final class Data {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          area_ = s;
+          provinceCode_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string area = 5;</code>
+     * <code>optional string provinceCode = 5;</code>
      *
      * <pre>
-     *所在地区
+     *省编号
      * </pre>
      */
     public com.google.protobuf.ByteString
-        getAreaBytes() {
-      java.lang.Object ref = area_;
+        getProvinceCodeBytes() {
+      java.lang.Object ref = provinceCode_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        area_ = b;
+        provinceCode_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    // required string school = 6;
-    public static final int SCHOOL_FIELD_NUMBER = 6;
-    private java.lang.Object school_;
+    // optional string provinceName = 6;
+    public static final int PROVINCENAME_FIELD_NUMBER = 6;
+    private java.lang.Object provinceName_;
     /**
-     * <code>required string school = 6;</code>
+     * <code>optional string provinceName = 6;</code>
      *
      * <pre>
-     *所在学校
+     *省名称
      * </pre>
      */
-    public boolean hasSchool() {
+    public boolean hasProvinceName() {
       return ((bitField0_ & 0x00000020) == 0x00000020);
     }
     /**
-     * <code>required string school = 6;</code>
+     * <code>optional string provinceName = 6;</code>
      *
      * <pre>
-     *所在学校
+     *省名称
      * </pre>
      */
-    public java.lang.String getSchool() {
-      java.lang.Object ref = school_;
+    public java.lang.String getProvinceName() {
+      java.lang.Object ref = provinceName_;
       if (ref instanceof java.lang.String) {
         return (java.lang.String) ref;
       } else {
@@ -37626,47 +38060,377 @@ public final class Data {
             (com.google.protobuf.ByteString) ref;
         java.lang.String s = bs.toStringUtf8();
         if (bs.isValidUtf8()) {
-          school_ = s;
+          provinceName_ = s;
         }
         return s;
       }
     }
     /**
-     * <code>required string school = 6;</code>
+     * <code>optional string provinceName = 6;</code>
      *
      * <pre>
-     *所在学校
+     *省名称
      * </pre>
      */
     public com.google.protobuf.ByteString
-        getSchoolBytes() {
-      java.lang.Object ref = school_;
+        getProvinceNameBytes() {
+      java.lang.Object ref = provinceName_;
       if (ref instanceof java.lang.String) {
         com.google.protobuf.ByteString b = 
             com.google.protobuf.ByteString.copyFromUtf8(
                 (java.lang.String) ref);
-        school_ = b;
+        provinceName_ = b;
         return b;
       } else {
         return (com.google.protobuf.ByteString) ref;
       }
     }
 
-    // required string groupName = 7;
-    public static final int GROUPNAME_FIELD_NUMBER = 7;
+    // optional string cityCode = 7;
+    public static final int CITYCODE_FIELD_NUMBER = 7;
+    private java.lang.Object cityCode_;
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    public boolean hasCityCode() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    public java.lang.String getCityCode() {
+      java.lang.Object ref = cityCode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cityCode_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cityCode = 7;</code>
+     *
+     * <pre>
+     *市编号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCityCodeBytes() {
+      java.lang.Object ref = cityCode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cityCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string cityName = 8;
+    public static final int CITYNAME_FIELD_NUMBER = 8;
+    private java.lang.Object cityName_;
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    public boolean hasCityName() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    public java.lang.String getCityName() {
+      java.lang.Object ref = cityName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          cityName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string cityName = 8;</code>
+     *
+     * <pre>
+     *市名称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCityNameBytes() {
+      java.lang.Object ref = cityName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        cityName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string countyCode = 9;
+    public static final int COUNTYCODE_FIELD_NUMBER = 9;
+    private java.lang.Object countyCode_;
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    public boolean hasCountyCode() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    public java.lang.String getCountyCode() {
+      java.lang.Object ref = countyCode_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          countyCode_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string countyCode = 9;</code>
+     *
+     * <pre>
+     *县编号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCountyCodeBytes() {
+      java.lang.Object ref = countyCode_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        countyCode_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string countyName = 10;
+    public static final int COUNTYNAME_FIELD_NUMBER = 10;
+    private java.lang.Object countyName_;
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    public boolean hasCountyName() {
+      return ((bitField0_ & 0x00000200) == 0x00000200);
+    }
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    public java.lang.String getCountyName() {
+      java.lang.Object ref = countyName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          countyName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string countyName = 10;</code>
+     *
+     * <pre>
+     *县名称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getCountyNameBytes() {
+      java.lang.Object ref = countyName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        countyName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string schoolId = 11;
+    public static final int SCHOOLID_FIELD_NUMBER = 11;
+    private java.lang.Object schoolId_;
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    public boolean hasSchoolId() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    public java.lang.String getSchoolId() {
+      java.lang.Object ref = schoolId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          schoolId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string schoolId = 11;</code>
+     *
+     * <pre>
+     *所在学校ID   
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSchoolIdBytes() {
+      java.lang.Object ref = schoolId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        schoolId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string schoolName = 12;
+    public static final int SCHOOLNAME_FIELD_NUMBER = 12;
+    private java.lang.Object schoolName_;
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    public boolean hasSchoolName() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    public java.lang.String getSchoolName() {
+      java.lang.Object ref = schoolName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          schoolName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string schoolName = 12;</code>
+     *
+     * <pre>
+     *所在学校名称
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSchoolNameBytes() {
+      java.lang.Object ref = schoolName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        schoolName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required string groupName = 13;
+    public static final int GROUPNAME_FIELD_NUMBER = 13;
     private java.lang.Object groupName_;
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
      * </pre>
      */
     public boolean hasGroupName() {
-      return ((bitField0_ & 0x00000040) == 0x00000040);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
@@ -37687,7 +38451,7 @@ public final class Data {
       }
     }
     /**
-     * <code>required string groupName = 7;</code>
+     * <code>required string groupName = 13;</code>
      *
      * <pre>
      *群组名称
@@ -37707,21 +38471,21 @@ public final class Data {
       }
     }
 
-    // required uint32 verifyType = 8;
-    public static final int VERIFYTYPE_FIELD_NUMBER = 8;
+    // required uint32 verifyType = 14;
+    public static final int VERIFYTYPE_FIELD_NUMBER = 14;
     private int verifyType_;
     /**
-     * <code>required uint32 verifyType = 8;</code>
+     * <code>required uint32 verifyType = 14;</code>
      *
      * <pre>
      *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
      * </pre>
      */
     public boolean hasVerifyType() {
-      return ((bitField0_ & 0x00000080) == 0x00000080);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>required uint32 verifyType = 8;</code>
+     * <code>required uint32 verifyType = 14;</code>
      *
      * <pre>
      *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
@@ -37731,11 +38495,11 @@ public final class Data {
       return verifyType_;
     }
 
-    // repeated uint64 memberSystemId = 9;
-    public static final int MEMBERSYSTEMID_FIELD_NUMBER = 9;
+    // repeated uint64 memberSystemId = 15;
+    public static final int MEMBERSYSTEMID_FIELD_NUMBER = 15;
     private java.util.List<java.lang.Long> memberSystemId_;
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37746,7 +38510,7 @@ public final class Data {
       return memberSystemId_;
     }
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37756,7 +38520,7 @@ public final class Data {
       return memberSystemId_.size();
     }
     /**
-     * <code>repeated uint64 memberSystemId = 9;</code>
+     * <code>repeated uint64 memberSystemId = 15;</code>
      *
      * <pre>
      *群成员微校号
@@ -37771,8 +38535,14 @@ public final class Data {
       clientType_ = 0;
       sessionId_ = "";
       systemId_ = 0L;
-      area_ = "";
-      school_ = "";
+      provinceCode_ = "";
+      provinceName_ = "";
+      cityCode_ = "";
+      cityName_ = "";
+      countyCode_ = "";
+      countyName_ = "";
+      schoolId_ = "";
+      schoolName_ = "";
       groupName_ = "";
       verifyType_ = 0;
       memberSystemId_ = java.util.Collections.emptyList();
@@ -37795,14 +38565,6 @@ public final class Data {
         return false;
       }
       if (!hasSystemId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasArea()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasSchool()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -37834,19 +38596,37 @@ public final class Data {
         output.writeUInt64(4, systemId_);
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeBytes(5, getAreaBytes());
+        output.writeBytes(5, getProvinceCodeBytes());
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
-        output.writeBytes(6, getSchoolBytes());
+        output.writeBytes(6, getProvinceNameBytes());
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
-        output.writeBytes(7, getGroupNameBytes());
+        output.writeBytes(7, getCityCodeBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
-        output.writeUInt32(8, verifyType_);
+        output.writeBytes(8, getCityNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(9, getCountyCodeBytes());
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        output.writeBytes(10, getCountyNameBytes());
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        output.writeBytes(11, getSchoolIdBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        output.writeBytes(12, getSchoolNameBytes());
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeBytes(13, getGroupNameBytes());
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeUInt32(14, verifyType_);
       }
       for (int i = 0; i < memberSystemId_.size(); i++) {
-        output.writeUInt64(9, memberSystemId_.get(i));
+        output.writeUInt64(15, memberSystemId_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -37875,19 +38655,43 @@ public final class Data {
       }
       if (((bitField0_ & 0x00000010) == 0x00000010)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(5, getAreaBytes());
+          .computeBytesSize(5, getProvinceCodeBytes());
       }
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(6, getSchoolBytes());
+          .computeBytesSize(6, getProvinceNameBytes());
       }
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeBytesSize(7, getGroupNameBytes());
+          .computeBytesSize(7, getCityCodeBytes());
       }
       if (((bitField0_ & 0x00000080) == 0x00000080)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(8, verifyType_);
+          .computeBytesSize(8, getCityNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(9, getCountyCodeBytes());
+      }
+      if (((bitField0_ & 0x00000200) == 0x00000200)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(10, getCountyNameBytes());
+      }
+      if (((bitField0_ & 0x00000400) == 0x00000400)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(11, getSchoolIdBytes());
+      }
+      if (((bitField0_ & 0x00000800) == 0x00000800)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(12, getSchoolNameBytes());
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(13, getGroupNameBytes());
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(14, verifyType_);
       }
       {
         int dataSize = 0;
@@ -38026,16 +38830,28 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000004);
         systemId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
-        area_ = "";
+        provinceCode_ = "";
         bitField0_ = (bitField0_ & ~0x00000010);
-        school_ = "";
+        provinceName_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
-        groupName_ = "";
+        cityCode_ = "";
         bitField0_ = (bitField0_ & ~0x00000040);
-        verifyType_ = 0;
+        cityName_ = "";
         bitField0_ = (bitField0_ & ~0x00000080);
-        memberSystemId_ = java.util.Collections.emptyList();
+        countyCode_ = "";
         bitField0_ = (bitField0_ & ~0x00000100);
+        countyName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000200);
+        schoolId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000400);
+        schoolName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000800);
+        groupName_ = "";
+        bitField0_ = (bitField0_ & ~0x00001000);
+        verifyType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00002000);
+        memberSystemId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00004000);
         return this;
       }
 
@@ -38083,22 +38899,46 @@ public final class Data {
         if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
           to_bitField0_ |= 0x00000010;
         }
-        result.area_ = area_;
+        result.provinceCode_ = provinceCode_;
         if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
           to_bitField0_ |= 0x00000020;
         }
-        result.school_ = school_;
+        result.provinceName_ = provinceName_;
         if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
           to_bitField0_ |= 0x00000040;
         }
-        result.groupName_ = groupName_;
+        result.cityCode_ = cityCode_;
         if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
           to_bitField0_ |= 0x00000080;
         }
+        result.cityName_ = cityName_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.countyCode_ = countyCode_;
+        if (((from_bitField0_ & 0x00000200) == 0x00000200)) {
+          to_bitField0_ |= 0x00000200;
+        }
+        result.countyName_ = countyName_;
+        if (((from_bitField0_ & 0x00000400) == 0x00000400)) {
+          to_bitField0_ |= 0x00000400;
+        }
+        result.schoolId_ = schoolId_;
+        if (((from_bitField0_ & 0x00000800) == 0x00000800)) {
+          to_bitField0_ |= 0x00000800;
+        }
+        result.schoolName_ = schoolName_;
+        if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.groupName_ = groupName_;
+        if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
+          to_bitField0_ |= 0x00002000;
+        }
         result.verifyType_ = verifyType_;
-        if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (((bitField0_ & 0x00004000) == 0x00004000)) {
           memberSystemId_ = java.util.Collections.unmodifiableList(memberSystemId_);
-          bitField0_ = (bitField0_ & ~0x00000100);
+          bitField0_ = (bitField0_ & ~0x00004000);
         }
         result.memberSystemId_ = memberSystemId_;
         result.bitField0_ = to_bitField0_;
@@ -38133,18 +38973,48 @@ public final class Data {
         if (other.hasSystemId()) {
           setSystemId(other.getSystemId());
         }
-        if (other.hasArea()) {
+        if (other.hasProvinceCode()) {
           bitField0_ |= 0x00000010;
-          area_ = other.area_;
+          provinceCode_ = other.provinceCode_;
           onChanged();
         }
-        if (other.hasSchool()) {
+        if (other.hasProvinceName()) {
           bitField0_ |= 0x00000020;
-          school_ = other.school_;
+          provinceName_ = other.provinceName_;
+          onChanged();
+        }
+        if (other.hasCityCode()) {
+          bitField0_ |= 0x00000040;
+          cityCode_ = other.cityCode_;
+          onChanged();
+        }
+        if (other.hasCityName()) {
+          bitField0_ |= 0x00000080;
+          cityName_ = other.cityName_;
+          onChanged();
+        }
+        if (other.hasCountyCode()) {
+          bitField0_ |= 0x00000100;
+          countyCode_ = other.countyCode_;
+          onChanged();
+        }
+        if (other.hasCountyName()) {
+          bitField0_ |= 0x00000200;
+          countyName_ = other.countyName_;
+          onChanged();
+        }
+        if (other.hasSchoolId()) {
+          bitField0_ |= 0x00000400;
+          schoolId_ = other.schoolId_;
+          onChanged();
+        }
+        if (other.hasSchoolName()) {
+          bitField0_ |= 0x00000800;
+          schoolName_ = other.schoolName_;
           onChanged();
         }
         if (other.hasGroupName()) {
-          bitField0_ |= 0x00000040;
+          bitField0_ |= 0x00001000;
           groupName_ = other.groupName_;
           onChanged();
         }
@@ -38154,7 +39024,7 @@ public final class Data {
         if (!other.memberSystemId_.isEmpty()) {
           if (memberSystemId_.isEmpty()) {
             memberSystemId_ = other.memberSystemId_;
-            bitField0_ = (bitField0_ & ~0x00000100);
+            bitField0_ = (bitField0_ & ~0x00004000);
           } else {
             ensureMemberSystemIdIsMutable();
             memberSystemId_.addAll(other.memberSystemId_);
@@ -38179,14 +39049,6 @@ public final class Data {
           return false;
         }
         if (!hasSystemId()) {
-          
-          return false;
-        }
-        if (!hasArea()) {
-          
-          return false;
-        }
-        if (!hasSchool()) {
           
           return false;
         }
@@ -38514,216 +39376,804 @@ public final class Data {
         return this;
       }
 
-      // required string area = 5;
-      private java.lang.Object area_ = "";
+      // optional string provinceCode = 5;
+      private java.lang.Object provinceCode_ = "";
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
-      public boolean hasArea() {
+      public boolean hasProvinceCode() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
-      public java.lang.String getArea() {
-        java.lang.Object ref = area_;
+      public java.lang.String getProvinceCode() {
+        java.lang.Object ref = provinceCode_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          area_ = s;
+          provinceCode_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
       public com.google.protobuf.ByteString
-          getAreaBytes() {
-        java.lang.Object ref = area_;
+          getProvinceCodeBytes() {
+        java.lang.Object ref = provinceCode_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          area_ = b;
+          provinceCode_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
-      public Builder setArea(
+      public Builder setProvinceCode(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000010;
-        area_ = value;
+        provinceCode_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
-      public Builder clearArea() {
+      public Builder clearProvinceCode() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        area_ = getDefaultInstance().getArea();
+        provinceCode_ = getDefaultInstance().getProvinceCode();
         onChanged();
         return this;
       }
       /**
-       * <code>required string area = 5;</code>
+       * <code>optional string provinceCode = 5;</code>
        *
        * <pre>
-       *所在地区
+       *省编号
        * </pre>
        */
-      public Builder setAreaBytes(
+      public Builder setProvinceCodeBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000010;
-        area_ = value;
+        provinceCode_ = value;
         onChanged();
         return this;
       }
 
-      // required string school = 6;
-      private java.lang.Object school_ = "";
+      // optional string provinceName = 6;
+      private java.lang.Object provinceName_ = "";
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
-      public boolean hasSchool() {
+      public boolean hasProvinceName() {
         return ((bitField0_ & 0x00000020) == 0x00000020);
       }
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
-      public java.lang.String getSchool() {
-        java.lang.Object ref = school_;
+      public java.lang.String getProvinceName() {
+        java.lang.Object ref = provinceName_;
         if (!(ref instanceof java.lang.String)) {
           java.lang.String s = ((com.google.protobuf.ByteString) ref)
               .toStringUtf8();
-          school_ = s;
+          provinceName_ = s;
           return s;
         } else {
           return (java.lang.String) ref;
         }
       }
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
       public com.google.protobuf.ByteString
-          getSchoolBytes() {
-        java.lang.Object ref = school_;
+          getProvinceNameBytes() {
+        java.lang.Object ref = provinceName_;
         if (ref instanceof String) {
           com.google.protobuf.ByteString b = 
               com.google.protobuf.ByteString.copyFromUtf8(
                   (java.lang.String) ref);
-          school_ = b;
+          provinceName_ = b;
           return b;
         } else {
           return (com.google.protobuf.ByteString) ref;
         }
       }
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
-      public Builder setSchool(
+      public Builder setProvinceName(
           java.lang.String value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000020;
-        school_ = value;
+        provinceName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
-      public Builder clearSchool() {
+      public Builder clearProvinceName() {
         bitField0_ = (bitField0_ & ~0x00000020);
-        school_ = getDefaultInstance().getSchool();
+        provinceName_ = getDefaultInstance().getProvinceName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string school = 6;</code>
+       * <code>optional string provinceName = 6;</code>
        *
        * <pre>
-       *所在学校
+       *省名称
        * </pre>
        */
-      public Builder setSchoolBytes(
+      public Builder setProvinceNameBytes(
           com.google.protobuf.ByteString value) {
         if (value == null) {
     throw new NullPointerException();
   }
   bitField0_ |= 0x00000020;
-        school_ = value;
+        provinceName_ = value;
         onChanged();
         return this;
       }
 
-      // required string groupName = 7;
+      // optional string cityCode = 7;
+      private java.lang.Object cityCode_ = "";
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public boolean hasCityCode() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public java.lang.String getCityCode() {
+        java.lang.Object ref = cityCode_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          cityCode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCityCodeBytes() {
+        java.lang.Object ref = cityCode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cityCode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public Builder setCityCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        cityCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public Builder clearCityCode() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        cityCode_ = getDefaultInstance().getCityCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cityCode = 7;</code>
+       *
+       * <pre>
+       *市编号
+       * </pre>
+       */
+      public Builder setCityCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        cityCode_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string cityName = 8;
+      private java.lang.Object cityName_ = "";
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public boolean hasCityName() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public java.lang.String getCityName() {
+        java.lang.Object ref = cityName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          cityName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCityNameBytes() {
+        java.lang.Object ref = cityName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          cityName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public Builder setCityName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        cityName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public Builder clearCityName() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        cityName_ = getDefaultInstance().getCityName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string cityName = 8;</code>
+       *
+       * <pre>
+       *市名称
+       * </pre>
+       */
+      public Builder setCityNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        cityName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string countyCode = 9;
+      private java.lang.Object countyCode_ = "";
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public boolean hasCountyCode() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public java.lang.String getCountyCode() {
+        java.lang.Object ref = countyCode_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          countyCode_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCountyCodeBytes() {
+        java.lang.Object ref = countyCode_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          countyCode_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public Builder setCountyCode(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        countyCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public Builder clearCountyCode() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        countyCode_ = getDefaultInstance().getCountyCode();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string countyCode = 9;</code>
+       *
+       * <pre>
+       *县编号
+       * </pre>
+       */
+      public Builder setCountyCodeBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        countyCode_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string countyName = 10;
+      private java.lang.Object countyName_ = "";
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public boolean hasCountyName() {
+        return ((bitField0_ & 0x00000200) == 0x00000200);
+      }
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public java.lang.String getCountyName() {
+        java.lang.Object ref = countyName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          countyName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getCountyNameBytes() {
+        java.lang.Object ref = countyName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          countyName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public Builder setCountyName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        countyName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public Builder clearCountyName() {
+        bitField0_ = (bitField0_ & ~0x00000200);
+        countyName_ = getDefaultInstance().getCountyName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string countyName = 10;</code>
+       *
+       * <pre>
+       *县名称
+       * </pre>
+       */
+      public Builder setCountyNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000200;
+        countyName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string schoolId = 11;
+      private java.lang.Object schoolId_ = "";
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public boolean hasSchoolId() {
+        return ((bitField0_ & 0x00000400) == 0x00000400);
+      }
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public java.lang.String getSchoolId() {
+        java.lang.Object ref = schoolId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          schoolId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSchoolIdBytes() {
+        java.lang.Object ref = schoolId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          schoolId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public Builder setSchoolId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        schoolId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public Builder clearSchoolId() {
+        bitField0_ = (bitField0_ & ~0x00000400);
+        schoolId_ = getDefaultInstance().getSchoolId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string schoolId = 11;</code>
+       *
+       * <pre>
+       *所在学校ID   
+       * </pre>
+       */
+      public Builder setSchoolIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000400;
+        schoolId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string schoolName = 12;
+      private java.lang.Object schoolName_ = "";
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public boolean hasSchoolName() {
+        return ((bitField0_ & 0x00000800) == 0x00000800);
+      }
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public java.lang.String getSchoolName() {
+        java.lang.Object ref = schoolName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          schoolName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSchoolNameBytes() {
+        java.lang.Object ref = schoolName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          schoolName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public Builder setSchoolName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        schoolName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public Builder clearSchoolName() {
+        bitField0_ = (bitField0_ & ~0x00000800);
+        schoolName_ = getDefaultInstance().getSchoolName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string schoolName = 12;</code>
+       *
+       * <pre>
+       *所在学校名称
+       * </pre>
+       */
+      public Builder setSchoolNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000800;
+        schoolName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required string groupName = 13;
       private java.lang.Object groupName_ = "";
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
        * </pre>
        */
       public boolean hasGroupName() {
-        return ((bitField0_ & 0x00000040) == 0x00000040);
+        return ((bitField0_ & 0x00001000) == 0x00001000);
       }
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
@@ -38741,7 +40191,7 @@ public final class Data {
         }
       }
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
@@ -38761,7 +40211,7 @@ public final class Data {
         }
       }
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
@@ -38772,26 +40222,26 @@ public final class Data {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00001000;
         groupName_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
        * </pre>
        */
       public Builder clearGroupName() {
-        bitField0_ = (bitField0_ & ~0x00000040);
+        bitField0_ = (bitField0_ & ~0x00001000);
         groupName_ = getDefaultInstance().getGroupName();
         onChanged();
         return this;
       }
       /**
-       * <code>required string groupName = 7;</code>
+       * <code>required string groupName = 13;</code>
        *
        * <pre>
        *群组名称
@@ -38802,26 +40252,26 @@ public final class Data {
         if (value == null) {
     throw new NullPointerException();
   }
-  bitField0_ |= 0x00000040;
+  bitField0_ |= 0x00001000;
         groupName_ = value;
         onChanged();
         return this;
       }
 
-      // required uint32 verifyType = 8;
+      // required uint32 verifyType = 14;
       private int verifyType_ ;
       /**
-       * <code>required uint32 verifyType = 8;</code>
+       * <code>required uint32 verifyType = 14;</code>
        *
        * <pre>
        *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
        * </pre>
        */
       public boolean hasVerifyType() {
-        return ((bitField0_ & 0x00000080) == 0x00000080);
+        return ((bitField0_ & 0x00002000) == 0x00002000);
       }
       /**
-       * <code>required uint32 verifyType = 8;</code>
+       * <code>required uint32 verifyType = 14;</code>
        *
        * <pre>
        *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
@@ -38831,42 +40281,42 @@ public final class Data {
         return verifyType_;
       }
       /**
-       * <code>required uint32 verifyType = 8;</code>
+       * <code>required uint32 verifyType = 14;</code>
        *
        * <pre>
        *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
        * </pre>
        */
       public Builder setVerifyType(int value) {
-        bitField0_ |= 0x00000080;
+        bitField0_ |= 0x00002000;
         verifyType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 verifyType = 8;</code>
+       * <code>required uint32 verifyType = 14;</code>
        *
        * <pre>
        *群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
        * </pre>
        */
       public Builder clearVerifyType() {
-        bitField0_ = (bitField0_ & ~0x00000080);
+        bitField0_ = (bitField0_ & ~0x00002000);
         verifyType_ = 0;
         onChanged();
         return this;
       }
 
-      // repeated uint64 memberSystemId = 9;
+      // repeated uint64 memberSystemId = 15;
       private java.util.List<java.lang.Long> memberSystemId_ = java.util.Collections.emptyList();
       private void ensureMemberSystemIdIsMutable() {
-        if (!((bitField0_ & 0x00000100) == 0x00000100)) {
+        if (!((bitField0_ & 0x00004000) == 0x00004000)) {
           memberSystemId_ = new java.util.ArrayList<java.lang.Long>(memberSystemId_);
-          bitField0_ |= 0x00000100;
+          bitField0_ |= 0x00004000;
          }
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38877,7 +40327,7 @@ public final class Data {
         return java.util.Collections.unmodifiableList(memberSystemId_);
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38887,7 +40337,7 @@ public final class Data {
         return memberSystemId_.size();
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38897,7 +40347,7 @@ public final class Data {
         return memberSystemId_.get(index);
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38911,7 +40361,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38924,7 +40374,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38938,7 +40388,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated uint64 memberSystemId = 9;</code>
+       * <code>repeated uint64 memberSystemId = 15;</code>
        *
        * <pre>
        *群成员微校号
@@ -38946,7 +40396,7 @@ public final class Data {
        */
       public Builder clearMemberSystemId() {
         memberSystemId_ = java.util.Collections.emptyList();
-        bitField0_ = (bitField0_ & ~0x00000100);
+        bitField0_ = (bitField0_ & ~0x00004000);
         onChanged();
         return this;
       }
@@ -70083,6 +71533,1852 @@ public final class Data {
     // @@protoc_insertion_point(class_scope:com.heme.logic.module.BusiGetSubjectOfTeacherRsp)
   }
 
+  public interface AddFriendReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string versionNo = 1;
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    boolean hasVersionNo();
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    java.lang.String getVersionNo();
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getVersionNoBytes();
+
+    // required uint32 clientType = 2;
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    boolean hasClientType();
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    int getClientType();
+
+    // required string sessionId = 3;
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    boolean hasSessionId();
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    java.lang.String getSessionId();
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSessionIdBytes();
+
+    // required uint64 systemId = 4;
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *微校号
+     * </pre>
+     */
+    boolean hasSystemId();
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *微校号
+     * </pre>
+     */
+    long getSystemId();
+
+    // repeated uint64 targetSystemId = 5;
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    java.util.List<java.lang.Long> getTargetSystemIdList();
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    int getTargetSystemIdCount();
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    long getTargetSystemId(int index);
+  }
+  /**
+   * Protobuf type {@code com.heme.logic.module.AddFriendReq}
+   *
+   * <pre>
+   *这个接口提供给message或者终端，添加好友用。
+   * </pre>
+   */
+  public static final class AddFriendReq extends
+      com.google.protobuf.GeneratedMessage
+      implements AddFriendReqOrBuilder {
+    // Use AddFriendReq.newBuilder() to construct.
+    private AddFriendReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AddFriendReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AddFriendReq defaultInstance;
+    public static AddFriendReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AddFriendReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AddFriendReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              versionNo_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              clientType_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              sessionId_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              systemId_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                targetSystemId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              targetSystemId_.add(input.readUInt64());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+                targetSystemId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                targetSystemId_.add(input.readUInt64());
+              }
+              input.popLimit(limit);
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = java.util.Collections.unmodifiableList(targetSystemId_);
+        }
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.heme.logic.module.Data.AddFriendReq.class, com.heme.logic.module.Data.AddFriendReq.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AddFriendReq> PARSER =
+        new com.google.protobuf.AbstractParser<AddFriendReq>() {
+      public AddFriendReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddFriendReq(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddFriendReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string versionNo = 1;
+    public static final int VERSIONNO_FIELD_NUMBER = 1;
+    private java.lang.Object versionNo_;
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public boolean hasVersionNo() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public java.lang.String getVersionNo() {
+      java.lang.Object ref = versionNo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          versionNo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getVersionNoBytes() {
+      java.lang.Object ref = versionNo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        versionNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required uint32 clientType = 2;
+    public static final int CLIENTTYPE_FIELD_NUMBER = 2;
+    private int clientType_;
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    public boolean hasClientType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    public int getClientType() {
+      return clientType_;
+    }
+
+    // required string sessionId = 3;
+    public static final int SESSIONID_FIELD_NUMBER = 3;
+    private java.lang.Object sessionId_;
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public boolean hasSessionId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public java.lang.String getSessionId() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sessionId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSessionIdBytes() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required uint64 systemId = 4;
+    public static final int SYSTEMID_FIELD_NUMBER = 4;
+    private long systemId_;
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *微校号
+     * </pre>
+     */
+    public boolean hasSystemId() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *微校号
+     * </pre>
+     */
+    public long getSystemId() {
+      return systemId_;
+    }
+
+    // repeated uint64 targetSystemId = 5;
+    public static final int TARGETSYSTEMID_FIELD_NUMBER = 5;
+    private java.util.List<java.lang.Long> targetSystemId_;
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    public java.util.List<java.lang.Long>
+        getTargetSystemIdList() {
+      return targetSystemId_;
+    }
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    public int getTargetSystemIdCount() {
+      return targetSystemId_.size();
+    }
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    public long getTargetSystemId(int index) {
+      return targetSystemId_.get(index);
+    }
+
+    private void initFields() {
+      versionNo_ = "";
+      clientType_ = 0;
+      sessionId_ = "";
+      systemId_ = 0L;
+      targetSystemId_ = java.util.Collections.emptyList();
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasVersionNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClientType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSystemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getVersionNoBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, clientType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, systemId_);
+      }
+      for (int i = 0; i < targetSystemId_.size(); i++) {
+        output.writeUInt64(5, targetSystemId_.get(i));
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getVersionNoBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, clientType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, systemId_);
+      }
+      {
+        int dataSize = 0;
+        for (int i = 0; i < targetSystemId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt64SizeNoTag(targetSystemId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getTargetSystemIdList().size();
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.heme.logic.module.Data.AddFriendReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.heme.logic.module.AddFriendReq}
+     *
+     * <pre>
+     *这个接口提供给message或者终端，添加好友用。
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.heme.logic.module.Data.AddFriendReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.heme.logic.module.Data.AddFriendReq.class, com.heme.logic.module.Data.AddFriendReq.Builder.class);
+      }
+
+      // Construct using com.heme.logic.module.Data.AddFriendReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        versionNo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        clientType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sessionId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        systemId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        targetSystemId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendReq_descriptor;
+      }
+
+      public com.heme.logic.module.Data.AddFriendReq getDefaultInstanceForType() {
+        return com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
+      }
+
+      public com.heme.logic.module.Data.AddFriendReq build() {
+        com.heme.logic.module.Data.AddFriendReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.heme.logic.module.Data.AddFriendReq buildPartial() {
+        com.heme.logic.module.Data.AddFriendReq result = new com.heme.logic.module.Data.AddFriendReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.versionNo_ = versionNo_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.clientType_ = clientType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.sessionId_ = sessionId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.systemId_ = systemId_;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = java.util.Collections.unmodifiableList(targetSystemId_);
+          bitField0_ = (bitField0_ & ~0x00000010);
+        }
+        result.targetSystemId_ = targetSystemId_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.heme.logic.module.Data.AddFriendReq) {
+          return mergeFrom((com.heme.logic.module.Data.AddFriendReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.heme.logic.module.Data.AddFriendReq other) {
+        if (other == com.heme.logic.module.Data.AddFriendReq.getDefaultInstance()) return this;
+        if (other.hasVersionNo()) {
+          bitField0_ |= 0x00000001;
+          versionNo_ = other.versionNo_;
+          onChanged();
+        }
+        if (other.hasClientType()) {
+          setClientType(other.getClientType());
+        }
+        if (other.hasSessionId()) {
+          bitField0_ |= 0x00000004;
+          sessionId_ = other.sessionId_;
+          onChanged();
+        }
+        if (other.hasSystemId()) {
+          setSystemId(other.getSystemId());
+        }
+        if (!other.targetSystemId_.isEmpty()) {
+          if (targetSystemId_.isEmpty()) {
+            targetSystemId_ = other.targetSystemId_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureTargetSystemIdIsMutable();
+            targetSystemId_.addAll(other.targetSystemId_);
+          }
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasVersionNo()) {
+          
+          return false;
+        }
+        if (!hasClientType()) {
+          
+          return false;
+        }
+        if (!hasSessionId()) {
+          
+          return false;
+        }
+        if (!hasSystemId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.heme.logic.module.Data.AddFriendReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.heme.logic.module.Data.AddFriendReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string versionNo = 1;
+      private java.lang.Object versionNo_ = "";
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public boolean hasVersionNo() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public java.lang.String getVersionNo() {
+        java.lang.Object ref = versionNo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          versionNo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getVersionNoBytes() {
+        java.lang.Object ref = versionNo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          versionNo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder setVersionNo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        versionNo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder clearVersionNo() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        versionNo_ = getDefaultInstance().getVersionNo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder setVersionNoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        versionNo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 clientType = 2;
+      private int clientType_ ;
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public boolean hasClientType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public int getClientType() {
+        return clientType_;
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public Builder setClientType(int value) {
+        bitField0_ |= 0x00000002;
+        clientType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public Builder clearClientType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        clientType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string sessionId = 3;
+      private java.lang.Object sessionId_ = "";
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public boolean hasSessionId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public java.lang.String getSessionId() {
+        java.lang.Object ref = sessionId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sessionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSessionIdBytes() {
+        java.lang.Object ref = sessionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder setSessionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder clearSessionId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sessionId_ = getDefaultInstance().getSessionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder setSessionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint64 systemId = 4;
+      private long systemId_ ;
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *微校号
+       * </pre>
+       */
+      public boolean hasSystemId() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *微校号
+       * </pre>
+       */
+      public long getSystemId() {
+        return systemId_;
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *微校号
+       * </pre>
+       */
+      public Builder setSystemId(long value) {
+        bitField0_ |= 0x00000008;
+        systemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *微校号
+       * </pre>
+       */
+      public Builder clearSystemId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        systemId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // repeated uint64 targetSystemId = 5;
+      private java.util.List<java.lang.Long> targetSystemId_ = java.util.Collections.emptyList();
+      private void ensureTargetSystemIdIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = new java.util.ArrayList<java.lang.Long>(targetSystemId_);
+          bitField0_ |= 0x00000010;
+         }
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public java.util.List<java.lang.Long>
+          getTargetSystemIdList() {
+        return java.util.Collections.unmodifiableList(targetSystemId_);
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public int getTargetSystemIdCount() {
+        return targetSystemId_.size();
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public long getTargetSystemId(int index) {
+        return targetSystemId_.get(index);
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder setTargetSystemId(
+          int index, long value) {
+        ensureTargetSystemIdIsMutable();
+        targetSystemId_.set(index, value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder addTargetSystemId(long value) {
+        ensureTargetSystemIdIsMutable();
+        targetSystemId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder addAllTargetSystemId(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureTargetSystemIdIsMutable();
+        super.addAll(values, targetSystemId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder clearTargetSystemId() {
+        targetSystemId_ = java.util.Collections.emptyList();
+        bitField0_ = (bitField0_ & ~0x00000010);
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.heme.logic.module.AddFriendReq)
+    }
+
+    static {
+      defaultInstance = new AddFriendReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.heme.logic.module.AddFriendReq)
+  }
+
+  public interface AddFriendRspOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 errCode = 1;
+    /**
+     * <code>required uint32 errCode = 1;</code>
+     *
+     * <pre>
+     *错误码 0：成功；
+     * </pre>
+     */
+    boolean hasErrCode();
+    /**
+     * <code>required uint32 errCode = 1;</code>
+     *
+     * <pre>
+     *错误码 0：成功；
+     * </pre>
+     */
+    int getErrCode();
+
+    // required string errString = 2;
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    boolean hasErrString();
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    java.lang.String getErrString();
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getErrStringBytes();
+  }
+  /**
+   * Protobuf type {@code com.heme.logic.module.AddFriendRsp}
+   */
+  public static final class AddFriendRsp extends
+      com.google.protobuf.GeneratedMessage
+      implements AddFriendRspOrBuilder {
+    // Use AddFriendRsp.newBuilder() to construct.
+    private AddFriendRsp(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private AddFriendRsp(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final AddFriendRsp defaultInstance;
+    public static AddFriendRsp getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public AddFriendRsp getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private AddFriendRsp(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              errCode_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              errString_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendRsp_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendRsp_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.heme.logic.module.Data.AddFriendRsp.class, com.heme.logic.module.Data.AddFriendRsp.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<AddFriendRsp> PARSER =
+        new com.google.protobuf.AbstractParser<AddFriendRsp>() {
+      public AddFriendRsp parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new AddFriendRsp(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<AddFriendRsp> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 errCode = 1;
+    public static final int ERRCODE_FIELD_NUMBER = 1;
+    private int errCode_;
+    /**
+     * <code>required uint32 errCode = 1;</code>
+     *
+     * <pre>
+     *错误码 0：成功；
+     * </pre>
+     */
+    public boolean hasErrCode() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 errCode = 1;</code>
+     *
+     * <pre>
+     *错误码 0：成功；
+     * </pre>
+     */
+    public int getErrCode() {
+      return errCode_;
+    }
+
+    // required string errString = 2;
+    public static final int ERRSTRING_FIELD_NUMBER = 2;
+    private java.lang.Object errString_;
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    public boolean hasErrString() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    public java.lang.String getErrString() {
+      java.lang.Object ref = errString_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          errString_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string errString = 2;</code>
+     *
+     * <pre>
+     *错误信息
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getErrStringBytes() {
+      java.lang.Object ref = errString_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        errString_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      errCode_ = 0;
+      errString_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasErrCode()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasErrString()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, errCode_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, getErrStringBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, errCode_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, getErrStringBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.AddFriendRsp parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.heme.logic.module.Data.AddFriendRsp prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.heme.logic.module.AddFriendRsp}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.heme.logic.module.Data.AddFriendRspOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendRsp_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendRsp_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.heme.logic.module.Data.AddFriendRsp.class, com.heme.logic.module.Data.AddFriendRsp.Builder.class);
+      }
+
+      // Construct using com.heme.logic.module.Data.AddFriendRsp.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        errCode_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        errString_ = "";
+        bitField0_ = (bitField0_ & ~0x00000002);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_AddFriendRsp_descriptor;
+      }
+
+      public com.heme.logic.module.Data.AddFriendRsp getDefaultInstanceForType() {
+        return com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
+      }
+
+      public com.heme.logic.module.Data.AddFriendRsp build() {
+        com.heme.logic.module.Data.AddFriendRsp result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.heme.logic.module.Data.AddFriendRsp buildPartial() {
+        com.heme.logic.module.Data.AddFriendRsp result = new com.heme.logic.module.Data.AddFriendRsp(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.errCode_ = errCode_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.errString_ = errString_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.heme.logic.module.Data.AddFriendRsp) {
+          return mergeFrom((com.heme.logic.module.Data.AddFriendRsp)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.heme.logic.module.Data.AddFriendRsp other) {
+        if (other == com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance()) return this;
+        if (other.hasErrCode()) {
+          setErrCode(other.getErrCode());
+        }
+        if (other.hasErrString()) {
+          bitField0_ |= 0x00000002;
+          errString_ = other.errString_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasErrCode()) {
+          
+          return false;
+        }
+        if (!hasErrString()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.heme.logic.module.Data.AddFriendRsp parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.heme.logic.module.Data.AddFriendRsp) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 errCode = 1;
+      private int errCode_ ;
+      /**
+       * <code>required uint32 errCode = 1;</code>
+       *
+       * <pre>
+       *错误码 0：成功；
+       * </pre>
+       */
+      public boolean hasErrCode() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 errCode = 1;</code>
+       *
+       * <pre>
+       *错误码 0：成功；
+       * </pre>
+       */
+      public int getErrCode() {
+        return errCode_;
+      }
+      /**
+       * <code>required uint32 errCode = 1;</code>
+       *
+       * <pre>
+       *错误码 0：成功；
+       * </pre>
+       */
+      public Builder setErrCode(int value) {
+        bitField0_ |= 0x00000001;
+        errCode_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 errCode = 1;</code>
+       *
+       * <pre>
+       *错误码 0：成功；
+       * </pre>
+       */
+      public Builder clearErrCode() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        errCode_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string errString = 2;
+      private java.lang.Object errString_ = "";
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public boolean hasErrString() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public java.lang.String getErrString() {
+        java.lang.Object ref = errString_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          errString_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getErrStringBytes() {
+        java.lang.Object ref = errString_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          errString_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public Builder setErrString(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        errString_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public Builder clearErrString() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        errString_ = getDefaultInstance().getErrString();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string errString = 2;</code>
+       *
+       * <pre>
+       *错误信息
+       * </pre>
+       */
+      public Builder setErrStringBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        errString_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.heme.logic.module.AddFriendRsp)
+    }
+
+    static {
+      defaultInstance = new AddFriendRsp(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.heme.logic.module.AddFriendRsp)
+  }
+
   public interface DataSvrProtoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -70859,6 +74155,34 @@ public final class Data {
      * <code>optional .com.heme.logic.module.BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 55;</code>
      */
     com.heme.logic.module.Data.BusiGetSubjectOfTeacherRspOrBuilder getBusiGetSubjectOfTeacherRspInfoOrBuilder();
+
+    // optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    boolean hasAddFriendReqInfo();
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    com.heme.logic.module.Data.AddFriendReq getAddFriendReqInfo();
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    com.heme.logic.module.Data.AddFriendReqOrBuilder getAddFriendReqInfoOrBuilder();
+
+    // optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    boolean hasAddFriendRspInfo();
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    com.heme.logic.module.Data.AddFriendRsp getAddFriendRspInfo();
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    com.heme.logic.module.Data.AddFriendRspOrBuilder getAddFriendRspInfoOrBuilder();
   }
   /**
    * Protobuf type {@code com.heme.logic.module.DataSvrProto}
@@ -71625,6 +74949,32 @@ public final class Data {
               bitField1_ |= 0x00400000;
               break;
             }
+            case 450: {
+              com.heme.logic.module.Data.AddFriendReq.Builder subBuilder = null;
+              if (((bitField1_ & 0x00800000) == 0x00800000)) {
+                subBuilder = addFriendReqInfo_.toBuilder();
+              }
+              addFriendReqInfo_ = input.readMessage(com.heme.logic.module.Data.AddFriendReq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addFriendReqInfo_);
+                addFriendReqInfo_ = subBuilder.buildPartial();
+              }
+              bitField1_ |= 0x00800000;
+              break;
+            }
+            case 458: {
+              com.heme.logic.module.Data.AddFriendRsp.Builder subBuilder = null;
+              if (((bitField1_ & 0x01000000) == 0x01000000)) {
+                subBuilder = addFriendRspInfo_.toBuilder();
+              }
+              addFriendRspInfo_ = input.readMessage(com.heme.logic.module.Data.AddFriendRsp.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(addFriendRspInfo_);
+                addFriendRspInfo_ = subBuilder.buildPartial();
+              }
+              bitField1_ |= 0x01000000;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -71777,6 +75127,10 @@ public final class Data {
        * <code>BusiGetSubjectOfTeacher = 27;</code>
        */
       BusiGetSubjectOfTeacher(26, 27),
+      /**
+       * <code>AddFriend = 28;</code>
+       */
+      AddFriend(27, 28),
       ;
 
       /**
@@ -71887,6 +75241,10 @@ public final class Data {
        * <code>BusiGetSubjectOfTeacher = 27;</code>
        */
       public static final int BusiGetSubjectOfTeacher_VALUE = 27;
+      /**
+       * <code>AddFriend = 28;</code>
+       */
+      public static final int AddFriend_VALUE = 28;
 
 
       public final int getNumber() { return value; }
@@ -71920,6 +75278,7 @@ public final class Data {
           case 25: return SendFeedback;
           case 26: return BusiGetClassOfTeacher;
           case 27: return BusiGetSubjectOfTeacher;
+          case 28: return AddFriend;
           default: return null;
         }
       }
@@ -73185,6 +76544,50 @@ public final class Data {
       return busiGetSubjectOfTeacherRspInfo_;
     }
 
+    // optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;
+    public static final int ADDFRIENDREQINFO_FIELD_NUMBER = 56;
+    private com.heme.logic.module.Data.AddFriendReq addFriendReqInfo_;
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    public boolean hasAddFriendReqInfo() {
+      return ((bitField1_ & 0x00800000) == 0x00800000);
+    }
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    public com.heme.logic.module.Data.AddFriendReq getAddFriendReqInfo() {
+      return addFriendReqInfo_;
+    }
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+     */
+    public com.heme.logic.module.Data.AddFriendReqOrBuilder getAddFriendReqInfoOrBuilder() {
+      return addFriendReqInfo_;
+    }
+
+    // optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;
+    public static final int ADDFRIENDRSPINFO_FIELD_NUMBER = 57;
+    private com.heme.logic.module.Data.AddFriendRsp addFriendRspInfo_;
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    public boolean hasAddFriendRspInfo() {
+      return ((bitField1_ & 0x01000000) == 0x01000000);
+    }
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    public com.heme.logic.module.Data.AddFriendRsp getAddFriendRspInfo() {
+      return addFriendRspInfo_;
+    }
+    /**
+     * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+     */
+    public com.heme.logic.module.Data.AddFriendRspOrBuilder getAddFriendRspInfoOrBuilder() {
+      return addFriendRspInfo_;
+    }
+
     private void initFields() {
       enumCmd_ = com.heme.logic.module.Data.DataSvrProto.Cmd.VerifyPhone;
       verifyPhoneReqInfo_ = com.heme.logic.module.Data.VerifyPhoneReq.getDefaultInstance();
@@ -73241,6 +76644,8 @@ public final class Data {
       busiGetClassOfTeacherRspInfo_ = com.heme.logic.module.Data.BusiGetClassOfTeacherRsp.getDefaultInstance();
       busiGetSubjectOfTeacherReqInfo_ = com.heme.logic.module.Data.BusiGetSubjectOfTeacherReq.getDefaultInstance();
       busiGetSubjectOfTeacherRspInfo_ = com.heme.logic.module.Data.BusiGetSubjectOfTeacherRsp.getDefaultInstance();
+      addFriendReqInfo_ = com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
+      addFriendRspInfo_ = com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -73575,6 +76980,18 @@ public final class Data {
           return false;
         }
       }
+      if (hasAddFriendReqInfo()) {
+        if (!getAddFriendReqInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasAddFriendRspInfo()) {
+        if (!getAddFriendRspInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -73746,6 +77163,12 @@ public final class Data {
       }
       if (((bitField1_ & 0x00400000) == 0x00400000)) {
         output.writeMessage(55, busiGetSubjectOfTeacherRspInfo_);
+      }
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+        output.writeMessage(56, addFriendReqInfo_);
+      }
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+        output.writeMessage(57, addFriendRspInfo_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -73976,6 +77399,14 @@ public final class Data {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(55, busiGetSubjectOfTeacherRspInfo_);
       }
+      if (((bitField1_ & 0x00800000) == 0x00800000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(56, addFriendReqInfo_);
+      }
+      if (((bitField1_ & 0x01000000) == 0x01000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(57, addFriendRspInfo_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -74138,6 +77569,8 @@ public final class Data {
           getBusiGetClassOfTeacherRspInfoFieldBuilder();
           getBusiGetSubjectOfTeacherReqInfoFieldBuilder();
           getBusiGetSubjectOfTeacherRspInfoFieldBuilder();
+          getAddFriendReqInfoFieldBuilder();
+          getAddFriendRspInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -74472,6 +77905,18 @@ public final class Data {
           busiGetSubjectOfTeacherRspInfoBuilder_.clear();
         }
         bitField1_ = (bitField1_ & ~0x00400000);
+        if (addFriendReqInfoBuilder_ == null) {
+          addFriendReqInfo_ = com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
+        } else {
+          addFriendReqInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x00800000);
+        if (addFriendRspInfoBuilder_ == null) {
+          addFriendRspInfo_ = com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
+        } else {
+          addFriendRspInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x01000000);
         return this;
       }
 
@@ -74938,6 +78383,22 @@ public final class Data {
         } else {
           result.busiGetSubjectOfTeacherRspInfo_ = busiGetSubjectOfTeacherRspInfoBuilder_.build();
         }
+        if (((from_bitField1_ & 0x00800000) == 0x00800000)) {
+          to_bitField1_ |= 0x00800000;
+        }
+        if (addFriendReqInfoBuilder_ == null) {
+          result.addFriendReqInfo_ = addFriendReqInfo_;
+        } else {
+          result.addFriendReqInfo_ = addFriendReqInfoBuilder_.build();
+        }
+        if (((from_bitField1_ & 0x01000000) == 0x01000000)) {
+          to_bitField1_ |= 0x01000000;
+        }
+        if (addFriendRspInfoBuilder_ == null) {
+          result.addFriendRspInfo_ = addFriendRspInfo_;
+        } else {
+          result.addFriendRspInfo_ = addFriendRspInfoBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         onBuilt();
@@ -75119,6 +78580,12 @@ public final class Data {
         }
         if (other.hasBusiGetSubjectOfTeacherRspInfo()) {
           mergeBusiGetSubjectOfTeacherRspInfo(other.getBusiGetSubjectOfTeacherRspInfo());
+        }
+        if (other.hasAddFriendReqInfo()) {
+          mergeAddFriendReqInfo(other.getAddFriendReqInfo());
+        }
+        if (other.hasAddFriendRspInfo()) {
+          mergeAddFriendRspInfo(other.getAddFriendRspInfo());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -75449,6 +78916,18 @@ public final class Data {
         }
         if (hasBusiGetSubjectOfTeacherRspInfo()) {
           if (!getBusiGetSubjectOfTeacherRspInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddFriendReqInfo()) {
+          if (!getAddFriendReqInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasAddFriendRspInfo()) {
+          if (!getAddFriendRspInfo().isInitialized()) {
             
             return false;
           }
@@ -81846,6 +85325,240 @@ public final class Data {
         return busiGetSubjectOfTeacherRspInfoBuilder_;
       }
 
+      // optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;
+      private com.heme.logic.module.Data.AddFriendReq addFriendReqInfo_ = com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.AddFriendReq, com.heme.logic.module.Data.AddFriendReq.Builder, com.heme.logic.module.Data.AddFriendReqOrBuilder> addFriendReqInfoBuilder_;
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public boolean hasAddFriendReqInfo() {
+        return ((bitField1_ & 0x00800000) == 0x00800000);
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendReq getAddFriendReqInfo() {
+        if (addFriendReqInfoBuilder_ == null) {
+          return addFriendReqInfo_;
+        } else {
+          return addFriendReqInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public Builder setAddFriendReqInfo(com.heme.logic.module.Data.AddFriendReq value) {
+        if (addFriendReqInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addFriendReqInfo_ = value;
+          onChanged();
+        } else {
+          addFriendReqInfoBuilder_.setMessage(value);
+        }
+        bitField1_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public Builder setAddFriendReqInfo(
+          com.heme.logic.module.Data.AddFriendReq.Builder builderForValue) {
+        if (addFriendReqInfoBuilder_ == null) {
+          addFriendReqInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          addFriendReqInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField1_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public Builder mergeAddFriendReqInfo(com.heme.logic.module.Data.AddFriendReq value) {
+        if (addFriendReqInfoBuilder_ == null) {
+          if (((bitField1_ & 0x00800000) == 0x00800000) &&
+              addFriendReqInfo_ != com.heme.logic.module.Data.AddFriendReq.getDefaultInstance()) {
+            addFriendReqInfo_ =
+              com.heme.logic.module.Data.AddFriendReq.newBuilder(addFriendReqInfo_).mergeFrom(value).buildPartial();
+          } else {
+            addFriendReqInfo_ = value;
+          }
+          onChanged();
+        } else {
+          addFriendReqInfoBuilder_.mergeFrom(value);
+        }
+        bitField1_ |= 0x00800000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public Builder clearAddFriendReqInfo() {
+        if (addFriendReqInfoBuilder_ == null) {
+          addFriendReqInfo_ = com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
+          onChanged();
+        } else {
+          addFriendReqInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x00800000);
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendReq.Builder getAddFriendReqInfoBuilder() {
+        bitField1_ |= 0x00800000;
+        onChanged();
+        return getAddFriendReqInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendReqOrBuilder getAddFriendReqInfoOrBuilder() {
+        if (addFriendReqInfoBuilder_ != null) {
+          return addFriendReqInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return addFriendReqInfo_;
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendReq AddFriendReqInfo = 56;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.AddFriendReq, com.heme.logic.module.Data.AddFriendReq.Builder, com.heme.logic.module.Data.AddFriendReqOrBuilder> 
+          getAddFriendReqInfoFieldBuilder() {
+        if (addFriendReqInfoBuilder_ == null) {
+          addFriendReqInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.heme.logic.module.Data.AddFriendReq, com.heme.logic.module.Data.AddFriendReq.Builder, com.heme.logic.module.Data.AddFriendReqOrBuilder>(
+                  addFriendReqInfo_,
+                  getParentForChildren(),
+                  isClean());
+          addFriendReqInfo_ = null;
+        }
+        return addFriendReqInfoBuilder_;
+      }
+
+      // optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;
+      private com.heme.logic.module.Data.AddFriendRsp addFriendRspInfo_ = com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.AddFriendRsp, com.heme.logic.module.Data.AddFriendRsp.Builder, com.heme.logic.module.Data.AddFriendRspOrBuilder> addFriendRspInfoBuilder_;
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public boolean hasAddFriendRspInfo() {
+        return ((bitField1_ & 0x01000000) == 0x01000000);
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendRsp getAddFriendRspInfo() {
+        if (addFriendRspInfoBuilder_ == null) {
+          return addFriendRspInfo_;
+        } else {
+          return addFriendRspInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public Builder setAddFriendRspInfo(com.heme.logic.module.Data.AddFriendRsp value) {
+        if (addFriendRspInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          addFriendRspInfo_ = value;
+          onChanged();
+        } else {
+          addFriendRspInfoBuilder_.setMessage(value);
+        }
+        bitField1_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public Builder setAddFriendRspInfo(
+          com.heme.logic.module.Data.AddFriendRsp.Builder builderForValue) {
+        if (addFriendRspInfoBuilder_ == null) {
+          addFriendRspInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          addFriendRspInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField1_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public Builder mergeAddFriendRspInfo(com.heme.logic.module.Data.AddFriendRsp value) {
+        if (addFriendRspInfoBuilder_ == null) {
+          if (((bitField1_ & 0x01000000) == 0x01000000) &&
+              addFriendRspInfo_ != com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance()) {
+            addFriendRspInfo_ =
+              com.heme.logic.module.Data.AddFriendRsp.newBuilder(addFriendRspInfo_).mergeFrom(value).buildPartial();
+          } else {
+            addFriendRspInfo_ = value;
+          }
+          onChanged();
+        } else {
+          addFriendRspInfoBuilder_.mergeFrom(value);
+        }
+        bitField1_ |= 0x01000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public Builder clearAddFriendRspInfo() {
+        if (addFriendRspInfoBuilder_ == null) {
+          addFriendRspInfo_ = com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
+          onChanged();
+        } else {
+          addFriendRspInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x01000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendRsp.Builder getAddFriendRspInfoBuilder() {
+        bitField1_ |= 0x01000000;
+        onChanged();
+        return getAddFriendRspInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      public com.heme.logic.module.Data.AddFriendRspOrBuilder getAddFriendRspInfoOrBuilder() {
+        if (addFriendRspInfoBuilder_ != null) {
+          return addFriendRspInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return addFriendRspInfo_;
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.AddFriendRsp, com.heme.logic.module.Data.AddFriendRsp.Builder, com.heme.logic.module.Data.AddFriendRspOrBuilder> 
+          getAddFriendRspInfoFieldBuilder() {
+        if (addFriendRspInfoBuilder_ == null) {
+          addFriendRspInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.heme.logic.module.Data.AddFriendRsp, com.heme.logic.module.Data.AddFriendRsp.Builder, com.heme.logic.module.Data.AddFriendRspOrBuilder>(
+                  addFriendRspInfo_,
+                  getParentForChildren(),
+                  isClean());
+          addFriendRspInfo_ = null;
+        }
+        return addFriendRspInfoBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.heme.logic.module.DataSvrProto)
     }
 
@@ -82163,6 +85876,16 @@ public final class Data {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_heme_logic_module_BusiGetSubjectOfTeacherRsp_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_heme_logic_module_AddFriendReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_heme_logic_module_AddFriendReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_heme_logic_module_AddFriendRsp_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_heme_logic_module_AddFriendRsp_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_heme_logic_module_DataSvrProto_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -82181,283 +85904,295 @@ public final class Data {
       "ntType\030\002 \002(\r\022\022\n\nverifyType\030\003 \002(\r\022\017\n\007phon" +
       "eNo\030\004 \002(\t\"H\n\016VerifyPhoneRsp\022\017\n\007errCode\030\001" +
       " \002(\r\022\021\n\terrString\030\002 \002(\t\022\022\n\nverifyCode\030\003 " +
-      "\002(\t\"\267\001\n\014RegParentReq\022\021\n\tversionNo\030\001 \002(\t\022" +
+      "\002(\t\"\307\001\n\014RegParentReq\022\021\n\tversionNo\030\001 \002(\t\022" +
       "\022\n\nclientType\030\002 \002(\r\022\017\n\007phoneNo\030\003 \002(\t\022\r\n\005" +
       "email\030\004 \001(\t\022\020\n\010realName\030\005 \002(\t\022\020\n\010idCardN" +
       "o\030\006 \002(\t\022\020\n\010password\030\007 \002(\t\022\026\n\016childStuden" +
-      "tId\030\010 \003(\t\022\022\n\nverifyCode\030\t \002(\t\"W\n\014RegPare",
-      "ntRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(" +
-      "\t\022\020\n\010systemId\030\003 \001(\004\022\021\n\tsessionId\030\004 \001(\t\"`" +
-      "\n\017RegGetSchoolReq\022\021\n\tversionNo\030\001 \002(\t\022\024\n\014" +
-      "provinceCode\030\002 \001(\t\022\020\n\010cityCode\030\003 \001(\t\022\022\n\n" +
-      "countyCode\030\004 \001(\t\"5\n\rSchoolCombine\022\020\n\010sch" +
-      "oolId\030\001 \002(\t\022\022\n\nschoolName\030\002 \002(\t\"o\n\017RegGe" +
-      "tSchoolRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString" +
-      "\030\002 \002(\t\0228\n\nschoolInfo\030\003 \003(\0132$.com.heme.lo" +
-      "gic.module.SchoolCombine\"5\n\016RegGetClassR" +
-      "eq\022\021\n\tversionNo\030\001 \002(\t\022\020\n\010schoolId\030\002 \002(\t\"",
-      "2\n\014ClassCombine\022\017\n\007classId\030\001 \002(\t\022\021\n\tclas" +
-      "sName\030\002 \002(\t\"l\n\016RegGetClassRsp\022\017\n\007errCode" +
-      "\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\0226\n\tclassInfo\030\003" +
-      " \003(\0132#.com.heme.logic.module.ClassCombin" +
-      "e\"\274\002\n\rRegStudentReq\022\021\n\tversionNo\030\001 \002(\t\022\022" +
-      "\n\nclientType\030\002 \002(\r\022\017\n\007phoneNo\030\003 \002(\t\022\r\n\005e" +
-      "mail\030\004 \001(\t\022\020\n\010realName\030\005 \002(\t\022\021\n\tstudentI" +
-      "d\030\006 \001(\t\022\020\n\010password\030\007 \002(\t\022\024\n\014provinceCod" +
-      "e\030\010 \001(\t\022\024\n\014provinceName\030\t \001(\t\022\020\n\010cityCod" +
-      "e\030\n \001(\t\022\020\n\010cityName\030\013 \001(\t\022\022\n\ncountyCode\030",
-      "\014 \001(\t\022\022\n\ncountyName\030\r \001(\t\022\020\n\010schoolId\030\016 " +
-      "\002(\t\022\017\n\007classId\030\017 \002(\t\022\022\n\nverifyCode\030\020 \002(\t" +
-      "\"X\n\rRegStudentRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\ter" +
-      "rString\030\002 \002(\t\022\020\n\010systemId\030\003 \001(\004\022\021\n\tsessi" +
-      "onId\030\004 \001(\t\"O\n\010LoginReq\022\021\n\tversionNo\030\001 \002(" +
-      "\t\022\022\n\nclientType\030\002 \002(\r\022\n\n\002id\030\003 \002(\t\022\020\n\010pas" +
-      "sword\030\004 \002(\t\"|\n\010LoginRsp\022\017\n\007errCode\030\001 \002(\r" +
-      "\022\021\n\terrString\030\002 \002(\t\022\020\n\010systemId\030\003 \001(\004\022\021\n" +
-      "\tsessionId\030\004 \001(\t\022\026\n\016friendSystemId\030\005 \003(\004" +
-      "\022\017\n\007groupId\030\006 \003(\r\"n\n\017GetGroupInfoReq\022\021\n\t",
-      "versionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\ts" +
-      "essionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007grou" +
-      "pId\030\005 \003(\r\"s\n\014GroupCombine\022\017\n\007groupId\030\001 \002" +
-      "(\r\022\021\n\tgroupType\030\002 \002(\r\022\021\n\tgroupName\030\003 \001(\t" +
-      "\022\024\n\014hostSystemId\030\004 \002(\004\022\026\n\016memberSystemId" +
-      "\030\005 \003(\004\"~\n\017GetGroupInfoRsp\022\017\n\007errCode\030\001 \002" +
-      "(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\0226" +
-      "\n\tgroupInfo\030\004 \003(\0132#.com.heme.logic.modul" +
-      "e.GroupCombine\"t\n\016GetUserInfoReq\022\021\n\tvers" +
-      "ionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessi",
-      "onId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSy" +
-      "stemId\030\005 \003(\004\"\377\001\n\rFriendCombine\022\026\n\016friend" +
-      "SystemId\030\001 \002(\004\022\020\n\010roleType\030\002 \002(\r\022\020\n\010real" +
-      "Name\030\003 \002(\t\022\020\n\010descName\030\004 \001(\t\022\016\n\006gender\030\005" +
-      " \001(\r\022\017\n\007phoneNo\030\006 \002(\t\022\022\n\nverifyType\030\007 \002(" +
-      "\r\022\020\n\010iconName\030\010 \001(\t\022\021\n\tsignature\030\t \001(\t\022\021" +
-      "\n\tstudentId\030\n \001(\t\022\014\n\004area\030\013 \001(\t\022\022\n\nschoo" +
-      "lName\030\014 \001(\t\022\021\n\tclassName\030\r \001(\t\"n\n\016GetUse" +
-      "rInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002" +
-      " \002(\t\0228\n\nfriendInfo\030\003 \003(\0132$.com.heme.logi",
-      "c.module.FriendCombine\"{\n\025GetVerboseUser" +
-      "InfoReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType" +
-      "\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 " +
-      "\002(\004\022\026\n\016targetSystemId\030\005 \003(\004\"\337\002\n\024VerboseF" +
-      "riendCombine\022\026\n\016friendSystemId\030\001 \002(\004\022\020\n\010" +
-      "roleType\030\002 \002(\r\022\020\n\010realName\030\003 \002(\t\022\020\n\010desc" +
-      "Name\030\004 \001(\t\022\016\n\006gender\030\005 \001(\r\022\020\n\010birthday\030\006" +
-      " \001(\t\022\022\n\noccupation\030\007 \001(\t\022\020\n\010location\030\010 \001" +
-      "(\t\022\r\n\005email\030\t \001(\t\022\020\n\010interest\030\n \001(\t\022\017\n\007p" +
-      "honeNo\030\013 \002(\t\022\022\n\nverifyType\030\014 \002(\r\022\020\n\010icon",
-      "Name\030\r \001(\t\022\021\n\tsignature\030\016 \001(\t\022\021\n\tstudent" +
-      "Id\030\017 \001(\t\022\014\n\004area\030\020 \001(\t\022\022\n\nschoolName\030\021 \001" +
-      "(\t\022\021\n\tclassName\030\022 \001(\t\"\203\001\n\025GetVerboseUser" +
-      "InfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 " +
-      "\002(\t\022F\n\021verboseFriendInfo\030\003 \003(\0132+.com.hem" +
-      "e.logic.module.VerboseFriendCombine\"n\n\016S" +
-      "etUserIconReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclie" +
-      "ntType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010syste" +
-      "mId\030\004 \002(\004\022\020\n\010iconName\030\005 \002(\t\"4\n\016SetUserIc" +
-      "onRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(",
-      "\t\"p\n\017SetSignatureReq\022\021\n\tversionNo\030\001 \002(\t\022" +
-      "\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020" +
-      "\n\010systemId\030\004 \002(\004\022\021\n\tsignature\030\005 \002(\t\"5\n\017S" +
-      "etSignatureRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrSt" +
-      "ring\030\002 \002(\t\"P\n\023FindPasswdVerifyReq\022\021\n\tver" +
-      "sionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\022\n\nveri" +
-      "fyCode\030\003 \002(\t\"I\n\023FindPasswdVerifyRsp\022\017\n\007e" +
-      "rrCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\016\n\006passw" +
-      "d\030\003 \002(\t\"\276\001\n\023CreateFixedGroupReq\022\021\n\tversi" +
-      "onNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessio",
-      "nId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\014\n\004area\030\005 \002(" +
-      "\t\022\016\n\006school\030\006 \002(\t\022\021\n\tgroupName\030\007 \002(\t\022\022\n\n" +
-      "verifyType\030\010 \002(\r\022\026\n\016memberSystemId\030\t \003(\004" +
+      "tId\030\010 \003(\t\022\022\n\nverifyCode\030\t \002(\t\022\016\n\006gender\030",
+      "\n \002(\r\"W\n\014RegParentRsp\022\017\n\007errCode\030\001 \002(\r\022\021" +
+      "\n\terrString\030\002 \002(\t\022\020\n\010systemId\030\003 \001(\004\022\021\n\ts" +
+      "essionId\030\004 \001(\t\"`\n\017RegGetSchoolReq\022\021\n\tver" +
+      "sionNo\030\001 \002(\t\022\024\n\014provinceCode\030\002 \001(\t\022\020\n\010ci" +
+      "tyCode\030\003 \001(\t\022\022\n\ncountyCode\030\004 \001(\t\"5\n\rScho" +
+      "olCombine\022\020\n\010schoolId\030\001 \002(\t\022\022\n\nschoolNam" +
+      "e\030\002 \002(\t\"o\n\017RegGetSchoolRsp\022\017\n\007errCode\030\001 " +
+      "\002(\r\022\021\n\terrString\030\002 \002(\t\0228\n\nschoolInfo\030\003 \003" +
+      "(\0132$.com.heme.logic.module.SchoolCombine" +
+      "\"5\n\016RegGetClassReq\022\021\n\tversionNo\030\001 \002(\t\022\020\n",
+      "\010schoolId\030\002 \002(\t\"2\n\014ClassCombine\022\017\n\007class" +
+      "Id\030\001 \002(\t\022\021\n\tclassName\030\002 \002(\t\"l\n\016RegGetCla" +
+      "ssRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(" +
+      "\t\0226\n\tclassInfo\030\003 \003(\0132#.com.heme.logic.mo" +
+      "dule.ClassCombine\"\314\002\n\rRegStudentReq\022\021\n\tv" +
+      "ersionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\017\n\007ph" +
+      "oneNo\030\003 \002(\t\022\r\n\005email\030\004 \001(\t\022\020\n\010realName\030\005" +
+      " \002(\t\022\021\n\tstudentId\030\006 \001(\t\022\020\n\010password\030\007 \002(" +
+      "\t\022\024\n\014provinceCode\030\010 \001(\t\022\024\n\014provinceName\030" +
+      "\t \001(\t\022\020\n\010cityCode\030\n \001(\t\022\020\n\010cityName\030\013 \001(",
+      "\t\022\022\n\ncountyCode\030\014 \001(\t\022\022\n\ncountyName\030\r \001(" +
+      "\t\022\020\n\010schoolId\030\016 \002(\t\022\017\n\007classId\030\017 \002(\t\022\022\n\n" +
+      "verifyCode\030\020 \002(\t\022\016\n\006gender\030\021 \002(\r\"X\n\rRegS" +
+      "tudentRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030" +
+      "\002 \002(\t\022\020\n\010systemId\030\003 \001(\004\022\021\n\tsessionId\030\004 \001" +
+      "(\t\"O\n\010LoginReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncli" +
+      "entType\030\002 \002(\r\022\n\n\002id\030\003 \002(\t\022\020\n\010password\030\004 " +
+      "\002(\t\"|\n\010LoginRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrS" +
+      "tring\030\002 \002(\t\022\020\n\010systemId\030\003 \001(\004\022\021\n\tsession" +
+      "Id\030\004 \001(\t\022\026\n\016friendSystemId\030\005 \003(\004\022\017\n\007grou",
+      "pId\030\006 \003(\r\"n\n\017GetGroupInfoReq\022\021\n\tversionN" +
+      "o\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId" +
+      "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId\030\005 \003(" +
+      "\r\"s\n\014GroupCombine\022\017\n\007groupId\030\001 \002(\r\022\021\n\tgr" +
+      "oupType\030\002 \002(\r\022\021\n\tgroupName\030\003 \001(\t\022\024\n\014host" +
+      "SystemId\030\004 \002(\004\022\026\n\016memberSystemId\030\005 \003(\004\"~" +
+      "\n\017GetGroupInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\ter" +
+      "rString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\0226\n\tgroupI" +
+      "nfo\030\004 \003(\0132#.com.heme.logic.module.GroupC" +
+      "ombine\"t\n\016GetUserInfoReq\022\021\n\tversionNo\030\001 ",
+      "\002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002" +
+      "(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSystemId\030\005" +
+      " \003(\004\"\377\001\n\rFriendCombine\022\026\n\016friendSystemId" +
+      "\030\001 \002(\004\022\020\n\010roleType\030\002 \002(\r\022\020\n\010realName\030\003 \002" +
+      "(\t\022\020\n\010descName\030\004 \001(\t\022\016\n\006gender\030\005 \001(\r\022\017\n\007" +
+      "phoneNo\030\006 \002(\t\022\022\n\nverifyType\030\007 \002(\r\022\020\n\010ico" +
+      "nName\030\010 \001(\t\022\021\n\tsignature\030\t \001(\t\022\021\n\tstuden" +
+      "tId\030\n \001(\t\022\014\n\004area\030\013 \001(\t\022\022\n\nschoolName\030\014 " +
+      "\001(\t\022\021\n\tclassName\030\r \001(\t\"n\n\016GetUserInfoRsp" +
+      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\0228\n\n",
+      "friendInfo\030\003 \003(\0132$.com.heme.logic.module" +
+      ".FriendCombine\"{\n\025GetVerboseUserInfoReq\022" +
+      "\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021" +
+      "\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016t" +
+      "argetSystemId\030\005 \003(\004\"\337\002\n\024VerboseFriendCom" +
+      "bine\022\026\n\016friendSystemId\030\001 \002(\004\022\020\n\010roleType" +
+      "\030\002 \002(\r\022\020\n\010realName\030\003 \002(\t\022\020\n\010descName\030\004 \001" +
+      "(\t\022\016\n\006gender\030\005 \001(\r\022\020\n\010birthday\030\006 \001(\t\022\022\n\n" +
+      "occupation\030\007 \001(\t\022\020\n\010location\030\010 \001(\t\022\r\n\005em" +
+      "ail\030\t \001(\t\022\020\n\010interest\030\n \001(\t\022\017\n\007phoneNo\030\013",
+      " \002(\t\022\022\n\nverifyType\030\014 \002(\r\022\020\n\010iconName\030\r \001" +
+      "(\t\022\021\n\tsignature\030\016 \001(\t\022\021\n\tstudentId\030\017 \001(\t" +
+      "\022\014\n\004area\030\020 \001(\t\022\022\n\nschoolName\030\021 \001(\t\022\021\n\tcl" +
+      "assName\030\022 \001(\t\"\203\001\n\025GetVerboseUserInfoRsp\022" +
+      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022F\n\021v" +
+      "erboseFriendInfo\030\003 \003(\0132+.com.heme.logic." +
+      "module.VerboseFriendCombine\"n\n\016SetUserIc" +
+      "onReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002" +
+      " \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(" +
+      "\004\022\020\n\010iconName\030\005 \002(\t\"4\n\016SetUserIconRsp\022\017\n",
+      "\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"p\n\017Set" +
+      "SignatureReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclien" +
+      "tType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010system" +
+      "Id\030\004 \002(\004\022\021\n\tsignature\030\005 \002(\t\"5\n\017SetSignat" +
+      "ureRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002" +
+      "(\t\"P\n\023FindPasswdVerifyReq\022\021\n\tversionNo\030\001" +
+      " \002(\t\022\022\n\nclientType\030\002 \002(\r\022\022\n\nverifyCode\030\003" +
+      " \002(\t\"I\n\023FindPasswdVerifyRsp\022\017\n\007errCode\030\001" +
+      " \002(\r\022\021\n\terrString\030\002 \002(\t\022\016\n\006passwd\030\003 \002(\t\"" +
+      "\276\002\n\023CreateFixedGroupReq\022\021\n\tversionNo\030\001 \002",
+      "(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(" +
+      "\t\022\020\n\010systemId\030\004 \002(\004\022\024\n\014provinceCode\030\005 \001(" +
+      "\t\022\024\n\014provinceName\030\006 \001(\t\022\020\n\010cityCode\030\007 \001(" +
+      "\t\022\020\n\010cityName\030\010 \001(\t\022\022\n\ncountyCode\030\t \001(\t\022" +
+      "\022\n\ncountyName\030\n \001(\t\022\020\n\010schoolId\030\013 \001(\t\022\022\n" +
+      "\nschoolName\030\014 \001(\t\022\021\n\tgroupName\030\r \002(\t\022\022\n\n" +
+      "verifyType\030\016 \002(\r\022\026\n\016memberSystemId\030\017 \003(\004" +
       "\"J\n\023CreateFixedGroupRsp\022\017\n\007errCode\030\001 \002(\r" +
       "\022\021\n\terrString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\"\213\001\n" +
-      "\022CreateTempGroupReq\022\021\n\tversionNo\030\001 \002(\t\022\022" +
+      "\022CreateTempGroupReq\022\021\n\tversionNo\030\001 \002(\t\022\022",
       "\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n" +
       "\010systemId\030\004 \002(\004\022\021\n\tgroupName\030\005 \001(\t\022\026\n\016me" +
       "mberSystemId\030\006 \003(\004\"I\n\022CreateTempGroupRsp" +
-      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007",
+      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007" +
       "groupId\030\003 \002(\r\"\240\001\n\024CreateSocialGroupReq\022\021" +
       "\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n" +
       "\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021\n\tgr" +
       "oupName\030\005 \002(\t\022\021\n\tgroupType\030\006 \002(\r\022\026\n\016memb" +
       "erSystemId\030\007 \003(\004\"K\n\024CreateSocialGroupRsp" +
-      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007" +
+      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007",
       "groupId\030\003 \002(\r\"\201\001\n\017SetGroupNameReq\022\021\n\tver" +
       "sionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsess" +
       "ionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId" +
-      "\030\005 \002(\r\022\021\n\tgroupName\030\006 \002(\t\"5\n\017SetGroupNam",
+      "\030\005 \002(\r\022\021\n\tgroupName\030\006 \002(\t\"5\n\017SetGroupNam" +
       "eRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t" +
       "\"j\n\013DelGroupReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncl" +
       "ientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sys" +
       "temId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\"1\n\013DelGroup" +
       "Rsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"" +
-      "\210\001\n\021AddGroupMemberReq\022\021\n\tversionNo\030\001 \002(\t" +
+      "\210\001\n\021AddGroupMemberReq\022\021\n\tversionNo\030\001 \002(\t",
       "\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022" +
       "\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\022\026\n\016me" +
       "mberSystemId\030\006 \003(\004\"7\n\021AddGroupMemberRsp\022" +
-      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\210\001\n\021",
+      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\210\001\n\021" +
       "DelGroupMemberReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\n" +
       "clientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010s" +
       "ystemId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\022\026\n\016member" +
       "SystemId\030\006 \003(\004\"7\n\021DelGroupMemberRsp\022\017\n\007e" +
       "rrCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\213\001\n\020SetF" +
-      "riendDescReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclien" +
+      "riendDescReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclien",
       "tType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010system" +
       "Id\030\004 \002(\004\022\026\n\016targetSystemId\030\005 \002(\004\022\023\n\013desc" +
       "ription\030\006 \002(\t\"6\n\020SetFriendDescRsp\022\017\n\007err" +
-      "Code\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"r\n\014DelFrie",
+      "Code\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"r\n\014DelFrie" +
       "ndReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002" +
       " \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(" +
       "\004\022\026\n\016targetSystemId\030\005 \002(\004\"2\n\014DelFriendRs" +
       "p\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\305\001" +
       "\n\016SetSelfInfoReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc" +
-      "lientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sy" +
+      "lientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sy",
       "stemId\030\004 \002(\004\022\016\n\006gender\030\005 \001(\r\022\020\n\010birthday" +
       "\030\006 \001(\t\022\022\n\noccupation\030\007 \001(\t\022\020\n\010location\030\010" +
       " \001(\t\022\r\n\005email\030\t \001(\t\022\020\n\010interest\030\n \001(\t\"4\n" +
-      "\016SetSelfInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrS",
+      "\016SetSelfInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrS" +
       "tring\030\002 \002(\t\"\200\001\n\014SetPasswdReq\022\021\n\tversionN" +
       "o\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId" +
       "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021\n\toldPasswd\030\005 " +
       "\002(\t\022\021\n\tnewPasswd\030\006 \002(\t\"2\n\014SetPasswdRsp\022\017" +
       "\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\265\001\n\021S" +
-      "etFriendRightReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc" +
+      "etFriendRightReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc",
       "lientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sy" +
       "stemId\030\004 \002(\004\022\022\n\nverifyType\030\005 \002(\r\022\025\n\rauto" +
       "AddFriend\030\006 \002(\r\022\022\n\nsearchType\030\007 \002(\r\022\025\n\rr" +
-      "ecommendType\030\010 \002(\r\"7\n\021SetFriendRightRsp\022",
+      "ecommendType\030\010 \002(\r\"7\n\021SetFriendRightRsp\022" +
       "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"o\n\017S" +
       "endFeedbackReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncli" +
       "entType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010syst" +
       "emId\030\004 \002(\004\022\020\n\010feedback\030\005 \002(\t\"5\n\017SendFeed" +
       "backRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 " +
-      "\002(\t\"Y\n\030BusiGetClassOfTeacherReq\022\021\n\tversi" +
+      "\002(\t\"Y\n\030BusiGetClassOfTeacherReq\022\021\n\tversi",
       "onNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\026\n\016target" +
       "SystemId\030\003 \002(\004\"=\n\025ClassOfTeacherCombine\022" +
       "\021\n\tclassCode\030\001 \002(\t\022\021\n\tclassName\030\002 \002(\t\"\210\001" +
-      "\n\030BusiGetClassOfTeacherRsp\022\017\n\007errCode\030\001 ",
+      "\n\030BusiGetClassOfTeacherRsp\022\017\n\007errCode\030\001 " +
       "\002(\r\022\021\n\terrString\030\002 \002(\t\022H\n\022classOfTeacher" +
       "Info\030\003 \003(\0132,.com.heme.logic.module.Class" +
       "OfTeacherCombine\"t\n\032BusiGetSubjectOfTeac" +
       "herReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030" +
       "\002 \002(\r\022\026\n\016targetSystemId\030\003 \002(\004\022\027\n\017targetC" +
-      "lassCode\030\004 \001(\t\"i\n\027SubjectOfTeacherCombin" +
+      "lassCode\030\004 \001(\t\"i\n\027SubjectOfTeacherCombin",
       "e\022\021\n\tclassCode\030\001 \001(\t\022\021\n\tclassName\030\002 \001(\t\022" +
       "\023\n\013subjectCode\030\003 \002(\t\022\023\n\013subjectName\030\004 \002(" +
       "\t\"\216\001\n\032BusiGetSubjectOfTeacherRsp\022\017\n\007errC" +
-      "ode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022L\n\024subjectO",
+      "ode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022L\n\024subjectO" +
       "fTeacherInfo\030\003 \003(\0132..com.heme.logic.modu" +
-      "le.SubjectOfTeacherCombine\"\263\"\n\014DataSvrPr" +
-      "oto\0229\n\010enum_cmd\030\001 \002(\0162\'.com.heme.logic.m" +
-      "odule.DataSvrProto.Cmd\022A\n\022VerifyPhoneReq" +
-      "Info\030\002 \001(\0132%.com.heme.logic.module.Verif" +
-      "yPhoneReq\022A\n\022VerifyPhoneRspInfo\030\003 \001(\0132%." +
-      "com.heme.logic.module.VerifyPhoneRsp\022=\n\020" +
-      "RegParentReqInfo\030\004 \001(\0132#.com.heme.logic." +
-      "module.RegParentReq\022=\n\020RegParentRspInfo\030" +
-      "\005 \001(\0132#.com.heme.logic.module.RegParentR",
-      "sp\022C\n\023RegGetSchoolReqInfo\030\006 \001(\0132&.com.he" +
-      "me.logic.module.RegGetSchoolReq\022C\n\023RegGe" +
-      "tSchoolRspInfo\030\007 \001(\0132&.com.heme.logic.mo" +
-      "dule.RegGetSchoolRsp\022A\n\022RegGetClassReqIn" +
-      "fo\030\010 \001(\0132%.com.heme.logic.module.RegGetC" +
-      "lassReq\022A\n\022RegGetClassRspInfo\030\t \001(\0132%.co" +
-      "m.heme.logic.module.RegGetClassRsp\022?\n\021Re" +
-      "gStudentReqInfo\030\n \001(\0132$.com.heme.logic.m" +
-      "odule.RegStudentReq\022?\n\021RegStudentRspInfo" +
-      "\030\013 \001(\0132$.com.heme.logic.module.RegStuden",
-      "tRsp\0225\n\014LoginReqInfo\030\014 \001(\0132\037.com.heme.lo" +
-      "gic.module.LoginReq\0225\n\014LoginRspInfo\030\r \001(" +
-      "\0132\037.com.heme.logic.module.LoginRsp\022C\n\023Ge" +
-      "tGroupInfoReqInfo\030\016 \001(\0132&.com.heme.logic" +
-      ".module.GetGroupInfoReq\022C\n\023GetGroupInfoR" +
-      "spInfo\030\017 \001(\0132&.com.heme.logic.module.Get" +
-      "GroupInfoRsp\022A\n\022GetUserInfoReqInfo\030\020 \001(\013" +
-      "2%.com.heme.logic.module.GetUserInfoReq\022" +
-      "A\n\022GetUserInfoRspInfo\030\021 \001(\0132%.com.heme.l" +
-      "ogic.module.GetUserInfoRsp\022O\n\031GetVerbose",
-      "UserInfoReqInfo\030\022 \001(\0132,.com.heme.logic.m" +
-      "odule.GetVerboseUserInfoReq\022O\n\031GetVerbos" +
-      "eUserInfoRspInfo\030\023 \001(\0132,.com.heme.logic." +
-      "module.GetVerboseUserInfoRsp\022A\n\022SetUserI" +
-      "conReqInfo\030\024 \001(\0132%.com.heme.logic.module" +
-      ".SetUserIconReq\022A\n\022SetUserIconRspInfo\030\025 " +
-      "\001(\0132%.com.heme.logic.module.SetUserIconR" +
-      "sp\022C\n\023SetSignatureReqInfo\030\026 \001(\0132&.com.he" +
-      "me.logic.module.SetSignatureReq\022C\n\023SetSi" +
-      "gnatureRspInfo\030\027 \001(\0132&.com.heme.logic.mo",
-      "dule.SetSignatureRsp\022K\n\027FindPasswdVerify" +
-      "ReqInfo\030\030 \001(\0132*.com.heme.logic.module.Fi" +
-      "ndPasswdVerifyReq\022K\n\027FindPasswdVerifyRsp" +
-      "Info\030\031 \001(\0132*.com.heme.logic.module.FindP" +
-      "asswdVerifyRsp\022K\n\027CreateFixedGroupReqInf" +
-      "o\030\032 \001(\0132*.com.heme.logic.module.CreateFi" +
-      "xedGroupReq\022K\n\027CreateFixedGroupRspInfo\030\033" +
-      " \001(\0132*.com.heme.logic.module.CreateFixed" +
-      "GroupRsp\022I\n\026CreateTempGroupReqInfo\030\034 \001(\013" +
-      "2).com.heme.logic.module.CreateTempGroup",
-      "Req\022I\n\026CreateTempGroupRspInfo\030\035 \001(\0132).co" +
-      "m.heme.logic.module.CreateTempGroupRsp\022M" +
-      "\n\030CreateSocialGroupReqInfo\030\036 \001(\0132+.com.h" +
-      "eme.logic.module.CreateSocialGroupReq\022M\n" +
-      "\030CreateSocialGroupRspInfo\030\037 \001(\0132+.com.he" +
-      "me.logic.module.CreateSocialGroupRsp\022C\n\023" +
-      "SetGroupNameReqInfo\030  \001(\0132&.com.heme.log" +
-      "ic.module.SetGroupNameReq\022C\n\023SetGroupNam" +
-      "eRspInfo\030! \001(\0132&.com.heme.logic.module.S" +
-      "etGroupNameRsp\022;\n\017DelGroupReqInfo\030\" \001(\0132",
-      "\".com.heme.logic.module.DelGroupReq\022;\n\017D" +
-      "elGroupRspInfo\030# \001(\0132\".com.heme.logic.mo" +
-      "dule.DelGroupRsp\022G\n\025AddGroupMemberReqInf" +
-      "o\030$ \001(\0132(.com.heme.logic.module.AddGroup" +
-      "MemberReq\022G\n\025AddGroupMemberRspInfo\030% \001(\013" +
-      "2(.com.heme.logic.module.AddGroupMemberR" +
-      "sp\022G\n\025DelGroupMemberReqInfo\030& \001(\0132(.com." +
-      "heme.logic.module.DelGroupMemberReq\022G\n\025D" +
-      "elGroupMemberRspInfo\030\' \001(\0132(.com.heme.lo" +
-      "gic.module.DelGroupMemberRsp\022E\n\024SetFrien",
-      "dDescReqInfo\030( \001(\0132\'.com.heme.logic.modu" +
-      "le.SetFriendDescReq\022E\n\024SetFriendDescRspI" +
-      "nfo\030) \001(\0132\'.com.heme.logic.module.SetFri" +
-      "endDescRsp\022=\n\020DelFriendReqInfo\030* \001(\0132#.c" +
-      "om.heme.logic.module.DelFriendReq\022=\n\020Del" +
-      "FriendRspInfo\030+ \001(\0132#.com.heme.logic.mod" +
-      "ule.DelFriendRsp\022A\n\022SetSelfInfoReqInfo\030," +
-      " \001(\0132%.com.heme.logic.module.SetSelfInfo" +
-      "Req\022A\n\022SetSelfInfoRspInfo\030- \001(\0132%.com.he" +
-      "me.logic.module.SetSelfInfoRsp\022=\n\020SetPas",
-      "swdReqInfo\030. \001(\0132#.com.heme.logic.module" +
-      ".SetPasswdReq\022=\n\020SetPasswdRspInfo\030/ \001(\0132" +
-      "#.com.heme.logic.module.SetPasswdRsp\022G\n\025" +
-      "SetFriendRightReqInfo\0300 \001(\0132(.com.heme.l" +
-      "ogic.module.SetFriendRightReq\022G\n\025SetFrie" +
-      "ndRightRspInfo\0301 \001(\0132(.com.heme.logic.mo" +
-      "dule.SetFriendRightRsp\022C\n\023SendFeedbackRe" +
-      "qInfo\0302 \001(\0132&.com.heme.logic.module.Send" +
-      "FeedbackReq\022C\n\023SendFeedbackRspInfo\0303 \001(\013" +
-      "2&.com.heme.logic.module.SendFeedbackRsp",
-      "\022U\n\034BusiGetClassOfTeacherReqInfo\0304 \001(\0132/" +
-      ".com.heme.logic.module.BusiGetClassOfTea" +
-      "cherReq\022U\n\034BusiGetClassOfTeacherRspInfo\030" +
-      "5 \001(\0132/.com.heme.logic.module.BusiGetCla" +
-      "ssOfTeacherRsp\022Y\n\036BusiGetSubjectOfTeache" +
-      "rReqInfo\0306 \001(\01321.com.heme.logic.module.B" +
-      "usiGetSubjectOfTeacherReq\022Y\n\036BusiGetSubj" +
-      "ectOfTeacherRspInfo\0307 \001(\01321.com.heme.log" +
-      "ic.module.BusiGetSubjectOfTeacherRsp\"\201\004\n" +
-      "\003Cmd\022\017\n\013VerifyPhone\020\001\022\r\n\tRegParent\020\002\022\020\n\014",
-      "RegGetSchool\020\003\022\017\n\013RegGetClass\020\004\022\016\n\nRegSt" +
-      "udent\020\005\022\t\n\005Login\020\006\022\020\n\014GetGroupInfo\020\007\022\017\n\013" +
-      "GetUserInfo\020\010\022\026\n\022GetVerboseUserInfo\020\t\022\017\n" +
-      "\013SetUserIcon\020\n\022\020\n\014SetSignature\020\013\022\024\n\020Find" +
-      "PasswdVerify\020\014\022\024\n\020CreateFixedGroup\020\r\022\023\n\017" +
-      "CreateTempGroup\020\016\022\025\n\021CreateSocialGroup\020\017" +
-      "\022\020\n\014SetGroupName\020\020\022\014\n\010DelGroup\020\021\022\022\n\016AddG" +
-      "roupMember\020\022\022\022\n\016DelGroupMember\020\023\022\021\n\rSetF" +
-      "riendDesc\020\024\022\r\n\tDelFriend\020\025\022\017\n\013SetSelfInf" +
-      "o\020\026\022\r\n\tSetPasswd\020\027\022\022\n\016SetFriendRight\020\030\022\020",
-      "\n\014SendFeedback\020\031\022\031\n\025BusiGetClassOfTeache" +
-      "r\020\032\022\033\n\027BusiGetSubjectOfTeacher\020\033"
+      "le.SubjectOfTeacherCombine\"r\n\014AddFriendR" +
+      "eq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(" +
+      "\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026" +
+      "\n\016targetSystemId\030\005 \003(\004\"2\n\014AddFriendRsp\022\017" +
+      "\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\300#\n\014D",
+      "ataSvrProto\0229\n\010enum_cmd\030\001 \002(\0162\'.com.heme" +
+      ".logic.module.DataSvrProto.Cmd\022A\n\022Verify" +
+      "PhoneReqInfo\030\002 \001(\0132%.com.heme.logic.modu" +
+      "le.VerifyPhoneReq\022A\n\022VerifyPhoneRspInfo\030" +
+      "\003 \001(\0132%.com.heme.logic.module.VerifyPhon" +
+      "eRsp\022=\n\020RegParentReqInfo\030\004 \001(\0132#.com.hem" +
+      "e.logic.module.RegParentReq\022=\n\020RegParent" +
+      "RspInfo\030\005 \001(\0132#.com.heme.logic.module.Re" +
+      "gParentRsp\022C\n\023RegGetSchoolReqInfo\030\006 \001(\0132" +
+      "&.com.heme.logic.module.RegGetSchoolReq\022",
+      "C\n\023RegGetSchoolRspInfo\030\007 \001(\0132&.com.heme." +
+      "logic.module.RegGetSchoolRsp\022A\n\022RegGetCl" +
+      "assReqInfo\030\010 \001(\0132%.com.heme.logic.module" +
+      ".RegGetClassReq\022A\n\022RegGetClassRspInfo\030\t " +
+      "\001(\0132%.com.heme.logic.module.RegGetClassR" +
+      "sp\022?\n\021RegStudentReqInfo\030\n \001(\0132$.com.heme" +
+      ".logic.module.RegStudentReq\022?\n\021RegStuden" +
+      "tRspInfo\030\013 \001(\0132$.com.heme.logic.module.R" +
+      "egStudentRsp\0225\n\014LoginReqInfo\030\014 \001(\0132\037.com" +
+      ".heme.logic.module.LoginReq\0225\n\014LoginRspI",
+      "nfo\030\r \001(\0132\037.com.heme.logic.module.LoginR" +
+      "sp\022C\n\023GetGroupInfoReqInfo\030\016 \001(\0132&.com.he" +
+      "me.logic.module.GetGroupInfoReq\022C\n\023GetGr" +
+      "oupInfoRspInfo\030\017 \001(\0132&.com.heme.logic.mo" +
+      "dule.GetGroupInfoRsp\022A\n\022GetUserInfoReqIn" +
+      "fo\030\020 \001(\0132%.com.heme.logic.module.GetUser" +
+      "InfoReq\022A\n\022GetUserInfoRspInfo\030\021 \001(\0132%.co" +
+      "m.heme.logic.module.GetUserInfoRsp\022O\n\031Ge" +
+      "tVerboseUserInfoReqInfo\030\022 \001(\0132,.com.heme" +
+      ".logic.module.GetVerboseUserInfoReq\022O\n\031G",
+      "etVerboseUserInfoRspInfo\030\023 \001(\0132,.com.hem" +
+      "e.logic.module.GetVerboseUserInfoRsp\022A\n\022" +
+      "SetUserIconReqInfo\030\024 \001(\0132%.com.heme.logi" +
+      "c.module.SetUserIconReq\022A\n\022SetUserIconRs" +
+      "pInfo\030\025 \001(\0132%.com.heme.logic.module.SetU" +
+      "serIconRsp\022C\n\023SetSignatureReqInfo\030\026 \001(\0132" +
+      "&.com.heme.logic.module.SetSignatureReq\022" +
+      "C\n\023SetSignatureRspInfo\030\027 \001(\0132&.com.heme." +
+      "logic.module.SetSignatureRsp\022K\n\027FindPass" +
+      "wdVerifyReqInfo\030\030 \001(\0132*.com.heme.logic.m",
+      "odule.FindPasswdVerifyReq\022K\n\027FindPasswdV" +
+      "erifyRspInfo\030\031 \001(\0132*.com.heme.logic.modu" +
+      "le.FindPasswdVerifyRsp\022K\n\027CreateFixedGro" +
+      "upReqInfo\030\032 \001(\0132*.com.heme.logic.module." +
+      "CreateFixedGroupReq\022K\n\027CreateFixedGroupR" +
+      "spInfo\030\033 \001(\0132*.com.heme.logic.module.Cre" +
+      "ateFixedGroupRsp\022I\n\026CreateTempGroupReqIn" +
+      "fo\030\034 \001(\0132).com.heme.logic.module.CreateT" +
+      "empGroupReq\022I\n\026CreateTempGroupRspInfo\030\035 " +
+      "\001(\0132).com.heme.logic.module.CreateTempGr",
+      "oupRsp\022M\n\030CreateSocialGroupReqInfo\030\036 \001(\013" +
+      "2+.com.heme.logic.module.CreateSocialGro" +
+      "upReq\022M\n\030CreateSocialGroupRspInfo\030\037 \001(\0132" +
+      "+.com.heme.logic.module.CreateSocialGrou" +
+      "pRsp\022C\n\023SetGroupNameReqInfo\030  \001(\0132&.com." +
+      "heme.logic.module.SetGroupNameReq\022C\n\023Set" +
+      "GroupNameRspInfo\030! \001(\0132&.com.heme.logic." +
+      "module.SetGroupNameRsp\022;\n\017DelGroupReqInf" +
+      "o\030\" \001(\0132\".com.heme.logic.module.DelGroup" +
+      "Req\022;\n\017DelGroupRspInfo\030# \001(\0132\".com.heme.",
+      "logic.module.DelGroupRsp\022G\n\025AddGroupMemb" +
+      "erReqInfo\030$ \001(\0132(.com.heme.logic.module." +
+      "AddGroupMemberReq\022G\n\025AddGroupMemberRspIn" +
+      "fo\030% \001(\0132(.com.heme.logic.module.AddGrou" +
+      "pMemberRsp\022G\n\025DelGroupMemberReqInfo\030& \001(" +
+      "\0132(.com.heme.logic.module.DelGroupMember" +
+      "Req\022G\n\025DelGroupMemberRspInfo\030\' \001(\0132(.com" +
+      ".heme.logic.module.DelGroupMemberRsp\022E\n\024" +
+      "SetFriendDescReqInfo\030( \001(\0132\'.com.heme.lo" +
+      "gic.module.SetFriendDescReq\022E\n\024SetFriend",
+      "DescRspInfo\030) \001(\0132\'.com.heme.logic.modul" +
+      "e.SetFriendDescRsp\022=\n\020DelFriendReqInfo\030*" +
+      " \001(\0132#.com.heme.logic.module.DelFriendRe" +
+      "q\022=\n\020DelFriendRspInfo\030+ \001(\0132#.com.heme.l" +
+      "ogic.module.DelFriendRsp\022A\n\022SetSelfInfoR" +
+      "eqInfo\030, \001(\0132%.com.heme.logic.module.Set" +
+      "SelfInfoReq\022A\n\022SetSelfInfoRspInfo\030- \001(\0132" +
+      "%.com.heme.logic.module.SetSelfInfoRsp\022=" +
+      "\n\020SetPasswdReqInfo\030. \001(\0132#.com.heme.logi" +
+      "c.module.SetPasswdReq\022=\n\020SetPasswdRspInf",
+      "o\030/ \001(\0132#.com.heme.logic.module.SetPassw" +
+      "dRsp\022G\n\025SetFriendRightReqInfo\0300 \001(\0132(.co" +
+      "m.heme.logic.module.SetFriendRightReq\022G\n" +
+      "\025SetFriendRightRspInfo\0301 \001(\0132(.com.heme." +
+      "logic.module.SetFriendRightRsp\022C\n\023SendFe" +
+      "edbackReqInfo\0302 \001(\0132&.com.heme.logic.mod" +
+      "ule.SendFeedbackReq\022C\n\023SendFeedbackRspIn" +
+      "fo\0303 \001(\0132&.com.heme.logic.module.SendFee" +
+      "dbackRsp\022U\n\034BusiGetClassOfTeacherReqInfo" +
+      "\0304 \001(\0132/.com.heme.logic.module.BusiGetCl",
+      "assOfTeacherReq\022U\n\034BusiGetClassOfTeacher" +
+      "RspInfo\0305 \001(\0132/.com.heme.logic.module.Bu" +
+      "siGetClassOfTeacherRsp\022Y\n\036BusiGetSubject" +
+      "OfTeacherReqInfo\0306 \001(\01321.com.heme.logic." +
+      "module.BusiGetSubjectOfTeacherReq\022Y\n\036Bus" +
+      "iGetSubjectOfTeacherRspInfo\0307 \001(\01321.com." +
+      "heme.logic.module.BusiGetSubjectOfTeache" +
+      "rRsp\022=\n\020AddFriendReqInfo\0308 \001(\0132#.com.hem" +
+      "e.logic.module.AddFriendReq\022=\n\020AddFriend" +
+      "RspInfo\0309 \001(\0132#.com.heme.logic.module.Ad",
+      "dFriendRsp\"\220\004\n\003Cmd\022\017\n\013VerifyPhone\020\001\022\r\n\tR" +
+      "egParent\020\002\022\020\n\014RegGetSchool\020\003\022\017\n\013RegGetCl" +
+      "ass\020\004\022\016\n\nRegStudent\020\005\022\t\n\005Login\020\006\022\020\n\014GetG" +
+      "roupInfo\020\007\022\017\n\013GetUserInfo\020\010\022\026\n\022GetVerbos" +
+      "eUserInfo\020\t\022\017\n\013SetUserIcon\020\n\022\020\n\014SetSigna" +
+      "ture\020\013\022\024\n\020FindPasswdVerify\020\014\022\024\n\020CreateFi" +
+      "xedGroup\020\r\022\023\n\017CreateTempGroup\020\016\022\025\n\021Creat" +
+      "eSocialGroup\020\017\022\020\n\014SetGroupName\020\020\022\014\n\010DelG" +
+      "roup\020\021\022\022\n\016AddGroupMember\020\022\022\022\n\016DelGroupMe" +
+      "mber\020\023\022\021\n\rSetFriendDesc\020\024\022\r\n\tDelFriend\020\025",
+      "\022\017\n\013SetSelfInfo\020\026\022\r\n\tSetPasswd\020\027\022\022\n\016SetF" +
+      "riendRight\020\030\022\020\n\014SendFeedback\020\031\022\031\n\025BusiGe" +
+      "tClassOfTeacher\020\032\022\033\n\027BusiGetSubjectOfTea" +
+      "cher\020\033\022\r\n\tAddFriend\020\034"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -82481,7 +86216,7 @@ public final class Data {
           internal_static_com_heme_logic_module_RegParentReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_RegParentReq_descriptor,
-              new java.lang.String[] { "VersionNo", "ClientType", "PhoneNo", "Email", "RealName", "IdCardNo", "Password", "ChildStudentId", "VerifyCode", });
+              new java.lang.String[] { "VersionNo", "ClientType", "PhoneNo", "Email", "RealName", "IdCardNo", "Password", "ChildStudentId", "VerifyCode", "Gender", });
           internal_static_com_heme_logic_module_RegParentRsp_descriptor =
             getDescriptor().getMessageTypes().get(3);
           internal_static_com_heme_logic_module_RegParentRsp_fieldAccessorTable = new
@@ -82529,7 +86264,7 @@ public final class Data {
           internal_static_com_heme_logic_module_RegStudentReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_RegStudentReq_descriptor,
-              new java.lang.String[] { "VersionNo", "ClientType", "PhoneNo", "Email", "RealName", "StudentId", "Password", "ProvinceCode", "ProvinceName", "CityCode", "CityName", "CountyCode", "CountyName", "SchoolId", "ClassId", "VerifyCode", });
+              new java.lang.String[] { "VersionNo", "ClientType", "PhoneNo", "Email", "RealName", "StudentId", "Password", "ProvinceCode", "ProvinceName", "CityCode", "CityName", "CountyCode", "CountyName", "SchoolId", "ClassId", "VerifyCode", "Gender", });
           internal_static_com_heme_logic_module_RegStudentRsp_descriptor =
             getDescriptor().getMessageTypes().get(11);
           internal_static_com_heme_logic_module_RegStudentRsp_fieldAccessorTable = new
@@ -82643,7 +86378,7 @@ public final class Data {
           internal_static_com_heme_logic_module_CreateFixedGroupReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_CreateFixedGroupReq_descriptor,
-              new java.lang.String[] { "VersionNo", "ClientType", "SessionId", "SystemId", "Area", "School", "GroupName", "VerifyType", "MemberSystemId", });
+              new java.lang.String[] { "VersionNo", "ClientType", "SessionId", "SystemId", "ProvinceCode", "ProvinceName", "CityCode", "CityName", "CountyCode", "CountyName", "SchoolId", "SchoolName", "GroupName", "VerifyType", "MemberSystemId", });
           internal_static_com_heme_logic_module_CreateFixedGroupRsp_descriptor =
             getDescriptor().getMessageTypes().get(30);
           internal_static_com_heme_logic_module_CreateFixedGroupRsp_fieldAccessorTable = new
@@ -82830,12 +86565,24 @@ public final class Data {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_BusiGetSubjectOfTeacherRsp_descriptor,
               new java.lang.String[] { "ErrCode", "ErrString", "SubjectOfTeacherInfo", });
-          internal_static_com_heme_logic_module_DataSvrProto_descriptor =
+          internal_static_com_heme_logic_module_AddFriendReq_descriptor =
             getDescriptor().getMessageTypes().get(61);
+          internal_static_com_heme_logic_module_AddFriendReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_heme_logic_module_AddFriendReq_descriptor,
+              new java.lang.String[] { "VersionNo", "ClientType", "SessionId", "SystemId", "TargetSystemId", });
+          internal_static_com_heme_logic_module_AddFriendRsp_descriptor =
+            getDescriptor().getMessageTypes().get(62);
+          internal_static_com_heme_logic_module_AddFriendRsp_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_heme_logic_module_AddFriendRsp_descriptor,
+              new java.lang.String[] { "ErrCode", "ErrString", });
+          internal_static_com_heme_logic_module_DataSvrProto_descriptor =
+            getDescriptor().getMessageTypes().get(63);
           internal_static_com_heme_logic_module_DataSvrProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_DataSvrProto_descriptor,
-              new java.lang.String[] { "EnumCmd", "VerifyPhoneReqInfo", "VerifyPhoneRspInfo", "RegParentReqInfo", "RegParentRspInfo", "RegGetSchoolReqInfo", "RegGetSchoolRspInfo", "RegGetClassReqInfo", "RegGetClassRspInfo", "RegStudentReqInfo", "RegStudentRspInfo", "LoginReqInfo", "LoginRspInfo", "GetGroupInfoReqInfo", "GetGroupInfoRspInfo", "GetUserInfoReqInfo", "GetUserInfoRspInfo", "GetVerboseUserInfoReqInfo", "GetVerboseUserInfoRspInfo", "SetUserIconReqInfo", "SetUserIconRspInfo", "SetSignatureReqInfo", "SetSignatureRspInfo", "FindPasswdVerifyReqInfo", "FindPasswdVerifyRspInfo", "CreateFixedGroupReqInfo", "CreateFixedGroupRspInfo", "CreateTempGroupReqInfo", "CreateTempGroupRspInfo", "CreateSocialGroupReqInfo", "CreateSocialGroupRspInfo", "SetGroupNameReqInfo", "SetGroupNameRspInfo", "DelGroupReqInfo", "DelGroupRspInfo", "AddGroupMemberReqInfo", "AddGroupMemberRspInfo", "DelGroupMemberReqInfo", "DelGroupMemberRspInfo", "SetFriendDescReqInfo", "SetFriendDescRspInfo", "DelFriendReqInfo", "DelFriendRspInfo", "SetSelfInfoReqInfo", "SetSelfInfoRspInfo", "SetPasswdReqInfo", "SetPasswdRspInfo", "SetFriendRightReqInfo", "SetFriendRightRspInfo", "SendFeedbackReqInfo", "SendFeedbackRspInfo", "BusiGetClassOfTeacherReqInfo", "BusiGetClassOfTeacherRspInfo", "BusiGetSubjectOfTeacherReqInfo", "BusiGetSubjectOfTeacherRspInfo", });
+              new java.lang.String[] { "EnumCmd", "VerifyPhoneReqInfo", "VerifyPhoneRspInfo", "RegParentReqInfo", "RegParentRspInfo", "RegGetSchoolReqInfo", "RegGetSchoolRspInfo", "RegGetClassReqInfo", "RegGetClassRspInfo", "RegStudentReqInfo", "RegStudentRspInfo", "LoginReqInfo", "LoginRspInfo", "GetGroupInfoReqInfo", "GetGroupInfoRspInfo", "GetUserInfoReqInfo", "GetUserInfoRspInfo", "GetVerboseUserInfoReqInfo", "GetVerboseUserInfoRspInfo", "SetUserIconReqInfo", "SetUserIconRspInfo", "SetSignatureReqInfo", "SetSignatureRspInfo", "FindPasswdVerifyReqInfo", "FindPasswdVerifyRspInfo", "CreateFixedGroupReqInfo", "CreateFixedGroupRspInfo", "CreateTempGroupReqInfo", "CreateTempGroupRspInfo", "CreateSocialGroupReqInfo", "CreateSocialGroupRspInfo", "SetGroupNameReqInfo", "SetGroupNameRspInfo", "DelGroupReqInfo", "DelGroupRspInfo", "AddGroupMemberReqInfo", "AddGroupMemberRspInfo", "DelGroupMemberReqInfo", "DelGroupMemberRspInfo", "SetFriendDescReqInfo", "SetFriendDescRspInfo", "DelFriendReqInfo", "DelFriendRspInfo", "SetSelfInfoReqInfo", "SetSelfInfoRspInfo", "SetPasswdReqInfo", "SetPasswdRspInfo", "SetFriendRightReqInfo", "SetFriendRightRspInfo", "SendFeedbackReqInfo", "SendFeedbackRspInfo", "BusiGetClassOfTeacherReqInfo", "BusiGetClassOfTeacherRspInfo", "BusiGetSubjectOfTeacherReqInfo", "BusiGetSubjectOfTeacherRspInfo", "AddFriendReqInfo", "AddFriendRspInfo", });
           return null;
         }
       };

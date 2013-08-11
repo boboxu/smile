@@ -7,6 +7,614 @@ public final class Message {
   public static void registerAllExtensions(
       com.google.protobuf.ExtensionRegistry registry) {
   }
+  /**
+   * Protobuf enum {@code MessageType}
+   *
+   * <pre>
+   *��Ϣ����
+   * </pre>
+   */
+  public enum MessageType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MT_All = 0;</code>
+     *
+     * <pre>
+     *�������ͣ�����PollMsgReqʹ��
+     * </pre>
+     */
+    MT_All(0, 0),
+    /**
+     * <code>MT_C2C = 1;</code>
+     *
+     * <pre>
+     *c2c��Ϣ
+     * </pre>
+     */
+    MT_C2C(1, 1),
+    /**
+     * <code>MT_Group = 2;</code>
+     *
+     * <pre>
+     *Ⱥ��Ϣ
+     * </pre>
+     */
+    MT_Group(2, 2),
+    /**
+     * <code>MT_System = 3;</code>
+     *
+     * <pre>
+     *ϵͳ��Ϣ
+     * </pre>
+     */
+    MT_System(3, 3),
+    /**
+     * <code>MT_Community = 4;</code>
+     *
+     * <pre>
+     *����Ⱥ����Ϣ
+     * </pre>
+     */
+    MT_Community(4, 4),
+    /**
+     * <code>MT_Broadcast = 5;</code>
+     *
+     * <pre>
+     *����
+     * </pre>
+     */
+    MT_Broadcast(5, 5),
+    /**
+     * <code>MT_ClassInfo = 6;</code>
+     *
+     * <pre>
+     *������Ϣ����
+     * </pre>
+     */
+    MT_ClassInfo(6, 6),
+    /**
+     * <code>MT_VoiceTest = 7;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    MT_VoiceTest(7, 7),
+    /**
+     * <code>MT_NetGuard = 8;</code>
+     *
+     * <pre>
+     *��ɫ��������
+     * </pre>
+     */
+    MT_NetGuard(8, 8),
+    /**
+     * <code>MT_VerifyReq = 9;</code>
+     *
+     * <pre>
+     *��֤����
+     * </pre>
+     */
+    MT_VerifyReq(9, 9),
+    ;
+
+    /**
+     * <code>MT_All = 0;</code>
+     *
+     * <pre>
+     *�������ͣ�����PollMsgReqʹ��
+     * </pre>
+     */
+    public static final int MT_All_VALUE = 0;
+    /**
+     * <code>MT_C2C = 1;</code>
+     *
+     * <pre>
+     *c2c��Ϣ
+     * </pre>
+     */
+    public static final int MT_C2C_VALUE = 1;
+    /**
+     * <code>MT_Group = 2;</code>
+     *
+     * <pre>
+     *Ⱥ��Ϣ
+     * </pre>
+     */
+    public static final int MT_Group_VALUE = 2;
+    /**
+     * <code>MT_System = 3;</code>
+     *
+     * <pre>
+     *ϵͳ��Ϣ
+     * </pre>
+     */
+    public static final int MT_System_VALUE = 3;
+    /**
+     * <code>MT_Community = 4;</code>
+     *
+     * <pre>
+     *����Ⱥ����Ϣ
+     * </pre>
+     */
+    public static final int MT_Community_VALUE = 4;
+    /**
+     * <code>MT_Broadcast = 5;</code>
+     *
+     * <pre>
+     *����
+     * </pre>
+     */
+    public static final int MT_Broadcast_VALUE = 5;
+    /**
+     * <code>MT_ClassInfo = 6;</code>
+     *
+     * <pre>
+     *������Ϣ����
+     * </pre>
+     */
+    public static final int MT_ClassInfo_VALUE = 6;
+    /**
+     * <code>MT_VoiceTest = 7;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    public static final int MT_VoiceTest_VALUE = 7;
+    /**
+     * <code>MT_NetGuard = 8;</code>
+     *
+     * <pre>
+     *��ɫ��������
+     * </pre>
+     */
+    public static final int MT_NetGuard_VALUE = 8;
+    /**
+     * <code>MT_VerifyReq = 9;</code>
+     *
+     * <pre>
+     *��֤����
+     * </pre>
+     */
+    public static final int MT_VerifyReq_VALUE = 9;
+
+
+    public final int getNumber() { return value; }
+
+    public static MessageType valueOf(int value) {
+      switch (value) {
+        case 0: return MT_All;
+        case 1: return MT_C2C;
+        case 2: return MT_Group;
+        case 3: return MT_System;
+        case 4: return MT_Community;
+        case 5: return MT_Broadcast;
+        case 6: return MT_ClassInfo;
+        case 7: return MT_VoiceTest;
+        case 8: return MT_NetGuard;
+        case 9: return MT_VerifyReq;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<MessageType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<MessageType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MessageType>() {
+            public MessageType findValueByNumber(int number) {
+              return MessageType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return Message.getDescriptor().getEnumTypes().get(0);
+    }
+
+    private static final MessageType[] VALUES = values();
+
+    public static MessageType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private MessageType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:MessageType)
+  }
+
+  /**
+   * Protobuf enum {@code ContentType}
+   *
+   * <pre>
+   *ý������
+   * </pre>
+   */
+  public enum ContentType
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>CT_Text = 0;</code>
+     *
+     * <pre>
+     *�ı�
+     * </pre>
+     */
+    CT_Text(0, 0),
+    /**
+     * <code>CT_Picture = 1;</code>
+     *
+     * <pre>
+     *ͼƬ
+     * </pre>
+     */
+    CT_Picture(1, 1),
+    /**
+     * <code>CT_Voice = 2;</code>
+     *
+     * <pre>
+     *����
+     * </pre>
+     */
+    CT_Voice(2, 2),
+    /**
+     * <code>CT_Video = 3;</code>
+     *
+     * <pre>
+     *��Ƶ
+     * </pre>
+     */
+    CT_Video(3, 3),
+    /**
+     * <code>CT_File = 4;</code>
+     *
+     * <pre>
+     *�ļ�
+     * </pre>
+     */
+    CT_File(4, 4),
+    /**
+     * <code>CT_IDCard = 5;</code>
+     *
+     * <pre>
+     *��Ƭ
+     * </pre>
+     */
+    CT_IDCard(5, 5),
+    ;
+
+    /**
+     * <code>CT_Text = 0;</code>
+     *
+     * <pre>
+     *�ı�
+     * </pre>
+     */
+    public static final int CT_Text_VALUE = 0;
+    /**
+     * <code>CT_Picture = 1;</code>
+     *
+     * <pre>
+     *ͼƬ
+     * </pre>
+     */
+    public static final int CT_Picture_VALUE = 1;
+    /**
+     * <code>CT_Voice = 2;</code>
+     *
+     * <pre>
+     *����
+     * </pre>
+     */
+    public static final int CT_Voice_VALUE = 2;
+    /**
+     * <code>CT_Video = 3;</code>
+     *
+     * <pre>
+     *��Ƶ
+     * </pre>
+     */
+    public static final int CT_Video_VALUE = 3;
+    /**
+     * <code>CT_File = 4;</code>
+     *
+     * <pre>
+     *�ļ�
+     * </pre>
+     */
+    public static final int CT_File_VALUE = 4;
+    /**
+     * <code>CT_IDCard = 5;</code>
+     *
+     * <pre>
+     *��Ƭ
+     * </pre>
+     */
+    public static final int CT_IDCard_VALUE = 5;
+
+
+    public final int getNumber() { return value; }
+
+    public static ContentType valueOf(int value) {
+      switch (value) {
+        case 0: return CT_Text;
+        case 1: return CT_Picture;
+        case 2: return CT_Voice;
+        case 3: return CT_Video;
+        case 4: return CT_File;
+        case 5: return CT_IDCard;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<ContentType>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<ContentType>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<ContentType>() {
+            public ContentType findValueByNumber(int number) {
+              return ContentType.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return Message.getDescriptor().getEnumTypes().get(1);
+    }
+
+    private static final ContentType[] VALUES = values();
+
+    public static ContentType valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private ContentType(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:ContentType)
+  }
+
+  /**
+   * Protobuf enum {@code MsgCommand}
+   */
+  public enum MsgCommand
+      implements com.google.protobuf.ProtocolMessageEnum {
+    /**
+     * <code>MC_SendMsgReq = 1;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    MC_SendMsgReq(0, 1),
+    /**
+     * <code>MC_SendMsgRes = 2;</code>
+     *
+     * <pre>
+     *����ȷ��
+     * </pre>
+     */
+    MC_SendMsgRes(1, 2),
+    /**
+     * <code>MC_PushMsgReq = 3;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    MC_PushMsgReq(2, 3),
+    /**
+     * <code>MC_RecvMsgNot = 4;</code>
+     *
+     * <pre>
+     *����֪ͨ
+     * </pre>
+     */
+    MC_RecvMsgNot(3, 4),
+    /**
+     * <code>MC_PollMsgReq = 5;</code>
+     *
+     * <pre>
+     *��ȡ����
+     * </pre>
+     */
+    MC_PollMsgReq(4, 5),
+    /**
+     * <code>MC_PollMsgRes = 6;</code>
+     *
+     * <pre>
+     *��ȡ���
+     * </pre>
+     */
+    MC_PollMsgRes(5, 6),
+    /**
+     * <code>MC_PollUnreadInfoReq = 7;</code>
+     *
+     * <pre>
+     *��ȡδ���б�����
+     * </pre>
+     */
+    MC_PollUnreadInfoReq(6, 7),
+    /**
+     * <code>MC_PollUnreadInfoRes = 8;</code>
+     *
+     * <pre>
+     *��ȡδ���б���
+     * </pre>
+     */
+    MC_PollUnreadInfoRes(7, 8),
+    ;
+
+    /**
+     * <code>MC_SendMsgReq = 1;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    public static final int MC_SendMsgReq_VALUE = 1;
+    /**
+     * <code>MC_SendMsgRes = 2;</code>
+     *
+     * <pre>
+     *����ȷ��
+     * </pre>
+     */
+    public static final int MC_SendMsgRes_VALUE = 2;
+    /**
+     * <code>MC_PushMsgReq = 3;</code>
+     *
+     * <pre>
+     *��������
+     * </pre>
+     */
+    public static final int MC_PushMsgReq_VALUE = 3;
+    /**
+     * <code>MC_RecvMsgNot = 4;</code>
+     *
+     * <pre>
+     *����֪ͨ
+     * </pre>
+     */
+    public static final int MC_RecvMsgNot_VALUE = 4;
+    /**
+     * <code>MC_PollMsgReq = 5;</code>
+     *
+     * <pre>
+     *��ȡ����
+     * </pre>
+     */
+    public static final int MC_PollMsgReq_VALUE = 5;
+    /**
+     * <code>MC_PollMsgRes = 6;</code>
+     *
+     * <pre>
+     *��ȡ���
+     * </pre>
+     */
+    public static final int MC_PollMsgRes_VALUE = 6;
+    /**
+     * <code>MC_PollUnreadInfoReq = 7;</code>
+     *
+     * <pre>
+     *��ȡδ���б�����
+     * </pre>
+     */
+    public static final int MC_PollUnreadInfoReq_VALUE = 7;
+    /**
+     * <code>MC_PollUnreadInfoRes = 8;</code>
+     *
+     * <pre>
+     *��ȡδ���б���
+     * </pre>
+     */
+    public static final int MC_PollUnreadInfoRes_VALUE = 8;
+
+
+    public final int getNumber() { return value; }
+
+    public static MsgCommand valueOf(int value) {
+      switch (value) {
+        case 1: return MC_SendMsgReq;
+        case 2: return MC_SendMsgRes;
+        case 3: return MC_PushMsgReq;
+        case 4: return MC_RecvMsgNot;
+        case 5: return MC_PollMsgReq;
+        case 6: return MC_PollMsgRes;
+        case 7: return MC_PollUnreadInfoReq;
+        case 8: return MC_PollUnreadInfoRes;
+        default: return null;
+      }
+    }
+
+    public static com.google.protobuf.Internal.EnumLiteMap<MsgCommand>
+        internalGetValueMap() {
+      return internalValueMap;
+    }
+    private static com.google.protobuf.Internal.EnumLiteMap<MsgCommand>
+        internalValueMap =
+          new com.google.protobuf.Internal.EnumLiteMap<MsgCommand>() {
+            public MsgCommand findValueByNumber(int number) {
+              return MsgCommand.valueOf(number);
+            }
+          };
+
+    public final com.google.protobuf.Descriptors.EnumValueDescriptor
+        getValueDescriptor() {
+      return getDescriptor().getValues().get(index);
+    }
+    public final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptorForType() {
+      return getDescriptor();
+    }
+    public static final com.google.protobuf.Descriptors.EnumDescriptor
+        getDescriptor() {
+      return Message.getDescriptor().getEnumTypes().get(2);
+    }
+
+    private static final MsgCommand[] VALUES = values();
+
+    public static MsgCommand valueOf(
+        com.google.protobuf.Descriptors.EnumValueDescriptor desc) {
+      if (desc.getType() != getDescriptor()) {
+        throw new java.lang.IllegalArgumentException(
+          "EnumValueDescriptor is not for this type.");
+      }
+      return VALUES[desc.getIndex()];
+    }
+
+    private final int index;
+    private final int value;
+
+    private MsgCommand(int index, int value) {
+      this.index = index;
+      this.value = value;
+    }
+
+    // @@protoc_insertion_point(enum_scope:MsgCommand)
+  }
+
   public interface PicMsgInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -144,6 +752,60 @@ public final class Message {
      * </pre>
      */
     int getUint32PicHeight();
+
+    // optional string str_file_name = 7;
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    boolean hasStrFileName();
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    java.lang.String getStrFileName();
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileNameBytes();
+
+    // optional string str_file_info = 8;
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    boolean hasStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    java.lang.String getStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileInfoBytes();
   }
   /**
    * Protobuf type {@code PicMsgInfo}
@@ -230,6 +892,16 @@ public final class Message {
             case 48: {
               bitField0_ |= 0x00000020;
               uint32PicHeight_ = input.readUInt32();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000040;
+              strFileName_ = input.readBytes();
+              break;
+            }
+            case 66: {
+              bitField0_ |= 0x00000080;
+              strFileInfo_ = input.readBytes();
               break;
             }
           }
@@ -509,6 +1181,116 @@ public final class Message {
       return uint32PicHeight_;
     }
 
+    // optional string str_file_name = 7;
+    public static final int STR_FILE_NAME_FIELD_NUMBER = 7;
+    private java.lang.Object strFileName_;
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public boolean hasStrFileName() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public java.lang.String getStrFileName() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_name = 7;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileNameBytes() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string str_file_info = 8;
+    public static final int STR_FILE_INFO_FIELD_NUMBER = 8;
+    private java.lang.Object strFileInfo_;
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public boolean hasStrFileInfo() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public java.lang.String getStrFileInfo() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_info = 8;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileInfoBytes() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       strPicUrl_ = "";
       strThumbUrl_ = "";
@@ -516,6 +1298,8 @@ public final class Message {
       strPicType_ = "";
       uint32PicWidth_ = 0;
       uint32PicHeight_ = 0;
+      strFileName_ = "";
+      strFileInfo_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -551,6 +1335,12 @@ public final class Message {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         output.writeUInt32(6, uint32PicHeight_);
       }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(7, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(8, getStrFileInfoBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -583,6 +1373,14 @@ public final class Message {
       if (((bitField0_ & 0x00000020) == 0x00000020)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(6, uint32PicHeight_);
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, getStrFileInfoBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -718,6 +1516,10 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000010);
         uint32PicHeight_ = 0;
         bitField0_ = (bitField0_ & ~0x00000020);
+        strFileName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
+        strFileInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000080);
         return this;
       }
 
@@ -770,6 +1572,14 @@ public final class Message {
           to_bitField0_ |= 0x00000020;
         }
         result.uint32PicHeight_ = uint32PicHeight_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.strFileName_ = strFileName_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.strFileInfo_ = strFileInfo_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -809,6 +1619,16 @@ public final class Message {
         }
         if (other.hasUint32PicHeight()) {
           setUint32PicHeight(other.getUint32PicHeight());
+        }
+        if (other.hasStrFileName()) {
+          bitField0_ |= 0x00000040;
+          strFileName_ = other.strFileName_;
+          onChanged();
+        }
+        if (other.hasStrFileInfo()) {
+          bitField0_ |= 0x00000080;
+          strFileInfo_ = other.strFileInfo_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -1282,6 +2102,202 @@ public final class Message {
         return this;
       }
 
+      // optional string str_file_name = 7;
+      private java.lang.Object strFileName_ = "";
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public boolean hasStrFileName() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public java.lang.String getStrFileName() {
+        java.lang.Object ref = strFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileNameBytes() {
+        java.lang.Object ref = strFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder clearStrFileName() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        strFileName_ = getDefaultInstance().getStrFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 7;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string str_file_info = 8;
+      private java.lang.Object strFileInfo_ = "";
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public boolean hasStrFileInfo() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public java.lang.String getStrFileInfo() {
+        java.lang.Object ref = strFileInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileInfoBytes() {
+        java.lang.Object ref = strFileInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder clearStrFileInfo() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        strFileInfo_ = getDefaultInstance().getStrFileInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 8;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:PicMsgInfo)
     }
 
@@ -1358,6 +2374,60 @@ public final class Message {
      * </pre>
      */
     int getUint32Duration();
+
+    // optional string str_file_name = 4;
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    boolean hasStrFileName();
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    java.lang.String getStrFileName();
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileNameBytes();
+
+    // optional string str_file_info = 5;
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    boolean hasStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    java.lang.String getStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileInfoBytes();
   }
   /**
    * Protobuf type {@code VoiceMsgInfo}
@@ -1423,6 +2493,16 @@ public final class Message {
             case 24: {
               bitField0_ |= 0x00000004;
               uint32Duration_ = input.readUInt32();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              strFileName_ = input.readBytes();
+              break;
+            }
+            case 42: {
+              bitField0_ |= 0x00000010;
+              strFileInfo_ = input.readBytes();
               break;
             }
           }
@@ -1568,10 +2648,122 @@ public final class Message {
       return uint32Duration_;
     }
 
+    // optional string str_file_name = 4;
+    public static final int STR_FILE_NAME_FIELD_NUMBER = 4;
+    private java.lang.Object strFileName_;
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public boolean hasStrFileName() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public java.lang.String getStrFileName() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_name = 4;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileNameBytes() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string str_file_info = 5;
+    public static final int STR_FILE_INFO_FIELD_NUMBER = 5;
+    private java.lang.Object strFileInfo_;
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public boolean hasStrFileInfo() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public java.lang.String getStrFileInfo() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_info = 5;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileInfoBytes() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       strVoiceUrl_ = "";
       uint32Size_ = 0;
       uint32Duration_ = 0;
+      strFileName_ = "";
+      strFileInfo_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -1598,6 +2790,12 @@ public final class Message {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt32(3, uint32Duration_);
       }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeBytes(5, getStrFileInfoBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -1618,6 +2816,14 @@ public final class Message {
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(3, uint32Duration_);
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(5, getStrFileInfoBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -1741,6 +2947,10 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000002);
         uint32Duration_ = 0;
         bitField0_ = (bitField0_ & ~0x00000004);
+        strFileName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strFileInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
 
@@ -1781,6 +2991,14 @@ public final class Message {
           to_bitField0_ |= 0x00000004;
         }
         result.uint32Duration_ = uint32Duration_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.strFileName_ = strFileName_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.strFileInfo_ = strFileInfo_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -1807,6 +3025,16 @@ public final class Message {
         }
         if (other.hasUint32Duration()) {
           setUint32Duration(other.getUint32Duration());
+        }
+        if (other.hasStrFileName()) {
+          bitField0_ |= 0x00000008;
+          strFileName_ = other.strFileName_;
+          onChanged();
+        }
+        if (other.hasStrFileInfo()) {
+          bitField0_ |= 0x00000010;
+          strFileInfo_ = other.strFileInfo_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -2035,6 +3263,202 @@ public final class Message {
         return this;
       }
 
+      // optional string str_file_name = 4;
+      private java.lang.Object strFileName_ = "";
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public boolean hasStrFileName() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public java.lang.String getStrFileName() {
+        java.lang.Object ref = strFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileNameBytes() {
+        java.lang.Object ref = strFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder clearStrFileName() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strFileName_ = getDefaultInstance().getStrFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 4;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string str_file_info = 5;
+      private java.lang.Object strFileInfo_ = "";
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public boolean hasStrFileInfo() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public java.lang.String getStrFileInfo() {
+        java.lang.Object ref = strFileInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileInfoBytes() {
+        java.lang.Object ref = strFileInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder clearStrFileInfo() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        strFileInfo_ = getDefaultInstance().getStrFileInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 5;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000010;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:VoiceMsgInfo)
     }
 
@@ -2201,6 +3625,60 @@ public final class Message {
      * </pre>
      */
     int getUint32VideoHeight();
+
+    // optional string str_file_name = 8;
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    boolean hasStrFileName();
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    java.lang.String getStrFileName();
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileNameBytes();
+
+    // optional string str_file_info = 9;
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    boolean hasStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    java.lang.String getStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileInfoBytes();
   }
   /**
    * Protobuf type {@code VideoMsgInfo}
@@ -2286,6 +3764,16 @@ public final class Message {
             case 56: {
               bitField0_ |= 0x00000040;
               uint32VideoHeight_ = input.readUInt32();
+              break;
+            }
+            case 66: {
+              bitField0_ |= 0x00000080;
+              strFileName_ = input.readBytes();
+              break;
+            }
+            case 74: {
+              bitField0_ |= 0x00000100;
+              strFileInfo_ = input.readBytes();
               break;
             }
           }
@@ -2589,6 +4077,116 @@ public final class Message {
       return uint32VideoHeight_;
     }
 
+    // optional string str_file_name = 8;
+    public static final int STR_FILE_NAME_FIELD_NUMBER = 8;
+    private java.lang.Object strFileName_;
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public boolean hasStrFileName() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public java.lang.String getStrFileName() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_name = 8;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileNameBytes() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string str_file_info = 9;
+    public static final int STR_FILE_INFO_FIELD_NUMBER = 9;
+    private java.lang.Object strFileInfo_;
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public boolean hasStrFileInfo() {
+      return ((bitField0_ & 0x00000100) == 0x00000100);
+    }
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public java.lang.String getStrFileInfo() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_info = 9;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileInfoBytes() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
     private void initFields() {
       strVideoUrl_ = "";
       strThumbUrl_ = "";
@@ -2597,6 +4195,8 @@ public final class Message {
       strVideoFormat_ = "";
       uint32VideoWidth_ = 0;
       uint32VideoHeight_ = 0;
+      strFileName_ = "";
+      strFileInfo_ = "";
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -2635,6 +4235,12 @@ public final class Message {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         output.writeUInt32(7, uint32VideoHeight_);
       }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(8, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        output.writeBytes(9, getStrFileInfoBytes());
+      }
       getUnknownFields().writeTo(output);
     }
 
@@ -2671,6 +4277,14 @@ public final class Message {
       if (((bitField0_ & 0x00000040) == 0x00000040)) {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt32Size(7, uint32VideoHeight_);
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000100) == 0x00000100)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(9, getStrFileInfoBytes());
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -2802,6 +4416,10 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000020);
         uint32VideoHeight_ = 0;
         bitField0_ = (bitField0_ & ~0x00000040);
+        strFileName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000080);
+        strFileInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000100);
         return this;
       }
 
@@ -2858,6 +4476,14 @@ public final class Message {
           to_bitField0_ |= 0x00000040;
         }
         result.uint32VideoHeight_ = uint32VideoHeight_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.strFileName_ = strFileName_;
+        if (((from_bitField0_ & 0x00000100) == 0x00000100)) {
+          to_bitField0_ |= 0x00000100;
+        }
+        result.strFileInfo_ = strFileInfo_;
         result.bitField0_ = to_bitField0_;
         onBuilt();
         return result;
@@ -2900,6 +4526,16 @@ public final class Message {
         }
         if (other.hasUint32VideoHeight()) {
           setUint32VideoHeight(other.getUint32VideoHeight());
+        }
+        if (other.hasStrFileName()) {
+          bitField0_ |= 0x00000080;
+          strFileName_ = other.strFileName_;
+          onChanged();
+        }
+        if (other.hasStrFileInfo()) {
+          bitField0_ |= 0x00000100;
+          strFileInfo_ = other.strFileInfo_;
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -3422,6 +5058,202 @@ public final class Message {
         return this;
       }
 
+      // optional string str_file_name = 8;
+      private java.lang.Object strFileName_ = "";
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public boolean hasStrFileName() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public java.lang.String getStrFileName() {
+        java.lang.Object ref = strFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileNameBytes() {
+        java.lang.Object ref = strFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder clearStrFileName() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        strFileName_ = getDefaultInstance().getStrFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 8;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string str_file_info = 9;
+      private java.lang.Object strFileInfo_ = "";
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public boolean hasStrFileInfo() {
+        return ((bitField0_ & 0x00000100) == 0x00000100);
+      }
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public java.lang.String getStrFileInfo() {
+        java.lang.Object ref = strFileInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileInfoBytes() {
+        java.lang.Object ref = strFileInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder clearStrFileInfo() {
+        bitField0_ = (bitField0_ & ~0x00000100);
+        strFileInfo_ = getDefaultInstance().getStrFileInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 9;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000100;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+
       // @@protoc_insertion_point(builder_scope:VideoMsgInfo)
     }
 
@@ -3431,6 +5263,1054 @@ public final class Message {
     }
 
     // @@protoc_insertion_point(class_scope:VideoMsgInfo)
+  }
+
+  public interface FileInfoOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string str_file_url = 1;
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    boolean hasStrFileUrl();
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    java.lang.String getStrFileUrl();
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileUrlBytes();
+
+    // optional uint32 uint32_size = 2;
+    /**
+     * <code>optional uint32 uint32_size = 2;</code>
+     *
+     * <pre>
+     *�ļ���С
+     * </pre>
+     */
+    boolean hasUint32Size();
+    /**
+     * <code>optional uint32 uint32_size = 2;</code>
+     *
+     * <pre>
+     *�ļ���С
+     * </pre>
+     */
+    int getUint32Size();
+
+    // optional string str_file_name = 3;
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    boolean hasStrFileName();
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    java.lang.String getStrFileName();
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileNameBytes();
+
+    // optional string str_file_info = 4;
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    boolean hasStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    java.lang.String getStrFileInfo();
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStrFileInfoBytes();
+  }
+  /**
+   * Protobuf type {@code FileInfo}
+   */
+  public static final class FileInfo extends
+      com.google.protobuf.GeneratedMessage
+      implements FileInfoOrBuilder {
+    // Use FileInfo.newBuilder() to construct.
+    private FileInfo(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private FileInfo(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final FileInfo defaultInstance;
+    public static FileInfo getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public FileInfo getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private FileInfo(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              strFileUrl_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              uint32Size_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              strFileName_ = input.readBytes();
+              break;
+            }
+            case 34: {
+              bitField0_ |= 0x00000008;
+              strFileInfo_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_FileInfo_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_FileInfo_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Message.FileInfo.class, Message.FileInfo.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<FileInfo> PARSER =
+        new com.google.protobuf.AbstractParser<FileInfo>() {
+      public FileInfo parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new FileInfo(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<FileInfo> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string str_file_url = 1;
+    public static final int STR_FILE_URL_FIELD_NUMBER = 1;
+    private java.lang.Object strFileUrl_;
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    public boolean hasStrFileUrl() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    public java.lang.String getStrFileUrl() {
+      java.lang.Object ref = strFileUrl_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileUrl_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string str_file_url = 1;</code>
+     *
+     * <pre>
+     *�ļ�URL
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileUrlBytes() {
+      java.lang.Object ref = strFileUrl_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileUrl_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional uint32 uint32_size = 2;
+    public static final int UINT32_SIZE_FIELD_NUMBER = 2;
+    private int uint32Size_;
+    /**
+     * <code>optional uint32 uint32_size = 2;</code>
+     *
+     * <pre>
+     *�ļ���С
+     * </pre>
+     */
+    public boolean hasUint32Size() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional uint32 uint32_size = 2;</code>
+     *
+     * <pre>
+     *�ļ���С
+     * </pre>
+     */
+    public int getUint32Size() {
+      return uint32Size_;
+    }
+
+    // optional string str_file_name = 3;
+    public static final int STR_FILE_NAME_FIELD_NUMBER = 3;
+    private java.lang.Object strFileName_;
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public boolean hasStrFileName() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public java.lang.String getStrFileName() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_name = 3;</code>
+     *
+     * <pre>
+     *�ļ���
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileNameBytes() {
+      java.lang.Object ref = strFileName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string str_file_info = 4;
+    public static final int STR_FILE_INFO_FIELD_NUMBER = 4;
+    private java.lang.Object strFileInfo_;
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public boolean hasStrFileInfo() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public java.lang.String getStrFileInfo() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          strFileInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string str_file_info = 4;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStrFileInfoBytes() {
+      java.lang.Object ref = strFileInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        strFileInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      strFileUrl_ = "";
+      uint32Size_ = 0;
+      strFileName_ = "";
+      strFileInfo_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasStrFileUrl()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getStrFileUrlBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, uint32Size_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeBytes(4, getStrFileInfoBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getStrFileUrlBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, uint32Size_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getStrFileNameBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(4, getStrFileInfoBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static Message.FileInfo parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Message.FileInfo parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Message.FileInfo parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Message.FileInfo parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Message.FileInfo parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static Message.FileInfo parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static Message.FileInfo parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static Message.FileInfo parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static Message.FileInfo parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static Message.FileInfo parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(Message.FileInfo prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code FileInfo}
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements Message.FileInfoOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_FileInfo_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_FileInfo_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Message.FileInfo.class, Message.FileInfo.Builder.class);
+      }
+
+      // Construct using Message.FileInfo.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        strFileUrl_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uint32Size_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        strFileName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strFileInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000008);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_FileInfo_descriptor;
+      }
+
+      public Message.FileInfo getDefaultInstanceForType() {
+        return Message.FileInfo.getDefaultInstance();
+      }
+
+      public Message.FileInfo build() {
+        Message.FileInfo result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public Message.FileInfo buildPartial() {
+        Message.FileInfo result = new Message.FileInfo(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.strFileUrl_ = strFileUrl_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.uint32Size_ = uint32Size_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.strFileName_ = strFileName_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.strFileInfo_ = strFileInfo_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Message.FileInfo) {
+          return mergeFrom((Message.FileInfo)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Message.FileInfo other) {
+        if (other == Message.FileInfo.getDefaultInstance()) return this;
+        if (other.hasStrFileUrl()) {
+          bitField0_ |= 0x00000001;
+          strFileUrl_ = other.strFileUrl_;
+          onChanged();
+        }
+        if (other.hasUint32Size()) {
+          setUint32Size(other.getUint32Size());
+        }
+        if (other.hasStrFileName()) {
+          bitField0_ |= 0x00000004;
+          strFileName_ = other.strFileName_;
+          onChanged();
+        }
+        if (other.hasStrFileInfo()) {
+          bitField0_ |= 0x00000008;
+          strFileInfo_ = other.strFileInfo_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasStrFileUrl()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Message.FileInfo parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Message.FileInfo) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string str_file_url = 1;
+      private java.lang.Object strFileUrl_ = "";
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public boolean hasStrFileUrl() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public java.lang.String getStrFileUrl() {
+        java.lang.Object ref = strFileUrl_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileUrl_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileUrlBytes() {
+        java.lang.Object ref = strFileUrl_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileUrl_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public Builder setStrFileUrl(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        strFileUrl_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public Builder clearStrFileUrl() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        strFileUrl_ = getDefaultInstance().getStrFileUrl();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string str_file_url = 1;</code>
+       *
+       * <pre>
+       *�ļ�URL
+       * </pre>
+       */
+      public Builder setStrFileUrlBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        strFileUrl_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional uint32 uint32_size = 2;
+      private int uint32Size_ ;
+      /**
+       * <code>optional uint32 uint32_size = 2;</code>
+       *
+       * <pre>
+       *�ļ���С
+       * </pre>
+       */
+      public boolean hasUint32Size() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional uint32 uint32_size = 2;</code>
+       *
+       * <pre>
+       *�ļ���С
+       * </pre>
+       */
+      public int getUint32Size() {
+        return uint32Size_;
+      }
+      /**
+       * <code>optional uint32 uint32_size = 2;</code>
+       *
+       * <pre>
+       *�ļ���С
+       * </pre>
+       */
+      public Builder setUint32Size(int value) {
+        bitField0_ |= 0x00000002;
+        uint32Size_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint32 uint32_size = 2;</code>
+       *
+       * <pre>
+       *�ļ���С
+       * </pre>
+       */
+      public Builder clearUint32Size() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        uint32Size_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional string str_file_name = 3;
+      private java.lang.Object strFileName_ = "";
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public boolean hasStrFileName() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public java.lang.String getStrFileName() {
+        java.lang.Object ref = strFileName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileNameBytes() {
+        java.lang.Object ref = strFileName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder clearStrFileName() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        strFileName_ = getDefaultInstance().getStrFileName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_name = 3;</code>
+       *
+       * <pre>
+       *�ļ���
+       * </pre>
+       */
+      public Builder setStrFileNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        strFileName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string str_file_info = 4;
+      private java.lang.Object strFileInfo_ = "";
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public boolean hasStrFileInfo() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public java.lang.String getStrFileInfo() {
+        java.lang.Object ref = strFileInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          strFileInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStrFileInfoBytes() {
+        java.lang.Object ref = strFileInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          strFileInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder clearStrFileInfo() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        strFileInfo_ = getDefaultInstance().getStrFileInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string str_file_info = 4;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setStrFileInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000008;
+        strFileInfo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:FileInfo)
+    }
+
+    static {
+      defaultInstance = new FileInfo(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:FileInfo)
   }
 
   public interface NetGuardInfoOrBuilder
@@ -4200,6 +7080,770 @@ public final class Message {
     }
 
     // @@protoc_insertion_point(class_scope:NetGuardInfo)
+  }
+
+  public interface VerifyRequestOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required uint32 uint32_verify_type = 1;
+    /**
+     * <code>required uint32 uint32_verify_type = 1;</code>
+     *
+     * <pre>
+     *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+     * </pre>
+     */
+    boolean hasUint32VerifyType();
+    /**
+     * <code>required uint32 uint32_verify_type = 1;</code>
+     *
+     * <pre>
+     *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+     * </pre>
+     */
+    int getUint32VerifyType();
+
+    // optional bytes bytes_verify_key = 2;
+    /**
+     * <code>optional bytes bytes_verify_key = 2;</code>
+     *
+     * <pre>
+     *Ԥ�������𷽴�data server��ȡ����һ��key
+     * </pre>
+     */
+    boolean hasBytesVerifyKey();
+    /**
+     * <code>optional bytes bytes_verify_key = 2;</code>
+     *
+     * <pre>
+     *Ԥ�������𷽴�data server��ȡ����һ��key
+     * </pre>
+     */
+    com.google.protobuf.ByteString getBytesVerifyKey();
+
+    // optional string stri_verify_info = 3;
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    boolean hasStriVerifyInfo();
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    java.lang.String getStriVerifyInfo();
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getStriVerifyInfoBytes();
+  }
+  /**
+   * Protobuf type {@code VerifyRequest}
+   *
+   * <pre>
+   *��֤����
+   * </pre>
+   */
+  public static final class VerifyRequest extends
+      com.google.protobuf.GeneratedMessage
+      implements VerifyRequestOrBuilder {
+    // Use VerifyRequest.newBuilder() to construct.
+    private VerifyRequest(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private VerifyRequest(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final VerifyRequest defaultInstance;
+    public static VerifyRequest getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public VerifyRequest getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private VerifyRequest(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 8: {
+              bitField0_ |= 0x00000001;
+              uint32VerifyType_ = input.readUInt32();
+              break;
+            }
+            case 18: {
+              bitField0_ |= 0x00000002;
+              bytesVerifyKey_ = input.readBytes();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              striVerifyInfo_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return Message.internal_static_VerifyRequest_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return Message.internal_static_VerifyRequest_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              Message.VerifyRequest.class, Message.VerifyRequest.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<VerifyRequest> PARSER =
+        new com.google.protobuf.AbstractParser<VerifyRequest>() {
+      public VerifyRequest parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new VerifyRequest(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<VerifyRequest> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required uint32 uint32_verify_type = 1;
+    public static final int UINT32_VERIFY_TYPE_FIELD_NUMBER = 1;
+    private int uint32VerifyType_;
+    /**
+     * <code>required uint32 uint32_verify_type = 1;</code>
+     *
+     * <pre>
+     *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+     * </pre>
+     */
+    public boolean hasUint32VerifyType() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required uint32 uint32_verify_type = 1;</code>
+     *
+     * <pre>
+     *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+     * </pre>
+     */
+    public int getUint32VerifyType() {
+      return uint32VerifyType_;
+    }
+
+    // optional bytes bytes_verify_key = 2;
+    public static final int BYTES_VERIFY_KEY_FIELD_NUMBER = 2;
+    private com.google.protobuf.ByteString bytesVerifyKey_;
+    /**
+     * <code>optional bytes bytes_verify_key = 2;</code>
+     *
+     * <pre>
+     *Ԥ�������𷽴�data server��ȡ����һ��key
+     * </pre>
+     */
+    public boolean hasBytesVerifyKey() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>optional bytes bytes_verify_key = 2;</code>
+     *
+     * <pre>
+     *Ԥ�������𷽴�data server��ȡ����һ��key
+     * </pre>
+     */
+    public com.google.protobuf.ByteString getBytesVerifyKey() {
+      return bytesVerifyKey_;
+    }
+
+    // optional string stri_verify_info = 3;
+    public static final int STRI_VERIFY_INFO_FIELD_NUMBER = 3;
+    private java.lang.Object striVerifyInfo_;
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    public boolean hasStriVerifyInfo() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    public java.lang.String getStriVerifyInfo() {
+      java.lang.Object ref = striVerifyInfo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          striVerifyInfo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string stri_verify_info = 3;</code>
+     *
+     * <pre>
+     *��֤��Ϣ
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getStriVerifyInfoBytes() {
+      java.lang.Object ref = striVerifyInfo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        striVerifyInfo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      uint32VerifyType_ = 0;
+      bytesVerifyKey_ = com.google.protobuf.ByteString.EMPTY;
+      striVerifyInfo_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasUint32VerifyType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeUInt32(1, uint32VerifyType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeBytes(2, bytesVerifyKey_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getStriVerifyInfoBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(1, uint32VerifyType_);
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(2, bytesVerifyKey_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getStriVerifyInfoBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static Message.VerifyRequest parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Message.VerifyRequest parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Message.VerifyRequest parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static Message.VerifyRequest parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static Message.VerifyRequest parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static Message.VerifyRequest parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static Message.VerifyRequest parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static Message.VerifyRequest parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static Message.VerifyRequest parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static Message.VerifyRequest parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(Message.VerifyRequest prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code VerifyRequest}
+     *
+     * <pre>
+     *��֤����
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements Message.VerifyRequestOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return Message.internal_static_VerifyRequest_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return Message.internal_static_VerifyRequest_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                Message.VerifyRequest.class, Message.VerifyRequest.Builder.class);
+      }
+
+      // Construct using Message.VerifyRequest.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        uint32VerifyType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000001);
+        bytesVerifyKey_ = com.google.protobuf.ByteString.EMPTY;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        striVerifyInfo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return Message.internal_static_VerifyRequest_descriptor;
+      }
+
+      public Message.VerifyRequest getDefaultInstanceForType() {
+        return Message.VerifyRequest.getDefaultInstance();
+      }
+
+      public Message.VerifyRequest build() {
+        Message.VerifyRequest result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public Message.VerifyRequest buildPartial() {
+        Message.VerifyRequest result = new Message.VerifyRequest(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.uint32VerifyType_ = uint32VerifyType_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.bytesVerifyKey_ = bytesVerifyKey_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.striVerifyInfo_ = striVerifyInfo_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof Message.VerifyRequest) {
+          return mergeFrom((Message.VerifyRequest)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(Message.VerifyRequest other) {
+        if (other == Message.VerifyRequest.getDefaultInstance()) return this;
+        if (other.hasUint32VerifyType()) {
+          setUint32VerifyType(other.getUint32VerifyType());
+        }
+        if (other.hasBytesVerifyKey()) {
+          setBytesVerifyKey(other.getBytesVerifyKey());
+        }
+        if (other.hasStriVerifyInfo()) {
+          bitField0_ |= 0x00000004;
+          striVerifyInfo_ = other.striVerifyInfo_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasUint32VerifyType()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        Message.VerifyRequest parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (Message.VerifyRequest) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required uint32 uint32_verify_type = 1;
+      private int uint32VerifyType_ ;
+      /**
+       * <code>required uint32 uint32_verify_type = 1;</code>
+       *
+       * <pre>
+       *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+       * </pre>
+       */
+      public boolean hasUint32VerifyType() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required uint32 uint32_verify_type = 1;</code>
+       *
+       * <pre>
+       *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+       * </pre>
+       */
+      public int getUint32VerifyType() {
+        return uint32VerifyType_;
+      }
+      /**
+       * <code>required uint32 uint32_verify_type = 1;</code>
+       *
+       * <pre>
+       *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+       * </pre>
+       */
+      public Builder setUint32VerifyType(int value) {
+        bitField0_ |= 0x00000001;
+        uint32VerifyType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 uint32_verify_type = 1;</code>
+       *
+       * <pre>
+       *��֤���ͣ�0:�Ӻ��� 1:��Ⱥ
+       * </pre>
+       */
+      public Builder clearUint32VerifyType() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        uint32VerifyType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // optional bytes bytes_verify_key = 2;
+      private com.google.protobuf.ByteString bytesVerifyKey_ = com.google.protobuf.ByteString.EMPTY;
+      /**
+       * <code>optional bytes bytes_verify_key = 2;</code>
+       *
+       * <pre>
+       *Ԥ�������𷽴�data server��ȡ����һ��key
+       * </pre>
+       */
+      public boolean hasBytesVerifyKey() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>optional bytes bytes_verify_key = 2;</code>
+       *
+       * <pre>
+       *Ԥ�������𷽴�data server��ȡ����һ��key
+       * </pre>
+       */
+      public com.google.protobuf.ByteString getBytesVerifyKey() {
+        return bytesVerifyKey_;
+      }
+      /**
+       * <code>optional bytes bytes_verify_key = 2;</code>
+       *
+       * <pre>
+       *Ԥ�������𷽴�data server��ȡ����һ��key
+       * </pre>
+       */
+      public Builder setBytesVerifyKey(com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000002;
+        bytesVerifyKey_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional bytes bytes_verify_key = 2;</code>
+       *
+       * <pre>
+       *Ԥ�������𷽴�data server��ȡ����һ��key
+       * </pre>
+       */
+      public Builder clearBytesVerifyKey() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        bytesVerifyKey_ = getDefaultInstance().getBytesVerifyKey();
+        onChanged();
+        return this;
+      }
+
+      // optional string stri_verify_info = 3;
+      private java.lang.Object striVerifyInfo_ = "";
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public boolean hasStriVerifyInfo() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public java.lang.String getStriVerifyInfo() {
+        java.lang.Object ref = striVerifyInfo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          striVerifyInfo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getStriVerifyInfoBytes() {
+        java.lang.Object ref = striVerifyInfo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          striVerifyInfo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public Builder setStriVerifyInfo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        striVerifyInfo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public Builder clearStriVerifyInfo() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        striVerifyInfo_ = getDefaultInstance().getStriVerifyInfo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string stri_verify_info = 3;</code>
+       *
+       * <pre>
+       *��֤��Ϣ
+       * </pre>
+       */
+      public Builder setStriVerifyInfoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        striVerifyInfo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:VerifyRequest)
+    }
+
+    static {
+      defaultInstance = new VerifyRequest(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:VerifyRequest)
   }
 
   public interface VoiceTestInfoOrBuilder
@@ -6903,41 +10547,41 @@ public final class Message {
      */
     long getUint64ToGid(int index);
 
-    // required uint32 uint32_msg_type = 4;
+    // required .MessageType uint32_msg_type = 4;
     /**
-     * <code>required uint32 uint32_msg_type = 4;</code>
+     * <code>required .MessageType uint32_msg_type = 4;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
     boolean hasUint32MsgType();
     /**
-     * <code>required uint32 uint32_msg_type = 4;</code>
+     * <code>required .MessageType uint32_msg_type = 4;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
-    int getUint32MsgType();
+    Message.MessageType getUint32MsgType();
 
-    // optional uint32 uint32_content_type = 5;
+    // optional .ContentType uint32_content_type = 5;
     /**
-     * <code>optional uint32 uint32_content_type = 5;</code>
+     * <code>optional .ContentType uint32_content_type = 5;</code>
      *
      * <pre>
-     *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+     *ý������
      * </pre>
      */
     boolean hasUint32ContentType();
     /**
-     * <code>optional uint32 uint32_content_type = 5;</code>
+     * <code>optional .ContentType uint32_content_type = 5;</code>
      *
      * <pre>
-     *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+     *ý������
      * </pre>
      */
-    int getUint32ContentType();
+    Message.ContentType getUint32ContentType();
 
     // optional string str_text_msg = 6;
     /**
@@ -7122,9 +10766,61 @@ public final class Message {
      */
     Message.ClassInfoOrBuilder getMsgClassInfoOrBuilder();
 
-    // optional uint64 uint64_time = 13;
+    // optional .VerifyRequest msg_verify_req = 13;
     /**
-     * <code>optional uint64 uint64_time = 13;</code>
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    boolean hasMsgVerifyReq();
+    /**
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    Message.VerifyRequest getMsgVerifyReq();
+    /**
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    Message.VerifyRequestOrBuilder getMsgVerifyReqOrBuilder();
+
+    // optional .FileInfo msg_file_info = 14;
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    boolean hasMsgFileInfo();
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    Message.FileInfo getMsgFileInfo();
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    Message.FileInfoOrBuilder getMsgFileInfoOrBuilder();
+
+    // optional uint64 uint64_time = 20;
+    /**
+     * <code>optional uint64 uint64_time = 20;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
@@ -7132,7 +10828,7 @@ public final class Message {
      */
     boolean hasUint64Time();
     /**
-     * <code>optional uint64 uint64_time = 13;</code>
+     * <code>optional uint64 uint64_time = 20;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
@@ -7140,9 +10836,9 @@ public final class Message {
      */
     long getUint64Time();
 
-    // optional uint32 uint32_trunct_flag = 14;
+    // optional uint32 uint32_trunct_flag = 21;
     /**
-     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     * <code>optional uint32 uint32_trunct_flag = 21;</code>
      *
      * <pre>
      *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
@@ -7150,7 +10846,7 @@ public final class Message {
      */
     boolean hasUint32TrunctFlag();
     /**
-     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     * <code>optional uint32 uint32_trunct_flag = 21;</code>
      *
      * <pre>
      *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
@@ -7257,13 +10953,25 @@ public final class Message {
               break;
             }
             case 32: {
-              bitField0_ |= 0x00000002;
-              uint32MsgType_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              Message.MessageType value = Message.MessageType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(4, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                uint32MsgType_ = value;
+              }
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000004;
-              uint32ContentType_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              Message.ContentType value = Message.ContentType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(5, rawValue);
+              } else {
+                bitField0_ |= 0x00000004;
+                uint32ContentType_ = value;
+              }
               break;
             }
             case 50: {
@@ -7349,13 +11057,39 @@ public final class Message {
               bitField0_ |= 0x00000200;
               break;
             }
-            case 104: {
+            case 106: {
+              Message.VerifyRequest.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000400) == 0x00000400)) {
+                subBuilder = msgVerifyReq_.toBuilder();
+              }
+              msgVerifyReq_ = input.readMessage(Message.VerifyRequest.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(msgVerifyReq_);
+                msgVerifyReq_ = subBuilder.buildPartial();
+              }
               bitField0_ |= 0x00000400;
+              break;
+            }
+            case 114: {
+              Message.FileInfo.Builder subBuilder = null;
+              if (((bitField0_ & 0x00000800) == 0x00000800)) {
+                subBuilder = msgFileInfo_.toBuilder();
+              }
+              msgFileInfo_ = input.readMessage(Message.FileInfo.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(msgFileInfo_);
+                msgFileInfo_ = subBuilder.buildPartial();
+              }
+              bitField0_ |= 0x00000800;
+              break;
+            }
+            case 160: {
+              bitField0_ |= 0x00001000;
               uint64Time_ = input.readUInt64();
               break;
             }
-            case 112: {
-              bitField0_ |= 0x00000800;
+            case 168: {
+              bitField0_ |= 0x00002000;
               uint32TrunctFlag_ = input.readUInt32();
               break;
             }
@@ -7499,51 +11233,51 @@ public final class Message {
       return uint64ToGid_.get(index);
     }
 
-    // required uint32 uint32_msg_type = 4;
+    // required .MessageType uint32_msg_type = 4;
     public static final int UINT32_MSG_TYPE_FIELD_NUMBER = 4;
-    private int uint32MsgType_;
+    private Message.MessageType uint32MsgType_;
     /**
-     * <code>required uint32 uint32_msg_type = 4;</code>
+     * <code>required .MessageType uint32_msg_type = 4;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
     public boolean hasUint32MsgType() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 uint32_msg_type = 4;</code>
+     * <code>required .MessageType uint32_msg_type = 4;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
-    public int getUint32MsgType() {
+    public Message.MessageType getUint32MsgType() {
       return uint32MsgType_;
     }
 
-    // optional uint32 uint32_content_type = 5;
+    // optional .ContentType uint32_content_type = 5;
     public static final int UINT32_CONTENT_TYPE_FIELD_NUMBER = 5;
-    private int uint32ContentType_;
+    private Message.ContentType uint32ContentType_;
     /**
-     * <code>optional uint32 uint32_content_type = 5;</code>
+     * <code>optional .ContentType uint32_content_type = 5;</code>
      *
      * <pre>
-     *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+     *ý������
      * </pre>
      */
     public boolean hasUint32ContentType() {
       return ((bitField0_ & 0x00000004) == 0x00000004);
     }
     /**
-     * <code>optional uint32 uint32_content_type = 5;</code>
+     * <code>optional .ContentType uint32_content_type = 5;</code>
      *
      * <pre>
-     *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+     *ý������
      * </pre>
      */
-    public int getUint32ContentType() {
+    public Message.ContentType getUint32ContentType() {
       return uint32ContentType_;
     }
 
@@ -7806,21 +11540,89 @@ public final class Message {
       return msgClassInfo_;
     }
 
-    // optional uint64 uint64_time = 13;
-    public static final int UINT64_TIME_FIELD_NUMBER = 13;
+    // optional .VerifyRequest msg_verify_req = 13;
+    public static final int MSG_VERIFY_REQ_FIELD_NUMBER = 13;
+    private Message.VerifyRequest msgVerifyReq_;
+    /**
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    public boolean hasMsgVerifyReq() {
+      return ((bitField0_ & 0x00000400) == 0x00000400);
+    }
+    /**
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    public Message.VerifyRequest getMsgVerifyReq() {
+      return msgVerifyReq_;
+    }
+    /**
+     * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+     *
+     * <pre>
+     *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+     * </pre>
+     */
+    public Message.VerifyRequestOrBuilder getMsgVerifyReqOrBuilder() {
+      return msgVerifyReq_;
+    }
+
+    // optional .FileInfo msg_file_info = 14;
+    public static final int MSG_FILE_INFO_FIELD_NUMBER = 14;
+    private Message.FileInfo msgFileInfo_;
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public boolean hasMsgFileInfo() {
+      return ((bitField0_ & 0x00000800) == 0x00000800);
+    }
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public Message.FileInfo getMsgFileInfo() {
+      return msgFileInfo_;
+    }
+    /**
+     * <code>optional .FileInfo msg_file_info = 14;</code>
+     *
+     * <pre>
+     *�ļ�����
+     * </pre>
+     */
+    public Message.FileInfoOrBuilder getMsgFileInfoOrBuilder() {
+      return msgFileInfo_;
+    }
+
+    // optional uint64 uint64_time = 20;
+    public static final int UINT64_TIME_FIELD_NUMBER = 20;
     private long uint64Time_;
     /**
-     * <code>optional uint64 uint64_time = 13;</code>
+     * <code>optional uint64 uint64_time = 20;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
      * </pre>
      */
     public boolean hasUint64Time() {
-      return ((bitField0_ & 0x00000400) == 0x00000400);
+      return ((bitField0_ & 0x00001000) == 0x00001000);
     }
     /**
-     * <code>optional uint64 uint64_time = 13;</code>
+     * <code>optional uint64 uint64_time = 20;</code>
      *
      * <pre>
      *���ͷ��ն˵�ǰʱ��
@@ -7830,21 +11632,21 @@ public final class Message {
       return uint64Time_;
     }
 
-    // optional uint32 uint32_trunct_flag = 14;
-    public static final int UINT32_TRUNCT_FLAG_FIELD_NUMBER = 14;
+    // optional uint32 uint32_trunct_flag = 21;
+    public static final int UINT32_TRUNCT_FLAG_FIELD_NUMBER = 21;
     private int uint32TrunctFlag_;
     /**
-     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     * <code>optional uint32 uint32_trunct_flag = 21;</code>
      *
      * <pre>
      *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
      * </pre>
      */
     public boolean hasUint32TrunctFlag() {
-      return ((bitField0_ & 0x00000800) == 0x00000800);
+      return ((bitField0_ & 0x00002000) == 0x00002000);
     }
     /**
-     * <code>optional uint32 uint32_trunct_flag = 14;</code>
+     * <code>optional uint32 uint32_trunct_flag = 21;</code>
      *
      * <pre>
      *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
@@ -7858,8 +11660,8 @@ public final class Message {
       uint64FromUid_ = 0L;
       uint64ToUid_ = java.util.Collections.emptyList();
       uint64ToGid_ = java.util.Collections.emptyList();
-      uint32MsgType_ = 0;
-      uint32ContentType_ = 0;
+      uint32MsgType_ = Message.MessageType.MT_All;
+      uint32ContentType_ = Message.ContentType.CT_Text;
       strTextMsg_ = "";
       msgPicMsg_ = Message.PicMsgInfo.getDefaultInstance();
       msgVoiceMsg_ = Message.VoiceMsgInfo.getDefaultInstance();
@@ -7867,6 +11669,8 @@ public final class Message {
       msgMoitorMsg_ = Message.NetGuardInfo.getDefaultInstance();
       msgTestMsg_ = Message.VoiceTestInfo.getDefaultInstance();
       msgClassInfo_ = Message.ClassInfo.getDefaultInstance();
+      msgVerifyReq_ = Message.VerifyRequest.getDefaultInstance();
+      msgFileInfo_ = Message.FileInfo.getDefaultInstance();
       uint64Time_ = 0L;
       uint32TrunctFlag_ = 0;
     }
@@ -7913,6 +11717,18 @@ public final class Message {
           return false;
         }
       }
+      if (hasMsgVerifyReq()) {
+        if (!getMsgVerifyReq().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasMsgFileInfo()) {
+        if (!getMsgFileInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -7930,10 +11746,10 @@ public final class Message {
         output.writeUInt64(3, uint64ToGid_.get(i));
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(4, uint32MsgType_);
+        output.writeEnum(4, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(5, uint32ContentType_);
+        output.writeEnum(5, uint32ContentType_.getNumber());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeBytes(6, getStrTextMsgBytes());
@@ -7957,10 +11773,16 @@ public final class Message {
         output.writeMessage(12, msgClassInfo_);
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
-        output.writeUInt64(13, uint64Time_);
+        output.writeMessage(13, msgVerifyReq_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
-        output.writeUInt32(14, uint32TrunctFlag_);
+        output.writeMessage(14, msgFileInfo_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        output.writeUInt64(20, uint64Time_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        output.writeUInt32(21, uint32TrunctFlag_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -7995,11 +11817,11 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(4, uint32MsgType_);
+          .computeEnumSize(4, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, uint32ContentType_);
+          .computeEnumSize(5, uint32ContentType_.getNumber());
       }
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         size += com.google.protobuf.CodedOutputStream
@@ -8031,11 +11853,19 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000400) == 0x00000400)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(13, uint64Time_);
+          .computeMessageSize(13, msgVerifyReq_);
       }
       if (((bitField0_ & 0x00000800) == 0x00000800)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(14, uint32TrunctFlag_);
+          .computeMessageSize(14, msgFileInfo_);
+      }
+      if (((bitField0_ & 0x00001000) == 0x00001000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(20, uint64Time_);
+      }
+      if (((bitField0_ & 0x00002000) == 0x00002000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(21, uint32TrunctFlag_);
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -8151,6 +11981,8 @@ public final class Message {
           getMsgMoitorMsgFieldBuilder();
           getMsgTestMsgFieldBuilder();
           getMsgClassInfoFieldBuilder();
+          getMsgVerifyReqFieldBuilder();
+          getMsgFileInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -8165,9 +11997,9 @@ public final class Message {
         bitField0_ = (bitField0_ & ~0x00000002);
         uint64ToGid_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000004);
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         bitField0_ = (bitField0_ & ~0x00000008);
-        uint32ContentType_ = 0;
+        uint32ContentType_ = Message.ContentType.CT_Text;
         bitField0_ = (bitField0_ & ~0x00000010);
         strTextMsg_ = "";
         bitField0_ = (bitField0_ & ~0x00000020);
@@ -8207,10 +12039,22 @@ public final class Message {
           msgClassInfoBuilder_.clear();
         }
         bitField0_ = (bitField0_ & ~0x00000800);
-        uint64Time_ = 0L;
+        if (msgVerifyReqBuilder_ == null) {
+          msgVerifyReq_ = Message.VerifyRequest.getDefaultInstance();
+        } else {
+          msgVerifyReqBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00001000);
-        uint32TrunctFlag_ = 0;
+        if (msgFileInfoBuilder_ == null) {
+          msgFileInfo_ = Message.FileInfo.getDefaultInstance();
+        } else {
+          msgFileInfoBuilder_.clear();
+        }
         bitField0_ = (bitField0_ & ~0x00002000);
+        uint64Time_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00004000);
+        uint32TrunctFlag_ = 0;
+        bitField0_ = (bitField0_ & ~0x00008000);
         return this;
       }
 
@@ -8316,9 +12160,25 @@ public final class Message {
         if (((from_bitField0_ & 0x00001000) == 0x00001000)) {
           to_bitField0_ |= 0x00000400;
         }
-        result.uint64Time_ = uint64Time_;
+        if (msgVerifyReqBuilder_ == null) {
+          result.msgVerifyReq_ = msgVerifyReq_;
+        } else {
+          result.msgVerifyReq_ = msgVerifyReqBuilder_.build();
+        }
         if (((from_bitField0_ & 0x00002000) == 0x00002000)) {
           to_bitField0_ |= 0x00000800;
+        }
+        if (msgFileInfoBuilder_ == null) {
+          result.msgFileInfo_ = msgFileInfo_;
+        } else {
+          result.msgFileInfo_ = msgFileInfoBuilder_.build();
+        }
+        if (((from_bitField0_ & 0x00004000) == 0x00004000)) {
+          to_bitField0_ |= 0x00001000;
+        }
+        result.uint64Time_ = uint64Time_;
+        if (((from_bitField0_ & 0x00008000) == 0x00008000)) {
+          to_bitField0_ |= 0x00002000;
         }
         result.uint32TrunctFlag_ = uint32TrunctFlag_;
         result.bitField0_ = to_bitField0_;
@@ -8389,6 +12249,12 @@ public final class Message {
         if (other.hasMsgClassInfo()) {
           mergeMsgClassInfo(other.getMsgClassInfo());
         }
+        if (other.hasMsgVerifyReq()) {
+          mergeMsgVerifyReq(other.getMsgVerifyReq());
+        }
+        if (other.hasMsgFileInfo()) {
+          mergeMsgFileInfo(other.getMsgFileInfo());
+        }
         if (other.hasUint64Time()) {
           setUint64Time(other.getUint64Time());
         }
@@ -8434,6 +12300,18 @@ public final class Message {
         }
         if (hasMsgTestMsg()) {
           if (!getMsgTestMsg().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasMsgVerifyReq()) {
+          if (!getMsgVerifyReq().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasMsgFileInfo()) {
+          if (!getMsgFileInfo().isInitialized()) {
             
             return false;
           }
@@ -8697,100 +12575,106 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_msg_type = 4;
-      private int uint32MsgType_ ;
+      // required .MessageType uint32_msg_type = 4;
+      private Message.MessageType uint32MsgType_ = Message.MessageType.MT_All;
       /**
-       * <code>required uint32 uint32_msg_type = 4;</code>
+       * <code>required .MessageType uint32_msg_type = 4;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
       public boolean hasUint32MsgType() {
         return ((bitField0_ & 0x00000008) == 0x00000008);
       }
       /**
-       * <code>required uint32 uint32_msg_type = 4;</code>
+       * <code>required .MessageType uint32_msg_type = 4;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
-      public int getUint32MsgType() {
+      public Message.MessageType getUint32MsgType() {
         return uint32MsgType_;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 4;</code>
+       * <code>required .MessageType uint32_msg_type = 4;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
-      public Builder setUint32MsgType(int value) {
+      public Builder setUint32MsgType(Message.MessageType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000008;
         uint32MsgType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 4;</code>
+       * <code>required .MessageType uint32_msg_type = 4;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
       public Builder clearUint32MsgType() {
         bitField0_ = (bitField0_ & ~0x00000008);
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         onChanged();
         return this;
       }
 
-      // optional uint32 uint32_content_type = 5;
-      private int uint32ContentType_ ;
+      // optional .ContentType uint32_content_type = 5;
+      private Message.ContentType uint32ContentType_ = Message.ContentType.CT_Text;
       /**
-       * <code>optional uint32 uint32_content_type = 5;</code>
+       * <code>optional .ContentType uint32_content_type = 5;</code>
        *
        * <pre>
-       *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+       *ý������
        * </pre>
        */
       public boolean hasUint32ContentType() {
         return ((bitField0_ & 0x00000010) == 0x00000010);
       }
       /**
-       * <code>optional uint32 uint32_content_type = 5;</code>
+       * <code>optional .ContentType uint32_content_type = 5;</code>
        *
        * <pre>
-       *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+       *ý������
        * </pre>
        */
-      public int getUint32ContentType() {
+      public Message.ContentType getUint32ContentType() {
         return uint32ContentType_;
       }
       /**
-       * <code>optional uint32 uint32_content_type = 5;</code>
+       * <code>optional .ContentType uint32_content_type = 5;</code>
        *
        * <pre>
-       *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+       *ý������
        * </pre>
        */
-      public Builder setUint32ContentType(int value) {
+      public Builder setUint32ContentType(Message.ContentType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000010;
         uint32ContentType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 uint32_content_type = 5;</code>
+       * <code>optional .ContentType uint32_content_type = 5;</code>
        *
        * <pre>
-       *ý������ 0:�ı� 1:ͼƬ 2:���� 3:��Ƶ
+       *ý������
        * </pre>
        */
       public Builder clearUint32ContentType() {
         bitField0_ = (bitField0_ & ~0x00000010);
-        uint32ContentType_ = 0;
+        uint32ContentType_ = Message.ContentType.CT_Text;
         onChanged();
         return this;
       }
@@ -9811,20 +13695,326 @@ public final class Message {
         return msgClassInfoBuilder_;
       }
 
-      // optional uint64 uint64_time = 13;
+      // optional .VerifyRequest msg_verify_req = 13;
+      private Message.VerifyRequest msgVerifyReq_ = Message.VerifyRequest.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          Message.VerifyRequest, Message.VerifyRequest.Builder, Message.VerifyRequestOrBuilder> msgVerifyReqBuilder_;
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public boolean hasMsgVerifyReq() {
+        return ((bitField0_ & 0x00001000) == 0x00001000);
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Message.VerifyRequest getMsgVerifyReq() {
+        if (msgVerifyReqBuilder_ == null) {
+          return msgVerifyReq_;
+        } else {
+          return msgVerifyReqBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Builder setMsgVerifyReq(Message.VerifyRequest value) {
+        if (msgVerifyReqBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msgVerifyReq_ = value;
+          onChanged();
+        } else {
+          msgVerifyReqBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Builder setMsgVerifyReq(
+          Message.VerifyRequest.Builder builderForValue) {
+        if (msgVerifyReqBuilder_ == null) {
+          msgVerifyReq_ = builderForValue.build();
+          onChanged();
+        } else {
+          msgVerifyReqBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Builder mergeMsgVerifyReq(Message.VerifyRequest value) {
+        if (msgVerifyReqBuilder_ == null) {
+          if (((bitField0_ & 0x00001000) == 0x00001000) &&
+              msgVerifyReq_ != Message.VerifyRequest.getDefaultInstance()) {
+            msgVerifyReq_ =
+              Message.VerifyRequest.newBuilder(msgVerifyReq_).mergeFrom(value).buildPartial();
+          } else {
+            msgVerifyReq_ = value;
+          }
+          onChanged();
+        } else {
+          msgVerifyReqBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00001000;
+        return this;
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Builder clearMsgVerifyReq() {
+        if (msgVerifyReqBuilder_ == null) {
+          msgVerifyReq_ = Message.VerifyRequest.getDefaultInstance();
+          onChanged();
+        } else {
+          msgVerifyReqBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00001000);
+        return this;
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Message.VerifyRequest.Builder getMsgVerifyReqBuilder() {
+        bitField0_ |= 0x00001000;
+        onChanged();
+        return getMsgVerifyReqFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      public Message.VerifyRequestOrBuilder getMsgVerifyReqOrBuilder() {
+        if (msgVerifyReqBuilder_ != null) {
+          return msgVerifyReqBuilder_.getMessageOrBuilder();
+        } else {
+          return msgVerifyReq_;
+        }
+      }
+      /**
+       * <code>optional .VerifyRequest msg_verify_req = 13;</code>
+       *
+       * <pre>
+       *��֤������Ϣ���Ӻ��ѻ��Ⱥ��
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          Message.VerifyRequest, Message.VerifyRequest.Builder, Message.VerifyRequestOrBuilder> 
+          getMsgVerifyReqFieldBuilder() {
+        if (msgVerifyReqBuilder_ == null) {
+          msgVerifyReqBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              Message.VerifyRequest, Message.VerifyRequest.Builder, Message.VerifyRequestOrBuilder>(
+                  msgVerifyReq_,
+                  getParentForChildren(),
+                  isClean());
+          msgVerifyReq_ = null;
+        }
+        return msgVerifyReqBuilder_;
+      }
+
+      // optional .FileInfo msg_file_info = 14;
+      private Message.FileInfo msgFileInfo_ = Message.FileInfo.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          Message.FileInfo, Message.FileInfo.Builder, Message.FileInfoOrBuilder> msgFileInfoBuilder_;
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public boolean hasMsgFileInfo() {
+        return ((bitField0_ & 0x00002000) == 0x00002000);
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Message.FileInfo getMsgFileInfo() {
+        if (msgFileInfoBuilder_ == null) {
+          return msgFileInfo_;
+        } else {
+          return msgFileInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setMsgFileInfo(Message.FileInfo value) {
+        if (msgFileInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          msgFileInfo_ = value;
+          onChanged();
+        } else {
+          msgFileInfoBuilder_.setMessage(value);
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder setMsgFileInfo(
+          Message.FileInfo.Builder builderForValue) {
+        if (msgFileInfoBuilder_ == null) {
+          msgFileInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          msgFileInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder mergeMsgFileInfo(Message.FileInfo value) {
+        if (msgFileInfoBuilder_ == null) {
+          if (((bitField0_ & 0x00002000) == 0x00002000) &&
+              msgFileInfo_ != Message.FileInfo.getDefaultInstance()) {
+            msgFileInfo_ =
+              Message.FileInfo.newBuilder(msgFileInfo_).mergeFrom(value).buildPartial();
+          } else {
+            msgFileInfo_ = value;
+          }
+          onChanged();
+        } else {
+          msgFileInfoBuilder_.mergeFrom(value);
+        }
+        bitField0_ |= 0x00002000;
+        return this;
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Builder clearMsgFileInfo() {
+        if (msgFileInfoBuilder_ == null) {
+          msgFileInfo_ = Message.FileInfo.getDefaultInstance();
+          onChanged();
+        } else {
+          msgFileInfoBuilder_.clear();
+        }
+        bitField0_ = (bitField0_ & ~0x00002000);
+        return this;
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Message.FileInfo.Builder getMsgFileInfoBuilder() {
+        bitField0_ |= 0x00002000;
+        onChanged();
+        return getMsgFileInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      public Message.FileInfoOrBuilder getMsgFileInfoOrBuilder() {
+        if (msgFileInfoBuilder_ != null) {
+          return msgFileInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return msgFileInfo_;
+        }
+      }
+      /**
+       * <code>optional .FileInfo msg_file_info = 14;</code>
+       *
+       * <pre>
+       *�ļ�����
+       * </pre>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          Message.FileInfo, Message.FileInfo.Builder, Message.FileInfoOrBuilder> 
+          getMsgFileInfoFieldBuilder() {
+        if (msgFileInfoBuilder_ == null) {
+          msgFileInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              Message.FileInfo, Message.FileInfo.Builder, Message.FileInfoOrBuilder>(
+                  msgFileInfo_,
+                  getParentForChildren(),
+                  isClean());
+          msgFileInfo_ = null;
+        }
+        return msgFileInfoBuilder_;
+      }
+
+      // optional uint64 uint64_time = 20;
       private long uint64Time_ ;
       /**
-       * <code>optional uint64 uint64_time = 13;</code>
+       * <code>optional uint64 uint64_time = 20;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
       public boolean hasUint64Time() {
-        return ((bitField0_ & 0x00001000) == 0x00001000);
+        return ((bitField0_ & 0x00004000) == 0x00004000);
       }
       /**
-       * <code>optional uint64 uint64_time = 13;</code>
+       * <code>optional uint64 uint64_time = 20;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
@@ -9834,46 +14024,46 @@ public final class Message {
         return uint64Time_;
       }
       /**
-       * <code>optional uint64 uint64_time = 13;</code>
+       * <code>optional uint64 uint64_time = 20;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
       public Builder setUint64Time(long value) {
-        bitField0_ |= 0x00001000;
+        bitField0_ |= 0x00004000;
         uint64Time_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint64 uint64_time = 13;</code>
+       * <code>optional uint64 uint64_time = 20;</code>
        *
        * <pre>
        *���ͷ��ն˵�ǰʱ��
        * </pre>
        */
       public Builder clearUint64Time() {
-        bitField0_ = (bitField0_ & ~0x00001000);
+        bitField0_ = (bitField0_ & ~0x00004000);
         uint64Time_ = 0L;
         onChanged();
         return this;
       }
 
-      // optional uint32 uint32_trunct_flag = 14;
+      // optional uint32 uint32_trunct_flag = 21;
       private int uint32TrunctFlag_ ;
       /**
-       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       * <code>optional uint32 uint32_trunct_flag = 21;</code>
        *
        * <pre>
        *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
        * </pre>
        */
       public boolean hasUint32TrunctFlag() {
-        return ((bitField0_ & 0x00002000) == 0x00002000);
+        return ((bitField0_ & 0x00008000) == 0x00008000);
       }
       /**
-       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       * <code>optional uint32 uint32_trunct_flag = 21;</code>
        *
        * <pre>
        *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
@@ -9883,27 +14073,27 @@ public final class Message {
         return uint32TrunctFlag_;
       }
       /**
-       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       * <code>optional uint32 uint32_trunct_flag = 21;</code>
        *
        * <pre>
        *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
        * </pre>
        */
       public Builder setUint32TrunctFlag(int value) {
-        bitField0_ |= 0x00002000;
+        bitField0_ |= 0x00008000;
         uint32TrunctFlag_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>optional uint32 uint32_trunct_flag = 14;</code>
+       * <code>optional uint32 uint32_trunct_flag = 21;</code>
        *
        * <pre>
        *���ݽض̱�־��PushMsgReq�п��ܽض����ݣ��ն���Ҫ��Ҫ��ȡ�������ݣ�ȱʡ��ʾ���ض�
        * </pre>
        */
       public Builder clearUint32TrunctFlag() {
-        bitField0_ = (bitField0_ & ~0x00002000);
+        bitField0_ = (bitField0_ & ~0x00008000);
         uint32TrunctFlag_ = 0;
         onChanged();
         return this;
@@ -9923,23 +14113,23 @@ public final class Message {
   public interface UnReadInfoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
-    // required uint32 uint32_msg_type = 1;
+    // required .MessageType uint32_msg_type = 1;
     /**
-     * <code>required uint32 uint32_msg_type = 1;</code>
+     * <code>required .MessageType uint32_msg_type = 1;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
     boolean hasUint32MsgType();
     /**
-     * <code>required uint32 uint32_msg_type = 1;</code>
+     * <code>required .MessageType uint32_msg_type = 1;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
-    int getUint32MsgType();
+    Message.MessageType getUint32MsgType();
 
     // optional uint64 uint64_from_uid = 2;
     /**
@@ -10047,8 +14237,14 @@ public final class Message {
               break;
             }
             case 8: {
-              bitField0_ |= 0x00000001;
-              uint32MsgType_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              Message.MessageType value = Message.MessageType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(1, rawValue);
+              } else {
+                bitField0_ |= 0x00000001;
+                uint32MsgType_ = value;
+              }
               break;
             }
             case 16: {
@@ -10106,27 +14302,27 @@ public final class Message {
     }
 
     private int bitField0_;
-    // required uint32 uint32_msg_type = 1;
+    // required .MessageType uint32_msg_type = 1;
     public static final int UINT32_MSG_TYPE_FIELD_NUMBER = 1;
-    private int uint32MsgType_;
+    private Message.MessageType uint32MsgType_;
     /**
-     * <code>required uint32 uint32_msg_type = 1;</code>
+     * <code>required .MessageType uint32_msg_type = 1;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
     public boolean hasUint32MsgType() {
       return ((bitField0_ & 0x00000001) == 0x00000001);
     }
     /**
-     * <code>required uint32 uint32_msg_type = 1;</code>
+     * <code>required .MessageType uint32_msg_type = 1;</code>
      *
      * <pre>
-     *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��Ϣ����
      * </pre>
      */
-    public int getUint32MsgType() {
+    public Message.MessageType getUint32MsgType() {
       return uint32MsgType_;
     }
 
@@ -10203,7 +14399,7 @@ public final class Message {
     }
 
     private void initFields() {
-      uint32MsgType_ = 0;
+      uint32MsgType_ = Message.MessageType.MT_All;
       uint64FromUid_ = 0L;
       uint64Gid_ = 0L;
       uint32UnreadCount_ = 0;
@@ -10229,7 +14425,7 @@ public final class Message {
                         throws java.io.IOException {
       getSerializedSize();
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeUInt32(1, uint32MsgType_);
+        output.writeEnum(1, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeUInt64(2, uint64FromUid_);
@@ -10251,7 +14447,7 @@ public final class Message {
       size = 0;
       if (((bitField0_ & 0x00000001) == 0x00000001)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(1, uint32MsgType_);
+          .computeEnumSize(1, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
@@ -10381,7 +14577,7 @@ public final class Message {
 
       public Builder clear() {
         super.clear();
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         bitField0_ = (bitField0_ & ~0x00000001);
         uint64FromUid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000002);
@@ -10496,51 +14692,54 @@ public final class Message {
       }
       private int bitField0_;
 
-      // required uint32 uint32_msg_type = 1;
-      private int uint32MsgType_ ;
+      // required .MessageType uint32_msg_type = 1;
+      private Message.MessageType uint32MsgType_ = Message.MessageType.MT_All;
       /**
-       * <code>required uint32 uint32_msg_type = 1;</code>
+       * <code>required .MessageType uint32_msg_type = 1;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
       public boolean hasUint32MsgType() {
         return ((bitField0_ & 0x00000001) == 0x00000001);
       }
       /**
-       * <code>required uint32 uint32_msg_type = 1;</code>
+       * <code>required .MessageType uint32_msg_type = 1;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
-      public int getUint32MsgType() {
+      public Message.MessageType getUint32MsgType() {
         return uint32MsgType_;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 1;</code>
+       * <code>required .MessageType uint32_msg_type = 1;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
-      public Builder setUint32MsgType(int value) {
+      public Builder setUint32MsgType(Message.MessageType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000001;
         uint32MsgType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 1;</code>
+       * <code>required .MessageType uint32_msg_type = 1;</code>
        *
        * <pre>
-       *��Ϣ���� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��Ϣ����
        * </pre>
        */
       public Builder clearUint32MsgType() {
         bitField0_ = (bitField0_ & ~0x00000001);
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         onChanged();
         return this;
       }
@@ -11840,8 +16039,10 @@ public final class Message {
    *
    * <pre>
    *&#47;/////////////////////////////////////////////////////////////////////////////////////////////
-   *��̨�������͸��ն˵�֪ͨ����ֱ���������ݣ�ֻ����δ���б?�ն��յ�֪ͨ������Ƿ���ȡ��
+   *��̨�������͸��ն˵�֪ͨ
    *�������û����µ���Ϣ
+   * �ն��յ�PushMsgReq����Ҫresponse��������Ҫ��������һ��"����ȷ��"��Ϣ��server
+   * ������PushMsgReq��Ϣ�е�bytes_context�ֶΣ��μ�MessageOpr���壩
    * //////////////////////////////////////////////////////////////////////////////////////////////
    * </pre>
    */
@@ -12119,8 +16320,10 @@ public final class Message {
      *
      * <pre>
      *&#47;/////////////////////////////////////////////////////////////////////////////////////////////
-     *��̨�������͸��ն˵�֪ͨ����ֱ���������ݣ�ֻ����δ���б?�ն��յ�֪ͨ������Ƿ���ȡ��
+     *��̨�������͸��ն˵�֪ͨ
      *�������û����µ���Ϣ
+     * �ն��յ�PushMsgReq����Ҫresponse��������Ҫ��������һ��"����ȷ��"��Ϣ��server
+     * ������PushMsgReq��Ϣ�е�bytes_context�ֶΣ��μ�MessageOpr���壩
      * //////////////////////////////////////////////////////////////////////////////////////////////
      * </pre>
      */
@@ -13868,23 +18071,23 @@ public final class Message {
      */
     long getUint64Uid();
 
-    // required uint32 uint32_msg_type = 2;
+    // required .MessageType uint32_msg_type = 2;
     /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
+     * <code>required .MessageType uint32_msg_type = 2;</code>
      *
      * <pre>
-     *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��ȡ����Ϣ���� 0:��������
      * </pre>
      */
     boolean hasUint32MsgType();
     /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
+     * <code>required .MessageType uint32_msg_type = 2;</code>
      *
      * <pre>
-     *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��ȡ����Ϣ���� 0:��������
      * </pre>
      */
-    int getUint32MsgType();
+    Message.MessageType getUint32MsgType();
 
     // optional uint64 uint64_from_uid = 3;
     /**
@@ -14006,8 +18209,14 @@ public final class Message {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              uint32MsgType_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              Message.MessageType value = Message.MessageType.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                uint32MsgType_ = value;
+              }
               break;
             }
             case 24: {
@@ -14089,27 +18298,27 @@ public final class Message {
       return uint64Uid_;
     }
 
-    // required uint32 uint32_msg_type = 2;
+    // required .MessageType uint32_msg_type = 2;
     public static final int UINT32_MSG_TYPE_FIELD_NUMBER = 2;
-    private int uint32MsgType_;
+    private Message.MessageType uint32MsgType_;
     /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
+     * <code>required .MessageType uint32_msg_type = 2;</code>
      *
      * <pre>
-     *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��ȡ����Ϣ���� 0:��������
      * </pre>
      */
     public boolean hasUint32MsgType() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 uint32_msg_type = 2;</code>
+     * <code>required .MessageType uint32_msg_type = 2;</code>
      *
      * <pre>
-     *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+     *��ȡ����Ϣ���� 0:��������
      * </pre>
      */
-    public int getUint32MsgType() {
+    public Message.MessageType getUint32MsgType() {
       return uint32MsgType_;
     }
 
@@ -14187,7 +18396,7 @@ public final class Message {
 
     private void initFields() {
       uint64Uid_ = 0L;
-      uint32MsgType_ = 0;
+      uint32MsgType_ = Message.MessageType.MT_All;
       uint64FromUid_ = 0L;
       uint64Gid_ = 0L;
       uint64Time_ = 0L;
@@ -14216,7 +18425,7 @@ public final class Message {
         output.writeUInt64(1, uint64Uid_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, uint32MsgType_);
+        output.writeEnum(2, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeUInt64(3, uint64FromUid_);
@@ -14242,7 +18451,7 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, uint32MsgType_);
+          .computeEnumSize(2, uint32MsgType_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -14383,7 +18592,7 @@ public final class Message {
         super.clear();
         uint64Uid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         bitField0_ = (bitField0_ & ~0x00000002);
         uint64FromUid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -14554,51 +18763,54 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_msg_type = 2;
-      private int uint32MsgType_ ;
+      // required .MessageType uint32_msg_type = 2;
+      private Message.MessageType uint32MsgType_ = Message.MessageType.MT_All;
       /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
+       * <code>required .MessageType uint32_msg_type = 2;</code>
        *
        * <pre>
-       *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��ȡ����Ϣ���� 0:��������
        * </pre>
        */
       public boolean hasUint32MsgType() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
+       * <code>required .MessageType uint32_msg_type = 2;</code>
        *
        * <pre>
-       *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��ȡ����Ϣ���� 0:��������
        * </pre>
        */
-      public int getUint32MsgType() {
+      public Message.MessageType getUint32MsgType() {
         return uint32MsgType_;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
+       * <code>required .MessageType uint32_msg_type = 2;</code>
        *
        * <pre>
-       *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��ȡ����Ϣ���� 0:��������
        * </pre>
        */
-      public Builder setUint32MsgType(int value) {
+      public Builder setUint32MsgType(Message.MessageType value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000002;
         uint32MsgType_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 uint32_msg_type = 2;</code>
+       * <code>required .MessageType uint32_msg_type = 2;</code>
        *
        * <pre>
-       *��ȡ����Ϣ���� 0:�������� 1:c2c 2:Ⱥ��Ϣ 3:ϵͳ��Ϣ 4:����Ⱥ����Ϣ 5:���� 6:������Ϣ���� 7:�������� 8:��ɫ��������
+       *��ȡ����Ϣ���� 0:��������
        * </pre>
        */
       public Builder clearUint32MsgType() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        uint32MsgType_ = 0;
+        uint32MsgType_ = Message.MessageType.MT_All;
         onChanged();
         return this;
       }
@@ -14874,6 +19086,10 @@ public final class Message {
   }
   /**
    * Protobuf type {@code PollMsgRes}
+   *
+   * <pre>
+   *�ն��յ�PollMsgRes����Ҫ��������һ��"����ȷ��"��Ϣ��server������PollMsgRes��Ϣ�е�bytes_context�ֶΣ��μ�MessageOpr���壩
+   * </pre>
    */
   public static final class PollMsgRes extends
       com.google.protobuf.GeneratedMessage
@@ -15265,6 +19481,10 @@ public final class Message {
     }
     /**
      * Protobuf type {@code PollMsgRes}
+     *
+     * <pre>
+     *�ն��յ�PollMsgRes����Ҫ��������һ��"����ȷ��"��Ϣ��server������PollMsgRes��Ϣ�е�bytes_context�ֶΣ��μ�MessageOpr���壩
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -16182,30 +20402,30 @@ public final class Message {
      */
     long getUint64Uid();
 
-    // required uint32 uint32_command = 2;
+    // required .MsgCommand uint32_command = 2;
     /**
-     * <code>required uint32 uint32_command = 2;</code>
+     * <code>required .MsgCommand uint32_command = 2;</code>
      *
      * <pre>
-     *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+     *�����
      * </pre>
      */
     boolean hasUint32Command();
     /**
-     * <code>required uint32 uint32_command = 2;</code>
+     * <code>required .MsgCommand uint32_command = 2;</code>
      *
      * <pre>
-     *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+     *�����
      * </pre>
      */
-    int getUint32Command();
+    Message.MsgCommand getUint32Command();
 
     // optional string str_version = 3;
     /**
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     boolean hasStrVersion();
@@ -16213,7 +20433,7 @@ public final class Message {
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     java.lang.String getStrVersion();
@@ -16221,7 +20441,7 @@ public final class Message {
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     com.google.protobuf.ByteString
@@ -16295,7 +20515,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     boolean hasMsgSendReq();
@@ -16303,7 +20523,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     Message.SendMsgReq getMsgSendReq();
@@ -16311,7 +20531,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     Message.SendMsgReqOrBuilder getMsgSendReqOrBuilder();
@@ -16321,7 +20541,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     boolean hasMsgSendRes();
@@ -16329,7 +20549,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     Message.SendMsgRes getMsgSendRes();
@@ -16337,7 +20557,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     Message.SendMsgResOrBuilder getMsgSendResOrBuilder();
@@ -16347,7 +20567,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     boolean hasMsgPushReq();
@@ -16355,7 +20575,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     Message.PushMsgReq getMsgPushReq();
@@ -16363,7 +20583,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     Message.PushMsgReqOrBuilder getMsgPushReqOrBuilder();
@@ -16373,7 +20593,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     boolean hasMsgPollReq();
@@ -16381,7 +20601,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     Message.PollMsgReq getMsgPollReq();
@@ -16389,7 +20609,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     Message.PollMsgReqOrBuilder getMsgPollReqOrBuilder();
@@ -16399,7 +20619,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     boolean hasMsgPollRes();
@@ -16407,7 +20627,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     Message.PollMsgRes getMsgPollRes();
@@ -16415,7 +20635,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     Message.PollMsgResOrBuilder getMsgPollResOrBuilder();
@@ -16425,7 +20645,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     boolean hasMsgPollUnreadReq();
@@ -16433,7 +20653,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     Message.PollUnreadInfoReq getMsgPollUnreadReq();
@@ -16441,7 +20661,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     Message.PollUnreadInfoReqOrBuilder getMsgPollUnreadReqOrBuilder();
@@ -16451,7 +20671,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     boolean hasMsgPollUnreadRes();
@@ -16459,7 +20679,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     Message.PollUnreadInfoRes getMsgPollUnreadRes();
@@ -16467,13 +20687,17 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     Message.PollUnreadInfoResOrBuilder getMsgPollUnreadResOrBuilder();
   }
   /**
    * Protobuf type {@code MessageOpr}
+   *
+   * <pre>
+   *uint32_commandΪMC_RecvMsgNotʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+   * </pre>
    */
   public static final class MessageOpr extends
       com.google.protobuf.GeneratedMessage
@@ -16529,8 +20753,14 @@ public final class Message {
               break;
             }
             case 16: {
-              bitField0_ |= 0x00000002;
-              uint32Command_ = input.readUInt32();
+              int rawValue = input.readEnum();
+              Message.MsgCommand value = Message.MsgCommand.valueOf(rawValue);
+              if (value == null) {
+                unknownFields.mergeVarintField(2, rawValue);
+              } else {
+                bitField0_ |= 0x00000002;
+                uint32Command_ = value;
+              }
               break;
             }
             case 26: {
@@ -16708,27 +20938,27 @@ public final class Message {
       return uint64Uid_;
     }
 
-    // required uint32 uint32_command = 2;
+    // required .MsgCommand uint32_command = 2;
     public static final int UINT32_COMMAND_FIELD_NUMBER = 2;
-    private int uint32Command_;
+    private Message.MsgCommand uint32Command_;
     /**
-     * <code>required uint32 uint32_command = 2;</code>
+     * <code>required .MsgCommand uint32_command = 2;</code>
      *
      * <pre>
-     *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+     *�����
      * </pre>
      */
     public boolean hasUint32Command() {
       return ((bitField0_ & 0x00000002) == 0x00000002);
     }
     /**
-     * <code>required uint32 uint32_command = 2;</code>
+     * <code>required .MsgCommand uint32_command = 2;</code>
      *
      * <pre>
-     *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+     *�����
      * </pre>
      */
-    public int getUint32Command() {
+    public Message.MsgCommand getUint32Command() {
       return uint32Command_;
     }
 
@@ -16739,7 +20969,7 @@ public final class Message {
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     public boolean hasStrVersion() {
@@ -16749,7 +20979,7 @@ public final class Message {
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     public java.lang.String getStrVersion() {
@@ -16770,7 +21000,7 @@ public final class Message {
      * <code>optional string str_version = 3;</code>
      *
      * <pre>
-     *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *�汾��
      * </pre>
      */
     public com.google.protobuf.ByteString
@@ -16897,7 +21127,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     public boolean hasMsgSendReq() {
@@ -16907,7 +21137,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     public Message.SendMsgReq getMsgSendReq() {
@@ -16917,7 +21147,7 @@ public final class Message {
      * <code>optional .SendMsgReq msg_send_req = 7;</code>
      *
      * <pre>
-     *uint32_command=1.��������
+     *��������
      * </pre>
      */
     public Message.SendMsgReqOrBuilder getMsgSendReqOrBuilder() {
@@ -16931,7 +21161,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     public boolean hasMsgSendRes() {
@@ -16941,7 +21171,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     public Message.SendMsgRes getMsgSendRes() {
@@ -16951,7 +21181,7 @@ public final class Message {
      * <code>optional .SendMsgRes msg_send_res = 8;</code>
      *
      * <pre>
-     *uint32_command=2.����ȷ��
+     *����ȷ��
      * </pre>
      */
     public Message.SendMsgResOrBuilder getMsgSendResOrBuilder() {
@@ -16965,7 +21195,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     public boolean hasMsgPushReq() {
@@ -16975,7 +21205,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     public Message.PushMsgReq getMsgPushReq() {
@@ -16985,7 +21215,7 @@ public final class Message {
      * <code>optional .PushMsgReq msg_push_req = 9;</code>
      *
      * <pre>
-     *uint32_command=3.��������
+     *��������
      * </pre>
      */
     public Message.PushMsgReqOrBuilder getMsgPushReqOrBuilder() {
@@ -16999,7 +21229,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     public boolean hasMsgPollReq() {
@@ -17009,7 +21239,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     public Message.PollMsgReq getMsgPollReq() {
@@ -17019,7 +21249,7 @@ public final class Message {
      * <code>optional .PollMsgReq msg_poll_req = 10;</code>
      *
      * <pre>
-     *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     *��ȡ����
      * </pre>
      */
     public Message.PollMsgReqOrBuilder getMsgPollReqOrBuilder() {
@@ -17033,7 +21263,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     public boolean hasMsgPollRes() {
@@ -17043,7 +21273,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     public Message.PollMsgRes getMsgPollRes() {
@@ -17053,7 +21283,7 @@ public final class Message {
      * <code>optional .PollMsgRes msg_poll_res = 11;</code>
      *
      * <pre>
-     *uint32_command=6.��ȡ���
+     *��ȡ���
      * </pre>
      */
     public Message.PollMsgResOrBuilder getMsgPollResOrBuilder() {
@@ -17067,7 +21297,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     public boolean hasMsgPollUnreadReq() {
@@ -17077,7 +21307,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     public Message.PollUnreadInfoReq getMsgPollUnreadReq() {
@@ -17087,7 +21317,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
      *
      * <pre>
-     *uint32_command=7.��ȡδ���б�����
+     *��ȡδ���б�����
      * </pre>
      */
     public Message.PollUnreadInfoReqOrBuilder getMsgPollUnreadReqOrBuilder() {
@@ -17101,7 +21331,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     public boolean hasMsgPollUnreadRes() {
@@ -17111,7 +21341,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     public Message.PollUnreadInfoRes getMsgPollUnreadRes() {
@@ -17121,7 +21351,7 @@ public final class Message {
      * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
      *
      * <pre>
-     *uint32_command=8.��ȡδ���б���
+     *��ȡδ���б���
      * </pre>
      */
     public Message.PollUnreadInfoResOrBuilder getMsgPollUnreadResOrBuilder() {
@@ -17130,7 +21360,7 @@ public final class Message {
 
     private void initFields() {
       uint64Uid_ = 0L;
-      uint32Command_ = 0;
+      uint32Command_ = Message.MsgCommand.MC_SendMsgReq;
       strVersion_ = "";
       uint32ClientType_ = 0;
       stringSessionId_ = "";
@@ -17209,7 +21439,7 @@ public final class Message {
         output.writeUInt64(1, uint64Uid_);
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
-        output.writeUInt32(2, uint32Command_);
+        output.writeEnum(2, uint32Command_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         output.writeBytes(3, getStrVersionBytes());
@@ -17259,7 +21489,7 @@ public final class Message {
       }
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(2, uint32Command_);
+          .computeEnumSize(2, uint32Command_.getNumber());
       }
       if (((bitField0_ & 0x00000004) == 0x00000004)) {
         size += com.google.protobuf.CodedOutputStream
@@ -17385,6 +21615,10 @@ public final class Message {
     }
     /**
      * Protobuf type {@code MessageOpr}
+     *
+     * <pre>
+     *uint32_commandΪMC_RecvMsgNotʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+     * </pre>
      */
     public static final class Builder extends
         com.google.protobuf.GeneratedMessage.Builder<Builder>
@@ -17430,7 +21664,7 @@ public final class Message {
         super.clear();
         uint64Uid_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000001);
-        uint32Command_ = 0;
+        uint32Command_ = Message.MsgCommand.MC_SendMsgReq;
         bitField0_ = (bitField0_ & ~0x00000002);
         strVersion_ = "";
         bitField0_ = (bitField0_ & ~0x00000004);
@@ -17775,51 +22009,54 @@ public final class Message {
         return this;
       }
 
-      // required uint32 uint32_command = 2;
-      private int uint32Command_ ;
+      // required .MsgCommand uint32_command = 2;
+      private Message.MsgCommand uint32Command_ = Message.MsgCommand.MC_SendMsgReq;
       /**
-       * <code>required uint32 uint32_command = 2;</code>
+       * <code>required .MsgCommand uint32_command = 2;</code>
        *
        * <pre>
-       *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+       *�����
        * </pre>
        */
       public boolean hasUint32Command() {
         return ((bitField0_ & 0x00000002) == 0x00000002);
       }
       /**
-       * <code>required uint32 uint32_command = 2;</code>
+       * <code>required .MsgCommand uint32_command = 2;</code>
        *
        * <pre>
-       *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+       *�����
        * </pre>
        */
-      public int getUint32Command() {
+      public Message.MsgCommand getUint32Command() {
         return uint32Command_;
       }
       /**
-       * <code>required uint32 uint32_command = 2;</code>
+       * <code>required .MsgCommand uint32_command = 2;</code>
        *
        * <pre>
-       *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+       *�����
        * </pre>
        */
-      public Builder setUint32Command(int value) {
+      public Builder setUint32Command(Message.MsgCommand value) {
+        if (value == null) {
+          throw new NullPointerException();
+        }
         bitField0_ |= 0x00000002;
         uint32Command_ = value;
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 uint32_command = 2;</code>
+       * <code>required .MsgCommand uint32_command = 2;</code>
        *
        * <pre>
-       *����� 1.�������� 2.����ȷ�� 3.�������� 4.����ȷ�� 5.��ȡ���� 6.��ȡ��� 7.��ȡδ���б����� 8.��ȡδ���б���
+       *�����
        * </pre>
        */
       public Builder clearUint32Command() {
         bitField0_ = (bitField0_ & ~0x00000002);
-        uint32Command_ = 0;
+        uint32Command_ = Message.MsgCommand.MC_SendMsgReq;
         onChanged();
         return this;
       }
@@ -17830,7 +22067,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public boolean hasStrVersion() {
@@ -17840,7 +22077,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public java.lang.String getStrVersion() {
@@ -17858,7 +22095,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public com.google.protobuf.ByteString
@@ -17878,7 +22115,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public Builder setStrVersion(
@@ -17895,7 +22132,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public Builder clearStrVersion() {
@@ -17908,7 +22145,7 @@ public final class Message {
        * <code>optional string str_version = 3;</code>
        *
        * <pre>
-       *uint32_commandΪ4ʱ��ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *�汾��
        * </pre>
        */
       public Builder setStrVersionBytes(
@@ -18129,7 +22366,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public boolean hasMsgSendReq() {
@@ -18139,7 +22376,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Message.SendMsgReq getMsgSendReq() {
@@ -18153,7 +22390,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Builder setMsgSendReq(Message.SendMsgReq value) {
@@ -18173,7 +22410,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Builder setMsgSendReq(
@@ -18191,7 +22428,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Builder mergeMsgSendReq(Message.SendMsgReq value) {
@@ -18214,7 +22451,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Builder clearMsgSendReq() {
@@ -18231,7 +22468,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Message.SendMsgReq.Builder getMsgSendReqBuilder() {
@@ -18243,7 +22480,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       public Message.SendMsgReqOrBuilder getMsgSendReqOrBuilder() {
@@ -18257,7 +22494,7 @@ public final class Message {
        * <code>optional .SendMsgReq msg_send_req = 7;</code>
        *
        * <pre>
-       *uint32_command=1.��������
+       *��������
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18282,7 +22519,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public boolean hasMsgSendRes() {
@@ -18292,7 +22529,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Message.SendMsgRes getMsgSendRes() {
@@ -18306,7 +22543,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Builder setMsgSendRes(Message.SendMsgRes value) {
@@ -18326,7 +22563,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Builder setMsgSendRes(
@@ -18344,7 +22581,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Builder mergeMsgSendRes(Message.SendMsgRes value) {
@@ -18367,7 +22604,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Builder clearMsgSendRes() {
@@ -18384,7 +22621,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Message.SendMsgRes.Builder getMsgSendResBuilder() {
@@ -18396,7 +22633,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       public Message.SendMsgResOrBuilder getMsgSendResOrBuilder() {
@@ -18410,7 +22647,7 @@ public final class Message {
        * <code>optional .SendMsgRes msg_send_res = 8;</code>
        *
        * <pre>
-       *uint32_command=2.����ȷ��
+       *����ȷ��
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18435,7 +22672,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public boolean hasMsgPushReq() {
@@ -18445,7 +22682,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Message.PushMsgReq getMsgPushReq() {
@@ -18459,7 +22696,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Builder setMsgPushReq(Message.PushMsgReq value) {
@@ -18479,7 +22716,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Builder setMsgPushReq(
@@ -18497,7 +22734,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Builder mergeMsgPushReq(Message.PushMsgReq value) {
@@ -18520,7 +22757,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Builder clearMsgPushReq() {
@@ -18537,7 +22774,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Message.PushMsgReq.Builder getMsgPushReqBuilder() {
@@ -18549,7 +22786,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       public Message.PushMsgReqOrBuilder getMsgPushReqOrBuilder() {
@@ -18563,7 +22800,7 @@ public final class Message {
        * <code>optional .PushMsgReq msg_push_req = 9;</code>
        *
        * <pre>
-       *uint32_command=3.��������
+       *��������
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18588,7 +22825,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public boolean hasMsgPollReq() {
@@ -18598,7 +22835,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Message.PollMsgReq getMsgPollReq() {
@@ -18612,7 +22849,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Builder setMsgPollReq(Message.PollMsgReq value) {
@@ -18632,7 +22869,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Builder setMsgPollReq(
@@ -18650,7 +22887,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Builder mergeMsgPollReq(Message.PollMsgReq value) {
@@ -18673,7 +22910,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Builder clearMsgPollReq() {
@@ -18690,7 +22927,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Message.PollMsgReq.Builder getMsgPollReqBuilder() {
@@ -18702,7 +22939,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       public Message.PollMsgReqOrBuilder getMsgPollReqOrBuilder() {
@@ -18716,7 +22953,7 @@ public final class Message {
        * <code>optional .PollMsgReq msg_poll_req = 10;</code>
        *
        * <pre>
-       *uint32_command=4.ֻ��Ҫ�ṩuint64_uid/uint32_command/msg_context������Ҫ�������
+       *��ȡ����
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18741,7 +22978,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public boolean hasMsgPollRes() {
@@ -18751,7 +22988,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Message.PollMsgRes getMsgPollRes() {
@@ -18765,7 +23002,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Builder setMsgPollRes(Message.PollMsgRes value) {
@@ -18785,7 +23022,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Builder setMsgPollRes(
@@ -18803,7 +23040,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Builder mergeMsgPollRes(Message.PollMsgRes value) {
@@ -18826,7 +23063,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Builder clearMsgPollRes() {
@@ -18843,7 +23080,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Message.PollMsgRes.Builder getMsgPollResBuilder() {
@@ -18855,7 +23092,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       public Message.PollMsgResOrBuilder getMsgPollResOrBuilder() {
@@ -18869,7 +23106,7 @@ public final class Message {
        * <code>optional .PollMsgRes msg_poll_res = 11;</code>
        *
        * <pre>
-       *uint32_command=6.��ȡ���
+       *��ȡ���
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -18894,7 +23131,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public boolean hasMsgPollUnreadReq() {
@@ -18904,7 +23141,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Message.PollUnreadInfoReq getMsgPollUnreadReq() {
@@ -18918,7 +23155,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Builder setMsgPollUnreadReq(Message.PollUnreadInfoReq value) {
@@ -18938,7 +23175,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Builder setMsgPollUnreadReq(
@@ -18956,7 +23193,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Builder mergeMsgPollUnreadReq(Message.PollUnreadInfoReq value) {
@@ -18979,7 +23216,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Builder clearMsgPollUnreadReq() {
@@ -18996,7 +23233,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Message.PollUnreadInfoReq.Builder getMsgPollUnreadReqBuilder() {
@@ -19008,7 +23245,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       public Message.PollUnreadInfoReqOrBuilder getMsgPollUnreadReqOrBuilder() {
@@ -19022,7 +23259,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoReq msg_poll_unread_req = 12;</code>
        *
        * <pre>
-       *uint32_command=7.��ȡδ���б�����
+       *��ȡδ���б�����
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -19047,7 +23284,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public boolean hasMsgPollUnreadRes() {
@@ -19057,7 +23294,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Message.PollUnreadInfoRes getMsgPollUnreadRes() {
@@ -19071,7 +23308,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Builder setMsgPollUnreadRes(Message.PollUnreadInfoRes value) {
@@ -19091,7 +23328,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Builder setMsgPollUnreadRes(
@@ -19109,7 +23346,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Builder mergeMsgPollUnreadRes(Message.PollUnreadInfoRes value) {
@@ -19132,7 +23369,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Builder clearMsgPollUnreadRes() {
@@ -19149,7 +23386,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Message.PollUnreadInfoRes.Builder getMsgPollUnreadResBuilder() {
@@ -19161,7 +23398,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       public Message.PollUnreadInfoResOrBuilder getMsgPollUnreadResOrBuilder() {
@@ -19175,7 +23412,7 @@ public final class Message {
        * <code>optional .PollUnreadInfoRes msg_poll_unread_res = 13;</code>
        *
        * <pre>
-       *uint32_command=8.��ȡδ���б���
+       *��ȡδ���б���
        * </pre>
        */
       private com.google.protobuf.SingleFieldBuilder<
@@ -19219,10 +23456,20 @@ public final class Message {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_VideoMsgInfo_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_FileInfo_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_FileInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_NetGuardInfo_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_NetGuardInfo_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_VerifyRequest_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_VerifyRequest_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
     internal_static_VoiceTestInfo_descriptor;
   private static
@@ -19292,65 +23539,89 @@ public final class Message {
       descriptor;
   static {
     java.lang.String[] descriptorData = {
-      "\n\rmessage.proto\"\230\001\n\nPicMsgInfo\022\023\n\013str_pi" +
+      "\n\rmessage.proto\"\306\001\n\nPicMsgInfo\022\023\n\013str_pi" +
       "c_url\030\001 \002(\t\022\025\n\rstr_thumb_url\030\002 \001(\t\022\023\n\013ui" +
       "nt32_size\030\003 \001(\r\022\024\n\014str_pic_type\030\004 \001(\t\022\030\n" +
       "\020uint32_pic_width\030\005 \001(\r\022\031\n\021uint32_pic_he" +
-      "ight\030\006 \001(\r\"S\n\014VoiceMsgInfo\022\025\n\rstr_voice_" +
-      "url\030\001 \002(\t\022\023\n\013uint32_size\030\002 \001(\r\022\027\n\017uint32" +
-      "_duration\030\003 \001(\r\"\275\001\n\014VideoMsgInfo\022\025\n\rstr_" +
-      "video_url\030\001 \002(\t\022\025\n\rstr_thumb_url\030\002 \001(\t\022\023" +
-      "\n\013uint32_size\030\003 \001(\r\022\027\n\017uint32_duration\030\004" +
-      " \001(\r\022\030\n\020str_video_format\030\005 \001(\t\022\032\n\022uint32",
-      "_video_width\030\006 \001(\r\022\033\n\023uint32_video_heigh" +
-      "t\030\007 \001(\r\"V\n\014NetGuardInfo\022\025\n\ruint32_action" +
+      "ight\030\006 \001(\r\022\025\n\rstr_file_name\030\007 \001(\t\022\025\n\rstr" +
+      "_file_info\030\010 \001(\t\"\201\001\n\014VoiceMsgInfo\022\025\n\rstr" +
+      "_voice_url\030\001 \002(\t\022\023\n\013uint32_size\030\002 \001(\r\022\027\n" +
+      "\017uint32_duration\030\003 \001(\r\022\025\n\rstr_file_name\030" +
+      "\004 \001(\t\022\025\n\rstr_file_info\030\005 \001(\t\"\353\001\n\014VideoMs" +
+      "gInfo\022\025\n\rstr_video_url\030\001 \002(\t\022\025\n\rstr_thum",
+      "b_url\030\002 \001(\t\022\023\n\013uint32_size\030\003 \001(\r\022\027\n\017uint" +
+      "32_duration\030\004 \001(\r\022\030\n\020str_video_format\030\005 " +
+      "\001(\t\022\032\n\022uint32_video_width\030\006 \001(\r\022\033\n\023uint3" +
+      "2_video_height\030\007 \001(\r\022\025\n\rstr_file_name\030\010 " +
+      "\001(\t\022\025\n\rstr_file_info\030\t \001(\t\"c\n\010FileInfo\022\024" +
+      "\n\014str_file_url\030\001 \002(\t\022\023\n\013uint32_size\030\002 \001(" +
+      "\r\022\025\n\rstr_file_name\030\003 \001(\t\022\025\n\rstr_file_inf" +
+      "o\030\004 \001(\t\"V\n\014NetGuardInfo\022\025\n\ruint32_action" +
       "\030\001 \002(\r\022\027\n\017uint32_event_id\030\002 \002(\r\022\026\n\016str_R" +
-      "eportInfo\030\003 \001(\t\"\220\002\n\rVoiceTestInfo\022\025\n\ruin" +
-      "t32_action\030\001 \002(\r\022\032\n\022uint64_student_uid\030\002" +
-      " \001(\004\022\031\n\021uint64_parent_uid\030\003 \001(\004\022\025\n\rstrin" +
-      "g_course\030\004 \001(\t\022\024\n\014string_class\030\005 \001(\t\022\027\n\017" +
-      "string_question\030\006 \001(\r\022\'\n\020msg_voice_answe" +
-      "r\030\007 \001(\0132\r.VoiceMsgInfo\022\027\n\017str_text_answe" +
-      "r\030\010 \001(\t\022\024\n\014uint32_score\030\t \001(\r\022\023\n\013str_com",
-      "ment\030\n \001(\r\"4\n\tClassInfo\022\022\n\nstr_course\030\001 " +
-      "\001(\t\022\023\n\013str_content\030\002 \001(\t\"\256\003\n\tCommonMsg\022\027" +
-      "\n\017uint64_from_uid\030\001 \002(\004\022\025\n\ruint64_to_uid" +
-      "\030\002 \003(\004\022\025\n\ruint64_to_gid\030\003 \003(\004\022\027\n\017uint32_" +
-      "msg_type\030\004 \002(\r\022\033\n\023uint32_content_type\030\005 " +
-      "\001(\r\022\024\n\014str_text_msg\030\006 \001(\t\022 \n\013msg_pic_msg" +
-      "\030\007 \001(\0132\013.PicMsgInfo\022$\n\rmsg_voice_msg\030\010 \001" +
-      "(\0132\r.VoiceMsgInfo\022$\n\rmsg_video_msg\030\t \001(\013" +
-      "2\r.VideoMsgInfo\022%\n\016msg_moitor_msg\030\n \001(\0132" +
-      "\r.NetGuardInfo\022$\n\014msg_test_msg\030\013 \001(\0132\016.V",
-      "oiceTestInfo\022\"\n\016msg_class_info\030\014 \001(\0132\n.C" +
-      "lassInfo\022\023\n\013uint64_time\030\r \001(\004\022\032\n\022uint32_" +
-      "trunct_flag\030\016 \001(\r\"o\n\nUnReadInfo\022\027\n\017uint3" +
-      "2_msg_type\030\001 \002(\r\022\027\n\017uint64_from_uid\030\002 \001(" +
-      "\004\022\022\n\nuint64_gid\030\003 \001(\004\022\033\n\023uint32_unread_c" +
-      "ount\030\004 \002(\r\"-\n\nSendMsgReq\022\037\n\013msg_sendmsg\030" +
-      "\001 \002(\0132\n.CommonMsg\"?\n\nSendMsgRes\022\025\n\ruint3" +
-      "2_result\030\001 \002(\r\022\032\n\022uint32_peer_status\030\002 \001" +
-      "(\r\"1\n\nPushMsgReq\022#\n\017rpt_msg_pushmsg\030\001 \003(" +
-      "\0132\n.CommonMsg\"\'\n\021PollUnreadInfoReq\022\022\n\nui",
-      "nt64_uid\030\001 \002(\004\"9\n\021PollUnreadInfoRes\022$\n\017m" +
-      "sg_unread_info\030\004 \003(\0132\013.UnReadInfo\"{\n\nPol" +
-      "lMsgReq\022\022\n\nuint64_uid\030\001 \002(\004\022\027\n\017uint32_ms" +
-      "g_type\030\002 \002(\r\022\027\n\017uint64_from_uid\030\003 \001(\004\022\022\n" +
-      "\nuint64_gid\030\004 \001(\004\022\023\n\013uint64_time\030\005 \001(\004\"u" +
-      "\n\nPollMsgRes\022#\n\017rpt_msg_pollmsg\030\001 \003(\0132\n." +
-      "CommonMsg\022\034\n\024uint32_complete_flag\030\002 \001(\r\022" +
-      "$\n\017msg_unread_info\030\003 \003(\0132\013.UnReadInfo\"\254\003" +
-      "\n\nMessageOpr\022\022\n\nuint64_uid\030\001 \002(\004\022\026\n\016uint" +
-      "32_command\030\002 \002(\r\022\023\n\013str_version\030\003 \001(\t\022\032\n",
-      "\022uint32_client_type\030\004 \001(\r\022\031\n\021string_sess" +
-      "ion_id\030\005 \001(\t\022\025\n\rbytes_context\030\006 \001(\014\022!\n\014m" +
-      "sg_send_req\030\007 \001(\0132\013.SendMsgReq\022!\n\014msg_se" +
-      "nd_res\030\010 \001(\0132\013.SendMsgRes\022!\n\014msg_push_re" +
-      "q\030\t \001(\0132\013.PushMsgReq\022!\n\014msg_poll_req\030\n \001" +
-      "(\0132\013.PollMsgReq\022!\n\014msg_poll_res\030\013 \001(\0132\013." +
-      "PollMsgRes\022/\n\023msg_poll_unread_req\030\014 \001(\0132" +
-      "\022.PollUnreadInfoReq\022/\n\023msg_poll_unread_r" +
-      "es\030\r \001(\0132\022.PollUnreadInfoRes"
+      "eportInfo\030\003 \001(\t\"_\n\rVerifyRequest\022\032\n\022uint",
+      "32_verify_type\030\001 \002(\r\022\030\n\020bytes_verify_key" +
+      "\030\002 \001(\014\022\030\n\020stri_verify_info\030\003 \001(\t\"\220\002\n\rVoi" +
+      "ceTestInfo\022\025\n\ruint32_action\030\001 \002(\r\022\032\n\022uin" +
+      "t64_student_uid\030\002 \001(\004\022\031\n\021uint64_parent_u" +
+      "id\030\003 \001(\004\022\025\n\rstring_course\030\004 \001(\t\022\024\n\014strin" +
+      "g_class\030\005 \001(\t\022\027\n\017string_question\030\006 \001(\r\022\'" +
+      "\n\020msg_voice_answer\030\007 \001(\0132\r.VoiceMsgInfo\022" +
+      "\027\n\017str_text_answer\030\010 \001(\t\022\024\n\014uint32_score" +
+      "\030\t \001(\r\022\023\n\013str_comment\030\n \001(\r\"4\n\tClassInfo" +
+      "\022\022\n\nstr_course\030\001 \001(\t\022\023\n\013str_content\030\002 \001(",
+      "\t\"\224\004\n\tCommonMsg\022\027\n\017uint64_from_uid\030\001 \002(\004" +
+      "\022\025\n\ruint64_to_uid\030\002 \003(\004\022\025\n\ruint64_to_gid" +
+      "\030\003 \003(\004\022%\n\017uint32_msg_type\030\004 \002(\0162\014.Messag" +
+      "eType\022)\n\023uint32_content_type\030\005 \001(\0162\014.Con" +
+      "tentType\022\024\n\014str_text_msg\030\006 \001(\t\022 \n\013msg_pi" +
+      "c_msg\030\007 \001(\0132\013.PicMsgInfo\022$\n\rmsg_voice_ms" +
+      "g\030\010 \001(\0132\r.VoiceMsgInfo\022$\n\rmsg_video_msg\030" +
+      "\t \001(\0132\r.VideoMsgInfo\022%\n\016msg_moitor_msg\030\n" +
+      " \001(\0132\r.NetGuardInfo\022$\n\014msg_test_msg\030\013 \001(" +
+      "\0132\016.VoiceTestInfo\022\"\n\016msg_class_info\030\014 \001(",
+      "\0132\n.ClassInfo\022&\n\016msg_verify_req\030\r \001(\0132\016." +
+      "VerifyRequest\022 \n\rmsg_file_info\030\016 \001(\0132\t.F" +
+      "ileInfo\022\023\n\013uint64_time\030\024 \001(\004\022\032\n\022uint32_t" +
+      "runct_flag\030\025 \001(\r\"}\n\nUnReadInfo\022%\n\017uint32" +
+      "_msg_type\030\001 \002(\0162\014.MessageType\022\027\n\017uint64_" +
+      "from_uid\030\002 \001(\004\022\022\n\nuint64_gid\030\003 \001(\004\022\033\n\023ui" +
+      "nt32_unread_count\030\004 \002(\r\"-\n\nSendMsgReq\022\037\n" +
+      "\013msg_sendmsg\030\001 \002(\0132\n.CommonMsg\"?\n\nSendMs" +
+      "gRes\022\025\n\ruint32_result\030\001 \002(\r\022\032\n\022uint32_pe" +
+      "er_status\030\002 \001(\r\"1\n\nPushMsgReq\022#\n\017rpt_msg",
+      "_pushmsg\030\001 \003(\0132\n.CommonMsg\"\'\n\021PollUnread" +
+      "InfoReq\022\022\n\nuint64_uid\030\001 \002(\004\"9\n\021PollUnrea" +
+      "dInfoRes\022$\n\017msg_unread_info\030\004 \003(\0132\013.UnRe" +
+      "adInfo\"\211\001\n\nPollMsgReq\022\022\n\nuint64_uid\030\001 \002(" +
+      "\004\022%\n\017uint32_msg_type\030\002 \002(\0162\014.MessageType" +
+      "\022\027\n\017uint64_from_uid\030\003 \001(\004\022\022\n\nuint64_gid\030" +
+      "\004 \001(\004\022\023\n\013uint64_time\030\005 \001(\004\"u\n\nPollMsgRes" +
+      "\022#\n\017rpt_msg_pollmsg\030\001 \003(\0132\n.CommonMsg\022\034\n" +
+      "\024uint32_complete_flag\030\002 \001(\r\022$\n\017msg_unrea" +
+      "d_info\030\003 \003(\0132\013.UnReadInfo\"\271\003\n\nMessageOpr",
+      "\022\022\n\nuint64_uid\030\001 \002(\004\022#\n\016uint32_command\030\002" +
+      " \002(\0162\013.MsgCommand\022\023\n\013str_version\030\003 \001(\t\022\032" +
+      "\n\022uint32_client_type\030\004 \001(\r\022\031\n\021string_ses" +
+      "sion_id\030\005 \001(\t\022\025\n\rbytes_context\030\006 \001(\014\022!\n\014" +
+      "msg_send_req\030\007 \001(\0132\013.SendMsgReq\022!\n\014msg_s" +
+      "end_res\030\010 \001(\0132\013.SendMsgRes\022!\n\014msg_push_r" +
+      "eq\030\t \001(\0132\013.PushMsgReq\022!\n\014msg_poll_req\030\n " +
+      "\001(\0132\013.PollMsgReq\022!\n\014msg_poll_res\030\013 \001(\0132\013" +
+      ".PollMsgRes\022/\n\023msg_poll_unread_req\030\014 \001(\013" +
+      "2\022.PollUnreadInfoReq\022/\n\023msg_poll_unread_",
+      "res\030\r \001(\0132\022.PollUnreadInfoRes*\255\001\n\013Messag" +
+      "eType\022\n\n\006MT_All\020\000\022\n\n\006MT_C2C\020\001\022\014\n\010MT_Grou" +
+      "p\020\002\022\r\n\tMT_System\020\003\022\020\n\014MT_Community\020\004\022\020\n\014" +
+      "MT_Broadcast\020\005\022\020\n\014MT_ClassInfo\020\006\022\020\n\014MT_V" +
+      "oiceTest\020\007\022\017\n\013MT_NetGuard\020\010\022\020\n\014MT_Verify" +
+      "Req\020\t*b\n\013ContentType\022\013\n\007CT_Text\020\000\022\016\n\nCT_" +
+      "Picture\020\001\022\014\n\010CT_Voice\020\002\022\014\n\010CT_Video\020\003\022\013\n" +
+      "\007CT_File\020\004\022\r\n\tCT_IDCard\020\005*\262\001\n\nMsgCommand" +
+      "\022\021\n\rMC_SendMsgReq\020\001\022\021\n\rMC_SendMsgRes\020\002\022\021" +
+      "\n\rMC_PushMsgReq\020\003\022\021\n\rMC_RecvMsgNot\020\004\022\021\n\r",
+      "MC_PollMsgReq\020\005\022\021\n\rMC_PollMsgRes\020\006\022\030\n\024MC" +
+      "_PollUnreadInfoReq\020\007\022\030\n\024MC_PollUnreadInf" +
+      "oRes\020\010"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -19362,93 +23633,105 @@ public final class Message {
           internal_static_PicMsgInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PicMsgInfo_descriptor,
-              new java.lang.String[] { "StrPicUrl", "StrThumbUrl", "Uint32Size", "StrPicType", "Uint32PicWidth", "Uint32PicHeight", });
+              new java.lang.String[] { "StrPicUrl", "StrThumbUrl", "Uint32Size", "StrPicType", "Uint32PicWidth", "Uint32PicHeight", "StrFileName", "StrFileInfo", });
           internal_static_VoiceMsgInfo_descriptor =
             getDescriptor().getMessageTypes().get(1);
           internal_static_VoiceMsgInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VoiceMsgInfo_descriptor,
-              new java.lang.String[] { "StrVoiceUrl", "Uint32Size", "Uint32Duration", });
+              new java.lang.String[] { "StrVoiceUrl", "Uint32Size", "Uint32Duration", "StrFileName", "StrFileInfo", });
           internal_static_VideoMsgInfo_descriptor =
             getDescriptor().getMessageTypes().get(2);
           internal_static_VideoMsgInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VideoMsgInfo_descriptor,
-              new java.lang.String[] { "StrVideoUrl", "StrThumbUrl", "Uint32Size", "Uint32Duration", "StrVideoFormat", "Uint32VideoWidth", "Uint32VideoHeight", });
-          internal_static_NetGuardInfo_descriptor =
+              new java.lang.String[] { "StrVideoUrl", "StrThumbUrl", "Uint32Size", "Uint32Duration", "StrVideoFormat", "Uint32VideoWidth", "Uint32VideoHeight", "StrFileName", "StrFileInfo", });
+          internal_static_FileInfo_descriptor =
             getDescriptor().getMessageTypes().get(3);
+          internal_static_FileInfo_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_FileInfo_descriptor,
+              new java.lang.String[] { "StrFileUrl", "Uint32Size", "StrFileName", "StrFileInfo", });
+          internal_static_NetGuardInfo_descriptor =
+            getDescriptor().getMessageTypes().get(4);
           internal_static_NetGuardInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_NetGuardInfo_descriptor,
               new java.lang.String[] { "Uint32Action", "Uint32EventId", "StrReportInfo", });
+          internal_static_VerifyRequest_descriptor =
+            getDescriptor().getMessageTypes().get(5);
+          internal_static_VerifyRequest_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_VerifyRequest_descriptor,
+              new java.lang.String[] { "Uint32VerifyType", "BytesVerifyKey", "StriVerifyInfo", });
           internal_static_VoiceTestInfo_descriptor =
-            getDescriptor().getMessageTypes().get(4);
+            getDescriptor().getMessageTypes().get(6);
           internal_static_VoiceTestInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_VoiceTestInfo_descriptor,
               new java.lang.String[] { "Uint32Action", "Uint64StudentUid", "Uint64ParentUid", "StringCourse", "StringClass", "StringQuestion", "MsgVoiceAnswer", "StrTextAnswer", "Uint32Score", "StrComment", });
           internal_static_ClassInfo_descriptor =
-            getDescriptor().getMessageTypes().get(5);
+            getDescriptor().getMessageTypes().get(7);
           internal_static_ClassInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_ClassInfo_descriptor,
               new java.lang.String[] { "StrCourse", "StrContent", });
           internal_static_CommonMsg_descriptor =
-            getDescriptor().getMessageTypes().get(6);
+            getDescriptor().getMessageTypes().get(8);
           internal_static_CommonMsg_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_CommonMsg_descriptor,
-              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "Uint64Time", "Uint32TrunctFlag", });
+              new java.lang.String[] { "Uint64FromUid", "Uint64ToUid", "Uint64ToGid", "Uint32MsgType", "Uint32ContentType", "StrTextMsg", "MsgPicMsg", "MsgVoiceMsg", "MsgVideoMsg", "MsgMoitorMsg", "MsgTestMsg", "MsgClassInfo", "MsgVerifyReq", "MsgFileInfo", "Uint64Time", "Uint32TrunctFlag", });
           internal_static_UnReadInfo_descriptor =
-            getDescriptor().getMessageTypes().get(7);
+            getDescriptor().getMessageTypes().get(9);
           internal_static_UnReadInfo_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_UnReadInfo_descriptor,
               new java.lang.String[] { "Uint32MsgType", "Uint64FromUid", "Uint64Gid", "Uint32UnreadCount", });
           internal_static_SendMsgReq_descriptor =
-            getDescriptor().getMessageTypes().get(8);
+            getDescriptor().getMessageTypes().get(10);
           internal_static_SendMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SendMsgReq_descriptor,
               new java.lang.String[] { "MsgSendmsg", });
           internal_static_SendMsgRes_descriptor =
-            getDescriptor().getMessageTypes().get(9);
+            getDescriptor().getMessageTypes().get(11);
           internal_static_SendMsgRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_SendMsgRes_descriptor,
               new java.lang.String[] { "Uint32Result", "Uint32PeerStatus", });
           internal_static_PushMsgReq_descriptor =
-            getDescriptor().getMessageTypes().get(10);
+            getDescriptor().getMessageTypes().get(12);
           internal_static_PushMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PushMsgReq_descriptor,
               new java.lang.String[] { "RptMsgPushmsg", });
           internal_static_PollUnreadInfoReq_descriptor =
-            getDescriptor().getMessageTypes().get(11);
+            getDescriptor().getMessageTypes().get(13);
           internal_static_PollUnreadInfoReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollUnreadInfoReq_descriptor,
               new java.lang.String[] { "Uint64Uid", });
           internal_static_PollUnreadInfoRes_descriptor =
-            getDescriptor().getMessageTypes().get(12);
+            getDescriptor().getMessageTypes().get(14);
           internal_static_PollUnreadInfoRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollUnreadInfoRes_descriptor,
               new java.lang.String[] { "MsgUnreadInfo", });
           internal_static_PollMsgReq_descriptor =
-            getDescriptor().getMessageTypes().get(13);
+            getDescriptor().getMessageTypes().get(15);
           internal_static_PollMsgReq_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollMsgReq_descriptor,
               new java.lang.String[] { "Uint64Uid", "Uint32MsgType", "Uint64FromUid", "Uint64Gid", "Uint64Time", });
           internal_static_PollMsgRes_descriptor =
-            getDescriptor().getMessageTypes().get(14);
+            getDescriptor().getMessageTypes().get(16);
           internal_static_PollMsgRes_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_PollMsgRes_descriptor,
               new java.lang.String[] { "RptMsgPollmsg", "Uint32CompleteFlag", "MsgUnreadInfo", });
           internal_static_MessageOpr_descriptor =
-            getDescriptor().getMessageTypes().get(15);
+            getDescriptor().getMessageTypes().get(17);
           internal_static_MessageOpr_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_MessageOpr_descriptor,

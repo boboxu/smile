@@ -5,6 +5,7 @@ import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.BasePbRequest;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.module.Message.MessageOpr;
+import com.heme.logic.module.Message.MsgCommand;
 import com.heme.logic.module.Message.PollMsgReq;
 import com.heme.logic.module.Message.PollUnreadInfoReq;
 import com.heme.logic.module.Message.PushMsgReq;
@@ -14,77 +15,6 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	private MessageOpr.Builder mMessageOprBuilder;
 	protected MessageOpr mMessageOpr;
 	protected static int CLIENT_TYPE = Configuration.APP_VERSION;
-	
-	public enum MSGTYPE {
-		TYPEALL,	//全部，拉取未读信息的时候有用到
-		TYPEC2C, // 点对点消息
-		TYPEGROUP, // 群消息
-		TYPESYSTEM, // 系统消息
-		TYPESOCIALGROUP, // 社区群组
-		TYPENOTICE, // 公告
-		TYPECLASSASSIS, // 课堂信息助手
-		TYPEVOICETEST, // 语音测评
-		TYPENETGUARD;// 绿色上网助手
-		public static int value(MSGTYPE type) {
-			switch (type) {
-			case TYPEALL:
-				return 0;
-			case TYPEC2C:
-				return 1;
-			case TYPEGROUP:
-				return 2;
-			case TYPESYSTEM:
-				return 3;
-			case TYPESOCIALGROUP:
-				return 4;
-			case TYPENOTICE:
-				return 5;
-			case TYPECLASSASSIS:
-				return 6;
-			case TYPEVOICETEST:
-				return 7;
-			case TYPENETGUARD:
-				return 8;
-			default:
-				return 1;
-			}
-		}
-	}
-	
-	public enum COMMANDTYPE
-	{
-		TYPESENDREQ,
-		TYPESENDRES,
-		TYPEPUSHREQ,
-		TYPEPUSHRES,
-		TYPEPOLLREQ,
-		TYPEPOLLRES,
-		TYPEPOLLUNREADREQ,
-		TYPEPOLLUNREADRES;
-		public static int value(COMMANDTYPE type)
-		{
-			switch (type) {
-			case TYPESENDREQ:
-				return 1;
-			case TYPESENDRES:
-				return 2;
-			case TYPEPUSHREQ:
-				return 3;
-			case TYPEPUSHRES:
-				return 4;
-			case TYPEPOLLREQ:
-				return 5;
-			case TYPEPOLLRES:
-				return 6;
-			case TYPEPOLLUNREADREQ:
-				return 7;
-			case TYPEPOLLUNREADRES:
-				return 8;
-			default:
-				return 1;
-			}
-		}
-	}
 	
 	protected BaseMessageOprRequest(long systemId,String sessionId) {
 		mMessageOprBuilder = MessageOpr.newBuilder();
@@ -98,7 +28,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	{
 		mMessageOprBuilder.setMsgSendReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
-		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPESENDREQ));
+		mMessageOprBuilder.setUint32Command(MsgCommand.MC_SendMsgReq);
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
@@ -106,7 +36,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	{
 		mMessageOprBuilder.setMsgPushReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
-		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPUSHREQ));
+		mMessageOprBuilder.setUint32Command(MsgCommand.MC_PushMsgReq);
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
@@ -114,7 +44,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	{
 		mMessageOprBuilder.setMsgPollReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
-		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPOLLREQ));
+		mMessageOprBuilder.setUint32Command(MsgCommand.MC_PollMsgReq);
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
@@ -122,7 +52,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 	{
 		mMessageOprBuilder.setMsgPollUnreadReq(msg);
 		mMessageOprBuilder.setBytesContext(context);
-		mMessageOprBuilder.setUint32Command(COMMANDTYPE.value(COMMANDTYPE.TYPEPOLLUNREADREQ));
+		mMessageOprBuilder.setUint32Command(MsgCommand.MC_PollUnreadInfoReq);
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	

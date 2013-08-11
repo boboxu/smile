@@ -30,6 +30,7 @@ message RegParentReq
     required string password = 7;			//登录密码
     repeated string childStudentId = 8;		//小孩学号，可以添加多个
     required string verifyCode = 9;			//验证码
+    required uint32 gender = 10;			//性别1：男 2：女 3：未知
 }
 message RegParentRsp
 {
@@ -101,6 +102,7 @@ message RegStudentReq
     required string schoolId = 14;			//所在学校ID
     required string classId = 15;			//所在班级ID
     required string verifyCode = 16;			//验证码
+    required uint32 gender = 17;			//性别1：男 2：女 3：未知
 }
 message RegStudentRsp
 {
@@ -283,11 +285,17 @@ message CreateFixedGroupReq
     required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
 	required string sessionId = 3;          //会话ID
     required uint64 systemId = 4;			//微校号
-    required string area = 5;			//所在地区
-    required string school = 6;			//所在学校
-    required string groupName = 7;			//群组名称
-    required uint32 verifyType = 8;			//群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
-    repeated uint64 memberSystemId = 9;			//群成员微校号
+    optional string provinceCode = 5;	    //省编号
+    optional string provinceName = 6;	    //省名称
+    optional string cityCode = 7;			//市编号
+    optional string cityName = 8;			//市名称
+    optional string countyCode = 9;			//县编号
+    optional string countyName = 10;	    //县名称
+    optional string schoolId = 11;			//所在学校ID   
+    optional string schoolName = 12;	    //所在学校名称
+    required string groupName = 13;			//群组名称
+    required uint32 verifyType = 14;			//群验证类型，1允许任何人；2：需要身份验证；3：不允许任何人
+    repeated uint64 memberSystemId = 15;			//群成员微校号
 }
 message CreateFixedGroupRsp
 {
@@ -552,6 +560,21 @@ message BusiGetSubjectOfTeacherRsp
     repeated SubjectOfTeacherCombine subjectOfTeacherInfo = 3;	   
 }
 
+//这个接口提供给message或者终端，添加好友用。
+message AddFriendReq
+{
+    required string versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//微校号
+    repeated uint64 targetSystemId = 5;		//对方微校号
+}
+message AddFriendRsp
+{
+	required uint32 errCode = 1;			//错误码 0：成功；
+	required string errString = 2;			//错误信息
+}
+
 
 message DataSvrProto
 {
@@ -584,6 +607,7 @@ message DataSvrProto
         SendFeedback = 25;
         BusiGetClassOfTeacher = 26;
         BusiGetSubjectOfTeacher = 27;
+        AddFriend = 28;
 	}
 	
 	required Cmd enum_cmd = 1;	//命令字，通过命令字，后续用来判断哪个包体会被赋值
@@ -668,4 +692,7 @@ message DataSvrProto
         
     optional BusiGetSubjectOfTeacherReq BusiGetSubjectOfTeacherReqInfo = 54;
 	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 55;    
+    
+    optional AddFriendReq AddFriendReqInfo = 56;
+	optional AddFriendRsp AddFriendRspInfo = 57;    
 }

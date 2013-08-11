@@ -9,6 +9,8 @@ message PicMsgInfo
 	optional string    str_pic_type = 4;		//图片类型，可选
 	optional uint32    uint32_pic_width = 5;	//图片分辨率x
 	optional uint32    uint32_pic_height = 6;	//图片分辨率y
+	optional string    str_file_name = 7;           //文件名
+	optional string    str_file_info = 8;		//文件描述
 };
 
 message VoiceMsgInfo
@@ -16,6 +18,8 @@ message VoiceMsgInfo
 	required string    str_voice_url = 1;		//语音URL
 	optional uint32    uint32_size = 2;		//语音文件大小
 	optional uint32    uint32_duration = 3;		//语音时长
+	optional string    str_file_name = 4;           //文件名
+	optional string    str_file_info = 5;		//文件描述
 };
 
 message VideoMsgInfo
@@ -27,7 +31,18 @@ message VideoMsgInfo
 	optional string    str_video_format = 5;	//视频格式
 	optional uint32    uint32_video_width = 6;	//视频分辨率x
 	optional uint32    uint32_video_height = 7;	//视频分辨率y
+	optional string    str_file_name = 8;           //文件名
+	optional string    str_file_info = 9;		//文件描述
 };
+
+message FileInfo
+{
+	required string    str_file_url = 1;		//文件URL
+	optional uint32    uint32_size = 2;		//文件大小
+	optional string    str_file_name = 3;           //文件名
+	optional string    str_file_info = 4;		//文件描述
+};
+
 
 //绿色上网助手
 message NetGuardInfo
@@ -35,6 +50,14 @@ message NetGuardInfo
 	required uint32    uint32_action = 1;		//操作 1:上报 2:重启 3:关机 4:关闭进程 5:信息拦截
 	required uint32    uint32_event_id = 2;         //事件ID
 	optional string    str_ReportInfo = 3;		//上报文本信息
+};
+
+//认证请求
+message VerifyRequest
+{
+	required uint32    uint32_verify_type = 1;	//验证类型：0:加好友 1:加群
+	optional bytes     bytes_verify_key = 2;        //预留，发起方从data server获取到的一个key
+	optional string    stri_verify_info = 3;        //验证信息
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -65,14 +88,39 @@ message ClassInfo
 	optional string    str_content = 2;		//内容
 };
 
+//消息类型
+enum MessageType
+{
+	MT_All = 0;		//所有类型，仅在PollMsgReq使用
+	MT_C2C = 1;		//c2c消息
+	MT_Group = 2;		//群消息
+	MT_System = 3;		//系统消息
+	MT_Community = 4;	//社区群组消息
+	MT_Broadcast = 5;	//公告
+	MT_ClassInfo = 6;	//课堂信息助手
+	MT_VoiceTest = 7;	//语音测评
+	MT_NetGuard = 8;	//绿色上网助手
+	MT_VerifyReq = 9;	//认证请求
+};
+
+//媒体类型
+enum ContentType
+{
+	CT_Text = 0;	//文本
+	CT_Picture = 1;	//图片
+	CT_Voice = 2;	//语音
+	CT_Video = 3;	//视频
+	CT_File = 4;	//文件
+	CT_IDCard = 5;	//名片
+};
 
 message CommonMsg
 {
 	required uint64    uint64_from_uid = 1;		//发送方ID
 	repeated uint64    uint64_to_uid = 2;		//接收方用户ID，0-N个，一般为1个，发送语音测评消息时可以指定多个接收用户
 	repeated uint64    uint64_to_gid = 3;		//接收方群ID 
-	required uint32    uint32_msg_type = 4;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
-	optional uint32    uint32_content_type = 5;	//媒体类型 0:文本 1:图片 2:语音 3:视频
+	required MessageType    uint32_msg_type = 4;	//消息类型
+	optional ContentType    uint32_content_type = 5;//媒体类型
 	optional string    str_text_msg = 6;		//文本消息内容	
 	optional PicMsgInfo msg_pic_msg = 7;		//图片消息，媒体类型为1时使用
 	optional VoiceMsgInfo msg_voice_msg = 8;	//语音消息，媒体类型为2时使用
@@ -80,13 +128,15 @@ message CommonMsg
 	optional NetGuardInfo msg_moitor_msg = 10;	//绿色上网助手与终端交互消息
 	optional VoiceTestInfo msg_test_msg = 11;       //语音测评消息
 	optional ClassInfo msg_class_info = 12;         //课堂信息
-	optional uint64    uint64_time = 13;		//发送方终端当前时间
-	optional uint32    uint32_trunct_flag = 14;	//内容截短标志，PushMsgReq有可能截短内容，终端需要重要拉取完整内容，缺省表示不截短
+	optional VerifyRequest msg_verify_req = 13;     //验证请求消息（加好友或加群）
+	optional FileInfo  msg_file_info = 14;		//文件传输
+	optional uint64    uint64_time = 20;		//发送方终端当前时间
+	optional uint32    uint32_trunct_flag = 21;	//内容截短标志，PushMsgReq有可能截短内容，终端需要重要拉取完整内容，缺省表示不截短
 };
 
 message UnReadInfo		//未读消息属性
 {
-	required uint32    uint32_msg_type = 1;		//消息类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
+	required MessageType    uint32_msg_type = 1;	//消息类型
 	optional uint64    uint64_from_uid = 2;		//发送方ID 消息类型为1时使用
 	optional uint64    uint64_gid = 3;		//群号, 消息类型为2时使用
 	required uint32    uint32_unread_count = 4;	//未读条数
@@ -107,9 +157,9 @@ message SendMsgRes
 };
 
 ////////////////////////////////////////////////////////////////////////////////////////////////
-//后台主动推送给终端的通知，不直接推送内容，只推送未读列表，终端收到通知后决定是否拉取。
+//后台主动推送给终端的通知
 //场景：用户有新的消息
-//终端收到PushMsgReq不需要response，但是需要主动发送一条"接收确认"消息到server
+// 终端收到PushMsgReq不需要response，但是需要主动发送一条"接收确认"消息到server
 // 并复制PushMsgReq消息中的bytes_context字段（参见MessageOpr定义）
 ////////////////////////////////////////////////////////////////////////////////////////////////
 message PushMsgReq
@@ -140,7 +190,7 @@ message PollUnreadInfoRes
 message PollMsgReq
 {
 	required uint64    uint64_uid = 1;		//接收方ID
-	required uint32    uint32_msg_type = 2;		//拉取的消息类型 0:所有类型 1:c2c 2:群消息 3:系统消息 4:社区群组消息 5:公告 6:课堂信息助手 7:语音测评 8:绿色上网助手
+	required MessageType    uint32_msg_type = 2;	//拉取的消息类型 0:所有类型
 	optional uint64    uint64_from_uid = 3;		//可选参数，如果提供这个参数将只拉取指定用户的消息，否则将拉取所有消息
 	optional uint64    uint64_gid = 4;		//可选参数，如果提供这个参数将只拉取指定群的消息，否则将拉取所有消息
 	optional uint64    uint64_time = 5;		//接收方终端当前时间
@@ -154,22 +204,33 @@ message PollMsgRes
 	repeated UnReadInfo msg_unread_info = 3;	//未读消息列表
 };
 
+enum MsgCommand
+{
+	MC_SendMsgReq = 1;		//发送请求
+	MC_SendMsgRes = 2;		//发送确认
+	MC_PushMsgReq = 3;		//推送请求
+	MC_RecvMsgNot = 4;		//已收通知
+	MC_PollMsgReq = 5;		//拉取请求
+	MC_PollMsgRes = 6;		//拉取结果
+	MC_PollUnreadInfoReq = 7;	//拉取未读列表请求
+	MC_PollUnreadInfoRes = 8;	//拉取未读列表结果
+};
+
+//uint32_command为MC_RecvMsgNot时，只需要提供uint64_uid/uint32_command/msg_context，不需要其它参数
 message MessageOpr
 {
 	required uint64    uint64_uid = 1;		//用户ID
-	required uint32    uint32_command = 2;		//命令号 1.发送请求 2.发送确认 3.推送请求 4.接收确认 5.拉取请求 6.拉取结果 7.拉取未读列表请求 8.拉取未读列表结果
-	                                                //uint32_command为4时，只需要提供uint64_uid/uint32_command/msg_context，不需要其它参数
+	required MsgCommand    uint32_command = 2;	//命令号
 	optional string	   str_version = 3;		//版本号
 	optional uint32    uint32_client_type = 4;	//客户端类型，1：家长；2：学生；3：老师 10000:绿色上网助手/管理页面/SDK
 	optional string    string_session_id = 5;	//预留，暂时不用
 	optional bytes     bytes_context = 6;           //如果请求包带有这个参数，返回包应该原封不动返回
 
-	optional SendMsgReq msg_send_req = 7;		//uint32_command=1.发送请求
-	optional SendMsgRes msg_send_res = 8;		//uint32_command=2.发送确认
-	optional PushMsgReq msg_push_req = 9;		//uint32_command=3.推送请求
-	                                                //uint32_command=4.只需要提供uint64_uid/uint32_command/msg_context，不需要其它参数
-	optional PollMsgReq msg_poll_req = 10;		//uint32_command=5.拉取请求
-	optional PollMsgRes msg_poll_res = 11;		//uint32_command=6.拉取结果
-	optional PollUnreadInfoReq msg_poll_unread_req = 12;	//uint32_command=7.拉取未读列表请求
-	optional PollUnreadInfoRes msg_poll_unread_res = 13;	//uint32_command=8.拉取未读列表结果
+	optional SendMsgReq msg_send_req = 7;		//发送请求
+	optional SendMsgRes msg_send_res = 8;		//发送确认
+	optional PushMsgReq msg_push_req = 9;		//推送请求
+	optional PollMsgReq msg_poll_req = 10;		//拉取请求
+	optional PollMsgRes msg_poll_res = 11;		//拉取结果
+	optional PollUnreadInfoReq msg_poll_unread_req = 12;	//拉取未读列表请求
+	optional PollUnreadInfoRes msg_poll_unread_res = 13;	//拉取未读列表结果
 };

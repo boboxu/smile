@@ -5,6 +5,7 @@ import java.util.List;
 import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.CreateFixedGroupReq;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
+import com.heme.logic.module.notpbmessage.AreaInfo;
 
 public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 
@@ -46,9 +47,14 @@ public class CreatePermanentGroupRequest extends BaseLoginedBusinessRequest {
 		mCreateFixedGroupReqBuilder.setClientType(clientType);
 	}
 
-	public void setGroupInfo(String area, String school, String groupName,
+	public void setGroupInfo(AreaInfo area, String school, String groupName,
 			VERIFYTYPE verifytype, List<Long> memberSystemId) {
-		mCreateFixedGroupReqBuilder.setArea(area);
+		mCreateFixedGroupReqBuilder.setProvinceCode(area.getmProvinceCode());
+		mCreateFixedGroupReqBuilder.setProvinceName(area.getmProvinceName());
+		mCreateFixedGroupReqBuilder.setCityCode(area.getmCityCode());
+		mCreateFixedGroupReqBuilder.setCityName(area.getmCityName());
+		mCreateFixedGroupReqBuilder.setCountyCode(area.getmCountryCode());
+		mCreateFixedGroupReqBuilder.setCountyName(area.getmCountryName());
 		mCreateFixedGroupReqBuilder.setGroupName(groupName);
 		mCreateFixedGroupReqBuilder.setVerifyType(VERIFYTYPE.value(verifytype));
 		mCreateFixedGroupReqBuilder.addAllMemberSystemId(memberSystemId);

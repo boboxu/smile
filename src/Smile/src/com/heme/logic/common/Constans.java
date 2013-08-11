@@ -75,11 +75,15 @@ public class Constans {
 	public static final int SEND_TEXT_C2C_SUCCESS = SEND_VIDEO_C2C_FAILED + 1;
 	// 发送文本消息失败c2c
 	public static final int SEND_TEXT_C2C_FAILED = SEND_TEXT_C2C_SUCCESS + 1;
+	// 发送名片消息成功 c2c
+	public static final int SEND_IDCARD_C2C_SUCCESS = SEND_TEXT_C2C_FAILED+1;
+	// 发送名片消息失败 c2c
+	public static final int SEND_IDCARD_C2C_FAILED = SEND_IDCARD_C2C_SUCCESS+1;
 	/***
 	 * message c2g
 	 */
 	// 发送图片消息成功c2g
-	public static final int SEND_PIC_C2G_SUCCESS = SEND_TEXT_C2C_FAILED + 1;
+	public static final int SEND_PIC_C2G_SUCCESS = SEND_IDCARD_C2C_FAILED + 1;
 	// 发送图片消息失败c2g
 	public static final int SEND_PIC_C2G_FAILED = SEND_PIC_C2G_SUCCESS + 1;
 	// 发送语音消息成功c2g
@@ -94,11 +98,15 @@ public class Constans {
 	public static final int SEND_TEXT_C2G_SUCCESS = SEND_VIDEO_C2G_FAILED + 1;
 	// 发送文本消息失败c2g
 	public static final int SEND_TEXT_C2G_FAILED = SEND_TEXT_C2G_SUCCESS + 1;
+	// 发送名片消息成功c2g
+	public static final int SEND_IDCARD_C2G_SUCCESS = SEND_TEXT_C2G_FAILED + 1;
+	// 发送名片消息失败c2g
+	public static final int SEND_IDCARD_C2G_FAILED = SEND_IDCARD_C2G_SUCCESS + 1;
 	/***
 	 * greennet
 	 */
 	// 发送语音测试消息成功c2c
-	public static final int SEND_VOICETEST_C2C_SUCCESS = SEND_TEXT_C2G_FAILED + 1;
+	public static final int SEND_VOICETEST_C2C_SUCCESS = SEND_IDCARD_C2G_FAILED + 1;
 	// 发送语音测试消息失败c2c
 	public static final int SEND_VOICETEST_C2C_FAILED = SEND_VOICETEST_C2C_SUCCESS + 1;
 	// 发送语音测试消息成功c2g

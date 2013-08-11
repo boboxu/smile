@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
+import com.heme.logic.module.Message.MessageType;
 
 public class SendCommandRequest extends BaseMessageRequest {
 
@@ -34,7 +35,7 @@ public class SendCommandRequest extends BaseMessageRequest {
 	}
 	
 	public SendCommandRequest(long systemId, String sessionId,List<Long> mTargetId) {
-		super(systemId,sessionId,mTargetId,new ArrayList<Long>(),MSGTYPE.TYPENETGUARD);
+		super(systemId,sessionId,mTargetId,new ArrayList<Long>(),MessageType.MT_NetGuard);
 	}
 	
 	// public void setCommandInfo(NetGuardInfo msgInfo,ByteString context)

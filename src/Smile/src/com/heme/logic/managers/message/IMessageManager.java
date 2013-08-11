@@ -43,6 +43,13 @@ public interface IMessageManager extends IBaseBusinessLogicManagerInterface {
 	 */
 	public void sendTextMsgToUser(long targetId,String textinfo,Handler handler);
 	
+	/***
+	 * 
+	 * @param targetId
+	 * @param stridinfo
+	 * @param handler
+	 */
+	public void sendIdCardToUser(long targetId,String stridinfo,Handler handler);
 	//SendMsg c2g
 	/***
 	 * 
@@ -75,6 +82,14 @@ public interface IMessageManager extends IBaseBusinessLogicManagerInterface {
 	 * @param handler
 	 */
 	public void sendTextMsgToGroup(long groupId,String textinfo,Handler handler);
+	
+	/***
+	 * 
+	 * @param groupId
+	 * @param stridinfo
+	 * @param handler
+	 */
+	public void sendIdCardToGroup(long groupId,String stridinfo,Handler handler);
 	
 	//SendMsg greennet
 	/***
