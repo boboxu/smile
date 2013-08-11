@@ -132,6 +132,7 @@ message CommonMsg
 	optional FileInfo  msg_file_info = 14;		//文件传输
 	optional uint64    uint64_time = 20;		//发送方终端当前时间
 	optional uint32    uint32_trunct_flag = 21;	//内容截短标志，PushMsgReq有可能截短内容，终端需要重要拉取完整内容，缺省表示不截短
+	required uint64    uint64_msg_id = 22;		//消息id，只是一个全局唯一的编号，无实际意义。
 };
 
 message UnReadInfo		//未读消息属性

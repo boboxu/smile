@@ -65,28 +65,12 @@ public class ExampleDaoGenerator {
         customerToOrders.setName("orders");
         customerToOrders.orderAsc(orderDate);
     }
-    
-    private static void addPerson(Schema schema)
-    {
-    	Entity person = schema.addEntity("Person");
-    	person.addIdProperty();
-    	person.addStringProperty("name").notNull();
-    	person.addStringProperty("phone");
-    	person.addStringProperty("email");
-    }
 
-    private static void addProbufPerson(Schema schema)
-    {
-    	Entity person = schema.addProtobufEntity("ProbufPerson");
-    	person.addIdProperty();
-    	person.addStringProperty("name").notNull();
-    	person.addStringProperty("phone");
-    	person.addStringProperty("email");
-    }
     
     private static void addCommonMsg(Schema schema)
     {
     	Entity commonMsg = schema.addProtobufEntity("CommonMsg");
+    	commonMsg.addLongProperty("Uint64MsgId").primaryKey();
     	commonMsg.addLongProperty("Uint64FromUid").notNull();
     	commonMsg.addLongProperty("Uint64ToUid");
     	commonMsg.addLongProperty("Uint64ToGid");
