@@ -15,6 +15,7 @@ import com.heme.logic.managers.registmanager.RegistManager;
 import com.heme.logic.managers.schoolinfomanager.AreaInfoManager;
 import com.heme.logic.managers.schoolinfomanager.ClassInfoManager;
 import com.heme.logic.managers.schoolinfomanager.SchoolInfoManager;
+import com.heme.logic.managers.statusreportmanager.StatusReportManager;
 import com.heme.logic.module.Message.ClassInfo;
 
 public class LogicManager {
@@ -102,5 +103,10 @@ public class LogicManager {
 	public static MessageManager messageManager()
 	{
 		return (MessageManager) findManager(MessageManager.class);
+	}
+	
+	public static StatusReportManager statusManager()
+	{
+		return (StatusReportManager) findManager(StatusReportManager.class);
 	}
 }

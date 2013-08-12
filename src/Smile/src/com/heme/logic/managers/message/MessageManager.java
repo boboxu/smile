@@ -11,6 +11,7 @@ import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageRequest;
 import com.heme.logic.httpprotocols.message.pollmsg.PollMessageResponse;
 import com.heme.logic.httpprotocols.message.pullunreadmsg.PollUnreadMessageRequest;
+import com.heme.logic.httpprotocols.message.resptosvr.RespToSvrRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgRequest;
 import com.heme.logic.httpprotocols.message.sendmsg.c2c.SendUserMsgResponse;
 import com.heme.logic.httpprotocols.message.sendmsg.c2g.SendGroupMsgRequest;
@@ -56,6 +57,7 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		else if (response instanceof PollMessageResponse) {
 			PollMessageResponse pmResponse = (PollMessageResponse)response;
 			handleresponse(Constans.POLL_C2C_SUCCESS, pmResponse.getPollMsgRes(), handler);
+			sendRespToSvr(pmResponse.getmMessageOpr().getBytesContext());
 		}
 	}
 
@@ -317,4 +319,12 @@ public class MessageManager extends BaseBusinessLogicManager implements
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
+	private void sendRespToSvr(ByteString context)
+	{
+		RespToSvrRequest request = new RespToSvrRequest(LogicManager
+				.accountManager().getCurrentAccoutSystemId(), LogicManager
+				.accountManager().getCurrentSessionId(), context);
+		sendRequest(request, null, getClass().getName(), _FUNC_());
+	}
+	
 }

@@ -48,6 +48,13 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
+	//客户端会在MC_PushMsgReq收到后以及MC_PollMsgReq之后，构造以下请求作为回复
+	protected void setRespMsgToSvr(ByteString context) {
+		mMessageOprBuilder.setBytesContext(context);
+		mMessageOprBuilder.setUint32Command(MsgCommand.MC_RecvMsgNot);
+		super.setBody(mMessageOprBuilder.build().toByteString());
+	}
+	
 	protected void setPollUnreadMsgReq(PollUnreadInfoReq msg,ByteString context) 
 	{
 		mMessageOprBuilder.setMsgPollUnreadReq(msg);
@@ -56,6 +63,7 @@ public class BaseMessageOprRequest extends BasePbRequest{
 		super.setBody(mMessageOprBuilder.build().toByteString());
 	}
 	
+
 	@Override
 	public void parseData() throws InvalidProtocolBufferException {
 		super.parseData();

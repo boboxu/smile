@@ -3,8 +3,6 @@ package com.heme.logic.httpprotocols.base.message;
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.BasePbResponse;
 import com.heme.logic.module.Message.MessageOpr;
-import com.heme.logic.module.Message.PollMsgRes;
-import com.heme.logic.module.Message.PollUnreadInfoRes;
 
 public class BaseMessageOprResponse extends BasePbResponse{
 	
@@ -21,5 +19,10 @@ public class BaseMessageOprResponse extends BasePbResponse{
 		super.parseData();
 		mMessageOpr = MessageOpr.parseFrom(mTransData
 				.getBytesBody());
+	}
+	
+	public MessageOpr getmMessageOpr()
+	{
+		return mMessageOpr;
 	}
 }

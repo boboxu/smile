@@ -1,5 +1,7 @@
 package com.heme.logic.httpprotocols.groupinfo.deletegroup;
 
+import java.util.List;
+
 import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
 import com.heme.logic.module.Data.DelGroupMemberReq;
@@ -27,9 +29,9 @@ public class DeleteGroupRequest extends BaseLoginedBusinessRequest {
 		mDelGroupReqBuilder.setClientType(clientType);
 	}
 	
-	public void setGroupInfo(int groupId)
+	public void setGroupInfo(List<Integer> groupIdList)
 	{
-		mDelGroupReqBuilder.setGroupId(groupId);
+		mDelGroupReqBuilder.addAllGroupId(groupIdList);
 		mDataSvrProtoBuilder.setDelGroupReqInfo(mDelGroupReqBuilder.build());
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.DelGroup);
 		super.setBody(mDataSvrProtoBuilder.build().toByteString());

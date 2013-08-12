@@ -19982,45 +19982,27 @@ public final class Data {
     com.google.protobuf.ByteString
         getErrStringBytes();
 
-    // required uint32 groupId = 3;
+    // repeated .com.heme.logic.module.GroupCombine groupInfo = 3;
     /**
-     * <code>required uint32 groupId = 3;</code>
-     *
-     * <pre>
-     *群组号
-     * </pre>
-     */
-    boolean hasGroupId();
-    /**
-     * <code>required uint32 groupId = 3;</code>
-     *
-     * <pre>
-     *群组号
-     * </pre>
-     */
-    int getGroupId();
-
-    // repeated .com.heme.logic.module.GroupCombine groupInfo = 4;
-    /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     java.util.List<com.heme.logic.module.Data.GroupCombine> 
         getGroupInfoList();
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     com.heme.logic.module.Data.GroupCombine getGroupInfo(int index);
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     int getGroupInfoCount();
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     java.util.List<? extends com.heme.logic.module.Data.GroupCombineOrBuilder> 
         getGroupInfoOrBuilderList();
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     com.heme.logic.module.Data.GroupCombineOrBuilder getGroupInfoOrBuilder(
         int index);
@@ -20086,15 +20068,10 @@ public final class Data {
               errString_ = input.readBytes();
               break;
             }
-            case 24: {
-              bitField0_ |= 0x00000004;
-              groupId_ = input.readUInt32();
-              break;
-            }
-            case 34: {
-              if (!((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+            case 26: {
+              if (!((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
                 groupInfo_ = new java.util.ArrayList<com.heme.logic.module.Data.GroupCombine>();
-                mutable_bitField0_ |= 0x00000008;
+                mutable_bitField0_ |= 0x00000004;
               }
               groupInfo_.add(input.readMessage(com.heme.logic.module.Data.GroupCombine.PARSER, extensionRegistry));
               break;
@@ -20107,7 +20084,7 @@ public final class Data {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
-        if (((mutable_bitField0_ & 0x00000008) == 0x00000008)) {
+        if (((mutable_bitField0_ & 0x00000004) == 0x00000004)) {
           groupInfo_ = java.util.Collections.unmodifiableList(groupInfo_);
         }
         this.unknownFields = unknownFields.build();
@@ -20221,60 +20198,36 @@ public final class Data {
       }
     }
 
-    // required uint32 groupId = 3;
-    public static final int GROUPID_FIELD_NUMBER = 3;
-    private int groupId_;
-    /**
-     * <code>required uint32 groupId = 3;</code>
-     *
-     * <pre>
-     *群组号
-     * </pre>
-     */
-    public boolean hasGroupId() {
-      return ((bitField0_ & 0x00000004) == 0x00000004);
-    }
-    /**
-     * <code>required uint32 groupId = 3;</code>
-     *
-     * <pre>
-     *群组号
-     * </pre>
-     */
-    public int getGroupId() {
-      return groupId_;
-    }
-
-    // repeated .com.heme.logic.module.GroupCombine groupInfo = 4;
-    public static final int GROUPINFO_FIELD_NUMBER = 4;
+    // repeated .com.heme.logic.module.GroupCombine groupInfo = 3;
+    public static final int GROUPINFO_FIELD_NUMBER = 3;
     private java.util.List<com.heme.logic.module.Data.GroupCombine> groupInfo_;
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     public java.util.List<com.heme.logic.module.Data.GroupCombine> getGroupInfoList() {
       return groupInfo_;
     }
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     public java.util.List<? extends com.heme.logic.module.Data.GroupCombineOrBuilder> 
         getGroupInfoOrBuilderList() {
       return groupInfo_;
     }
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     public int getGroupInfoCount() {
       return groupInfo_.size();
     }
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     public com.heme.logic.module.Data.GroupCombine getGroupInfo(int index) {
       return groupInfo_.get(index);
     }
     /**
-     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+     * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
      */
     public com.heme.logic.module.Data.GroupCombineOrBuilder getGroupInfoOrBuilder(
         int index) {
@@ -20284,7 +20237,6 @@ public final class Data {
     private void initFields() {
       errCode_ = 0;
       errString_ = "";
-      groupId_ = 0;
       groupInfo_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
@@ -20297,10 +20249,6 @@ public final class Data {
         return false;
       }
       if (!hasErrString()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      if (!hasGroupId()) {
         memoizedIsInitialized = 0;
         return false;
       }
@@ -20323,11 +20271,8 @@ public final class Data {
       if (((bitField0_ & 0x00000002) == 0x00000002)) {
         output.writeBytes(2, getErrStringBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        output.writeUInt32(3, groupId_);
-      }
       for (int i = 0; i < groupInfo_.size(); i++) {
-        output.writeMessage(4, groupInfo_.get(i));
+        output.writeMessage(3, groupInfo_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -20346,13 +20291,9 @@ public final class Data {
         size += com.google.protobuf.CodedOutputStream
           .computeBytesSize(2, getErrStringBytes());
       }
-      if (((bitField0_ & 0x00000004) == 0x00000004)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(3, groupId_);
-      }
       for (int i = 0; i < groupInfo_.size(); i++) {
         size += com.google.protobuf.CodedOutputStream
-          .computeMessageSize(4, groupInfo_.get(i));
+          .computeMessageSize(3, groupInfo_.get(i));
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -20475,11 +20416,9 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000001);
         errString_ = "";
         bitField0_ = (bitField0_ & ~0x00000002);
-        groupId_ = 0;
-        bitField0_ = (bitField0_ & ~0x00000004);
         if (groupInfoBuilder_ == null) {
           groupInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
         } else {
           groupInfoBuilder_.clear();
         }
@@ -20519,14 +20458,10 @@ public final class Data {
           to_bitField0_ |= 0x00000002;
         }
         result.errString_ = errString_;
-        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
-          to_bitField0_ |= 0x00000004;
-        }
-        result.groupId_ = groupId_;
         if (groupInfoBuilder_ == null) {
-          if (((bitField0_ & 0x00000008) == 0x00000008)) {
+          if (((bitField0_ & 0x00000004) == 0x00000004)) {
             groupInfo_ = java.util.Collections.unmodifiableList(groupInfo_);
-            bitField0_ = (bitField0_ & ~0x00000008);
+            bitField0_ = (bitField0_ & ~0x00000004);
           }
           result.groupInfo_ = groupInfo_;
         } else {
@@ -20556,14 +20491,11 @@ public final class Data {
           errString_ = other.errString_;
           onChanged();
         }
-        if (other.hasGroupId()) {
-          setGroupId(other.getGroupId());
-        }
         if (groupInfoBuilder_ == null) {
           if (!other.groupInfo_.isEmpty()) {
             if (groupInfo_.isEmpty()) {
               groupInfo_ = other.groupInfo_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
             } else {
               ensureGroupInfoIsMutable();
               groupInfo_.addAll(other.groupInfo_);
@@ -20576,7 +20508,7 @@ public final class Data {
               groupInfoBuilder_.dispose();
               groupInfoBuilder_ = null;
               groupInfo_ = other.groupInfo_;
-              bitField0_ = (bitField0_ & ~0x00000008);
+              bitField0_ = (bitField0_ & ~0x00000004);
               groupInfoBuilder_ = 
                 com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders ?
                    getGroupInfoFieldBuilder() : null;
@@ -20595,10 +20527,6 @@ public final class Data {
           return false;
         }
         if (!hasErrString()) {
-          
-          return false;
-        }
-        if (!hasGroupId()) {
           
           return false;
         }
@@ -20777,62 +20705,13 @@ public final class Data {
         return this;
       }
 
-      // required uint32 groupId = 3;
-      private int groupId_ ;
-      /**
-       * <code>required uint32 groupId = 3;</code>
-       *
-       * <pre>
-       *群组号
-       * </pre>
-       */
-      public boolean hasGroupId() {
-        return ((bitField0_ & 0x00000004) == 0x00000004);
-      }
-      /**
-       * <code>required uint32 groupId = 3;</code>
-       *
-       * <pre>
-       *群组号
-       * </pre>
-       */
-      public int getGroupId() {
-        return groupId_;
-      }
-      /**
-       * <code>required uint32 groupId = 3;</code>
-       *
-       * <pre>
-       *群组号
-       * </pre>
-       */
-      public Builder setGroupId(int value) {
-        bitField0_ |= 0x00000004;
-        groupId_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required uint32 groupId = 3;</code>
-       *
-       * <pre>
-       *群组号
-       * </pre>
-       */
-      public Builder clearGroupId() {
-        bitField0_ = (bitField0_ & ~0x00000004);
-        groupId_ = 0;
-        onChanged();
-        return this;
-      }
-
-      // repeated .com.heme.logic.module.GroupCombine groupInfo = 4;
+      // repeated .com.heme.logic.module.GroupCombine groupInfo = 3;
       private java.util.List<com.heme.logic.module.Data.GroupCombine> groupInfo_ =
         java.util.Collections.emptyList();
       private void ensureGroupInfoIsMutable() {
-        if (!((bitField0_ & 0x00000008) == 0x00000008)) {
+        if (!((bitField0_ & 0x00000004) == 0x00000004)) {
           groupInfo_ = new java.util.ArrayList<com.heme.logic.module.Data.GroupCombine>(groupInfo_);
-          bitField0_ |= 0x00000008;
+          bitField0_ |= 0x00000004;
          }
       }
 
@@ -20840,7 +20719,7 @@ public final class Data {
           com.heme.logic.module.Data.GroupCombine, com.heme.logic.module.Data.GroupCombine.Builder, com.heme.logic.module.Data.GroupCombineOrBuilder> groupInfoBuilder_;
 
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public java.util.List<com.heme.logic.module.Data.GroupCombine> getGroupInfoList() {
         if (groupInfoBuilder_ == null) {
@@ -20850,7 +20729,7 @@ public final class Data {
         }
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public int getGroupInfoCount() {
         if (groupInfoBuilder_ == null) {
@@ -20860,7 +20739,7 @@ public final class Data {
         }
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public com.heme.logic.module.Data.GroupCombine getGroupInfo(int index) {
         if (groupInfoBuilder_ == null) {
@@ -20870,7 +20749,7 @@ public final class Data {
         }
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder setGroupInfo(
           int index, com.heme.logic.module.Data.GroupCombine value) {
@@ -20887,7 +20766,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder setGroupInfo(
           int index, com.heme.logic.module.Data.GroupCombine.Builder builderForValue) {
@@ -20901,7 +20780,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder addGroupInfo(com.heme.logic.module.Data.GroupCombine value) {
         if (groupInfoBuilder_ == null) {
@@ -20917,7 +20796,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder addGroupInfo(
           int index, com.heme.logic.module.Data.GroupCombine value) {
@@ -20934,7 +20813,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder addGroupInfo(
           com.heme.logic.module.Data.GroupCombine.Builder builderForValue) {
@@ -20948,7 +20827,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder addGroupInfo(
           int index, com.heme.logic.module.Data.GroupCombine.Builder builderForValue) {
@@ -20962,7 +20841,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder addAllGroupInfo(
           java.lang.Iterable<? extends com.heme.logic.module.Data.GroupCombine> values) {
@@ -20976,12 +20855,12 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder clearGroupInfo() {
         if (groupInfoBuilder_ == null) {
           groupInfo_ = java.util.Collections.emptyList();
-          bitField0_ = (bitField0_ & ~0x00000008);
+          bitField0_ = (bitField0_ & ~0x00000004);
           onChanged();
         } else {
           groupInfoBuilder_.clear();
@@ -20989,7 +20868,7 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public Builder removeGroupInfo(int index) {
         if (groupInfoBuilder_ == null) {
@@ -21002,14 +20881,14 @@ public final class Data {
         return this;
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public com.heme.logic.module.Data.GroupCombine.Builder getGroupInfoBuilder(
           int index) {
         return getGroupInfoFieldBuilder().getBuilder(index);
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public com.heme.logic.module.Data.GroupCombineOrBuilder getGroupInfoOrBuilder(
           int index) {
@@ -21019,7 +20898,7 @@ public final class Data {
         }
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public java.util.List<? extends com.heme.logic.module.Data.GroupCombineOrBuilder> 
            getGroupInfoOrBuilderList() {
@@ -21030,14 +20909,14 @@ public final class Data {
         }
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public com.heme.logic.module.Data.GroupCombine.Builder addGroupInfoBuilder() {
         return getGroupInfoFieldBuilder().addBuilder(
             com.heme.logic.module.Data.GroupCombine.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public com.heme.logic.module.Data.GroupCombine.Builder addGroupInfoBuilder(
           int index) {
@@ -21045,7 +20924,7 @@ public final class Data {
             index, com.heme.logic.module.Data.GroupCombine.getDefaultInstance());
       }
       /**
-       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 4;</code>
+       * <code>repeated .com.heme.logic.module.GroupCombine groupInfo = 3;</code>
        */
       public java.util.List<com.heme.logic.module.Data.GroupCombine.Builder> 
            getGroupInfoBuilderList() {
@@ -21058,7 +20937,7 @@ public final class Data {
           groupInfoBuilder_ = new com.google.protobuf.RepeatedFieldBuilder<
               com.heme.logic.module.Data.GroupCombine, com.heme.logic.module.Data.GroupCombine.Builder, com.heme.logic.module.Data.GroupCombineOrBuilder>(
                   groupInfo_,
-                  ((bitField0_ & 0x00000008) == 0x00000008),
+                  ((bitField0_ & 0x00000004) == 0x00000004),
                   getParentForChildren(),
                   isClean());
           groupInfo_ = null;
@@ -47715,23 +47594,31 @@ public final class Data {
      */
     long getSystemId();
 
-    // required uint32 groupId = 5;
+    // repeated uint32 groupId = 5;
     /**
-     * <code>required uint32 groupId = 5;</code>
+     * <code>repeated uint32 groupId = 5;</code>
      *
      * <pre>
      *群组ID
      * </pre>
      */
-    boolean hasGroupId();
+    java.util.List<java.lang.Integer> getGroupIdList();
     /**
-     * <code>required uint32 groupId = 5;</code>
+     * <code>repeated uint32 groupId = 5;</code>
      *
      * <pre>
      *群组ID
      * </pre>
      */
-    int getGroupId();
+    int getGroupIdCount();
+    /**
+     * <code>repeated uint32 groupId = 5;</code>
+     *
+     * <pre>
+     *群组ID
+     * </pre>
+     */
+    int getGroupId(int index);
   }
   /**
    * Protobuf type {@code com.heme.logic.module.DelGroupReq}
@@ -47809,8 +47696,24 @@ public final class Data {
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
-              groupId_ = input.readUInt32();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                groupId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              groupId_.add(input.readUInt32());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+                groupId_ = new java.util.ArrayList<java.lang.Integer>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                groupId_.add(input.readUInt32());
+              }
+              input.popLimit(limit);
               break;
             }
           }
@@ -47821,6 +47724,9 @@ public final class Data {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          groupId_ = java.util.Collections.unmodifiableList(groupId_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -48011,28 +47917,39 @@ public final class Data {
       return systemId_;
     }
 
-    // required uint32 groupId = 5;
+    // repeated uint32 groupId = 5;
     public static final int GROUPID_FIELD_NUMBER = 5;
-    private int groupId_;
+    private java.util.List<java.lang.Integer> groupId_;
     /**
-     * <code>required uint32 groupId = 5;</code>
+     * <code>repeated uint32 groupId = 5;</code>
      *
      * <pre>
      *群组ID
      * </pre>
      */
-    public boolean hasGroupId() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+    public java.util.List<java.lang.Integer>
+        getGroupIdList() {
+      return groupId_;
     }
     /**
-     * <code>required uint32 groupId = 5;</code>
+     * <code>repeated uint32 groupId = 5;</code>
      *
      * <pre>
      *群组ID
      * </pre>
      */
-    public int getGroupId() {
-      return groupId_;
+    public int getGroupIdCount() {
+      return groupId_.size();
+    }
+    /**
+     * <code>repeated uint32 groupId = 5;</code>
+     *
+     * <pre>
+     *群组ID
+     * </pre>
+     */
+    public int getGroupId(int index) {
+      return groupId_.get(index);
     }
 
     private void initFields() {
@@ -48040,7 +47957,7 @@ public final class Data {
       clientType_ = 0;
       sessionId_ = "";
       systemId_ = 0L;
-      groupId_ = 0;
+      groupId_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -48063,10 +47980,6 @@ public final class Data {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasGroupId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -48086,8 +47999,8 @@ public final class Data {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt64(4, systemId_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt32(5, groupId_);
+      for (int i = 0; i < groupId_.size(); i++) {
+        output.writeUInt32(5, groupId_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -48114,9 +48027,14 @@ public final class Data {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(4, systemId_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt32Size(5, groupId_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < groupId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt32SizeNoTag(groupId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getGroupIdList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -48246,7 +48164,7 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000004);
         systemId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
-        groupId_ = 0;
+        groupId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -48292,8 +48210,9 @@ public final class Data {
           to_bitField0_ |= 0x00000008;
         }
         result.systemId_ = systemId_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          groupId_ = java.util.Collections.unmodifiableList(groupId_);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.groupId_ = groupId_;
         result.bitField0_ = to_bitField0_;
@@ -48328,8 +48247,15 @@ public final class Data {
         if (other.hasSystemId()) {
           setSystemId(other.getSystemId());
         }
-        if (other.hasGroupId()) {
-          setGroupId(other.getGroupId());
+        if (!other.groupId_.isEmpty()) {
+          if (groupId_.isEmpty()) {
+            groupId_ = other.groupId_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureGroupIdIsMutable();
+            groupId_.addAll(other.groupId_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -48349,10 +48275,6 @@ public final class Data {
           return false;
         }
         if (!hasSystemId()) {
-          
-          return false;
-        }
-        if (!hasGroupId()) {
           
           return false;
         }
@@ -48672,51 +48594,96 @@ public final class Data {
         return this;
       }
 
-      // required uint32 groupId = 5;
-      private int groupId_ ;
-      /**
-       * <code>required uint32 groupId = 5;</code>
-       *
-       * <pre>
-       *群组ID
-       * </pre>
-       */
-      public boolean hasGroupId() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      // repeated uint32 groupId = 5;
+      private java.util.List<java.lang.Integer> groupId_ = java.util.Collections.emptyList();
+      private void ensureGroupIdIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          groupId_ = new java.util.ArrayList<java.lang.Integer>(groupId_);
+          bitField0_ |= 0x00000010;
+         }
       }
       /**
-       * <code>required uint32 groupId = 5;</code>
+       * <code>repeated uint32 groupId = 5;</code>
        *
        * <pre>
        *群组ID
        * </pre>
        */
-      public int getGroupId() {
-        return groupId_;
+      public java.util.List<java.lang.Integer>
+          getGroupIdList() {
+        return java.util.Collections.unmodifiableList(groupId_);
       }
       /**
-       * <code>required uint32 groupId = 5;</code>
+       * <code>repeated uint32 groupId = 5;</code>
        *
        * <pre>
        *群组ID
        * </pre>
        */
-      public Builder setGroupId(int value) {
-        bitField0_ |= 0x00000010;
-        groupId_ = value;
+      public int getGroupIdCount() {
+        return groupId_.size();
+      }
+      /**
+       * <code>repeated uint32 groupId = 5;</code>
+       *
+       * <pre>
+       *群组ID
+       * </pre>
+       */
+      public int getGroupId(int index) {
+        return groupId_.get(index);
+      }
+      /**
+       * <code>repeated uint32 groupId = 5;</code>
+       *
+       * <pre>
+       *群组ID
+       * </pre>
+       */
+      public Builder setGroupId(
+          int index, int value) {
+        ensureGroupIdIsMutable();
+        groupId_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>required uint32 groupId = 5;</code>
+       * <code>repeated uint32 groupId = 5;</code>
+       *
+       * <pre>
+       *群组ID
+       * </pre>
+       */
+      public Builder addGroupId(int value) {
+        ensureGroupIdIsMutable();
+        groupId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 groupId = 5;</code>
+       *
+       * <pre>
+       *群组ID
+       * </pre>
+       */
+      public Builder addAllGroupId(
+          java.lang.Iterable<? extends java.lang.Integer> values) {
+        ensureGroupIdIsMutable();
+        super.addAll(values, groupId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint32 groupId = 5;</code>
        *
        * <pre>
        *群组ID
        * </pre>
        */
       public Builder clearGroupId() {
+        groupId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
-        groupId_ = 0;
         onChanged();
         return this;
       }
@@ -55377,23 +55344,31 @@ public final class Data {
      */
     long getSystemId();
 
-    // required uint64 targetSystemId = 5;
+    // repeated uint64 targetSystemId = 5;
     /**
-     * <code>required uint64 targetSystemId = 5;</code>
+     * <code>repeated uint64 targetSystemId = 5;</code>
      *
      * <pre>
      *对方微校号
      * </pre>
      */
-    boolean hasTargetSystemId();
+    java.util.List<java.lang.Long> getTargetSystemIdList();
     /**
-     * <code>required uint64 targetSystemId = 5;</code>
+     * <code>repeated uint64 targetSystemId = 5;</code>
      *
      * <pre>
      *对方微校号
      * </pre>
      */
-    long getTargetSystemId();
+    int getTargetSystemIdCount();
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    long getTargetSystemId(int index);
   }
   /**
    * Protobuf type {@code com.heme.logic.module.DelFriendReq}
@@ -55471,8 +55446,24 @@ public final class Data {
               break;
             }
             case 40: {
-              bitField0_ |= 0x00000010;
-              targetSystemId_ = input.readUInt64();
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+                targetSystemId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              targetSystemId_.add(input.readUInt64());
+              break;
+            }
+            case 42: {
+              int length = input.readRawVarint32();
+              int limit = input.pushLimit(length);
+              if (!((mutable_bitField0_ & 0x00000010) == 0x00000010) && input.getBytesUntilLimit() > 0) {
+                targetSystemId_ = new java.util.ArrayList<java.lang.Long>();
+                mutable_bitField0_ |= 0x00000010;
+              }
+              while (input.getBytesUntilLimit() > 0) {
+                targetSystemId_.add(input.readUInt64());
+              }
+              input.popLimit(limit);
               break;
             }
           }
@@ -55483,6 +55474,9 @@ public final class Data {
         throw new com.google.protobuf.InvalidProtocolBufferException(
             e.getMessage()).setUnfinishedMessage(this);
       } finally {
+        if (((mutable_bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = java.util.Collections.unmodifiableList(targetSystemId_);
+        }
         this.unknownFields = unknownFields.build();
         makeExtensionsImmutable();
       }
@@ -55673,28 +55667,39 @@ public final class Data {
       return systemId_;
     }
 
-    // required uint64 targetSystemId = 5;
+    // repeated uint64 targetSystemId = 5;
     public static final int TARGETSYSTEMID_FIELD_NUMBER = 5;
-    private long targetSystemId_;
+    private java.util.List<java.lang.Long> targetSystemId_;
     /**
-     * <code>required uint64 targetSystemId = 5;</code>
+     * <code>repeated uint64 targetSystemId = 5;</code>
      *
      * <pre>
      *对方微校号
      * </pre>
      */
-    public boolean hasTargetSystemId() {
-      return ((bitField0_ & 0x00000010) == 0x00000010);
+    public java.util.List<java.lang.Long>
+        getTargetSystemIdList() {
+      return targetSystemId_;
     }
     /**
-     * <code>required uint64 targetSystemId = 5;</code>
+     * <code>repeated uint64 targetSystemId = 5;</code>
      *
      * <pre>
      *对方微校号
      * </pre>
      */
-    public long getTargetSystemId() {
-      return targetSystemId_;
+    public int getTargetSystemIdCount() {
+      return targetSystemId_.size();
+    }
+    /**
+     * <code>repeated uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *对方微校号
+     * </pre>
+     */
+    public long getTargetSystemId(int index) {
+      return targetSystemId_.get(index);
     }
 
     private void initFields() {
@@ -55702,7 +55707,7 @@ public final class Data {
       clientType_ = 0;
       sessionId_ = "";
       systemId_ = 0L;
-      targetSystemId_ = 0L;
+      targetSystemId_ = java.util.Collections.emptyList();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -55725,10 +55730,6 @@ public final class Data {
         memoizedIsInitialized = 0;
         return false;
       }
-      if (!hasTargetSystemId()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -55748,8 +55749,8 @@ public final class Data {
       if (((bitField0_ & 0x00000008) == 0x00000008)) {
         output.writeUInt64(4, systemId_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        output.writeUInt64(5, targetSystemId_);
+      for (int i = 0; i < targetSystemId_.size(); i++) {
+        output.writeUInt64(5, targetSystemId_.get(i));
       }
       getUnknownFields().writeTo(output);
     }
@@ -55776,9 +55777,14 @@ public final class Data {
         size += com.google.protobuf.CodedOutputStream
           .computeUInt64Size(4, systemId_);
       }
-      if (((bitField0_ & 0x00000010) == 0x00000010)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeUInt64Size(5, targetSystemId_);
+      {
+        int dataSize = 0;
+        for (int i = 0; i < targetSystemId_.size(); i++) {
+          dataSize += com.google.protobuf.CodedOutputStream
+            .computeUInt64SizeNoTag(targetSystemId_.get(i));
+        }
+        size += dataSize;
+        size += 1 * getTargetSystemIdList().size();
       }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
@@ -55908,7 +55914,7 @@ public final class Data {
         bitField0_ = (bitField0_ & ~0x00000004);
         systemId_ = 0L;
         bitField0_ = (bitField0_ & ~0x00000008);
-        targetSystemId_ = 0L;
+        targetSystemId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
         return this;
       }
@@ -55954,8 +55960,9 @@ public final class Data {
           to_bitField0_ |= 0x00000008;
         }
         result.systemId_ = systemId_;
-        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
-          to_bitField0_ |= 0x00000010;
+        if (((bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = java.util.Collections.unmodifiableList(targetSystemId_);
+          bitField0_ = (bitField0_ & ~0x00000010);
         }
         result.targetSystemId_ = targetSystemId_;
         result.bitField0_ = to_bitField0_;
@@ -55990,8 +55997,15 @@ public final class Data {
         if (other.hasSystemId()) {
           setSystemId(other.getSystemId());
         }
-        if (other.hasTargetSystemId()) {
-          setTargetSystemId(other.getTargetSystemId());
+        if (!other.targetSystemId_.isEmpty()) {
+          if (targetSystemId_.isEmpty()) {
+            targetSystemId_ = other.targetSystemId_;
+            bitField0_ = (bitField0_ & ~0x00000010);
+          } else {
+            ensureTargetSystemIdIsMutable();
+            targetSystemId_.addAll(other.targetSystemId_);
+          }
+          onChanged();
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -56011,10 +56025,6 @@ public final class Data {
           return false;
         }
         if (!hasSystemId()) {
-          
-          return false;
-        }
-        if (!hasTargetSystemId()) {
           
           return false;
         }
@@ -56334,51 +56344,96 @@ public final class Data {
         return this;
       }
 
-      // required uint64 targetSystemId = 5;
-      private long targetSystemId_ ;
-      /**
-       * <code>required uint64 targetSystemId = 5;</code>
-       *
-       * <pre>
-       *对方微校号
-       * </pre>
-       */
-      public boolean hasTargetSystemId() {
-        return ((bitField0_ & 0x00000010) == 0x00000010);
+      // repeated uint64 targetSystemId = 5;
+      private java.util.List<java.lang.Long> targetSystemId_ = java.util.Collections.emptyList();
+      private void ensureTargetSystemIdIsMutable() {
+        if (!((bitField0_ & 0x00000010) == 0x00000010)) {
+          targetSystemId_ = new java.util.ArrayList<java.lang.Long>(targetSystemId_);
+          bitField0_ |= 0x00000010;
+         }
       }
       /**
-       * <code>required uint64 targetSystemId = 5;</code>
+       * <code>repeated uint64 targetSystemId = 5;</code>
        *
        * <pre>
        *对方微校号
        * </pre>
        */
-      public long getTargetSystemId() {
-        return targetSystemId_;
+      public java.util.List<java.lang.Long>
+          getTargetSystemIdList() {
+        return java.util.Collections.unmodifiableList(targetSystemId_);
       }
       /**
-       * <code>required uint64 targetSystemId = 5;</code>
+       * <code>repeated uint64 targetSystemId = 5;</code>
        *
        * <pre>
        *对方微校号
        * </pre>
        */
-      public Builder setTargetSystemId(long value) {
-        bitField0_ |= 0x00000010;
-        targetSystemId_ = value;
+      public int getTargetSystemIdCount() {
+        return targetSystemId_.size();
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public long getTargetSystemId(int index) {
+        return targetSystemId_.get(index);
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder setTargetSystemId(
+          int index, long value) {
+        ensureTargetSystemIdIsMutable();
+        targetSystemId_.set(index, value);
         onChanged();
         return this;
       }
       /**
-       * <code>required uint64 targetSystemId = 5;</code>
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder addTargetSystemId(long value) {
+        ensureTargetSystemIdIsMutable();
+        targetSystemId_.add(value);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *对方微校号
+       * </pre>
+       */
+      public Builder addAllTargetSystemId(
+          java.lang.Iterable<? extends java.lang.Long> values) {
+        ensureTargetSystemIdIsMutable();
+        super.addAll(values, targetSystemId_);
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>repeated uint64 targetSystemId = 5;</code>
        *
        * <pre>
        *对方微校号
        * </pre>
        */
       public Builder clearTargetSystemId() {
+        targetSystemId_ = java.util.Collections.emptyList();
         bitField0_ = (bitField0_ & ~0x00000010);
-        targetSystemId_ = 0L;
         onChanged();
         return this;
       }
@@ -57140,7 +57195,7 @@ public final class Data {
      * <code>optional uint32 gender = 5;</code>
      *
      * <pre>
-     *性别；1女；2男；3未知 
+     *性别；1男；2女；3未知 
      * </pre>
      */
     boolean hasGender();
@@ -57148,7 +57203,7 @@ public final class Data {
      * <code>optional uint32 gender = 5;</code>
      *
      * <pre>
-     *性别；1女；2男；3未知 
+     *性别；1男；2女；3未知 
      * </pre>
      */
     int getGender();
@@ -57598,7 +57653,7 @@ public final class Data {
      * <code>optional uint32 gender = 5;</code>
      *
      * <pre>
-     *性别；1女；2男；3未知 
+     *性别；1男；2女；3未知 
      * </pre>
      */
     public boolean hasGender() {
@@ -57608,7 +57663,7 @@ public final class Data {
      * <code>optional uint32 gender = 5;</code>
      *
      * <pre>
-     *性别；1女；2男；3未知 
+     *性别；1男；2女；3未知 
      * </pre>
      */
     public int getGender() {
@@ -58620,7 +58675,7 @@ public final class Data {
        * <code>optional uint32 gender = 5;</code>
        *
        * <pre>
-       *性别；1女；2男；3未知 
+       *性别；1男；2女；3未知 
        * </pre>
        */
       public boolean hasGender() {
@@ -58630,7 +58685,7 @@ public final class Data {
        * <code>optional uint32 gender = 5;</code>
        *
        * <pre>
-       *性别；1女；2男；3未知 
+       *性别；1男；2女；3未知 
        * </pre>
        */
       public int getGender() {
@@ -58640,7 +58695,7 @@ public final class Data {
        * <code>optional uint32 gender = 5;</code>
        *
        * <pre>
-       *性别；1女；2男；3未知 
+       *性别；1男；2女；3未知 
        * </pre>
        */
       public Builder setGender(int value) {
@@ -58653,7 +58708,7 @@ public final class Data {
        * <code>optional uint32 gender = 5;</code>
        *
        * <pre>
-       *性别；1女；2男；3未知 
+       *性别；1男；2女；3未知 
        * </pre>
        */
       public Builder clearGender() {
@@ -73379,6 +73434,1720 @@ public final class Data {
     // @@protoc_insertion_point(class_scope:com.heme.logic.module.AddFriendRsp)
   }
 
+  public interface SearchUserVerboseReqOrBuilder
+      extends com.google.protobuf.MessageOrBuilder {
+
+    // required string versionNo = 1;
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    boolean hasVersionNo();
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    java.lang.String getVersionNo();
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getVersionNoBytes();
+
+    // required uint32 clientType = 2;
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    boolean hasClientType();
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    int getClientType();
+
+    // required string sessionId = 3;
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    boolean hasSessionId();
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    java.lang.String getSessionId();
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getSessionIdBytes();
+
+    // required uint64 systemId = 4;
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *所有者微校号
+     * </pre>
+     */
+    boolean hasSystemId();
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *所有者微校号
+     * </pre>
+     */
+    long getSystemId();
+
+    // optional uint64 targetSystemId = 5;
+    /**
+     * <code>optional uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *目标微校号
+     * </pre>
+     */
+    boolean hasTargetSystemId();
+    /**
+     * <code>optional uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *目标微校号
+     * </pre>
+     */
+    long getTargetSystemId();
+
+    // optional string phoneNo = 6;
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    boolean hasPhoneNo();
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    java.lang.String getPhoneNo();
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getPhoneNoBytes();
+
+    // optional string email = 7;
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    boolean hasEmail();
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    java.lang.String getEmail();
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getEmailBytes();
+
+    // optional string realName = 8;
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    boolean hasRealName();
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    java.lang.String getRealName();
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    com.google.protobuf.ByteString
+        getRealNameBytes();
+  }
+  /**
+   * Protobuf type {@code com.heme.logic.module.SearchUserVerboseReq}
+   *
+   * <pre>
+   *添加好友时，查找好友信息，一阶段只需要根据微校号和手机号，估计二阶段还要email和姓名
+   * </pre>
+   */
+  public static final class SearchUserVerboseReq extends
+      com.google.protobuf.GeneratedMessage
+      implements SearchUserVerboseReqOrBuilder {
+    // Use SearchUserVerboseReq.newBuilder() to construct.
+    private SearchUserVerboseReq(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+      super(builder);
+      this.unknownFields = builder.getUnknownFields();
+    }
+    private SearchUserVerboseReq(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
+
+    private static final SearchUserVerboseReq defaultInstance;
+    public static SearchUserVerboseReq getDefaultInstance() {
+      return defaultInstance;
+    }
+
+    public SearchUserVerboseReq getDefaultInstanceForType() {
+      return defaultInstance;
+    }
+
+    private final com.google.protobuf.UnknownFieldSet unknownFields;
+    @java.lang.Override
+    public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+      return this.unknownFields;
+    }
+    private SearchUserVerboseReq(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      initFields();
+      int mutable_bitField0_ = 0;
+      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+          com.google.protobuf.UnknownFieldSet.newBuilder();
+      try {
+        boolean done = false;
+        while (!done) {
+          int tag = input.readTag();
+          switch (tag) {
+            case 0:
+              done = true;
+              break;
+            default: {
+              if (!parseUnknownField(input, unknownFields,
+                                     extensionRegistry, tag)) {
+                done = true;
+              }
+              break;
+            }
+            case 10: {
+              bitField0_ |= 0x00000001;
+              versionNo_ = input.readBytes();
+              break;
+            }
+            case 16: {
+              bitField0_ |= 0x00000002;
+              clientType_ = input.readUInt32();
+              break;
+            }
+            case 26: {
+              bitField0_ |= 0x00000004;
+              sessionId_ = input.readBytes();
+              break;
+            }
+            case 32: {
+              bitField0_ |= 0x00000008;
+              systemId_ = input.readUInt64();
+              break;
+            }
+            case 40: {
+              bitField0_ |= 0x00000010;
+              targetSystemId_ = input.readUInt64();
+              break;
+            }
+            case 50: {
+              bitField0_ |= 0x00000020;
+              phoneNo_ = input.readBytes();
+              break;
+            }
+            case 58: {
+              bitField0_ |= 0x00000040;
+              email_ = input.readBytes();
+              break;
+            }
+            case 66: {
+              bitField0_ |= 0x00000080;
+              realName_ = input.readBytes();
+              break;
+            }
+          }
+        }
+      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+        throw e.setUnfinishedMessage(this);
+      } catch (java.io.IOException e) {
+        throw new com.google.protobuf.InvalidProtocolBufferException(
+            e.getMessage()).setUnfinishedMessage(this);
+      } finally {
+        this.unknownFields = unknownFields.build();
+        makeExtensionsImmutable();
+      }
+    }
+    public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor;
+    }
+
+    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+      return com.heme.logic.module.Data.internal_static_com_heme_logic_module_SearchUserVerboseReq_fieldAccessorTable
+          .ensureFieldAccessorsInitialized(
+              com.heme.logic.module.Data.SearchUserVerboseReq.class, com.heme.logic.module.Data.SearchUserVerboseReq.Builder.class);
+    }
+
+    public static com.google.protobuf.Parser<SearchUserVerboseReq> PARSER =
+        new com.google.protobuf.AbstractParser<SearchUserVerboseReq>() {
+      public SearchUserVerboseReq parsePartialFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws com.google.protobuf.InvalidProtocolBufferException {
+        return new SearchUserVerboseReq(input, extensionRegistry);
+      }
+    };
+
+    @java.lang.Override
+    public com.google.protobuf.Parser<SearchUserVerboseReq> getParserForType() {
+      return PARSER;
+    }
+
+    private int bitField0_;
+    // required string versionNo = 1;
+    public static final int VERSIONNO_FIELD_NUMBER = 1;
+    private java.lang.Object versionNo_;
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public boolean hasVersionNo() {
+      return ((bitField0_ & 0x00000001) == 0x00000001);
+    }
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public java.lang.String getVersionNo() {
+      java.lang.Object ref = versionNo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          versionNo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string versionNo = 1;</code>
+     *
+     * <pre>
+     *版本号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getVersionNoBytes() {
+      java.lang.Object ref = versionNo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        versionNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required uint32 clientType = 2;
+    public static final int CLIENTTYPE_FIELD_NUMBER = 2;
+    private int clientType_;
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    public boolean hasClientType() {
+      return ((bitField0_ & 0x00000002) == 0x00000002);
+    }
+    /**
+     * <code>required uint32 clientType = 2;</code>
+     *
+     * <pre>
+     *客户端类型，1：家长；2：学生；3：老师
+     * </pre>
+     */
+    public int getClientType() {
+      return clientType_;
+    }
+
+    // required string sessionId = 3;
+    public static final int SESSIONID_FIELD_NUMBER = 3;
+    private java.lang.Object sessionId_;
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public boolean hasSessionId() {
+      return ((bitField0_ & 0x00000004) == 0x00000004);
+    }
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public java.lang.String getSessionId() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          sessionId_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>required string sessionId = 3;</code>
+     *
+     * <pre>
+     *会话ID
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getSessionIdBytes() {
+      java.lang.Object ref = sessionId_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        sessionId_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // required uint64 systemId = 4;
+    public static final int SYSTEMID_FIELD_NUMBER = 4;
+    private long systemId_;
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *所有者微校号
+     * </pre>
+     */
+    public boolean hasSystemId() {
+      return ((bitField0_ & 0x00000008) == 0x00000008);
+    }
+    /**
+     * <code>required uint64 systemId = 4;</code>
+     *
+     * <pre>
+     *所有者微校号
+     * </pre>
+     */
+    public long getSystemId() {
+      return systemId_;
+    }
+
+    // optional uint64 targetSystemId = 5;
+    public static final int TARGETSYSTEMID_FIELD_NUMBER = 5;
+    private long targetSystemId_;
+    /**
+     * <code>optional uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *目标微校号
+     * </pre>
+     */
+    public boolean hasTargetSystemId() {
+      return ((bitField0_ & 0x00000010) == 0x00000010);
+    }
+    /**
+     * <code>optional uint64 targetSystemId = 5;</code>
+     *
+     * <pre>
+     *目标微校号
+     * </pre>
+     */
+    public long getTargetSystemId() {
+      return targetSystemId_;
+    }
+
+    // optional string phoneNo = 6;
+    public static final int PHONENO_FIELD_NUMBER = 6;
+    private java.lang.Object phoneNo_;
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    public boolean hasPhoneNo() {
+      return ((bitField0_ & 0x00000020) == 0x00000020);
+    }
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    public java.lang.String getPhoneNo() {
+      java.lang.Object ref = phoneNo_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          phoneNo_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string phoneNo = 6;</code>
+     *
+     * <pre>
+     *手机号
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getPhoneNoBytes() {
+      java.lang.Object ref = phoneNo_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        phoneNo_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string email = 7;
+    public static final int EMAIL_FIELD_NUMBER = 7;
+    private java.lang.Object email_;
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    public boolean hasEmail() {
+      return ((bitField0_ & 0x00000040) == 0x00000040);
+    }
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    public java.lang.String getEmail() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          email_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string email = 7;</code>
+     *
+     * <pre>
+     *email
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getEmailBytes() {
+      java.lang.Object ref = email_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        email_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    // optional string realName = 8;
+    public static final int REALNAME_FIELD_NUMBER = 8;
+    private java.lang.Object realName_;
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    public boolean hasRealName() {
+      return ((bitField0_ & 0x00000080) == 0x00000080);
+    }
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    public java.lang.String getRealName() {
+      java.lang.Object ref = realName_;
+      if (ref instanceof java.lang.String) {
+        return (java.lang.String) ref;
+      } else {
+        com.google.protobuf.ByteString bs = 
+            (com.google.protobuf.ByteString) ref;
+        java.lang.String s = bs.toStringUtf8();
+        if (bs.isValidUtf8()) {
+          realName_ = s;
+        }
+        return s;
+      }
+    }
+    /**
+     * <code>optional string realName = 8;</code>
+     *
+     * <pre>
+     *姓名
+     * </pre>
+     */
+    public com.google.protobuf.ByteString
+        getRealNameBytes() {
+      java.lang.Object ref = realName_;
+      if (ref instanceof java.lang.String) {
+        com.google.protobuf.ByteString b = 
+            com.google.protobuf.ByteString.copyFromUtf8(
+                (java.lang.String) ref);
+        realName_ = b;
+        return b;
+      } else {
+        return (com.google.protobuf.ByteString) ref;
+      }
+    }
+
+    private void initFields() {
+      versionNo_ = "";
+      clientType_ = 0;
+      sessionId_ = "";
+      systemId_ = 0L;
+      targetSystemId_ = 0L;
+      phoneNo_ = "";
+      email_ = "";
+      realName_ = "";
+    }
+    private byte memoizedIsInitialized = -1;
+    public final boolean isInitialized() {
+      byte isInitialized = memoizedIsInitialized;
+      if (isInitialized != -1) return isInitialized == 1;
+
+      if (!hasVersionNo()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasClientType()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSessionId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      if (!hasSystemId()) {
+        memoizedIsInitialized = 0;
+        return false;
+      }
+      memoizedIsInitialized = 1;
+      return true;
+    }
+
+    public void writeTo(com.google.protobuf.CodedOutputStream output)
+                        throws java.io.IOException {
+      getSerializedSize();
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        output.writeBytes(1, getVersionNoBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        output.writeUInt32(2, clientType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        output.writeBytes(3, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        output.writeUInt64(4, systemId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        output.writeUInt64(5, targetSystemId_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        output.writeBytes(6, getPhoneNoBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        output.writeBytes(7, getEmailBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        output.writeBytes(8, getRealNameBytes());
+      }
+      getUnknownFields().writeTo(output);
+    }
+
+    private int memoizedSerializedSize = -1;
+    public int getSerializedSize() {
+      int size = memoizedSerializedSize;
+      if (size != -1) return size;
+
+      size = 0;
+      if (((bitField0_ & 0x00000001) == 0x00000001)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(1, getVersionNoBytes());
+      }
+      if (((bitField0_ & 0x00000002) == 0x00000002)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt32Size(2, clientType_);
+      }
+      if (((bitField0_ & 0x00000004) == 0x00000004)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(3, getSessionIdBytes());
+      }
+      if (((bitField0_ & 0x00000008) == 0x00000008)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(4, systemId_);
+      }
+      if (((bitField0_ & 0x00000010) == 0x00000010)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeUInt64Size(5, targetSystemId_);
+      }
+      if (((bitField0_ & 0x00000020) == 0x00000020)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(6, getPhoneNoBytes());
+      }
+      if (((bitField0_ & 0x00000040) == 0x00000040)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(7, getEmailBytes());
+      }
+      if (((bitField0_ & 0x00000080) == 0x00000080)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeBytesSize(8, getRealNameBytes());
+      }
+      size += getUnknownFields().getSerializedSize();
+      memoizedSerializedSize = size;
+      return size;
+    }
+
+    private static final long serialVersionUID = 0L;
+    @java.lang.Override
+    protected java.lang.Object writeReplace()
+        throws java.io.ObjectStreamException {
+      return super.writeReplace();
+    }
+
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        com.google.protobuf.ByteString data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        com.google.protobuf.ByteString data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(byte[] data)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        byte[] data,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws com.google.protobuf.InvalidProtocolBufferException {
+      return PARSER.parseFrom(data, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseDelimitedFrom(java.io.InputStream input)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseDelimitedFrom(
+        java.io.InputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseDelimitedFrom(input, extensionRegistry);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        com.google.protobuf.CodedInputStream input)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input);
+    }
+    public static com.heme.logic.module.Data.SearchUserVerboseReq parseFrom(
+        com.google.protobuf.CodedInputStream input,
+        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+        throws java.io.IOException {
+      return PARSER.parseFrom(input, extensionRegistry);
+    }
+
+    public static Builder newBuilder() { return Builder.create(); }
+    public Builder newBuilderForType() { return newBuilder(); }
+    public static Builder newBuilder(com.heme.logic.module.Data.SearchUserVerboseReq prototype) {
+      return newBuilder().mergeFrom(prototype);
+    }
+    public Builder toBuilder() { return newBuilder(this); }
+
+    @java.lang.Override
+    protected Builder newBuilderForType(
+        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+      Builder builder = new Builder(parent);
+      return builder;
+    }
+    /**
+     * Protobuf type {@code com.heme.logic.module.SearchUserVerboseReq}
+     *
+     * <pre>
+     *添加好友时，查找好友信息，一阶段只需要根据微校号和手机号，估计二阶段还要email和姓名
+     * </pre>
+     */
+    public static final class Builder extends
+        com.google.protobuf.GeneratedMessage.Builder<Builder>
+       implements com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder {
+      public static final com.google.protobuf.Descriptors.Descriptor
+          getDescriptor() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor;
+      }
+
+      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+          internalGetFieldAccessorTable() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_SearchUserVerboseReq_fieldAccessorTable
+            .ensureFieldAccessorsInitialized(
+                com.heme.logic.module.Data.SearchUserVerboseReq.class, com.heme.logic.module.Data.SearchUserVerboseReq.Builder.class);
+      }
+
+      // Construct using com.heme.logic.module.Data.SearchUserVerboseReq.newBuilder()
+      private Builder() {
+        maybeForceBuilderInitialization();
+      }
+
+      private Builder(
+          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+        super(parent);
+        maybeForceBuilderInitialization();
+      }
+      private void maybeForceBuilderInitialization() {
+        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+        }
+      }
+      private static Builder create() {
+        return new Builder();
+      }
+
+      public Builder clear() {
+        super.clear();
+        versionNo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000001);
+        clientType_ = 0;
+        bitField0_ = (bitField0_ & ~0x00000002);
+        sessionId_ = "";
+        bitField0_ = (bitField0_ & ~0x00000004);
+        systemId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000008);
+        targetSystemId_ = 0L;
+        bitField0_ = (bitField0_ & ~0x00000010);
+        phoneNo_ = "";
+        bitField0_ = (bitField0_ & ~0x00000020);
+        email_ = "";
+        bitField0_ = (bitField0_ & ~0x00000040);
+        realName_ = "";
+        bitField0_ = (bitField0_ & ~0x00000080);
+        return this;
+      }
+
+      public Builder clone() {
+        return create().mergeFrom(buildPartial());
+      }
+
+      public com.google.protobuf.Descriptors.Descriptor
+          getDescriptorForType() {
+        return com.heme.logic.module.Data.internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor;
+      }
+
+      public com.heme.logic.module.Data.SearchUserVerboseReq getDefaultInstanceForType() {
+        return com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance();
+      }
+
+      public com.heme.logic.module.Data.SearchUserVerboseReq build() {
+        com.heme.logic.module.Data.SearchUserVerboseReq result = buildPartial();
+        if (!result.isInitialized()) {
+          throw newUninitializedMessageException(result);
+        }
+        return result;
+      }
+
+      public com.heme.logic.module.Data.SearchUserVerboseReq buildPartial() {
+        com.heme.logic.module.Data.SearchUserVerboseReq result = new com.heme.logic.module.Data.SearchUserVerboseReq(this);
+        int from_bitField0_ = bitField0_;
+        int to_bitField0_ = 0;
+        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+          to_bitField0_ |= 0x00000001;
+        }
+        result.versionNo_ = versionNo_;
+        if (((from_bitField0_ & 0x00000002) == 0x00000002)) {
+          to_bitField0_ |= 0x00000002;
+        }
+        result.clientType_ = clientType_;
+        if (((from_bitField0_ & 0x00000004) == 0x00000004)) {
+          to_bitField0_ |= 0x00000004;
+        }
+        result.sessionId_ = sessionId_;
+        if (((from_bitField0_ & 0x00000008) == 0x00000008)) {
+          to_bitField0_ |= 0x00000008;
+        }
+        result.systemId_ = systemId_;
+        if (((from_bitField0_ & 0x00000010) == 0x00000010)) {
+          to_bitField0_ |= 0x00000010;
+        }
+        result.targetSystemId_ = targetSystemId_;
+        if (((from_bitField0_ & 0x00000020) == 0x00000020)) {
+          to_bitField0_ |= 0x00000020;
+        }
+        result.phoneNo_ = phoneNo_;
+        if (((from_bitField0_ & 0x00000040) == 0x00000040)) {
+          to_bitField0_ |= 0x00000040;
+        }
+        result.email_ = email_;
+        if (((from_bitField0_ & 0x00000080) == 0x00000080)) {
+          to_bitField0_ |= 0x00000080;
+        }
+        result.realName_ = realName_;
+        result.bitField0_ = to_bitField0_;
+        onBuilt();
+        return result;
+      }
+
+      public Builder mergeFrom(com.google.protobuf.Message other) {
+        if (other instanceof com.heme.logic.module.Data.SearchUserVerboseReq) {
+          return mergeFrom((com.heme.logic.module.Data.SearchUserVerboseReq)other);
+        } else {
+          super.mergeFrom(other);
+          return this;
+        }
+      }
+
+      public Builder mergeFrom(com.heme.logic.module.Data.SearchUserVerboseReq other) {
+        if (other == com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance()) return this;
+        if (other.hasVersionNo()) {
+          bitField0_ |= 0x00000001;
+          versionNo_ = other.versionNo_;
+          onChanged();
+        }
+        if (other.hasClientType()) {
+          setClientType(other.getClientType());
+        }
+        if (other.hasSessionId()) {
+          bitField0_ |= 0x00000004;
+          sessionId_ = other.sessionId_;
+          onChanged();
+        }
+        if (other.hasSystemId()) {
+          setSystemId(other.getSystemId());
+        }
+        if (other.hasTargetSystemId()) {
+          setTargetSystemId(other.getTargetSystemId());
+        }
+        if (other.hasPhoneNo()) {
+          bitField0_ |= 0x00000020;
+          phoneNo_ = other.phoneNo_;
+          onChanged();
+        }
+        if (other.hasEmail()) {
+          bitField0_ |= 0x00000040;
+          email_ = other.email_;
+          onChanged();
+        }
+        if (other.hasRealName()) {
+          bitField0_ |= 0x00000080;
+          realName_ = other.realName_;
+          onChanged();
+        }
+        this.mergeUnknownFields(other.getUnknownFields());
+        return this;
+      }
+
+      public final boolean isInitialized() {
+        if (!hasVersionNo()) {
+          
+          return false;
+        }
+        if (!hasClientType()) {
+          
+          return false;
+        }
+        if (!hasSessionId()) {
+          
+          return false;
+        }
+        if (!hasSystemId()) {
+          
+          return false;
+        }
+        return true;
+      }
+
+      public Builder mergeFrom(
+          com.google.protobuf.CodedInputStream input,
+          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+          throws java.io.IOException {
+        com.heme.logic.module.Data.SearchUserVerboseReq parsedMessage = null;
+        try {
+          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+          parsedMessage = (com.heme.logic.module.Data.SearchUserVerboseReq) e.getUnfinishedMessage();
+          throw e;
+        } finally {
+          if (parsedMessage != null) {
+            mergeFrom(parsedMessage);
+          }
+        }
+        return this;
+      }
+      private int bitField0_;
+
+      // required string versionNo = 1;
+      private java.lang.Object versionNo_ = "";
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public boolean hasVersionNo() {
+        return ((bitField0_ & 0x00000001) == 0x00000001);
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public java.lang.String getVersionNo() {
+        java.lang.Object ref = versionNo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          versionNo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getVersionNoBytes() {
+        java.lang.Object ref = versionNo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          versionNo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder setVersionNo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        versionNo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder clearVersionNo() {
+        bitField0_ = (bitField0_ & ~0x00000001);
+        versionNo_ = getDefaultInstance().getVersionNo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string versionNo = 1;</code>
+       *
+       * <pre>
+       *版本号
+       * </pre>
+       */
+      public Builder setVersionNoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000001;
+        versionNo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint32 clientType = 2;
+      private int clientType_ ;
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public boolean hasClientType() {
+        return ((bitField0_ & 0x00000002) == 0x00000002);
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public int getClientType() {
+        return clientType_;
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public Builder setClientType(int value) {
+        bitField0_ |= 0x00000002;
+        clientType_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint32 clientType = 2;</code>
+       *
+       * <pre>
+       *客户端类型，1：家长；2：学生；3：老师
+       * </pre>
+       */
+      public Builder clearClientType() {
+        bitField0_ = (bitField0_ & ~0x00000002);
+        clientType_ = 0;
+        onChanged();
+        return this;
+      }
+
+      // required string sessionId = 3;
+      private java.lang.Object sessionId_ = "";
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public boolean hasSessionId() {
+        return ((bitField0_ & 0x00000004) == 0x00000004);
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public java.lang.String getSessionId() {
+        java.lang.Object ref = sessionId_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          sessionId_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getSessionIdBytes() {
+        java.lang.Object ref = sessionId_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          sessionId_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder setSessionId(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder clearSessionId() {
+        bitField0_ = (bitField0_ & ~0x00000004);
+        sessionId_ = getDefaultInstance().getSessionId();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required string sessionId = 3;</code>
+       *
+       * <pre>
+       *会话ID
+       * </pre>
+       */
+      public Builder setSessionIdBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000004;
+        sessionId_ = value;
+        onChanged();
+        return this;
+      }
+
+      // required uint64 systemId = 4;
+      private long systemId_ ;
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *所有者微校号
+       * </pre>
+       */
+      public boolean hasSystemId() {
+        return ((bitField0_ & 0x00000008) == 0x00000008);
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *所有者微校号
+       * </pre>
+       */
+      public long getSystemId() {
+        return systemId_;
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *所有者微校号
+       * </pre>
+       */
+      public Builder setSystemId(long value) {
+        bitField0_ |= 0x00000008;
+        systemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>required uint64 systemId = 4;</code>
+       *
+       * <pre>
+       *所有者微校号
+       * </pre>
+       */
+      public Builder clearSystemId() {
+        bitField0_ = (bitField0_ & ~0x00000008);
+        systemId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional uint64 targetSystemId = 5;
+      private long targetSystemId_ ;
+      /**
+       * <code>optional uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *目标微校号
+       * </pre>
+       */
+      public boolean hasTargetSystemId() {
+        return ((bitField0_ & 0x00000010) == 0x00000010);
+      }
+      /**
+       * <code>optional uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *目标微校号
+       * </pre>
+       */
+      public long getTargetSystemId() {
+        return targetSystemId_;
+      }
+      /**
+       * <code>optional uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *目标微校号
+       * </pre>
+       */
+      public Builder setTargetSystemId(long value) {
+        bitField0_ |= 0x00000010;
+        targetSystemId_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional uint64 targetSystemId = 5;</code>
+       *
+       * <pre>
+       *目标微校号
+       * </pre>
+       */
+      public Builder clearTargetSystemId() {
+        bitField0_ = (bitField0_ & ~0x00000010);
+        targetSystemId_ = 0L;
+        onChanged();
+        return this;
+      }
+
+      // optional string phoneNo = 6;
+      private java.lang.Object phoneNo_ = "";
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public boolean hasPhoneNo() {
+        return ((bitField0_ & 0x00000020) == 0x00000020);
+      }
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public java.lang.String getPhoneNo() {
+        java.lang.Object ref = phoneNo_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          phoneNo_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getPhoneNoBytes() {
+        java.lang.Object ref = phoneNo_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          phoneNo_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public Builder setPhoneNo(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        phoneNo_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public Builder clearPhoneNo() {
+        bitField0_ = (bitField0_ & ~0x00000020);
+        phoneNo_ = getDefaultInstance().getPhoneNo();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string phoneNo = 6;</code>
+       *
+       * <pre>
+       *手机号
+       * </pre>
+       */
+      public Builder setPhoneNoBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000020;
+        phoneNo_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string email = 7;
+      private java.lang.Object email_ = "";
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public boolean hasEmail() {
+        return ((bitField0_ & 0x00000040) == 0x00000040);
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public java.lang.String getEmail() {
+        java.lang.Object ref = email_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          email_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getEmailBytes() {
+        java.lang.Object ref = email_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          email_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public Builder setEmail(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        email_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public Builder clearEmail() {
+        bitField0_ = (bitField0_ & ~0x00000040);
+        email_ = getDefaultInstance().getEmail();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string email = 7;</code>
+       *
+       * <pre>
+       *email
+       * </pre>
+       */
+      public Builder setEmailBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000040;
+        email_ = value;
+        onChanged();
+        return this;
+      }
+
+      // optional string realName = 8;
+      private java.lang.Object realName_ = "";
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public boolean hasRealName() {
+        return ((bitField0_ & 0x00000080) == 0x00000080);
+      }
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public java.lang.String getRealName() {
+        java.lang.Object ref = realName_;
+        if (!(ref instanceof java.lang.String)) {
+          java.lang.String s = ((com.google.protobuf.ByteString) ref)
+              .toStringUtf8();
+          realName_ = s;
+          return s;
+        } else {
+          return (java.lang.String) ref;
+        }
+      }
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public com.google.protobuf.ByteString
+          getRealNameBytes() {
+        java.lang.Object ref = realName_;
+        if (ref instanceof String) {
+          com.google.protobuf.ByteString b = 
+              com.google.protobuf.ByteString.copyFromUtf8(
+                  (java.lang.String) ref);
+          realName_ = b;
+          return b;
+        } else {
+          return (com.google.protobuf.ByteString) ref;
+        }
+      }
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public Builder setRealName(
+          java.lang.String value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        realName_ = value;
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public Builder clearRealName() {
+        bitField0_ = (bitField0_ & ~0x00000080);
+        realName_ = getDefaultInstance().getRealName();
+        onChanged();
+        return this;
+      }
+      /**
+       * <code>optional string realName = 8;</code>
+       *
+       * <pre>
+       *姓名
+       * </pre>
+       */
+      public Builder setRealNameBytes(
+          com.google.protobuf.ByteString value) {
+        if (value == null) {
+    throw new NullPointerException();
+  }
+  bitField0_ |= 0x00000080;
+        realName_ = value;
+        onChanged();
+        return this;
+      }
+
+      // @@protoc_insertion_point(builder_scope:com.heme.logic.module.SearchUserVerboseReq)
+    }
+
+    static {
+      defaultInstance = new SearchUserVerboseReq(true);
+      defaultInstance.initFields();
+    }
+
+    // @@protoc_insertion_point(class_scope:com.heme.logic.module.SearchUserVerboseReq)
+  }
+
   public interface DataSvrProtoOrBuilder
       extends com.google.protobuf.MessageOrBuilder {
 
@@ -74183,6 +75952,34 @@ public final class Data {
      * <code>optional .com.heme.logic.module.AddFriendRsp AddFriendRspInfo = 57;</code>
      */
     com.heme.logic.module.Data.AddFriendRspOrBuilder getAddFriendRspInfoOrBuilder();
+
+    // optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    boolean hasSearchUserVerboseReqInfo();
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    com.heme.logic.module.Data.SearchUserVerboseReq getSearchUserVerboseReqInfo();
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder getSearchUserVerboseReqInfoOrBuilder();
+
+    // optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    boolean hasSearchUserVerboseRspInfo();
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    com.heme.logic.module.Data.GetVerboseUserInfoRsp getSearchUserVerboseRspInfo();
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder getSearchUserVerboseRspInfoOrBuilder();
   }
   /**
    * Protobuf type {@code com.heme.logic.module.DataSvrProto}
@@ -74975,6 +76772,32 @@ public final class Data {
               bitField1_ |= 0x01000000;
               break;
             }
+            case 466: {
+              com.heme.logic.module.Data.SearchUserVerboseReq.Builder subBuilder = null;
+              if (((bitField1_ & 0x02000000) == 0x02000000)) {
+                subBuilder = searchUserVerboseReqInfo_.toBuilder();
+              }
+              searchUserVerboseReqInfo_ = input.readMessage(com.heme.logic.module.Data.SearchUserVerboseReq.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(searchUserVerboseReqInfo_);
+                searchUserVerboseReqInfo_ = subBuilder.buildPartial();
+              }
+              bitField1_ |= 0x02000000;
+              break;
+            }
+            case 474: {
+              com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder subBuilder = null;
+              if (((bitField1_ & 0x04000000) == 0x04000000)) {
+                subBuilder = searchUserVerboseRspInfo_.toBuilder();
+              }
+              searchUserVerboseRspInfo_ = input.readMessage(com.heme.logic.module.Data.GetVerboseUserInfoRsp.PARSER, extensionRegistry);
+              if (subBuilder != null) {
+                subBuilder.mergeFrom(searchUserVerboseRspInfo_);
+                searchUserVerboseRspInfo_ = subBuilder.buildPartial();
+              }
+              bitField1_ |= 0x04000000;
+              break;
+            }
           }
         }
       } catch (com.google.protobuf.InvalidProtocolBufferException e) {
@@ -75131,6 +76954,10 @@ public final class Data {
        * <code>AddFriend = 28;</code>
        */
       AddFriend(27, 28),
+      /**
+       * <code>SearchUserVerbose = 29;</code>
+       */
+      SearchUserVerbose(28, 29),
       ;
 
       /**
@@ -75245,6 +77072,10 @@ public final class Data {
        * <code>AddFriend = 28;</code>
        */
       public static final int AddFriend_VALUE = 28;
+      /**
+       * <code>SearchUserVerbose = 29;</code>
+       */
+      public static final int SearchUserVerbose_VALUE = 29;
 
 
       public final int getNumber() { return value; }
@@ -75279,6 +77110,7 @@ public final class Data {
           case 26: return BusiGetClassOfTeacher;
           case 27: return BusiGetSubjectOfTeacher;
           case 28: return AddFriend;
+          case 29: return SearchUserVerbose;
           default: return null;
         }
       }
@@ -76588,6 +78420,50 @@ public final class Data {
       return addFriendRspInfo_;
     }
 
+    // optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;
+    public static final int SEARCHUSERVERBOSEREQINFO_FIELD_NUMBER = 58;
+    private com.heme.logic.module.Data.SearchUserVerboseReq searchUserVerboseReqInfo_;
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    public boolean hasSearchUserVerboseReqInfo() {
+      return ((bitField1_ & 0x02000000) == 0x02000000);
+    }
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    public com.heme.logic.module.Data.SearchUserVerboseReq getSearchUserVerboseReqInfo() {
+      return searchUserVerboseReqInfo_;
+    }
+    /**
+     * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+     */
+    public com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder getSearchUserVerboseReqInfoOrBuilder() {
+      return searchUserVerboseReqInfo_;
+    }
+
+    // optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;
+    public static final int SEARCHUSERVERBOSERSPINFO_FIELD_NUMBER = 59;
+    private com.heme.logic.module.Data.GetVerboseUserInfoRsp searchUserVerboseRspInfo_;
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    public boolean hasSearchUserVerboseRspInfo() {
+      return ((bitField1_ & 0x04000000) == 0x04000000);
+    }
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    public com.heme.logic.module.Data.GetVerboseUserInfoRsp getSearchUserVerboseRspInfo() {
+      return searchUserVerboseRspInfo_;
+    }
+    /**
+     * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+     */
+    public com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder getSearchUserVerboseRspInfoOrBuilder() {
+      return searchUserVerboseRspInfo_;
+    }
+
     private void initFields() {
       enumCmd_ = com.heme.logic.module.Data.DataSvrProto.Cmd.VerifyPhone;
       verifyPhoneReqInfo_ = com.heme.logic.module.Data.VerifyPhoneReq.getDefaultInstance();
@@ -76646,6 +78522,8 @@ public final class Data {
       busiGetSubjectOfTeacherRspInfo_ = com.heme.logic.module.Data.BusiGetSubjectOfTeacherRsp.getDefaultInstance();
       addFriendReqInfo_ = com.heme.logic.module.Data.AddFriendReq.getDefaultInstance();
       addFriendRspInfo_ = com.heme.logic.module.Data.AddFriendRsp.getDefaultInstance();
+      searchUserVerboseReqInfo_ = com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance();
+      searchUserVerboseRspInfo_ = com.heme.logic.module.Data.GetVerboseUserInfoRsp.getDefaultInstance();
     }
     private byte memoizedIsInitialized = -1;
     public final boolean isInitialized() {
@@ -76992,6 +78870,18 @@ public final class Data {
           return false;
         }
       }
+      if (hasSearchUserVerboseReqInfo()) {
+        if (!getSearchUserVerboseReqInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
+      if (hasSearchUserVerboseRspInfo()) {
+        if (!getSearchUserVerboseRspInfo().isInitialized()) {
+          memoizedIsInitialized = 0;
+          return false;
+        }
+      }
       memoizedIsInitialized = 1;
       return true;
     }
@@ -77169,6 +79059,12 @@ public final class Data {
       }
       if (((bitField1_ & 0x01000000) == 0x01000000)) {
         output.writeMessage(57, addFriendRspInfo_);
+      }
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+        output.writeMessage(58, searchUserVerboseReqInfo_);
+      }
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+        output.writeMessage(59, searchUserVerboseRspInfo_);
       }
       getUnknownFields().writeTo(output);
     }
@@ -77407,6 +79303,14 @@ public final class Data {
         size += com.google.protobuf.CodedOutputStream
           .computeMessageSize(57, addFriendRspInfo_);
       }
+      if (((bitField1_ & 0x02000000) == 0x02000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(58, searchUserVerboseReqInfo_);
+      }
+      if (((bitField1_ & 0x04000000) == 0x04000000)) {
+        size += com.google.protobuf.CodedOutputStream
+          .computeMessageSize(59, searchUserVerboseRspInfo_);
+      }
       size += getUnknownFields().getSerializedSize();
       memoizedSerializedSize = size;
       return size;
@@ -77571,6 +79475,8 @@ public final class Data {
           getBusiGetSubjectOfTeacherRspInfoFieldBuilder();
           getAddFriendReqInfoFieldBuilder();
           getAddFriendRspInfoFieldBuilder();
+          getSearchUserVerboseReqInfoFieldBuilder();
+          getSearchUserVerboseRspInfoFieldBuilder();
         }
       }
       private static Builder create() {
@@ -77917,6 +79823,18 @@ public final class Data {
           addFriendRspInfoBuilder_.clear();
         }
         bitField1_ = (bitField1_ & ~0x01000000);
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          searchUserVerboseReqInfo_ = com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance();
+        } else {
+          searchUserVerboseReqInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x02000000);
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          searchUserVerboseRspInfo_ = com.heme.logic.module.Data.GetVerboseUserInfoRsp.getDefaultInstance();
+        } else {
+          searchUserVerboseRspInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x04000000);
         return this;
       }
 
@@ -78399,6 +80317,22 @@ public final class Data {
         } else {
           result.addFriendRspInfo_ = addFriendRspInfoBuilder_.build();
         }
+        if (((from_bitField1_ & 0x02000000) == 0x02000000)) {
+          to_bitField1_ |= 0x02000000;
+        }
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          result.searchUserVerboseReqInfo_ = searchUserVerboseReqInfo_;
+        } else {
+          result.searchUserVerboseReqInfo_ = searchUserVerboseReqInfoBuilder_.build();
+        }
+        if (((from_bitField1_ & 0x04000000) == 0x04000000)) {
+          to_bitField1_ |= 0x04000000;
+        }
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          result.searchUserVerboseRspInfo_ = searchUserVerboseRspInfo_;
+        } else {
+          result.searchUserVerboseRspInfo_ = searchUserVerboseRspInfoBuilder_.build();
+        }
         result.bitField0_ = to_bitField0_;
         result.bitField1_ = to_bitField1_;
         onBuilt();
@@ -78586,6 +80520,12 @@ public final class Data {
         }
         if (other.hasAddFriendRspInfo()) {
           mergeAddFriendRspInfo(other.getAddFriendRspInfo());
+        }
+        if (other.hasSearchUserVerboseReqInfo()) {
+          mergeSearchUserVerboseReqInfo(other.getSearchUserVerboseReqInfo());
+        }
+        if (other.hasSearchUserVerboseRspInfo()) {
+          mergeSearchUserVerboseRspInfo(other.getSearchUserVerboseRspInfo());
         }
         this.mergeUnknownFields(other.getUnknownFields());
         return this;
@@ -78928,6 +80868,18 @@ public final class Data {
         }
         if (hasAddFriendRspInfo()) {
           if (!getAddFriendRspInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSearchUserVerboseReqInfo()) {
+          if (!getSearchUserVerboseReqInfo().isInitialized()) {
+            
+            return false;
+          }
+        }
+        if (hasSearchUserVerboseRspInfo()) {
+          if (!getSearchUserVerboseRspInfo().isInitialized()) {
             
             return false;
           }
@@ -85559,6 +87511,240 @@ public final class Data {
         return addFriendRspInfoBuilder_;
       }
 
+      // optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;
+      private com.heme.logic.module.Data.SearchUserVerboseReq searchUserVerboseReqInfo_ = com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.SearchUserVerboseReq, com.heme.logic.module.Data.SearchUserVerboseReq.Builder, com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder> searchUserVerboseReqInfoBuilder_;
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public boolean hasSearchUserVerboseReqInfo() {
+        return ((bitField1_ & 0x02000000) == 0x02000000);
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public com.heme.logic.module.Data.SearchUserVerboseReq getSearchUserVerboseReqInfo() {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          return searchUserVerboseReqInfo_;
+        } else {
+          return searchUserVerboseReqInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public Builder setSearchUserVerboseReqInfo(com.heme.logic.module.Data.SearchUserVerboseReq value) {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          searchUserVerboseReqInfo_ = value;
+          onChanged();
+        } else {
+          searchUserVerboseReqInfoBuilder_.setMessage(value);
+        }
+        bitField1_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public Builder setSearchUserVerboseReqInfo(
+          com.heme.logic.module.Data.SearchUserVerboseReq.Builder builderForValue) {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          searchUserVerboseReqInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          searchUserVerboseReqInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField1_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public Builder mergeSearchUserVerboseReqInfo(com.heme.logic.module.Data.SearchUserVerboseReq value) {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          if (((bitField1_ & 0x02000000) == 0x02000000) &&
+              searchUserVerboseReqInfo_ != com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance()) {
+            searchUserVerboseReqInfo_ =
+              com.heme.logic.module.Data.SearchUserVerboseReq.newBuilder(searchUserVerboseReqInfo_).mergeFrom(value).buildPartial();
+          } else {
+            searchUserVerboseReqInfo_ = value;
+          }
+          onChanged();
+        } else {
+          searchUserVerboseReqInfoBuilder_.mergeFrom(value);
+        }
+        bitField1_ |= 0x02000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public Builder clearSearchUserVerboseReqInfo() {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          searchUserVerboseReqInfo_ = com.heme.logic.module.Data.SearchUserVerboseReq.getDefaultInstance();
+          onChanged();
+        } else {
+          searchUserVerboseReqInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x02000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public com.heme.logic.module.Data.SearchUserVerboseReq.Builder getSearchUserVerboseReqInfoBuilder() {
+        bitField1_ |= 0x02000000;
+        onChanged();
+        return getSearchUserVerboseReqInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      public com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder getSearchUserVerboseReqInfoOrBuilder() {
+        if (searchUserVerboseReqInfoBuilder_ != null) {
+          return searchUserVerboseReqInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return searchUserVerboseReqInfo_;
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.SearchUserVerboseReq SearchUserVerboseReqInfo = 58;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.SearchUserVerboseReq, com.heme.logic.module.Data.SearchUserVerboseReq.Builder, com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder> 
+          getSearchUserVerboseReqInfoFieldBuilder() {
+        if (searchUserVerboseReqInfoBuilder_ == null) {
+          searchUserVerboseReqInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.heme.logic.module.Data.SearchUserVerboseReq, com.heme.logic.module.Data.SearchUserVerboseReq.Builder, com.heme.logic.module.Data.SearchUserVerboseReqOrBuilder>(
+                  searchUserVerboseReqInfo_,
+                  getParentForChildren(),
+                  isClean());
+          searchUserVerboseReqInfo_ = null;
+        }
+        return searchUserVerboseReqInfoBuilder_;
+      }
+
+      // optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;
+      private com.heme.logic.module.Data.GetVerboseUserInfoRsp searchUserVerboseRspInfo_ = com.heme.logic.module.Data.GetVerboseUserInfoRsp.getDefaultInstance();
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.GetVerboseUserInfoRsp, com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder, com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder> searchUserVerboseRspInfoBuilder_;
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public boolean hasSearchUserVerboseRspInfo() {
+        return ((bitField1_ & 0x04000000) == 0x04000000);
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public com.heme.logic.module.Data.GetVerboseUserInfoRsp getSearchUserVerboseRspInfo() {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          return searchUserVerboseRspInfo_;
+        } else {
+          return searchUserVerboseRspInfoBuilder_.getMessage();
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public Builder setSearchUserVerboseRspInfo(com.heme.logic.module.Data.GetVerboseUserInfoRsp value) {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          if (value == null) {
+            throw new NullPointerException();
+          }
+          searchUserVerboseRspInfo_ = value;
+          onChanged();
+        } else {
+          searchUserVerboseRspInfoBuilder_.setMessage(value);
+        }
+        bitField1_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public Builder setSearchUserVerboseRspInfo(
+          com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder builderForValue) {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          searchUserVerboseRspInfo_ = builderForValue.build();
+          onChanged();
+        } else {
+          searchUserVerboseRspInfoBuilder_.setMessage(builderForValue.build());
+        }
+        bitField1_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public Builder mergeSearchUserVerboseRspInfo(com.heme.logic.module.Data.GetVerboseUserInfoRsp value) {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          if (((bitField1_ & 0x04000000) == 0x04000000) &&
+              searchUserVerboseRspInfo_ != com.heme.logic.module.Data.GetVerboseUserInfoRsp.getDefaultInstance()) {
+            searchUserVerboseRspInfo_ =
+              com.heme.logic.module.Data.GetVerboseUserInfoRsp.newBuilder(searchUserVerboseRspInfo_).mergeFrom(value).buildPartial();
+          } else {
+            searchUserVerboseRspInfo_ = value;
+          }
+          onChanged();
+        } else {
+          searchUserVerboseRspInfoBuilder_.mergeFrom(value);
+        }
+        bitField1_ |= 0x04000000;
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public Builder clearSearchUserVerboseRspInfo() {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          searchUserVerboseRspInfo_ = com.heme.logic.module.Data.GetVerboseUserInfoRsp.getDefaultInstance();
+          onChanged();
+        } else {
+          searchUserVerboseRspInfoBuilder_.clear();
+        }
+        bitField1_ = (bitField1_ & ~0x04000000);
+        return this;
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder getSearchUserVerboseRspInfoBuilder() {
+        bitField1_ |= 0x04000000;
+        onChanged();
+        return getSearchUserVerboseRspInfoFieldBuilder().getBuilder();
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      public com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder getSearchUserVerboseRspInfoOrBuilder() {
+        if (searchUserVerboseRspInfoBuilder_ != null) {
+          return searchUserVerboseRspInfoBuilder_.getMessageOrBuilder();
+        } else {
+          return searchUserVerboseRspInfo_;
+        }
+      }
+      /**
+       * <code>optional .com.heme.logic.module.GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;</code>
+       */
+      private com.google.protobuf.SingleFieldBuilder<
+          com.heme.logic.module.Data.GetVerboseUserInfoRsp, com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder, com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder> 
+          getSearchUserVerboseRspInfoFieldBuilder() {
+        if (searchUserVerboseRspInfoBuilder_ == null) {
+          searchUserVerboseRspInfoBuilder_ = new com.google.protobuf.SingleFieldBuilder<
+              com.heme.logic.module.Data.GetVerboseUserInfoRsp, com.heme.logic.module.Data.GetVerboseUserInfoRsp.Builder, com.heme.logic.module.Data.GetVerboseUserInfoRspOrBuilder>(
+                  searchUserVerboseRspInfo_,
+                  getParentForChildren(),
+                  isClean());
+          searchUserVerboseRspInfo_ = null;
+        }
+        return searchUserVerboseRspInfoBuilder_;
+      }
+
       // @@protoc_insertion_point(builder_scope:com.heme.logic.module.DataSvrProto)
     }
 
@@ -85886,6 +88072,11 @@ public final class Data {
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
       internal_static_com_heme_logic_module_AddFriendRsp_fieldAccessorTable;
   private static com.google.protobuf.Descriptors.Descriptor
+    internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor;
+  private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+      internal_static_com_heme_logic_module_SearchUserVerboseReq_fieldAccessorTable;
+  private static com.google.protobuf.Descriptors.Descriptor
     internal_static_com_heme_logic_module_DataSvrProto_descriptor;
   private static
     com.google.protobuf.GeneratedMessage.FieldAccessorTable
@@ -85944,255 +88135,264 @@ public final class Data {
       "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId\030\005 \003(" +
       "\r\"s\n\014GroupCombine\022\017\n\007groupId\030\001 \002(\r\022\021\n\tgr" +
       "oupType\030\002 \002(\r\022\021\n\tgroupName\030\003 \001(\t\022\024\n\014host" +
-      "SystemId\030\004 \002(\004\022\026\n\016memberSystemId\030\005 \003(\004\"~" +
+      "SystemId\030\004 \002(\004\022\026\n\016memberSystemId\030\005 \003(\004\"m" +
       "\n\017GetGroupInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\ter" +
-      "rString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\0226\n\tgroupI" +
-      "nfo\030\004 \003(\0132#.com.heme.logic.module.GroupC" +
-      "ombine\"t\n\016GetUserInfoReq\022\021\n\tversionNo\030\001 ",
-      "\002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002" +
-      "(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSystemId\030\005" +
-      " \003(\004\"\377\001\n\rFriendCombine\022\026\n\016friendSystemId" +
-      "\030\001 \002(\004\022\020\n\010roleType\030\002 \002(\r\022\020\n\010realName\030\003 \002" +
-      "(\t\022\020\n\010descName\030\004 \001(\t\022\016\n\006gender\030\005 \001(\r\022\017\n\007" +
-      "phoneNo\030\006 \002(\t\022\022\n\nverifyType\030\007 \002(\r\022\020\n\010ico" +
-      "nName\030\010 \001(\t\022\021\n\tsignature\030\t \001(\t\022\021\n\tstuden" +
-      "tId\030\n \001(\t\022\014\n\004area\030\013 \001(\t\022\022\n\nschoolName\030\014 " +
-      "\001(\t\022\021\n\tclassName\030\r \001(\t\"n\n\016GetUserInfoRsp" +
-      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\0228\n\n",
-      "friendInfo\030\003 \003(\0132$.com.heme.logic.module" +
-      ".FriendCombine\"{\n\025GetVerboseUserInfoReq\022" +
-      "\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021" +
-      "\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016t" +
-      "argetSystemId\030\005 \003(\004\"\337\002\n\024VerboseFriendCom" +
-      "bine\022\026\n\016friendSystemId\030\001 \002(\004\022\020\n\010roleType" +
-      "\030\002 \002(\r\022\020\n\010realName\030\003 \002(\t\022\020\n\010descName\030\004 \001" +
-      "(\t\022\016\n\006gender\030\005 \001(\r\022\020\n\010birthday\030\006 \001(\t\022\022\n\n" +
-      "occupation\030\007 \001(\t\022\020\n\010location\030\010 \001(\t\022\r\n\005em" +
-      "ail\030\t \001(\t\022\020\n\010interest\030\n \001(\t\022\017\n\007phoneNo\030\013",
-      " \002(\t\022\022\n\nverifyType\030\014 \002(\r\022\020\n\010iconName\030\r \001" +
-      "(\t\022\021\n\tsignature\030\016 \001(\t\022\021\n\tstudentId\030\017 \001(\t" +
-      "\022\014\n\004area\030\020 \001(\t\022\022\n\nschoolName\030\021 \001(\t\022\021\n\tcl" +
-      "assName\030\022 \001(\t\"\203\001\n\025GetVerboseUserInfoRsp\022" +
-      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022F\n\021v" +
-      "erboseFriendInfo\030\003 \003(\0132+.com.heme.logic." +
-      "module.VerboseFriendCombine\"n\n\016SetUserIc" +
-      "onReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002" +
-      " \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(" +
-      "\004\022\020\n\010iconName\030\005 \002(\t\"4\n\016SetUserIconRsp\022\017\n",
-      "\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"p\n\017Set" +
-      "SignatureReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclien" +
-      "tType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010system" +
-      "Id\030\004 \002(\004\022\021\n\tsignature\030\005 \002(\t\"5\n\017SetSignat" +
-      "ureRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002" +
-      "(\t\"P\n\023FindPasswdVerifyReq\022\021\n\tversionNo\030\001" +
-      " \002(\t\022\022\n\nclientType\030\002 \002(\r\022\022\n\nverifyCode\030\003" +
-      " \002(\t\"I\n\023FindPasswdVerifyRsp\022\017\n\007errCode\030\001" +
-      " \002(\r\022\021\n\terrString\030\002 \002(\t\022\016\n\006passwd\030\003 \002(\t\"" +
-      "\276\002\n\023CreateFixedGroupReq\022\021\n\tversionNo\030\001 \002",
-      "(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(" +
-      "\t\022\020\n\010systemId\030\004 \002(\004\022\024\n\014provinceCode\030\005 \001(" +
-      "\t\022\024\n\014provinceName\030\006 \001(\t\022\020\n\010cityCode\030\007 \001(" +
-      "\t\022\020\n\010cityName\030\010 \001(\t\022\022\n\ncountyCode\030\t \001(\t\022" +
-      "\022\n\ncountyName\030\n \001(\t\022\020\n\010schoolId\030\013 \001(\t\022\022\n" +
-      "\nschoolName\030\014 \001(\t\022\021\n\tgroupName\030\r \002(\t\022\022\n\n" +
-      "verifyType\030\016 \002(\r\022\026\n\016memberSystemId\030\017 \003(\004" +
-      "\"J\n\023CreateFixedGroupRsp\022\017\n\007errCode\030\001 \002(\r" +
-      "\022\021\n\terrString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\"\213\001\n" +
-      "\022CreateTempGroupReq\022\021\n\tversionNo\030\001 \002(\t\022\022",
-      "\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n" +
-      "\010systemId\030\004 \002(\004\022\021\n\tgroupName\030\005 \001(\t\022\026\n\016me" +
-      "mberSystemId\030\006 \003(\004\"I\n\022CreateTempGroupRsp" +
-      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007" +
-      "groupId\030\003 \002(\r\"\240\001\n\024CreateSocialGroupReq\022\021" +
-      "\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n" +
-      "\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021\n\tgr" +
-      "oupName\030\005 \002(\t\022\021\n\tgroupType\030\006 \002(\r\022\026\n\016memb" +
-      "erSystemId\030\007 \003(\004\"K\n\024CreateSocialGroupRsp" +
-      "\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022\017\n\007",
-      "groupId\030\003 \002(\r\"\201\001\n\017SetGroupNameReq\022\021\n\tver" +
-      "sionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsess" +
-      "ionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId" +
-      "\030\005 \002(\r\022\021\n\tgroupName\030\006 \002(\t\"5\n\017SetGroupNam" +
-      "eRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t" +
-      "\"j\n\013DelGroupReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncl" +
-      "ientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sys" +
-      "temId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\"1\n\013DelGroup" +
-      "Rsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"" +
-      "\210\001\n\021AddGroupMemberReq\022\021\n\tversionNo\030\001 \002(\t",
-      "\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022" +
-      "\020\n\010systemId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\022\026\n\016me" +
-      "mberSystemId\030\006 \003(\004\"7\n\021AddGroupMemberRsp\022" +
-      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\210\001\n\021" +
-      "DelGroupMemberReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\n" +
-      "clientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010s" +
-      "ystemId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\022\026\n\016member" +
-      "SystemId\030\006 \003(\004\"7\n\021DelGroupMemberRsp\022\017\n\007e" +
-      "rrCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\213\001\n\020SetF" +
-      "riendDescReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclien",
-      "tType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010system" +
-      "Id\030\004 \002(\004\022\026\n\016targetSystemId\030\005 \002(\004\022\023\n\013desc" +
-      "ription\030\006 \002(\t\"6\n\020SetFriendDescRsp\022\017\n\007err" +
-      "Code\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"r\n\014DelFrie" +
-      "ndReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002" +
-      " \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(" +
-      "\004\022\026\n\016targetSystemId\030\005 \002(\004\"2\n\014DelFriendRs" +
-      "p\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\305\001" +
-      "\n\016SetSelfInfoReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc" +
-      "lientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sy",
-      "stemId\030\004 \002(\004\022\016\n\006gender\030\005 \001(\r\022\020\n\010birthday" +
-      "\030\006 \001(\t\022\022\n\noccupation\030\007 \001(\t\022\020\n\010location\030\010" +
-      " \001(\t\022\r\n\005email\030\t \001(\t\022\020\n\010interest\030\n \001(\t\"4\n" +
-      "\016SetSelfInfoRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrS" +
-      "tring\030\002 \002(\t\"\200\001\n\014SetPasswdReq\022\021\n\tversionN" +
+      "rString\030\002 \002(\t\0226\n\tgroupInfo\030\003 \003(\0132#.com.h" +
+      "eme.logic.module.GroupCombine\"t\n\016GetUser" +
+      "InfoReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType",
+      "\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 " +
+      "\002(\004\022\026\n\016targetSystemId\030\005 \003(\004\"\377\001\n\rFriendCo" +
+      "mbine\022\026\n\016friendSystemId\030\001 \002(\004\022\020\n\010roleTyp" +
+      "e\030\002 \002(\r\022\020\n\010realName\030\003 \002(\t\022\020\n\010descName\030\004 " +
+      "\001(\t\022\016\n\006gender\030\005 \001(\r\022\017\n\007phoneNo\030\006 \002(\t\022\022\n\n" +
+      "verifyType\030\007 \002(\r\022\020\n\010iconName\030\010 \001(\t\022\021\n\tsi" +
+      "gnature\030\t \001(\t\022\021\n\tstudentId\030\n \001(\t\022\014\n\004area" +
+      "\030\013 \001(\t\022\022\n\nschoolName\030\014 \001(\t\022\021\n\tclassName\030" +
+      "\r \001(\t\"n\n\016GetUserInfoRsp\022\017\n\007errCode\030\001 \002(\r" +
+      "\022\021\n\terrString\030\002 \002(\t\0228\n\nfriendInfo\030\003 \003(\0132",
+      "$.com.heme.logic.module.FriendCombine\"{\n" +
+      "\025GetVerboseUserInfoReq\022\021\n\tversionNo\030\001 \002(" +
+      "\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t" +
+      "\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSystemId\030\005 \003" +
+      "(\004\"\337\002\n\024VerboseFriendCombine\022\026\n\016friendSys" +
+      "temId\030\001 \002(\004\022\020\n\010roleType\030\002 \002(\r\022\020\n\010realNam" +
+      "e\030\003 \002(\t\022\020\n\010descName\030\004 \001(\t\022\016\n\006gender\030\005 \001(" +
+      "\r\022\020\n\010birthday\030\006 \001(\t\022\022\n\noccupation\030\007 \001(\t\022" +
+      "\020\n\010location\030\010 \001(\t\022\r\n\005email\030\t \001(\t\022\020\n\010inte" +
+      "rest\030\n \001(\t\022\017\n\007phoneNo\030\013 \002(\t\022\022\n\nverifyTyp",
+      "e\030\014 \002(\r\022\020\n\010iconName\030\r \001(\t\022\021\n\tsignature\030\016" +
+      " \001(\t\022\021\n\tstudentId\030\017 \001(\t\022\014\n\004area\030\020 \001(\t\022\022\n" +
+      "\nschoolName\030\021 \001(\t\022\021\n\tclassName\030\022 \001(\t\"\203\001\n" +
+      "\025GetVerboseUserInfoRsp\022\017\n\007errCode\030\001 \002(\r\022" +
+      "\021\n\terrString\030\002 \002(\t\022F\n\021verboseFriendInfo\030" +
+      "\003 \003(\0132+.com.heme.logic.module.VerboseFri" +
+      "endCombine\"n\n\016SetUserIconReq\022\021\n\tversionN" +
       "o\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId" +
-      "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021\n\toldPasswd\030\005 " +
-      "\002(\t\022\021\n\tnewPasswd\030\006 \002(\t\"2\n\014SetPasswdRsp\022\017" +
-      "\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\265\001\n\021S" +
-      "etFriendRightReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc",
+      "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\020\n\010iconName\030\005 \002" +
+      "(\t\"4\n\016SetUserIconRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n",
+      "\terrString\030\002 \002(\t\"p\n\017SetSignatureReq\022\021\n\tv" +
+      "ersionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tse" +
+      "ssionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021\n\tsigna" +
+      "ture\030\005 \002(\t\"5\n\017SetSignatureRsp\022\017\n\007errCode" +
+      "\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"P\n\023FindPasswdV" +
+      "erifyReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientTyp" +
+      "e\030\002 \002(\r\022\022\n\nverifyCode\030\003 \002(\t\"I\n\023FindPassw" +
+      "dVerifyRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString" +
+      "\030\002 \002(\t\022\016\n\006passwd\030\003 \002(\t\"\276\002\n\023CreateFixedGr" +
+      "oupReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030",
+      "\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002" +
+      "(\004\022\024\n\014provinceCode\030\005 \001(\t\022\024\n\014provinceName" +
+      "\030\006 \001(\t\022\020\n\010cityCode\030\007 \001(\t\022\020\n\010cityName\030\010 \001" +
+      "(\t\022\022\n\ncountyCode\030\t \001(\t\022\022\n\ncountyName\030\n \001" +
+      "(\t\022\020\n\010schoolId\030\013 \001(\t\022\022\n\nschoolName\030\014 \001(\t" +
+      "\022\021\n\tgroupName\030\r \002(\t\022\022\n\nverifyType\030\016 \002(\r\022" +
+      "\026\n\016memberSystemId\030\017 \003(\004\"J\n\023CreateFixedGr" +
+      "oupRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002" +
+      "(\t\022\017\n\007groupId\030\003 \002(\r\"\213\001\n\022CreateTempGroupR" +
+      "eq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(",
+      "\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\021" +
+      "\n\tgroupName\030\005 \001(\t\022\026\n\016memberSystemId\030\006 \003(" +
+      "\004\"I\n\022CreateTempGroupRsp\022\017\n\007errCode\030\001 \002(\r" +
+      "\022\021\n\terrString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\"\240\001\n" +
+      "\024CreateSocialGroupReq\022\021\n\tversionNo\030\001 \002(\t" +
+      "\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022" +
+      "\020\n\010systemId\030\004 \002(\004\022\021\n\tgroupName\030\005 \002(\t\022\021\n\t" +
+      "groupType\030\006 \002(\r\022\026\n\016memberSystemId\030\007 \003(\004\"" +
+      "K\n\024CreateSocialGroupRsp\022\017\n\007errCode\030\001 \002(\r" +
+      "\022\021\n\terrString\030\002 \002(\t\022\017\n\007groupId\030\003 \002(\r\"\201\001\n",
+      "\017SetGroupNameReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nc" +
       "lientType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010sy" +
-      "stemId\030\004 \002(\004\022\022\n\nverifyType\030\005 \002(\r\022\025\n\rauto" +
-      "AddFriend\030\006 \002(\r\022\022\n\nsearchType\030\007 \002(\r\022\025\n\rr" +
-      "ecommendType\030\010 \002(\r\"7\n\021SetFriendRightRsp\022" +
-      "\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"o\n\017S" +
-      "endFeedbackReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncli" +
-      "entType\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010syst" +
-      "emId\030\004 \002(\004\022\020\n\010feedback\030\005 \002(\t\"5\n\017SendFeed" +
-      "backRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 " +
-      "\002(\t\"Y\n\030BusiGetClassOfTeacherReq\022\021\n\tversi",
-      "onNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\026\n\016target" +
-      "SystemId\030\003 \002(\004\"=\n\025ClassOfTeacherCombine\022" +
-      "\021\n\tclassCode\030\001 \002(\t\022\021\n\tclassName\030\002 \002(\t\"\210\001" +
-      "\n\030BusiGetClassOfTeacherRsp\022\017\n\007errCode\030\001 " +
-      "\002(\r\022\021\n\terrString\030\002 \002(\t\022H\n\022classOfTeacher" +
-      "Info\030\003 \003(\0132,.com.heme.logic.module.Class" +
-      "OfTeacherCombine\"t\n\032BusiGetSubjectOfTeac" +
-      "herReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030" +
-      "\002 \002(\r\022\026\n\016targetSystemId\030\003 \002(\004\022\027\n\017targetC" +
-      "lassCode\030\004 \001(\t\"i\n\027SubjectOfTeacherCombin",
-      "e\022\021\n\tclassCode\030\001 \001(\t\022\021\n\tclassName\030\002 \001(\t\022" +
-      "\023\n\013subjectCode\030\003 \002(\t\022\023\n\013subjectName\030\004 \002(" +
-      "\t\"\216\001\n\032BusiGetSubjectOfTeacherRsp\022\017\n\007errC" +
-      "ode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\022L\n\024subjectO" +
-      "fTeacherInfo\030\003 \003(\0132..com.heme.logic.modu" +
-      "le.SubjectOfTeacherCombine\"r\n\014AddFriendR" +
+      "stemId\030\004 \002(\004\022\017\n\007groupId\030\005 \002(\r\022\021\n\tgroupNa" +
+      "me\030\006 \002(\t\"5\n\017SetGroupNameRsp\022\017\n\007errCode\030\001" +
+      " \002(\r\022\021\n\terrString\030\002 \002(\t\"j\n\013DelGroupReq\022\021" +
+      "\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n" +
+      "\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007gr" +
+      "oupId\030\005 \003(\r\"1\n\013DelGroupRsp\022\017\n\007errCode\030\001 " +
+      "\002(\r\022\021\n\terrString\030\002 \002(\t\"\210\001\n\021AddGroupMembe" +
+      "rReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 ",
+      "\002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004" +
+      "\022\017\n\007groupId\030\005 \002(\r\022\026\n\016memberSystemId\030\006 \003(" +
+      "\004\"7\n\021AddGroupMemberRsp\022\017\n\007errCode\030\001 \002(\r\022" +
+      "\021\n\terrString\030\002 \002(\t\"\210\001\n\021DelGroupMemberReq" +
+      "\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022" +
+      "\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\017\n\007" +
+      "groupId\030\005 \002(\r\022\026\n\016memberSystemId\030\006 \003(\004\"7\n" +
+      "\021DelGroupMemberRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\te" +
+      "rrString\030\002 \002(\t\"\213\001\n\020SetFriendDescReq\022\021\n\tv" +
+      "ersionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tse",
+      "ssionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targe" +
+      "tSystemId\030\005 \002(\004\022\023\n\013description\030\006 \002(\t\"6\n\020" +
+      "SetFriendDescRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terr" +
+      "String\030\002 \002(\t\"r\n\014DelFriendReq\022\021\n\tversionN" +
+      "o\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId" +
+      "\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSystem" +
+      "Id\030\005 \003(\004\"2\n\014DelFriendRsp\022\017\n\007errCode\030\001 \002(" +
+      "\r\022\021\n\terrString\030\002 \002(\t\"\305\001\n\016SetSelfInfoReq\022" +
+      "\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021" +
+      "\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\016\n\006g",
+      "ender\030\005 \001(\r\022\020\n\010birthday\030\006 \001(\t\022\022\n\noccupat" +
+      "ion\030\007 \001(\t\022\020\n\010location\030\010 \001(\t\022\r\n\005email\030\t \001" +
+      "(\t\022\020\n\010interest\030\n \001(\t\"4\n\016SetSelfInfoRsp\022\017" +
+      "\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\200\001\n\014S" +
+      "etPasswdReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclient" +
+      "Type\030\002 \002(\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemI" +
+      "d\030\004 \002(\004\022\021\n\toldPasswd\030\005 \002(\t\022\021\n\tnewPasswd\030" +
+      "\006 \002(\t\"2\n\014SetPasswdRsp\022\017\n\007errCode\030\001 \002(\r\022\021" +
+      "\n\terrString\030\002 \002(\t\"\265\001\n\021SetFriendRightReq\022" +
+      "\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021",
+      "\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\022\n\nv" +
+      "erifyType\030\005 \002(\r\022\025\n\rautoAddFriend\030\006 \002(\r\022\022" +
+      "\n\nsearchType\030\007 \002(\r\022\025\n\rrecommendType\030\010 \002(" +
+      "\r\"7\n\021SetFriendRightRsp\022\017\n\007errCode\030\001 \002(\r\022" +
+      "\021\n\terrString\030\002 \002(\t\"o\n\017SendFeedbackReq\022\021\n" +
+      "\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\t" +
+      "sessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\020\n\010fee" +
+      "dback\030\005 \002(\t\"5\n\017SendFeedbackRsp\022\017\n\007errCod" +
+      "e\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"Y\n\030BusiGetCla" +
+      "ssOfTeacherReq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\ncli",
+      "entType\030\002 \002(\r\022\026\n\016targetSystemId\030\003 \002(\004\"=\n" +
+      "\025ClassOfTeacherCombine\022\021\n\tclassCode\030\001 \002(" +
+      "\t\022\021\n\tclassName\030\002 \002(\t\"\210\001\n\030BusiGetClassOfT" +
+      "eacherRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrString\030" +
+      "\002 \002(\t\022H\n\022classOfTeacherInfo\030\003 \003(\0132,.com." +
+      "heme.logic.module.ClassOfTeacherCombine\"" +
+      "t\n\032BusiGetSubjectOfTeacherReq\022\021\n\tversion" +
+      "No\030\001 \002(\t\022\022\n\nclientType\030\002 \002(\r\022\026\n\016targetSy" +
+      "stemId\030\003 \002(\004\022\027\n\017targetClassCode\030\004 \001(\t\"i\n" +
+      "\027SubjectOfTeacherCombine\022\021\n\tclassCode\030\001 ",
+      "\001(\t\022\021\n\tclassName\030\002 \001(\t\022\023\n\013subjectCode\030\003 " +
+      "\002(\t\022\023\n\013subjectName\030\004 \002(\t\"\216\001\n\032BusiGetSubj" +
+      "ectOfTeacherRsp\022\017\n\007errCode\030\001 \002(\r\022\021\n\terrS" +
+      "tring\030\002 \002(\t\022L\n\024subjectOfTeacherInfo\030\003 \003(" +
+      "\0132..com.heme.logic.module.SubjectOfTeach" +
+      "erCombine\"r\n\014AddFriendReq\022\021\n\tversionNo\030\001" +
+      " \002(\t\022\022\n\nclientType\030\002 \002(\r\022\021\n\tsessionId\030\003 " +
+      "\002(\t\022\020\n\010systemId\030\004 \002(\004\022\026\n\016targetSystemId\030" +
+      "\005 \003(\004\"2\n\014AddFriendRsp\022\017\n\007errCode\030\001 \002(\r\022\021" +
+      "\n\terrString\030\002 \002(\t\"\254\001\n\024SearchUserVerboseR",
       "eq\022\021\n\tversionNo\030\001 \002(\t\022\022\n\nclientType\030\002 \002(" +
       "\r\022\021\n\tsessionId\030\003 \002(\t\022\020\n\010systemId\030\004 \002(\004\022\026" +
-      "\n\016targetSystemId\030\005 \003(\004\"2\n\014AddFriendRsp\022\017" +
-      "\n\007errCode\030\001 \002(\r\022\021\n\terrString\030\002 \002(\t\"\300#\n\014D",
-      "ataSvrProto\0229\n\010enum_cmd\030\001 \002(\0162\'.com.heme" +
-      ".logic.module.DataSvrProto.Cmd\022A\n\022Verify" +
-      "PhoneReqInfo\030\002 \001(\0132%.com.heme.logic.modu" +
-      "le.VerifyPhoneReq\022A\n\022VerifyPhoneRspInfo\030" +
-      "\003 \001(\0132%.com.heme.logic.module.VerifyPhon" +
-      "eRsp\022=\n\020RegParentReqInfo\030\004 \001(\0132#.com.hem" +
-      "e.logic.module.RegParentReq\022=\n\020RegParent" +
-      "RspInfo\030\005 \001(\0132#.com.heme.logic.module.Re" +
-      "gParentRsp\022C\n\023RegGetSchoolReqInfo\030\006 \001(\0132" +
-      "&.com.heme.logic.module.RegGetSchoolReq\022",
-      "C\n\023RegGetSchoolRspInfo\030\007 \001(\0132&.com.heme." +
-      "logic.module.RegGetSchoolRsp\022A\n\022RegGetCl" +
-      "assReqInfo\030\010 \001(\0132%.com.heme.logic.module" +
-      ".RegGetClassReq\022A\n\022RegGetClassRspInfo\030\t " +
-      "\001(\0132%.com.heme.logic.module.RegGetClassR" +
-      "sp\022?\n\021RegStudentReqInfo\030\n \001(\0132$.com.heme" +
-      ".logic.module.RegStudentReq\022?\n\021RegStuden" +
-      "tRspInfo\030\013 \001(\0132$.com.heme.logic.module.R" +
-      "egStudentRsp\0225\n\014LoginReqInfo\030\014 \001(\0132\037.com" +
-      ".heme.logic.module.LoginReq\0225\n\014LoginRspI",
-      "nfo\030\r \001(\0132\037.com.heme.logic.module.LoginR" +
-      "sp\022C\n\023GetGroupInfoReqInfo\030\016 \001(\0132&.com.he" +
-      "me.logic.module.GetGroupInfoReq\022C\n\023GetGr" +
-      "oupInfoRspInfo\030\017 \001(\0132&.com.heme.logic.mo" +
-      "dule.GetGroupInfoRsp\022A\n\022GetUserInfoReqIn" +
-      "fo\030\020 \001(\0132%.com.heme.logic.module.GetUser" +
-      "InfoReq\022A\n\022GetUserInfoRspInfo\030\021 \001(\0132%.co" +
-      "m.heme.logic.module.GetUserInfoRsp\022O\n\031Ge" +
-      "tVerboseUserInfoReqInfo\030\022 \001(\0132,.com.heme" +
-      ".logic.module.GetVerboseUserInfoReq\022O\n\031G",
-      "etVerboseUserInfoRspInfo\030\023 \001(\0132,.com.hem" +
-      "e.logic.module.GetVerboseUserInfoRsp\022A\n\022" +
-      "SetUserIconReqInfo\030\024 \001(\0132%.com.heme.logi" +
-      "c.module.SetUserIconReq\022A\n\022SetUserIconRs" +
-      "pInfo\030\025 \001(\0132%.com.heme.logic.module.SetU" +
-      "serIconRsp\022C\n\023SetSignatureReqInfo\030\026 \001(\0132" +
-      "&.com.heme.logic.module.SetSignatureReq\022" +
-      "C\n\023SetSignatureRspInfo\030\027 \001(\0132&.com.heme." +
-      "logic.module.SetSignatureRsp\022K\n\027FindPass" +
-      "wdVerifyReqInfo\030\030 \001(\0132*.com.heme.logic.m",
-      "odule.FindPasswdVerifyReq\022K\n\027FindPasswdV" +
-      "erifyRspInfo\030\031 \001(\0132*.com.heme.logic.modu" +
-      "le.FindPasswdVerifyRsp\022K\n\027CreateFixedGro" +
-      "upReqInfo\030\032 \001(\0132*.com.heme.logic.module." +
-      "CreateFixedGroupReq\022K\n\027CreateFixedGroupR" +
-      "spInfo\030\033 \001(\0132*.com.heme.logic.module.Cre" +
-      "ateFixedGroupRsp\022I\n\026CreateTempGroupReqIn" +
-      "fo\030\034 \001(\0132).com.heme.logic.module.CreateT" +
-      "empGroupReq\022I\n\026CreateTempGroupRspInfo\030\035 " +
-      "\001(\0132).com.heme.logic.module.CreateTempGr",
-      "oupRsp\022M\n\030CreateSocialGroupReqInfo\030\036 \001(\013" +
-      "2+.com.heme.logic.module.CreateSocialGro" +
-      "upReq\022M\n\030CreateSocialGroupRspInfo\030\037 \001(\0132" +
-      "+.com.heme.logic.module.CreateSocialGrou" +
-      "pRsp\022C\n\023SetGroupNameReqInfo\030  \001(\0132&.com." +
-      "heme.logic.module.SetGroupNameReq\022C\n\023Set" +
-      "GroupNameRspInfo\030! \001(\0132&.com.heme.logic." +
-      "module.SetGroupNameRsp\022;\n\017DelGroupReqInf" +
-      "o\030\" \001(\0132\".com.heme.logic.module.DelGroup" +
-      "Req\022;\n\017DelGroupRspInfo\030# \001(\0132\".com.heme.",
-      "logic.module.DelGroupRsp\022G\n\025AddGroupMemb" +
-      "erReqInfo\030$ \001(\0132(.com.heme.logic.module." +
-      "AddGroupMemberReq\022G\n\025AddGroupMemberRspIn" +
-      "fo\030% \001(\0132(.com.heme.logic.module.AddGrou" +
-      "pMemberRsp\022G\n\025DelGroupMemberReqInfo\030& \001(" +
-      "\0132(.com.heme.logic.module.DelGroupMember" +
-      "Req\022G\n\025DelGroupMemberRspInfo\030\' \001(\0132(.com" +
-      ".heme.logic.module.DelGroupMemberRsp\022E\n\024" +
-      "SetFriendDescReqInfo\030( \001(\0132\'.com.heme.lo" +
-      "gic.module.SetFriendDescReq\022E\n\024SetFriend",
-      "DescRspInfo\030) \001(\0132\'.com.heme.logic.modul" +
-      "e.SetFriendDescRsp\022=\n\020DelFriendReqInfo\030*" +
-      " \001(\0132#.com.heme.logic.module.DelFriendRe" +
-      "q\022=\n\020DelFriendRspInfo\030+ \001(\0132#.com.heme.l" +
-      "ogic.module.DelFriendRsp\022A\n\022SetSelfInfoR" +
-      "eqInfo\030, \001(\0132%.com.heme.logic.module.Set" +
-      "SelfInfoReq\022A\n\022SetSelfInfoRspInfo\030- \001(\0132" +
-      "%.com.heme.logic.module.SetSelfInfoRsp\022=" +
-      "\n\020SetPasswdReqInfo\030. \001(\0132#.com.heme.logi" +
-      "c.module.SetPasswdReq\022=\n\020SetPasswdRspInf",
-      "o\030/ \001(\0132#.com.heme.logic.module.SetPassw" +
-      "dRsp\022G\n\025SetFriendRightReqInfo\0300 \001(\0132(.co" +
-      "m.heme.logic.module.SetFriendRightReq\022G\n" +
-      "\025SetFriendRightRspInfo\0301 \001(\0132(.com.heme." +
-      "logic.module.SetFriendRightRsp\022C\n\023SendFe" +
-      "edbackReqInfo\0302 \001(\0132&.com.heme.logic.mod" +
-      "ule.SendFeedbackReq\022C\n\023SendFeedbackRspIn" +
-      "fo\0303 \001(\0132&.com.heme.logic.module.SendFee" +
-      "dbackRsp\022U\n\034BusiGetClassOfTeacherReqInfo" +
-      "\0304 \001(\0132/.com.heme.logic.module.BusiGetCl",
-      "assOfTeacherReq\022U\n\034BusiGetClassOfTeacher" +
-      "RspInfo\0305 \001(\0132/.com.heme.logic.module.Bu" +
-      "siGetClassOfTeacherRsp\022Y\n\036BusiGetSubject" +
-      "OfTeacherReqInfo\0306 \001(\01321.com.heme.logic." +
-      "module.BusiGetSubjectOfTeacherReq\022Y\n\036Bus" +
-      "iGetSubjectOfTeacherRspInfo\0307 \001(\01321.com." +
-      "heme.logic.module.BusiGetSubjectOfTeache" +
-      "rRsp\022=\n\020AddFriendReqInfo\0308 \001(\0132#.com.hem" +
-      "e.logic.module.AddFriendReq\022=\n\020AddFriend" +
-      "RspInfo\0309 \001(\0132#.com.heme.logic.module.Ad",
-      "dFriendRsp\"\220\004\n\003Cmd\022\017\n\013VerifyPhone\020\001\022\r\n\tR" +
-      "egParent\020\002\022\020\n\014RegGetSchool\020\003\022\017\n\013RegGetCl" +
-      "ass\020\004\022\016\n\nRegStudent\020\005\022\t\n\005Login\020\006\022\020\n\014GetG" +
-      "roupInfo\020\007\022\017\n\013GetUserInfo\020\010\022\026\n\022GetVerbos" +
-      "eUserInfo\020\t\022\017\n\013SetUserIcon\020\n\022\020\n\014SetSigna" +
-      "ture\020\013\022\024\n\020FindPasswdVerify\020\014\022\024\n\020CreateFi" +
-      "xedGroup\020\r\022\023\n\017CreateTempGroup\020\016\022\025\n\021Creat" +
-      "eSocialGroup\020\017\022\020\n\014SetGroupName\020\020\022\014\n\010DelG" +
-      "roup\020\021\022\022\n\016AddGroupMember\020\022\022\022\n\016DelGroupMe" +
-      "mber\020\023\022\021\n\rSetFriendDesc\020\024\022\r\n\tDelFriend\020\025",
-      "\022\017\n\013SetSelfInfo\020\026\022\r\n\tSetPasswd\020\027\022\022\n\016SetF" +
-      "riendRight\020\030\022\020\n\014SendFeedback\020\031\022\031\n\025BusiGe" +
-      "tClassOfTeacher\020\032\022\033\n\027BusiGetSubjectOfTea" +
-      "cher\020\033\022\r\n\tAddFriend\020\034"
+      "\n\016targetSystemId\030\005 \001(\004\022\017\n\007phoneNo\030\006 \001(\t\022" +
+      "\r\n\005email\030\007 \001(\t\022\020\n\010realName\030\010 \001(\t\"\366$\n\014Dat" +
+      "aSvrProto\0229\n\010enum_cmd\030\001 \002(\0162\'.com.heme.l" +
+      "ogic.module.DataSvrProto.Cmd\022A\n\022VerifyPh" +
+      "oneReqInfo\030\002 \001(\0132%.com.heme.logic.module" +
+      ".VerifyPhoneReq\022A\n\022VerifyPhoneRspInfo\030\003 " +
+      "\001(\0132%.com.heme.logic.module.VerifyPhoneR" +
+      "sp\022=\n\020RegParentReqInfo\030\004 \001(\0132#.com.heme.",
+      "logic.module.RegParentReq\022=\n\020RegParentRs" +
+      "pInfo\030\005 \001(\0132#.com.heme.logic.module.RegP" +
+      "arentRsp\022C\n\023RegGetSchoolReqInfo\030\006 \001(\0132&." +
+      "com.heme.logic.module.RegGetSchoolReq\022C\n" +
+      "\023RegGetSchoolRspInfo\030\007 \001(\0132&.com.heme.lo" +
+      "gic.module.RegGetSchoolRsp\022A\n\022RegGetClas" +
+      "sReqInfo\030\010 \001(\0132%.com.heme.logic.module.R" +
+      "egGetClassReq\022A\n\022RegGetClassRspInfo\030\t \001(" +
+      "\0132%.com.heme.logic.module.RegGetClassRsp" +
+      "\022?\n\021RegStudentReqInfo\030\n \001(\0132$.com.heme.l",
+      "ogic.module.RegStudentReq\022?\n\021RegStudentR" +
+      "spInfo\030\013 \001(\0132$.com.heme.logic.module.Reg" +
+      "StudentRsp\0225\n\014LoginReqInfo\030\014 \001(\0132\037.com.h" +
+      "eme.logic.module.LoginReq\0225\n\014LoginRspInf" +
+      "o\030\r \001(\0132\037.com.heme.logic.module.LoginRsp" +
+      "\022C\n\023GetGroupInfoReqInfo\030\016 \001(\0132&.com.heme" +
+      ".logic.module.GetGroupInfoReq\022C\n\023GetGrou" +
+      "pInfoRspInfo\030\017 \001(\0132&.com.heme.logic.modu" +
+      "le.GetGroupInfoRsp\022A\n\022GetUserInfoReqInfo" +
+      "\030\020 \001(\0132%.com.heme.logic.module.GetUserIn",
+      "foReq\022A\n\022GetUserInfoRspInfo\030\021 \001(\0132%.com." +
+      "heme.logic.module.GetUserInfoRsp\022O\n\031GetV" +
+      "erboseUserInfoReqInfo\030\022 \001(\0132,.com.heme.l" +
+      "ogic.module.GetVerboseUserInfoReq\022O\n\031Get" +
+      "VerboseUserInfoRspInfo\030\023 \001(\0132,.com.heme." +
+      "logic.module.GetVerboseUserInfoRsp\022A\n\022Se" +
+      "tUserIconReqInfo\030\024 \001(\0132%.com.heme.logic." +
+      "module.SetUserIconReq\022A\n\022SetUserIconRspI" +
+      "nfo\030\025 \001(\0132%.com.heme.logic.module.SetUse" +
+      "rIconRsp\022C\n\023SetSignatureReqInfo\030\026 \001(\0132&.",
+      "com.heme.logic.module.SetSignatureReq\022C\n" +
+      "\023SetSignatureRspInfo\030\027 \001(\0132&.com.heme.lo" +
+      "gic.module.SetSignatureRsp\022K\n\027FindPasswd" +
+      "VerifyReqInfo\030\030 \001(\0132*.com.heme.logic.mod" +
+      "ule.FindPasswdVerifyReq\022K\n\027FindPasswdVer" +
+      "ifyRspInfo\030\031 \001(\0132*.com.heme.logic.module" +
+      ".FindPasswdVerifyRsp\022K\n\027CreateFixedGroup" +
+      "ReqInfo\030\032 \001(\0132*.com.heme.logic.module.Cr" +
+      "eateFixedGroupReq\022K\n\027CreateFixedGroupRsp" +
+      "Info\030\033 \001(\0132*.com.heme.logic.module.Creat",
+      "eFixedGroupRsp\022I\n\026CreateTempGroupReqInfo" +
+      "\030\034 \001(\0132).com.heme.logic.module.CreateTem" +
+      "pGroupReq\022I\n\026CreateTempGroupRspInfo\030\035 \001(" +
+      "\0132).com.heme.logic.module.CreateTempGrou" +
+      "pRsp\022M\n\030CreateSocialGroupReqInfo\030\036 \001(\0132+" +
+      ".com.heme.logic.module.CreateSocialGroup" +
+      "Req\022M\n\030CreateSocialGroupRspInfo\030\037 \001(\0132+." +
+      "com.heme.logic.module.CreateSocialGroupR" +
+      "sp\022C\n\023SetGroupNameReqInfo\030  \001(\0132&.com.he" +
+      "me.logic.module.SetGroupNameReq\022C\n\023SetGr",
+      "oupNameRspInfo\030! \001(\0132&.com.heme.logic.mo" +
+      "dule.SetGroupNameRsp\022;\n\017DelGroupReqInfo\030" +
+      "\" \001(\0132\".com.heme.logic.module.DelGroupRe" +
+      "q\022;\n\017DelGroupRspInfo\030# \001(\0132\".com.heme.lo" +
+      "gic.module.DelGroupRsp\022G\n\025AddGroupMember" +
+      "ReqInfo\030$ \001(\0132(.com.heme.logic.module.Ad" +
+      "dGroupMemberReq\022G\n\025AddGroupMemberRspInfo" +
+      "\030% \001(\0132(.com.heme.logic.module.AddGroupM" +
+      "emberRsp\022G\n\025DelGroupMemberReqInfo\030& \001(\0132" +
+      "(.com.heme.logic.module.DelGroupMemberRe",
+      "q\022G\n\025DelGroupMemberRspInfo\030\' \001(\0132(.com.h" +
+      "eme.logic.module.DelGroupMemberRsp\022E\n\024Se" +
+      "tFriendDescReqInfo\030( \001(\0132\'.com.heme.logi" +
+      "c.module.SetFriendDescReq\022E\n\024SetFriendDe" +
+      "scRspInfo\030) \001(\0132\'.com.heme.logic.module." +
+      "SetFriendDescRsp\022=\n\020DelFriendReqInfo\030* \001" +
+      "(\0132#.com.heme.logic.module.DelFriendReq\022" +
+      "=\n\020DelFriendRspInfo\030+ \001(\0132#.com.heme.log" +
+      "ic.module.DelFriendRsp\022A\n\022SetSelfInfoReq" +
+      "Info\030, \001(\0132%.com.heme.logic.module.SetSe",
+      "lfInfoReq\022A\n\022SetSelfInfoRspInfo\030- \001(\0132%." +
+      "com.heme.logic.module.SetSelfInfoRsp\022=\n\020" +
+      "SetPasswdReqInfo\030. \001(\0132#.com.heme.logic." +
+      "module.SetPasswdReq\022=\n\020SetPasswdRspInfo\030" +
+      "/ \001(\0132#.com.heme.logic.module.SetPasswdR" +
+      "sp\022G\n\025SetFriendRightReqInfo\0300 \001(\0132(.com." +
+      "heme.logic.module.SetFriendRightReq\022G\n\025S" +
+      "etFriendRightRspInfo\0301 \001(\0132(.com.heme.lo" +
+      "gic.module.SetFriendRightRsp\022C\n\023SendFeed" +
+      "backReqInfo\0302 \001(\0132&.com.heme.logic.modul",
+      "e.SendFeedbackReq\022C\n\023SendFeedbackRspInfo" +
+      "\0303 \001(\0132&.com.heme.logic.module.SendFeedb" +
+      "ackRsp\022U\n\034BusiGetClassOfTeacherReqInfo\0304" +
+      " \001(\0132/.com.heme.logic.module.BusiGetClas" +
+      "sOfTeacherReq\022U\n\034BusiGetClassOfTeacherRs" +
+      "pInfo\0305 \001(\0132/.com.heme.logic.module.Busi" +
+      "GetClassOfTeacherRsp\022Y\n\036BusiGetSubjectOf" +
+      "TeacherReqInfo\0306 \001(\01321.com.heme.logic.mo" +
+      "dule.BusiGetSubjectOfTeacherReq\022Y\n\036BusiG" +
+      "etSubjectOfTeacherRspInfo\0307 \001(\01321.com.he",
+      "me.logic.module.BusiGetSubjectOfTeacherR" +
+      "sp\022=\n\020AddFriendReqInfo\0308 \001(\0132#.com.heme." +
+      "logic.module.AddFriendReq\022=\n\020AddFriendRs" +
+      "pInfo\0309 \001(\0132#.com.heme.logic.module.AddF" +
+      "riendRsp\022M\n\030SearchUserVerboseReqInfo\030: \001" +
+      "(\0132+.com.heme.logic.module.SearchUserVer" +
+      "boseReq\022N\n\030SearchUserVerboseRspInfo\030; \001(" +
+      "\0132,.com.heme.logic.module.GetVerboseUser" +
+      "InfoRsp\"\247\004\n\003Cmd\022\017\n\013VerifyPhone\020\001\022\r\n\tRegP" +
+      "arent\020\002\022\020\n\014RegGetSchool\020\003\022\017\n\013RegGetClass",
+      "\020\004\022\016\n\nRegStudent\020\005\022\t\n\005Login\020\006\022\020\n\014GetGrou" +
+      "pInfo\020\007\022\017\n\013GetUserInfo\020\010\022\026\n\022GetVerboseUs" +
+      "erInfo\020\t\022\017\n\013SetUserIcon\020\n\022\020\n\014SetSignatur" +
+      "e\020\013\022\024\n\020FindPasswdVerify\020\014\022\024\n\020CreateFixed" +
+      "Group\020\r\022\023\n\017CreateTempGroup\020\016\022\025\n\021CreateSo" +
+      "cialGroup\020\017\022\020\n\014SetGroupName\020\020\022\014\n\010DelGrou" +
+      "p\020\021\022\022\n\016AddGroupMember\020\022\022\022\n\016DelGroupMembe" +
+      "r\020\023\022\021\n\rSetFriendDesc\020\024\022\r\n\tDelFriend\020\025\022\017\n" +
+      "\013SetSelfInfo\020\026\022\r\n\tSetPasswd\020\027\022\022\n\016SetFrie" +
+      "ndRight\020\030\022\020\n\014SendFeedback\020\031\022\031\n\025BusiGetCl",
+      "assOfTeacher\020\032\022\033\n\027BusiGetSubjectOfTeache" +
+      "r\020\033\022\r\n\tAddFriend\020\034\022\025\n\021SearchUserVerbose\020" +
+      "\035"
     };
     com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
       new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
@@ -86300,7 +88500,7 @@ public final class Data {
           internal_static_com_heme_logic_module_GetGroupInfoRsp_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_GetGroupInfoRsp_descriptor,
-              new java.lang.String[] { "ErrCode", "ErrString", "GroupId", "GroupInfo", });
+              new java.lang.String[] { "ErrCode", "ErrString", "GroupInfo", });
           internal_static_com_heme_logic_module_GetUserInfoReq_descriptor =
             getDescriptor().getMessageTypes().get(17);
           internal_static_com_heme_logic_module_GetUserInfoReq_fieldAccessorTable = new
@@ -86577,12 +88777,18 @@ public final class Data {
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_AddFriendRsp_descriptor,
               new java.lang.String[] { "ErrCode", "ErrString", });
-          internal_static_com_heme_logic_module_DataSvrProto_descriptor =
+          internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor =
             getDescriptor().getMessageTypes().get(63);
+          internal_static_com_heme_logic_module_SearchUserVerboseReq_fieldAccessorTable = new
+            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+              internal_static_com_heme_logic_module_SearchUserVerboseReq_descriptor,
+              new java.lang.String[] { "VersionNo", "ClientType", "SessionId", "SystemId", "TargetSystemId", "PhoneNo", "Email", "RealName", });
+          internal_static_com_heme_logic_module_DataSvrProto_descriptor =
+            getDescriptor().getMessageTypes().get(64);
           internal_static_com_heme_logic_module_DataSvrProto_fieldAccessorTable = new
             com.google.protobuf.GeneratedMessage.FieldAccessorTable(
               internal_static_com_heme_logic_module_DataSvrProto_descriptor,
-              new java.lang.String[] { "EnumCmd", "VerifyPhoneReqInfo", "VerifyPhoneRspInfo", "RegParentReqInfo", "RegParentRspInfo", "RegGetSchoolReqInfo", "RegGetSchoolRspInfo", "RegGetClassReqInfo", "RegGetClassRspInfo", "RegStudentReqInfo", "RegStudentRspInfo", "LoginReqInfo", "LoginRspInfo", "GetGroupInfoReqInfo", "GetGroupInfoRspInfo", "GetUserInfoReqInfo", "GetUserInfoRspInfo", "GetVerboseUserInfoReqInfo", "GetVerboseUserInfoRspInfo", "SetUserIconReqInfo", "SetUserIconRspInfo", "SetSignatureReqInfo", "SetSignatureRspInfo", "FindPasswdVerifyReqInfo", "FindPasswdVerifyRspInfo", "CreateFixedGroupReqInfo", "CreateFixedGroupRspInfo", "CreateTempGroupReqInfo", "CreateTempGroupRspInfo", "CreateSocialGroupReqInfo", "CreateSocialGroupRspInfo", "SetGroupNameReqInfo", "SetGroupNameRspInfo", "DelGroupReqInfo", "DelGroupRspInfo", "AddGroupMemberReqInfo", "AddGroupMemberRspInfo", "DelGroupMemberReqInfo", "DelGroupMemberRspInfo", "SetFriendDescReqInfo", "SetFriendDescRspInfo", "DelFriendReqInfo", "DelFriendRspInfo", "SetSelfInfoReqInfo", "SetSelfInfoRspInfo", "SetPasswdReqInfo", "SetPasswdRspInfo", "SetFriendRightReqInfo", "SetFriendRightRspInfo", "SendFeedbackReqInfo", "SendFeedbackRspInfo", "BusiGetClassOfTeacherReqInfo", "BusiGetClassOfTeacherRspInfo", "BusiGetSubjectOfTeacherReqInfo", "BusiGetSubjectOfTeacherRspInfo", "AddFriendReqInfo", "AddFriendRspInfo", });
+              new java.lang.String[] { "EnumCmd", "VerifyPhoneReqInfo", "VerifyPhoneRspInfo", "RegParentReqInfo", "RegParentRspInfo", "RegGetSchoolReqInfo", "RegGetSchoolRspInfo", "RegGetClassReqInfo", "RegGetClassRspInfo", "RegStudentReqInfo", "RegStudentRspInfo", "LoginReqInfo", "LoginRspInfo", "GetGroupInfoReqInfo", "GetGroupInfoRspInfo", "GetUserInfoReqInfo", "GetUserInfoRspInfo", "GetVerboseUserInfoReqInfo", "GetVerboseUserInfoRspInfo", "SetUserIconReqInfo", "SetUserIconRspInfo", "SetSignatureReqInfo", "SetSignatureRspInfo", "FindPasswdVerifyReqInfo", "FindPasswdVerifyRspInfo", "CreateFixedGroupReqInfo", "CreateFixedGroupRspInfo", "CreateTempGroupReqInfo", "CreateTempGroupRspInfo", "CreateSocialGroupReqInfo", "CreateSocialGroupRspInfo", "SetGroupNameReqInfo", "SetGroupNameRspInfo", "DelGroupReqInfo", "DelGroupRspInfo", "AddGroupMemberReqInfo", "AddGroupMemberRspInfo", "DelGroupMemberReqInfo", "DelGroupMemberRspInfo", "SetFriendDescReqInfo", "SetFriendDescRspInfo", "DelFriendReqInfo", "DelFriendRspInfo", "SetSelfInfoReqInfo", "SetSelfInfoRspInfo", "SetPasswdReqInfo", "SetPasswdRspInfo", "SetFriendRightReqInfo", "SetFriendRightRspInfo", "SendFeedbackReqInfo", "SendFeedbackRspInfo", "BusiGetClassOfTeacherReqInfo", "BusiGetClassOfTeacherRspInfo", "BusiGetSubjectOfTeacherReqInfo", "BusiGetSubjectOfTeacherRspInfo", "AddFriendReqInfo", "AddFriendRspInfo", "SearchUserVerboseReqInfo", "SearchUserVerboseRspInfo", });
           return null;
         }
       };

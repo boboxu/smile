@@ -20,5 +20,5 @@ public interface IFriendManagerInterface extends
 	 */
 	public void updateFriendRemark(long systemId,String remark,Handler handler);
 	
-	public void delFriend(long systemId,Handler handler);
+	public void delFriend(List<Long> targetIdList,Handler handler);
 }

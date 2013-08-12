@@ -17,6 +17,7 @@ import android.widget.TextView;
 
 import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.module.Data.ClassCombine;
 import com.heme.logic.module.Data.SchoolCombine;
 import com.heme.logic.module.notpbmessage.AreaInfo;
@@ -175,7 +176,7 @@ public class AdultRegActivity extends BaseActivity implements OnClickListener {
 			ccBuilder.setClassName("高一三班");
 			ccBuilder.setClassId("123");
 			
-			LogicManager.registManager().setStuRegInfo("波徐", "123456789", "123456789", LogicManager.areaInfoManager().getAllAreaInfo().get(0),schoolCombineBuilder.build() , ccBuilder.build());
+			LogicManager.registManager().setStuRegInfo("波徐", "123456789", "123456789",SEXTYPE.MALE, LogicManager.areaInfoManager().getAllAreaInfo().get(0),schoolCombineBuilder.build() , ccBuilder.build());
 			Intent intent = new Intent(AdultRegActivity.this,
 					AdultRegPhoneCheckActivity.class);
 			intent.setAction(AdultRegPhoneCheckActivity.ACTIONREG);

@@ -13,7 +13,7 @@ import com.heme.smile.SmileApplication;
 
 public class FileUtil {
 
-	private static String FILEPATH = "smile/data/";
+	private static String FILEPATH = "/smile/data/";
 
 	public static void writeToFile(String filename,
 			com.google.protobuf.GeneratedMessage message, boolean append) {
@@ -86,7 +86,27 @@ public class FileUtil {
 		return ret;
 	}
 
-	private static String getFullPathWithFileName(String filename) {
+	public static boolean ensureDir(String path) {
+		if(null == path) {
+			return false;
+		}
+		
+		boolean ret = false;
+		
+		File file = new File(path);
+		if(!file.exists() || !file.isDirectory()) {
+			try{
+			    ret = file.mkdirs();
+			} catch(SecurityException  se) {
+				se.printStackTrace();
+			}
+		}
+		
+		return ret;
+	}
+	
+	public static String getFullAppDataPath()
+	{
 		StringBuffer sb = new StringBuffer();
 		if (isSDCardExist()) {
 			sb.append(Environment.getExternalStorageDirectory().getPath());
@@ -94,6 +114,12 @@ public class FileUtil {
 			sb.append(SmileApplication.APPPATH);
 		}
 		sb.append(FILEPATH);
+		return sb.toString();
+	}
+	
+	private static String getFullPathWithFileName(String filename) {
+		StringBuffer sb = new StringBuffer();
+		sb.append(getFullAppDataPath());
 		sb.append(filename);
 		return sb.toString();
 	}

@@ -131,9 +131,9 @@ public class GroupManager extends BaseBusinessLogicManager implements
 	}
 
 	@Override
-	public void delGroup(int groupId, Handler handler) {
+	public void delGroup(List<Integer> groupIdList, Handler handler) {
 		DeleteGroupRequest request = new DeleteGroupRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
-		request.setGroupInfo(groupId);
+		request.setGroupInfo(groupIdList);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

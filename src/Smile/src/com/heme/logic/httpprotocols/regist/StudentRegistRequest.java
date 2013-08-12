@@ -1,8 +1,9 @@
 package com.heme.logic.httpprotocols.regist;
 
 import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
-import com.heme.logic.module.Data.RegStudentReq;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
+import com.heme.logic.module.Data.RegStudentReq;
 import com.heme.logic.module.notpbmessage.AreaInfo;
 
 public class StudentRegistRequest extends BaseBusinessRequest {
@@ -14,7 +15,7 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		mRegStudentReqBuilder.setVersionNo(version);
 	}
 	
-	public void setRegProfile(String phoneNo,String realName,String studentId,String password,AreaInfo area,String schoolId,String classId,String verifyCode)
+	public void setRegProfile(String phoneNo,String realName,String studentId,String password,SEXTYPE sex,AreaInfo area,String schoolId,String classId,String verifyCode)
 	{
 		mRegStudentReqBuilder.setPhoneNo(phoneNo);
 		mRegStudentReqBuilder.setRealName(realName);
@@ -29,6 +30,7 @@ public class StudentRegistRequest extends BaseBusinessRequest {
 		mRegStudentReqBuilder.setSchoolId(schoolId);
 		mRegStudentReqBuilder.setClassId(classId);
 		mRegStudentReqBuilder.setVerifyCode(verifyCode);
+		mRegStudentReqBuilder.setGender(SEXTYPE.value(sex));
 		
 		mDataSvrProtoBuilder.setRegStudentReqInfo(mRegStudentReqBuilder.build());
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegStudent);

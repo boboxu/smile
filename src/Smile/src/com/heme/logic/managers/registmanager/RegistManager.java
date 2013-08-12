@@ -12,6 +12,7 @@ import com.heme.logic.httpprotocols.regist.ParentRegistRequest;
 import com.heme.logic.httpprotocols.regist.ParentRegistResponse;
 import com.heme.logic.httpprotocols.regist.StudentRegistRequest;
 import com.heme.logic.httpprotocols.regist.StudentRegistResponse;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Data.ClassCombine;
 import com.heme.logic.module.Data.SchoolCombine;
@@ -30,7 +31,7 @@ public class RegistManager extends BaseBusinessLogicManager implements
 	private com.heme.logic.module.Data.SchoolCombine mSchoolInfo;
 	private ClassCombine mClassInfo;
 	private List<String> mChildIdList;
-
+	private SEXTYPE mSexType;
 	private BaseBusinessRequest request = null;
 
 	@Override
@@ -77,7 +78,7 @@ public class RegistManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void setStuRegInfo(String realName, String studentId,
-			String password, AreaInfo areainfo, SchoolCombine schoolInfo,
+			String password,SEXTYPE sex,AreaInfo areainfo, SchoolCombine schoolInfo,
 			ClassCombine classinfo) {
 		request = new StudentRegistRequest();
 		mRealName = realName;
@@ -86,16 +87,18 @@ public class RegistManager extends BaseBusinessLogicManager implements
 		mAreaInfo = areainfo;
 		mSchoolInfo = schoolInfo;
 		mClassInfo = classinfo;
+		mSexType = sex;
 	}
 
 	@Override
 	public void setParRegInfo(String realName, String idCardNo,
-			String password, List<String> childIdList) {
+			String password, SEXTYPE sex,List<String> childIdList) {
 		request = new ParentRegistRequest();
 		mRealName = realName;
 		mIdCardNo = idCardNo;
 		mPassword = password;
 		mChildIdList = childIdList;
+		mSexType = sex;
 	}
 
 	@Override
@@ -103,11 +106,11 @@ public class RegistManager extends BaseBusinessLogicManager implements
 		if (request instanceof ParentRegistRequest) {
 			// 家长
 			((ParentRegistRequest) request).setRegProfile(mPhoneNo, mRealName,
-					mIdCardNo, StringUtil.MD5Encode(mPassword), mChildIdList, verifyCode);
+					mIdCardNo, StringUtil.MD5Encode(mPassword),mSexType, mChildIdList, verifyCode);
 		} else {
 			// 学生
 			((StudentRegistRequest) request).setRegProfile(mPhoneNo, mRealName,
-					mStudentId, StringUtil.MD5Encode(mPassword), mAreaInfo,
+					mStudentId, StringUtil.MD5Encode(mPassword),mSexType, mAreaInfo,
 					mSchoolInfo.getSchoolId(), mClassInfo.getClassId(),verifyCode);
 		}
 		sendRequest(request, handler, getClass().getName(), _FUNC_());

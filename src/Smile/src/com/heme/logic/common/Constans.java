@@ -4,8 +4,7 @@ public class Constans {
 	/***
 	 * accountmanager
 	 */
-	
-	
+
 	/***
 	 * loginmanager
 	 */
@@ -17,7 +16,7 @@ public class Constans {
 	public static final int VERIFY_CHECKCODE_SUCCESS = LOGIN_FAILED + 1;
 	// 验证码验证错误
 	public static final int VERIFY_CHECKCODE_FAILED = VERIFY_CHECKCODE_SUCCESS + 1;
-	
+
 	/***
 	 * registmanager
 	 */
@@ -29,7 +28,7 @@ public class Constans {
 	public static final int STUDENT_REG_SUCCESS = ADULT_REG_FAILED + 1;
 	// 学生注册失败
 	public static final int STUDENT_REG_FAILED = STUDENT_REG_SUCCESS + 1;
-	
+
 	// 用户注册时填写手机号，服务器给该手机号发送验证码成功的回调
 	public static final int SEND_REG_CHECK_CODE_SUCCESS = STUDENT_REG_FAILED + 1;
 	// 发送验证码失败的回调
@@ -51,9 +50,9 @@ public class Constans {
 	public static final int SUBMIT_FEEDBACK_SUCCESS = UPDATE_PWD_FAILED + 1;
 	// 反馈意见提交失败
 	public static final int SUBMIT_FEEDBACK_FAILED = SUBMIT_FEEDBACK_SUCCESS + 1;
-	
+
 	/***
-	 * message c2c
+	 * messagemanager c2c
 	 */
 	// 向PC发送绿色上网的处理指令成功
 	public static final int SEND_PC_COMMOND_SUCCESS = SUBMIT_FEEDBACK_FAILED + 1;
@@ -76,11 +75,11 @@ public class Constans {
 	// 发送文本消息失败c2c
 	public static final int SEND_TEXT_C2C_FAILED = SEND_TEXT_C2C_SUCCESS + 1;
 	// 发送名片消息成功 c2c
-	public static final int SEND_IDCARD_C2C_SUCCESS = SEND_TEXT_C2C_FAILED+1;
+	public static final int SEND_IDCARD_C2C_SUCCESS = SEND_TEXT_C2C_FAILED + 1;
 	// 发送名片消息失败 c2c
-	public static final int SEND_IDCARD_C2C_FAILED = SEND_IDCARD_C2C_SUCCESS+1;
+	public static final int SEND_IDCARD_C2C_FAILED = SEND_IDCARD_C2C_SUCCESS + 1;
 	/***
-	 * message c2g
+	 * messagemanager c2g
 	 */
 	// 发送图片消息成功c2g
 	public static final int SEND_PIC_C2G_SUCCESS = SEND_IDCARD_C2C_FAILED + 1;
@@ -103,7 +102,7 @@ public class Constans {
 	// 发送名片消息失败c2g
 	public static final int SEND_IDCARD_C2G_FAILED = SEND_IDCARD_C2G_SUCCESS + 1;
 	/***
-	 * greennet
+	 * messagemanager voicetest
 	 */
 	// 发送语音测试消息成功c2c
 	public static final int SEND_VOICETEST_C2C_SUCCESS = SEND_IDCARD_C2G_FAILED + 1;
@@ -113,9 +112,9 @@ public class Constans {
 	public static final int SEND_VOICETEST_C2G_SUCCESS = SEND_VOICETEST_C2C_FAILED + 1;
 	// 发送语音测试消息失败c2g
 	public static final int SEND_VOICETEST_C2G_FAILED = SEND_VOICETEST_C2G_SUCCESS + 1;
-	
+
 	/***
-	 * pollmsg
+	 * messagemanager pollmsg
 	 */
 	// 拉取未读成功 c2c
 	public static final int POLL_C2C_SUCCESS = SEND_VOICETEST_C2G_FAILED + 1;
@@ -150,7 +149,7 @@ public class Constans {
 	// 拉取未读失败 绿色上网助手
 	public static final int POLL_GREENNET_FAILED = POLL_GREENNET_SUCCESS + 1;
 	/***
-	 * poll unreadinfo
+	 * messagemanager poll unreadinfo
 	 */
 	// 上线拉取未读信息 成功
 	public static final int POLL_UNREADINFO_SUCCESS = POLL_GREENNET_FAILED;
@@ -171,40 +170,46 @@ public class Constans {
 	public static final int GET_CLASSINFO_SUCCESS = GET_SCHOOLINFO_FAILED + 1;
 	// 拉取班级信息失败
 	public static final int GET_CLASSINFO_FAILED = GET_CLASSINFO_SUCCESS + 1;
-	
+
 	/***
 	 * groupmanager
 	 */
-	//拉取群信息成功
+	// 拉取群信息成功
 	public static final int GET_GROUPINFO_SUCCESS = GET_CLASSINFO_FAILED + 1;
-	//拉取群信息失败
+	// 拉取群信息失败
 	public static final int GET_GROUPINFO_FAILED = GET_GROUPINFO_SUCCESS + 1;
-	
+
 	/***
 	 * friendmanager
 	 */
-	//拉取个人信息成功
+	// 拉取个人信息成功
 	public static final int GET_USERINFO_SUCCESS = GET_GROUPINFO_FAILED + 1;
-	//拉取个人信息失败
+	// 拉取个人信息失败
 	public static final int GET_USERINFO_FAILED = GET_USERINFO_SUCCESS + 1;
-	//拉取个人详细信息成功
+	// 拉取个人详细信息成功
 	public static final int GET_VERBOSEUSERINFO_SUCCESS = GET_USERINFO_FAILED + 1;
-	//拉取个人详细信息失败
+	// 拉取个人详细信息失败
 	public static final int GET_VERBOSEUSERINFO_FAILED = GET_VERBOSEUSERINFO_SUCCESS + 1;
 
 	/***
 	 * passwordmanager
 	 */
-	
+	public static final int RESET_PASSWORD_SUCCESS = GET_VERBOSEUSERINFO_FAILED + 1;
+	public static final int RESET_PASSWORD_FAILED = RESET_PASSWORD_SUCCESS + 1;
+	public static final int FIND_PASSWORD_SUCCESS = RESET_PASSWORD_FAILED + 1;
+	public static final int FIND_PASSWORD_FAILED = FIND_PASSWORD_SUCCESS + 1;
 	/***
 	 * pushmanager
 	 */
-	
-
+	public static final int PUSH_MANAGER_READ_SUCCESS = FIND_PASSWORD_FAILED + 1;
+	public static final int PUSH_MANAGER_READ_FAILED = PUSH_MANAGER_READ_SUCCESS + 1;
 	/***
 	 * statusreportmanager
 	 */
-	
+	public static final int GET_STATUS_SUCCESS = PUSH_MANAGER_READ_FAILED + 1;
+	public static final int GET_STATUS_FAILED = GET_STATUS_SUCCESS + 1;
+	public static final int SET_STATUS_SUCCESS = GET_STATUS_FAILED + 1;
+	public static final int SET_STATUS_FAILED = SET_STATUS_SUCCESS + 1;
 	/***
 	 * updatemanager
 	 */

@@ -2,14 +2,17 @@ package com.heme.logic.httpprotocols.regist;
 
 import java.util.List;
 
+import android.R.integer;
+
 import com.heme.logic.httpprotocols.base.business.BaseBusinessRequest;
+import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
 import com.heme.logic.module.Data.RegParentReq;
 
 public class ParentRegistRequest extends BaseBusinessRequest {
 	
 	RegParentReq.Builder mRegParentReqBuilder;
-	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,List<String> childIdList,String verifyCode)
+	public void setRegProfile(String phoneNo,String realName,String idCardNo,String password,SEXTYPE sex,List<String> childIdList,String verifyCode)
 	{
 		mRegParentReqBuilder.setPhoneNo(phoneNo);
 		mRegParentReqBuilder.setRealName(realName);
@@ -17,7 +20,7 @@ public class ParentRegistRequest extends BaseBusinessRequest {
 		mRegParentReqBuilder.setPassword(password);
 		mRegParentReqBuilder.addAllChildStudentId(childIdList);
 		mRegParentReqBuilder.setVerifyCode(verifyCode);
-		
+		mRegParentReqBuilder.setGender(SEXTYPE.value(sex));
 		mDataSvrProtoBuilder.setRegParentReqInfo(mRegParentReqBuilder.build());
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.RegParent);
 		super.setBody(mDataSvrProtoBuilder.build().toByteString());

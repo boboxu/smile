@@ -13,9 +13,7 @@ import com.heme.foundation.net.INetworkManagerDelegate;
 import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
-import com.heme.foundation.net.NetworkResponse;
 import com.heme.logic.module.Trans.TransProto;
-import com.heme.utils.ByteUtil;
 
 public class ServerManager implements IServerManagerInterface,
 		INetworkManagerDelegate, IProtocolEngineDelegate {

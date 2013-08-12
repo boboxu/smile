@@ -8,11 +8,14 @@
 	    android:layout_height="fill_parent"
 	    android:orientation="vertical" 
 	    android:background="@drawable/nav_page">
+
 	   	<TextView
-	        android:id="@+id/textrst"
-	        android:layout_width="wrap_content"
-	        android:layout_height="wrap_content"
-	        android:text="TextView" />
+	   	    android:id="@+id/textrst"
+	   	    android:layout_width="wrap_content"
+	   	    android:layout_height="wrap_content"
+	   	    android:text="TextView"
+	   	    android:textColor="#000000"
+	   	    android:textSize="@android:dimen/app_icon_size" />
 	    	    
 	    <ListView android:id="@+id/lvrst"
 	        android:layout_width="fill_parent"

@@ -102,9 +102,9 @@ public class FriendManager extends BaseBusinessLogicManager implements
 	}
 
 	@Override
-	public void delFriend(long systemId, Handler handler) {
+	public void delFriend(List<Long> systemIdList, Handler handler) {
 		DelFriendRequest request = new DelFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
-		request.setTargetSystemId(systemId);
+		request.setTargetSystemId(systemIdList);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

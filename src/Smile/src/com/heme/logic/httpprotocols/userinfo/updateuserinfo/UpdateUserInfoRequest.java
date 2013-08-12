@@ -13,14 +13,14 @@ public class UpdateUserInfoRequest extends BaseLoginedBusinessRequest {
 	}
 
 	public enum SEXTYPE {
-		FEMALE, // 女
 		MALE, // 男
+		FEMALE, // 女
 		NONE;// 未知
 		public static int value(SEXTYPE type) {
 			switch (type) {
-			case FEMALE:
-				return 1;
 			case MALE:
+				return 1;
+			case FEMALE:
 				return 2;
 			case NONE:
 				return 3;

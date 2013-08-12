@@ -15,7 +15,7 @@ public interface IGroupManagerInterface extends
 	public void createPermanentGroup(AreaInfo areaInfo,SchoolCombine schoolInfo,String groupName,CreatePermanentGroupRequest.VERIFYTYPE type,List<Long> targetIdList,Handler handler);
 	public void createTempGroup(String groupName,List<Long> systemIdList,Handler handler);
 	public void updateGroupName(String groupName,int groupId,Handler handler);
-	public void delGroup(int groupId,Handler handler);
+	public void delGroup(List<Integer> groupIdList,Handler handler);
 	public void addMemberToGroup(int groupId,List<Long> memberIdList,Handler handler);
 	public void delMemberInGroup(int groupId,List<Long> memberIdList,Handler handler);
 	

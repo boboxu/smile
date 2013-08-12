@@ -151,4 +151,5 @@ public interface IMessageManager extends IBaseBusinessLogicManagerInterface {
 	
 	//PollUnReadMsg 上线的时候
 	public void PollUnReadInfo(Handler handler);
+	
 }

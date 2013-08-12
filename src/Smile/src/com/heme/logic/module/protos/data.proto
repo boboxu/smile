@@ -153,8 +153,7 @@ message GetGroupInfoRsp
 {
 	required uint32 errCode = 1;			//错误码 0：成功；其他：失败
 	required string errString = 2;			//错误信息
-    required uint32 groupId = 3;			//群组号
-    repeated GroupCombine groupInfo = 4;
+    repeated GroupCombine groupInfo = 3;
 }
 
 
@@ -366,7 +365,7 @@ message DelGroupReq
     required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
 	required string sessionId = 3;          //会话ID
     required uint64 systemId = 4;			//微校号
-    required uint32 groupId = 5;			//群组ID
+    repeated uint32 groupId = 5;			//群组ID
 }
 message DelGroupRsp
 {
@@ -432,7 +431,7 @@ message DelFriendReq
     required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
 	required string sessionId = 3;          //会话ID
     required uint64 systemId = 4;			//微校号
-    required uint64 targetSystemId = 5;			//对方微校号
+    repeated uint64 targetSystemId = 5;			//对方微校号
 }
 message DelFriendRsp
 {
@@ -448,7 +447,7 @@ message SetSelfInfoReq
     required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
 	required string sessionId = 3;          //会话ID
     required uint64 systemId = 4;			//微校号
-    optional uint32 gender = 5;			   //性别；1女；2男；3未知 
+    optional uint32 gender = 5;			   //性别；1男；2女；3未知 
     optional string birthday = 6;			//生日
     optional string occupation = 7;			//职业
     optional string location = 8;			//地区，不同于注册的地区，这里可以理解为现所在地区 
@@ -575,6 +574,20 @@ message AddFriendRsp
 	required string errString = 2;			//错误信息
 }
 
+//添加好友时，查找好友信息，一阶段只需要根据微校号和手机号，估计二阶段还要email和姓名
+message SearchUserVerboseReq
+{
+	required string versionNo = 1;			//版本号
+    required uint32 clientType = 2;			//客户端类型，1：家长；2：学生；3：老师
+	required string sessionId = 3;          //会话ID
+    required uint64 systemId = 4;			//所有者微校号
+    optional uint64 targetSystemId = 5;			//目标微校号
+    optional string phoneNo = 6;			    //手机号
+    optional string email = 7;			        //email
+    optional string realName = 8;			    //姓名
+}
+//回包同GetVerboseUserInfoRsp
+
 
 message DataSvrProto
 {
@@ -608,6 +621,7 @@ message DataSvrProto
         BusiGetClassOfTeacher = 26;
         BusiGetSubjectOfTeacher = 27;
         AddFriend = 28;
+        SearchUserVerbose = 29;
 	}
 	
 	required Cmd enum_cmd = 1;	//命令字，通过命令字，后续用来判断哪个包体会被赋值
@@ -691,8 +705,11 @@ message DataSvrProto
 	optional BusiGetClassOfTeacherRsp BusiGetClassOfTeacherRspInfo = 53;
         
     optional BusiGetSubjectOfTeacherReq BusiGetSubjectOfTeacherReqInfo = 54;
-	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 55;    
+	optional BusiGetSubjectOfTeacherRsp BusiGetSubjectOfTeacherRspInfo = 55;
     
     optional AddFriendReq AddFriendReqInfo = 56;
-	optional AddFriendRsp AddFriendRspInfo = 57;    
+	optional AddFriendRsp AddFriendRspInfo = 57;
+
+    optional SearchUserVerboseReq SearchUserVerboseReqInfo = 58;
+	optional GetVerboseUserInfoRsp SearchUserVerboseRspInfo = 59;
 }

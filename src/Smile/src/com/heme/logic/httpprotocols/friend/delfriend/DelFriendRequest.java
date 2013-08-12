@@ -1,5 +1,7 @@
 package com.heme.logic.httpprotocols.friend.delfriend;
 
+import java.util.List;
+
 import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
 import com.heme.logic.module.Data.DataSvrProto.Cmd;
 import com.heme.logic.module.Data.DelFriendReq;
@@ -25,8 +27,8 @@ public class DelFriendRequest extends BaseLoginedBusinessRequest {
 		mDelFriendReqBuilder.setVersionNo(version);
 	}
 
-	public void setTargetSystemId(long targetId) {
-		mDelFriendReqBuilder.setTargetSystemId(targetId);
+	public void setTargetSystemId(List<Long> targetIdList) {
+		mDelFriendReqBuilder.addAllTargetSystemId(targetIdList);
 
 		mDataSvrProtoBuilder.setDelFriendReqInfo(mDelFriendReqBuilder.build());
 		mDataSvrProtoBuilder.setEnumCmd(Cmd.DelFriend);
