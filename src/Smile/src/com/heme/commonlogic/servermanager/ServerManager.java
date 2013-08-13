@@ -342,7 +342,9 @@ public class ServerManager implements IServerManagerInterface,
 			}
 			if (isPushMsg(transProto))
 			{
-				//TODO;
+				PushMsgReq pushMsgReq = PushMsgReq.parseFrom(transProto.getBytesBody());
+				int num = pushMsgReq.getRptMsgPushmsgCount();
+				Log.d(TAG, "123");
 			}
 			basePbRequest = (BasePbRequest)getRequestFromSeqId(transProto.getUint32Seq());
 			if (basePbRequest == null) {
