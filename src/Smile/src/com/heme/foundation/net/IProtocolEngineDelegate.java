@@ -12,4 +12,15 @@ public interface IProtocolEngineDelegate
 	 * 需要发送心跳包
 	 */
 	public void onNeedSendHeartBeat();
+	
+	/**
+	 * 服务器连接失败
+	 */
+	public void onProtocolConnectFailed();
+	
+	/**
+	 * 服务器连接超时
+	 */
+	public void onProtocolConnectTimeout();
+	
 }

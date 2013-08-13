@@ -33,19 +33,19 @@ public class BasePbResponse extends BaseResponse {
 	
 	public static TransProto parseByteToTransProto(byte[] buffer) throws InvalidProtocolBufferException
 	{
-		int length = ByteUtil.byteArrayToInt(buffer, 0);
-		if (length + 4 != buffer.length) {
-			Log.e(TAG, "网络回包的长度，数据不正确");
-			return null;
-		}
-		// Length占四个字节，后面的都是数据
-		byte[] _respData = new byte[length];
-		for (int i = 0; i < _respData.length; i++) {
-			_respData[i] = buffer[4 + i];
-		}
+//		int length = ByteUtil.byteArrayToInt(buffer, 0);
+//		if (length + 4 != buffer.length) {
+//			Log.e(TAG, "网络回包的长度，数据不正确");
+//			return null;
+//		}
+//		// Length占四个字节，后面的都是数据
+//		byte[] _respData = new byte[length];
+//		for (int i = 0; i < _respData.length; i++) {
+//			_respData[i] = buffer[4 + i];
+//		}
 		
 		TransProto ret;
-		ret = TransProto.parseFrom(_respData);
+		ret = TransProto.parseFrom(buffer);
 		return ret;
 	}
 }

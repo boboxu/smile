@@ -118,13 +118,8 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	{
     	if (isConnected && mConnectionThread != null)
 		{
-			try
-			{
-				mConnectionThread.sendBuffer(buffer);
-			} catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+
+			mConnectionThread.sendBuffer(buffer);
 		}		
 	}
 

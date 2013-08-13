@@ -109,6 +109,10 @@ public class ServerManager implements IServerManagerInterface,
 	@Override
 	public int sendProtocolRequest(BasePbRequest pbRequest) {
 				
+//		NetworkRequest request = new NetworkRequest("http://202.96.170.123:28080/cgi-bin/upload", "POST", this);
+//		request.setFileData("/sdcard/123.jpg", "123.jpg", "image/jpeg", "file");
+//		NetworkEngine.getEngine().sendHttpRequest(request);
+		
 		int seqId = mRequestIdGenerator.generateRequestId();
 		pbRequest.setSeqId(seqId);
 		pbRequest.buildTransData();
@@ -373,6 +377,20 @@ public class ServerManager implements IServerManagerInterface,
 
 	@Override
 	public void onNeedSendHeartBeat()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProtocolConnectFailed()
+	{
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onProtocolConnectTimeout()
 	{
 		// TODO Auto-generated method stub
 		

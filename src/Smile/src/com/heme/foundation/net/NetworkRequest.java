@@ -633,20 +633,20 @@ public class NetworkRequest
 			builder.setMethod("POST");
 
 			String charset = "utf-8";
-			String stringBoundary = "0xKhTmLbOuNdArY";
-			builder.setHeader("Content-Type", String.format(
-			        "multipart/form-data; charset=%s; boundary=%s", charset,
-			        stringBoundary));
+//			String stringBoundary = "0xKhTmLbOuNdArY";
+//			builder.setHeader("Content-Type", String.format(
+//			        "multipart/form-data; charset=%s; boundary=%s", charset,
+//			        stringBoundary));
 
 			byte[] httpBodyData = null;
-			String tmpString = String.format("--%s\r\n", stringBoundary);
-			httpBodyData = newBytesByAppending(httpBodyData,
-			        tmpString.getBytes());
+//			String tmpString = String.format("--%s\r\n", stringBoundary);
+//			httpBodyData = newBytesByAppending(httpBodyData,
+//			        tmpString.getBytes());
 
-			String endItemBoundary = String.format("\r\n--%s\r\n",
-			        stringBoundary);
-			String allItemsEndBoundary = String.format("\r\n--%s--\r\n",
-			        stringBoundary);
+//			String endItemBoundary = String.format("\r\n--%s\r\n",
+//			        stringBoundary);
+//			String allItemsEndBoundary = String.format("\r\n--%s--\r\n",
+//			        stringBoundary);
 
 			if (mDataDict != null && !mDataDict.isEmpty())
 			{
@@ -667,8 +667,8 @@ public class NetworkRequest
 					        || mFileDataArray != null)
 					{
 						// 还有数据要添加
-						httpBodyData = newBytesByAppending(httpBodyData,
-						        endItemBoundary.getBytes());
+//						httpBodyData = newBytesByAppending(httpBodyData,
+//						        endItemBoundary.getBytes());
 					}
 				}
 
@@ -681,22 +681,24 @@ public class NetworkRequest
 				{
 					String key = (String) keys.nextElement();
 					NetworkBinaryData value = mBinaryDataArray.get(key);
-					tmpString = String
-					        .format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",
-					                key, value.filename);
-					httpBodyData = newBytesByAppending(httpBodyData,
-					        tmpString.getBytes());
-					tmpString = String.format("Content-Type: %s\r\n\r\n",
-					        value.contentType);
-					httpBodyData = newBytesByAppending(httpBodyData,
-					        tmpString.getBytes());
+//					tmpString = String
+//					        .format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",
+//					                key, value.filename);
+//					httpBodyData = newBytesByAppending(httpBodyData,
+//					        tmpString.getBytes());
+					
+					builder.setHeader("Content-Type", value.contentType);
+//					String tmpString = String.format("Content-Type: %s\r\n\r\n",
+//					        value.contentType);
+//					httpBodyData = newBytesByAppending(httpBodyData,
+//					        tmpString.getBytes());
 					httpBodyData = newBytesByAppending(httpBodyData,
 					        value.data.array());
 					if (keys.hasMoreElements() || mFileDataArray != null)
 					{
 						// 还有数据要添加
-						httpBodyData = newBytesByAppending(httpBodyData,
-						        endItemBoundary.getBytes());
+//						httpBodyData = newBytesByAppending(httpBodyData,
+//						        endItemBoundary.getBytes());
 					}
 				}
 			}
@@ -746,30 +748,33 @@ public class NetworkRequest
 							
 							
 						}
-						tmpString = String
-						        .format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",
-						                key, value.filename);
-						httpBodyData = newBytesByAppending(httpBodyData,
-						        tmpString.getBytes());
-						tmpString = String.format("Content-Type: %s\r\n\r\n",
-						        value.contentType);
-						httpBodyData = newBytesByAppending(httpBodyData,
-						        tmpString.getBytes());
+//						tmpString = String
+//						        .format("Content-Disposition: form-data; name=\"%s\"; filename=\"%s\"\r\n",
+//						                key, value.filename);
+//						httpBodyData = newBytesByAppending(httpBodyData,
+//						        tmpString.getBytes());
+//						tmpString = String.format("Content-Type: %s\r\n\r\n",
+//						        value.contentType);
+//						httpBodyData = newBytesByAppending(httpBodyData,
+//						        tmpString.getBytes());
+						
+						builder.setHeader("Content-Type", value.contentType);
+
 						httpBodyData = newBytesByAppending(httpBodyData,
 						        fileBytes);
 						fileBytes = null;
 						if (keys.hasMoreElements())
 						{
 							// 还有数据要添加
-							httpBodyData = newBytesByAppending(httpBodyData,
-							        endItemBoundary.getBytes());
+//							httpBodyData = newBytesByAppending(httpBodyData,
+//							        endItemBoundary.getBytes());
 						}
 					}
 				}
 			}
 
-			httpBodyData = newBytesByAppending(httpBodyData,
-			        allItemsEndBoundary.getBytes());
+//			httpBodyData = newBytesByAppending(httpBodyData,
+//			        allItemsEndBoundary.getBytes());
 			builder.setBody(httpBodyData);
 
 		}

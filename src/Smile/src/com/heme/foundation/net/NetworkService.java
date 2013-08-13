@@ -5,6 +5,7 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
 import java.net.Socket;
+import java.net.SocketTimeoutException;
 
 import android.app.AlarmManager;
 import android.app.Notification;
@@ -23,6 +24,8 @@ import android.util.Log;
 
 import com.heme.logic.httpprotocols.heartbeat.HeartBeatRequest;
 import com.heme.smile.StartActivity;
+import com.heme.utils.ByteUtil;
+import com.heme.utils.StringUtil;
 
 /**
  * 
@@ -59,7 +62,7 @@ public class NetworkService extends Service
 	private static final long KEEP_ALIVE_INTERVAL = 1000 * 60 * 5;
 	
 	//重试间隔
-	private static final long INITIAL_RETRY_INTERVAL = 1000 * 10;
+	private static final long INITIAL_RETRY_INTERVAL = 1000 * 5;
 	private static final long MAX_RETRY_INTERVAL = 1000 * 60 * 30;
 	
 	private long mStartTime;
@@ -105,6 +108,7 @@ public class NetworkService extends Service
 	@Override
 	public void onCreate()
 	{
+		Log.d(TAG, "onCreate");
 		super.onCreate();
 		
 		mStartTime = System.currentTimeMillis();
@@ -148,7 +152,13 @@ public class NetworkService extends Service
 	@Override
 	public void onStart(Intent intent, int startId)
 	{
+		Log.d(TAG, "onStart");
 		super.onStart(intent, startId);
+		
+		if (StringUtil.isEmptyOrNull(intent.getAction()))
+		{
+			Log.d(TAG, "intent action:" + intent.getAction());
+		}
 		
 		if (intent.getAction().equals(ACTION_STOP) == true)
 		{
@@ -404,11 +414,11 @@ public class NetworkService extends Service
 		
 		public void run()
 		{
-			
-			mSocket = new Socket();
-			
+						
 			try
 			{
+				mSocket = new Socket();
+
 				mSocket.connect(new InetSocketAddress(mHost, mPort), 20000);
 				
 				//初始化网络参数
@@ -425,10 +435,13 @@ public class NetworkService extends Service
 				showNotification("测试心跳");
 				
 				NetworkEngine.getEngine().onConnceted(this);
-				
-			} catch (IOException e)
+			}
+			catch (SocketTimeoutException e) 
 			{
-				// TODO Auto-generated catch block
+				
+			}
+			catch (IOException e)
+			{
 				e.printStackTrace();
 			}
 			
@@ -507,44 +520,59 @@ public class NetworkService extends Service
 			//调用HeartManager
 		}
 		
-		public synchronized void sendBuffer(byte[] buffer) throws IOException
+		public synchronized void sendBuffer(byte[] buffer)
 		{
 			if (!isConnected())
 			{
-				//TODO
+				reconnectIfNecessary();
 			}
-			mOutputStream.write(buffer);
-			mOutputStream.flush();
 			
 			Log.d(TAG, "send buffer:" + buffer.toString());
+
+			try
+			{
+				mOutputStream.write(buffer);
+				mOutputStream.flush();
+
+			}
+			catch (SocketTimeoutException e) 
+			{
+//				NetworkEngine.getEngine();
+			}
+			catch (IOException e)
+			{
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
 		}
 		
 		protected byte[] recvBuffer() throws IOException
 		{
 			int count = mInputStream.available();
-			if (count > 0)
-			{
-				byte[] buffer = new byte[count];
-				mInputStream.read(buffer, 0, count);
-				return buffer;
-			}
 //			if (count > 0)
 //			{
-//				byte[] lengthBuf = new byte[4];
-//				mInputStream.read(lengthBuf, 0, 4);
-//				int recvLen = ByteUtil.byteArrayToInt(lengthBuf, 0);
-//				
-//				if (recvLen > 0)
-//				{
-//					byte[] recvBuf = new byte[recvLen];
-//					int readLen = 0;
-//					while (readLen < recvLen)
-//					{
-//						readLen += mInputStream.read(recvBuf, readLen, recvLen - readLen);
-//					}
-//					return recvBuf;
-//				}
+//				byte[] buffer = new byte[count];
+//				mInputStream.read(buffer, 0, count);
+//				return buffer;
 //			}
+			if (count > 0)
+			{
+				byte[] lengthBuf = new byte[4];
+				mInputStream.read(lengthBuf, 0, 4);
+				int recvLen = ByteUtil.byteArrayToInt(lengthBuf, 0);
+				
+				if (recvLen > 0)
+				{
+					byte[] recvBuf = new byte[recvLen];
+					int readLen = 0;
+					while (readLen < recvLen)
+					{
+						readLen += mInputStream.read(recvBuf, readLen, recvLen - readLen);
+					}
+					return recvBuf;
+				}
+			}
 			return null;
 		}
 		
