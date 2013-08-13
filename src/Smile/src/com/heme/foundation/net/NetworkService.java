@@ -80,6 +80,12 @@ public class NetworkService extends Service
     	
     	//需要发心跳包
     	public void onNeedBeatHeart();
+    	
+    	//连接超时
+    	public void onConnectTimeout();
+    	
+    	//连接失败
+    	public void onConnectFailed();
     }
 
 	//开启service的静态方法
@@ -537,6 +543,7 @@ public class NetworkService extends Service
 			}
 			catch (SocketTimeoutException e) 
 			{
+//				NetworkEngine.getEngine().
 //				NetworkEngine.getEngine();
 			}
 			catch (IOException e)

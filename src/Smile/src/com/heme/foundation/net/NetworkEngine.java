@@ -42,6 +42,8 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	
 	protected static final int MSG_RECV_BUF = 1;
 	protected static final int MSG_NEED_HEART = 2;
+	protected static final int MSG_CONNECT_TIMEOUT = 3;
+	protected static final int MSG_CONNECT_FAILED = 4;
 
 	protected static final String BUNDLE_RECV_BUF = "BUNDLE_RECV_BUF";
 	
@@ -139,6 +141,7 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 			bundle.putByteArray(BUNDLE_RECV_BUF, recvBuffer);
 			
 			Message msg = new Message();
+			msg.what = MSG_RECV_BUF;
 			msg.setData(bundle);
 			mHandler.sendMessage(msg);
 		}
@@ -149,6 +152,20 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 	{
 		mHandler.sendEmptyMessage(MSG_NEED_HEART);
 	}
+
+
+	@Override
+	public void onConnectTimeout()
+	{
+		mHandler.sendEmptyMessage(MSG_CONNECT_TIMEOUT);
+	}
+
+	@Override
+	public void onConnectFailed()
+	{
+		mHandler.sendEmptyMessage(MSG_CONNECT_FAILED);
+	}
+	
 	
 	@SuppressLint("HandlerLeak")
 	protected Handler mHandler = new Handler()
@@ -158,10 +175,6 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 			if (mProtocolEngineDelegate == null)
 			{
 				return;
-			}
-			if (msg.getData() != null)
-			{
-				msg.what = MSG_RECV_BUF;
 			}
 			switch (msg.what)
 			{
@@ -178,6 +191,12 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
 						mProtocolEngineDelegate.onRecvProtocolBuffer(recBuf);
 					}
 				}
+				break;
+			case MSG_CONNECT_TIMEOUT:
+				mProtocolEngineDelegate.onProtocolConnectTimeout();
+				break;
+			case MSG_CONNECT_FAILED:
+				mProtocolEngineDelegate.onProtocolConnectFailed();
 				break;
 			default:
 				break;
