@@ -43,6 +43,14 @@ message FileInfo
 	optional string    str_file_info = 4;		//文件描述
 };
 
+//复杂内容
+message RichInfo
+{
+	optional string    str_text = 1;
+	optional string    str_web_url = 2;
+	optional string    str_pic_url = 3;
+};
+
 
 //绿色上网助手
 message NetGuardInfo
@@ -57,7 +65,7 @@ message VerifyRequest
 {
 	required uint32    uint32_verify_type = 1;	//验证类型：0:加好友 1:加群
 	optional bytes     bytes_verify_key = 2;        //预留，发起方从data server获取到的一个key
-	optional string    stri_verify_info = 3;        //验证信息
+	optional string    str_verify_info = 3;        //验证信息
 };
 
 ///////////////////////////////////////////////////////////////////
@@ -78,7 +86,7 @@ message VoiceTestInfo
 	optional VoiceMsgInfo msg_voice_answer = 7;     //语音回答
 	optional string    str_text_answer = 8;         //文字回答
 	optional uint32    uint32_score = 9;            //评分 1:好 2:中 3:差
-	optional uint32    str_comment = 10;             //评语
+	optional string    str_comment = 10;             //评语
 };
 
 //课堂信息助手
@@ -86,6 +94,18 @@ message ClassInfo
 {
 	optional string    str_course = 1;		//科目
 	optional string    str_content = 2;		//内容
+	optional string    str_url = 3;			//Web链接
+};
+
+//媒体类型
+enum ContentType
+{
+	CT_Text = 0;	//文本
+	CT_Picture = 1;	//图片
+	CT_Voice = 2;	//语音
+	CT_Video = 3;	//视频
+	CT_File = 4;	//文件
+	CT_IDCard = 5;	//名片
 };
 
 //消息类型
@@ -103,17 +123,6 @@ enum MessageType
 	MT_VerifyReq = 9;	//认证请求
 };
 
-//媒体类型
-enum ContentType
-{
-	CT_Text = 0;	//文本
-	CT_Picture = 1;	//图片
-	CT_Voice = 2;	//语音
-	CT_Video = 3;	//视频
-	CT_File = 4;	//文件
-	CT_IDCard = 5;	//名片
-};
-
 message CommonMsg
 {
 	required uint64    uint64_from_uid = 1;		//发送方ID
@@ -121,16 +130,25 @@ message CommonMsg
 	repeated uint64    uint64_to_gid = 3;		//接收方群ID 
 	required MessageType    uint32_msg_type = 4;	//消息类型
 	optional ContentType    uint32_content_type = 5;//媒体类型
-	optional string    str_text_msg = 6;		//文本消息内容	
-	optional PicMsgInfo msg_pic_msg = 7;		//图片消息，媒体类型为1时使用
-	optional VoiceMsgInfo msg_voice_msg = 8;	//语音消息，媒体类型为2时使用
-	optional VideoMsgInfo msg_video_msg = 9;	//视频消息，媒体类型为3时使用
-	optional NetGuardInfo msg_moitor_msg = 10;	//绿色上网助手与终端交互消息
-	optional VoiceTestInfo msg_test_msg = 11;       //语音测评消息
-	optional ClassInfo msg_class_info = 12;         //课堂信息
-	optional VerifyRequest msg_verify_req = 13;     //验证请求消息（加好友或加群）
-	optional FileInfo  msg_file_info = 14;		//文件传输
-	optional uint64    uint64_time = 20;		//发送方终端当前时间
+
+        /////////////////////////////////////////////////////////////////////
+	//6-15定义的消息结构根据uint32_msg_type和uint32_content_type选择一个
+
+	optional string    str_text_msg = 6;		//CT_Text使用，文本消息内容	
+	optional PicMsgInfo msg_pic_msg = 7;		//CT_Picture使用，图片消息
+	optional VoiceMsgInfo msg_voice_msg = 8;	//CT_Voice使用，语音消息
+	optional VideoMsgInfo msg_video_msg = 9;	//CT_Video使用，视频消息
+	optional NetGuardInfo msg_moitor_msg = 10;	//MT_NetGuard使用，绿色上网助手与终端交互消息
+	optional VoiceTestInfo msg_test_msg = 11;       //MT_VoiceTest使用，语音测评消息
+	optional ClassInfo msg_class_info = 12;         //MT_ClassInfo使用, 课堂信息
+	optional VerifyRequest msg_verify_req = 13;     //MT_VerifyReq使用，验证请求消息（加好友或加群）
+	optional FileInfo  msg_file_info = 14;		//CT_File使用，文件传输
+	optional RichInfo  msg_rich_info = 15;          //MT_Broadcast使用，复杂内容
+
+        //<--多选一结束
+	/////////////////////////////////////////////////////////////////////
+
+	optional uint64    uint64_time = 20;		//发送时间
 	optional uint32    uint32_trunct_flag = 21;	//内容截短标志，PushMsgReq有可能截短内容，终端需要重要拉取完整内容，缺省表示不截短
 	optional uint64    uint64_msg_id = 22;		//消息id，只是一个全局唯一的编号，无实际意义。
 };
