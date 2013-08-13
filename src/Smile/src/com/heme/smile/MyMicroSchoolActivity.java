@@ -24,10 +24,12 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
-import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.heme.logic.common.Configuration;
+import com.heme.utils.Util;
 
 public class MyMicroSchoolActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG= "MyMicroSchoolActivity";
@@ -35,28 +37,49 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 	public static final int SELECT_LOCAL = 1;
 	public static final int CLIP_PHOTO = 2;
 	private long mExitTime = 0;
-	private RelativeLayout mEditSinagureLayout;
 	private EditText mSinagureEditText;
 	private Button mSinagureCancelBtn,mSinagureOkBtn;
 	private TextView mSinagureTextView;
 	private int mCurUserLoginState = 0;   //用户在线的状态 0在线 1离线 
 	private TextView mUserState;
-	private View mAvatarClickView;
-	private PopupWindow mPopupWindow;
+	private View mAvatarClickView,mSinagureEditView;
+	private PopupWindow mPopupWindow,mSinagurePopupWindow;
 	private Button mClickViewCapture,mClickViewSelectLocal,mClickViewCancel;
+	private TextView mUserName;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		initUI();
+//		addIconToStatusbar(R.drawable.ic_launcher);
+	}
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){   
+			if((System.currentTimeMillis()-mExitTime) > 2000){
+				Toast.makeText(getApplicationContext(), "再按一次返回键回到桌面", Toast.LENGTH_SHORT).show();
+				mExitTime = System.currentTimeMillis(); 
+			}else {
+				backToDesk();
+			}
+			return true;
+		}	
+		return true;
 	}
 	private void initUI(){
 		setContentView(R.layout.mymicoschool);
+		mUserName = (TextView)findViewById(R.id.username);
+		if (Configuration.APP_VERSION==0) {
+			mUserName.setText("任盈盈(家长)");
+		}else if (Configuration.APP_VERSION==1) {
+			mUserName.setText("任盈盈(学生)");
+		}
 		File f = new File(Environment.getExternalStorageDirectory()+"/heme");
 		if (!f.exists()) {
 			f.mkdirs();
 		}
 		mAvatarClickView = LayoutInflater.from(this).inflate(R.layout.avartclickview, null);
+		mSinagureEditView = LayoutInflater.from(this).inflate(R.layout.sinagureeditview, null);
 		mClickViewCapture = (Button)mAvatarClickView.findViewById(R.id.capture);
 		mClickViewCapture.setOnClickListener(new OnClickListener() {
 			
@@ -91,22 +114,28 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 			}
 		});
 		mPopupWindow = new PopupWindow(mAvatarClickView,LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT,true);
+		mSinagurePopupWindow = new PopupWindow(mSinagureEditView, LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT,true);
 		findViewById(R.id.editBtn).setOnClickListener(this);
-		mEditSinagureLayout = (RelativeLayout)findViewById(R.id.edit_sinagure_rl);
-		mSinagureCancelBtn = (Button)findViewById(R.id.cancel);
-		mSinagureOkBtn = (Button)findViewById(R.id.ok);
+		mSinagureCancelBtn = (Button)mSinagureEditView.findViewById(R.id.cancel);
+		mSinagureOkBtn = (Button)mSinagureEditView.findViewById(R.id.ok);
 		mSinagureCancelBtn.setOnClickListener(this);
 		mSinagureOkBtn.setOnClickListener(this);
-		mSinagureEditText = (EditText)findViewById(R.id.sinagure_content);
+		mSinagureEditText = (EditText)mSinagureEditView.findViewById(R.id.sinagure_content);
 		mSinagureTextView = (TextView)findViewById(R.id.sinagure);
-		findViewById(R.id.user_state_rl).setOnClickListener(this);
 		mUserState = (TextView)findViewById(R.id.user_state);
+		mUserState.setOnClickListener(this);
 		findViewById(R.id.homework_rl).setOnClickListener(this);
-		findViewById(R.id.net_helper_rl).setOnClickListener(this);
+		findViewById(R.id.notice_icon_rl).setOnClickListener(this);
+		if (Configuration.APP_VERSION==0) {
+			((TextView)findViewById(R.id.net_helper_tip)).setText("绿色上网助手");
+		}else if (Configuration.APP_VERSION==1) {
+			((TextView)findViewById(R.id.net_helper_tip)).setText("语音测评");
+		}
 		findViewById(R.id.result_rl).setOnClickListener(this);
 		findViewById(R.id.lecture_rl).setOnClickListener(this);
 		findViewById(R.id.net_helper_rl).setOnClickListener(this);
 		findViewById(R.id.user_avatar).setOnClickListener(this);
+		findViewById(R.id.classroom_info_rl).setOnClickListener(this);
 	}
 	private void updateUserState(){
 		if (mCurUserLoginState==0) {
@@ -118,34 +147,31 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 		}
 	}
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if(keyCode == KeyEvent.KEYCODE_BACK && event.getAction() == KeyEvent.ACTION_DOWN){   
-			if((System.currentTimeMillis()-mExitTime) > 2000){
-				Toast.makeText(getApplicationContext(), "再按一次返回键回到桌面", Toast.LENGTH_SHORT).show();
-				mExitTime = System.currentTimeMillis(); 
-			}else {
-				backToDesk();
-			}
-			return true;
-		}	
-		return super.onKeyDown(keyCode, event);
-	}
-	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.editBtn:
-			mEditSinagureLayout.setVisibility(View.VISIBLE);
+			mSinagurePopupWindow.setOutsideTouchable(true);
+			mSinagurePopupWindow.showAtLocation(findViewById(R.id.myschool_rl), Gravity.CENTER, 0, 0);
+			mSinagurePopupWindow.update();
 			break;
 		case R.id.cancel:
-			mEditSinagureLayout.setVisibility(View.GONE);
+			if (mSinagurePopupWindow!=null&&mSinagurePopupWindow.isShowing()) {
+				mSinagurePopupWindow.dismiss();
+			}
 			break;
 		case R.id.ok:
-			mEditSinagureLayout.setVisibility(View.GONE);
+			if (mSinagurePopupWindow!=null&&mSinagurePopupWindow.isShowing()) {
+				mSinagurePopupWindow.dismiss();
+			}
 			Util.showToast(this, "个性签名修改成功");
 			mSinagureTextView.setText(mSinagureEditText.getText().toString());
 			break;
-		case R.id.user_state_rl:
+		case R.id.notice_icon_rl:
+			//公告信息
+			startActivity(new Intent(MyMicroSchoolActivity.this, NotificationActivity.class));
+			break;
+		case R.id.user_state:
 			if (mCurUserLoginState==0) {
 				mCurUserLoginState = 1;
 			}else {
@@ -157,7 +183,16 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 			gotoWebview("家庭作业助手", "http://m.163.com");
 			break;
 		case R.id.net_helper_rl:
-			startActivity(new Intent(MyMicroSchoolActivity.this,NetHelperActivity.class));
+			if (Configuration.APP_VERSION==0) {
+				startActivity(new Intent(MyMicroSchoolActivity.this,NetHelperActivity.class));
+			}else if (Configuration.APP_VERSION==1) {
+//				((TextView)findViewById(R.id.net_helper_tip)).setText("语音测评");
+				//跳转到语音评测学生版
+				startActivity(new Intent(MyMicroSchoolActivity.this,StudentVoiceTestListActivity.class));
+			}
+			break;
+		case R.id.classroom_info_rl:
+			gotoWebview("课堂信息助手", "http://sohu.com");
 			break;
 		case R.id.result_rl:
 			gotoWebview("成绩查询助手", "http://sina.cn");
@@ -174,14 +209,7 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 			break;
 		}
 	}
-	private void gotoWebview(String title,String url){
-		Intent intent = new Intent(MyMicroSchoolActivity.this, CommonWebviewActivity.class);
-		Bundle b = new Bundle();
-		b.putString(CommonWebviewActivity.TITLE, title);
-		b.putString(CommonWebviewActivity.URL, url);
-		intent.putExtras(b);
-		startActivity(intent);
-	}
+	
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -203,6 +231,9 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 				e.printStackTrace();
 			} finally {
 				try {
+					bitmap.recycle();
+					bitmap = null;
+					System.gc();
 					b.flush();
 					b.close();
 					startPhotoClip(Uri.fromFile(new File(fileName)));

@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#f0f0e0" >
+    android:id="@+id/singlechat_layout"
+    android:background="@drawable/chat_background" >
 
     <include 
         layout="@layout/public_titlebar"
@@ -19,7 +20,10 @@
             android:id="@+id/ll_anniu"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:orientation="horizontal" 
+            android:layout_marginLeft="5dip"
+            android:layout_marginRight="5dip"
+            >
 
             <ImageButton
                 android:id="@+id/chatting_voice_btn"
@@ -52,7 +56,10 @@
                 android:paddingBottom="4.0dip"
                 android:paddingTop="5.0dip"
                 android:visibility="visible"
-                android:src="@drawable/chatting_setmode_biaoqing_btn" />
+                android:paddingLeft="10dip"
+                android:paddingRight="10dip"
+                android:layout_gravity="center_vertical"
+                android:src="@drawable/tj" />
             <ImageButton
                 android:id="@+id/chatting_biaoqing_focuse_btn"
                 android:layout_width="wrap_content"
@@ -64,46 +71,50 @@
                 android:paddingTop="5.0dip"
                 android:src="@drawable/chatting_setmode_biaoqing_btn" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/ll_fasong"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
                 android:paddingTop="6.0dip"
+                android:layout_centerVertical="true"
                 android:visibility="visible" >
 
                 <EditText
                     android:id="@+id/et_sendmessage"
-                    android:layout_width="175dip"
-                    android:layout_height="40dip"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/login_edit_normal"
                     android:paddingTop="5.0dip"
                     android:singleLine="true"
+                    android:layout_toLeftOf="@+id/btn_send"
+                    android:layout_marginRight="3dip"
+                    android:layout_centerVertical="true"
                     android:textSize="18sp" />
 
                 <Button
                     android:id="@+id/btn_send"
-                    android:layout_width="60dp"
-                    android:layout_height="40dp"
-                    android:layout_marginLeft="3dip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_marginRight="3dip"
                     android:background="@drawable/chat_send_btn"
-                    android:paddingTop="5.0dip"
+                    android:layout_centerVertical="true"
+                    android:layout_alignParentRight="true"
+                    android:textSize="18dip"
                     android:text="发送" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <LinearLayout
                 android:id="@+id/ll_yuyin"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_toRightOf="@+id/ll_anniu"
                 android:orientation="horizontal"
                 android:paddingTop="6.0dip"
                 android:visibility="gone" >
 
                 <Button
                     android:id="@+id/btn_yuyin"
-                    android:layout_width="210dip"
+                    android:layout_width="fill_parent"
                     android:layout_height="45dp"
                     android:layout_marginLeft="10dip"
                     android:layout_marginRight="20dip"
@@ -112,7 +123,170 @@
                     android:text="按住不放说话" />
             </LinearLayout>
         </LinearLayout>
-
+	<RelativeLayout 
+	    android:layout_below="@+id/ll_anniu"
+	    android:id="@+id/operate_layout"
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:visibility="gone"
+	    android:background="#d6d8dd"
+	    >
+	        <GridView 
+	            android:layout_alignParentTop="true"
+	            android:padding="5dip"
+	            android:id="@+id/custom_textion_gridview"
+	            android:layout_width="fill_parent"
+	            android:layout_height="wrap_content"
+	            android:listSelector="@null" 
+        android:verticalSpacing="5dip" 
+        android:horizontalSpacing="5dip"
+        android:soundEffectsEnabled="true"
+        android:smoothScrollbar="true"  
+        android:stretchMode="columnWidth"
+	            ></GridView>
+	        <ImageView 
+	            android:id="@+id/seperate_img"
+	            android:layout_below="@+id/custom_textion_gridview"
+	        android:layout_width="fill_parent"
+	        android:layout_marginLeft="5dip"
+	        android:layout_marginRight="5dip"
+	        android:layout_height="1dip"
+	        android:src="#cdcdcd"
+	        />
+	    <LinearLayout 
+	        android:orientation="horizontal"
+	        android:layout_width="fill_parent"
+	        android:layout_height="wrap_content"
+	        android:id="@+id/biaoqing_add_layout"
+	        android:layout_below="@+id/seperate_img"
+	        android:layout_marginTop="5dip"
+	        android:paddingBottom="5dip"
+	        >
+                <RelativeLayout 
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:id="@+id/lecture_rl"
+              android:layout_gravity="center"
+              android:gravity="center"
+              >
+	        <ImageView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:id="@+id/biaoqing_imgview"
+	            android:background="@drawable/chat_faceitem_selector"
+	            />
+	        <TextView 
+              android:id="@+id/lecture_room_tip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="表情"
+              android:textColor="#fff"
+              android:textSize="14dip"
+              android:layout_below="@+id/biaoqing_imgview"
+              android:layout_centerHorizontal="true"
+              />
+	        </RelativeLayout>
+	        <ImageView 
+	        android:layout_width="1dip"
+	        android:layout_height="fill_parent"
+	        android:src="#cdcdcd"
+	        android:layout_gravity="center"
+	        />
+	        <RelativeLayout 
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:id="@+id/lecture_rl"
+              android:layout_gravity="center"
+              android:gravity="center"
+              >
+	        <ImageView 
+	            android:id="@+id/tupian_imgview"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:background="@drawable/chat_pic_selector"
+	            />
+	        <TextView 
+              android:id="@+id/lecture_room_tip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="图片"
+              android:textColor="#fff"
+              android:textSize="14dip"
+              android:layout_below="@+id/tupian_imgview"
+              android:layout_centerHorizontal="true"
+              />
+	        </RelativeLayout>
+	        <ImageView 
+	        android:layout_width="1dip"
+	        android:layout_height="fill_parent"
+	        android:src="#cdcdcd"
+	        android:layout_gravity="center"
+	        />
+	        <RelativeLayout 
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:id="@+id/lecture_rl"
+              android:layout_gravity="center"
+              android:gravity="center"
+              >
+	        <ImageView 
+	            android:id="@+id/video_imgview"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerHorizontal="true"
+	            android:background="@drawable/chat_video_selector"
+	            />
+	        <TextView 
+              android:id="@+id/lecture_room_tip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="视频"
+              android:textColor="#fff"
+              android:textSize="14dip"
+              android:layout_below="@+id/video_imgview"
+              android:layout_centerHorizontal="true"
+              />
+	        </RelativeLayout>
+	        <ImageView 
+	        android:layout_width="1dip"
+	        android:layout_height="fill_parent"
+	        android:src="#cdcdcd"
+	        android:layout_gravity="center"
+	        />
+	        <RelativeLayout 
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:layout_weight="1"
+              android:id="@+id/lecture_rl"
+              android:layout_gravity="center"
+              android:gravity="center"
+              >
+	        <ImageView 
+	            android:id="@+id/businesscard_imgview"
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:background="@drawable/chat_card_selector"
+	            android:layout_centerHorizontal="true"
+	            />
+	        <TextView 
+              android:id="@+id/lecture_room_tip"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="名片"
+              android:textColor="#fff"
+              android:gravity="center"
+              android:textSize="14dip"
+              android:layout_below="@+id/businesscard_imgview"
+              android:layout_centerHorizontal="true"
+              />
+	        </RelativeLayout>
+	    </LinearLayout>
+	</RelativeLayout>
         <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"
             android:layout_width="wrap_content"

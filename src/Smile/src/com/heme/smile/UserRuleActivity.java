@@ -2,12 +2,12 @@ package com.heme.smile;
 
 import java.io.InputStream;
 
-import com.heme.smile.R;
-
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.heme.utils.Util;
 
 public class UserRuleActivity extends BaseActivity {
 	private TextView mRuleTextView;
@@ -19,6 +19,14 @@ public class UserRuleActivity extends BaseActivity {
 	}
 	private void initUI(){
 		setContentView(R.layout.userrule);
+findViewById(R.id.backImg).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		((TextView)findViewById(R.id.titleTextView)).setText("使用条款");
 		mRuleTextView = (TextView)findViewById(R.id.rule_text);
 		try {

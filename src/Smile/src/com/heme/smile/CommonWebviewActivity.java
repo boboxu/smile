@@ -1,5 +1,8 @@
 package com.heme.smile;
 
+import android.app.Dialog;
+import android.app.ProgressDialog;
+import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -16,11 +19,13 @@ public class CommonWebviewActivity extends BaseActivity {
 	
 	private String mTitle,mUrl;
 	private WebView mWebView;
+	private ProgressDialog mDialog;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		mTitle = getIntent().getExtras().getString(TITLE);
 		mUrl = getIntent().getExtras().getString(URL);
+		createDialog();
 		super.onCreate(savedInstanceState);
 		initUI();
 	}
@@ -43,9 +48,31 @@ public class CommonWebviewActivity extends BaseActivity {
 				view.loadUrl(url);
 				return true;
 			}
+			@Override
+			public void onPageFinished(WebView view, String url) {
+				mDialog.dismiss();
+			}
+			@Override
+			public void onReceivedError(WebView view, int errorCode,
+					String description, String failingUrl) {
+				mDialog.dismiss();
+			}
+			@Override
+			public void onPageStarted(WebView view, String url, Bitmap favicon) {
+				mDialog.show();
+				super.onPageStarted(view, url, favicon);
+			}
 		});
 		mWebView.getSettings().setJavaScriptEnabled(true);
+		mWebView.getSettings().setPluginsEnabled(true);   
 		mWebView.loadUrl(mUrl);
+	}
+	protected Dialog createDialog() {
+		mDialog = new ProgressDialog(this);
+		mDialog.setIndeterminate(true);
+		mDialog.setMessage("加载中,请稍候...");
+		mDialog.setCancelable(true);
+		return mDialog;
 	}
 	 @Override
 	 public boolean onKeyDown(int keyCoder,KeyEvent event){

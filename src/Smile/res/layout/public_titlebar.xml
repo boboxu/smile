@@ -1,13 +1,20 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
-    android:layout_height="50dip"
+    android:layout_height="wrap_content"
     tools:context=".StartActivity" 
-    android:background="#000"
+    
     android:layout_gravity="top"
     android:id="@+id/public_title_bar"
     >
-
+<RelativeLayout 
+       	android:layout_centerVertical="true"
+		      android:layout_width="fill_parent"
+		      android:layout_height="40dip"
+		      android:id="@+id/title_rl"
+		      android:background="@drawable/titlebar_bg"
+		      android:layout_alignParentTop="true"
+	        >
    <ImageView 
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
@@ -27,14 +34,69 @@
        android:id="@+id/titleTextView"
        android:layout_centerHorizontal="true"
 	    />
-	<ImageView 
+	<Button 
        android:layout_width="wrap_content"
        android:layout_height="wrap_content"
        android:layout_centerVertical="true"
-       android:background="@drawable/back_selector"
-	   android:layout_alignParentRight="true"
-	   android:layout_marginRight="15dip"
-	   android:id="@+id/rightImg"
+	   android:layout_toLeftOf="@+id/rightBtn"
+	   android:layout_marginRight="2dip"
+	   android:id="@+id/rightBtn1"
 	   android:visibility="gone"
+	   android:padding="5dip"
+	   android:background="@drawable/rounded_shortmsg"
+	   android:textColor="#fff"
        />
+	<Button 
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_centerVertical="true"
+	   android:layout_alignParentRight="true"
+	   android:layout_marginRight="2dip"
+	   android:id="@+id/rightBtn"
+	   android:visibility="gone"
+	   android:padding="5dip"
+	   android:background="@drawable/rounded_shortmsg"
+	   android:textColor="#fff"
+       />
+	</RelativeLayout>
+	
+	
+	<RelativeLayout 
+       	android:layout_centerVertical="true"
+		      android:layout_width="fill_parent"
+		      android:layout_height="40dip"
+		      android:id="@+id/search_ll"
+		      android:layout_marginLeft="10dip"
+		      android:layout_marginRight="10dip"
+		      android:layout_below="@+id/title_rl"
+		      android:visibility="gone"
+	        >
+		   
+				  
+		        <AutoCompleteTextView 
+						android:id="@+id/search_auto_complete"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:textColor="#fff"
+		       android:textSize="20dip"
+		       android:singleLine="true"
+		       android:layout_centerHorizontal="true"
+		      android:layout_centerVertical="true"
+		      android:hint="搜索"
+		      android:paddingLeft="30dip"
+		      android:background="@drawable/rounded_search_edittext"
+		      android:paddingTop="5dip"
+		      android:paddingBottom="5dip"
+					    android:completionThreshold="1"
+					    />
+		 <ImageView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:layout_alignParentLeft="true"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="10dip"
+			android:id="@+id/handle"
+			android:background="@drawable/search"
+	        />
+		</RelativeLayout>
 </RelativeLayout>

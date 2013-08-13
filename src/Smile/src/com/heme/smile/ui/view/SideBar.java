@@ -15,7 +15,7 @@ public class SideBar extends View {
 	    private SectionIndexer sectionIndexter = null;  
 	    private ListView list;  
 	    private TextView mDialogText;
-	    private final int m_nItemHeight = 15;  
+	    private  int m_nItemHeight = 30;  
 	    public SideBar(Context context) {  
 	        super(context);  
 	        init();  
@@ -66,9 +66,10 @@ public class SideBar extends View {
 	    }  
 	    protected void onDraw(Canvas canvas) {  
 	        Paint paint = new Paint();  
-	        paint.setColor(0xff595c61);  
-	        paint.setTextSize(12);  
+	        paint.setColor(0xffffffff);  
+	        paint.setTextSize(26);  
 	        paint.setTextAlign(Paint.Align.CENTER);  
+	        m_nItemHeight = (int)((float)getMeasuredHeight()/26);  
 	        float widthCenter = getMeasuredWidth() / 2;  
 	        for (int i = 0; i < l.length; i++) {  
 	            canvas.drawText(String.valueOf(l[i]), widthCenter, m_nItemHeight + (i * m_nItemHeight), paint);  

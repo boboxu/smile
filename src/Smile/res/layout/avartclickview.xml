@@ -12,8 +12,9 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="10dip"
 	        android:textSize="30dip"
-	        android:textColor="#000"
 	        android:text="拍 照"
+	        android:background="@drawable/btn_selector"
+	 	  android:textColor="#fff"
 	        />
 	    <Button 
 	        android:id="@+id/selectlocal"
@@ -22,8 +23,9 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dip"
 	        android:textSize="20dip"
-	        android:textColor="#000"
 	        android:text="选择本地图片"
+	        android:background="@drawable/btn_selector"
+	   android:textColor="#fff"
 	        />
    <Button 
 	        android:id="@+id/cancel"
@@ -32,8 +34,9 @@
 	        android:layout_height="wrap_content"
 	        android:layout_marginTop="5dip"
 	        android:textSize="20dip"
-	        android:textColor="#000"
 	        android:text="取消"
+	        android:background="@drawable/btn_selector"
+	   android:textColor="#fff"
 	        />
 
 </RelativeLayout>

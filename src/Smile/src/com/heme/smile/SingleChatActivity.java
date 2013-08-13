@@ -1,42 +1,93 @@
 package com.heme.smile;
 
+import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Locale;
+import java.util.Map;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.content.pm.ResolveInfo;
+import android.database.Cursor;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.media.MediaPlayer;
 import android.media.MediaPlayer.OnCompletionListener;
+import android.media.ThumbnailUtils;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
+import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.text.Spannable;
+import android.text.SpannableString;
+import android.text.format.DateFormat;
+import android.text.style.ImageSpan;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.View.OnTouchListener;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.AdapterView.OnItemClickListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.RelativeLayout.LayoutParams;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.GridView;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.PopupWindow;
+import android.widget.RelativeLayout;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 
+import com.heme.smile.R.layout;
 import com.heme.smile.ui.view.ChatMsgViewAdapter;
+import com.heme.smile.ui.view.TextGridAdapter;
 import com.heme.smile.util.AudioRecorder;
+import com.heme.smile.util.Biaoqing;
+import com.heme.smile.util.BitmapUtil;
 import com.heme.smile.util.ChatMsgEntity;
+import com.heme.smile.util.FileUtil;
+import com.heme.utils.Util;
 
 public class SingleChatActivity extends Activity implements OnClickListener {
 	
 	public static final String SINGLE_CHAT_NICKNAME = "single_chat_nickname";
 	public static final int PLAYER_VOICE_MESSAGE = 0;
+	public static final int SELECT_LOCAL = PLAYER_VOICE_MESSAGE + 1; 
+	public static final int SHOW_BIG_PICTURE = SELECT_LOCAL + 1;
+	public static final int REQUEST_CARD = SHOW_BIG_PICTURE + 1;
+	public static final int SHOW_CARD = REQUEST_CARD + 1;
+	public static final int SELECT_VIDEO = SHOW_CARD + 1;
+	public static final int OPEN_VIDEO_FILE = SELECT_VIDEO +1;
+	public static final String CARD_NICKNAME = "card_nickname";
+	public static final String CARD_USERID = "card_userid";
+	public static final String SELECT_VIDEO_PATH = "select_video_path";
 	private Dialog dialog;
 	private Button mBtnSend;// 发送btn
 	private ImageView mBtnBack;// 返回btn
@@ -45,7 +96,12 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 	private ChatMsgViewAdapter mAdapter;// 消息视图的Adapter
 	private List<ChatMsgEntity> mDataArrays = new ArrayList<ChatMsgEntity>();// 消息对象数组
 	private String mSingleChater = "";
-	
+	private int[] expressionImages;
+	private String[] expressionImageNames;
+	private int[] expressionImages1;
+	private String[] expressionImageNames1;
+	private int[] expressionImages2;
+	private String[] expressionImageNames2;
 	
 	private AudioRecorder mr;
 	private MediaPlayer mediaPlayer;
@@ -72,27 +128,80 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 	private static boolean playState = false;  //播放状态
 	private ImageButton mVoiceBtn;
 	private LinearLayout mLuyinLayout;
-	private LinearLayout mFasongLayout;
+	private RelativeLayout mFasongLayout;
 	private ImageButton mKeyboardBtn;
 	private Button mRecordBtn;
-	
+	private RelativeLayout mOperateLayout;
+	private ImageButton mShowOperateBtn;
+	private ImageView mBiaoqingImgView;
+	private ImageView mTupianImgView;
+	private ViewPager viewPager;
+	private LinearLayout page_select;
+	private ArrayList<GridView> grids;
+	private GridView gView1;
+	private GridView gView2;
+	private GridView gView3;
+	private ImageView page0;
+	private ImageView page1;
+	private ImageView page2;
+	private Button mFriendInfoImg;
+	private Button mGroupChatBtn;
+	private ImageView mBusinessCardImg;
+	private ImageView mVideoImg;
+	private GridView mGridView;
+	private TextGridAdapter mTextGridAdapter;
+	private LinkedList<String> mTextKeysList = new LinkedList<String>();
+	private LinkedHashMap<String, String> mTextOperationList = new LinkedHashMap<String, String>();
+	private PopupWindow mAddCustomChatTextPopupWindow;
+	private View mAddCustomChatTextView;
+	private Button mAddCustomChatConfirmBtn,mAddCustomChatCancelBtn;
+	private EditText mAddCustomChatKeyEditText,mAddCustomChatValueEditText;
 	private Handler mHandler = new Handler(){
+		
 		public void handleMessage(Message msg) {
 			switch (msg.what) {
 			case PLAYER_VOICE_MESSAGE:
 				playVoiceMsg(msg.arg1);
 				break;
-
+			case SHOW_BIG_PICTURE:
+				showBigPicture(msg.arg1);
+				break;
+			case SHOW_CARD:
+				Intent cardIntent = new Intent(SingleChatActivity.this, UserDetailsActivity.class);
+				cardIntent.putExtra(SingleChatActivity.SINGLE_CHAT_NICKNAME, (String)msg.obj);
+				startActivity(cardIntent);
+				break;
+			case OPEN_VIDEO_FILE:
+				Intent intent = new Intent();
+				intent.setAction(android.content.Intent.ACTION_VIEW);
+				File file = new File((String)msg.obj);
+				intent.setDataAndType(Uri.fromFile(file), "video/*");
+				startActivity(intent);
+				break;
 			default:
 				break;
 			}
 		};
 	};
+	
+
+	private boolean checkVideoPlaySupport(Intent intent) {
+	        List<ResolveInfo> list = SingleChatActivity.this.getPackageManager().queryIntentActivities(intent, PackageManager.MATCH_DEFAULT_ONLY);
+	        return list.size() > 0;
+	    }
+	private void showBigPicture(int position){
+		ChatMsgEntity entity = mDataArrays.get(position);
+		Intent intent = new Intent(this, MyImageViewActivity.class);
+		intent.putExtra(MyImageViewActivity.FILEPATH, entity.getExternalContent());
+		startActivity(intent);
+	}
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		initTextOperationData();
 		mSingleChater = getIntent().getStringExtra(SINGLE_CHAT_NICKNAME);
 		setContentView(R.layout.singlechat);
 		initUI();
+		initViewPager();
 		initData();// 初始化数据
 		mListView.setSelection(mAdapter.getCount() - 1);
 	}
@@ -101,7 +210,7 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 		dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		dialog.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
 				WindowManager.LayoutParams.FLAG_FULLSCREEN);
-		dialog.setContentView(R.layout.recording_dialog);
+		dialog.setContentView(R.layout.chat_recording_dialog);
 		mDialogImage=(ImageView)dialog.findViewById(R.id.dialog_img);
 		dialog.show();
 	}
@@ -203,7 +312,180 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 				mDialogImage.setImageResource(R.drawable.record_animate_14);
 			}
 		}
+	private void initViewPager() {
+		LayoutInflater inflater = LayoutInflater.from(this);
+		grids = new ArrayList<GridView>();
+		gView1 = (GridView) inflater.inflate(R.layout.grid1, null);
+		List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+		// 生成24个表情
+		for (int i = 0; i < 24; i++) {
+			Map<String, Object> listItem = new HashMap<String, Object>();
+			listItem.put("image", expressionImages[i]);
+			listItems.add(listItem);
+		}
+
+		SimpleAdapter simpleAdapter = new SimpleAdapter(SingleChatActivity.this, listItems,
+				R.layout.singleexpression, new String[] { "image" },
+				new int[] { R.id.image });
+		gView1.setAdapter(simpleAdapter);
+		gView1.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				Bitmap bitmap = null;
+				bitmap = BitmapFactory.decodeResource(getResources(),
+						expressionImages[arg2 % expressionImages.length]);
+				ImageSpan imageSpan = new ImageSpan(SingleChatActivity.this, bitmap);
+				SpannableString spannableString = new SpannableString(
+						expressionImageNames[arg2].substring(1,
+								expressionImageNames[arg2].length() - 1));
+				spannableString.setSpan(imageSpan, 0,
+						expressionImageNames[arg2].length() - 2,
+						Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+				// 编辑框设置数据
+				mEditTextContent.append(spannableString);
+				System.out.println("edit的内容 = " + spannableString);
+			}
+		});
+		grids.add(gView1);
+
+		gView2 = (GridView) inflater.inflate(R.layout.grid2, null);
+		grids.add(gView2);
+
+		gView3 = (GridView) inflater.inflate(R.layout.grid3, null);
+		grids.add(gView3);
+
+		// 填充ViewPager的数据适配器
+		PagerAdapter mPagerAdapter = new PagerAdapter() {
+			@Override
+			public boolean isViewFromObject(View arg0, Object arg1) {
+				return arg0 == arg1;
+			}
+
+			@Override
+			public int getCount() {
+				return grids.size();
+			}
+
+			@Override
+			public void destroyItem(View container, int position, Object object) {
+				((ViewPager) container).removeView(grids.get(position));
+			}
+
+			@Override
+			public Object instantiateItem(View container, int position) {
+				((ViewPager) container).addView(grids.get(position));
+				return grids.get(position);
+			}
+		};
+
+		viewPager.setAdapter(mPagerAdapter);
+		// viewPager.setAdapter();
+
+		viewPager.setOnPageChangeListener(new GuidePageChangeListener());
+	}
+	//模拟表情操作栏中文字替换的数据
+	private void initTextOperationData(){
+		mTextOperationList.put("奖励", "小伙子不错，我很看好你.给你个奖励f001");
+		mTextOperationList.put("批评", "你小子太不靠谱了，回去面壁思过f010");
+		mTextOperationList.put("迟到", "你今天迟到了，下次不要再犯了f014");
+		mTextOperationList.put("早退", "课都没上完，人就跑了，早退f008");
+		mTextOperationList.put("添加", "添加");
+		for (String key : mTextOperationList.keySet()) {
+			mTextKeysList.add(key);
+		}
+	}
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		int position = ((AdapterView.AdapterContextMenuInfo)item.getMenuInfo()).position;
+		if (position==mTextKeysList.size()-1) {
+			return false;
+		}
+		String delete_key = mTextKeysList.get(position);
+		if (delete_key==null||delete_key.trim().equals("")) {
+			return false;
+		}
+		if (mTextOperationList.containsKey(delete_key)) {
+			mTextOperationList.remove(delete_key);
+		}
+		mTextKeysList.remove(delete_key);
+		Util.showToast(this, "删除成功!");
+		mTextGridAdapter.notifyDataSetChanged();
+		return true;
+	}
 	public void initUI() {
+		mAddCustomChatTextView = LayoutInflater.from(this).inflate(R.layout.custom_chat_text_add, null);
+		mAddCustomChatConfirmBtn = (Button)mAddCustomChatTextView.findViewById(R.id.ok);
+		mAddCustomChatConfirmBtn.setOnClickListener(this);
+		mAddCustomChatCancelBtn = (Button)mAddCustomChatTextView.findViewById(R.id.cancel);
+		mAddCustomChatCancelBtn.setOnClickListener(this);
+		mAddCustomChatKeyEditText = (EditText)mAddCustomChatTextView.findViewById(R.id.key_edittext);
+		mAddCustomChatValueEditText = (EditText)mAddCustomChatTextView.findViewById(R.id.value_edittext);
+		mAddCustomChatTextPopupWindow = new PopupWindow(mAddCustomChatTextView,LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT,true);
+		page0 = (ImageView)findViewById(R.id.page0_select);
+		page1 = (ImageView)findViewById(R.id.page1_select);
+		page2 = (ImageView)findViewById(R.id.page2_select);
+		mGridView = (GridView)findViewById(R.id.custom_textion_gridview);
+		mGridView.setNumColumns(4);
+		mGridView.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+			
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View v,
+					ContextMenuInfo menuInfo) {
+				AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)menuInfo;
+				if (info.position==mTextKeysList.size()-1) {
+					return;
+				}
+				menu.add(Menu.NONE,0,0,"删除");
+				
+			}
+		
+		});
+		mTextGridAdapter = new TextGridAdapter(this, mTextOperationList, mTextKeysList);
+		mGridView.setAdapter(mTextGridAdapter);
+		mGridView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				if (arg2==mTextKeysList.size()-1) {
+					//添加
+					mAddCustomChatTextPopupWindow.setOutsideTouchable(true);
+					mAddCustomChatTextPopupWindow.showAtLocation(findViewById(R.id.singlechat_layout), Gravity.CENTER, 0, 0);
+					mAddCustomChatTextPopupWindow.update();
+				}else {
+					String key = mTextKeysList.get(arg2);
+					send(mTextOperationList.get(key));
+				}
+				
+			}
+		});
+		mVideoImg = (ImageView)findViewById(R.id.video_imgview);
+		mVideoImg.setOnClickListener(this);
+		mBusinessCardImg = (ImageView)findViewById(R.id.businesscard_imgview);
+		mBusinessCardImg.setOnClickListener(this);
+		mGroupChatBtn = (Button)findViewById(R.id.rightBtn1);
+		mGroupChatBtn.setVisibility(View.VISIBLE);
+		mGroupChatBtn.setOnClickListener(this);
+		mGroupChatBtn.setText("群聊");
+		mFriendInfoImg = (Button)findViewById(R.id.rightBtn);
+		mFriendInfoImg.setText("好友信息");
+		mFriendInfoImg.setVisibility(View.VISIBLE);
+		mFriendInfoImg.setOnClickListener(this);
+		page_select = (LinearLayout) findViewById(R.id.page_select);
+		expressionImages = Biaoqing.expressionImgs;
+		expressionImageNames = Biaoqing.expressionImgNames;
+		expressionImages1 = Biaoqing.expressionImgs1;
+		expressionImageNames1 = Biaoqing.expressionImgNames1;
+		expressionImages2 = Biaoqing.expressionImgs2;
+		expressionImageNames2 = Biaoqing.expressionImgNames2;
+		viewPager = (ViewPager) findViewById(R.id.viewpager);
+		mTupianImgView = (ImageView)findViewById(R.id.tupian_imgview);
+		mTupianImgView.setOnClickListener(this);
+		mBiaoqingImgView = (ImageView)findViewById(R.id.biaoqing_imgview);
+		mBiaoqingImgView.setOnClickListener(this);
+		mOperateLayout = (RelativeLayout)findViewById(R.id.operate_layout);
+		mShowOperateBtn = (ImageButton)findViewById(R.id.chatting_biaoqing_btn);
+		mShowOperateBtn.setOnClickListener(this);
 		mRecordBtn = (Button)findViewById(R.id.btn_yuyin);
 		mRecordBtn.setOnTouchListener(new OnTouchListener() {
 			@Override
@@ -251,7 +533,7 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 				return false;
 			}
 		});
-		mFasongLayout = (LinearLayout) findViewById(R.id.ll_fasong);
+		mFasongLayout = (RelativeLayout) findViewById(R.id.ll_fasong);
 		mLuyinLayout = (LinearLayout) findViewById(R.id.ll_yuyin);
 		mKeyboardBtn = (ImageButton) findViewById(R.id.chatting_keyboard_btn);
 		mKeyboardBtn.setOnClickListener(this);
@@ -348,6 +630,69 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 	@Override
 	public void onClick(View v) {
 		switch (v.getId()) {
+		case R.id.ok:
+			String key = mAddCustomChatKeyEditText.getText().toString();
+			String value = mAddCustomChatValueEditText.getText().toString();
+			if (key.trim().equals("")||value.trim().equals("")) {
+				Util.showToast(this, "内容不能为空");
+				return;
+			}
+			if (mTextOperationList.containsKey(key.trim())) {
+				Util.showToast(this, "您已经添加过短语:"+key);
+				return;
+			}
+			mTextKeysList.remove("添加");
+			mTextOperationList.remove("添加");
+			mTextKeysList.add(key.trim());
+			mTextOperationList.put(key.trim(), value.trim());
+			mTextKeysList.add("添加");
+			mTextOperationList.put("添加", "添加");
+			mAddCustomChatKeyEditText.setText("");
+			mAddCustomChatValueEditText.setText("");
+			mTextGridAdapter.notifyDataSetChanged();
+			mAddCustomChatTextPopupWindow.dismiss();
+			
+			break;
+		case R.id.cancel:
+			mAddCustomChatTextPopupWindow.dismiss();
+			break;
+		case R.id.video_imgview:
+			Intent fileIntent = new Intent(this, FileExplorerActivity.class);
+			startActivityForResult(fileIntent,SELECT_VIDEO);
+			break;
+		case R.id.businesscard_imgview:
+			Intent cardIntent = new Intent(SingleChatActivity.this, AddressBookActivity.class);
+			cardIntent.putExtra(AddressBookActivity.SHOWCHECKBOX, false);
+			cardIntent.putExtra(AddressBookActivity.SELECTCARD, true);
+			startActivityForResult(cardIntent, REQUEST_CARD);
+			break;
+		case R.id.rightBtn1:
+			Intent address_intent = new Intent(this, AddressBookActivity.class);
+			address_intent.putExtra(AddressBookActivity.SHOWCHECKBOX, true);
+			startActivity(address_intent);
+			break;
+		case R.id.rightBtn:
+			Intent intent = new Intent(this,ChattingPeopleListActivity.class);
+			intent.putExtra(SINGLE_CHAT_NICKNAME,mSingleChater );
+			startActivity(intent);
+			break;
+		case R.id.biaoqing_imgview:
+			viewPager.setVisibility(viewPager.VISIBLE);
+			page_select.setVisibility(page_select.VISIBLE);
+			break;
+		case R.id.tupian_imgview:
+			Intent picture = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+			startActivityForResult(picture, SELECT_LOCAL);
+			break;
+		case R.id.chatting_biaoqing_btn:
+			if (mOperateLayout.getVisibility()==View.GONE&&page_select.getVisibility()==View.GONE) {
+				mOperateLayout.setVisibility(View.VISIBLE);
+			}else{
+				viewPager.setVisibility(View.GONE);
+				page_select.setVisibility(View.GONE);
+				mOperateLayout.setVisibility(View.GONE);
+			}
+			break;
 		case R.id.chatting_keyboard_btn:
 			mVoiceBtn.setVisibility(mVoiceBtn.VISIBLE);
 			mKeyboardBtn.setVisibility(mKeyboardBtn.GONE);
@@ -361,12 +706,17 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 			mLuyinLayout.setVisibility(mLuyinLayout.VISIBLE);
 			break;
 		case R.id.btn_send:// 发送按钮点击事件
-			send();
+			send(mEditTextContent.getText().toString());
 			break;
 		case R.id.backImg:
 			finish();
 			break;
 		}
+	}
+
+	// 发送名片类型的消息
+	private void sendBusinessCardMsg() {
+		
 	}
 	private void sendVoiceMsg(String voiceFilePath,float voicetime){
 		String contString =voiceFilePath;
@@ -380,14 +730,60 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 			entity.setMsgType(false);
 			mDataArrays.add(entity);
 			mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
-
 			mEditTextContent.setText("");// 清空编辑框数据
-
 			mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
 		}
 	}
-	private void send() {
-		String contString = mEditTextContent.getText().toString();
+	private void sendPicMsg(String thumbPicPath,String picpath) {
+		String contString = thumbPicPath;
+		if (contString.length() > 0) {
+			ChatMsgEntity entity = new ChatMsgEntity();
+			entity.setName("任盈盈");
+			entity.setType(2);
+			entity.setDate(getDate());
+			entity.setMessage(contString);
+			entity.setExternalContent(picpath);
+			entity.setMsgType(false);
+			mDataArrays.add(entity);
+			mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
+			mEditTextContent.setText("");// 清空编辑框数据
+			mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
+		}
+	}
+	private void sendVideoMsg(String videopath){
+			String contString = videopath;
+			if (contString.length() > 0) {
+				ChatMsgEntity entity = new ChatMsgEntity();
+				entity.setName("任盈盈");
+				entity.setType(3);
+				entity.setDate(getDate());
+				entity.setMessage(contString);
+				entity.setExternalContent("");
+				entity.setMsgType(false);
+				mDataArrays.add(entity);
+				mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
+				mEditTextContent.setText("");// 清空编辑框数据
+				mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
+		}
+	}
+	private void sendBusinessCard(String thumbPicPath,String userid) {
+		String contString = userid;
+		if (contString.length() > 0) {
+			ChatMsgEntity entity = new ChatMsgEntity();
+			entity.setName("任盈盈");
+			entity.setType(4);
+			entity.setDate(getDate());
+			entity.setMessage(thumbPicPath);
+			entity.setExternalContent(userid);
+			entity.setMsgType(false);
+			mDataArrays.add(entity);
+			mAdapter.notifyDataSetChanged();// 通知ListView，数据已发生改变
+			mEditTextContent.setText("");// 清空编辑框数据
+			mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
+		}
+	}
+	private void send(String content) {
+		String contString = content;
 		if (contString.length() > 0) {
 			ChatMsgEntity entity = new ChatMsgEntity();
 			entity.setName("任盈盈");
@@ -403,9 +799,164 @@ public class SingleChatActivity extends Activity implements OnClickListener {
 			mListView.setSelection(mListView.getCount() - 1);// 发送一条消息时，ListView显示选择最后一项
 		}
 	}
+	class GuidePageChangeListener implements OnPageChangeListener {
 
+		@Override
+		public void onPageScrollStateChanged(int arg0) {
+			System.out.println("页面滚动" + arg0);
+
+		}
+
+		@Override
+		public void onPageScrolled(int arg0, float arg1, int arg2) {
+			System.out.println("换页了" + arg0);
+		}
+
+		@Override
+		public void onPageSelected(int arg0) {
+			switch (arg0) {
+			case 0:
+				page0.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_focused));
+				page1.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				page2.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				break;
+			case 1:
+				page1.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_focused));
+				page0.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				page2.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				List<Map<String, Object>> listItems = new ArrayList<Map<String, Object>>();
+				// 生成24个表情
+				for (int i = 0; i < 24; i++) {
+					Map<String, Object> listItem = new HashMap<String, Object>();
+					listItem.put("image", expressionImages1[i]);
+					listItems.add(listItem);
+				}
+
+				SimpleAdapter simpleAdapter = new SimpleAdapter(SingleChatActivity.this,
+						listItems, R.layout.singleexpression,
+						new String[] { "image" }, new int[] { R.id.image });
+				gView2.setAdapter(simpleAdapter);
+				gView2.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						Bitmap bitmap = null;
+						bitmap = BitmapFactory.decodeResource(getResources(),
+								expressionImages1[arg2
+										% expressionImages1.length]);
+						ImageSpan imageSpan = new ImageSpan(SingleChatActivity.this, bitmap);
+						SpannableString spannableString = new SpannableString(
+								expressionImageNames1[arg2]
+										.substring(1,
+												expressionImageNames1[arg2]
+														.length() - 1));
+						spannableString.setSpan(imageSpan, 0,
+								expressionImageNames1[arg2].length() - 2,
+								Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+						// 编辑框设置数据
+						mEditTextContent.append(spannableString);
+						System.out.println("edit的内容 = " + spannableString);
+					}
+				});
+				break;
+			case 2:
+				page2.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_focused));
+				page1.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				page0.setImageDrawable(getResources().getDrawable(
+						R.drawable.page_unfocused));
+				List<Map<String, Object>> listItems1 = new ArrayList<Map<String, Object>>();
+				// 生成24个表情
+				for (int i = 0; i < 24; i++) {
+					Map<String, Object> listItem = new HashMap<String, Object>();
+					listItem.put("image", expressionImages2[i]);
+					listItems1.add(listItem);
+				}
+
+				SimpleAdapter simpleAdapter1 = new SimpleAdapter(SingleChatActivity.this,
+						listItems1, R.layout.singleexpression,
+						new String[] { "image" }, new int[] { R.id.image });
+				gView3.setAdapter(simpleAdapter1);
+				gView3.setOnItemClickListener(new OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> arg0, View arg1,
+							int arg2, long arg3) {
+						Bitmap bitmap = null;
+						bitmap = BitmapFactory.decodeResource(getResources(),
+								expressionImages2[arg2
+										% expressionImages2.length]);
+						ImageSpan imageSpan = new ImageSpan(SingleChatActivity.this, bitmap);
+						SpannableString spannableString = new SpannableString(
+								expressionImageNames2[arg2]
+										.substring(1,
+												expressionImageNames2[arg2]
+														.length() - 1));
+						spannableString.setSpan(imageSpan, 0,
+								expressionImageNames2[arg2].length() - 2,
+								Spannable.SPAN_EXCLUSIVE_EXCLUSIVE);
+						// 编辑框设置数据
+						mEditTextContent.append(spannableString);
+						System.out.println("edit的内容 = " + spannableString);
+					}
+				});
+				break;
+
+			}
+		}
+	}
+	
 	private String getDate() {
 		SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
 		return format.format(new Date());
 	}
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode==Activity.RESULT_OK) {
+			if (requestCode==SELECT_LOCAL) {
+				String name = new DateFormat().format("yyyyMMdd_hhmmss",Calendar.getInstance(Locale.CHINA)) + ".jpg";
+				Uri uri = data.getData();
+				String[] proj = {MediaStore.Images.Media.DATA};
+				Cursor cursor = managedQuery(uri, proj, null, null, null);
+				int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+				cursor.moveToFirst();
+				String path = cursor.getString(columnIndex);
+				Util.showToast(this,path);
+				Bitmap b = BitmapFactory.decodeFile(path);
+				Bitmap thumbnail = ThumbnailUtils.extractThumbnail(b, 300, 300);
+				b.recycle();
+				b = null;
+				System.gc();
+				String thumb_path = FileUtil.saveBitmapToSdCard(thumbnail, Environment.getExternalStorageDirectory().getAbsolutePath());
+				thumbnail.recycle();
+				thumbnail = null;
+				System.gc();
+				sendPicMsg(thumb_path, path);
+			}
+		}else if (resultCode==REQUEST_CARD) {
+			if (data!=null) {
+				String card_nickname = data.getStringExtra(CARD_NICKNAME);
+				String card_userid = data.getStringExtra(CARD_USERID);
+				Bitmap cardBitmap = BitmapUtil.createBusinessCard(this, null, card_nickname, card_userid);
+				String filepath = BitmapUtil.saveBitmap(cardBitmap, "/mnt/sdcard/cardbusiness.png");
+				if (filepath!=null&&!filepath.trim().equals("")) {
+					sendBusinessCard(filepath, card_nickname);
+				}else {
+					Util.showToast(this, "发送名片失败，请重试");
+				}
+			}
+		}else if (resultCode==SELECT_VIDEO) {
+			if (data!=null&&data.getExtras()!=null) {
+				sendVideoMsg(data.getExtras().getString(SELECT_VIDEO_PATH));
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
+	}
+	
 }

@@ -2,12 +2,12 @@ package com.heme.smile;
 
 import java.io.InputStream;
 
-import com.heme.smile.R;
-
-import android.app.Activity;
-import android.content.Context;
 import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.TextView;
+
+import com.heme.utils.Util;
 
 public class IntroduceActivity extends BaseActivity {
 	private TextView mRuleTextView;
@@ -20,6 +20,14 @@ public class IntroduceActivity extends BaseActivity {
 	private void initUI(){
 		setContentView(R.layout.userrule);
 		((TextView)findViewById(R.id.titleTextView)).setText("功能介绍");
+		findViewById(R.id.backImg).setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				finish();
+			}
+		});
 		mRuleTextView = (TextView)findViewById(R.id.rule_text);
 		try {
 			InputStream is = this.getAssets().open("introduce.txt");

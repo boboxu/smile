@@ -1,6 +1,9 @@
 package com.heme.logic.common;
 
 public class Constans {
+	//名片的宽高
+	public static final int BUSINESS_CARD_WIDTH = 300;
+	public static final int BUSINESS_CARD_HEIGHT = 100;
 	/***
 	 * accountmanager
 	 */
@@ -178,12 +181,16 @@ public class Constans {
 	public static final int GET_GROUPINFO_SUCCESS = GET_CLASSINFO_FAILED + 1;
 	// 拉取群信息失败
 	public static final int GET_GROUPINFO_FAILED = GET_GROUPINFO_SUCCESS + 1;
+	// 解散/删除群成功
+	public static final int DEL_GROUP_SUCCESS = GET_GROUPINFO_FAILED + 1;
+	// 解散/删除群失败
+	public static final int DEL_GROUP_FAILED = DEL_GROUP_SUCCESS + 1;
 
 	/***
 	 * friendmanager
 	 */
 	// 拉取个人信息成功
-	public static final int GET_USERINFO_SUCCESS = GET_GROUPINFO_FAILED + 1;
+	public static final int GET_USERINFO_SUCCESS = DEL_GROUP_FAILED + 1;
 	// 拉取个人信息失败
 	public static final int GET_USERINFO_FAILED = GET_USERINFO_SUCCESS + 1;
 	// 拉取个人详细信息成功
@@ -213,4 +220,17 @@ public class Constans {
 	/***
 	 * updatemanager
 	 */
+	 
+	 /***
+	 * searchusermanager
+	 */
+	 public static final int SEARCH_USER_SUCCESS = SET_STATUS_FAILED + 1;
+	//搜索用户失败
+	public static final int SEARCH_USER_FAILED = SEARCH_USER_SUCCESS + 1;
+
+	//准备上传语音评测文件工作——成功
+	public static final int PREPARE_VOICE_TEST_FILE_SUCCESS = SEARCH_USER_FAILED + 1;
+	//准备上传语音评测文件工作——失败
+	public static final int PREPARE_VOICE_TEST_FILE_FAILED = PREPARE_VOICE_TEST_FILE_SUCCESS + 1;
+	
 }

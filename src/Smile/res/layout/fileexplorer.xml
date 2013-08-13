@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="fill_parent"
+	android:layout_height="wrap_content"
+	android:duplicateParentState="false"
+	android:orientation="horizontal"
+	>
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dip"
+        android:layout_marginRight="8dip"
+        android:layout_marginTop="8dip"
+        android:paddingBottom="9dip"
+        android:background="@drawable/fb_listitem_selector" >
+
+        <RelativeLayout
+            android:id="@+id/fileexplore_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_marginTop="8dip"
+            android:layout_marginLeft="8dip"
+            android:layout_marginRight="8dip"
+            android:background="#f3f3f3f3" >
+
+            <ImageView
+                android:id="@+id/fileexplore_fileicon"
+                android:layout_width="60dip"
+                android:layout_height="60dip"
+                android:scaleType="fitCenter"
+                />
+
+            <ImageView
+                android:id="@+id/fileexplore_checked_icon"
+                android:layout_width="16dip"
+                android:layout_height="16dip"
+                android:background="@drawable/fb_checked_icon"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:id="@+id/linearLayout1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dip"
+            android:layout_toRightOf="@id/fileexplore_icon"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@+id/fileexplore_filename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="false"
+                android:ellipsize="end"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:marqueeRepeatLimit="marquee_forever"
+                android:maxWidth="180dip"
+                android:singleLine="true"
+                android:text="那么远，那么近"
+                android:textColor="#000000" />
+
+            <TextView
+                android:id="@+id/fileexplore_filesize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dip"
+                android:text="2.2MB" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/fileexplore_filetype_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="5dip"
+            android:layout_marginTop="8dip"
+            android:scaleType="fitCenter"
+            />
+
+        <TextView
+            android:id="@+id/fileexplore_lastmodifytime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/fileexplore_icon"
+            android:layout_alignRight="@+id/fileexplore_filetype_icon"
+            android:text=""
+            android:visibility="visible" />
+
+    </RelativeLayout>
+	<LinearLayout 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content">
+	</LinearLayout>
+</LinearLayout>

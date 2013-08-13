@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".StartActivity" 
-    android:background="@drawable/splash"
+    android:background="@drawable/login_bg"
     >
 <include 
     layout="@layout/public_titlebar"

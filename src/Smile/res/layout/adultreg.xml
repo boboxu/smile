@@ -2,7 +2,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/loading_bg"
+    android:background="#b39c7a"
     tools:context=".StartActivity" >
 
     <include layout="@layout/public_titlebar"
@@ -19,6 +19,18 @@
 	    android:layout_marginLeft="15dip"
 	    android:layout_marginRight="15dip"
 	    >
+	    <RelativeLayout 
+	    android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:background="@drawable/bdsj_bj"
+	    android:id="@+id/layout1"
+	    android:layout_marginTop="15dip"
+	    >
+	    <RelativeLayout 
+		    android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_centerInParent="true"
+		    >
 	    <TextView 
 	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
@@ -30,7 +42,38 @@
 	        />
 	    <RelativeLayout 
 	        android:layout_below="@+id/login_tip"
-		      android:layout_marginTop="10dip"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:id="@+id/account_rl"
+	        >
+	    <EditText 
+		      android:id="@+id/account_edittext"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:textColor="#fff"
+		       android:textSize="20dip"
+		       android:singleLine="true"
+		       android:background="#635242"
+		       android:layout_centerHorizontal="true"
+		      android:layout_centerVertical="true"
+		      android:paddingLeft="80dip"
+		      /> 
+		 <TextView 
+	        android:layout_width="wrap_content"
+	        android:layout_height="wrap_content"
+	        android:text="登录帐号"
+	        android:layout_alignParentLeft="true"
+	        android:textColor="#fff"
+	        android:textSize="16dip"
+			android:layout_centerVertical="true"
+			android:layout_marginLeft="15dip"
+	        />
+		 </RelativeLayout>
+	    
+	    
+	    <RelativeLayout 
+	        android:layout_below="@+id/account_rl"
+		      android:layout_marginTop="5dip"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:id="@+id/username_rl"
@@ -39,19 +82,20 @@
 		      android:id="@+id/username_edittext"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:textColor="#000"
+		      android:textColor="#fff"
 		       android:textSize="20dip"
 		       android:singleLine="true"
+		       android:background="#635242"
 		       android:layout_centerHorizontal="true"
 		      android:layout_centerVertical="true"
-		      android:paddingLeft="60dip"
+		      android:paddingLeft="80dip"
 		      /> 
 		 <TextView 
-	        android:layout_width="40dip"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="真实姓名"
 	        android:layout_alignParentLeft="true"
-	        android:textColor="#000"
+	        android:textColor="#fff"
 	        android:textSize="16dip"
 			android:layout_centerVertical="true"
 			android:layout_marginLeft="15dip"
@@ -62,56 +106,72 @@
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:id="@+id/idnumber_rl"
+		      android:layout_marginTop="5dip"
 	        >
 	    <EditText 
 		      android:id="@+id/id_number_edittext"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:textColor="#000"
+		      android:textColor="#fff"
 		       android:textSize="20dip"
+		       android:background="#635242"
 		       android:singleLine="true"
 		       android:layout_centerHorizontal="true"
 		      android:layout_centerVertical="true"
-		      android:paddingLeft="60dip"
+		      android:paddingLeft="80dip"
 		      android:digits="1234567890xX"
 		      /> 
 		 <TextView 
-	        android:layout_width="40dip"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="身份证号"
 	        android:layout_alignParentLeft="true"
-	        android:textColor="#000"
+	        android:textColor="#fff"
 	        android:textSize="16dip"
 			android:layout_centerVertical="true"
 			android:layout_marginLeft="15dip"
 	        />
 		 </RelativeLayout>
+		 </RelativeLayout>
+		 </RelativeLayout>
 		 <RelativeLayout 
-	        android:layout_below="@+id/idnumber_rl"
+		     android:layout_below="@+id/layout1"
+		      android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:background="@drawable/zc_bj2"
+		      android:layout_marginTop="20dip"
+		      android:id="@+id/layout2"
+		     >
+		<RelativeLayout 
+		    android:layout_width="fill_parent"
+		      android:layout_height="wrap_content"
+		      android:layout_centerInParent="true"
+		    >		    
+		 <RelativeLayout 
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:id="@+id/pwd_rl"
-		      android:layout_marginTop="20dip"
 	        >
 	    <EditText 
 		      android:id="@+id/pwd_edittext"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:textColor="#000"
+		      android:textColor="#fff"
 		       android:textSize="20dip"
+		       android:background="#635242"
 		       android:singleLine="true"
 		       android:layout_centerHorizontal="true"
 		      android:layout_centerVertical="true"
 		      android:password="true"
-		      android:paddingLeft="60dip"
+		      android:paddingLeft="80dip"
 		      android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`@#$%^*()_+,./?;':[]{}"
 		      /> 
 		 <TextView 
-	        android:layout_width="40dip"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="登录密码"
 	        android:layout_alignParentLeft="true"
-	        android:textColor="#000"
+	        android:textColor="#fff"
 	        android:textSize="16dip"
 			android:layout_centerVertical="true"
 			android:layout_marginLeft="15dip"
@@ -123,33 +183,37 @@
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:id="@+id/confirm_pwd_rl"
+		      android:layout_marginTop="5dip"
 	        >
 	    <EditText 
 		      android:id="@+id/confirm_pwd_edittext"
 		      android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:textColor="#000"
+		      android:textColor="#fff"
 		       android:textSize="20dip"
+		       android:background="#635242"
 		       android:singleLine="true"
 		       android:layout_centerHorizontal="true"
 		      android:layout_centerVertical="true"
 		      android:password="true"
-		      android:paddingLeft="60dip"
+		      android:paddingLeft="80dip"
 		      android:digits="1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ~`@#$%^*()_+,./?;':[]{}"
 		      /> 
 		 <TextView 
-	        android:layout_width="40dip"
+	        android:layout_width="wrap_content"
 	        android:layout_height="wrap_content"
 	        android:text="确认密码"
 	        android:layout_alignParentLeft="true"
-	        android:textColor="#000"
+	        android:textColor="#fff"
 	        android:textSize="16dip"
 			android:layout_centerVertical="true"
 			android:layout_marginLeft="15dip"
 	        />
 		 </RelativeLayout>
+		 </RelativeLayout>
+		 </RelativeLayout>
 		 <RelativeLayout 
-		     android:layout_below="@+id/confirm_pwd_rl"
+		     android:layout_below="@+id/layout2"
 		     android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
 		      android:layout_marginTop="20dip"
@@ -159,10 +223,8 @@
 		    
 		    android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="15dip"
-		      android:layout_marginRight="50dip"
-		      
 		      android:id="@+id/child_id_rl1"
+		      android:background="@drawable/zc_bj3"
 		    >
 		<EditText 
 		      android:id="@+id/child_id1"
@@ -176,27 +238,28 @@
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
+		      android:layout_marginRight="10dip"
+		      android:layout_marginLeft="10dip"
 		      /> 
    		 <Button 
-			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="26dip"
-		     android:text="添加"
+		     android:textSize="20dip"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/add1"
+		     android:layout_centerVertical="true"
+		     android:background="@drawable/add_btn"
 		     />
    		 </RelativeLayout>
    		 <RelativeLayout 
 		    android:layout_below="@+id/child_id_rl1"
 		    android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="15dip"
-		      android:layout_marginRight="50dip"
 		      android:layout_marginTop="20dip"
 		      android:visibility="gone"
 		      android:id="@+id/child_id_rl2"
+		      android:background="@drawable/zc_bj3"
 		    >
 		<EditText 
 		      android:id="@+id/child_id2"
@@ -210,14 +273,16 @@
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
+		      android:layout_marginRight="10dip"
+		      android:layout_marginLeft="10dip"
 		      /> 
    		 <Button 
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
-		     android:textColor="#fff"
-		     android:textSize="26dip"
-		     android:text="添加"
+		     android:textSize="20dip"
+		     android:background="@drawable/add_btn"
+	   android:textColor="#fff"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/add2"
 		     />
@@ -226,11 +291,10 @@
 		    android:layout_below="@+id/child_id_rl2"
 		    android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="15dip"
-		      android:layout_marginRight="50dip"
 		      android:layout_marginTop="20dip"
 		      android:visibility="gone"
 		      android:id="@+id/child_id_rl3"
+		      android:background="@drawable/zc_bj3"
 		    >
 		<EditText 
 		      android:id="@+id/child_id3"
@@ -244,14 +308,16 @@
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
+		      android:layout_marginRight="10dip"
+		      android:layout_marginLeft="10dip"
 		      /> 
    		 <Button 
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="26dip"
-		     android:text="添加"
+		     android:textSize="20dip"
+		     android:background="@drawable/add_btn"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/add3"
 		     />
@@ -261,11 +327,10 @@
 		    android:layout_below="@+id/child_id_rl3"
 		    android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="15dip"
-		      android:layout_marginRight="50dip"
 		      android:layout_marginTop="20dip"
 		      android:visibility="gone"
 		      android:id="@+id/child_id_rl4"
+		      android:background="@drawable/zc_bj3"
 		    >
 		<EditText 
 		      android:id="@+id/child_id4"
@@ -279,14 +344,16 @@
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
+		      android:layout_marginRight="10dip"
+		      android:layout_marginLeft="10dip"
 		      /> 
    		 <Button 
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="26dip"
-		     android:text="添加"
+		     android:textSize="20dip"
+		     android:background="@drawable/add_btn"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/add4"
 		     />
@@ -295,11 +362,10 @@
 		    android:layout_below="@+id/child_id_rl4"
 		    android:layout_width="fill_parent"
 		      android:layout_height="wrap_content"
-		      android:layout_marginLeft="15dip"
-		      android:layout_marginRight="50dip"
 		      android:layout_marginTop="20dip"
 		      android:visibility="gone"
 		      android:id="@+id/child_id_rl5"
+		      android:background="@drawable/zc_bj3"
 		    >
 		<EditText 
 		      android:id="@+id/child_id5"
@@ -312,18 +378,20 @@
 		      android:layout_toLeftOf="@+id/add5"
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
+		      android:layout_marginRight="10dip"
 		      android:layout_centerVertical="true"
+		      android:layout_marginLeft="10dip"
 		      /> 
    		 <Button 
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="26dip"
-		     android:text="添加"
+		     android:textSize="20dip"
 		     android:layout_alignParentRight="true"
 		     android:visibility="invisible"
 		     android:id="@+id/add5"
+		     android:background="@drawable/add_btn"
 		     />
    		 </RelativeLayout>
    		 </RelativeLayout>
@@ -340,7 +408,7 @@
 		         android:id="@+id/agree_checkbox"
 		         android:layout_width="wrap_content"
 		      android:layout_height="wrap_content"
-		      android:layout_gravity="center_vertical"
+		      android:layout_gravity="center_vertical|center_horizontal"
 		      android:checked="true"
 		         />
 		     <TextView 
@@ -348,7 +416,7 @@
 		      android:layout_height="wrap_content"
 		      android:textColor="#000"
 		      android:text="已阅读并同意"
-		      android:layout_gravity="center_vertical"
+		      android:layout_gravity="center_vertical|center_horizontal"
 		      android:textSize="14dip"
 		         />
 		     <TextView 
@@ -358,20 +426,20 @@
 		      android:textColor="#fff"
 		      android:text="使用条款和隐私政策"
 		      android:textSize="14dip"
-		      android:layout_gravity="center_vertical"
+		      android:layout_gravity="center_vertical|center_horizontal"
 		         />
 		 </LinearLayout>
 		 <Button 
-		     android:layout_width="fill_parent"
+		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:text="下一步"
-		     android:textColor="#000"
 		     android:textSize="24dip"
-		     android:layout_marginLeft="20dip"
-		     android:layout_marginRight="20dip"
+		     android:layout_centerHorizontal="true"
 		     android:layout_below="@+id/agree_rl"
 		     android:layout_marginTop="20dip"
 		     android:id="@+id/nextstep"
+		     android:background="@drawable/login_hover"
+	   android:textColor="#fff"
 		     />
 	</RelativeLayout>
 	</ScrollView>

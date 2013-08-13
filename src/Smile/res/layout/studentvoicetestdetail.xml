@@ -1,0 +1,132 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:padding="6dp" >
+	<include layout="@layout/public_titlebar"/>
+	<RelativeLayout 
+	     android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/public_title_bar"
+        android:layout_marginTop="15dip"
+        android:id="@+id/teacher_layout"
+	    >
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:layout_below="@+id/public_title_bar"
+        android:layout_marginTop="15dip"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_sendtime"
+            style="@style/chat_text_date_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp" >
+
+        <ImageView
+            android:id="@+id/iv_userhead"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:background="@drawable/mini_avatar_shadow"
+            android:focusable="false" />
+
+        <TextView
+            android:id="@+id/tv_chatcontent"
+            style="@style/chat_content_date_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_userhead"
+            android:background="@drawable/chatfrom_bg" />
+
+        <TextView
+            android:id="@+id/tv_username"
+            style="@style/chat_text_name_style"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/iv_userhead"
+            android:layout_toLeftOf="@id/tv_chatcontent" />
+    </RelativeLayout>
+</RelativeLayout>
+<RelativeLayout 
+    android:layout_below="@+id/teacher_layout"
+    android:layout_marginTop="20dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    >
+    <Button 
+        android:id="@+id/rec_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="点我开始语音测评"
+        android:textSize="20dip"
+        android:layout_centerHorizontal="true"
+        />
+</RelativeLayout>
+<RelativeLayout 
+    android:layout_below="@+id/teacher_layout"
+    android:layout_marginTop="20dip"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:visibility="gone"
+    android:id="@+id/record_completed_operate_layout"
+    >
+    <TextView 
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="录音时长:"
+        android:textSize="18dip"
+        android:id="@+id/record_time"
+        />
+    <LinearLayout 
+    android:layout_below="@+id/record_time"
+    android:layout_marginTop="20dip"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/record_completed_operate_layout"
+    >
+    <Button 
+        android:id="@+id/play_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="播放"
+        android:textSize="20dip"
+        android:layout_gravity="center"
+        />
+    <Button 
+        android:id="@+id/rerecord_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="重录"
+        android:textSize="20dip"
+        android:layout_gravity="center"
+        />
+    <Button 
+        android:id="@+id/send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="提交"
+        android:textSize="20dip"
+        android:layout_gravity="center"
+        />
+    </LinearLayout>
+</RelativeLayout>
+
+
+</RelativeLayout>

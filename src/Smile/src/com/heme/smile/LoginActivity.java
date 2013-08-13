@@ -13,11 +13,9 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.heme.logic.LogicManager;
 import com.heme.logic.common.Configuration;
 import com.heme.logic.common.Constans;
-import com.heme.logic.httpprotocols.login.LoginRequest;
-import com.heme.logic.module.Data.LoginRsp;
+import com.heme.utils.Util;
 
 public class LoginActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "LoginActivity";
@@ -29,34 +27,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	
 	private Handler mHandler = new Handler(){
 		public void handleMessage(android.os.Message msg) {
-			dismissDialog();
-			LoginRsp resp;
 			switch (msg.what) {
 			case Constans.LOGIN_SUCCESS:
-
-				resp = (LoginRsp)msg.obj;
-//				long systemId = resp.getSystemId();
-//				List<java.lang.Long> friendIdList = resp.getFriendSystemIdList();
-//				List<java.lang.Integer> groupList = resp.getGroupIdList();
-//				friendIdList.add(systemId);
-//				LogicManager.friendManager().getFriendInfo(friendIdList, mHandler);
-//				LogicManager.groupManager().getGroupInfo(groupList, mHandler);
-				//然后就可以用了
 				Intent intent = new Intent(LoginActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 				break;
-			case Constans.LOGIN_FAILED:
-				resp = (LoginRsp)msg.obj;
-				Toast.makeText(LoginActivity.this, resp.getErrString(), Toast.LENGTH_SHORT).show();
-				break;
-			case Constans.GET_USERINFO_SUCCESS:
-				
-				break;
-				
-			case Constans.GET_GROUPINFO_SUCCESS:
-				
-				break;
+
 			default:
 				break;
 			}
@@ -67,6 +44,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		Log.i(TAG, "onCreate");
 		initUI();
 		super.onCreate(savedInstanceState);
+		addIconToStatusbar(R.drawable.ic_launcher);
 	}
 	private void initUI(){
 		setContentView(R.layout.login);
@@ -79,6 +57,13 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 		mLoginBtn = (Button)findViewById(R.id.login);
 		mLoginBtn.setOnClickListener(this);
 		mRegBtn = (Button)findViewById(R.id.regBtn);
+		if (Configuration.APP_VERSION==0) {
+			mRegBtn.setText("家长注册");
+		}else if (Configuration.APP_VERSION==1) {
+			mRegBtn.setText("学生注册");
+		}else if (Configuration.APP_VERSION==2) {
+			mRegBtn.setText("老师注册");
+		}
 		mRegBtn.setOnClickListener(this);
 		mForgetPwdBtn = (Button)findViewById(R.id.forgetPwdBtn);
 		mForgetPwdBtn.setOnClickListener(this);
@@ -93,6 +78,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			startActivity(new Intent(this, UserRuleActivity.class));
 			break;
 		case R.id.login:
+			Log.i(TAG, "mUserName.getText().toString().trim() = "+mUserName.getText().toString().trim() +",mPwd.getText().toString().trim()="+mPwd.getText().toString().trim());
 			if (mUserName.getText().toString().trim().equals("")||mPwd.getText().toString().trim().equals("")) {
 				Util.showToast(this, "请填写帐号和密码");
 				return;
@@ -103,18 +89,17 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 			}
 			
 			showWaitDialog("登录中,请稍候...");
-			LogicManager.loginManager().Login(mUserName.getText().toString(), mPwd.getText().toString(), LoginRequest.LOGINTYPE.TypeTel, mHandler);
 			//模拟成功登录
-//			mHandler.sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
+			mHandler.sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
 			break;
 		case R.id.regBtn:
 			Intent intent = new Intent();
-			if (Configuration.APP_VERSION==1) {
+			if (Configuration.APP_VERSION==0) {
 				//家长版
 				intent.setClass(LoginActivity.this, AdultRegActivity.class);
-			}else if (Configuration.APP_VERSION==2) {
+			}else if (Configuration.APP_VERSION==1) {
 				//学生版
-//				intent.setClass(LoginActivity.this, AdultRegActivity.class);
+				intent.setClass(LoginActivity.this, StudentRegActivity.class);
 			}
 			startActivity(intent);
 			break;

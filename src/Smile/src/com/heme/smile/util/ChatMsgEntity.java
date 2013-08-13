@@ -5,8 +5,9 @@ public class ChatMsgEntity {
 	private String date;//消息日期
 	private String message;//消息内容
 	private boolean isComMeg = true;// 是否为收到的消息
-	private int type =0;  //0 代表文字信息，1为语音,2为图片，3为其它文件
+	private int type =0;  //0 代表文字信息，1为语音,2为图片，3为视频文件 4为名片
 	private float voiceTime = 0;  //录音时长
+	private String externalContent = "";   //额外的内容，
 	public String getName() {
 		return name;
 	}
@@ -64,6 +65,14 @@ public class ChatMsgEntity {
 
 	public void setVoiceTime(float voiceTime) {
 		this.voiceTime = voiceTime;
+	}
+
+	public String getExternalContent() {
+		return externalContent;
+	}
+
+	public void setExternalContent(String externalContent) {
+		this.externalContent = externalContent;
 	}
 
 }

@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.heme.logic.common.Constans;
+import com.heme.utils.Util;
 
 public class UpdatePwdActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "UpdatePwdActivity";

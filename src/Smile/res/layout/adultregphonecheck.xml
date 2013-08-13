@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".StartActivity" 
-    android:background="@drawable/loading_bg"
+    android:background="@drawable/login_bg"
     >
 	<include layout="@layout/public_titlebar"
         />
@@ -47,7 +47,6 @@
 		      android:textColor="#000"
 		       android:textSize="20dip"
 		       android:singleLine="true"
-		      android:password="true"
 		      android:layout_toLeftOf="@+id/nextstep"
 		      android:phoneNumber="true"
 		      android:digits="1234567890"
@@ -57,11 +56,12 @@
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
-		     android:textColor="#fff"
 		     android:textSize="26dip"
 		     android:text="下一步"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/nextstep"
+		     android:background="@drawable/btn_selector"
+	   android:textColor="#fff"
 		     />
    		 </RelativeLayout>
    		 </RelativeLayout>

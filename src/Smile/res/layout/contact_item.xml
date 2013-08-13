@@ -3,6 +3,13 @@
   xmlns:android="http://schemas.android.com/apk/res/android">
     <TextView android:id="@+id/contactitem_catalog" android:paddingRight="4.0dip" android:layout_height="wrap_content" style="@style/MMListCatalog" />
     <LinearLayout android:id="@+id/contactitem_layout" android:background="@drawable/mm_listitem" android:paddingLeft="8.0dip" android:layout_height="56.0dip" style="@style/MMListItem">
+        <CheckBox 
+            android:id="@+id/checkbox"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:focusable="false"            android:focusableInTouchMode="false"            android:clickable="false" 
+            />
         <ImageView android:id="@+id/contactitem_avatar_iv" android:layout_width="40.0dip" android:layout_height="40.0dip" />
         <LinearLayout android:orientation="vertical" android:paddingLeft="8.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_weight="1.0">
             <TextView android:id="@+id/contactitem_nick" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" style="@style/MMFontTitleInList" />

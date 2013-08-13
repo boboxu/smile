@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Spinner;
 
 import com.heme.logic.common.Constans;
+import com.heme.utils.Util;
 
 //针对绿色上网，发送命令给PC端
 public class SendPcCommondActivity extends BaseActivity {

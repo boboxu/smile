@@ -1,10 +1,16 @@
 package com.heme.smile;
 
+import java.util.Timer;
+import java.util.TimerTask;
+
+import com.heme.smile.R;
+
+import android.os.Bundle;
+import android.os.Handler;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.os.Bundle;
-import android.os.Handler;
+import android.view.Menu;
 
 public class StartActivity extends Activity {
 	

@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".StartActivity" 
-    android:background="@drawable/loading_bg"
+    android:background="@drawable/login_bg"
     >
 	<include layout="@layout/public_titlebar"
         />
@@ -64,6 +64,7 @@
 		     android:visibility="invisible"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/resend"
+		     android:background="@drawable/btn_selector"
 		     />
    		 </RelativeLayout>
    		 <Button 
@@ -73,6 +74,7 @@
    		     android:text="下一步"
    		     android:textColor="#fff"
    		     android:textSize="24dp"
+   		     android:background="@drawable/btn_selector"
    		     android:layout_below="@+id/checkcode_rl"
    		     android:layout_centerHorizontal="true"
    		     />

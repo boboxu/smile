@@ -6,11 +6,13 @@ import android.app.LocalActivityManager;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TabHost;
+import android.widget.Toast;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
@@ -20,12 +22,20 @@ public class MainActivity extends TabActivity {
 	private TabHost mTabHost;
 	private LocalActivityManager mActivityManager;
 	private TabWidget mTabWidget;
+	private long mExitTime = 0;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
 		initUI();
 		initTabHost();
+	}
+	public void backToDesk(){
+		Intent intent= new Intent(Intent.ACTION_MAIN);
+		 intent.addCategory(Intent.CATEGORY_HOME);
+		 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+		 startActivity(intent);
+		 System.exit(0);
 	}
 	private void addTab(int iconResId,String tag,Intent intent){
 		RelativeLayout indicator = (RelativeLayout)LayoutInflater.from(this).inflate(R.layout.text_tab_indicator, null);

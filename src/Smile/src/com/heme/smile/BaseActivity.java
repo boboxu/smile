@@ -1,15 +1,90 @@
 package com.heme.smile;
 
-import com.heme.smile.R;
-
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.Vibrator;
+import android.util.DisplayMetrics;
+import android.view.Gravity;
+import android.view.WindowManager;
+
+import com.heme.smile.ui.view.NotificationView;
 
 public class BaseActivity extends Activity {
+	private static WindowManager mWindowMgr = null;
+	private WindowManager.LayoutParams mWindowMgrParams = null;
+	private static NotificationView mNotificationView = null;
 	private ProgressDialog mDialog;
+	private Vibrator mVibrator;
+	public void gotoWebview(String title,String url){
+		Intent intent = new Intent(BaseActivity.this, CommonWebviewActivity.class);
+		Bundle b = new Bundle();
+		b.putString(CommonWebviewActivity.TITLE, title);
+		b.putString(CommonWebviewActivity.URL, url);
+		intent.putExtras(b);
+		startActivity(intent);
+	}
+	private void getWindowLayout(){
+		if(mNotificationView == null){
+			mWindowMgr = (WindowManager)getBaseContext().getSystemService(Context.WINDOW_SERVICE);
+			mWindowMgrParams = new WindowManager.LayoutParams();
+			mWindowMgrParams.type = 2003;
+			mWindowMgrParams.format = 1;
+			mWindowMgrParams.flags = 40;
+			mWindowMgrParams.gravity = Gravity.LEFT | Gravity.TOP;
+			initParams();
+			
+			mNotificationView = new NotificationView(this);
+			mWindowMgr.addView(mNotificationView, mWindowMgrParams);
+		}
+	}
+	public void addIconToStatusbar(int resId){
+		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		Notification n = new Notification(
+				resId, "欢迎回到傻逼", System.currentTimeMillis());
+		n.flags |= Notification.FLAG_ONGOING_EVENT;
+		n.flags |= Notification.FLAG_NO_CLEAR;
+		PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
+		n.contentIntent = pi;
+		if (getSharedPreferences(getResources().getString(R.string.shardpreference_sound), MODE_PRIVATE).getBoolean("sound", true)) {
+			n.defaults=Notification.DEFAULT_SOUND;
+		}
+		n.setLatestEventInfo(this, "傻逼", "", pi);
+		if (getSharedPreferences(getResources().getString(R.string.shardpreference_vibrate), MODE_PRIVATE).getBoolean("vibrate", true)) {
+			mVibrator.vibrate(500);
+		}
+		nm.notify(999, n);
+	}
+	private void initParams(){
+		DisplayMetrics dm = getResources().getDisplayMetrics();
+		mWindowMgrParams.x = dm.widthPixels - 136;
+		mWindowMgrParams.y = 300;
+		mWindowMgrParams.width = 136;
+		mWindowMgrParams.height = 136;
+	}
+	@Override
+	protected void onPause() {
+		super.onPause();
+	}
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		// TODO Auto-generated method stub
+		super.onCreate(savedInstanceState);
+		if (mVibrator==null) {
+			mVibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);		
+		}
+	}
+	private void deleteIconToStatusbar(){
+		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
+		nm.cancel(999);
+	}
 	public void backToDesk(){
 		Intent intent= new Intent(Intent.ACTION_MAIN);
 		 intent.addCategory(Intent.CATEGORY_HOME);
@@ -23,7 +98,7 @@ public class BaseActivity extends Activity {
 		mDialog.setTitle("请稍候");
 		mDialog.setMessage(content);
 		mDialog.setIcon(R.drawable.ic_launcher);
-		mDialog.setCancelable(true);
+		mDialog.setCancelable(false);
 		mDialog.show();
 	}
 	public void dismissDialog(){

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:padding="20dp"
+    android:layout_gravity="bottom"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:background="@drawable/record_bg">
+	<TextView   android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:text="点击弹窗以外的任意区域\n停止语音评测"
+	    android:textColor="#fff"
+	    android:textSize="22dip"
+	    android:id="@+id/tip"
+	    android:visibility="gone"
+	    android:layout_gravity="center_horizontal"
+	    />
+    <ImageView  android:id="@+id/dialog_img"
+    			android:layout_width="wrap_content"
+    		   android:layout_height="wrap_content"
+    		   android:paddingTop="10dip"
+    		   android:src="@drawable/record_animate_01"/>	      
+
+</LinearLayout>

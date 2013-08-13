@@ -3,7 +3,7 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     tools:context=".StartActivity" 
-    android:background="@drawable/splash"
+    android:background="#f4f4f4"
     >
     <include layout="@layout/public_titlebar"/>
     <ScrollView 
@@ -22,8 +22,10 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
 	    
-	    android:background="#fff"
+	    android:background="@drawable/about_item_bg"
 	    android:layout_marginTop="20dip"
+	    android:layout_marginLeft="15dip"
+	    android:layout_marginRight="15dip"
 	    >
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
@@ -38,7 +40,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="个人信息"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -53,7 +55,7 @@
 	    <ImageView 
 	        android:layout_width="fill_parent"
 	        android:layout_height="1dip"
-	        android:src="#000"
+	        android:src="#cdcdcd"
 	        />
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
@@ -68,7 +70,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="修改密码"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -83,7 +85,7 @@
 	    <ImageView 
 	        android:layout_width="fill_parent"
 	        android:layout_height="1dip"
-	        android:src="#000"
+	        android:src="#cdcdcd"
 	        />
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
@@ -98,7 +100,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="聊天设置"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -113,7 +115,7 @@
 	    <ImageView 
 	        android:layout_width="fill_parent"
 	        android:layout_height="1dip"
-	        android:src="#000"
+	        android:src="#cdcdcd"
 	        />
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
@@ -128,7 +130,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="隐私设置"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -146,37 +148,40 @@
 	    android:id="@+id/layout2"
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
-	    android:orientation="vertical"
 	    android:layout_below="@+id/layout1"
-	    android:background="#fff"
+	    android:background="@drawable/about_item_bg"
 	    android:layout_marginTop="30dip"
-	    	    android:paddingTop="10dip"
-	    android:paddingBottom="10dip"
-	    
+	    android:layout_marginLeft="15dip"
+	    android:layout_marginRight="15dip"
 	    >
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/about"
+	    android:layout_gravity="center_vertical"
 	        >
+	        <ImageView 
+	            android:id="@+id/about_img"
+	            android:layout_width="50dip"
+	            android:layout_height="50dip"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:src="@drawable/about_logo"
+	            android:layout_marginLeft="15dip"
+	            android:background="#ef600d"
+	            />
 	        <TextView 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:layout_centerVertical="true"
-	            android:layout_alignParentLeft="true"
-	            android:layout_marginLeft="15dip"
-	            android:text="关于傻逼"
-	            android:textSize="28dip"
-	            android:textColor="#000"
-	            />
-	        <ImageView 
-	            android:layout_width="wrap_content"
-	            android:layout_height="wrap_content"
-	            android:layout_centerVertical="true"
 	            android:layout_alignParentRight="true"
-	            android:layout_marginRight="15dip"
-	            android:src="@drawable/setting_right_icon"
+	            android:layout_marginLeft="5dip"
+	            android:text="关于傻逼"
+	            android:textSize="20dip"
+	            android:layout_toRightOf="@+id/about_img"
+	            android:textColor="#574534"
 	            />
+	        
 	    </RelativeLayout>
 	    
 	</LinearLayout>
@@ -187,9 +192,75 @@
 	    android:layout_height="wrap_content"
 	    android:orientation="vertical"
 	    android:layout_below="@+id/layout2"
-	    android:background="#fff"
+	    android:background="@drawable/about_item_bg"
 	    android:layout_marginTop="30dip"
+	    android:layout_marginLeft="15dip"
+	    android:layout_marginRight="15dip"
 	    >
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/update_sound_layout"
+	    android:paddingBottom="10dip"
+	        >
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="15dip"
+	            android:text="通知声音"
+	            android:textSize="20dip"
+	            android:textColor="#000"
+	            />
+	        <ToggleButton 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="15dip"
+	            android:textSize="16dip"
+	            android:textColor="#000"
+	            android:id="@+id/sound_btn"
+	            />
+	    </RelativeLayout>
+	    <ImageView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dip"
+	        android:src="#cdcdcd"
+	        />
+	    <RelativeLayout 
+	        android:layout_width="fill_parent"
+	    android:layout_height="wrap_content"
+	    android:id="@+id/update_vibrate_layout"
+	    android:paddingBottom="10dip"
+	        >
+	        <TextView 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentLeft="true"
+	            android:layout_marginLeft="15dip"
+	            android:text="通知震动"
+	            android:textSize="20dip"
+	            android:textColor="#000"
+	            />
+	        <ToggleButton 
+	            android:layout_width="wrap_content"
+	            android:layout_height="wrap_content"
+	            android:layout_centerVertical="true"
+	            android:layout_alignParentRight="true"
+	            android:layout_marginRight="15dip"
+	            android:textSize="16dip"
+	            android:textColor="#000"
+	            android:id="@+id/vibrate_btn"
+	            />
+	    </RelativeLayout>
+	    <ImageView 
+	        android:layout_width="fill_parent"
+	        android:layout_height="1dip"
+	        android:src="#cdcdcd"
+	        />
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
@@ -203,7 +274,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="清空聊天记录"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -218,7 +289,7 @@
 	    <ImageView 
 	        android:layout_width="fill_parent"
 	        android:layout_height="1dip"
-	        android:src="#000"
+	        android:src="#cdcdcd"
 	        />
 	    <RelativeLayout 
 	        android:layout_width="fill_parent"
@@ -233,7 +304,7 @@
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
 	            android:text="注销傻逼"
-	            android:textSize="28dip"
+	            android:textSize="20dip"
 	            android:textColor="#000"
 	            />
 	        <ImageView 
@@ -248,13 +319,14 @@
 	</LinearLayout>
 	<Button 
 	    android:layout_below="@+id/layout3"
-	    android:layout_width="fill_parent"
+	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
-	    android:layout_marginLeft="30dip"
-	    android:layout_marginRight="30dip"
+	    android:layout_centerHorizontal="true"
 	    android:layout_marginTop="20dip"
 	    android:text="退出程序"
-	    android:textSize="30dip"
+	    android:textColor="#fff"
+	    android:background="@drawable/login_selector"
+	    android:textSize="24dip"
 	    android:layout_marginBottom="20dip"
 	    />
 	</RelativeLayout>

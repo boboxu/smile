@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.TextView.BufferType;
 
 import com.heme.logic.common.Constans;
+import com.heme.utils.Util;
 
 public class AdultRegCheckCodeActivity extends BaseActivity {
 	private static final String TAG = "AdultRegCheckCodeActivity";

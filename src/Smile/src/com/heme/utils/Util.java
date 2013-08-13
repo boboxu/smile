@@ -1,93 +1,192 @@
 package com.heme.utils;
 
+import java.io.BufferedInputStream;
+import java.io.BufferedOutputStream;
+import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.net.InetAddress;
-import java.net.NetworkInterface;
-import java.net.SocketException;
+import java.io.InputStream;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.text.DecimalFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Enumeration;
 
 import android.app.Activity;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
-import android.graphics.drawable.ShapeDrawable;
-import android.graphics.drawable.shapes.RoundRectShape;
+import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.Environment;
 import android.os.StatFs;
-import android.util.Base64;
+import android.text.Editable;
+import android.text.InputFilter;
+import android.text.Spanned;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.Gravity;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.TextView;
+import android.view.View;
+import android.view.View.MeasureSpec;
+import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.heme.smile.R;
+
+
 public class Util {
-	private static final boolean PRINT_LOG = true;
-    private static Toast mToast=null;
-    //private static TextView mToastTextView=null;
-    
+	//private static final String TAG = "Util";
+	
 	public static void log(String tag, String content) {
-		if(PRINT_LOG) {
-			String strTemp = " com.xunlei.kankan.Log :  ";
-			strTemp += content;
-			Log.d((" [ " + getMillTime()+ " ] " + tag + " thread_id : " + Thread.currentThread().getId()), strTemp);			
+		log(tag, content, false);
+	}
+	
+	public static void log(String tag, byte []content) {
+//		if(Config.CONFIG_UTIL_PRINT_LOG) {
+//			String temp = new String(content);
+//			log(tag, temp);
+//		}
+	}
+	
+	public static void log(String tag, String content, boolean force) {
+		if(force) {
+			Log.d(tag, content);
+		} else {
+//			if(Config.CONFIG_UTIL_PRINT_LOG) {
+//				Log.d(tag, content);
+//			}
 		}
 	}
 	
-	public static boolean ensureDir(String path) {
-		log(" Util " , " ensureDir path : " + path);
-		if(null == path) {
+	public static void createDirectory(String strPath) {
+		File file =new File(strPath);
+		if(!file .exists())     
+		{     
+		    file .mkdirs();
+		}
+	}
+	
+	public static boolean isFileExist(String filePath) {
+		File file = new File(filePath);
+		if(!file.exists() || file.isDirectory()) {
 			return false;
 		}
 		
-		boolean ret = false;
-		
-		File file = new File(path);
-		log(" Util " , " ensureDir file.exists() : " + file.exists() + " , file.isDirectory() : " + file.isDirectory());
-		if(!file.exists() || !file.isDirectory()) {
-			try{
-			    ret = file.mkdirs();
-			    log(" Util " , " ensureDir file.mkdirs() ret : " + ret);
-			} catch(SecurityException  se) {
-				se.printStackTrace();
-			}
-		}
-		
-		return ret;
+		return true;
 	}
 	
-	public static boolean ensureFile(String path) {
-		if(null == path) {
+	public static boolean isDirExist(String path) {
+		File file = new File(path);
+		if(!file.exists() || file.isFile()) {
 			return false;
 		}
 		
-		boolean ret = false;
-		
-		File file = new File(path);
-		if(!file.exists() || !file.isFile()) {
-			try{
-			    file.createNewFile();
-			    ret = true;
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-		}
-		
-		return ret;
+		return true;
 	}
 	
-	public static String getSDCardDir() {
+	public static String md5(String key) {
+		try {
+			char[] hex = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+			MessageDigest md;
+			md = MessageDigest.getInstance("MD5");
+			byte[] buf = key.getBytes();
+			md.update(buf, 0, buf.length);
+			byte[] bytes = md.digest();
+			StringBuilder sb = new StringBuilder(32);
+			for (byte b : bytes) {
+				sb.append(hex[((b >> 4) & 0xF)]).append(hex[((b >> 0) & 0xF)]);
+			}
+			key = sb.toString();
+		} catch (NoSuchAlgorithmException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return key;
+	}
+	
+	public static int getVerCode(Context context) {
+		int verCode = -1;
+		try {
+			verCode = context.getPackageManager().getPackageInfo(
+					"com.heme.smile", 0).versionCode;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return verCode;
+	}
+	
+	public static String getVerName(Context context) {
+		String verName = "";
+		try {
+			verName = context.getPackageManager().getPackageInfo(
+					"com.heme.smile", 0).versionName;
+		} catch (NameNotFoundException e) {
+			e.printStackTrace();
+		}
+		return verName;	
+
+	}
+	
+    public static int px2dip(Context context, float pxValue){ 
+    	final float scale = context.getResources().getDisplayMetrics().density; 
+    	return (int)(pxValue / scale + 0.5f); 
+    } 
+    
+    public static int dip2px(Context context, float dipValue){ 
+    	final float scale = context.getResources().getDisplayMetrics().density; 
+    	return (int)(dipValue * scale + 0.5f); 
+	}
+    
+    public static String getSDCardDir() {
 		return Environment.getExternalStorageDirectory().getPath();
 	}
+    
+	public static boolean isSDCardExist() {
+		return Environment.MEDIA_MOUNTED.equalsIgnoreCase(Environment.getExternalStorageState());
+	}
 	
-
+	public static long getFileSize(String path) {
+		File file = new File(path);
+		return getFileSize(file);
+	}
+	
+	public static long getFileSize(File file) {
+		if(!file.exists()) {
+			return 0;
+		}
+		if(file.isFile()) {
+			return file.length();
+		}
+		
+		long size = 0;
+		File[] list = file.listFiles();
+		for(File tmp: list) {
+			size += getFileSize(tmp);
+		}
+		
+		return size;
+	}
+	
+	public static boolean deleteDir(String path) {
+		 File f = new File(path);
+		 if(!f.exists() || !f.isDirectory()){
+			 return false;
+		 }
+		 
+		 File[] fileList = f.listFiles();
+		 for(File file: fileList) {
+			 if(file.isFile()) {
+				 file.delete();
+			 } else if(file.isDirectory()) {
+				 deleteDir(file.getAbsolutePath());
+			 }
+		 }
+		 
+		 f.delete();
+		 return true;
+	}
 	
     public static long getAvailableExternalMemorySize() {    
         File path = Environment.getExternalStorageDirectory();    
@@ -100,156 +199,409 @@ public class Util {
     public static long getTotalExternalMemorySize() {      
         File path = Environment.getExternalStorageDirectory();   
         Environment.getExternalStorageState();
-        StatFs stat = new StatFs(path.getPath());    
-        long blockSize = stat.getBlockSize();    
-        long totalBlocks = stat.getBlockCount();    
+        StatFs stat = new StatFs(path.getPath());
+        long blockSize = stat.getBlockSize();
+        long totalBlocks = stat.getBlockCount();   
         return totalBlocks * blockSize;  
     }
     
-    public static Bitmap creatBitmap(String path) {
-    	if(null == path) {
-    		return null;
+    public static String getDateString(long ms) {
+    	return getDateString(ms, "yyyy-MM-dd HH:mm:ss");
+    }
+    
+    public static String getDateString(long ms, String format) {
+    	Date curDate   =  new Date(ms);
+		return getDateString(curDate, format);
+    }
+    
+    public static String getNowDateString() {
+    	return getNowDateString("yyyy-MM-dd HH:mm:ss");
+    }
+    
+    public static String getNowDateString(String format) {
+		Date curDate   =  new Date(System.currentTimeMillis());
+		return getDateString(curDate, format);
+    }
+    
+    public static String getDateString(Date date) {
+    	return getDateString(date, "yyyy-MM-dd HH:mm:ss");
+    }
+    public static void showToast(Context ctx,String content){
+		Toast.makeText(ctx, content, Toast.LENGTH_SHORT).show();
+	}
+	
+	public static String inputStream2String(InputStream is) throws IOException {
+		ByteArrayOutputStream baos = new ByteArrayOutputStream();
+		int i = -1;
+		while ((i = is.read()) != -1) {
+			baos.write(i);
+		}
+		return baos.toString();
+	}
+    public static String getDateString(Date date, String format) {
+    	SimpleDateFormat   formatter = new SimpleDateFormat(format);
+    	return formatter.format(date);
+    }
+    
+    public static String byteConvert(long byteNum)  {
+    	double f = byteNum / (1024 * 1024 * 1024 * 1.0);
+    	String res;
+    	if(f > 1.0) {
+    		//大于1G
+    		res = new DecimalFormat("0.00").format(f);
+    		res += "GB";
+    	} else {
+    		//小于1G
+    		f = byteNum / (1024 * 1024 * 1.0);
+    		if(f > 1.0) {
+    			//大于1M
+    			res = new DecimalFormat("0.00").format(f);
+    			res += "MB";
+    		} else {
+    			//小于1M
+    			f = byteNum / (1024 * 1.0); 
+    			if(f > 1.0) {
+    				//大于1K
+    				res = new DecimalFormat("0").format(f);
+    				res += "KB";
+    			} else {
+    				//小于1K
+    				res = byteNum + "B";
+    			}
+    		}
     	}
-    	
-    	File file = new File(path);
-    	if(!file.exists()) {
-    		return null;
+    	return res;
+    }
+    
+    public static String byteConvertEx(long byteNum)  {
+    	double f = byteNum / (1024 * 1024 * 1024 * 1.0);
+    	String res;
+    	if(f > 1.0) {
+    		//大于1G
+    		res = new DecimalFormat("0.0").format(f);
+    		res += "G";
+    	} else {
+    		//小于1G
+    		f = byteNum / (1024 * 1024 * 1.0);
+    		if(f > 1.0) {
+    			//大于1M
+    			res = new DecimalFormat("0.0").format(f);
+    			res += "M";
+    		} else {
+    			//小于1M
+    			f = byteNum / (1024 * 1.0); 
+    			if(f > 1.0) {
+    				//大于1K
+    				res = new DecimalFormat("0").format(f);
+    				res += "K";
+    			} else {
+    				//小于1K
+    				res = byteNum + "B";
+    			}
+    		}
     	}
-    	
-    	return BitmapFactory.decodeFile(path);
+    	return res;
     }
     
-    public static void saveBitmap(Bitmap bitmap, String path, String name) {
-    	if(!path.endsWith("/")) {
-    		path += "/";
-    	}
-        File file = new File(path+name);
-        if(file.exists()) {
-        	file.delete();
-        }
-        try {
-			file.createNewFile();
-        
-			FileOutputStream out = null;
-            out = new FileOutputStream(file);
-            bitmap.compress(Bitmap.CompressFormat.PNG, 100, out);
-            out.flush();
-            out.close();
-        } catch (FileNotFoundException e) {
-                e.printStackTrace();
-        } catch (IOException e) {
-                e.printStackTrace();
-        }
-    }
-    
-    public static String getDate() {
-//    	Calendar cd = Calendar.getInstance();
-//    	int year = cd.get(Calendar.YEAR);
-//    	int month = cd.get(Calendar.MONTH);
-//    	int day = cd.get(Calendar.DAY_OF_MONTH);
-    	
-    	SimpleDateFormat format=new SimpleDateFormat("yyyy.MM.dd");
-    	return format.format(new Date());
-    	//return String.format("%d.%d.%d", year, month, day);
-    }
-    
-    public static String getMillTime(){
-    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss.SSS");
-    	return format.format(new Date());
-    }
-    public static String getDateTime() {
-    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH-mm-ss");
-    	return format.format(new Date());
-    }
-    
-    public static String mToStr(int m) {
-    	m = m/1000;
-    	int hour = m/3600;
-    	int minute = (m-3600*hour)/60;
-    	int second = m%60;
-    	return String.format("%02d:%02d:%02d", hour, minute, second);
-
-    }
-    
-    public static String getLocalIpAddress()    
-    {    
-        try    
-        {    
-            for (Enumeration<NetworkInterface> en = NetworkInterface.getNetworkInterfaces(); en.hasMoreElements();)    
-            {    
-               NetworkInterface intf = en.nextElement();    
-               for (Enumeration<InetAddress> enumIpAddr = intf.getInetAddresses(); enumIpAddr.hasMoreElements();)    
-               {    
-                   InetAddress inetAddress = enumIpAddr.nextElement();    
-                   if (!inetAddress.isLoopbackAddress())    
-                   {    
-                       return inetAddress.getHostAddress().toString();    
-                   }    
-               }    
-           }    
-        }    
-        catch (SocketException ex)    
-        {    
-        	Util.log("WifiPreference IpAddress", ex.toString());    
-        }    
-        return null;    
-    }
-    
-    public static void showToast(Context context,String showMsg,int duration){
-    	if(mToast==null){
-    		mToast=new Toast(context);
-    	}
-    
-    		TextView mToastTextView=new TextView(context);
-    		mToastTextView.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT,LayoutParams.WRAP_CONTENT));
-    	    mToastTextView.setGravity(Gravity.CENTER);
-    	    mToastTextView.setPadding(10, 3, 10, 3);
-    		ShapeDrawable drawable=new ShapeDrawable(new RoundRectShape(new float[]{8,8,8,8,8,8,8,8},null,null));
-    	    drawable.getPaint().setColor(Color.BLACK);
-    	    drawable.setAlpha(200);
-    	    mToastTextView.setBackgroundDrawable(drawable);
-    
-    	
-    	mToastTextView.setText(showMsg);
-    	mToast.setView(mToastTextView);
-    	mToast.setDuration(duration);
-    	mToast.show();
-    }
-    public static String xunleiBase64Decoder(String s){
-    	int start=s.indexOf("thunder://");
-    	String code=s.substring(start+"thunder://".length());
-    	return String.valueOf(Base64.decode(code, Base64.DEFAULT));
-    }
-    
-//    public static void startRefresh(Context context,ImageButton freshButton){
-//    	Animation anim = AnimationUtils.loadAnimation(context, R.anim.refresh_anim); 
-//    	
-//    	freshButton.startAnimation(anim);
-//    }
-//    public static void stopRefresh(ImageButton freshButton){
-//    	freshButton.clearAnimation();
-//    }
-    
-    public static String getUrlPF(Activity ctx)
+    public static boolean checkEmail(String strAddress)
     {
-    	DisplayMetrics dm = new DisplayMetrics(); 
-    	ctx.getWindowManager().getDefaultDisplay().getMetrics(dm); 
-    	int width = (int) (dm.widthPixels);
-    	if( width< 480)
+    	String reg = "[0-9a-zA-Z][0-9a-zA-Z_.]*[^_]@[0-9a-zA-Z]+(\\.[0-9a-zA-Z]+)*\\.[0-9a-zA-Z]+$";
+    	if(!strAddress.matches(reg))
     	{
-    		return "pf=320";
+    		return false;
     	}
-    	else if(width >= 480 && width< 540)
-    	{
-    		return "pf=480";
-    	}
-    	else if(width >=540)
-    	{
-    		return "pf=540";
-    	}
-    	else
-    	{
-    		return "pf=540";
-    	}
+    	return true;
     }
+    
+	public static void hiddenInput(Context ctx,View v){
+		InputMethodManager inputMethodManager = (InputMethodManager)ctx.getSystemService(Context.INPUT_METHOD_SERVICE);
+		inputMethodManager.hideSoftInputFromWindow(v.getWindowToken(), 0);
+	}
+	public static boolean copy(String   from,   String   to)     
+	  {   
+	      try   
+	      {   
+	          String   toPath   =   to.substring(0,to.lastIndexOf("/"));   //提取文件路径   
+	          File   f   =   new   File(toPath);   //建立文件目录路   
+	          if(!f.exists())   
+	              f.mkdirs();   
+	            
+	          BufferedInputStream   bin   =   new   BufferedInputStream(new   FileInputStream(from));   
+	          BufferedOutputStream   bout   =   new   BufferedOutputStream(new   FileOutputStream(to));   
+	          int   c;   
+	          while((c=bin.read())   !=   -1)   //复制   
+	              bout.write(c);   
+	          bin.close();   
+	          bout.close();   
+	          return   true;   
+	      }   
+	      catch(Exception   e)   
+	      {   
+	          e.printStackTrace();   
+	          return   false;   
+	      }   
+	  }   
+	
+	public static void showToast(Toast toast,String str){
+		try{
+			toast.setText(str);
+			toast.show();
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+	}
+	
+	public static boolean isCharFiltered(char ch) {
+		char table[] = {'/', '\\', '<', '>', ':', '：', '*', '?', '？', '"', '\n', '|'};
+		for(char c : table) {
+			if(c == ch)
+				return true;
+		}
+		return false;
+	}
+	
+	public static final class FileNameInputFilter implements InputFilter{
+		
+		private final String TAG = "FileNameInputFilter";
+		@Override
+		public CharSequence filter(CharSequence source, int start, int end,
+				Spanned dest, int dstart, int dend) {
+			Util.log(TAG, "source = " + source + " start = " + start + " end = " + end + 
+					" dstart =" + dstart + " dend = " + dend);
+			String str = source.toString();
+			String dst = new String();
+			boolean show = false;
+			for(int i =0 ; i < str.length(); i++){
+				char c = str.charAt(i);
+				if(c !='/' && 
+						c !='\\' && 	
+						c !='<' && 	 
+						c !='>' && 	
+						c !=':' &&
+						c !='*' &&
+						c !='?' &&
+						c !='"' &&
+						c !='\n' &&
+						c !='|' 
+						){
+					dst+=c;
+				}else{
+					show = true;
+				}
+			}
+			
+			return dst;
+		}
+		
+	}
+	
+	public static class TextLengthWatcher implements TextWatcher
+	{
+		private Context mCtx;
+		private EditText mEditText;
+		private int mMaxLength;
+		private Toast mToast = null;
+		
+		public TextLengthWatcher(Context ctx, EditText editText, int maxLength)
+		{
+			mCtx = ctx;
+			mEditText = editText;
+			mMaxLength = maxLength;
+		}
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after)
+		{
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count)
+		{
+			
+		}
+
+		@Override
+		public void afterTextChanged(Editable s)
+		{
+			int nSelEnd = mEditText.getSelectionEnd();
+			if(nSelEnd == 0)
+			{
+				return;
+			}
+			boolean isOverMaxLength = s.length() > mMaxLength ? true : false;
+			if(isOverMaxLength)
+			{
+				if(mToast == null)
+				{
+					mToast = Toast.makeText(mCtx, "超过最多字符限制！", Toast.LENGTH_SHORT);
+				}
+				mToast.show();
+				String tmp = mEditText.getText().toString().substring(0, mMaxLength);
+				mEditText.setText(tmp);
+				mEditText.setSelection(mEditText.getText().length());
+			}
+		}
+		
+	}
+    public static void measureView(View child) {
+        ViewGroup.LayoutParams p = child.getLayoutParams();
+        if (p == null) {
+            p = new ViewGroup.LayoutParams(
+                    ViewGroup.LayoutParams.FILL_PARENT,
+                    ViewGroup.LayoutParams.WRAP_CONTENT);
+        }
+        
+        int childWidthSpec = ViewGroup.getChildMeasureSpec(0,
+                0 + 0, p.width);
+        int lpHeight = p.height;
+        int childHeightSpec;
+        
+        if (lpHeight > 0) { 
+            childHeightSpec = MeasureSpec.makeMeasureSpec(lpHeight, MeasureSpec.EXACTLY);   
+        } else {
+            childHeightSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        }
+        child.measure(childWidthSpec, childHeightSpec);
+    }
+	
+    public static String getTimePastDesc(String strtime){
+    	SimpleDateFormat   formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    	try {
+			return getTimePastDesc(formatter.parse(strtime).getTime());
+		} catch (ParseException e) {
+			e.printStackTrace();
+			return strtime;
+		}    
+    }
+    
+    public static String getTimePastDesc(long thetime){
+    	String str = "";
+    	long cur = System.currentTimeMillis();
+    	cur -= thetime;
+    	if(cur<0)
+    		cur = 0;
+    	cur /= 1000;
+    	if(cur < 60){
+    		str = cur+" 秒前";
+    		return str;
+    	}
+    	cur /= 60;
+    	if(cur < 60){
+    		str = cur+" 分钟前";
+    		return str;
+    	}
+    	cur /= 60;
+    	if(cur < 24){
+    		str = cur+" 小时前";
+    		return str;
+    	}
+    	cur /= 24;
+    	str = getDateString(thetime, "yy-MM-dd");
+    	
+    	/*if(cur < 365){
+    		str = cur+" 天前";
+    		return str;
+    	}
+    	cur /= 365;
+    	str = cur+" 年前";  */  	
+    	
+    	return str;
+    }
+    
+    public static DisplayMetrics getScreenDim(Activity ctx){
+		DisplayMetrics dm = new DisplayMetrics();		
+		ctx.getWindowManager().getDefaultDisplay().getMetrics(dm);
+		return dm;	
+    }
+    
+    public static int getDefaultFileIcon70WH(String filename){
+		switch(FileHandler.getFileTypeByName(filename)){
+		case FileHandler.FILE_TYPE_MUSIC:
+			return R.drawable.audio_default;
+		case FileHandler.FILE_TYPE_SOFTWARE:
+			return R.drawable.software_default;
+		case FileHandler.FILE_TYPE_TEXT:
+			return R.drawable.doc_default;
+		case FileHandler.FILE_TYPE_VIDEO:
+			return R.drawable.video_default;
+		case FileHandler.FILE_TYPE_PICTURE:
+			return R.drawable.pic_default;
+		case FileHandler.FILE_RAR_CAN_PREVIEW:
+			return R.drawable.zip_default;
+		default:
+			return R.drawable.unknown_file_default;
+		}
+    }
+    public static int getDefaultFileIcon150WH(String filename){
+		switch(FileHandler.getFileTypeByName(filename)){
+		case FileHandler.FILE_TYPE_MUSIC:
+			return R.drawable.audio_default_150;
+		case FileHandler.FILE_TYPE_SOFTWARE:
+			return R.drawable.software_default_150;
+		case FileHandler.FILE_TYPE_TEXT:
+		case FileHandler.FILE_DOC_CAN_PREVIEW:
+			return R.drawable.doc_default_150;
+		case FileHandler.FILE_TYPE_VIDEO:
+			return R.drawable.video_default_150;
+		case FileHandler.FILE_TYPE_PICTURE:
+			return R.drawable.pic_default_150;
+		case FileHandler.FILE_RAR_CAN_PREVIEW:
+			return R.drawable.zip_default_150;
+		default:
+			return R.drawable.unknown_file_default_150;
+		}
+    }
+    
+    public static int getFiletypeRes(String filename){
+		int type = FileHandler.getFileTypeByName(filename);
+		switch(type){
+			case FileHandler.FILE_TYPE_MUSIC:
+				return R.drawable.filetype_audio_gray;
+			case FileHandler.FILE_TYPE_SOFTWARE:
+				return R.drawable.filetype_software_gray;
+			case FileHandler.FILE_TYPE_TEXT:
+			case FileHandler.FILE_DOC_CAN_PREVIEW:
+				return R.drawable.filetype_txt_gray;
+			case FileHandler.FILE_TYPE_VIDEO:
+				return R.drawable.filetype_video_gray;
+			case FileHandler.FILE_TYPE_PICTURE:
+				return R.drawable.filetype_pic_gray;
+			case FileHandler.FILE_RAR_CAN_PREVIEW:
+				return R.drawable.filetype_zip_gray;
+			default:
+				return R.drawable.filetype_unknown_gray;
+		}	   	
+    }
+    
+	public static String getFirstClassDomainName(String url)
+	{
+		String ret = url;
+		if(null != ret)
+		{
+			if(!ret.trim().equals(""))
+			{
+				String temp;
+				ret = ret.replace("http://", "");
+				int index = ret.indexOf("/");
+				if(index != -1)
+				{
+					ret = ret.substring(0, index);
+				}
+				try
+				{
+					temp = ret.substring(ret.lastIndexOf("."));
+					ret  = ret.substring(0, ret.lastIndexOf("."));
+					String temp1 = ret.substring(ret.lastIndexOf(".") + 1);
+					
+					ret = temp1 + temp;
+				}catch(Exception e)
+				{
+					
+				}
+			}
+		}
+		return ret;
+	}
 }
