@@ -13,6 +13,8 @@ import com.heme.foundation.net.INetworkManagerDelegate;
 import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
+import com.heme.logic.httpprotocols.push.PushMsgResponse;
+import com.heme.logic.module.Message.PushMsgReq;
 import com.heme.logic.module.Trans.TransProto;
 
 public class ServerManager implements IServerManagerInterface,
@@ -338,6 +340,10 @@ public class ServerManager implements IServerManagerInterface,
 			{
 				return;
 			}
+			if (isPushMsg(transProto))
+			{
+				//TODO;
+			}
 			basePbRequest = (BasePbRequest)getRequestFromSeqId(transProto.getUint32Seq());
 			if (basePbRequest == null) {
 				// 有可能操作被取消
@@ -373,6 +379,23 @@ public class ServerManager implements IServerManagerInterface,
 
 		delRequest(basePbRequest.getSeqId());
 
+	}
+	
+	public static boolean isPushMsg(TransProto transProto)
+	{
+		if (transProto == null || transProto.getStrCmd() == null)
+		{
+			return false;
+		}
+		
+		if(transProto.getStrCmd().equals("PushSvr"))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	@Override

@@ -1,5 +1,6 @@
 package com.heme.commonlogic.dao;
 
+import com.heme.logic.module.CommonMsgDao;
 import com.heme.logic.module.DaoMaster;
 import com.heme.logic.module.DaoMaster.DevOpenHelper;
 import com.heme.logic.module.DaoSession;
@@ -45,5 +46,10 @@ public class DbManager
 	public DaoSession getmDaoSession()
 	{
 		return mDaoSession;
+	}
+	
+	public static CommonMsgDao getCommonMsgDao()
+	{
+		return getDbManager().getmDaoSession().getCommonMsgDao();
 	}
 }
