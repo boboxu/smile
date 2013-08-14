@@ -1,23 +1,42 @@
 package com.heme.logic.httpprotocols.friend.addfriend;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.google.protobuf.ByteString;
-import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
-import com.heme.logic.module.Message.MessageType;
-import com.heme.logic.module.Message.VerifyRequest;
+import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
+import com.heme.logic.module.Data.AddFriendReq;
+import com.heme.logic.module.Data.DataSvrProto.Cmd;
 
-public class AddFriendRequest extends BaseMessageRequest {
+public class AddFriendRequest extends BaseLoginedBusinessRequest {
+
+	private AddFriendReq.Builder mAddFriendReqBuilder;
 	
-	public AddFriendRequest(long srcId, String sessionId,
-			List<Long> targetIdList) {
-		super(srcId, sessionId, targetIdList, new ArrayList<Long>(), MessageType.MT_VerifyReq);
+	public AddFriendRequest(String sessionId, long systemId) {
+		super(sessionId, systemId);
 	}
 
-	public void setVerifyRequest(VerifyRequest verifyMsgInfo,ByteString context)
-	{
-		mCommonMsgBuilder.setMsgVerifyReq(verifyMsgInfo);
-		super.setCommonMsg(context);
+	@Override
+	protected void setLoginedInfo(String sessionId, long systemId) {
+		mAddFriendReqBuilder.setSessionId(sessionId);
+		mAddFriendReqBuilder.setSystemId(systemId);
+	}
+
+	@Override
+	public void setVersionAndClientType(String version, int clientType) {
+		mAddFriendReqBuilder.setClientType(clientType);
+		mAddFriendReqBuilder.setVersionNo(version);
+	}
+
+	@Override
+	public void initmDataBuilder() {
+		mAddFriendReqBuilder = AddFriendReq.newBuilder();
+		
+	}
+
+	public void setTargetSystemId(List<Long> targetIdList) {
+		mAddFriendReqBuilder.addAllTargetSystemId(targetIdList);
+
+		mDataSvrProtoBuilder.setAddFriendReqInfo(mAddFriendReqBuilder.build());
+		mDataSvrProtoBuilder.setEnumCmd(Cmd.AddFriend);
+		super.setBody(mDataSvrProtoBuilder.build().toByteString());
 	}
 }

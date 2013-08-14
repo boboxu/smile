@@ -6,6 +6,6 @@ public interface IProtocolEngineInterface
 	 * 
 	 * @param buffer
 	 */
-	public void sendProtocolBuffer(byte[] buffer);
+	public boolean sendProtocolBuffer(byte[] buffer);
 
 }

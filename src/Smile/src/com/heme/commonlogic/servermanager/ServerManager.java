@@ -9,11 +9,12 @@ import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
+import com.heme.foundation.error.BaseError;
+import com.heme.foundation.error.NetworkError;
 import com.heme.foundation.net.INetworkManagerDelegate;
 import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
-import com.heme.logic.httpprotocols.push.PushMsgResponse;
 import com.heme.logic.module.Message.PushMsgReq;
 import com.heme.logic.module.Trans.TransProto;
 
@@ -125,9 +126,16 @@ public class ServerManager implements IServerManagerInterface,
 			return -1;
 		}
 		// 构造连接，到net模块了
-
-		NetworkEngine.getEngine()
+		boolean bsuccess = NetworkEngine.getEngine()
 				.sendProtocolBuffer(pbRequest.getmDataBuffer());
+		if (!bsuccess) 
+		{
+			BasePbResponse response = parsePbRequestToPbResponse(pbRequest, null);
+			response.setmRequest(pbRequest);
+			response.setmError(new NetworkError(NetworkError.ERR_CONNECT_FAILED, "网络不通，请重新尝试！"));
+			pbRequest.getmRequestListener().onRequestFail(response);
+		}
+		
 
 		// 保存起来
 		addPbRequest(pbRequest);
@@ -417,8 +425,6 @@ public class ServerManager implements IServerManagerInterface,
 	@Override
 	public void onProtocolConnectTimeout()
 	{
-		// TODO Auto-generated method stub
 		
 	}
-
 }

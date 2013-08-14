@@ -526,11 +526,12 @@ public class NetworkService extends Service
 			//调用HeartManager
 		}
 		
-		public synchronized void sendBuffer(byte[] buffer)
+		public synchronized boolean sendBuffer(byte[] buffer)
 		{
 			if (!isConnected())
 			{
 				reconnectIfNecessary();
+				return false;
 			}
 			
 			Log.d(TAG, "send buffer:" + buffer.toString());
@@ -539,17 +540,17 @@ public class NetworkService extends Service
 			{
 				mOutputStream.write(buffer);
 				mOutputStream.flush();
-
+				return true;
 			}
 			catch (SocketTimeoutException e) 
 			{
-//				NetworkEngine.getEngine().
-//				NetworkEngine.getEngine();
+				e.printStackTrace();
+				return false;
 			}
 			catch (IOException e)
 			{
-				// TODO Auto-generated catch block
 				e.printStackTrace();
+				return false;
 			}
 			
 		}

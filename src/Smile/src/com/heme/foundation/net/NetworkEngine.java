@@ -116,13 +116,16 @@ public class NetworkEngine implements IHttpEngineInterface, IProtocolEngineInter
     }
 
 	@Override
-	public void sendProtocolBuffer(byte[] buffer)
+	public boolean sendProtocolBuffer(byte[] buffer)
 	{
     	if (isConnected && mConnectionThread != null)
 		{
-
-			mConnectionThread.sendBuffer(buffer);
-		}		
+			return mConnectionThread.sendBuffer(buffer);
+		}
+    	else
+    	{
+    		return false;
+    	}
 	}
 
 	@Override
