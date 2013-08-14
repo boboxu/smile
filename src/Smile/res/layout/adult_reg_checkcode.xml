@@ -50,7 +50,8 @@
 		       android:hint="请输入手机收到的验证码"
 		      android:password="true"
 		      android:layout_toLeftOf="@+id/resend"
-		      android:phoneNumber="true"
+		      android:inputType="number"
+		      android:layout_marginRight="5dip"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
 		      /> 
@@ -59,23 +60,26 @@
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="26dip"
+		     android:textSize="22dip"
 		     android:text="重发"
 		     android:visibility="invisible"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/resend"
-		     android:background="@drawable/btn_selector"
+		     android:background="@drawable/rounded_shortmsg"
+		     android:padding="3dip"
 		     />
    		 </RelativeLayout>
    		 <Button 
    		     android:id="@+id/nextstep"
-   		     android:layout_width="200dip"
+   		     android:layout_width="wrap_content"
    		     android:layout_height="wrap_content"
    		     android:text="下一步"
    		     android:textColor="#fff"
-   		     android:textSize="24dp"
-   		     android:background="@drawable/btn_selector"
+   		     android:textSize="22dip"
+   		     android:background="@drawable/rounded_shortmsg"
    		     android:layout_below="@+id/checkcode_rl"
+   		     android:layout_marginTop="20dip"
+   		     android:padding="10dip"
    		     android:layout_centerHorizontal="true"
    		     />
    		 </RelativeLayout>

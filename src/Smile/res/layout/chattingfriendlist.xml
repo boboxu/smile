@@ -72,7 +72,7 @@
 	            android:layout_centerVertical="true"
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
-	            android:text="查找聊天纪录"
+	            android:text="查找聊天记录"
 	            android:textSize="28dip"
 	            android:textColor="#000"
 	            />
@@ -98,7 +98,7 @@
 	            android:layout_centerVertical="true"
 	            android:layout_alignParentLeft="true"
 	            android:layout_marginLeft="15dip"
-	            android:text="清空聊天纪录"
+	            android:text="清空聊天记录"
 	            android:textSize="28dip"
 	            android:textColor="#000"
 	            />

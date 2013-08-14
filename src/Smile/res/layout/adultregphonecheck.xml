@@ -48,7 +48,8 @@
 		       android:textSize="20dip"
 		       android:singleLine="true"
 		      android:layout_toLeftOf="@+id/nextstep"
-		      android:phoneNumber="true"
+		      android:inputType="number"
+		      android:layout_marginRight="5dip"
 		      android:digits="1234567890"
 		      android:layout_centerVertical="true"
 		      /> 
@@ -56,11 +57,12 @@
 			android:layout_centerVertical="true"
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
-		     android:textSize="26dip"
+		     android:textSize="24dip"
 		     android:text="下一步"
 		     android:layout_alignParentRight="true"
 		     android:id="@+id/nextstep"
-		     android:background="@drawable/btn_selector"
+		     android:padding="3dip"
+		     android:background="@drawable/rounded_shortmsg"
 	   android:textColor="#fff"
 		     />
    		 </RelativeLayout>

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.os.Handler;
 
+import com.google.protobuf.ByteString;
 import com.heme.commonlogic.servermanager.BaseResponse;
 import com.heme.foundation.error.BaseError;
 import com.heme.logic.LogicManager;
@@ -20,7 +21,7 @@ import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetUserInfoResponse;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetVerboseUserInfoRequest;
 import com.heme.logic.httpprotocols.userinfo.getuserinfo.GetVerboseUserInfoResponse;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
-import com.heme.logic.module.Data.DelFriendReq;
+import com.heme.logic.module.Message.VerifyRequest;
 
 public class FriendManager extends BaseBusinessLogicManager implements
 		IFriendManagerInterface {
@@ -38,7 +39,7 @@ public class FriendManager extends BaseBusinessLogicManager implements
 					handler);
 		}
 		else if (response instanceof AddFriendResponse) {
-			
+			handleresponse(((AddFriendResponse) response).getSendMsgRes().getUint32Result() == 0?Constans.ADD_FRIEND_SUCCESS:Constans.ADD_FRIEND_FAILED, ((AddFriendResponse) response).getSendMsgRes(), handler);
 		}
 		else if (response instanceof DelFriendResponse) {
 			
@@ -89,8 +90,13 @@ public class FriendManager extends BaseBusinessLogicManager implements
 
 	@Override
 	public void addFriend(long systemId, String verifyMsg, Handler handler) {
-		AddFriendRequest request = new AddFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
-		request.setVerifyInfo(systemId, verifyMsg);
+		List<Long> targetList = new ArrayList<Long>();
+		targetList.add(Long.valueOf(systemId));
+		AddFriendRequest request = new AddFriendRequest(LogicManager.accountManager().getCurrentAccoutSystemId(),LogicManager.accountManager().getCurrentSessionId(),targetList);
+		VerifyRequest.Builder verifyMsgInfobuilder = VerifyRequest.newBuilder();
+		verifyMsgInfobuilder.setUint32VerifyType(0);
+		verifyMsgInfobuilder.setStrVerifyInfo(verifyMsg);
+		request.setVerifyRequest(verifyMsgInfobuilder.build(), ByteString.EMPTY);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 

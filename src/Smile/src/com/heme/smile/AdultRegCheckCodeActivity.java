@@ -34,12 +34,12 @@ public class AdultRegCheckCodeActivity extends BaseActivity {
 				if (mRemainTime>0) {
 					mResendBtn.setVisibility(View.INVISIBLE);
 					mNextStepBtn.setClickable(true);
-					mTipTextView.setText(Html.fromHtml("<font color='white'>请输入手机收到的验证码:(</font><font color='red'>"+mRemainTime+"</font><font color='white'>秒内输入)</font>"),BufferType.SPANNABLE);
+					mTipTextView.setText(Html.fromHtml("<font color='black'>请输入手机收到的验证码:(</font><font color='red'>"+mRemainTime+"</font><font color='black'>秒内输入)</font>"),BufferType.SPANNABLE);
 					sendEmptyMessageDelayed(Constans.INPUT_CHECKCODE_COUNT_DOWN, 1000);
 				}else {
 					mResendBtn.setVisibility(View.VISIBLE);
 					mNextStepBtn.setClickable(false);
-					mTipTextView.setTextColor(Color.WHITE);
+					mTipTextView.setTextColor(Color.BLACK);
 					mTipTextView.setText("抱歉,由于你60秒内未完成验证，验证码已失效，请点击重新发送");
 				}
 				break;
@@ -51,7 +51,7 @@ public class AdultRegCheckCodeActivity extends BaseActivity {
 				break;
 			case Constans.VERIFY_CHECKCODE_SUCCESS:
 				dismissDialog();
-				showWaitDialog("欢迎你加入傻逼.正为你自动登录中，请稍候");
+				showWaitDialog("欢迎你加入微校.正为你自动登录中，请稍候");
 				sendEmptyMessageDelayed(Constans.LOGIN_SUCCESS, 3000);
 				break;
 			case Constans.LOGIN_SUCCESS:
@@ -82,7 +82,7 @@ public class AdultRegCheckCodeActivity extends BaseActivity {
 			}
 		});
 		mTipTextView = (TextView)findViewById(R.id.timecountdown);
-		mTipTextView.setText(Html.fromHtml("<font color='white'>请输入手机收到的验证码:(</font><font color='red'>"+mRemainTime+"</font><font color='white'>秒内输入)</font>"),BufferType.SPANNABLE);
+		mTipTextView.setText(Html.fromHtml("<font color='black'>请输入手机收到的验证码:(</font><font color='red'>"+mRemainTime+"</font><font color='black'>秒内输入)</font>"),BufferType.SPANNABLE);
 		mCheckCode = (EditText)findViewById(R.id.checkcode);
 		mResendBtn = (Button)findViewById(R.id.resend);
 		mNextStepBtn = (Button)findViewById(R.id.nextstep);

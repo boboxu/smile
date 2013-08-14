@@ -217,7 +217,6 @@ public class MyMicroSchoolActivity extends BaseActivity implements OnClickListen
 			
 		if (requestCode==CAPTURE) {
 			String name = new DateFormat().format("yyyyMMdd_hhmmss",Calendar.getInstance(Locale.CHINA)) + ".jpg";	
-			Toast.makeText(this, name, Toast.LENGTH_LONG).show();
 			Bundle bundle = data.getExtras();
 			Bitmap bitmap = (Bitmap) bundle.get("data");// 获取相机返回的数据，并转换为Bitmap图片格式
 		

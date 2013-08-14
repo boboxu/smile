@@ -28,7 +28,7 @@ public class StudentVoiceTestListActivity extends BaseActivity {
 	
 	private void initDatas(){
 		VoiceData data = new VoiceData();
-		data.nickname = "陈冠西老师";
+		data.nickname = "王小利老师";
 		data.content = "读第三篇课文给我听听";
 		mDatas.add(data);
 		VoiceData data2 = new VoiceData();

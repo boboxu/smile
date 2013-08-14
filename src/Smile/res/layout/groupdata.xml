@@ -25,7 +25,8 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_margin="10dp"
-	    android:background="#fff"
+	    android:padding="15dip"
+	    android:background="@drawable/rounded_layout_bg"
 	    android:layout_below="@+id/group_id"
 	    >
 	    <LinearLayout 
@@ -39,6 +40,7 @@
 	        android:layout_height="wrap_content"
 	        android:textSize="18dp"
                android:text="群主"
+               android:textColor="#000"
 	            />
 	        <TextView 
 	            android:layout_width="fill_parent"
@@ -46,6 +48,7 @@
 	        android:textSize="18dp"
 	        android:id="@+id/group_master"
                android:text="令狐冲(班主任)"
+               android:textColor="#000"
 	            />
 	    </LinearLayout>
 	     <LinearLayout 
@@ -61,6 +64,7 @@
 	        android:layout_height="wrap_content"
 	        android:textSize="18dp"
                android:text="群简介"
+               android:textColor="#000"
 	            />
 	        <TextView 
 	            android:layout_width="fill_parent"
@@ -69,6 +73,7 @@
 	        android:id="@+id/group_introduce"
                android:text="个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名个性签名"
                android:maxLines="5"
+               android:textColor="#000"
 	            />
 	    </LinearLayout>
 	    <LinearLayout 
@@ -84,12 +89,14 @@
 	        android:layout_height="wrap_content"
 	        android:textSize="18dp"
                android:text="群分类"
+               android:textColor="#000"
 	            />
 	        <TextView 
 	            android:layout_width="fill_parent"
 	        android:layout_height="wrap_content"
 	        android:textSize="18dp"
                android:text="班级群"
+               android:textColor="#000"
 	            />
 	    </LinearLayout>
 	</RelativeLayout>
@@ -98,9 +105,12 @@
 	    android:layout_width="fill_parent"
 	    android:layout_height="wrap_content"
 	    android:layout_margin="15dp"
+	    android:padding="10dip"
+	    android:textSize="24dip"
 	    android:text="发消息"
+	    android:layout_centerHorizontal="true"
 	    android:layout_below="@+id/info_layout"
 	    android:textColor="#fff"
-	    android:background="@drawable/btn_selector"
+	    android:background="@drawable/rounded_shortmsg"
 	    />
 </RelativeLayout>

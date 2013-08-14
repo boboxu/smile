@@ -9,8 +9,8 @@ import com.heme.logic.module.Message.MessageType;
 public class SendUserMsgRequest extends BaseMessageRequest {
 
 	public SendUserMsgRequest(long srcId, String sessionId,
-			List<Long> mTargetId) {
-		super(srcId, sessionId, mTargetId, new ArrayList<Long>(), MessageType.MT_C2C);
+			List<Long> targetIdList) {
+		super(srcId, sessionId, targetIdList, new ArrayList<Long>(), MessageType.MT_C2C);
 	}
 
 }

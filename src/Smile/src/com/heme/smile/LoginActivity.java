@@ -48,6 +48,7 @@ public class LoginActivity extends BaseActivity implements OnClickListener{
 	}
 	private void initUI(){
 		setContentView(R.layout.login);
+		findViewById(R.id.backImg).setVisibility(View.GONE);
 		findViewById(R.id.backImg).setOnClickListener(this);
 		mAgreeCheckBox = (CheckBox)findViewById(R.id.agree_checkbox);
 		mRuleTextView = (TextView)findViewById(R.id.rule);

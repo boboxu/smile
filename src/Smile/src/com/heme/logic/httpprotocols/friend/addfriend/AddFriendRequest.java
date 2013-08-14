@@ -1,41 +1,23 @@
 package com.heme.logic.httpprotocols.friend.addfriend;
 
-import com.heme.logic.httpprotocols.base.business.BaseLoginedBusinessRequest;
+import java.util.ArrayList;
+import java.util.List;
 
-public class AddFriendRequest extends BaseLoginedBusinessRequest {
+import com.google.protobuf.ByteString;
+import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
+import com.heme.logic.module.Message.MessageType;
+import com.heme.logic.module.Message.VerifyRequest;
 
-//	FriendVerifyMsgReq.Builder mFriendVerifyMsgReqBuilder;
-
-	public AddFriendRequest(String sessionId, long systemId) {
-		super(sessionId, systemId);
+public class AddFriendRequest extends BaseMessageRequest {
+	
+	public AddFriendRequest(long srcId, String sessionId,
+			List<Long> targetIdList) {
+		super(srcId, sessionId, targetIdList, new ArrayList<Long>(), MessageType.MT_VerifyReq);
 	}
 
-	// 带验证信息或者不带验证信息，都走这个request
-	@Override
-	public void setLoginedInfo(String sessionId, long systemId) {
-//		mFriendVerifyMsgReqBuilder.setSessionId(sessionId);
-//		mFriendVerifyMsgReqBuilder.setSystemId(systemId);
-	}
-
-	public void setVerifyInfo(long targetId, String verifyMsg) {
-//		mFriendVerifyMsgReqBuilder.setTargetSystemId(targetId);
-//		mFriendVerifyMsgReqBuilder.setVerifyMsg(verifyMsg);
-
-	}
-
-	@Override
-	public void setVersionAndClientType(String version, int client_type) {
-//		mFriendVerifyMsgReqBuilder.setClientType(client_type);
-//		mFriendVerifyMsgReqBuilder.setVersionNo(version);
-		//todo:没有见到这个协议的使用待确定
-//		mDataSvrBuilder.setEnumCmd(Cmd.SendFeedback);
-//		mDataSvrBuilder.set(mFriendVerifyMsgReqBuilder.build());
-//		super.setBody(mFriendVerifyMsgReqBuilder.build().toByteString());
-
-	}
-
-	@Override
-	public void initmDataBuilder() {
-//		mFriendVerifyMsgReqBuilder = FriendVerifyMsgReq.newBuilder();
+	public void setVerifyRequest(VerifyRequest verifyMsgInfo,ByteString context)
+	{
+		mCommonMsgBuilder.setMsgVerifyReq(verifyMsgInfo);
+		super.setCommonMsg(context);
 	}
 }

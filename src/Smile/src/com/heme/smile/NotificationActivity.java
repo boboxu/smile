@@ -1,32 +1,30 @@
 package com.heme.smile;
 
+import java.text.SimpleDateFormat;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-import com.heme.smile.ui.view.ChatMsgViewAdapter.IMsgViewType;
-import com.heme.smile.util.BiaoqingUtil;
-import com.heme.smile.util.ChatMsgEntity;
-
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.graphics.Color;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
-import android.text.Spannable;
-import android.text.SpannableString;
-import android.text.method.LinkMovementMethod;
-import android.text.style.ImageSpan;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+
+import com.heme.smile.util.AsyncImageLoader;
+import com.heme.smile.util.AsyncImageLoader.ImageCallback;
+import com.heme.smile.util.DateComparator;
+import com.heme.smile.util.ViewCache;
 
 public class NotificationActivity extends BaseActivity implements OnClickListener{
 	private static final String TAG = "NotificationActivity";
@@ -36,15 +34,32 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
 	
 	private void emulateData(){
 		NotificationData data = new NotificationData();
-		data.date = "2013年08月09日 1:10:09";
-		data.name = "陈冠西老师";
+		data.date = System.currentTimeMillis();
 		data.message = "请各位小伙伴们注意我的通知，速回";
+		data.imgUrl = "http://t3.baidu.com/it/u=1986029191,1759192348&fm=21&gp=0.jpg";
+		data.weburl = "http://3g.qq.com";
 		mNotifications.add(data);
 		NotificationData data2 = new NotificationData();
-		data2.date = "2013年08月07日 23:10:09";
-		data2.name = "陈冠西老师";
+		data2.date = System.currentTimeMillis();
 		data2.message = "我和我的小伙伴们都吓尿了";
+		data2.weburl = "http://sina.cn";
+		data2.imgUrl = "http://t1.baidu.com/it/u=197600486,2285323441&fm=21&gp=0.jpg";
 		mNotifications.add(data2);
+		
+		NotificationData data3 = new NotificationData();
+		data3.date = System.currentTimeMillis()-17457278929l;
+		data3.message = "最美的不是下雨天,是与你一起躲过雨的屋檐.";
+		data3.imgUrl = "http://t2.baidu.com/it/u=2212918111,20697924&fm=11&gp=0.jpg";
+		data3.weburl = "http://sohu.com";
+		mNotifications.add(data3);
+		
+		
+		NotificationData data4 = new NotificationData();
+		data4.date = System.currentTimeMillis()-75442674788l;
+		data4.message = "放心,我一定会治好你的脑残的";
+		data4.imgUrl = "http://t1.baidu.com/it/u=4164381868,3966555663&fm=11&gp=0.jpg";
+		data4.weburl = "http://3g.cn";
+		mNotifications.add(data4);
 	}
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -61,6 +76,14 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
 		mListView = (ListView)findViewById(R.id.listview);
 		mAdapter = new MyAdapter(this, mNotifications);
 		mListView.setAdapter(mAdapter);
+		mListView.setOnItemClickListener(new OnItemClickListener() {
+			@Override
+			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+					long arg3) {
+				NotificationData entity = mNotifications.get(arg2);
+				gotoWebview(entity.message, entity.weburl);
+			}
+		});
 	}
 	@Override
 	public void onClick(View v) {
@@ -74,12 +97,19 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
 			break;
 		}
 	}
-	class NotificationData{
-		private String name;//消息来自
-		private String date;//消息日期
-		private String message;//消息内容
+	private String getTimeText(long date){
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy年MM月dd日");
+		String dateString = sdf.format(date);
+		return dateString;
+	}
+	public class NotificationData{
+		public long date;//消息日期
+		public String message;//消息内容
+		public String imgUrl;  //图片url
+		public String weburl;
 	}
 	class MyAdapter extends BaseAdapter{
+		private AsyncImageLoader asyncImageLoader;
 		private Context ctx;
 		private Handler handler;
 		public void setHandler(Handler handler){
@@ -92,7 +122,9 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
 		public MyAdapter(Context context, List<NotificationData> coll) {
 			this.ctx = context;
 			this.coll = coll;
+			asyncImageLoader = new AsyncImageLoader();
 			mInflater = LayoutInflater.from(context);
+			Collections.sort(this.coll,new DateComparator());
 		}
 
 		public int getCount() {
@@ -118,55 +150,54 @@ public class NotificationActivity extends BaseActivity implements OnClickListene
 		public View getView(final int position, View convertView, ViewGroup parent) {
 
 			final NotificationData entity = coll.get(position);
-
-			ViewHolder viewHolder = null;
-			if (convertView == null) {
-				convertView = mInflater.inflate(
-						R.layout.chatting_item_msg_text_left, null);
-				viewHolder = new ViewHolder();
-				viewHolder.tvSendTime = (TextView) convertView
-						.findViewById(R.id.tv_sendtime);
-				viewHolder.tvUserName = (TextView) convertView
-						.findViewById(R.id.tv_username);
-				viewHolder.tvContent = (TextView) convertView
-						.findViewById(R.id.tv_chatcontent);
-				viewHolder.ivAvatar = (ImageView)convertView.findViewById(R.id.iv_userhead);
-
-				convertView.setTag(viewHolder);
-			} else {
-				viewHolder = (ViewHolder) convertView.getTag();
+			View rowView = convertView;
+	        ViewCache viewCache;
+	        if (rowView == null) {
+	            rowView = LayoutInflater.from(this.ctx).inflate(R.layout.notification_item, null);
+	            viewCache = new ViewCache(rowView);
+	            rowView.setTag(viewCache);
+	        } else {
+	            viewCache = (ViewCache) rowView.getTag();
+	        }
+	        TextView timeView = viewCache.getTimeView();
+	        String catalog = getTimeText(entity.date);
+			if(position == 0){
+				timeView.setVisibility(View.VISIBLE);
+				timeView.setText(catalog);
+			}else{
+				String lastCatalog = getTimeText(this.coll.get(position-1).date);
+				if(catalog.equals(lastCatalog)){
+					timeView.setVisibility(View.GONE);
+				}else{
+					timeView.setVisibility(View.VISIBLE);
+					timeView.setText(catalog);
+				}
 			}
-			viewHolder.tvSendTime.setText(entity.date);
-			viewHolder.tvUserName.setText(entity.name);
-			viewHolder.tvUserName.setTextColor(Color.WHITE);
-			viewHolder.ivAvatar.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					// TODO Auto-generated method stub
-					Intent intent = new Intent(ctx, UserDetailsActivity.class);
-					intent.putExtra(SingleChatActivity.SINGLE_CHAT_NICKNAME, entity.name);
-					ctx.startActivity(intent);
-				}
-			});
-				String str = entity.message; // 消息具体内容,如果是表情，则是f001 f002等，通过转换，显示为表情图片即可
-				String zhengze = "f0[0-9]{2}|f10[0-7]"; // 正则表达式，用来判断消息内是否有表情
-				try {
-					SpannableString urlSpannableString = BiaoqingUtil.getExpressionStringWithUrl(ctx, str, "http://[^ ^,^!^;^`^~^\n^，^！^；]*");
-					SpannableString spannableString = BiaoqingUtil
-							.getExpressionString(ctx, str, zhengze,"http://[^ ^,^!^;^`^~^\n^，^！^；]*");
-					viewHolder.tvContent.setText(spannableString);
-					viewHolder.tvContent.setMovementMethod(LinkMovementMethod.getInstance());
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			return convertView;
+	        String imageUrl = entity.imgUrl;
+	        ImageView imageView = viewCache.getImageView();
+	        imageView.setTag(imageUrl);
+	        Drawable cachedImage = asyncImageLoader.loadDrawable(imageUrl, new ImageCallback() {
+	            public void imageLoaded(Drawable imageDrawable, String imageUrl) {
+	                ImageView imageViewByTag = (ImageView) mListView.findViewWithTag(imageUrl);
+	                if (imageViewByTag != null) {
+	                    imageViewByTag.setImageDrawable(imageDrawable);
+	                }
+	            }
+	        });
+			if (cachedImage == null) {
+				imageView.setImageResource(R.drawable.ic_launcher);
+			}else{
+				imageView.setImageDrawable(cachedImage);
+			}
+	        // Set the text on the TextView
+	        TextView textView = viewCache.getTextView();
+	        textView.setText(entity.message);
+
+	        return rowView;
 		}
 
 		class ViewHolder {
 			public ImageView ivAvatar;
-			public TextView tvSendTime;
-			public TextView tvUserName;
 			public TextView tvContent;
 		}
 	}

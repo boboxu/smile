@@ -36,7 +36,7 @@ public class SendBusinessCardConfirmActivity extends BaseActivity implements OnC
 		mNickname = (TextView)findViewById(R.id.nickname);
 		mUserIdTextView = (TextView)findViewById(R.id.userid);
 		mNickname.setText(mSelectCardName);
-		mUserIdTextView.setText("傻逼号:4323232");
+		mUserIdTextView.setText("微校号:4323232");
 		mAvatarImg.setImageResource(R.drawable.ic_launcher);
 		
 		mToAvatarImg = (ImageView)findViewById(R.id.toavatar);

@@ -197,7 +197,10 @@ public class Constans {
 	public static final int GET_VERBOSEUSERINFO_SUCCESS = GET_USERINFO_FAILED + 1;
 	// 拉取个人详细信息失败
 	public static final int GET_VERBOSEUSERINFO_FAILED = GET_VERBOSEUSERINFO_SUCCESS + 1;
-
+	//添加好友成功
+	public static final int ADD_FRIEND_SUCCESS = GET_VERBOSEUSERINFO_FAILED + 1;
+	//添加好友失败
+	public static final int ADD_FRIEND_FAILED = ADD_FRIEND_SUCCESS + 1;
 	/***
 	 * passwordmanager
 	 */

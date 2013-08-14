@@ -86,6 +86,7 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 	public static final int SHOW_CARD = REQUEST_CARD + 1;
 	public static final int SELECT_VIDEO = SHOW_CARD + 1;
 	public static final int OPEN_VIDEO_FILE = SELECT_VIDEO +1;
+	public static final int CAPTURE = OPEN_VIDEO_FILE + 1;
 	public static final String CARD_NICKNAME = "card_nickname";
 	public static final String CARD_USERID = "card_userid";
 	public static final String SELECT_VIDEO_PATH = "select_video_path";
@@ -157,6 +158,9 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 	private View mAddCustomChatTextView;
 	private Button mAddCustomChatConfirmBtn,mAddCustomChatCancelBtn;
 	private EditText mAddCustomChatKeyEditText,mAddCustomChatValueEditText;
+	private PopupWindow mPopupWindow;
+	private View mAvatarClickView;
+	private Button mClickViewCapture,mClickViewSelectLocal,mClickViewCancel;
 	private Handler mHandler = new Handler(){
 		
 		public void handleMessage(Message msg) {
@@ -415,6 +419,41 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 		return true;
 	}
 	public void initUI() {
+		mAvatarClickView = LayoutInflater.from(this).inflate(R.layout.avartclickview, null);
+		mClickViewCapture = (Button)mAvatarClickView.findViewById(R.id.capture);
+		mClickViewCapture.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				mPopupWindow.dismiss();
+				Intent camera = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+				 startActivityForResult(camera, CAPTURE);
+			}
+		});
+		mClickViewSelectLocal = (Button)mAvatarClickView.findViewById(R.id.selectlocal);
+		mClickViewSelectLocal.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				mPopupWindow.dismiss();
+				Intent picture = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+				startActivityForResult(picture, SELECT_LOCAL);
+
+			}
+		});
+		mClickViewCancel = (Button)mAvatarClickView.findViewById(R.id.cancel);
+		mClickViewCancel.setOnClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				if (mPopupWindow!=null&&mPopupWindow.isShowing()) {
+					mPopupWindow.dismiss();
+				}
+			}
+		});
+		mPopupWindow = new PopupWindow(mAvatarClickView,LayoutParams.FILL_PARENT,LayoutParams.WRAP_CONTENT,true);
 		mAddCustomChatTextView = LayoutInflater.from(this).inflate(R.layout.custom_chat_text_add, null);
 		mAddCustomChatConfirmBtn = (Button)mAddCustomChatTextView.findViewById(R.id.ok);
 		mAddCustomChatConfirmBtn.setOnClickListener(this);
@@ -662,14 +701,14 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 			startActivityForResult(fileIntent,SELECT_VIDEO);
 			break;
 		case R.id.businesscard_imgview:
-			Intent cardIntent = new Intent(GroupChatActivity.this, AddressBookActivity.class);
-			cardIntent.putExtra(AddressBookActivity.SHOWCHECKBOX, false);
-			cardIntent.putExtra(AddressBookActivity.SELECTCARD, true);
+			Intent cardIntent = new Intent(GroupChatActivity.this, SelectUserListActivity.class);
+			cardIntent.putExtra(SelectUserListActivity.SHOWCHECKBOX, false);
+			cardIntent.putExtra(SelectUserListActivity.SELECTCARD, true);
 			startActivityForResult(cardIntent, REQUEST_CARD);
 			break;
 		case R.id.rightBtn1:
-			Intent address_intent = new Intent(this, AddressBookActivity.class);
-			address_intent.putExtra(AddressBookActivity.SHOWCHECKBOX, true);
+			Intent address_intent = new Intent(this, SelectUserListActivity.class);
+			address_intent.putExtra(SelectUserListActivity.SHOWCHECKBOX, true);
 			startActivity(address_intent);
 			break;
 		case R.id.rightBtn:
@@ -682,8 +721,11 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 			page_select.setVisibility(page_select.VISIBLE);
 			break;
 		case R.id.tupian_imgview:
-			Intent picture = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-			startActivityForResult(picture, SELECT_LOCAL);
+//			Intent picture = new Intent(Intent.ACTION_PICK,android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+//			startActivityForResult(picture, SELECT_LOCAL);
+			mPopupWindow.setOutsideTouchable(true);
+			mPopupWindow.showAtLocation(findViewById(R.id.singlechat_layout), Gravity.BOTTOM, 0, 0);
+			mPopupWindow.update();
 			break;
 		case R.id.chatting_biaoqing_btn:
 			if (mOperateLayout.getVisibility()==View.GONE&&page_select.getVisibility()==View.GONE) {
@@ -922,22 +964,92 @@ public class GroupChatActivity extends Activity implements OnClickListener {
 		if (resultCode==Activity.RESULT_OK) {
 			if (requestCode==SELECT_LOCAL) {
 				String name = new DateFormat().format("yyyyMMdd_hhmmss",Calendar.getInstance(Locale.CHINA)) + ".jpg";
-				Uri uri = data.getData();
-				String[] proj = {MediaStore.Images.Media.DATA};
-				Cursor cursor = managedQuery(uri, proj, null, null, null);
-				int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-				cursor.moveToFirst();
-				String path = cursor.getString(columnIndex);
-				Util.showToast(this,path);
-				Bitmap b = BitmapFactory.decodeFile(path);
-				Bitmap thumbnail = ThumbnailUtils.extractThumbnail(b, 300, 300);
-				b.recycle();
-				b = null;
+				Bitmap b = null;
+				String path = null;
+				if (data.getData()!=null) {
+					Uri uri = data.getData();
+					String[] proj = {MediaStore.Images.Media.DATA};
+					Cursor cursor = managedQuery(uri, proj, null, null, null);
+					int columnIndex = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+					if (cursor!=null&&cursor.moveToFirst()) {
+						path = cursor.getString(columnIndex);
+						cursor.close();
+						b = BitmapUtil.loadBitmap(path);
+					}else {
+						Object object = (Bitmap) (data.getExtras() == null ? null : data.getExtras().get("data")); 
+						b = object==null?null:(Bitmap)object; 
+						if (b!=null&&!b.isRecycled()) {
+							path = FileUtil.saveBitmapToSdCard(b, Environment.getExternalStorageDirectory().getAbsolutePath());
+						}
+					}
+				}else {
+					Object object = (Bitmap) (data.getExtras() == null ? null : data.getExtras().get("data")); 
+					b = object==null?null:(Bitmap)object; 
+					if (b!=null&&!b.isRecycled()) {
+						path = FileUtil.saveBitmapToSdCard(b, Environment.getExternalStorageDirectory().getAbsolutePath());
+					}
+				}
+				if (b==null||b.isRecycled()) {
+					Util.showToast(this, "获取图片失败");
+					return;
+				}
+				Bitmap thumbnail = ThumbnailUtils.extractThumbnail(b, 500, 500);
+				if (b!=null&&!b.isRecycled()) {
+					b.recycle();
+					b = null;
+				}
 				System.gc();
 				String thumb_path = FileUtil.saveBitmapToSdCard(thumbnail, Environment.getExternalStorageDirectory().getAbsolutePath());
 				thumbnail.recycle();
 				thumbnail = null;
 				System.gc();
+				if (path==null||path.trim().equals("")||thumb_path==null||thumb_path.trim().equals("")) {
+					Util.showToast(this, "获取图片失败");
+					return;
+				}
+				sendPicMsg(thumb_path, path);
+			}else if (requestCode==CAPTURE) {
+				if (data==null) {
+					Util.showToast(this, "获取图片失败");
+					return;
+				}
+				String path = null;
+				Object object = null;
+				if (data.getData() != null) { 
+                    //根据返回的URI获取对应的SQLite信息 
+                    Cursor cursor = this.getContentResolver().query(data.getData(), null, 
+                                    null, null, null); 
+                    if (cursor!=null&&cursor.moveToFirst()) { 
+                    	path = cursor.getString(cursor.getColumnIndex("_data"));// 获取绝对路径 
+                    	cursor.close(); 
+                    }else {
+                    	object = (Bitmap) (data.getExtras() == null ? null : data.getExtras().get("data")); 
+					} 
+				}else{//三星  小米(小米手机不会自动存储DCIM...  这点让哥又爱又恨...) 
+					object = (Bitmap) (data.getExtras() == null ? null : data.getExtras().get("data")); 
+				} 
+				
+				String name = new DateFormat().format("yyyyMMdd_hhmmss",Calendar.getInstance(Locale.CHINA)) + ".jpg";	
+				Bitmap b = object==null?null:(Bitmap)object;
+				if (b==null||b.isRecycled()) {
+					Util.showToast(this, "获取图片失败");
+					return;
+				}
+				Bitmap thumbnail = ThumbnailUtils.extractThumbnail(b, 500, 500);
+				path = FileUtil.saveBitmapToSdCard(b, Environment.getExternalStorageDirectory().getAbsolutePath());
+				if (b!=null&&!b.isRecycled()) {
+					b.recycle();
+					b = null;
+				}
+				System.gc();
+				String thumb_path = FileUtil.saveBitmapToSdCard(thumbnail, Environment.getExternalStorageDirectory().getAbsolutePath());
+				thumbnail.recycle();
+				thumbnail = null;
+				System.gc();
+				if (path==null||path.trim().equals("")||thumb_path==null||thumb_path.trim().equals("")) {
+					Util.showToast(this, "获取图片失败");
+					return;
+				}
 				sendPicMsg(thumb_path, path);
 			}
 		}else if (resultCode==REQUEST_CARD) {

@@ -63,6 +63,7 @@ public class GetbackPassWordCheckCodeActivity extends BaseActivity {
 	}
 	private void initUI(){
 		setContentView(R.layout.getbackpwd_checkcode);
+		((TextView)findViewById(R.id.titleTextView)).setText("填写验证码");
 		mPhoneNum = (TextView)findViewById(R.id.phonenum);
 		mPhoneNum.setTextColor(Color.RED);
 		mPhoneNum.setText(getIntent().getStringExtra(PHONENUM));

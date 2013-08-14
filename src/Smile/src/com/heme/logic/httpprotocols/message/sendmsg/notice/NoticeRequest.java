@@ -11,6 +11,4 @@ public class NoticeRequest extends BaseMessageRequest {
 	protected NoticeRequest(long systemId, String sessionId,List<Long> mTargetId,List<Long> mTargetGid) {
 		super(systemId,sessionId,mTargetId,mTargetGid,MessageType.MT_Broadcast);
 	}
-	
-	
 }

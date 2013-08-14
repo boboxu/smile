@@ -9,6 +9,7 @@ import com.heme.logic.module.Message.FileInfo;
 import com.heme.logic.module.Message.MessageType;
 import com.heme.logic.module.Message.NetGuardInfo;
 import com.heme.logic.module.Message.PicMsgInfo;
+import com.heme.logic.module.Message.VerifyRequest;
 import com.heme.logic.module.Message.VideoMsgInfo;
 import com.heme.logic.module.Message.VoiceMsgInfo;
 import com.heme.logic.module.Message.VoiceTestInfo;
@@ -22,22 +23,6 @@ public abstract class BaseMessageRequest extends BaseSendMsgRequest {
 		mCommonMsgBuilder.addAllUint64ToGid(mTargetGid);
 		mCommonMsgBuilder.setUint32MsgType(msgType);
 		mCommonMsgBuilder.setUint64Time(System.currentTimeMillis());
-	}
-	
-	public void setNetGuardMsgInfo(NetGuardInfo msgInfo,ByteString context) 
-	{
-		mCommonMsgBuilder.setMsgMoitorMsg(msgInfo);
-		super.setCommonMsg(context);
-	}
-	
-	public void setVoiceTestInfo(VoiceTestInfo msgInfo,ByteString context) {
-		mCommonMsgBuilder.setMsgTestMsg(msgInfo);
-		super.setCommonMsg(context);
-	}
-	
-	protected void setClassInfo(ClassInfo msgInfo,ByteString context) {
-		mCommonMsgBuilder.setMsgClassInfo(msgInfo);
-		super.setCommonMsg(context);
 	}
 	
 	public void setMsgContent(Object content,ContentType type,ByteString context) {

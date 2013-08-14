@@ -19,6 +19,7 @@ import android.util.Log;
 import com.heme.logic.common.Constans;
 import com.heme.smile.R;
 
+
 public class BitmapUtil {
 	public static Bitmap createBusinessCard(Context ctx,String avatarPath,String nickname,String userid){
 		Paint paint = new Paint();
@@ -71,7 +72,7 @@ public class BitmapUtil {
 			System.gc();
 		}
 		canvas.drawText(nickname, 100,30, paint);
-		canvas.drawText("傻逼号:"+userid, 100,70, paint);
+		canvas.drawText("微校号:"+userid, 100,70, paint);
 		canvas.save(Canvas.ALL_SAVE_FLAG);
 		return bgBitmap;
 	}
@@ -200,5 +201,21 @@ public class BitmapUtil {
 		}
 
 		return bitmap;
+	}
+	public static Bitmap loadBitmap(String path){
+		BitmapFactory.Options options = new BitmapFactory.Options();
+		options.inSampleSize = 3;
+		Bitmap result = null;
+		try {
+			result = BitmapFactory.decodeFile(path,options);
+		} catch (OutOfMemoryError e) {
+			System.gc();
+			try {
+				result = BitmapFactory.decodeFile(path,options);
+			} catch (OutOfMemoryError e2) {
+				// TODO: handle exception
+			}
+		}
+		return result;
 	}
 }

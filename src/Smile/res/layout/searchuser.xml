@@ -32,7 +32,7 @@
             android:paddingLeft="30dip"
             android:paddingTop="5dip"
             android:singleLine="true"
-            android:textColor="#fff"
+            android:textColor="#000"
             android:textSize="20dip" />
 
 		 <ImageView 

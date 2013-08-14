@@ -3,8 +3,10 @@ package com.heme.logic.httpprotocols.message.sendmsg.greennet;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.google.protobuf.ByteString;
 import com.heme.logic.httpprotocols.message.sendmsg.base.BaseMessageRequest;
 import com.heme.logic.module.Message.MessageType;
+import com.heme.logic.module.Message.NetGuardInfo;
 
 public class SendCommandRequest extends BaseMessageRequest {
 
@@ -38,9 +40,10 @@ public class SendCommandRequest extends BaseMessageRequest {
 		super(systemId,sessionId,mTargetId,new ArrayList<Long>(),MessageType.MT_NetGuard);
 	}
 	
-	// public void setCommandInfo(NetGuardInfo msgInfo,ByteString context)
-	// {
-	// super.setNetGuardMsgInfo(msgInfo, context);
-	// }
+	public void setNetGuardMsgInfo(NetGuardInfo msgInfo,ByteString context) 
+	{
+		mCommonMsgBuilder.setMsgMoitorMsg(msgInfo);
+		super.setCommonMsg(context);
+	}
 	
 }

@@ -24,6 +24,7 @@ public class GetbackPassword extends BaseActivity implements OnClickListener{
 	}
 	private void initUI(){
 		setContentView(R.layout.getbackpwd_writephonenum);
+		((TextView)findViewById(R.id.titleTextView)).setText("填写手机号");
 		mAgreeCheckBox = (CheckBox)findViewById(R.id.agree_checkbox);
 		mRuleTextView = (TextView)findViewById(R.id.rule);
 		mRuleTextView.setOnClickListener(this);

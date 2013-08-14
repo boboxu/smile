@@ -16,6 +16,7 @@ import android.view.Gravity;
 import android.view.WindowManager;
 
 import com.heme.smile.ui.view.NotificationView;
+import com.heme.smile.util.CrashHandler;
 
 public class BaseActivity extends Activity {
 	private static WindowManager mWindowMgr = null;
@@ -48,7 +49,7 @@ public class BaseActivity extends Activity {
 	public void addIconToStatusbar(int resId){
 		NotificationManager nm = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
 		Notification n = new Notification(
-				resId, "欢迎回到傻逼", System.currentTimeMillis());
+				resId, "欢迎回到微校", System.currentTimeMillis());
 		n.flags |= Notification.FLAG_ONGOING_EVENT;
 		n.flags |= Notification.FLAG_NO_CLEAR;
 		PendingIntent pi = PendingIntent.getActivity(this, 0, new Intent(this, MainActivity.class), 0);
@@ -56,7 +57,7 @@ public class BaseActivity extends Activity {
 		if (getSharedPreferences(getResources().getString(R.string.shardpreference_sound), MODE_PRIVATE).getBoolean("sound", true)) {
 			n.defaults=Notification.DEFAULT_SOUND;
 		}
-		n.setLatestEventInfo(this, "傻逼", "", pi);
+		n.setLatestEventInfo(this, "微校", "", pi);
 		if (getSharedPreferences(getResources().getString(R.string.shardpreference_vibrate), MODE_PRIVATE).getBoolean("vibrate", true)) {
 			mVibrator.vibrate(500);
 		}
@@ -98,7 +99,7 @@ public class BaseActivity extends Activity {
 		mDialog.setTitle("请稍候");
 		mDialog.setMessage(content);
 		mDialog.setIcon(R.drawable.ic_launcher);
-		mDialog.setCancelable(false);
+		mDialog.setCancelable(true);
 		mDialog.show();
 	}
 	public void dismissDialog(){

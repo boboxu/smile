@@ -69,14 +69,13 @@ public class AddressBookActivity extends BaseActivity {
 	private ContactAdapter mAdapter;
 	private RelativeLayout mTitleLayout;
 	private Button mStartGroupChatBtn;
-	private ExpandableListView mGroupListView; //群组的listview
 	private LinkedList<String> mGroupSelectList = new LinkedList<String>();
-	private ExpandableAdapter mGroupAdapter;
  	private AutoCompleteTextView mAutoCompleteTextView;
  	private MySearchAdapter mSearchAdapter;
  	private Button mRightBtn;
  	private PopupWindow mMorePopupWindow;
  	private View mMoreView;
+ 	private RelativeLayout mGroupLayout,mShequLayout;
 	private void initEmulatedDatas(){
 		initGroupData();
 		initContacters();
@@ -107,6 +106,20 @@ public class AddressBookActivity extends BaseActivity {
     	mMorePopupWindow.setTouchable(true);
     	mMorePopupWindow.setFocusable(true);
     	setContentView(R.layout.addressbook);
+    	mGroupLayout = (RelativeLayout)findViewById(R.id.my_group_rl);
+    	mGroupLayout.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(AddressBookActivity.this, GroupListActivity.class));
+			}
+		});
+    	mShequLayout = (RelativeLayout)findViewById(R.id.my_shequ_rl);
+    	mShequLayout.setOnClickListener(new OnClickListener() {
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(AddressBookActivity.this, ShequListActivity.class));
+			}
+		});
     	mRightBtn = (Button)findViewById(R.id.rightBtn);
     	mRightBtn.setVisibility(View.VISIBLE);
     	mRightBtn.setOnClickListener(new OnClickListener() {
@@ -120,64 +133,13 @@ public class AddressBookActivity extends BaseActivity {
 			}
 		});
     	mRightBtn.setText("更多");
-    	mGroupListView = (ExpandableListView)findViewById(R.id.grouplist);
-    	mGroupAdapter = new ExpandableAdapter(this,groups,contacters);
-    	mGroupAdapter.showCheckBox(mShowCheckbox);
+    	
     	mAutoCompleteTextView = (AutoCompleteTextView)findViewById(R.id.search_auto_complete);
     	
-    	mGroupListView.setOnGroupClickListener(new OnGroupClickListener() {
-			
-			@Override
-			public boolean onGroupClick(ExpandableListView parent, View v,
-					int groupPosition, long id) {
-				if (!mShowCheckbox&&!mSelectCard) {
-					Intent intent = new Intent(AddressBookActivity.this, GroupChatActivity.class);
-					intent.putExtra(GroupChatActivity.GROUP_ID, mGroupAdapter.getGroup(groupPosition).name);
-					startActivity(intent);
-					return true;
-				}else {
-					return false;
-				}
-				
-			}
-		});
-    	mGroupListView.setOnChildClickListener(new OnChildClickListener() {
-			
-			@Override
-			public boolean onChildClick(ExpandableListView parent, View v,
-					int groupPosition, int childPosition, long id) {
-				if (mShowCheckbox) {
-    				ChildViewHolder viewHolder = (ChildViewHolder)v.getTag();
-    				/*模拟使点击Item触发CheckBox事件*/
-    				if(viewHolder.checkBox.isChecked()){
-    					mGroupAdapter.mCheckFlagMap.put(mGroupAdapter.getChild(groupPosition, childPosition).serverId,false);
-    					mGroupAdapter.mGroupCheckMap.put(mGroupAdapter.getGroup(groupPosition).id, false);
-    				}else{
-    					mGroupAdapter.mCheckFlagMap.put(mGroupAdapter.getChild(groupPosition, childPosition).serverId,true);
-    				}
-    				Log.i("testmy", "mAdapter.getCheckedCount() "+mAdapter.getCheckedCount()+" ,mGroupAdapter.getCheckedCount() "+mGroupAdapter.getCheckedCount());
-    				mStartGroupChatBtn.setText("开始 ("+(mAdapter.getCheckedCount()+mGroupAdapter.getCheckedCount())+")");
-    				mGroupAdapter.notifyDataSetChanged();
-    				return true;
-				}else {
-					if (mSelectCard) {
-						Intent cardIntent = new Intent(AddressBookActivity.this, SendBusinessCardConfirmActivity.class);
-						Contacter contacter = mGroupAdapter.getChild(groupPosition, childPosition);
-						cardIntent.putExtra(SendBusinessCardConfirmActivity.SELECT_CARD_ID, contacter.name);
-						startActivityForResult(cardIntent,SingleChatActivity.REQUEST_CARD);
-						return true;
-					}
-					return false;
-				}
-			}
-		});
-    	mGroupListView.setGroupIndicator(null);
-    	mGroupListView.setItemsCanFocus(false);   
-    	mGroupListView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE); 
-    	mGroupListView.setAdapter(mGroupAdapter);
     	mTitleLayout = (RelativeLayout)findViewById(R.id.public_title_bar);
     	mTitleLayout.setVisibility(View.VISIBLE);
     	if (mShowCheckbox) {
+    		((TextView)findViewById(R.id.titleTextView)).setText("选择联系人");
     		findViewById(R.id.backImg).setVisibility(View.VISIBLE);
     		findViewById(R.id.search_ll).setVisibility(View.GONE);
 			findViewById(R.id.backImg).setOnClickListener(new OnClickListener() {
@@ -204,6 +166,7 @@ public class AddressBookActivity extends BaseActivity {
 				}
 			});
 		}else {
+			((TextView)findViewById(R.id.titleTextView)).setText("通讯录");
 			findViewById(R.id.backImg).setVisibility(View.GONE);
 			findViewById(R.id.search_ll).setVisibility(View.VISIBLE);
 		}
@@ -228,17 +191,6 @@ public class AddressBookActivity extends BaseActivity {
     		@Override
     		public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
     				long arg3) {
-    			if (mShowCheckbox) {
-    				ViewHolder h = (ViewHolder) arg1.getTag();
-    				/*模拟使点击Item触发CheckBox事件*/
-    				if(h.checkBox.isChecked()){
-    					mAdapter.mCheckFlagMap.put(arg2,false);
-    				}else{
-    					mAdapter.mCheckFlagMap.put(arg2,true);
-    				}
-    				mStartGroupChatBtn.setText("开始 ("+(mAdapter.getCheckedCount()+mGroupAdapter.getCheckedCount())+")");
-    				mAdapter.notifyDataSetChanged();
-				}else {
 					if (!mSelectCard) {
 						String nickname = nicks[arg2];
 		    			if (nickname!=null&&!nickname.trim().equals("")) {
@@ -250,8 +202,8 @@ public class AddressBookActivity extends BaseActivity {
 						Intent cardIntent = new Intent(AddressBookActivity.this, SendBusinessCardConfirmActivity.class);
 						cardIntent.putExtra(SendBusinessCardConfirmActivity.SELECT_CARD_ID, nicks[arg2]);
 						startActivityForResult(cardIntent,SingleChatActivity.REQUEST_CARD);
+						finish();
 					}
-				}
     		}
     	});
     	
@@ -343,24 +295,7 @@ public class AddressBookActivity extends BaseActivity {
 			}else{
 				viewHolder = (ViewHolder)convertView.getTag();
 			}
-			if (mShowCheckbox) {
-				viewHolder.checkBox.setVisibility(View.VISIBLE);
-				viewHolder.checkBox.setOnCheckedChangeListener(new OnCheckedChangeListener() {
-					
-					@Override
-					public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-						if(isChecked){
-							mCheckFlagMap.put(position, true);
-						}else{
-							mCheckFlagMap.put(position, false);
-						}
-						mStartGroupChatBtn.setText("开始 ("+(getCheckedCount()+mGroupAdapter.getCheckedCount())+")");
-						mAdapter.notifyDataSetChanged();
-					}
-				});
-			}else {
-				viewHolder.checkBox.setVisibility(View.GONE);
-			}
+			viewHolder.checkBox.setVisibility(View.GONE);
 			String catalog = converterToFirstSpell(nickName).substring(0, 1);
 			if(position == 0){
 				viewHolder.tvCatalog.setVisibility(View.VISIBLE);

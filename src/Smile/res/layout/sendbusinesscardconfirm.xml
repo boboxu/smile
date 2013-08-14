@@ -15,7 +15,7 @@
        android:layout_height="wrap_content"
        android:layout_margin="15dp"
        android:orientation="horizontal"
-       android:background="#c0000000"
+       android:background="@drawable/rounded_layout_bg"
        >
        <ImageView android:id="@+id/avatar" android:layout_width="70.0dip" android:layout_height="70.0dip" 
              android:layout_gravity="center"
@@ -37,7 +37,7 @@
        	        android:text="啊啊啊"
        	        android:singleLine="true"
        	        android:ellipsize="end"
-       	        android:textColor="#fff"
+       	        android:textColor="#000"
        	        />
        	    <TextView 
        	        android:id="@+id/userid"
@@ -45,9 +45,9 @@
        	        android:layout_height="wrap_content"
        	        android:layout_gravity="center_vertical"
        	        android:textSize="14dip"
-       	        android:textColor="#fff"
+       	        android:textColor="#000"
        	        android:ellipsize="end"
-       	        android:text="傻逼号:3322112"
+       	        android:text="微校号:3322112"
        	        />
        	</LinearLayout>
    </LinearLayout>
@@ -70,7 +70,7 @@
        android:layout_height="wrap_content"
        android:layout_margin="15dp"
        android:orientation="horizontal"
-       android:background="#c0000000"
+       android:background="@drawable/rounded_layout_bg"
        android:layout_marginTop="15dip"
        >
        <ImageView android:id="@+id/toavatar" android:layout_width="70.0dip" android:layout_height="70.0dip" 
@@ -103,7 +103,7 @@
        	        android:textSize="14dip"
        	        android:textColor="#000"
        	        android:ellipsize="end"
-       	        android:text="傻逼号:3322112"
+       	        android:text="微校号:3322112"
        	        />
        	</LinearLayout>
    </LinearLayout>

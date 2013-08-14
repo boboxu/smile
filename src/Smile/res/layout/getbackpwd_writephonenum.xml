@@ -20,7 +20,7 @@
 		      android:layout_marginRight="15dip"
 		      android:layout_marginTop="30dip"
 		      android:layout_below="@+id/public_title_bar"
-		      android:phoneNumber="true"
+		      android:inputType="number"
 		      android:digits="1234567890"
 		      /> 
 <LinearLayout 
@@ -63,11 +63,12 @@
 		     android:layout_width="wrap_content"
 		     android:layout_height="wrap_content"
 		     android:textColor="#fff"
-		     android:textSize="30dip"
+		     android:textSize="22dip"
 		     android:text="下一步"
 		     android:layout_alignParentRight="true"
 		     android:layout_marginRight="40dip"
 		     android:id="@+id/nextstep"
-		     android:background="@drawable/btn_selector"
+		     android:padding="10dip"
+		     android:background="@drawable/rounded_shortmsg"
 		     />
 </RelativeLayout>
