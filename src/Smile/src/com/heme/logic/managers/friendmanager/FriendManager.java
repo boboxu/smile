@@ -11,6 +11,7 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.friend.addfriend.AddFriendMsgResponse;
 import com.heme.logic.httpprotocols.friend.addfriend.AddFriendRequest;
+import com.heme.logic.httpprotocols.friend.addfriend.AddFriendResponse;
 import com.heme.logic.httpprotocols.friend.delfriend.DelFriendRequest;
 import com.heme.logic.httpprotocols.friend.delfriend.DelFriendResponse;
 import com.heme.logic.httpprotocols.friend.updatefriend.UpdateFriendRequest;
@@ -43,6 +44,10 @@ public class FriendManager extends BaseBusinessLogicManager implements
 
 		} else if (response instanceof UpdateFriendResponse) {
 
+		}else if(response instanceof AddFriendResponse){
+			handleresponse(((AddFriendResponse) response).getmAddFriendRsp().getErrCode() == 0 ? Constans.ADD_FRIEND_SUCCESS
+					: Constans.ADD_FRIEND_FAILED,
+					((AddFriendResponse) response).getmAddFriendRsp(), handler);
 		}
 	}
 
@@ -99,7 +104,7 @@ public class FriendManager extends BaseBusinessLogicManager implements
 		// ByteString.EMPTY);
 		// 加好友操作
 		AddFriendRequest request = new AddFriendRequest(LogicManager.accountManager().getCurrentSessionId(),LogicManager.accountManager().getCurrentAccoutSystemId());
-		
+		request.setTargetSystemId(targetList);
 		sendRequest(request, handler, getClass().getName(), _FUNC_());
 	}
 
@@ -126,6 +131,17 @@ public class FriendManager extends BaseBusinessLogicManager implements
 		GetUserInfoRequest request = new GetUserInfoRequest(LogicManager
 				.accountManager().getCurrentSessionId(), LogicManager
 				.accountManager().getCurrentAccoutSystemId());
+		List<Long> systemIdList = new ArrayList<Long>();
+		systemIdList.add(systemId);
+		request.setTargetId(systemIdList);
+		sendRequest(request, handler, getClass().getName(), _FUNC_());
+	}
+
+	@Override
+	public void getVerboseFriendInfo(Long systemId, Handler handler) {
+		GetVerboseUserInfoRequest request = new GetVerboseUserInfoRequest(
+				LogicManager.accountManager().getCurrentSessionId(),
+				LogicManager.accountManager().getCurrentAccoutSystemId());
 		List<Long> systemIdList = new ArrayList<Long>();
 		systemIdList.add(systemId);
 		request.setTargetId(systemIdList);

@@ -15,7 +15,11 @@ import com.heme.logic.LogicManager;
 import com.heme.logic.common.Constans;
 import com.heme.logic.httpprotocols.login.LoginRequest.LOGINTYPE;
 import com.heme.logic.httpprotocols.userinfo.updateuserinfo.UpdateUserInfoRequest.SEXTYPE;
+import com.heme.logic.module.Data.AddFriendRsp;
 import com.heme.logic.module.Data.ClassCombine;
+import com.heme.logic.module.Data.FriendCombine;
+import com.heme.logic.module.Data.GetUserInfoRsp;
+import com.heme.logic.module.Data.GetVerboseUserInfoRsp;
 import com.heme.logic.module.Data.LoginRsp;
 import com.heme.logic.module.Data.RegParentRsp;
 import com.heme.logic.module.Data.RegStudentRsp;
@@ -29,16 +33,17 @@ import com.heme.logic.module.Status.UserStatus;
 import com.heme.logic.module.notpbmessage.AreaInfo;
 import com.heme.smile.BaseActivity;
 import com.heme.smile.R;
-import com.heme.smile.Util;
+import com.heme.utils.Util;
 
 public class TestManagerActivity extends BaseActivity implements
 		OnClickListener {
-	private long targetId = 2222;
+	private Long targetId = 12300000001L;
+	
 	private Button mLoginBtn, mLocalLoginButtn, mParRegBtn, mStuRegBtn;
-	private Button mSchoolInfoBtn, mClassInfoBtn, mGetStatus;
+	private Button mSchoolInfoBtn, mClassInfoBtn, mGetStatus, mAddFriend;
 	private Button mC2Ctext, mC2Cvideo, mC2Cvoice, mC2Cpic, mC2CIdCard;
 	private Button mC2Gtext, mC2Gvideo, mC2Gvoice, mC2Gpic, mC2GIdCard;
-	private Button mVoiceTest, mPollUnread, mPollMsg;
+	private Button mVoiceTest, mPollUnread, mPollMsg,mGetUserInfo,mGetVerboseUserInfo;
 
 	private Handler mHandler = new Handler() {
 		public void handleMessage(android.os.Message msg) {
@@ -46,6 +51,9 @@ public class TestManagerActivity extends BaseActivity implements
 			RegParentRsp parregresp;
 			RegStudentRsp sturegresp;
 			GetStatusRsp getstatusresp;
+			AddFriendRsp addfriendresp;
+			GetUserInfoRsp getUserInfoRsp;
+			GetVerboseUserInfoRsp getverboseuserinforeq;
 			dismissDialog();
 			switch (msg.what) {
 			case Constans.GET_SCHOOLINFO_SUCCESS:
@@ -60,7 +68,7 @@ public class TestManagerActivity extends BaseActivity implements
 			case Constans.LOGIN_FAILED:
 				loginresp = (LoginRsp) msg.obj;
 				Toast.makeText(TestManagerActivity.this,
-						loginresp.getErrString(), Toast.LENGTH_SHORT).show();
+						loginresp == null?"登陆失败":loginresp.getErrString(), Toast.LENGTH_SHORT).show();
 				break;
 			case Constans.ADULT_REG_FAILED:
 				parregresp = (RegParentRsp) msg.obj;
@@ -88,6 +96,12 @@ public class TestManagerActivity extends BaseActivity implements
 			case Constans.SEND_VIDEO_C2C_FAILED:
 			case Constans.SEND_VOICE_C2C_FAILED:
 			case Constans.SEND_PIC_C2C_FAILED:
+				Util.showToast(TestManagerActivity.this, "发送失败");
+				break;
+			case Constans.SEND_IDCARD_C2C_SUCCESS:
+				Util.showToast(TestManagerActivity.this, "发送成功");
+				break;
+			case Constans.SEND_IDCARD_C2C_FAILED:
 				Util.showToast(TestManagerActivity.this, "发送失败");
 				break;
 			case Constans.POLL_C2C_SUCCESS:
@@ -127,6 +141,29 @@ public class TestManagerActivity extends BaseActivity implements
 			case Constans.GET_STATUS_FAILED:
 				Util.showToast(TestManagerActivity.this, "拉取状态失败");
 				break;
+			case Constans.ADD_FRIEND_SUCCESS:
+				Util.showToast(TestManagerActivity.this, "添加好友成功");
+				break;
+			case Constans.ADD_FRIEND_FAILED:
+				addfriendresp = (AddFriendRsp)msg.obj;
+				Util.showToast(TestManagerActivity.this, addfriendresp.getErrString());
+				break;
+			case Constans.GET_VERBOSEUSERINFO_SUCCESS:
+				getverboseuserinforeq = (GetVerboseUserInfoRsp)msg.obj;
+				String string = getverboseuserinforeq.getVerboseFriendInfo(0).getRealName();
+				Util.showToast(TestManagerActivity.this, "好友真实姓名"+string);
+				break;
+			case Constans.GET_VERBOSEUSERINFO_FAILED:
+				getverboseuserinforeq = (GetVerboseUserInfoRsp)msg.obj;
+				Util.showToast(TestManagerActivity.this, getverboseuserinforeq.getErrString());
+				break;
+			case Constans.GET_USERINFO_SUCCESS:
+				getUserInfoRsp = (GetUserInfoRsp)msg.obj;
+				FriendCombine userinfo = getUserInfoRsp.getFriendInfo(0);
+				userinfo.getArea();
+				userinfo.getPhoneNo();
+				userinfo.getRealName();
+				break;
 			default:
 				break;
 			}
@@ -164,6 +201,8 @@ public class TestManagerActivity extends BaseActivity implements
 		mClassInfoBtn.setOnClickListener(this);
 		mGetStatus = (Button) findViewById(R.id.getstatus);
 		mGetStatus.setOnClickListener(this);
+		mAddFriend = (Button) findViewById(R.id.addfriend);
+		mAddFriend.setOnClickListener(this);
 
 	}
 
@@ -200,6 +239,10 @@ public class TestManagerActivity extends BaseActivity implements
 		mPollMsg.setOnClickListener(this);
 		mPollUnread = (Button) findViewById(R.id.btnpollunread);
 		mPollUnread.setOnClickListener(this);
+		mGetUserInfo = (Button) findViewById(R.id.btngetuserinfo);
+		mGetUserInfo.setOnClickListener(this);
+		mGetVerboseUserInfo =  (Button) findViewById(R.id.btngetuserverboseinfo);
+		mGetVerboseUserInfo.setOnClickListener(this);
 	}
 
 	@Override
@@ -264,6 +307,15 @@ public class TestManagerActivity extends BaseActivity implements
 		case R.id.getstatus:
 			testgetstatus();
 			break;
+		case R.id.addfriend:
+			testaddfriend();
+			break;
+		case R.id.btngetuserinfo:
+			testgetuserinfo();
+			break;
+		case R.id.btngetuserverboseinfo:
+			testgetverboseinfo();
+			break;
 		default:
 			break;
 		}
@@ -289,7 +341,7 @@ public class TestManagerActivity extends BaseActivity implements
 
 	// 登陆
 	private void testloginmanager() {
-		LogicManager.loginManager().Login("2222", "123456789",
+		LogicManager.loginManager().Login("123456789", "20130812",
 				LOGINTYPE.TypeWX, mHandler);
 		showWaitDialog("外部数据登录中");
 	}
@@ -402,7 +454,22 @@ public class TestManagerActivity extends BaseActivity implements
 
 	private void testgetstatus() {
 		List<Long> idlistList = new ArrayList<Long>();
-		idlistList.add(Long.valueOf(2222));
+		idlistList.add(Long.valueOf(targetId));
 		LogicManager.statusManager().getStatus(idlistList, mHandler);
+	}
+	
+	private void testaddfriend()
+	{
+		LogicManager.friendManager().addFriend(targetId, "", mHandler);
+	}
+	
+	private void testgetuserinfo()
+	{
+		LogicManager.friendManager().getFriendInfo(Long.valueOf(targetId), mHandler);
+	}
+	
+	private void testgetverboseinfo()
+	{
+		LogicManager.friendManager().getVerboseFriendInfo(Long.valueOf(targetId), mHandler);
 	}
 }

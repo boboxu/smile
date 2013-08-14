@@ -9,9 +9,10 @@ import com.heme.logic.managers.base.IBaseBusinessLogicManagerInterface;
 public interface IFriendManagerInterface extends
 		IBaseBusinessLogicManagerInterface {
 	public void getFriendInfo(List<Long> systemIdList,Handler handler);
-	public void getVerboseFriendInfo(List<Long> systemIdList,Handler handler);
-	public void addFriend(long systemId,String verifyMsg,Handler handler);
 	public void getFriendInfo(Long systemId,Handler handler);
+	public void getVerboseFriendInfo(List<Long> systemIdList,Handler handler);
+	public void getVerboseFriendInfo(Long systemId,Handler handler);
+	public void addFriend(long systemId,String verifyMsg,Handler handler);
 	/***
 	 * 
 	 * @param systemId 目标ID
