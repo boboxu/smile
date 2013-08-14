@@ -9,13 +9,12 @@ import android.util.Log;
 
 import com.google.protobuf.InvalidProtocolBufferException;
 import com.heme.commonlogic.servermanager.error.ProtoError;
-import com.heme.foundation.error.BaseError;
 import com.heme.foundation.error.NetworkError;
 import com.heme.foundation.net.INetworkManagerDelegate;
 import com.heme.foundation.net.IProtocolEngineDelegate;
 import com.heme.foundation.net.NetworkEngine;
 import com.heme.foundation.net.NetworkRequest;
-import com.heme.logic.module.Message.PushMsgReq;
+import com.heme.logic.module.Message.MessageOpr;
 import com.heme.logic.module.Trans.TransProto;
 
 public class ServerManager implements IServerManagerInterface,
@@ -24,6 +23,8 @@ public class ServerManager implements IServerManagerInterface,
 	private static ServerManager g_Instance = null;
 	private Map<String, BaseRequest> mRequestMap;
 	private final RequestIdGenerator mRequestIdGenerator;
+	
+	protected IServerManagerPushListener mPushListener;
 
 	public static ServerManager shareInstance() {
 		if (g_Instance == null) {
@@ -96,6 +97,16 @@ public class ServerManager implements IServerManagerInterface,
 		addRequest(request);
 
 		return 0;
+	}
+
+	public IServerManagerPushListener getmPushListener()
+	{
+		return mPushListener;
+	}
+
+	public void setmPushListener(IServerManagerPushListener mPushListener)
+	{
+		this.mPushListener = mPushListener;
 	}
 
 	@Override
@@ -350,9 +361,13 @@ public class ServerManager implements IServerManagerInterface,
 			}
 			if (isPushMsg(transProto))
 			{
-				PushMsgReq pushMsgReq = PushMsgReq.parseFrom(transProto.getBytesBody());
-				int num = pushMsgReq.getRptMsgPushmsgCount();
-				Log.d(TAG, "123");
+				MessageOpr msgOpr = MessageOpr.parseFrom(transProto.getBytesBody());
+
+				if (msgOpr!= null && mPushListener != null)
+				{
+					mPushListener.onRecivedPushMsg(msgOpr);
+				}
+				
 			}
 			basePbRequest = (BasePbRequest)getRequestFromSeqId(transProto.getUint32Seq());
 			if (basePbRequest == null) {

@@ -1,12 +1,12 @@
 package com.heme.commonlogic.dao;
 
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+
 import com.heme.logic.module.CommonMsgDao;
 import com.heme.logic.module.DaoMaster;
 import com.heme.logic.module.DaoMaster.DevOpenHelper;
 import com.heme.logic.module.DaoSession;
-
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
 
 public class DbManager
 {

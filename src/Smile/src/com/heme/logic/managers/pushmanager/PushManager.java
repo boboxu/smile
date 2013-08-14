@@ -1,19 +1,36 @@
 package com.heme.logic.managers.pushmanager;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.os.Handler;
 
+import com.heme.commonlogic.dao.DbManager;
 import com.heme.commonlogic.servermanager.BaseResponse;
+import com.heme.commonlogic.servermanager.IServerManagerPushListener;
+import com.heme.commonlogic.servermanager.ServerManager;
 import com.heme.logic.LogicManager;
-import com.heme.logic.httpprotocols.push.PushMsgRequest;
 import com.heme.logic.managers.base.BaseBusinessLogicManager;
 import com.heme.logic.module.Message.CommonMsg;
+import com.heme.logic.module.Message.MessageOpr;
 import com.heme.logic.module.Message.MessageType;
-import com.heme.logic.module.Message.MsgCommand;
 
-public class PushManager extends BaseBusinessLogicManager {
+public class PushManager extends BaseBusinessLogicManager implements IServerManagerPushListener{
 
+	protected static PushManager gManager = null;
+	
+	List<CommonMsg> unreadMsgList = new ArrayList<CommonMsg>();
+	
+	public static PushManager shareManager()
+	{
+		if (gManager == null)
+		{
+			gManager = new PushManager();
+			ServerManager.shareInstance().setmPushListener(gManager);
+		}
+		return gManager;
+	}
+	
 	@Override
 	protected void onSuccessResponse(BaseResponse response, Handler handler) {
 		
@@ -22,14 +39,23 @@ public class PushManager extends BaseBusinessLogicManager {
 	//收到MessageOpr，根据uint32_command命令号来判断交给哪个request来解析数据。
 	//命令号 1.发送请求 2.发送确认 3.推送请求 4.推送确认 5.拉取请求 6.拉取结果 7.拉取未读列表请求 8.拉取未读列表结果
 //	BaseMessageOprRequest.COMMANDTYPE
-	
-	public void onRecivedPushMsg(PushMsgRequest msgRequest)
+	@Override
+	public void onRecivedPushMsg(MessageOpr msgOpr)
 	{
-		//确认是推送消息，并且是推到当前用户的
-		if (msgRequest.getCmdType() == MsgCommand.MC_PushMsgReq && 
-				msgRequest.getToId() == LogicManager.accountManager().getCurrentAccoutSystemId()) {
-			List<CommonMsg> msgList = msgRequest.getMsgList();
+		//确认是推到当前用户的
+		if (msgOpr.getUint64Uid() == LogicManager.accountManager().getCurrentAccoutSystemId()) {
+			List<CommonMsg> msgList = msgOpr.getMsgPushReq().getRptMsgPushmsgList();
+			if (msgList == null || msgList.size() == 0)
+			{
+				return;
+			}
+			
+			//放未读列表
+			unreadMsgList.addAll(msgList);
+			
 			//存数据库咯
+			DbManager.getCommonMsgDao().insertOrReplaceInTx(msgList);
+
 			for (int i = 0; i < msgList.size(); i++) {
 				CommonMsg msgItem = msgList.get(i);
 				MessageType msgtype = msgItem.getUint32MsgType();

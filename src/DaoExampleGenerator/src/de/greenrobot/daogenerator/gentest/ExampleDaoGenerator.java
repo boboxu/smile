@@ -71,13 +71,42 @@ public class ExampleDaoGenerator {
     {
     	Entity commonMsg = schema.addProtobufEntity("CommonMsg");
     	commonMsg.addLongProperty("Uint64MsgId").primaryKey();
+    	
     	commonMsg.addLongProperty("Uint64FromUid").notNull();
     	commonMsg.addLongProperty("Uint64ToUid");
     	commonMsg.addLongProperty("Uint64ToGid");
     	commonMsg.addIntProperty("Uint32MsgType").notNull();
-
     	commonMsg.addIntProperty("Uint32ContentType");
+    	
     	commonMsg.addStringProperty("StrTextMsg");
+//    	commonMsg.addStringProperty("StrMsgPicMsg");
+    	commonMsg.addByteArrayProperty("MsgPicMsg");
+    	commonMsg.addByteArrayProperty("MsgVoiceMsg");
+    	commonMsg.addByteArrayProperty("MsgVideoMsg");
+    	commonMsg.addByteArrayProperty("MsgMoitorMsg");
+    	commonMsg.addByteArrayProperty("MsgTestMsg");
+    	commonMsg.addByteArrayProperty("MsgClassInfo");
+    	commonMsg.addByteArrayProperty("MsgVerifyReq");
+    	commonMsg.addByteArrayProperty("MsgFileInfo");
+    	commonMsg.addByteArrayProperty("MsgRichInfo");
+    	
+    	commonMsg.addLongProperty("Uint64Time");
+    	commonMsg.addIntProperty("Uint32TrunctFlag");
+    	    	
+    	//PicMsgInfo
+//    	Entity picMsgInfo = schema.addProtobufEntity("PicMsgInfo");
+//    	
+//    	picMsgInfo.addStringProperty("StrPicUrl").notNull().getProperty();
+//    	picMsgInfo.addStringProperty("StrThumbUrl");
+//    	picMsgInfo.addIntProperty("Uint32Size");
+//    	picMsgInfo.addStringProperty("StrPicType");
+//    	picMsgInfo.addIntProperty("Uint32PicWidth");
+//    	picMsgInfo.addIntProperty("Uint32PicHeight");
+//    	picMsgInfo.addStringProperty("StrFileName");
+//    	picMsgInfo.addStringProperty("StrFileInfo");
+//    	
+//    	Property picUrlProperty = commonMsg.addStringProperty("StrPicUrl").getProperty();
+//    	commonMsg.addToOne(picMsgInfo, picUrlProperty);
     	
 //    	commonMsg.addProperty(propertyType, propertyName)
 //    	//picmsginfo
@@ -86,20 +115,36 @@ public class ExampleDaoGenerator {
 //    	addVoiceMsgInfoProperty(commonMsg);
 //    	//videomsginfo
 //    	addVideoMsgInfoProperty(commonMsg);
-    	commonMsg.addLongProperty("Uint64Time");
-    	commonMsg.addIntProperty("Uint32TrunctFlag");
+
+    }
+    
+    private static void addPicMsgInfo(Schema schema)
+    {
+    	Entity picMsgInfo = schema.addProtobufEntity("PicMsgInfo");
+    	
+    	picMsgInfo.addStringProperty("StrPicUrl").notNull();
+    	picMsgInfo.addStringProperty("StrThumbUrl");
+//    	picMsgInfo.addIntProperty("Uint32Size");
+//    	picMsgInfo.addStringProperty("StrPicType");
+//    	picMsgInfo.addIntProperty("Uint32PicWidth");
+//    	picMsgInfo.addIntProperty("Uint32PicHeight");
+//    	picMsgInfo.addStringProperty("StrFileName");
+//    	picMsgInfo.addStringProperty("StrFileInfo");
     }
     
     private static void addPicMsgInfoProperty(Entity entity)
     {
+
     	if (entity == null) return;
     	
-		entity.addStringProperty("StrPicUrl").notNull();
-		entity.addStringProperty("StrThumbUrl");
-		entity.addIntProperty("Uint32Size");
-		entity.addStringProperty("StrPicType");
-		entity.addIntProperty("Uint32PicWidth");
-		entity.addIntProperty("Uint32PicHeight"); 
+    	entity.addStringProperty("StrPicUrl").notNull();
+    	entity.addStringProperty("StrThumbUrl");
+//    	entity.addIntProperty("Uint32Size");
+//    	entity.addStringProperty("StrPicType");
+//    	entity.addIntProperty("Uint32PicWidth");
+//    	entity.addIntProperty("Uint32PicHeight");
+//    	entity.addStringProperty("StrFileName");
+//    	entity.addStringProperty("StrFileInfo");
     }
 
     private static void addVoiceMsgInfoProperty(Entity entity)
@@ -107,7 +152,7 @@ public class ExampleDaoGenerator {
     	if (entity == null) return;
     	
 		entity.addStringProperty("StrVoiceUrl").notNull();
-		entity.addIntProperty("Uint32Size");
+//		entity.addIntProperty("Uint32Size");
 		entity.addIntProperty("Uint32Duration"); 
 	}
     
@@ -116,11 +161,11 @@ public class ExampleDaoGenerator {
     	if (entity == null) return;
     	
 		entity.addStringProperty("StrVideoUrl").notNull();
-		entity.addStringProperty("StrThumbUrl");
-		entity.addIntProperty("Uint32Size");
-		entity.addIntProperty("Uint32Duration"); 
-		entity.addStringProperty("StrVideoFormat");
-		entity.addIntProperty("Uint32VideoWidth");
-		entity.addIntProperty("Uint32VideoHeight"); 
+//		entity.addStringProperty("StrThumbUrl");
+//		entity.addIntProperty("Uint32Size");
+//		entity.addIntProperty("Uint32Duration"); 
+//		entity.addStringProperty("StrVideoFormat");
+//		entity.addIntProperty("Uint32VideoWidth");
+//		entity.addIntProperty("Uint32VideoHeight"); 
 	}
 }

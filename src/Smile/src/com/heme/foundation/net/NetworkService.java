@@ -211,9 +211,10 @@ public class NetworkService extends Service
 	{
 		Log.d(TAG, "start service");
 		
-		if (mStarted == true)
+		if (mStarted == true && mConnectionThread!= null && mConnectionThread.isConnected())
 		{
 			Log.d(TAG, "service already started");
+			NetworkEngine.getEngine().onConnceted(mConnectionThread);
 			return;
 		}
 		
